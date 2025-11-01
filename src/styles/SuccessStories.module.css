@@ -1,0 +1,606 @@
+/* Base Styles */
+.successStories {
+  background: radial-gradient(
+      ellipse at 20% 10%,
+      rgba(215, 180, 106, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 90%,
+      rgba(215, 180, 106, 0.05) 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, #0a0a0a 0%, #111111 50%, #0a0a0a 100%);
+  padding: 140px 40px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.backgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.floatingOrb {
+  position: absolute;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.floatingOrb:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.floatingOrb:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  top: 60%;
+  left: 10%;
+  animation-delay: 2s;
+}
+
+.floatingOrb:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  right: 8%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.7;
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Header Styles - UPDATED WITH LARGER FONTS */
+.header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.titleDecoration {
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+.goldBar {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #d7b46a, #b8943c);
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+.titleContent {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #d7b46a 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #d7b46a 0%, #f4e4b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  display: block;
+  margin-top: 10px;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Performance Summary - UPDATED WITH LARGER FONTS */
+.performanceSummary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  max-width: 800px;
+  margin: 60px auto 0;
+}
+
+.summaryItem {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 25px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(215, 180, 106, 0.15);
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.summaryItem:hover {
+  background: rgba(215, 180, 106, 0.08);
+  border-color: rgba(215, 180, 106, 0.4);
+  transform: translateY(-5px);
+}
+
+.summaryNumber {
+  color: #d7b46a;
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.summaryLabel {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Stories Grid - UPDATED WITH LARGER FONTS */
+.storiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-bottom: 100px;
+}
+
+.storyCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.storyCard:hover {
+  transform: translateY(-12px);
+  border-color: rgba(215, 180, 106, 0.4);
+  box-shadow: 0 25px 80px rgba(215, 180, 106, 0.2);
+}
+
+/* Image Container */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.storyCard:hover .image {
+  transform: scale(1.1);
+}
+
+/* Badges - UPDATED WITH LARGER FONTS */
+.roiBadge {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: rgba(10, 10, 10, 0.95);
+  padding: 15px 20px;
+  border: 2px solid rgba(215, 180, 106, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(215, 180, 106, 0.3);
+}
+
+.roiText {
+  color: #d7b46a;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.roiLine {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #d7b46a, transparent);
+  margin-top: 6px;
+}
+
+.timeBadge {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  background: rgba(215, 180, 106, 0.95);
+  color: #0a0a0a;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.categoryBadge {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Content Overlay - UPDATED WITH LARGER FONTS */
+.contentOverlay {
+  padding: 35px;
+  background: rgba(10, 10, 10, 0.85);
+}
+
+.contentHeader {
+  margin-bottom: 25px;
+}
+
+.storyTitle {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.metric {
+  background: rgba(215, 180, 106, 0.15);
+  color: #d7b46a;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid rgba(215, 180, 106, 0.3);
+}
+
+.storyDescription {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+/* Strategy Indicators - UPDATED WITH LARGER FONTS */
+.strategyIndicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.indicatorDot {
+  width: 8px;
+  height: 8px;
+  background: #d7b46a;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Hover Layer - UPDATED WITH LARGER FONTS */
+.hoverLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(215, 180, 106, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.storyCard:hover .hoverLayer {
+  opacity: 1;
+}
+
+.hoverContent {
+  text-align: center;
+  color: #0a0a0a;
+}
+
+.successIcon {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.hoverText {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* CTA Section - UPDATED WITH LARGER FONTS */
+.ctaSection {
+  background: rgba(215, 180, 106, 0.1);
+  border: 1px solid rgba(215, 180, 106, 0.25);
+  border-radius: 24px;
+  padding: 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 2;
+}
+
+.ctaTitle {
+  color: #d7b46a;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+  line-height: 1.2;
+}
+
+.ctaDescription {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.4rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.ctaDecoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.ctaOrnament {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+  border: 3px solid rgba(215, 180, 106, 0.15);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design - UPDATED FOR LARGER FONTS */
+@media (max-width: 1200px) {
+  .successStories {
+    padding: 120px 30px;
+  }
+
+  .storiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .title {
+    font-size: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .ctaTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .performanceSummary {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 400px;
+  }
+
+  .summaryItem {
+    padding: 35px 20px;
+  }
+
+  .summaryNumber {
+    font-size: 2.5rem;
+  }
+
+  .summaryLabel {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .successStories {
+    padding: 100px 20px;
+  }
+
+  .header {
+    margin-bottom: 80px;
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .storiesGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .contentOverlay {
+    padding: 25px;
+  }
+
+  .storyTitle {
+    font-size: 1.6rem;
+  }
+
+  .storyDescription {
+    font-size: 1rem;
+  }
+
+  .ctaSection {
+    padding: 40px 25px;
+  }
+
+  .ctaTitle {
+    font-size: 2.2rem;
+  }
+
+  .ctaDescription {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .successStories {
+    padding: 80px 15px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .imageContainer {
+    height: 280px;
+  }
+
+  .metrics {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .metric {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  .strategyIndicators {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .indicator {
+    font-size: 0.9rem;
+  }
+
+  .roiBadge {
+    padding: 12px 16px;
+  }
+
+  .roiText {
+    font-size: 1rem;
+  }
+
+  .timeBadge,
+  .categoryBadge {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .floatingOrb,
+  .ctaOrnament {
+    animation: none;
+  }
+
+  .storyCard:hover {
+    transform: none;
+  }
+
+  .image {
+    transition: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .successStories {
+    background: #000000;
+  }
+
+  .storyCard {
+    border-color: #d7b46a;
+  }
+
+  .summaryItem {
+    border-color: #d7b46a;
+  }
+}

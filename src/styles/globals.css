@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0d0d0d; /* same as header */
+  color: #fff;
+  font-family: "Playfair Display", serif;
+  transition: none !important;
+}
+
+/* Prevent layout jump while Next Image loads */
+img,
+.next-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optional: Disable animations before hydration */
+[data-nextjs-loading] * {
+  transition: none !important;
+  animation: none !important;
+}
+
+@media (max-width: 768px) {
+  .Header_container__O36kb {
+    padding: 25px !important;
+    margin-top: 100px !important;
+  }
+}
