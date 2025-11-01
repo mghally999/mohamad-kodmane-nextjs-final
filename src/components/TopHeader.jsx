@@ -92,7 +92,7 @@ export default function TopHeader() {
                 title: "Sobha Aquamont",
                 slug: "aquamont",
                 image:
-                  "https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=800&q=80",
+                  "https://luxury-real-estate-media.b-cdn.net/aquamont/intro-main.png",
                 description: "Mountain view luxury residences",
               },
             ],

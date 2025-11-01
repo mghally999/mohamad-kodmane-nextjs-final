@@ -1,6 +1,6 @@
 import MiniCallbackForm from "@/components/MiniCallbackForm";
+import CityProximity from "@/components/projects/aqua-crest/CityProximity";
 import AmenitiesShowcase from "@/components/projects/aquamont/AmenitiesShowcase";
-import CityProximity from "@/components/projects/aquamont/CityProximity";
 import FloorPlanShowcase from "@/components/projects/aquamont/FloorPlanShowcase";
 import MapDirections from "@/components/projects/aquamont/MapDirections";
 import ProjectHero from "@/components/projects/aquamont/ProjectHero";
