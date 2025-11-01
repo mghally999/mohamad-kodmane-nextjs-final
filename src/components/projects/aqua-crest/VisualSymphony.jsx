@@ -150,7 +150,7 @@ export default function VisualSymphony({
                     <div className={styles.infoSphere}>
                       <div className={styles.sphereIcon}>✨</div>
                       <div className={styles.sphereContent}>
-                        <div className={styles.sphereTitle}>SkyParks</div>
+                        <div className={styles.sphereTitle}>Aqua Crest</div>
                         <div className={styles.sphereSubtitle}>
                           View {i + 1} of {slides.length}
                         </div>

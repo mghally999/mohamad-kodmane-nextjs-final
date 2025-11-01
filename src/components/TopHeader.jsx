@@ -84,7 +84,7 @@ export default function TopHeader() {
                 title: "Sobha Central",
                 slug: "central",
                 image:
-                  "https://images.unsplash.com/photo-1540259579797-88e28e233a82?auto=format&fit=crop&w=800&q=80",
+                  "https://luxury-real-estate-media.b-cdn.net/sobha-central/exterior-towers-angled-01.jpg",
                 description: "Downtown premium apartments",
               },
               {
