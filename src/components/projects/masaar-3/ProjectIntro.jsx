@@ -14,7 +14,7 @@ export default function ProjectIntro({
     "Choose from 1–4 bedroom residences and elegant duplexes, each offering sweeping views of the Arabian Gulf and Downtown Dubai skyline. Here, every moment flows seamlessly between movement and stillness, between the pulse of the city and the quiet above the clouds.",
   ],
   brochureHref = "#",
-  imgUrl = "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2100&q=80",
+  imgUrl = "https://luxury-real-estate-media.b-cdn.net/massar-3/intro-main.jpg",
   imgAlt = "Sobha SkyParks luxury residences with panoramic Dubai views",
   companyName = "Sobha Realty",
   projectName = "Sobha SkyParks",

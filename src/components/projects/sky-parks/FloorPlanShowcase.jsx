@@ -56,8 +56,8 @@ export default function FloorPlanShowcase({
       },
       images: [
         // Use dramatic exteriors for the largest typology
-        "/projects/apartments/sobha/sky-parks/gallery/exterior-cityview-01.jpg",
-        "/projects/apartments/sobha/sky-parks/gallery/exterior-cityview-02.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
       ],
       features: ["Double Master", "Panoramic Views", "Private Elevator"],
     },

@@ -1,82 +1,63 @@
+// components/projects/masaar-3/FloorPlanShowcase.jsx
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/projects/sky-parks/FloorPlanShowcase.module.css";
 
-/**
- * Luxury Floor Plan Showcase - 3 Tabs with Creative Design
- * Professional, elegant, and 100% unique with brand colors
- */
 export default function FloorPlanShowcase({
+  // Masaar 3: we only have 3BR + 5BR floor visuals (villa community).
   floorPlans = [
     {
-      id: "1-bedroom",
-      title: "1 Bedroom Residence",
-      specs: {
-        Unit: "1 BEDROOM + 1 MASTER BATH + 1 LIVING AREA + 1 BALCONY",
-        Suite: "665.31 SQ.FT.",
-        Balcony: "60.28 SQ.FT.",
-        Total: "715.59 SQ.FT.",
-        Price: "AED 2,880,250",
-      },
+      id: "3br-villa",
+      title: "3 Bedroom Villa",
+      specs: { Unit: "—", Suite: "—", Balcony: "—", Total: "—", Price: "—" },
       images: [
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80",
+        "https://luxury-real-estate-media.b-cdn.net/massar-3/floor-3br.jpg",
       ],
-      features: ["Walk-in Closet", "Premium Finishes", "Smart Home Ready"],
+      features: [],
     },
     {
-      id: "2-bedroom",
-      title: "2 Bedroom Residence",
-      specs: {
-        Unit: "2 BEDROOM + 1 POWDER ROOM + 1 MAID ROOM + 1 BALCONY",
-        Suite: "1,107.18 SQ.FT.",
-        Balcony: "80.84 SQ.FT.",
-        Total: "1,188.02 SQ.FT.",
-        Price: "AED 4,752,080",
-      },
+      id: "5br-villa",
+      title: "5 Bedroom Villa",
+      specs: { Unit: "—", Suite: "—", Balcony: "—", Total: "—", Price: "—" },
       images: [
-        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+        "https://luxury-real-estate-media.b-cdn.net/massar-3/floor-5br.jpg",
       ],
-      features: ["Maid's Room", "Double Balcony", "Premium Kitchen"],
-    },
-    {
-      id: "3-bedroom",
-      title: "3 Bedroom Residence",
-      specs: {
-        Unit: "3 BEDROOM + 2 MASTER BATH + 1 LIVING + 2 BALCONIES",
-        Suite: "1,993.05 SQ.FT.",
-        Balcony: "274.16 SQ.FT.",
-        Total: "2,267.21 SQ.FT.",
-        Price: "AED 9,352,241",
-      },
-      images: [
-        "https://images.unsplash.com/photo-1600585154340-ffff5c57bebe?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600607687929-1d5d43b9e13b?auto=format&fit=crop&w=1200&q=80",
-      ],
-      features: ["Double Master", "Panoramic Views", "Private Elevator"],
+      features: [],
     },
   ],
-  brochureHref = "#",
+  // Keeping this prop for backward compatibility (not used if brochures[] exists)
+  brochureHref,
 }) {
   const [activeTab, setActiveTab] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Masaar 3 official PDFs you uploaded
+  const brochures = [
+    {
+      id: "ph1",
+      label: "Download Brochure (Phase 1)",
+      href: "https://luxury-real-estate-media.b-cdn.net/massar-3/Masaar%203%20Ph1%20%20Brochure.pdf",
+    },
+    {
+      id: "ph2",
+      label: "Download Brochure (Phase 2)",
+      href: "https://luxury-real-estate-media.b-cdn.net/massar-3/Masaar%203%20Ph2%20%20Brochure.pdf",
+    },
+  ];
+
   const currentPlan = floorPlans[activeTab];
   const hasMultipleImages = currentPlan.images.length > 1;
 
-  const nextImage = () => {
+  const nextImage = () =>
     setCurrentImageIndex((prev) => (prev + 1) % currentPlan.images.length);
-  };
 
-  const prevImage = () => {
+  const prevImage = () =>
     setCurrentImageIndex(
       (prev) =>
         (prev - 1 + currentPlan.images.length) % currentPlan.images.length
     );
-  };
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -85,23 +66,21 @@ export default function FloorPlanShowcase({
 
   return (
     <section className={styles.luxurySection} aria-label="Floor plan showcase">
-      {/* Luxury Background Elements */}
       <div className={styles.backgroundElements}>
         <div className={styles.luxuryOrnament}></div>
         <div className={styles.luxuryOrnament}></div>
       </div>
 
       <div className={styles.luxuryContainer}>
-        {/* Creative Title */}
         <div className={styles.titleMasterpiece}>
-          <h2 className={styles.mainHeadline}>Residence Collections</h2>
+          <h2 className={styles.mainHeadline}>Masaar 3 — Villa Collections</h2>
           <div className={styles.titleEmbellishment}>
             <div className={styles.embellishmentLine}></div>
             <div className={styles.embellishmentDot}></div>
           </div>
         </div>
 
-        {/* Luxury Tabs */}
+        {/* Tabs */}
         <div className={styles.tabsSymphony}>
           {floorPlans.map((plan, index) => (
             <button
@@ -114,9 +93,7 @@ export default function FloorPlanShowcase({
             >
               <div className={styles.tabContent}>
                 <div className={styles.tabIcon}>
-                  {index === 0 && "🏠"}
-                  {index === 1 && "🏢"}
-                  {index === 2 && "🏘️"}
+                  {index === 0 ? "🏡" : "🏠"}
                 </div>
                 <span className={styles.tabText}>{plan.title}</span>
               </div>
@@ -125,16 +102,15 @@ export default function FloorPlanShowcase({
           ))}
         </div>
 
-        {/* Content Masterpiece */}
+        {/* Content */}
         <div className={styles.contentMasterpiece}>
-          {/* Left: Luxury Specs */}
+          {/* Left: Specs + CTAs */}
           <div className={styles.specsGallery}>
             <div className={styles.specsHeader}>
               <h3 className={styles.planTitle}>{currentPlan.title}</h3>
               <div className={styles.titleAccent}></div>
             </div>
 
-            {/* Specs List */}
             <div className={styles.specsList}>
               {Object.entries(currentPlan.specs).map(([key, value]) => (
                 <div key={key} className={styles.specItem}>
@@ -147,35 +123,47 @@ export default function FloorPlanShowcase({
               ))}
             </div>
 
-            {/* Luxury Features */}
-            {/* <div className={styles.featuresShowcase}>
-              <h4 className={styles.featuresTitle}>Premium Features</h4>
-              <div className={styles.featuresGrid}>
-                {currentPlan.features.map((feature, index) => (
-                  <div key={index} className={styles.featureBadge}>
-                    <span className={styles.featureIcon}>✓</span>
-                    <span className={styles.featureText}>{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div> */}
-
-            {/* Luxury CTA */}
-            <a
-              href={brochureHref}
-              className={styles.luxuryCta}
-              rel="noopener"
-              aria-label="Download detailed floor plans"
+            {/* Brochure buttons (two PDFs) */}
+            <div
+              className={styles.ctaGroup}
+              style={{ display: "grid", gap: "10px" }}
             >
-              <span className={styles.ctaText}>Request Detailed Plans</span>
-              <div className={styles.ctaOrnament}>
-                <div className={styles.ornamentLine}></div>
-                <span className={styles.ctaArrow}>↗</span>
-              </div>
-            </a>
+              {brochures.map((b) => (
+                <a
+                  key={b.id}
+                  href={b.href}
+                  className={styles.luxuryCta}
+                  rel="noopener"
+                  target="_blank"
+                  aria-label={b.label}
+                >
+                  <span className={styles.ctaText}>{b.label}</span>
+                  <div className={styles.ctaOrnament}>
+                    <div className={styles.ornamentLine}></div>
+                    <span className={styles.ctaArrow}>↗</span>
+                  </div>
+                </a>
+              ))}
+
+              {/* fallback: if someone passes brochureHref prop */}
+              {!brochures.length && brochureHref && (
+                <a
+                  href={brochureHref}
+                  className={styles.luxuryCta}
+                  rel="noopener"
+                  target="_blank"
+                >
+                  <span className={styles.ctaText}>Download Brochure</span>
+                  <div className={styles.ctaOrnament}>
+                    <div className={styles.ornamentLine}></div>
+                    <span className={styles.ctaArrow}>↗</span>
+                  </div>
+                </a>
+              )}
+            </div>
           </div>
 
-          {/* Right: Luxury Image Display */}
+          {/* Right: Image */}
           <div className={styles.visualMasterpiece}>
             <div className={styles.imageSculpture}>
               <div className={styles.imageFrame}>
@@ -183,7 +171,7 @@ export default function FloorPlanShowcase({
                 <div className={styles.imageContainer}>
                   <Image
                     src={currentPlan.images[currentImageIndex]}
-                    alt={`${currentPlan.title} floor plan view ${
+                    alt={`${currentPlan.title} representative view ${
                       currentImageIndex + 1
                     }`}
                     fill
@@ -194,7 +182,6 @@ export default function FloorPlanShowcase({
                   <div className={styles.imageOverlay}></div>
                 </div>
 
-                {/* Image Navigation */}
                 {hasMultipleImages && (
                   <>
                     <button
@@ -236,7 +223,6 @@ export default function FloorPlanShowcase({
                   </>
                 )}
 
-                {/* Image Counter */}
                 {hasMultipleImages && (
                   <div className={styles.imageCounter}>
                     <span className={styles.currentImage}>

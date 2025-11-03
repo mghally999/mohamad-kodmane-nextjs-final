@@ -1,17 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["luxury-real-estate-media.b-cdn.net", "images.unsplash.com"],
+    unoptimized: true, // ← bypass optimizer to avoid 500 timeouts
     remotePatterns: [
       {
         protocol: "https",
         hostname: "luxury-real-estate-media.b-cdn.net",
         pathname: "/**",
       },
-      { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
     formats: ["image/avif", "image/webp"],
   },
 };
 
-export default nextConfig; // <-- ESM export
+export default nextConfig;

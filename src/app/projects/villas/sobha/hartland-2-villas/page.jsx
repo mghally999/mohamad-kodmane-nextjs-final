@@ -1,6 +1,6 @@
 import MiniCallbackForm from "@/components/MiniCallbackForm";
+import CityProximity from "@/components/projects/aqua-crest/CityProximity";
 import AmenitiesShowcase from "@/components/projects/hartland-2-villas/AmenitiesShowcase";
-import CityProximity from "@/components/projects/hartland-2-villas/CityProximity";
 import FloorPlanShowcase from "@/components/projects/hartland-2-villas/FloorPlanShowcase";
 import MapDirections from "@/components/projects/hartland-2-villas/MapDirections";
 import ProjectHero from "@/components/projects/hartland-2-villas/ProjectHero";

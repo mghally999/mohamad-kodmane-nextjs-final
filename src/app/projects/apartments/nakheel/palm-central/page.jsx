@@ -1,6 +1,6 @@
 import MiniCallbackForm from "@/components/MiniCallbackForm";
+import CityProximity from "@/components/projects/aqua-crest/CityProximity";
 import AmenitiesShowcase from "@/components/projects/palm-central/AmenitiesShowcase";
-import CityProximity from "@/components/projects/palm-central/CityProximity";
 import FloorPlanShowcase from "@/components/projects/palm-central/FloorPlanShowcase";
 import MapDirections from "@/components/projects/palm-central/MapDirections";
 import ProjectHero from "@/components/projects/palm-central/ProjectHero";

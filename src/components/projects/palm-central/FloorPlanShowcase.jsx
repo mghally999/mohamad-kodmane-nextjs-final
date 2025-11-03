@@ -11,52 +11,13 @@ import styles from "@/styles/projects/sky-parks/FloorPlanShowcase.module.css";
 export default function FloorPlanShowcase({
   floorPlans = [
     {
-      id: "1-bedroom",
-      title: "1 Bedroom Residence",
-      specs: {
-        Unit: "1 BEDROOM + 1 MASTER BATH + 1 LIVING AREA + 1 BALCONY",
-        Suite: "665.31 SQ.FT.",
-        Balcony: "60.28 SQ.FT.",
-        Total: "715.59 SQ.FT.",
-        Price: "AED 2,880,250",
-      },
+      id: "2br",
+      title: "2 Bedroom",
+      specs: { Unit: "—", Suite: "—", Balcony: "—", Total: "—", Price: "—" },
       images: [
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?auto=format&fit=crop&w=1200&q=80",
+        "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-2br.jpg",
       ],
-      features: ["Walk-in Closet", "Premium Finishes", "Smart Home Ready"],
-    },
-    {
-      id: "2-bedroom",
-      title: "2 Bedroom Residence",
-      specs: {
-        Unit: "2 BEDROOM + 1 POWDER ROOM + 1 MAID ROOM + 1 BALCONY",
-        Suite: "1,107.18 SQ.FT.",
-        Balcony: "80.84 SQ.FT.",
-        Total: "1,188.02 SQ.FT.",
-        Price: "AED 4,752,080",
-      },
-      images: [
-        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-      ],
-      features: ["Maid's Room", "Double Balcony", "Premium Kitchen"],
-    },
-    {
-      id: "3-bedroom",
-      title: "3 Bedroom Residence",
-      specs: {
-        Unit: "3 BEDROOM + 2 MASTER BATH + 1 LIVING + 2 BALCONIES",
-        Suite: "1,993.05 SQ.FT.",
-        Balcony: "274.16 SQ.FT.",
-        Total: "2,267.21 SQ.FT.",
-        Price: "AED 9,352,241",
-      },
-      images: [
-        "https://images.unsplash.com/photo-1600585154340-ffff5c57bebe?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600607687929-1d5d43b9e13b?auto=format&fit=crop&w=1200&q=80",
-      ],
-      features: ["Double Master", "Panoramic Views", "Private Elevator"],
+      features: [],
     },
   ],
   brochureHref = "#",

@@ -8,9 +8,10 @@ import styles from "@/styles/projects/sky-parks/ProjectHero.module.css";
  * Z-index is bulletproof via `isolation:isolate` and explicit stacking.
  */
 export default function ProjectHero({
-  backgroundUrl = "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2100&q=80",
-  squareImageUrl = "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
-  companyName = "Sobha Realty",
+  backgroundUrl = "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-bg.jpg",
+  squareImageUrl = "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-inset.jpg",
+
+  companyName = "Arada",
   rating = 4.7,
 }) {
   return (

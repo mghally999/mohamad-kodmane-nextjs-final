@@ -37,8 +37,8 @@ export default function FloorPlanShowcase({
         Price: "AED 4,752,080",
       },
       images: [
-        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
+        "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-01.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-02.jpg",
       ],
       features: ["Maid's Room", "Double Balcony", "Premium Kitchen"],
     },
@@ -53,13 +53,14 @@ export default function FloorPlanShowcase({
         Price: "AED 9,352,241",
       },
       images: [
-        "https://images.unsplash.com/photo-1600585154340-ffff5c57bebe?auto=format&fit=crop&w=1200&q=80",
-        "https://images.unsplash.com/photo-1600607687929-1d5d43b9e13b?auto=format&fit=crop&w=1200&q=80",
+        // Using available Aqua Crest interiors for now. Replace when you upload 3BR shots.
+        "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-02.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-bedroom-01.jpg",
       ],
       features: ["Double Master", "Panoramic Views", "Private Elevator"],
     },
   ],
-  brochureHref = "#",
+  brochureHref = "https://luxury-real-estate-media.b-cdn.net/aqua-crest/Sobha%20AquaCrest%20Brochure%20(1).pdf",
 }) {
   const [activeTab, setActiveTab] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

@@ -22,7 +22,7 @@ export default function FloorPlanShowcase({
       },
       images: [
         "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
-        "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-dining-2bhk-type-e.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bathroom-01.jpg",
       ],
       features: ["Walk-in Closet", "Premium Finishes", "Smart Home Ready"],
     },

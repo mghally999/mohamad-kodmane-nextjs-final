@@ -109,7 +109,7 @@ export default function TopHeader() {
                 title: "Palm Central – Nakheel",
                 slug: "palm-central",
                 image:
-                  "https://images.unsplash.com/photo-1520509414578-d9cbf09933a1?auto=format&fit=crop&w=800&q=80",
+                  "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-lagoon-01.jpg",
                 description: "Palm Jumeirah luxury living",
               },
             ],
@@ -137,7 +137,7 @@ export default function TopHeader() {
                 title: "Sobha Hartland 2 Villas",
                 slug: "hartland-2-villas",
                 image:
-                  "https://images.unsplash.com/photo-1600585154314-8c5b4cdbb81a?auto=format&fit=crop&w=800&q=80",
+                  "https://luxury-real-estate-media.b-cdn.net/hartland/hero-bg.jpg",
                 description: "Premium waterfront villas",
               },
               {
@@ -162,7 +162,7 @@ export default function TopHeader() {
                 title: "Arada – Masaar 3",
                 slug: "masaar-3",
                 image:
-                  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+                  "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-bg.jpg",
                 description: "Gated community luxury villas",
               },
             ],
