@@ -135,7 +135,7 @@ export default function TopHeader() {
               {
                 id: 201,
                 title: "Sobha Hartland 2 Villas",
-                slug: "hartland-2-villas",
+                slug: "hartland",
                 image:
                   "https://luxury-real-estate-media.b-cdn.net/hartland/hero-bg.jpg",
                 description: "Premium waterfront villas",
@@ -159,8 +159,8 @@ export default function TopHeader() {
             projects: [
               {
                 id: 203,
-                title: "Arada – Masaar 3",
-                slug: "masaar-3",
+                title: "Arada – Massar 3",
+                slug: "massar-3",
                 image:
                   "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-bg.jpg",
                 description: "Gated community luxury villas",

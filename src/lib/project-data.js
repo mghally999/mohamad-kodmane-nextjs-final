@@ -25,9 +25,17 @@ const PROJECT_MAPPINGS = {
     exportKey: "palmCentralData",
   },
   // Villas - Sobha
-  "villas-sobha-hartland-2-villas": {
-    file: "hartland-2-villas",
+  "villas-sobha-hartland": {
+    file: "hartland",
     exportKey: "hartland2VillasData",
+  },
+  "villas-sobha-al-sinniyyah-island": {
+    file: "al-sinniyyah-island",
+    exportKey: "alSinniyyahIslandData",
+  },
+  "villas-arada-massar-3": {
+    file: "massar-3",
+    exportKey: "massar3Data",
   },
 };
 

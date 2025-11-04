@@ -85,7 +85,7 @@ export const menuData = {
             {
               id: 201,
               title: "Sobha Hartland 2 Villas",
-              slug: "hartland-2-villas",
+              slug: "hartland",
               image:
                 "https://images.unsplash.com/photo-1600585154314-8c5b4cdbb81a?auto=format&fit=crop&w=800&q=80",
             },
@@ -106,8 +106,8 @@ export const menuData = {
           projects: [
             {
               id: 203,
-              title: "Arada – Masaar 3",
-              slug: "masaar-3",
+              title: "Arada – Massar 3",
+              slug: "massar-3",
               image:
                 "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
             },

@@ -1,5 +1,3 @@
-// src/data/projects/villas/sobha/hartland-2-villas.js
-
 export const hartland2VillasData = {
   seo: {
     title:
@@ -8,7 +6,7 @@ export const hartland2VillasData = {
       "Exclusive 6-bedroom luxury villas in Sobha Hartland II, Mohammed Bin Rashid City. Premium family living with spacious layouts, private gardens, and world-class amenities by Sobha Realty.",
     keywords:
       "sobha hartland ii villas, sobha realty, luxury villas dubai, 6 bedroom villas, mohammed bin rashid city, hartland 2 villas, sobha hartland",
-    canonical: "/projects/villas/sobha/hartland-2-villas",
+    canonical: "/projects/villas/sobha/hartland",
   },
 
   project: {
