@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "@/styles/projects/sky-parks/MapDirections.module.css";
+import styles from "@/styles/projects/MapDirections.module.css";
 
 export default function MapDirections({
   projectName = "Sobha SkyParks",

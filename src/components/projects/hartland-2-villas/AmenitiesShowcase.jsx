@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import styles from "@/styles/projects/sky-parks/AmenitiesShowcase.module.css";
+import styles from "@/styles/projects/AmenitiesShowcase.module.css";
 
 export default function AmenitiesShowcase({
   title = "Luxury That Elevates Every Moment",

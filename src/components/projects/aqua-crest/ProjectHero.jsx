@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import styles from "@/styles/projects/sky-parks/ProjectHero.module.css";
+import styles from "@/styles/projects/ProjectHero.module.css";
 
 /**
  * Exact Sobha-style hero with on-top overlapping square and right-aligned reviews block.

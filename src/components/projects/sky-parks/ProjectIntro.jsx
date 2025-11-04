@@ -1,16 +1,21 @@
 "use client";
-import Image from "next/image";
-import styles from "@/styles/projects/sky-parks/ProjectIntro.module.css";
 
+import Image from "next/image";
+import styles from "@/styles/projects/ProjectIntro.module.css";
+
+/**
+ * Sobha SkyParks - Professional Intro Section
+ * Accurate details with creative image display
+ */
 export default function ProjectIntro({
   title = "LIVE WHERE THE SKY FEELS LIKE HOME",
   paragraphs = [
     "Rising over Sheikh Zayed Road, Sobha SkyParks brings together the best of city life and elevated calm. This 81-storey architectural icon places you at the heart of Dubai's most desired location, steps away from business districts, fine dining, designer labels, and vibrant cultural landmarks.",
     "Choose from 1–4 bedroom residences and elegant duplexes, each offering sweeping views of the Arabian Gulf and Downtown Dubai skyline. Here, every moment flows seamlessly between movement and stillness, between the pulse of the city and the quiet above the clouds.",
   ],
-  brochureHref = "https://luxury-real-estate-media.b-cdn.net/sky-parks/SOBHA-SKYPARKS-BROCHURE.pdf",
-  imgUrl = "https://luxury-real-estate-media.b-cdn.net/sky-parks/intro-main.jpg",
-  imgAlt = "Sobha SkyParks exterior",
+  brochureHref = "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Sobha%20Siniya%20Island%20Digital%20Brochure.pdf",
+  imgUrl = "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/intro-main.jpg",
+  imgAlt = "Sobha SkyParks luxury residences with panoramic Dubai views",
   companyName = "Sobha Realty",
   projectName = "Sobha SkyParks",
   location = "Sheikh Zayed Road, Dubai",
@@ -27,8 +32,9 @@ export default function ProjectIntro({
     },
     brand: { "@type": "Brand", name: companyName },
     description:
-      "81-storey luxury residential tower offering 1–4 bedroom apartments with panoramic Dubai views.",
+      "81-storey luxury residential tower offering 1-4 bedroom apartments with panoramic Dubai views.",
     image: imgUrl,
+    url: typeof window !== "undefined" ? window.location.href : undefined,
   };
 
   return (
@@ -36,16 +42,20 @@ export default function ProjectIntro({
       className={styles.projectIntro}
       aria-label={`${projectName} introduction`}
     >
+      {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+
       <div className={styles.introContainer}>
+        {/* Text Content */}
         <div className={styles.textContent}>
           <div className={styles.titleSection}>
             <h2 className={styles.projectTitle}>{title}</h2>
             <div className={styles.titleDivider}></div>
           </div>
+
           <div className={styles.descriptionSection}>
             {paragraphs.map((p, i) => (
               <p key={i} className={styles.projectDescription}>
@@ -53,11 +63,13 @@ export default function ProjectIntro({
               </p>
             ))}
           </div>
+
+          {/* Action Buttons */}
           <div className={styles.actionSection}>
             <a
               href={brochureHref}
               className={styles.downloadBrochure}
-              aria-label="Download brochure"
+              aria-label="Download Sobha SkyParks brochure"
               rel="noopener"
             >
               <span className={styles.brochureText}>Download Brochure</span>
@@ -87,8 +99,10 @@ export default function ProjectIntro({
           </div>
         </div>
 
+        {/* Creative Image Display */}
         <div className={styles.imageSection}>
           <div className={styles.imageContainer}>
+            {/* Main Image with Creative Border */}
             <div className={styles.mainImageWrapper}>
               <Image
                 src={imgUrl}
@@ -102,7 +116,7 @@ export default function ProjectIntro({
               <div className={styles.imageOverlay}></div>
             </div>
 
-            {/* Floating cards keep as-is */}
+            {/* Floating Info Cards */}
             <div
               className={styles.floatingCard}
               style={{ top: "20%", right: "-30px" }}
@@ -113,6 +127,7 @@ export default function ProjectIntro({
                 <div className={styles.cardLabel}>Prime Location</div>
               </div>
             </div>
+
             <div
               className={styles.floatingCard}
               style={{ bottom: "30%", left: "-40px" }}
@@ -123,6 +138,7 @@ export default function ProjectIntro({
                 <div className={styles.cardLabel}>Dual Views</div>
               </div>
             </div>
+
             <div
               className={styles.floatingCard}
               style={{ bottom: "15%", right: "-20px" }}

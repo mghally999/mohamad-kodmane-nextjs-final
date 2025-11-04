@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y, Keyboard, EffectCreative } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-creative";
-import styles from "@/styles/projects/sky-parks/VisualSymphony.module.css";
+import styles from "@/styles/projects/VisualSymphony.module.css";
 
 /**
  * REVOLUTIONARY Visual Symphony - 3D Perspective Gallery

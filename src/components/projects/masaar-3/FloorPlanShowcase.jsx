@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import styles from "@/styles/projects/sky-parks/FloorPlanShowcase.module.css";
+import styles from "@/styles/projects/FloorPlanShowcase.module.css";
 
 export default function FloorPlanShowcase({
   // Masaar 3: we only have 3BR + 5BR floor visuals (villa community).

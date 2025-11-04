@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import styles from "@/styles/projects/sky-parks/ProjectIntro.module.css";
+import styles from "@/styles/projects/ProjectIntro.module.css";
 
 /**
  * Sobha SkyParks - Professional Intro Section

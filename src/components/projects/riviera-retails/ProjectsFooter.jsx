@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import menuData from "@/data/menuData";
-import styles from "@/styles/projects/sky-parks/ProjectsFooter.module.css";
+import styles from "@/styles/projects/ProjectsFooter.module.css";
 
 export default function ProjectsFooter({ title = "" }) {
   const [activeCategory, setActiveCategory] = useState(null);

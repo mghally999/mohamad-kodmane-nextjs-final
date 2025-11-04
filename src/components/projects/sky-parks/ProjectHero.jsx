@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import styles from "@/styles/projects/sky-parks/ProjectHero.module.css";
+import styles from "@/styles/projects/ProjectHero.module.css";
 
 export default function ProjectHero({
   backgroundUrl = "https://luxury-real-estate-media.b-cdn.net/sky-parks/hero-day.jpg",

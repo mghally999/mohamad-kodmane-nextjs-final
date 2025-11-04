@@ -145,7 +145,7 @@ export default function TopHeader() {
                 title: "Sobha Al Sinniyyah Island",
                 slug: "al-sinniyyah-island",
                 image:
-                  "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80",
+                  "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-bg.jpg",
                 description: "Private island luxury villas",
               },
             ],
@@ -192,7 +192,7 @@ export default function TopHeader() {
                 slug: "lumina-alta",
                 image:
                   "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
-                description: "Ultra-luxury residential tower",
+                description: "Ultra-luxury office tower",
               },
             ],
           },

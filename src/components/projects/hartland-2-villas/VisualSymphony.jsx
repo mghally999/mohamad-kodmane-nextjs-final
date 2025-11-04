@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, A11y, Keyboard, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import styles from "@/styles/projects/sky-parks/VisualSymphony.module.css";
+import styles from "@/styles/projects/VisualSymphony.module.css";
 
 export default function VisualSymphony({
   title = "A Visual Symphony",

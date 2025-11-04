@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import styles from "@/styles/projects/sky-parks/FloorPlanShowcase.module.css";
+import styles from "@/styles/projects/FloorPlanShowcase.module.css";
 
 /**
  * Uses local SkyParks assets (placeholders until real plan PNGs arrive).

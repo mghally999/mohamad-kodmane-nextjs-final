@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import styles from "@/styles/projects/sky-parks/CityProximity.module.css";
+import styles from "@/styles/projects/CityProximity.module.css";
 
 export default function CityProximity({
   title = "The Best Of The City, All Within Minutes",
