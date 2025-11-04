@@ -57,7 +57,7 @@ export default function Projects() {
       status: "Off-Plan",
       units: "Signature Units",
       cta: "Discover Luxury Living",
-      slug: "lumina-alta-omniyat",
+      slug: "lumena-alta-omniyat",
       featured: true,
     },
     {

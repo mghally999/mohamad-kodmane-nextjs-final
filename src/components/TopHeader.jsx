@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/TopHeader.module.css";
 
@@ -15,15 +14,9 @@ export default function TopHeader() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
-    };
-
-    if (isMobileMenuOpen) {
-      document.body.classList.add(styles.mobileMenuOpen);
-    } else {
-      document.body.classList.remove(styles.mobileMenuOpen);
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 100);
+    if (isMobileMenuOpen) document.body.classList.add(styles.mobileMenuOpen);
+    else document.body.classList.remove(styles.mobileMenuOpen);
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -45,6 +38,9 @@ export default function TopHeader() {
     { href: "/contact", label: "Consultation", type: "cta" },
   ];
 
+  // ===== ALL CDN IMAGES (Bunny) =====
+  const CDN = "https://luxury-real-estate-media.b-cdn.net";
+
   const menuData = {
     categories: [
       {
@@ -52,47 +48,41 @@ export default function TopHeader() {
         name: "Apartments",
         slug: "apartments",
         description: "Luxury apartments in Dubai's most sought-after areas",
-        image:
-          "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
+        image: `${CDN}/sky-parks/exterior-night-01.jpg`,
         icon: "🏢",
         developers: [
           {
             id: 1,
             name: "Sobha Realty",
             slug: "sobha",
-            image:
-              "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/aquamont/intro-main.png`,
             projects: [
               {
                 id: 101,
                 title: "Sobha SkyParks",
                 slug: "sky-parks",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-night-01.jpg",
+                image: `${CDN}/sky-parks/exterior-night-01.jpg`,
                 description: "Luxury high-rise with panoramic city views",
               },
               {
                 id: 102,
                 title: "Sobha AquaCrest",
                 slug: "aqua-crest",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/aqua-crest/amenity-infinity-pool-01.jpg",
+                image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
                 description: "Beachfront luxury residences",
               },
               {
                 id: 103,
                 title: "Sobha Central",
                 slug: "central",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/sobha-central/exterior-towers-angled-01.jpg",
+                image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
                 description: "Downtown premium apartments",
               },
               {
                 id: 104,
                 title: "Sobha Aquamont",
                 slug: "aquamont",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/aquamont/intro-main.png",
+                image: `${CDN}/aquamont/intro-main.png`,
                 description: "Mountain view luxury residences",
               },
             ],
@@ -101,51 +91,46 @@ export default function TopHeader() {
             id: 2,
             name: "Nakheel",
             slug: "nakheel",
-            image:
-              "https://images.unsplash.com/photo-1520509414578-d9cbf09933a1?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
             projects: [
               {
                 id: 106,
                 title: "Palm Central – Nakheel",
                 slug: "palm-central",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-lagoon-01.jpg",
+                image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
                 description: "Palm Jumeirah luxury living",
               },
             ],
           },
         ],
       },
+
       {
         id: 2,
         name: "Villas",
         slug: "villas",
         description: "Exclusive villa developments and waterfront communities",
-        image:
-          "https://images.unsplash.com/photo-1600585154314-8c5b4cdbb81a?auto=format&fit=crop&w=800&q=80",
+        image: `${CDN}/hartland/hero-bg.jpg`,
         icon: "🏡",
         developers: [
           {
             id: 1,
             name: "Sobha Realty",
             slug: "sobha",
-            image:
-              "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/hartland/hero-bg.jpg`,
             projects: [
               {
                 id: 201,
                 title: "Sobha Hartland 2 Villas",
                 slug: "hartland",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/hartland/hero-bg.jpg",
+                image: `${CDN}/hartland/hero-bg.jpg`,
                 description: "Premium waterfront villas",
               },
               {
                 id: 202,
                 title: "Sobha Al Sinniyyah Island",
                 slug: "al-sinniyyah-island",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-bg.jpg",
+                image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
                 description: "Private island luxury villas",
               },
             ],
@@ -154,44 +139,39 @@ export default function TopHeader() {
             id: 2,
             name: "Arada",
             slug: "arada",
-            image:
-              "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/massar-3/hero-bg.jpg`,
             projects: [
               {
                 id: 203,
                 title: "Arada – Massar 3",
                 slug: "massar-3",
-                image:
-                  "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-bg.jpg",
+                image: `${CDN}/massar-3/hero-bg.jpg`,
                 description: "Gated community luxury villas",
               },
             ],
           },
         ],
       },
+
       {
         id: 3,
         name: "Commercial / Retail",
         slug: "commercial-retail",
         description: "High-ROI commercial and mixed-use developments",
-        image:
-          "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+        image: `${CDN}/riviera-retails/hero-bg.jpg`,
         icon: "🏬",
         developers: [
-          // ✅ Added Omniyat here with Lumina Alta
           {
             id: 2,
             name: "Omniyat",
             slug: "omniyat",
-            image:
-              "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/lumena-alta/hero-bg.jpg`,
             projects: [
               {
                 id: 305,
                 title: "Lumina Alta – Omniyat",
-                slug: "lumina-alta",
-                image:
-                  "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
+                slug: "lumena-alta",
+                image: `${CDN}/lumena-alta/hero-bg.jpg`,
                 description: "Ultra-luxury office tower",
               },
             ],
@@ -200,43 +180,39 @@ export default function TopHeader() {
             id: 1,
             name: "Azizi Developments",
             slug: "azizi",
-            image:
-              "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/riviera/hero-bg.jpg`,
             projects: [
               {
                 id: 301,
                 title: "Azizi Riviera – Retails",
                 slug: "riviera-retails",
-                image:
-                  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+                image: `${CDN}/riviera/hero-bg.jpg`,
                 description: "Premium retail spaces",
               },
             ],
           },
         ],
       },
+
       {
         id: 4,
         name: "Penthouses",
         slug: "penthouses",
         description: "Ultra-luxury penthouses with panoramic views",
-        image:
-          "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=800&q=80",
+        image: `${CDN}/sky-parks/exterior-night-01.jpg`,
         icon: "🏔️",
         developers: [
           {
             id: 1,
             name: "Sobha Realty",
             slug: "sobha",
-            image:
-              "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+            image: `${CDN}/sky-parks/exterior-night-01.jpg`,
             projects: [
               {
                 id: 401,
                 title: "Sobha SeaHaven Penthouse",
                 slug: "seahaven-penthouse",
-                image:
-                  "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?auto=format&fit=crop&w=800&q=80",
+                image: `${CDN}/seahaven/hero-bg.jpg%20.jpg`,
                 description: "Ultra-luxury penthouse with sea views",
               },
             ],
@@ -247,15 +223,13 @@ export default function TopHeader() {
   };
 
   const handleMegaMenuEnter = (item) => {
-    if (item.hasMegaMenu) {
-      setActiveMegaMenu(item.label);
-      // Auto-select first category
-      setSelectedCategory(menuData.categories[0]);
-      setSelectedDeveloper(menuData.categories[0]?.developers[0] || null);
-      setSelectedProject(
-        menuData.categories[0]?.developers[0]?.projects[0] || null
-      );
-    }
+    if (!item.hasMegaMenu) return;
+    setActiveMegaMenu(item.label);
+    setSelectedCategory(menuData.categories[0]);
+    setSelectedDeveloper(menuData.categories[0]?.developers[0] || null);
+    setSelectedProject(
+      menuData.categories[0]?.developers[0]?.projects[0] || null
+    );
   };
 
   const handleMegaMenuLeave = () => {
@@ -276,15 +250,13 @@ export default function TopHeader() {
     setSelectedProject(developer.projects[0] || null);
   };
 
-  const handleProjectHover = (project) => {
-    setSelectedProject(project);
-  };
+  const handleProjectHover = (project) => setSelectedProject(project);
 
-  // Mobile accordion handlers
   const toggleMobileCategory = (categoryId) => {
     setMobileExpandedItems((prev) => ({
       ...prev,
       categories: prev.categories === categoryId ? null : categoryId,
+      categoryId,
     }));
   };
 
@@ -292,6 +264,7 @@ export default function TopHeader() {
     setMobileExpandedItems((prev) => ({
       ...prev,
       developers: prev.developers === developerId ? null : developerId,
+      developerId,
     }));
   };
 
@@ -302,17 +275,17 @@ export default function TopHeader() {
 
   return (
     <>
-      <div className={styles.headerSpacer}></div>
+      <div className={styles.headerSpacer} />
 
       <header
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
           isMobileMenuOpen ? styles.mobileMenuOpen : ""
         }`}
       >
-        <div className={styles.backgroundOverlay}></div>
+        <div className={styles.backgroundOverlay} />
 
         <div className={styles.container}>
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <nav className={styles.desktopNav}>
             {navItems.map((item) => (
               <div
@@ -337,21 +310,19 @@ export default function TopHeader() {
                     } ${pathname === item.href ? styles.active : ""}`}
                   >
                     {item.label}
-                    {item.type === "cta" && (
-                      <span className={styles.ctaGlow}></span>
-                    )}
+                    {item.type === "cta" && <span className={styles.ctaGlow} />}
                   </a>
                 )}
               </div>
             ))}
           </nav>
 
-          {/* Multi-Level Mega Menu */}
+          {/* Mega Menu */}
           {activeMegaMenu && (
             <div className={styles.megaMenu} onMouseLeave={handleMegaMenuLeave}>
               <div className={styles.megaMenuContainer}>
                 <div className={styles.megaMenuContent}>
-                  {/* Level 1: Categories - Fixed Width */}
+                  {/* Level 1: Categories */}
                   <div className={styles.menuLevel}>
                     <div className={styles.menuLevelHeader}>
                       <h3 className={styles.menuLevelTitle}>Property Types</h3>
@@ -387,7 +358,7 @@ export default function TopHeader() {
                     </div>
                   </div>
 
-                  {/* Level 2: Developers - Shows when category is selected */}
+                  {/* Level 2: Developers */}
                   {selectedCategory && (
                     <div className={styles.menuLevel}>
                       <div className={styles.menuLevelHeader}>
@@ -428,7 +399,7 @@ export default function TopHeader() {
                     </div>
                   )}
 
-                  {/* Level 3: Projects - Shows when developer is selected */}
+                  {/* Level 3: Projects */}
                   {selectedDeveloper && (
                     <div className={styles.menuLevel}>
                       <div className={styles.menuLevelHeader}>
@@ -466,7 +437,7 @@ export default function TopHeader() {
                     </div>
                   )}
 
-                  {/* Image Preview Panel - Fixed Width */}
+                  {/* Preview Panel */}
                   <div className={styles.imagePreviewPanel}>
                     <div className={styles.imagePreviewContent}>
                       {selectedProject ? (
@@ -480,7 +451,7 @@ export default function TopHeader() {
                               style={{
                                 backgroundImage: `url(${selectedProject.image})`,
                               }}
-                            ></div>
+                            />
                           </a>
                           <div className={styles.previewInfo}>
                             <h3 className={styles.previewTitle}>
@@ -502,7 +473,7 @@ export default function TopHeader() {
                               href={`/projects/${selectedCategory.slug}/${selectedDeveloper.slug}/${selectedProject.slug}`}
                               className={styles.previewButton}
                             >
-                              View Project Details
+                              View Project Details{" "}
                               <span className={styles.buttonArrow}>→</span>
                             </a>
                           </div>
@@ -514,7 +485,7 @@ export default function TopHeader() {
                             style={{
                               backgroundImage: `url(${selectedDeveloper.image})`,
                             }}
-                          ></div>
+                          />
                           <div className={styles.previewInfo}>
                             <h3 className={styles.previewTitle}>
                               {selectedDeveloper.name}
@@ -538,7 +509,7 @@ export default function TopHeader() {
                             style={{
                               backgroundImage: `url(${selectedCategory.image})`,
                             }}
-                          ></div>
+                          />
                           <div className={styles.previewInfo}>
                             <h3 className={styles.previewTitle}>
                               {selectedCategory.name}
@@ -560,9 +531,9 @@ export default function TopHeader() {
                           <div
                             className={styles.previewImage}
                             style={{
-                              backgroundImage: `url(https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80)`,
+                              backgroundImage: `url(${CDN}/sky-parks/exterior-night-01.jpg)`,
                             }}
-                          ></div>
+                          />
                           <div className={styles.previewInfo}>
                             <h3 className={styles.previewTitle}>
                               Luxury Projects
@@ -587,7 +558,7 @@ export default function TopHeader() {
             </div>
           )}
 
-          {/* Desktop Contact CTA */}
+          {/* Desktop Contact */}
           <div className={styles.desktopContact}>
             <div className={styles.contactBadge}>
               <div className={styles.contactIcon}>📞</div>
@@ -613,13 +584,13 @@ export default function TopHeader() {
         </div>
       </header>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Nav */}
       <div
         className={`${styles.mobileNav} ${
           isMobileMenuOpen ? styles.active : ""
         }`}
       >
-        <div className={styles.mobileNavBackground}></div>
+        <div className={styles.mobileNavBackground} />
         <div className={styles.mobileNavContainer}>
           <div className={styles.mobileNavHeader}>
             <div className={styles.mobileLogo}></div>
@@ -653,14 +624,13 @@ export default function TopHeader() {
                       </span>
                     </button>
 
-                    {/* Mobile Mega Menu Content */}
                     {mobileExpandedItems.categories === "luxury-projects" && (
                       <div className={styles.mobileMegaMenuContent}>
-                        {/* Categories Level */}
                         <div className={styles.mobileMenuLevel}>
                           <h4 className={styles.mobileMenuLevelTitle}>
                             Property Types
                           </h4>
+
                           {menuData.categories.map((category) => (
                             <div
                               key={category.id}
@@ -690,13 +660,13 @@ export default function TopHeader() {
                                 </span>
                               </button>
 
-                              {/* Developers Level */}
                               {mobileExpandedItems.categoryId ===
                                 category.id && (
                                 <div className={styles.mobileDevelopersList}>
                                   <h5 className={styles.mobileDevelopersTitle}>
                                     Developers in {category.name}
                                   </h5>
+
                                   {category.developers.map((developer) => (
                                     <div
                                       key={developer.id}
@@ -737,7 +707,6 @@ export default function TopHeader() {
                                         </span>
                                       </button>
 
-                                      {/* Projects Level */}
                                       {mobileExpandedItems.developerId ===
                                         developer.id && (
                                         <div
@@ -759,7 +728,7 @@ export default function TopHeader() {
                                                 style={{
                                                   backgroundImage: `url(${project.image})`,
                                                 }}
-                                              ></div>
+                                              />
                                               <div
                                                 className={
                                                   styles.mobileProjectInfo
@@ -834,5 +803,3 @@ export default function TopHeader() {
     </>
   );
 }
-
-/* Comment */

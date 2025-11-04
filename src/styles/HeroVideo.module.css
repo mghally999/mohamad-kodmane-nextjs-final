@@ -114,6 +114,7 @@
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 5;
+  margin-bottom: 30px;
 }
 
 .videoContainer:hover {
@@ -131,6 +132,48 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+
+/* Video Thumbnail */
+.videoThumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.thumbnailImage {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.videoPlaceholder:hover .thumbnailImage {
+  transform: scale(1.05);
+}
+
+.thumbnailOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(11, 11, 11, 0.4) 0%,
+    rgba(215, 180, 106, 0.2) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.videoPlaceholder:hover .thumbnailOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(11, 11, 11, 0.3) 0%,
+    rgba(215, 180, 106, 0.3) 100%
+  );
 }
 
 /* Play Button */
@@ -146,7 +189,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 0 50px rgba(215, 180, 106, 0.6),
     inset 0 0 20px rgba(255, 255, 255, 0.15);
-  z-index: 2;
+  z-index: 3;
   position: relative;
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
@@ -155,6 +198,34 @@
   transform: scale(1.12);
   box-shadow: 0 0 70px rgba(215, 180, 106, 0.8),
     inset 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+.playButton::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: rgba(215, 180, 106, 0.2);
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
 }
 
 .playIcon {
@@ -166,29 +237,32 @@
   transform: scale(1.08);
 }
 
-/* Video Overlay */
-.videoOverlay {
+/* Video Duration */
+.videoDuration {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(11, 11, 11, 0.3) 0%,
-    rgba(215, 180, 106, 0.12) 100%
-  );
-  display: flex;
-  align-items: flex-end;
-  padding: 40px;
-  pointer-events: none;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 4;
 }
 
-.thumbnailContent {
-  text-align: left;
+/* Video Info - Now outside container */
+.videoInfo {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 5;
 }
 
-.thumbnailTitle {
+.videoTitle {
   color: #ffffff;
   font-size: 1.9rem;
   font-weight: 700;
@@ -198,7 +272,7 @@
   font-family: "Playfair Display", serif;
 }
 
-.thumbnailSubtitle {
+.videoSubtitle {
   color: #d7b46a;
   font-size: 1.2rem;
   font-weight: 600;
@@ -371,14 +445,112 @@
     inset 0 0 15px rgba(255, 255, 255, 0.25);
 }
 
+/* Video Modal Styles */
+.videoModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+}
+
+.videoModalContent {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  background: #0a0a0a;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(215, 180, 106, 0.5);
+  box-shadow: 0 0 100px rgba(215, 180, 106, 0.3);
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: none;
+  color: #d7b46a;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10001;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(215, 180, 106, 0.2);
+  transform: scale(1.1);
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  background: #000;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.videoControls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.controlButton {
+  background: rgba(215, 180, 106, 0.2);
+  border: 1px solid rgba(215, 180, 106, 0.5);
+  color: #d7b46a;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlButton:hover {
+  background: rgba(215, 180, 106, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(215, 180, 106, 0.2);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .videoSection {
     padding: 80px 20px;
   }
+
   .videoPlaceholder {
     height: 450px;
   }
+
   .callbackForm {
     padding: 50px 40px;
   }
@@ -388,17 +560,46 @@
   .videoSection {
     padding: 70px 20px;
   }
+
   .videoPlaceholder {
     height: 380px;
   }
+
   .callbackForm {
     padding: 40px 30px;
   }
+
   .form {
     gap: 20px;
   }
+
   .formGroup {
     flex: 1 1 100%;
+  }
+
+  .videoTitle {
+    font-size: 1.6rem;
+  }
+
+  .videoSubtitle {
+    font-size: 1rem;
+  }
+
+  .videoControls {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .controlButton {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .videoDuration {
+    top: 15px;
+    right: 15px;
+    font-size: 0.8rem;
+    padding: 4px 10px;
   }
 }
 
@@ -406,15 +607,28 @@
   .videoSection {
     padding: 60px 15px;
   }
+
   .videoPlaceholder {
     height: 320px;
   }
+
   .callbackForm {
     padding: 35px 25px;
   }
+
   .submitBtn {
     width: 100%;
     padding: 18px 35px;
     font-size: 1.1rem;
+  }
+
+  .playButton {
+    width: 70px;
+    height: 70px;
+  }
+
+  .playIcon {
+    width: 25px;
+    height: 25px;
   }
 }

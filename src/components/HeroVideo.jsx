@@ -1,8 +1,20 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/HeroVideo.module.css";
+import Image from "next/image";
 
 export default function VideoSection() {
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleVideoPlay = () => {
+    setShowVideoModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowVideoModal(false);
+  };
+
   return (
     <section className={styles.videoSection}>
       {/* Background Elements */}
@@ -11,65 +23,139 @@ export default function VideoSection() {
 
       {/* Section Header */}
       <div className={styles.sectionHeader}>
-        <h2 className={styles.sectionTitle}>Vision & Leadership</h2>
+        <h2 className={styles.sectionTitle}>Investment Philosophy & Vision</h2>
         <div className={styles.goldDivider}></div>
         <p className={styles.sectionDescription}>
-          Discover the visionary behind Dubai's most prestigious developments.
-          Mohamad Kodmane shares his philosophy on luxury, innovation, and
-          creating timeless legacies in real estate.
+          Discover the strategic approach behind successful real estate
+          investments in Dubai. Mohamad Kodmane shares his proven methodology
+          for building wealth through off-plan properties and diversified real
+          estate portfolios.
         </p>
       </div>
 
       {/* Luxury Video Container */}
       <div className={styles.videoContainer}>
-        <div className={styles.videoPlaceholder}>
-          {/* Play Button */}
-          <div className={styles.playButton}>
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              className={styles.playIcon}
-            >
-              <path
-                d="M8 5V19L19 12L8 5Z"
-                fill="#0b0b0b"
-                stroke="#0b0b0b"
-                strokeWidth="2"
-              />
-            </svg>
+        <div
+          className={styles.videoPlaceholder}
+          onClick={handleVideoPlay}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Video Thumbnail */}
+          <div className={styles.videoThumbnail}>
+            <Image
+              src="/video-thumbnail.png"
+              alt="Mohamad Kodmane - Investment Strategy Video"
+              fill
+              className={styles.thumbnailImage}
+              priority
+            />
+            <div
+              className={`${styles.thumbnailOverlay} ${
+                isHovered ? styles.overlayActive : ""
+              }`}
+            ></div>
           </div>
 
-          {/* Video Thumbnail Overlay */}
-          <div className={styles.videoOverlay}>
-            <div className={styles.thumbnailContent}>
-              <h3 className={styles.thumbnailTitle}>Mohamad Kodmane</h3>
-              <p className={styles.thumbnailSubtitle}>
-                Visionary Real Estate Developer
-              </p>
+          {/* Video Indicators - No face coverage */}
+          <div className={styles.videoIndicators}>
+            {/* Corner Play Icon */}
+            <div className={styles.cornerPlayIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M8 5V19L19 12L8 5Z"
+                  fill="#d7b46a"
+                  stroke="#d7b46a"
+                  strokeWidth="2"
+                />
+              </svg>
+            </div>
+
+            {/* Bottom Bar Indicator */}
+            <div className={styles.videoBottomBar}>
+              <div className={styles.playText}>
+                <span>Click to watch investment strategy</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 5V19L19 12L8 5Z" fill="#ffffff" />
+                </svg>
+              </div>
+              <div className={styles.videoDuration}>15:42</div>
+            </div>
+
+            {/* Floating Play Hint */}
+            <div
+              className={`${styles.playHint} ${
+                isHovered ? styles.hintVisible : ""
+              }`}
+            >
+              <div className={styles.hintPulse}></div>
+              <span>Watch Video</span>
             </div>
           </div>
+
+          {/* Hover Effect Border */}
+          <div
+            className={`${styles.videoBorder} ${
+              isHovered ? styles.borderActive : ""
+            }`}
+          ></div>
         </div>
+      </div>
+
+      {/* Video Info */}
+      <div className={styles.videoInfo}>
+        <h3 className={styles.videoTitle}>Mohamad Kodmane</h3>
+        <p className={styles.videoSubtitle}>
+          Real Estate Investment Strategist
+        </p>
       </div>
 
       {/* Video Caption */}
       <div className={styles.videoCaption}>
         <p className={styles.captionMain}>
-          "Building Tomorrow's Landmarks Today"
+          "Building Wealth Through Strategic Real Estate Investments"
         </p>
         <p className={styles.captionSub}>
-          Exclusive interview and insights from the visionary himself
+          Exclusive insights on off-plan investments and portfolio management
         </p>
       </div>
 
       {/* Divider Line */}
       <div className={styles.sectionDivider}></div>
 
+      {/* Video Modal Overlay */}
+      {showVideoModal && (
+        <div className={styles.videoModalOverlay} onClick={handleCloseModal}>
+          <div
+            className={styles.videoModalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className={styles.closeButton} onClick={handleCloseModal}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M18 6L6 18M6 6l12 12"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                />
+              </svg>
+            </button>
+            <div className={styles.videoWrapper}>
+              <iframe
+                src="https://drive.google.com/file/d/1RdxoerPUOKV5mkI-cC7AVQmY19jt-0jw/preview"
+                width="100%"
+                height="100%"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                title="Mohamad Kodmane - Investment Strategy"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* CALLBACK FORM */}
       <div className={styles.callbackForm}>
-        <h2 className={styles.formTitle}>Book A Consultation</h2>
-
+        <h2 className={styles.formTitle}>Start Your Investment Journey</h2>
         <form className={styles.form}>
           {/* Full Name */}
           <div className={styles.formGroup}>
@@ -91,11 +177,23 @@ export default function VideoSection() {
             />
           </div>
 
+          {/* Investment Interest */}
+          <div className={styles.formGroup}>
+            <label className={styles.formLabel}>Investment Focus</label>
+            <select className={styles.formInput}>
+              <option value="">Select your interest</option>
+              <option value="off-plan">Off-Plan Properties</option>
+              <option value="portfolio">Portfolio Building</option>
+              <option value="ready">Ready Properties</option>
+              <option value="consultation">Investment Consultation</option>
+            </select>
+          </div>
+
           {/* Message */}
           <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-            <label className={styles.formLabel}>Message</label>
+            <label className={styles.formLabel}>Investment Goals</label>
             <textarea
-              placeholder="Share your vision or inquiry..."
+              placeholder="Describe your investment objectives and budget..."
               className={styles.formTextarea}
               rows="4"
             />
@@ -104,7 +202,7 @@ export default function VideoSection() {
           {/* Submit */}
           <div className={styles.formSubmit}>
             <button type="submit" className={styles.submitBtn}>
-              Request Personal Consultation
+              Get Free Investment Strategy Session
             </button>
           </div>
         </form>

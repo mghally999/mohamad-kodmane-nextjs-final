@@ -16,34 +16,35 @@ export default function Header() {
               MOHAMAD <span>KODMANE</span>
             </h1>
 
-            <h2 className={styles.subtitle}>Real Estate Broker</h2>
+            <h2 className={styles.subtitle}>Real Estate Investment Expert</h2>
 
             <p className={styles.tagline}>
-              Dubai’s Premier Real Estate Broker for Luxury Investments and High
-              Returns.{" "}
+              Dubai's Trusted Partner for Off-Plan Property Investments &
+              Building Diversified Real Estate Portfolios. Step-by-step guidance
+              for confident property ownership in Dubai.
             </p>
 
             <div className={styles.stats}>
               <div className={styles.stat}>
-                <div className={styles.statNumber}>₿2.8B+</div>
-                <div className={styles.statLabel}>Portfolio Value</div>
+                <div className={styles.statNumber}>AED 500M+</div>
+                <div className={styles.statLabel}>Client Wealth Generated</div>
               </div>
               <div className={styles.stat}>
-                <div className={styles.statNumber}>75+</div>
-                <div className={styles.statLabel}>Luxury Projects</div>
+                <div className={styles.statNumber}>100+</div>
+                <div className={styles.statLabel}>Successful Deals</div>
               </div>
               <div className={styles.stat}>
-                <div className={styles.statNumber}>5+</div>
-                <div className={styles.statLabel}>Years Excellence</div>
+                <div className={styles.statNumber}>0</div>
+                <div className={styles.statLabel}>Client Complaints</div>
               </div>
             </div>
 
             <div className={styles.cta}>
               <button className={`${styles.ctaBtn} ${styles.primary}`}>
-                View Portfolio
+                View Investment Portfolio
               </button>
               <button className={`${styles.ctaBtn} ${styles.secondary}`}>
-                Start Your Legacy
+                Start Your Investment Journey
               </button>
             </div>
           </div>
@@ -52,7 +53,7 @@ export default function Header() {
             <div className={styles.logoWrapper}>
               <Image
                 src="/logo.jpg"
-                alt="Mohamad Kodmane"
+                alt="Mohamad Kodmane - Dubai Real Estate Expert"
                 width={280}
                 height={280}
                 className={styles.logo}

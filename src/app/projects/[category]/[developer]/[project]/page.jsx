@@ -11,13 +11,30 @@ import CityProximity from "@/components/projects/CityProximity";
 
 export const revalidate = 60;
 
+// ✅ Automatically generate all static routes
 export async function generateStaticParams() {
-  const slugs = getAllProjectSlugs();
-  return slugs.map((slug) => ({
-    category: String(slug.category),
-    developer: String(slug.developer),
-    project: String(slug.project),
-  }));
+  return getAllProjectSlugs();
+}
+
+// ✅ Dynamic SEO metadata
+export async function generateMetadata({ params }) {
+  const projectData = await getProjectData(
+    params.category,
+    params.developer,
+    params.project
+  );
+
+  return {
+    title: projectData.seo?.title || "Luxury Projects | Nextis",
+    description:
+      projectData.seo?.description ||
+      "Explore Dubai's premier off-plan and ready-to-move properties.",
+    alternates: {
+      canonical:
+        projectData.seo?.canonical ||
+        `/projects/${params.category}/${params.developer}/${params.project}`,
+    },
+  };
 }
 
 export default async function ProjectPage({ params }) {
@@ -43,7 +60,7 @@ export default async function ProjectPage({ params }) {
       <MapDirections data={projectData.location} projectData={projectData} />
       <CityProximity data={projectData.nearbyAttractions} />
       <MiniCallbackForm />
-      <ProjectsFooter />
+      {/* <ProjectsFooter /> */}
     </main>
   );
 }

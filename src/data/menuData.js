@@ -134,7 +134,7 @@ export const menuData = {
             {
               id: 105,
               title: "Lumina Alta – Omniyat",
-              slug: "lumina-alta",
+              slug: "lumena-alta",
               image:
                 "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
             },

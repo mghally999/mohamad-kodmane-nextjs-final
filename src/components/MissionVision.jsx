@@ -26,33 +26,44 @@ export default function MissionVision() {
           <div className={styles.missionCard}>
             <div className={styles.cardHeader}>
               <div className={styles.iconWrapper}>
-                <div className={styles.crownIcon}>🏙️</div>
+                <div className={styles.crownIcon}>🎯</div>
               </div>
               <h3 className={styles.cardTitle}>Mission</h3>
             </div>
 
             <div className={styles.cardContent}>
               <p className={styles.cardText}>
-                To connect visionary buyers with Dubai’s most powerful
-                investment properties—where{" "}
-                <span className={styles.highlight}>luxury</span> meets{" "}
-                <span className={styles.highlight}>long-term growth</span>.
-                Every deal I close is built on trust, precision, and a
-                commitment to deliver unmatched results.
+                To empower investors with strategic real estate opportunities in
+                Dubai, where{" "}
+                <span className={styles.highlight}>off-plan investments</span>{" "}
+                meet{" "}
+                <span className={styles.highlight}>
+                  long-term wealth creation
+                </span>
+                . Every partnership is built on trust, transparency, and
+                delivering exceptional returns.
               </p>
 
               <div className={styles.missionPoints}>
                 <div className={styles.point}>
                   <span className={styles.pointIcon}>✓</span>
-                  <span>Secure premium real estate with confidence</span>
+                  <span>
+                    Guide investors through off-plan property purchases with
+                    confidence
+                  </span>
                 </div>
                 <div className={styles.point}>
                   <span className={styles.pointIcon}>✓</span>
-                  <span>Maximize ROI through data-driven strategy</span>
+                  <span>
+                    Build diversified real estate portfolios for optimal returns
+                  </span>
                 </div>
                 <div className={styles.point}>
                   <span className={styles.pointIcon}>✓</span>
-                  <span>Build lasting partnerships—not one-time sales</span>
+                  <span>
+                    Create lasting wealth partnerships, not transactional
+                    relationships
+                  </span>
                 </div>
               </div>
             </div>
@@ -62,36 +73,42 @@ export default function MissionVision() {
           <div className={styles.visionCard}>
             <div className={styles.cardHeader}>
               <div className={styles.iconWrapper}>
-                <div className={styles.visionIcon}>🌇</div>
+                <div className={styles.visionIcon}>🚀</div>
               </div>
               <h3 className={styles.cardTitle}>Vision</h3>
             </div>
 
             <div className={styles.cardContent}>
               <p className={styles.cardText}>
-                To become Dubai’s most trusted real-estate strategist—turning
+                To become Dubai's most trusted real estate investment
+                strategist—transforming
                 <span className={styles.highlight}> properties</span> into{" "}
-                <span className={styles.highlight}>power moves</span> for elite
-                investors who expect nothing less than perfection.
+                <span className={styles.highlight}>
+                  wealth-generating assets
+                </span>{" "}
+                for investors who demand excellence and substantial returns.
               </p>
 
               <div className={styles.visionAspirations}>
                 <div className={styles.aspiration}>
                   <div className={styles.aspirationNumber}>01</div>
                   <div className={styles.aspirationText}>
-                    Set the gold standard for personalized real estate advisory.
+                    Set the benchmark for personalized real estate investment
+                    advisory in Dubai.
                   </div>
                 </div>
                 <div className={styles.aspiration}>
                   <div className={styles.aspirationNumber}>02</div>
                   <div className={styles.aspirationText}>
-                    Build wealth ecosystems for clients who think beyond today.
+                    Create comprehensive wealth ecosystems for forward-thinking
+                    investors.
                   </div>
                 </div>
                 <div className={styles.aspiration}>
                   <div className={styles.aspirationNumber}>03</div>
                   <div className={styles.aspirationText}>
-                    Elevate Dubai’s property market to global dominance.
+                    Elevate Dubai's status as the world's premier real estate
+                    investment destination.
                   </div>
                 </div>
               </div>
@@ -102,11 +119,12 @@ export default function MissionVision() {
         {/* Philosophy */}
         <div className={styles.philosophy}>
           <div className={styles.philosophyContent}>
-            <h4 className={styles.philosophyTitle}>My Philosophy</h4>
+            <h4 className={styles.philosophyTitle}>Investment Philosophy</h4>
             <p className={styles.philosophyText}>
-              “Luxury isn’t sold—it’s earned. Every client I work with deserves
-              clarity, exclusivity, and results that speak louder than
-              promises.”
+              "True wealth isn't just about acquiring properties—it's about
+              strategic investments that generate consistent returns. Every
+              client deserves clarity, exclusive opportunities, and results that
+              exceed expectations."
             </p>
             <div className={styles.signature}>— Mohamad Kodmane</div>
           </div>

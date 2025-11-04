@@ -90,11 +90,19 @@ export default function ProjectHero({ data, projectData }) {
             </div>
 
             <div className={styles.scoreRow}>
-              <span className={styles.score}>{heroData.rating.toFixed(1)}</span>
+              <span className={styles.score}>
+                {heroData?.rating !== undefined
+                  ? heroData.rating.toFixed(1)
+                  : "N/A"}
+              </span>
               <span className={styles.outOf}>/ 5</span>
               <span
                 className={styles.stars}
-                aria-label={`${heroData.rating.toFixed(1)} out of 5 stars`}
+                aria-label={`${
+                  heroData?.rating !== undefined
+                    ? heroData.rating.toFixed(1)
+                    : "N/A"
+                } out of 5 stars`}
                 role="img"
               >
                 ★★★★★
