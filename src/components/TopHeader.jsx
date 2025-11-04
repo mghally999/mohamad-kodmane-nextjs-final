@@ -60,7 +60,7 @@ export default function TopHeader() {
               {
                 id: 101,
                 title: "Sobha SkyParks",
-                slug: "sky-parks",
+                slug: "skyparks",
                 image: `${CDN}/sky-parks/exterior-night-01.jpg`,
                 description: "Luxury high-rise with panoramic city views",
               },
@@ -144,7 +144,7 @@ export default function TopHeader() {
               {
                 id: 203,
                 title: "Arada – Massar 3",
-                slug: "massar-3",
+                slug: "massar",
                 image: `${CDN}/massar-3/hero-bg.jpg`,
                 description: "Gated community luxury villas",
               },
@@ -170,7 +170,7 @@ export default function TopHeader() {
               {
                 id: 305,
                 title: "Lumina Alta – Omniyat",
-                slug: "lumena-alta",
+                slug: "lumenaalta",
                 image: `${CDN}/lumena-alta/hero-bg.jpg`,
                 description: "Ultra-luxury office tower",
               },

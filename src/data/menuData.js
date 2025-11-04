@@ -107,7 +107,7 @@ export const menuData = {
             {
               id: 203,
               title: "Arada – Massar 3",
-              slug: "massar-3",
+              slug: "massar",
               image:
                 "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
             },
@@ -134,7 +134,7 @@ export const menuData = {
             {
               id: 105,
               title: "Lumina Alta – Omniyat",
-              slug: "lumena-alta",
+              slug: "lumenaalta",
               image:
                 "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
             },

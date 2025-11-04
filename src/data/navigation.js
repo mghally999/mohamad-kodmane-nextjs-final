@@ -17,7 +17,7 @@ export const navigationData = {
             {
               id: 101,
               title: "Sobha SkyParks",
-              slug: "sky-parks",
+              slug: "skyparks",
               image:
                 "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-night-01.jpg",
               description: "Luxury high-rise with panoramic city views",
