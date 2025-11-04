@@ -4,22 +4,26 @@ import Image from "next/image";
 import styles from "@/styles/projects/ProjectHero.module.css";
 
 /**
- * Exact Sobha-style hero with on-top overlapping square and right-aligned reviews block.
- * Z-index is bulletproof via `isolation:isolate` and explicit stacking.
+ * Universal Project Hero - Works for ALL projects
+ * 100% data-driven with no hardcoded defaults
  */
-export default function ProjectHero({
-  backgroundUrl = "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-bg.jpg",
-  squareImageUrl = "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-inset.jpg",
-  companyName = "Sobha Realty",
-  rating = 4.7,
-}) {
+export default function ProjectHero({ data, projectData }) {
+  // SAFETY CHECK - if no data, return nothing
+  if (!data || !projectData) {
+    console.error("ProjectHero: Missing data");
+    return null;
+  }
+
+  const heroData = data;
+  const projectInfo = projectData.project;
+
   return (
     <div className={styles.root}>
       {/* HERO (background + vignette) */}
       <section className={styles.hero} aria-label="Project hero">
         <div
           className={styles.backgroundImage}
-          style={{ backgroundImage: `url(${backgroundUrl})` }}
+          style={{ backgroundImage: `url(${heroData.backgroundUrl})` }}
           aria-hidden="true"
         />
         <div className={styles.vignette} aria-hidden="true" />
@@ -30,8 +34,8 @@ export default function ProjectHero({
           <div className={styles.squareWrap}>
             <div className={styles.squareCard}>
               <Image
-                src={squareImageUrl}
-                alt="Luxury apartment interior"
+                src={heroData.squareImageUrl}
+                alt={`${projectInfo.name} luxury interior`}
                 fill
                 className={styles.squareImg}
                 sizes="(max-width: 480px) 60vw, (max-width: 900px) 45vw, (max-width: 1400px) 28vw, 320px"
@@ -81,16 +85,16 @@ export default function ProjectHero({
                   <span className={styles.gWord}>Google</span>
                   <span className={styles.gReviews}>Reviews</span>
                 </div>
-                <div className={styles.company}>{companyName}</div>
+                <div className={styles.company}>{heroData.companyName}</div>
               </div>
             </div>
 
             <div className={styles.scoreRow}>
-              <span className={styles.score}>{rating.toFixed(1)}</span>
+              <span className={styles.score}>{heroData.rating.toFixed(1)}</span>
               <span className={styles.outOf}>/ 5</span>
               <span
                 className={styles.stars}
-                aria-label={`${rating.toFixed(1)} out of 5 stars`}
+                aria-label={`${heroData.rating.toFixed(1)} out of 5 stars`}
                 role="img"
               >
                 ★★★★★

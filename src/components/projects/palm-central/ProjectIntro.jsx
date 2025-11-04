@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import styles from "@/styles/projects/central/ProjectIntro.module.css";
+import styles from "@/styles/projects/ProjectIntro.module.css";
 
 export default function ProjectIntro({
   title = "PALM CENTRAL – RESORT-STYLE LIVING BY NAKHEEL",

@@ -29,7 +29,7 @@ export default async function ProjectPage({ params }) {
 
   return (
     <main>
-      <ProjectHero data={projectData.hero} />
+      <ProjectHero data={projectData.hero} projectData={projectData} />
       <ProjectIntro data={projectData.intro} projectData={projectData} />
       <VisualSymphony data={projectData.gallery} />
       <FloorPlanShowcase

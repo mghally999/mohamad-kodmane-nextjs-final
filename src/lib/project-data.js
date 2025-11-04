@@ -32,6 +32,7 @@ export function getAllProjectSlugs() {
     { category: "apartments", developer: "sobha", project: "sky-parks" },
     { category: "apartments", developer: "sobha", project: "aqua-crest" },
     { category: "apartments", developer: "sobha", project: "central" },
+    { category: "apartments", developer: "sobha", project: "aquamont" },
     // Add more here later as you expand:
     // { category: "villas", developer: "emaar", project: "the-valley" },
     // { category: "apartments", developer: "damac", project: "cavalli-couture" },
