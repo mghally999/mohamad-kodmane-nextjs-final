@@ -10,7 +10,11 @@ export default function TopHeader() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedDeveloper, setSelectedDeveloper] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [mobileExpandedItems, setMobileExpandedItems] = useState({});
+  const [mobileExpandedItems, setMobileExpandedItems] = useState({
+    categories: null,
+    categoryId: null,
+    developerId: null,
+  });
   const pathname = usePathname();
 
   useEffect(() => {
@@ -104,7 +108,6 @@ export default function TopHeader() {
           },
         ],
       },
-
       {
         id: 2,
         name: "Villas",
@@ -152,7 +155,6 @@ export default function TopHeader() {
           },
         ],
       },
-
       {
         id: 3,
         name: "Commercial / Retail",
@@ -193,7 +195,6 @@ export default function TopHeader() {
           },
         ],
       },
-
       {
         id: 4,
         name: "Penthouses",
@@ -212,7 +213,7 @@ export default function TopHeader() {
                 id: 401,
                 title: "Sobha SeaHaven Penthouse",
                 slug: "seahaven-penthouse",
-                image: `${CDN}/seahaven/hero-bg.jpg%20.jpg`,
+                image: `${CDN}/seahaven/hero-bg.jpg`,
                 description: "Ultra-luxury penthouse with sea views",
               },
             ],
@@ -252,24 +253,28 @@ export default function TopHeader() {
 
   const handleProjectHover = (project) => setSelectedProject(project);
 
+  // FIXED MOBILE FUNCTIONS
   const toggleMobileCategory = (categoryId) => {
     setMobileExpandedItems((prev) => ({
-      ...prev,
-      categories: prev.categories === categoryId ? null : categoryId,
-      categoryId,
+      categories: "luxury-projects",
+      categoryId: prev.categoryId === categoryId ? null : categoryId,
+      developerId: prev.categoryId === categoryId ? prev.developerId : null,
     }));
   };
 
   const toggleMobileDeveloper = (developerId) => {
     setMobileExpandedItems((prev) => ({
       ...prev,
-      developers: prev.developers === developerId ? null : developerId,
-      developerId,
+      developerId: prev.developerId === developerId ? null : developerId,
     }));
   };
 
   const closeAllMobileMenus = () => {
-    setMobileExpandedItems({});
+    setMobileExpandedItems({
+      categories: null,
+      categoryId: null,
+      developerId: null,
+    });
     setIsMobileMenuOpen(false);
   };
 
@@ -285,6 +290,14 @@ export default function TopHeader() {
         <div className={styles.backgroundOverlay} />
 
         <div className={styles.container}>
+          {/* Logo */}
+          <div className={styles.logo}>
+            <a href="/" className={styles.logoLink}>
+              <div className={styles.logoText}>MOHAMAD KODMANE</div>
+              <div className={styles.logoSubtitle}>LUXURY REAL ESTATE</div>
+            </a>
+          </div>
+
           {/* Desktop Nav */}
           <nav className={styles.desktopNav}>
             {navItems.map((item) => (
@@ -584,7 +597,7 @@ export default function TopHeader() {
         </div>
       </header>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav - FIXED VERSION */}
       <div
         className={`${styles.mobileNav} ${
           isMobileMenuOpen ? styles.active : ""
@@ -593,10 +606,15 @@ export default function TopHeader() {
         <div className={styles.mobileNavBackground} />
         <div className={styles.mobileNavContainer}>
           <div className={styles.mobileNavHeader}>
-            <div className={styles.mobileLogo}></div>
+            <div className={styles.mobileLogo}>
+              <div className={styles.mobileLogoText}>MOHAMAD KODMANE</div>
+              <div className={styles.mobileLogoSubtitle}>
+                LUXURY REAL ESTATE
+              </div>
+            </div>
             <button
               className={styles.mobileCloseButton}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeAllMobileMenus}
               aria-label="Close menu"
             >
               ×
@@ -769,7 +787,7 @@ export default function TopHeader() {
                     className={`${styles.mobileNavLink} ${
                       item.type === "cta" ? styles.mobileCta : ""
                     } ${pathname === item.href ? styles.active : ""}`}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeAllMobileMenus}
                   >
                     <span className={styles.mobileNavText}>{item.label}</span>
                     {item.type === "cta" && (
