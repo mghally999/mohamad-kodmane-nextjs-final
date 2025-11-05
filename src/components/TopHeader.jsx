@@ -34,7 +34,7 @@ export default function TopHeader() {
     { href: "/about", label: "About", type: "primary" },
     {
       href: "/projects",
-      label: "Luxury Projects",
+      label: "Projects",
       type: "primary",
       hasMegaMenu: true,
     },
@@ -548,9 +548,7 @@ export default function TopHeader() {
                             }}
                           />
                           <div className={styles.previewInfo}>
-                            <h3 className={styles.previewTitle}>
-                              Luxury Projects
-                            </h3>
+                            <h3 className={styles.previewTitle}>Projects</h3>
                             <p className={styles.previewDescription}>
                               Discover our premium real estate portfolio
                             </p>

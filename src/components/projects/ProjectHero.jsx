@@ -1,45 +1,51 @@
-"use client";
-
 import Image from "next/image";
 import styles from "@/styles/projects/ProjectHero.module.css";
 
 /**
- * Universal Project Hero - Works for ALL projects
- * 100% data-driven with no hardcoded defaults
+ * Universal Project Hero - Optimized
+ * - Background uses <Image fill> (better LCP + no CLS)
+ * - Only the background is priority
+ * - Blur placeholders from Bunny with tiny ?width=16
  */
 export default function ProjectHero({ data, projectData }) {
-  // SAFETY CHECK - if no data, return nothing
-  if (!data || !projectData) {
-    console.error("ProjectHero: Missing data");
-    return null;
-  }
+  if (!data || !projectData) return null;
 
   const heroData = data;
   const projectInfo = projectData.project;
 
   return (
     <div className={styles.root}>
-      {/* HERO (background + vignette) */}
+      {/* HERO */}
       <section className={styles.hero} aria-label="Project hero">
-        <div
-          className={styles.backgroundImage}
-          style={{ backgroundImage: `url(${heroData.backgroundUrl})` }}
-          aria-hidden="true"
-        />
-        <div className={styles.vignette} aria-hidden="true" />
+        <div className={styles.bgWrap} aria-hidden="true">
+          <Image
+            src={heroData.backgroundUrl}
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            placeholder="blur"
+            blurDataURL={`${heroData.backgroundUrl}?width=16&quality=20`}
+            sizes="100vw"
+            className={styles.bgImage}
+          />
+          <div className={styles.vignette} />
+        </div>
 
         {/* Edge anchor: aligns with white bar container width */}
         <div className={styles.edgeContainer}>
-          {/* On-top overlapping square */}
+          {/* Overlapping square */}
           <div className={styles.squareWrap}>
             <div className={styles.squareCard}>
               <Image
                 src={heroData.squareImageUrl}
                 alt={`${projectInfo.name} luxury interior`}
                 fill
+                // no priority here (keep only 1 above-the-fold image prioritized)
+                placeholder="blur"
+                blurDataURL={`${heroData.squareImageUrl}?width=16&quality=20`}
+                sizes="(max-width:480px) 60vw, (max-width:900px) 45vw, (max-width:1400px) 28vw, 320px"
                 className={styles.squareImg}
-                sizes="(max-width: 480px) 60vw, (max-width: 900px) 45vw, (max-width: 1400px) 28vw, 320px"
-                priority
               />
             </div>
           </div>
@@ -49,10 +55,8 @@ export default function ProjectHero({ data, projectData }) {
       {/* WHITE BAR BELOW HERO */}
       <section className={styles.whiteBar} aria-label="Review summary strip">
         <div className={styles.barContainer}>
-          {/* Spacer that equals square size so the right block aligns like Sobha */}
           <div className={styles.leftSpacer} aria-hidden="true" />
 
-          {/* Google Reviews block */}
           <div className={styles.reviews}>
             <div className={styles.googleRow}>
               <span className={styles.gLogo} aria-hidden="true">
@@ -98,12 +102,8 @@ export default function ProjectHero({ data, projectData }) {
               <span className={styles.outOf}>/ 5</span>
               <span
                 className={styles.stars}
-                aria-label={`${
-                  heroData?.rating !== undefined
-                    ? heroData.rating.toFixed(1)
-                    : "N/A"
-                } out of 5 stars`}
                 role="img"
+                aria-label="Rating out of 5"
               >
                 ★★★★★
               </span>

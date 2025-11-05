@@ -25,8 +25,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/logo.jpg" type="image/jpeg" />
-        {/* You can also add multiple sizes for different devices */}
         <link rel="apple-touch-icon" href="/logo.jpg" />
+        {/* Preconnect to Bunny CDN for faster image TTFB */}
+        <link
+          rel="preconnect"
+          href="https://luxury-real-estate-media.b-cdn.net"
+          crossOrigin=""
+        />
+        <link
+          rel="dns-prefetch"
+          href="https://luxury-real-estate-media.b-cdn.net"
+        />
       </head>
       <body>
         <TopHeader />

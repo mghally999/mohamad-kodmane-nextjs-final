@@ -9,7 +9,7 @@ import ProjectsFooter from "@/components/projects/ProjectsFooter";
 import MiniCallbackForm from "@/components/MiniCallbackForm";
 import CityProximity from "@/components/projects/CityProximity";
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 // ✅ Automatically generate all static routes
 export async function generateStaticParams() {
