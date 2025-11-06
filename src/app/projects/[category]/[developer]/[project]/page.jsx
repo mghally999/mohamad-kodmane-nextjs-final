@@ -7,7 +7,6 @@ import AmenitiesShowcase from "@/components/projects/AmenitiesShowcase";
 import MapDirections from "@/components/projects/MapDirections";
 import ProjectsFooter from "@/components/projects/ProjectsFooter";
 import MiniCallbackForm from "@/components/MiniCallbackForm";
-import CityProximity from "@/components/projects/CityProximity";
 
 export const revalidate = 300;
 
@@ -58,7 +57,6 @@ export default async function ProjectPage({ params }) {
         projectData={projectData}
       />
       <MapDirections data={projectData.location} projectData={projectData} />
-      <CityProximity data={projectData.nearbyAttractions} />
       <MiniCallbackForm />
       {/* <ProjectsFooter /> */}
     </main>
