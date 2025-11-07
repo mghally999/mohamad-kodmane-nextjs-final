@@ -53,13 +53,13 @@ export default function TopHeader() {
         slug: "apartments",
         description: "Luxury apartments in Dubai's most sought-after areas",
         image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-        icon: "🏢",
         developers: [
           {
             id: 1,
             name: "Sobha Realty",
             slug: "sobha",
             image: `${CDN}/aquamont/intro-main.png`,
+            logo: `${CDN}/developers/sobha-logo.png`, // Developer logo
             projects: [
               {
                 id: 101,
@@ -96,6 +96,7 @@ export default function TopHeader() {
             name: "Nakheel",
             slug: "nakheel",
             image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
+            logo: `${CDN}/developers/nakheel-logo.png`, // Developer logo
             projects: [
               {
                 id: 106,
@@ -114,13 +115,13 @@ export default function TopHeader() {
         slug: "villas",
         description: "Exclusive villa developments and waterfront communities",
         image: `${CDN}/hartland/hero-bg.jpg`,
-        icon: "🏡",
         developers: [
           {
             id: 1,
             name: "Sobha Realty",
             slug: "sobha",
             image: `${CDN}/hartland/hero-bg.jpg`,
+            logo: `${CDN}/developers/sobha-logo.png`, // Developer logo
             projects: [
               {
                 id: 201,
@@ -143,6 +144,7 @@ export default function TopHeader() {
             name: "Arada",
             slug: "arada",
             image: `${CDN}/massar-3/hero-bg.jpg`,
+            logo: `${CDN}/developers/arada-logo.png`, // Developer logo
             projects: [
               {
                 id: 203,
@@ -161,13 +163,13 @@ export default function TopHeader() {
         slug: "commercial-retail",
         description: "High-ROI commercial and mixed-use developments",
         image: `${CDN}/riviera-retails/hero-bg.jpg`,
-        icon: "🏬",
         developers: [
           {
             id: 2,
             name: "Omniyat",
             slug: "omniyat",
             image: `${CDN}/lumena-alta/hero-bg.jpg`,
+            logo: `${CDN}/developers/omniyat-logo.png`, // Developer logo
             projects: [
               {
                 id: 305,
@@ -183,6 +185,7 @@ export default function TopHeader() {
             name: "Azizi Developments",
             slug: "azizi",
             image: `${CDN}/riviera/hero-bg.jpg`,
+            logo: `${CDN}/developers/azizi-logo.png`, // Developer logo
             projects: [
               {
                 id: 301,
@@ -201,13 +204,13 @@ export default function TopHeader() {
         slug: "penthouses",
         description: "Ultra-luxury penthouses with panoramic views",
         image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-        icon: "🏔️",
         developers: [
           {
             id: 1,
             name: "Sobha Realty",
             slug: "sobha",
             image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+            logo: `${CDN}/developers/sobha-logo.png`, // Developer logo
             projects: [
               {
                 id: 401,
@@ -354,9 +357,6 @@ export default function TopHeader() {
                           }`}
                           onMouseEnter={() => handleCategoryHover(category)}
                         >
-                          <div className={styles.categoryIcon}>
-                            {category.icon}
-                          </div>
                           <div className={styles.categoryInfo}>
                             <h4 className={styles.categoryName}>
                               {category.name}
@@ -394,7 +394,16 @@ export default function TopHeader() {
                             onMouseEnter={() => handleDeveloperHover(developer)}
                           >
                             <div className={styles.developerHeader}>
-                              <div className={styles.developerIcon}>🏗️</div>
+                              {/* Developer Logo */}
+                              {developer.logo && (
+                                <div className={styles.developerLogo}>
+                                  <img
+                                    src={developer.logo}
+                                    alt={`${developer.name} logo`}
+                                    className={styles.developerLogoImage}
+                                  />
+                                </div>
+                              )}
                               <div className={styles.developerInfo}>
                                 <h4 className={styles.developerName}>
                                   {developer.name}
@@ -486,7 +495,7 @@ export default function TopHeader() {
                               href={`/projects/${selectedCategory.slug}/${selectedDeveloper.slug}/${selectedProject.slug}`}
                               className={styles.previewButton}
                             >
-                              View Project Details{" "}
+                              View Project Details
                               <span className={styles.buttonArrow}>→</span>
                             </a>
                           </div>
@@ -572,7 +581,6 @@ export default function TopHeader() {
           {/* Desktop Contact */}
           <div className={styles.desktopContact}>
             <div className={styles.contactBadge}>
-              <div className={styles.contactIcon}>📞</div>
               <div className={styles.contactInfo}>
                 <div className={styles.contactLabel}>Direct Line</div>
                 <div className={styles.contactNumber}>+971 56 666 5560</div>
@@ -662,9 +670,6 @@ export default function TopHeader() {
                                   toggleMobileCategory(category.id)
                                 }
                               >
-                                <span className={styles.mobileCategoryIcon}>
-                                  {category.icon}
-                                </span>
                                 <span className={styles.mobileCategoryName}>
                                   {category.name}
                                 </span>
@@ -701,11 +706,22 @@ export default function TopHeader() {
                                           toggleMobileDeveloper(developer.id)
                                         }
                                       >
-                                        <span
-                                          className={styles.mobileDeveloperIcon}
-                                        >
-                                          🏗️
-                                        </span>
+                                        {/* Developer Logo in Mobile */}
+                                        {developer.logo && (
+                                          <div
+                                            className={
+                                              styles.mobileDeveloperLogo
+                                            }
+                                          >
+                                            <img
+                                              src={developer.logo}
+                                              alt={`${developer.name} logo`}
+                                              className={
+                                                styles.mobileDeveloperLogoImage
+                                              }
+                                            />
+                                          </div>
+                                        )}
                                         <span
                                           className={styles.mobileDeveloperName}
                                         >
@@ -788,9 +804,6 @@ export default function TopHeader() {
                     onClick={closeAllMobileMenus}
                   >
                     <span className={styles.mobileNavText}>{item.label}</span>
-                    {item.type === "cta" && (
-                      <span className={styles.mobileCtaIcon}>✨</span>
-                    )}
                   </a>
                 )}
               </div>
@@ -799,14 +812,12 @@ export default function TopHeader() {
             <div className={styles.mobileContact}>
               <div className={styles.mobileContactTitle}>Contact Us</div>
               <div className={styles.contactItem}>
-                <span className={styles.contactIcon}>📞</span>
                 <div className={styles.contactDetails}>
                   <div className={styles.contactType}>Direct Line</div>
                   <div className={styles.contactValue}>+971 56 666 5560</div>
                 </div>
               </div>
               <div className={styles.contactItem}>
-                <span className={styles.contactIcon}>📧</span>
                 <div className={styles.contactDetails}>
                   <div className={styles.contactType}>Email</div>
                   <div className={styles.contactValue}>info@sodhia.com</div>

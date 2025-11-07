@@ -1,12 +1,9 @@
-html,
+/* html,
 body {
   margin: 0;
   padding: 0;
   background-color: #0d0d0d; /* same as header */
-  color: #fff;
-  font-family: "Playfair Display", serif;
-  transition: none !important;
-}
+
 
 /* Prevent layout jump while Next Image loads */
 img,
@@ -27,4 +24,4 @@ img,
     padding: 25px !important;
     margin-top: 100px !important;
   }
-}
+} */
