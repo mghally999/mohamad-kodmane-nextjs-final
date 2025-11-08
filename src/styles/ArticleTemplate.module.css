@@ -749,3 +749,153 @@
     grid-template-columns: 1fr;
   }
 }
+/* -------- Generic Rich Text Lists & Quotes (for HTML inside .contentSection) -------- */
+
+/* Unordered lists */
+.contentSection ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 15px 0 20px;
+}
+
+.contentSection ul li {
+  position: relative;
+  padding-left: 28px;
+  margin: 8px 0;
+  color: #4a4a4a;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.contentSection ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #d4af37; /* gold bullet */
+  font-size: 1.2rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* Nested unordered lists get lighter markers and tighter spacing */
+.contentSection ul ul {
+  margin: 8px 0 10px;
+}
+
+.contentSection ul ul li {
+  padding-left: 24px;
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+.contentSection ul ul li::before {
+  content: "–"; /* dash for nested items */
+  color: #b8941f; /* darker gold */
+  font-size: 1rem;
+  top: 4px;
+}
+
+/* Ordered lists with gold counters */
+.contentSection ol {
+  list-style: none;
+  counter-reset: item;
+  padding-left: 0;
+  margin: 15px 0 20px;
+}
+
+.contentSection ol li {
+  counter-increment: item;
+  position: relative;
+  padding-left: 40px;
+  margin: 10px 0;
+  color: #4a4a4a;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.contentSection ol li::before {
+  content: counter(item);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #d4af37;
+  background: linear-gradient(135deg, #fef9e7, #fffaf0);
+  border: 1px solid #f4e4a6;
+}
+
+/* Nested ordered lists switch to alpha counters */
+.contentSection ol ol {
+  counter-reset: subitem;
+  margin: 8px 0 0 0;
+}
+
+.contentSection ol ol li {
+  counter-increment: subitem;
+  padding-left: 34px;
+  font-size: 1rem;
+  margin: 6px 0;
+}
+
+.contentSection ol ol li::before {
+  content: counter(subitem, lower-alpha);
+  width: 24px;
+  height: 24px;
+  font-size: 0.85rem;
+}
+
+/* Inline elements inside list items */
+.contentSection li strong {
+  color: #1a1a1a;
+  font-weight: 700;
+}
+.contentSection li em {
+  color: #2d2d2d;
+}
+
+/* Blockquotes inside rich text (for quotes in those sections) */
+.contentSection blockquote {
+  background: linear-gradient(135deg, #fffaf0, #fef9e7);
+  border-left: 4px solid #d4af37;
+  padding: 18px 22px;
+  margin: 22px 0;
+  border-radius: 8px;
+  color: #2d2d2d;
+  font-style: italic;
+}
+
+.contentSection blockquote *:last-child {
+  margin-bottom: 0;
+}
+
+/* Links that may appear inside list text */
+.contentSection a {
+  color: #d4af37;
+  text-decoration: none;
+  font-weight: 600;
+}
+.contentSection a:hover {
+  text-decoration: underline;
+}
+
+/* Small screens: keep bullets tight */
+@media (max-width: 480px) {
+  .contentSection ul li,
+  .contentSection ol li {
+    padding-left: 26px;
+    font-size: 1rem;
+  }
+  .contentSection ol li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 0.85rem;
+  }
+}
