@@ -167,7 +167,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(64, 94, 126, 0.94); /* --sobha-header-scrolled */
+  background: #0a0a0a; /* --sobha-header-scrolled */
   backdrop-filter: blur(3px);
   border-top: 1px solid rgba(199, 173, 102, 0.28); /* --sobha-gold-border */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
@@ -877,7 +877,7 @@
 }
 
 .mobileMegaMenuContent {
-  background: rgba(255, 255, 255, 0.02);
+  background: #0a0a0a;
   border-top: 1px solid rgba(199, 173, 102, 0.28); /* --sobha-gold-border */
   padding: 1.5rem;
 }

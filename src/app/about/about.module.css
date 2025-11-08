@@ -1,118 +1,156 @@
+/* Import Fonts */
+@import url("https://fonts.cdnfonts.com/css/chronicle-display");
+@import url("https://fonts.cdnfonts.com/css/ringside");
+
 .page {
-  background: #0a0a0a;
-  color: #ffffff;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Ringside", sans-serif;
   min-height: 100vh;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
-/* Hero Section */
+/* ===== HERO SECTION ===== */
 .hero {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 140px 0 100px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
 
 .heroGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 80px;
   align-items: center;
+}
+
+.heroContent {
+  position: relative;
 }
 
 .badge {
   background: rgba(215, 180, 106, 0.1);
   color: #d7b46a;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 25px;
+  font-family: "Ringside", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   border: 1px solid rgba(215, 180, 106, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 300;
   line-height: 1.1;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
 }
 
 .highlight {
   color: #d7b46a;
+  font-weight: 300;
 }
 
 .subtitle {
-  font-size: 1.3rem;
-  color: #cccccc;
-  margin-bottom: 40px;
-  line-height: 1.5;
+  font-family: "Ringside", sans-serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  color: #000000;
+  margin-bottom: 50px;
+  line-height: 1.6;
+  font-weight: 300;
+  opacity: 0.9;
 }
 
 /* Stats */
 .stats {
   display: flex;
-  gap: 40px;
-  margin: 40px 0;
+  gap: 50px;
+  margin: 50px 0;
+  padding: 30px 0;
+  border-top: 1px solid rgba(215, 180, 106, 0.2);
+  border-bottom: 1px solid rgba(215, 180, 106, 0.2);
 }
 
 .stat {
-  text-align: center;
+  text-align: left;
 }
 
 .stat strong {
   display: block;
-  font-size: 2rem;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2.2rem;
   color: #d7b46a;
-  font-weight: 800;
-  margin-bottom: 5px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  line-height: 1;
 }
 
 .stat span {
+  font-family: "Ringside", sans-serif;
   font-size: 0.9rem;
-  color: #999999;
+  color: #000000;
   font-weight: 500;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* CTA Section */
 .ctaSection {
   display: flex;
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 50px;
+  flex-wrap: wrap;
 }
 
 .primaryBtn {
   background: #d7b46a;
   color: #000000;
-  padding: 18px 35px;
+  padding: 20px 40px;
   border-radius: 50px;
   text-decoration: none;
+  font-family: "Ringside", sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .primaryBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(215, 180, 106, 0.4);
+  box-shadow: 0 15px 40px rgba(215, 180, 106, 0.4);
 }
 
 .secondaryBtn {
   background: transparent;
-  color: #ffffff;
-  padding: 18px 35px;
+  color: #000000;
+  padding: 20px 40px;
   border-radius: 50px;
   text-decoration: none;
+  font-family: "Ringside", sans-serif;
   font-weight: 600;
   border: 2px solid #d7b46a;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .secondaryBtn:hover {
@@ -127,246 +165,300 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 500px;
-  border-radius: 20px;
+  height: 600px;
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(215, 180, 106, 0.2);
 }
 
 .image {
   object-fit: cover;
-  filter: grayscale(0.1) contrast(1.05);
+  transition: transform 0.6s ease;
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.05);
 }
 
 .photoBadges {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 30px;
+  left: 30px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .photoBadge {
   background: rgba(0, 0, 0, 0.9);
   color: #d7b46a;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border-radius: 20px;
+  font-family: "Ringside", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   border: 1px solid #d7b46a;
   backdrop-filter: blur(10px);
+  letter-spacing: 0.5px;
 }
 
-/* Money Section */
-.moneySection {
-  padding: 100px 0;
-  background: #0f0f0f;
+/* ===== MISSION SECTION ===== */
+.missionSection {
+  padding: 120px 0;
+  background: #efefef;
+  position: relative;
 }
 
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.sectionHeader h2 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.sectionHeader p {
-  font-size: 1.2rem;
-  color: #cccccc;
-}
-
-.processGrid {
+.missionGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.missionContent h2 {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 30px;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+}
+
+.missionContent p {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #000000;
+  margin-bottom: 25px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.missionStats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
+  margin-top: 40px;
 }
 
-.processCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 40px 30px;
+.missionStat {
   text-align: center;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(215, 180, 106, 0.2);
 }
 
-.processCard:hover {
-  transform: translateY(-5px);
-  border-color: #d7b46a;
-  box-shadow: 0 15px 40px rgba(215, 180, 106, 0.1);
-}
-
-.processIcon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.processCard h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: #ffffff;
-}
-
-.processCard p {
-  color: #cccccc;
-  line-height: 1.5;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-.result {
-  background: rgba(215, 180, 106, 0.1);
+.missionStat strong {
+  display: block;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2.5rem;
   color: #d7b46a;
-  padding: 10px 15px;
-  border-radius: 10px;
-  font-weight: 600;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.missionStat span {
+  font-family: "Ringside", sans-serif;
   font-size: 0.9rem;
-  border-left: 3px solid #d7b46a;
+  color: #000000;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Proof Section */
-.proofSection {
-  padding: 100px 0;
-  background: #0a0a0a;
+.missionImage {
+  position: relative;
+  height: 500px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
 }
 
-.proofGrid {
+/* ===== VALUES SECTION ===== */
+.valuesSection {
+  padding: 120px 0;
+  background: #ffffff;
+}
+
+.valuesHeader {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.valuesHeader h2 {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+}
+
+.valuesHeader p {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.2rem;
+  color: #000000;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.valuesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  gap: 40px;
 }
 
-.proofCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.valueCard {
+  background: #ffffff;
+  border: 1px solid rgba(215, 180, 106, 0.2);
   border-radius: 20px;
-  padding: 35px 25px;
+  padding: 50px 40px;
   text-align: center;
   transition: all 0.3s ease;
+  position: relative;
 }
 
-.proofCard:hover {
-  transform: translateY(-3px);
-  border-color: #d7b46a;
+.valueCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d7b46a, #c4a15d);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
-.proofHeader {
+.valueCard:hover::before {
+  transform: scaleX(1);
+}
+
+.valueCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.valueIcon {
+  width: 80px;
+  height: 80px;
+  background: rgba(215, 180, 106, 0.1);
+  border-radius: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.profitBadge {
-  background: #d7b46a;
-  color: #000000;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-weight: 800;
-  font-size: 0.9rem;
-}
-
-.proofIcon {
+  justify-content: center;
+  margin: 0 auto 30px;
   font-size: 2rem;
 }
 
-.proofCard h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #ffffff;
+.valueCard h3 {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
 }
 
-.proofCard p {
-  color: #999999;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
+.valueCard p {
+  font-family: "Ringside", sans-serif;
+  color: #000000;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.9;
 }
 
-.clientNote {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 10px;
-  font-style: italic;
-  color: #cccccc;
-  font-size: 0.9rem;
-  border-left: 3px solid #d7b46a;
+/* ===== CTA SECTION ===== */
+.ctaSectionFull {
+  padding: 120px 0;
+  background: #efefef;
 }
 
-/* Final Section */
-.finalSection {
-  padding: 100px 0;
-  background: #0f0f0f;
-}
-
-.finalCard {
-  background: linear-gradient(
-    135deg,
-    rgba(215, 180, 106, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
+.ctaCard {
+  background: #ffffff;
   border: 2px solid #d7b46a;
   border-radius: 25px;
-  padding: 70px 50px;
+  padding: 80px 60px;
   text-align: center;
-  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
 
-.finalCard h2 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  margin-bottom: 15px;
+.ctaCard::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(215, 180, 106, 0.1) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
 }
 
-.finalCard p {
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ctaCard h2 {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300;
+  margin-bottom: 20px;
+  color: #000000;
+  position: relative;
+  z-index: 2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ctaCard p {
+  font-family: "Ringside", sans-serif;
   font-size: 1.3rem;
-  color: #cccccc;
+  color: #000000;
   margin-bottom: 40px;
+  font-weight: 300;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
 }
 
-.guarantees {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  margin-bottom: 40px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.guarantee {
-  background: rgba(215, 180, 106, 0.15);
-  color: #d7b46a;
-  padding: 12px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.finalCTAs {
+.ctaButtons {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   justify-content: center;
   margin-bottom: 30px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
 }
 
 .whatsappBtn {
   background: #d7b46a;
   color: #000000;
-  padding: 20px 40px;
+  padding: 22px 45px;
   border-radius: 50px;
   text-decoration: none;
+  font-family: "Ringside", sans-serif;
   font-weight: 800;
   font-size: 1.2rem;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  cursor: pointer;
 }
 
 .whatsappBtn:hover {
@@ -374,52 +466,65 @@
   box-shadow: 0 15px 40px rgba(215, 180, 106, 0.4);
 }
 
-.youtubeBtn {
+.callBtn {
   background: transparent;
-  color: #ffffff;
-  padding: 20px 40px;
+  color: #000000;
+  padding: 22px 45px;
   border-radius: 50px;
   text-decoration: none;
+  font-family: "Ringside", sans-serif;
   font-weight: 600;
   border: 2px solid #d7b46a;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.youtubeBtn:hover {
+.callBtn:hover {
   background: rgba(215, 180, 106, 0.1);
 }
 
 .trustNote {
-  color: #999999;
-  font-size: 0.9rem;
+  color: #000000;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  position: relative;
+  z-index: 2;
 }
 
 .trustNote strong {
   color: #d7b46a;
+  font-weight: 600;
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+
   .heroGrid {
     gap: 60px;
   }
 
-  .hero h1 {
-    font-size: 3rem;
+  .missionGrid {
+    gap: 60px;
   }
 
-  .processGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .proofGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .valuesGrid {
+    gap: 30px;
   }
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 25px;
+  }
+
   .hero {
-    padding: 80px 0;
+    padding: 120px 0 80px;
   }
 
   .heroGrid {
@@ -428,13 +533,9 @@
     text-align: center;
   }
 
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
   .stats {
     justify-content: center;
-    gap: 30px;
+    gap: 40px;
   }
 
   .ctaSection {
@@ -445,107 +546,106 @@
   .primaryBtn,
   .secondaryBtn {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     text-align: center;
+    justify-content: center;
   }
 
   .imageWrapper {
-    height: 400px;
+    height: 450px;
   }
 
-  .moneySection,
-  .proofSection,
-  .finalSection {
-    padding: 80px 0;
+  .missionSection,
+  .valuesSection,
+  .ctaSectionFull {
+    padding: 100px 0;
   }
 
-  .sectionHeader h2 {
-    font-size: 2.2rem;
-  }
-
-  .proofGrid {
+  .missionGrid {
     grid-template-columns: 1fr;
+    gap: 50px;
   }
 
-  .finalCard {
-    padding: 50px 30px;
-  }
-
-  .finalCard h2 {
-    font-size: 2.2rem;
-  }
-
-  .guarantees {
+  .missionStats {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  .finalCTAs {
+  .valuesGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .ctaCard {
+    padding: 60px 40px;
+  }
+
+  .ctaButtons {
     flex-direction: column;
     align-items: center;
   }
 
   .whatsappBtn,
-  .youtubeBtn {
+  .callBtn {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 15px;
+    padding: 0 20px;
   }
 
   .hero {
-    padding: 60px 0;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
+    padding: 100px 0 60px;
   }
 
   .stats {
     flex-direction: column;
-    gap: 20px;
-  }
-
-  .stat strong {
-    font-size: 1.8rem;
+    gap: 25px;
   }
 
   .imageWrapper {
-    height: 350px;
+    height: 380px;
   }
 
   .photoBadges {
-    left: 15px;
-    bottom: 15px;
+    left: 20px;
+    bottom: 20px;
+  }
+
+  .missionImage {
+    height: 350px;
+  }
+
+  .valueCard {
+    padding: 35px 25px;
+  }
+
+  .ctaCard {
+    padding: 50px 30px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .imageWrapper {
+    height: 320px;
   }
 
   .photoBadge {
     font-size: 0.8rem;
-    padding: 8px 15px;
-  }
-
-  .processCard,
-  .proofCard {
-    padding: 30px 20px;
-  }
-
-  .finalCard {
-    padding: 40px 25px;
-  }
-
-  .finalCard h2 {
-    font-size: 1.8rem;
-  }
-
-  .finalCard p {
-    font-size: 1.1rem;
+    padding: 10px 15px;
   }
 }
 
@@ -553,10 +653,15 @@
 @media (prefers-reduced-motion: reduce) {
   .primaryBtn:hover,
   .secondaryBtn:hover,
-  .processCard:hover,
-  .proofCard:hover,
+  .valueCard:hover,
   .whatsappBtn:hover,
-  .youtubeBtn:hover {
+  .callBtn:hover,
+  .image {
     transform: none;
+    transition: none;
+  }
+
+  .ctaCard::before {
+    animation: none;
   }
 }

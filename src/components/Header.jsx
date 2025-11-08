@@ -1,37 +1,20 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
+import React from "react";
 import styles from "@/styles/Header.module.css";
 
 export default function Header() {
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
-  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <header className={styles.header}>
-      {/* Optimized Background Image with Overlay */}
-      <div className={styles.heroBackground}>
-        <div className={styles.imageContainer}>
-          <Image
-            src={`${CDN}/aquamont/intro-main.png`}
-            alt="Luxury Dubai Real Estate - Aquamont Development"
-            fill
-            priority
-            quality={85}
-            sizes="100vw"
-            className={`${styles.backgroundImage} ${
-              imageLoaded ? styles.imageLoaded : ""
-            }`}
-            onLoad={() => setImageLoaded(true)}
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-          />
-          <div className={styles.imageOverlay}></div>
-        </div>
-        {/* Fallback background color */}
-        <div className={styles.backgroundFallback}></div>
+      {/* Background Image with Overlay */}
+      <div
+        className={styles.heroBackground}
+        style={{
+          backgroundImage: `url('${CDN}/aquamont/intro-main.png')`,
+        }}
+      >
+        <div className={styles.heroOverlay}></div>
       </div>
 
       <div className={styles.container}>

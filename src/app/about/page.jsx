@@ -4,6 +4,8 @@ import styles from "./about.module.css";
 import Image from "next/image";
 
 export default function AboutPage() {
+  const CDN = "https://luxury-real-estate-media.b-cdn.net";
+
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -11,44 +13,44 @@ export default function AboutPage() {
         <div className={styles.container}>
           <div className={styles.heroGrid}>
             <div className={styles.heroContent}>
-              <div className={styles.badge}>About Mohamad Kodmane</div>
+              <div className={styles.badge}>Founder & Visionary</div>
               <h1>
-                I Make Investors{" "}
-                <span className={styles.highlight}>15-30% Returns</span> in
-                Dubai Real Estate
+                Mohamad <span className={styles.highlight}>Kodmane</span>
               </h1>
               <p className={styles.subtitle}>
-                No fluff. No empty promises. Just proven results.
+                Transforming Dubai real estate through strategic investment and
+                unparalleled market expertise. Your trusted partner in building
+                lasting wealth.
               </p>
 
               {/* Trust Stats */}
-              <div className={styles.stats}>
+              {/* <div className={styles.stats}>
                 <div className={styles.stat}>
                   <strong>AED 500M+</strong>
-                  <span>Client Wealth</span>
+                  <span>Portfolio Value</span>
                 </div>
                 <div className={styles.stat}>
                   <strong>100+</strong>
-                  <span>Deals Closed</span>
+                  <span>Clients Served</span>
                 </div>
                 <div className={styles.stat}>
-                  <strong>0</strong>
-                  <span>Complaints</span>
+                  <strong>4+ Years</strong>
+                  <span>Market Excellence</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* CTA */}
               <div className={styles.ctaSection}>
                 <a
-                  href="https://wa.me/971501234567?text=I%20want%2015-30%%20returns"
+                  href="https://wa.me/971501234567?text=Hi%20Mohamad,%20I'd%20like%20to%20discuss%20Dubai%20investment%20opportunities"
                   className={styles.primaryBtn}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  💬 Get My Free Investment Plan
+                  Start Your Journey
                 </a>
-                <a href="#proof" className={styles.secondaryBtn}>
-                  📊 See Real Results
+                <a href="#mission" className={styles.secondaryBtn}>
+                  My Philosophy
                 </a>
               </div>
             </div>
@@ -57,16 +59,17 @@ export default function AboutPage() {
             <div className={styles.photoSection}>
               <div className={styles.imageWrapper}>
                 <Image
-                  src="/owner-hero.png"
+                  src={`${CDN}/aquamont/intro-main.png`}
                   alt="Mohamad Kodmane - Dubai Real Estate Expert"
                   fill
                   className={styles.image}
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className={styles.photoBadges}>
-                  <div className={styles.photoBadge}>🏛️ DLD Certified</div>
-                  <div className={styles.photoBadge}>⭐ 9K+ Followers</div>
-                  <div className={styles.photoBadge}>📈 4+ Years</div>
+                  <div className={styles.photoBadge}>DLD Certified</div>
+                  <div className={styles.photoBadge}>Premium Partner</div>
+                  <div className={styles.photoBadge}>15-30% ROI</div>
                 </div>
               </div>
             </div>
@@ -74,137 +77,127 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* How I Make Money For You */}
-      <section className={styles.moneySection}>
+      {/* Mission Section */}
+      <section id="mission" className={styles.missionSection}>
         <div className={styles.container}>
-          <div className={styles.sectionHeader}>
-            <h2>
-              How I Make You <span className={styles.highlight}>Money</span>
-            </h2>
-            <p>Simple process. Big results.</p>
-          </div>
+          <div className={styles.missionGrid}>
+            <div className={styles.missionContent}>
+              <h2>
+                My <span className={styles.highlight}>Mission</span>
+              </h2>
+              <p>
+                To democratize premium Dubai real estate investment, making
+                exclusive opportunities accessible to visionary investors
+                worldwide.
+              </p>
+              <p>
+                Through strategic partnerships with Dubai's top developers and
+                data-driven market analysis, I provide clients with unparalleled
+                access to high-yield investment opportunities.
+              </p>
+              <p>
+                Every client relationship is built on transparency, trust, and
+                tangible results—transforming investment goals into realized
+                wealth.
+              </p>
 
-          <div className={styles.processGrid}>
-            <div className={styles.processCard}>
-              <div className={styles.processIcon}>🔍</div>
-              <h3>Find Hidden Deals</h3>
-              <p>I get first access to properties before public listing</p>
-              <div className={styles.result}>→ You buy at lower prices</div>
+              <div className={styles.missionStats}>
+                <div className={styles.missionStat}>
+                  <strong>100%</strong>
+                  <span>Client Satisfaction</span>
+                </div>
+                <div className={styles.missionStat}>
+                  <strong>AED 2.1M</strong>
+                  <span>Average ROI</span>
+                </div>
+              </div>
             </div>
 
-            <div className={styles.processCard}>
-              <div className={styles.processIcon}>📊</div>
-              <h3>Smart Analysis</h3>
-              <p>Data-driven decisions on when to buy and sell</p>
-              <div className={styles.result}>→ Maximum profit timing</div>
-            </div>
-
-            <div className={styles.processCard}>
-              <div className={styles.processIcon}>🛡️</div>
-              <h3>Full Protection</h3>
-              <p>DLD-certified safe transactions, no hidden fees</p>
-              <div className={styles.result}>→ Zero risk investment</div>
-            </div>
-
-            <div className={styles.processCard}>
-              <div className={styles.processIcon}>⚡</div>
-              <h3>Fast Action</h3>
-              <p>Quick execution to secure deals before competition</p>
-              <div className={styles.result}>→ Money working faster</div>
+            <div className={styles.missionImage}>
+              <Image
+                src={`${CDN}/sky-parks/exterior-night-01.jpg`}
+                alt="Dubai Skyline - Mohamad Kodmane's Investment Vision"
+                fill
+                className={styles.image}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Real Proof Section */}
-      <section id="proof" className={styles.proofSection}>
+      {/* Values Section */}
+      <section className={styles.valuesSection}>
         <div className={styles.container}>
-          <div className={styles.sectionHeader}>
+          <div className={styles.valuesHeader}>
             <h2>
-              Real <span className={styles.highlight}>Proof</span> of Results
+              Core <span className={styles.highlight}>Values</span>
             </h2>
-            <p>Actual numbers from real clients</p>
+            <p>The principles that guide every investment decision</p>
           </div>
 
-          <div className={styles.proofGrid}>
-            <div className={styles.proofCard}>
-              <div className={styles.proofHeader}>
-                <div className={styles.profitBadge}>+32%</div>
-                <div className={styles.proofIcon}>💰</div>
-              </div>
-              <h3>Palm Jumeirah Villa</h3>
-              <p>Off-plan purchase • 14 months</p>
-              <div className={styles.clientNote}>
-                "Mohamad found this before anyone else knew"
-              </div>
+          <div className={styles.valuesGrid}>
+            <div className={styles.valueCard}>
+              {/* <div className={styles.valueIcon}>🔍</div> */}
+              <h3>Strategic Vision</h3>
+              <p>
+                Identifying emerging opportunities before market trends,
+                ensuring first-mover advantage and maximum returns for every
+                investment.
+              </p>
             </div>
 
-            <div className={styles.proofCard}>
-              <div className={styles.proofHeader}>
-                <div className={styles.profitBadge}>AED 2.1M</div>
-                <div className={styles.proofIcon}>📈</div>
-              </div>
-              <h3>Downtown Apartment</h3>
-              <p>Strategic flip • 2 years</p>
-              <div className={styles.clientNote}>
-                "Perfect timing - bought low, sold high"
-              </div>
+            <div className={styles.valueCard}>
+              {/* <div className={styles.valueIcon}>🤝</div> */}
+              <h3>Client Partnership</h3>
+              <p>
+                Building long-term relationships based on trust, transparency,
+                and shared success. Your goals become my mission.
+              </p>
             </div>
 
-            <div className={styles.proofCard}>
-              <div className={styles.proofHeader}>
-                <div className={styles.profitBadge}>18% Yield</div>
-                <div className={styles.proofIcon}>🏠</div>
-              </div>
-              <h3>Business Bay Office</h3>
-              <p>Rental property • Ongoing</p>
-              <div className={styles.clientNote}>
-                "Consistent income every month"
-              </div>
+            <div className={styles.valueCard}>
+              {/* <div className={styles.valueIcon}>⚡</div> */}
+              <h3>Execution Excellence</h3>
+              <p>
+                Rapid, precise deal execution with comprehensive due diligence
+                and seamless transaction management from start to finish.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className={styles.finalSection}>
+      {/* Final CTA Section */}
+      <section className={styles.ctaSectionFull}>
         <div className={styles.container}>
-          <div className={styles.finalCard}>
+          <div className={styles.ctaCard}>
             <h2>
-              Ready to Make{" "}
-              <span className={styles.highlight}>Real Money?</span>
+              Ready to Invest in{" "}
+              <span className={styles.highlight}>Dubai?</span>
             </h2>
-            <p>Stop thinking about it. Start earning today.</p>
+            <p>
+              Let's discuss your investment goals and create a personalized
+              strategy for exceptional returns.
+            </p>
 
-            <div className={styles.guarantees}>
-              <div className={styles.guarantee}>✅ 15-30% Returns</div>
-              <div className={styles.guarantee}>✅ DLD Protected</div>
-              <div className={styles.guarantee}>✅ No Hidden Fees</div>
-              <div className={styles.guarantee}>✅ Proven Track Record</div>
-            </div>
-
-            <div className={styles.finalCTAs}>
+            <div className={styles.ctaButtons}>
               <a
-                href="https://wa.me/971501234567?text=I'm%20ready%20to%20make%2015-30%%20returns"
+                href="https://wa.me/971501234567?text=Hi%20Mohamad,%20I'm%20ready%20to%20invest%20in%20Dubai%20real%20estate"
                 className={styles.whatsappBtn}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                💬 WhatsApp Me Now
+                WhatsApp Consultation
               </a>
-              <a
-                href="https://youtube.com/@Mohamad.Kodmane"
-                className={styles.youtubeBtn}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ▶️ Watch My Strategy
+              <a href="tel:+971501234567" className={styles.callBtn}>
+                Direct Call
               </a>
             </div>
 
             <div className={styles.trustNote}>
               <strong>
-                100+ Satisfied Investors • 0 Complaints • 4+ Years Excellence
+                Premium Developer Access • Full Transparency • Proven Results
               </strong>
             </div>
           </div>
