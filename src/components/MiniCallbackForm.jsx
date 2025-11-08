@@ -66,8 +66,8 @@ export default function MiniCallbackForm() {
 
           <div className={styles.textContent}>
             <h2 className={styles.title}>
-              <span className={styles.titleMain}>Connect With Our</span>
-              <span className={styles.titleAccent}>Investment Team</span>
+              <span className={styles.titleMain}>CONNECT WITH OUR</span>
+              <span className={styles.titleAccent}>INVESTMENT TEAM</span>
             </h2>
             <p className={styles.subtitle}>
               Speak directly with our luxury property specialists. We'll call
@@ -83,7 +83,7 @@ export default function MiniCallbackForm() {
             <div className={styles.successIcon}>
               <div className={styles.checkmark}></div>
             </div>
-            <h3 className={styles.successTitle}>Callback Confirmed!</h3>
+            <h3 className={styles.successTitle}>CALLBACK CONFIRMED!</h3>
             <p className={styles.successMessage}>
               Our investment specialist will contact you within 15 minutes.
               Prepare to discuss premium opportunities.
@@ -107,7 +107,7 @@ export default function MiniCallbackForm() {
                     required
                   />
                   <label htmlFor="name" className={styles.inputLabel}>
-                    Your Full Name
+                    YOUR FULL NAME
                   </label>
                   <div className={styles.inputLine}></div>
                 </div>
@@ -125,7 +125,7 @@ export default function MiniCallbackForm() {
                     maxLength={9}
                   />
                   <label htmlFor="phone" className={styles.phoneInputLabel}>
-                    Contact Number
+                    CONTACT NUMBER
                   </label>
                   <div className={styles.inputLine}></div>
                 </div>
@@ -140,7 +140,7 @@ export default function MiniCallbackForm() {
                 disabled={isSubmitting}
               >
                 <span className={styles.buttonText}>
-                  {isSubmitting ? "Connecting..." : "Request Priority Callback"}
+                  {isSubmitting ? "CONNECTING..." : "REQUEST PRIORITY CALLBACK"}
                 </span>
                 <div className={styles.buttonGlow}></div>
                 <div className={styles.buttonOrnament}>
@@ -152,20 +152,20 @@ export default function MiniCallbackForm() {
             </div>
 
             {/* Trust Indicators */}
-            <div className={styles.trustIndicators}>
+            {/* <div className={styles.trustIndicators}>
               <div className={styles.trustItem}>
                 <div className={styles.trustIcon}>⚡</div>
-                <span>15-Minute Response</span>
+                <span>15-MINUTE RESPONSE</span>
               </div>
               <div className={styles.trustItem}>
                 <div className={styles.trustIcon}>🛡️</div>
-                <span>Confidential</span>
+                <span>CONFIDENTIAL</span>
               </div>
               <div className={styles.trustItem}>
                 <div className={styles.trustIcon}>🎯</div>
-                <span>Expert Advice</span>
+                <span>EXPERT ADVICE</span>
               </div>
-            </div>
+            </div> */}
           </form>
         )}
 

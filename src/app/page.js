@@ -17,12 +17,13 @@ export default function HomePage() {
     <>
       <Header />
       <HeroVideo /> {/* Welcome & Company Intro */}
+      <CallbackForm /> {/* Services + Contact */}
       <OffPlanInvestment /> {/* What is off-plan investment? */}
       <PortfolioInvestment /> {/* What is building portfolios? */}
       <CapitalGrowth /> {/* Examples of capital growth - DXB Interact */}
       <DubaiDemand /> {/* Unprecedented demand */}
       <DubaiEconomicGrowth /> {/* Economic growth + Why invest in Dubai */}
-      <CallbackForm /> {/* Services + Contact */}
+      <MiniCallbackForm /> {/* Services + Contact */}
       {/* <MissionVision /> */}
       {/* <AboutMohamadKodmane /> */}
       {/* <CoreValues /> */}

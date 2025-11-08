@@ -15,24 +15,36 @@
   padding: 0;
 }
 
-/* Background Image with Overlay */
+/* Optimized Background Image with Overlay */
 .heroBackground {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 1.2s ease;
+  z-index: 1;
 }
 
-.header:hover .heroBackground {
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.backgroundImage {
+  transition: transform 1.2s ease, opacity 0.8s ease;
+  opacity: 0;
+}
+
+.backgroundImage.imageLoaded {
+  opacity: 1;
+}
+
+.header:hover .backgroundImage {
   transform: scale(1.05);
 }
 
-.heroOverlay {
+.imageOverlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -40,10 +52,21 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.85) 50%,
-    rgba(255, 255, 255, 0.9) 100%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.88) 50%,
+    rgba(255, 255, 255, 0.92) 100%
   );
+  z-index: 2;
+}
+
+.backgroundFallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 0;
 }
 
 .container {
@@ -129,6 +152,38 @@
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
+/* Loading State */
+.loadingPlaceholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f8f6f0 0%, #ffffff 50%, #f8f6f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.loadingSpinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(215, 180, 106, 0.3);
+  border-top: 3px solid #d7b46a;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
   .container {
@@ -158,6 +213,11 @@
     font-size: clamp(1.1rem, 1.5vw, 1.4rem);
     line-height: 1.5;
   }
+
+  /* Optimize image loading for mobile */
+  .backgroundImage {
+    transform: scale(1.1); /* Slightly zoomed for better mobile view */
+  }
 }
 
 @media (max-width: 480px) {
@@ -181,7 +241,7 @@
   }
 
   /* Better mobile background handling */
-  .heroBackground {
+  .backgroundImage {
     background-attachment: scroll;
   }
 }
@@ -225,5 +285,23 @@
 @media (min-width: 1920px) {
   .container {
     max-width: 1600px;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .backgroundImage {
+    transition: none;
+  }
+
+  .header:hover .backgroundImage {
+    transform: none;
+  }
+}
+
+/* High DPI screens optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .backgroundImage {
+    /* Next.js automatically serves optimized images for high DPI */
   }
 }
