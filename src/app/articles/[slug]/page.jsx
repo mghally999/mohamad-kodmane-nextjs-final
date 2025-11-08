@@ -1,10 +1,11 @@
+// /app/articles/[slug]/page.jsx
 import { notFound, redirect } from "next/navigation";
 import ArticleTemplate from "@/components/articles/ArticleTemplate";
 import articlesData from "@/data/articles/articles-data";
 
+// If you ever rename slugs, map old → new here.
 const slugAliases = {
   "dubai-off-plan-investment-guide": "off-plan-investment-dubai",
-  // add more aliases here if you ever rename slugs
 };
 
 export default function ArticlePage({ params }) {
@@ -12,7 +13,7 @@ export default function ArticlePage({ params }) {
   const resolved = slugAliases[requested] || requested;
 
   if (slugAliases[requested]) {
-    // 301-style redirect keeps URLs tidy
+    // Permanent redirect for old slugs
     redirect(`/articles/${resolved}`);
   }
 

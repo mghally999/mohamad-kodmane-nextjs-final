@@ -548,7 +548,7 @@ const articlesData = {
       },
     },
 
-    // === Article 3 (truncated in your message; I’m finishing it here)
+    // === Article 3
     {
       id: 3,
       slug: "dubai-real-estate-demand",
@@ -865,7 +865,7 @@ const articlesData = {
       },
     },
 
-    // === Article 4 (rental guide header as in your snippet)
+    // === Article 4
     {
       id: 4,
       slug: "rental-returns-guide",
@@ -976,255 +976,254 @@ const articlesData = {
                 },
               ],
             },
-            // === Article 5
-            {
-              id: 5,
-              slug: "luxury-property-trends-2024",
-              title: "Luxury Property Trends 2024",
-              description:
-                "Smart homes, sustainable design, wellness architecture, and waterfront premiums are redefining Dubai’s high-end market.",
-              image:
-                "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2075&q=80",
-              readTime: "7 min read",
-              category: "Market Trends",
-              cta: "Read Trends",
-              articleData: {
-                hero: {
-                  title:
-                    "Luxury Property Trends Dubai 2024: Smart Homes & Premium Locations",
-                  subtitle:
-                    "Exclusive analysis of emerging luxury trends in Dubai—AI smart homes, sustainability, wellness design, and the locations leading price growth.",
-                  image:
-                    "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2075&q=80",
-                  readTime: "7 min read",
-                  category: "Market Trends",
-                },
-                tableOfContents: [
-                  "Key Luxury Trends 2024",
-                  "The Smart Home Revolution",
-                  "Sustainable Luxury",
-                  "Emerging Premium Locations",
-                  "Premium Amenities",
-                  "Investment Opportunities",
-                  "Future Market Outlook",
-                ],
-                content: {
-                  sections: [
-                    {
-                      id: "key-trends",
-                      title: "Key Luxury Property Trends Shaping 2024",
-                      content: `
-  <p>Dubai’s luxury market is evolving fast. <strong>AI-powered living</strong>, 
-  <strong>eco-conscious design</strong>, and <strong>wellness architecture</strong> now command concrete price premiums. 
-  Waterfront supply remains scarce, sustaining a <strong>30–50% location premium</strong>.</p>
-  <ul>
-    <li><strong>Smart Home Integration:</strong> 15–25% value premium; ~85% adoption in new luxury stock.</li>
-    <li><strong>Sustainable Luxury:</strong> 20–30% higher resale value; prioritized by ~70% of premium buyers.</li>
-    <li><strong>Wellness Architecture:</strong> 18–22% price premium; near 90% penetration in ultra-luxury.</li>
-    <li><strong>Private Amenities:</strong> spa/cinema/game rooms now standard in AED 20M+ assets.</li>
-    <li><strong>Waterfront Premium:</strong> sustained outperformance due to limited, trophy-grade supply.</li>
-  </ul>
-  `,
-                    },
-                    {
-                      id: "smart-homes",
-                      title: "The Smart Home Revolution in Luxury Properties",
-                      content: `
-  <p><strong>AI home automation</strong> has shifted from “nice-to-have” to baseline expectation, 
-  enhancing security, convenience, and operating efficiency.</p>
-  <h4>Home Automation</h4>
-  <ul>
-    <li>Voice control, predictive climate, scene-based lighting, automated window treatments</li>
-  </ul>
-  <h4>Advanced Security</h4>
-  <ul>
-    <li>Biometric access, AI video analytics, unified security + automation with mobile control</li>
-  </ul>
-  <h4>Wellness Tech</h4>
-  <ul>
-    <li>Air quality monitoring, whole-house water filtration, acoustic optimization, circadian lighting</li>
-  </ul>
-  <blockquote>“Smart tech is adding 15–25% to values in the luxury segment.” — Mohamad Kodmane</blockquote>
-  `,
-                    },
-                    {
-                      id: "sustainability",
-                      title: "Sustainable Luxury: The New Standard",
-                      content: `
-  <p>Eco-performance now sells. Buyers pay premiums for verified savings and healthier interiors.</p>
-  <ul>
-    <li><strong>Energy:</strong> Solar + storage, smart metering, full LED, high-spec insulation</li>
-    <li><strong>Water:</strong> Greywater reuse, smart irrigation, low-flow fixtures, rain harvesting</li>
-    <li><strong>Materials:</strong> Certified timber, low-VOC finishes, recycled + locally-sourced elements</li>
-  </ul>
-  <div>
-    <em>Financial impact:</em> 20–30% higher resale, 40–60% lower OPEX, 70% faster sale time, 85% buyer preference.
-  </div>
-  `,
-                    },
-                    {
-                      id: "emerging-locations",
-                      title: "Emerging Premium Locations for 2024",
-                      content: `
-  <ul>
-    <li><strong>Dubai Creek Harbour:</strong> “Future city center” positioning; ~45% projected appreciation; waterfront + Downtown access.</li>
-    <li><strong>Palm Jumeirah:</strong> Ultra-luxury waterfront; strong scarcity premium; ~38% current year growth.</li>
-    <li><strong>Dubai Hills Estate:</strong> Family luxury; golf/parks; ~32% annual appreciation.</li>
-    <li><strong>Business Bay:</strong> Mixed-use luxury; Downtown adjacency + canal; ~28% YoY.</li>
-  </ul>
-  `,
-                    },
-                    {
-                      id: "amenities",
-                      title: "Premium Amenities Redefining Luxury Living",
-                      content: `
-  <h4>Wellness & Health</h4>
-  <ul><li>Private spas, meditation rooms, pro-grade gyms, salt rooms</li></ul>
-  <h4>Entertainment</h4>
-  <ul><li>4K cinemas with Atmos, wine cellars, game rooms, rooftop theaters</li></ul>
-  <h4>Business & Connectivity</h4>
-  <ul><li>Executive offices, multi-gig fiber, meeting rooms, AI home assistants</li></ul>
-  `,
-                    },
-                    {
-                      id: "investment-opportunities",
-                      title: "Luxury Property Investment Opportunities",
-                      content: `
-  <ul>
-    <li><strong>Early Adoption Plays:</strong> Target smart-home-led projects (ROI 25–40% in 18–24 months).</li>
-    <li><strong>Sustainable Premium:</strong> Eco-focused stock in prime areas (ROI 20–35% in 24–36 months).</li>
-    <li><strong>Wellness-Centric:</strong> Wellness-amenity heavy assets (ROI 30–45% in 12–18 months).</li>
-  </ul>
-  <p><em>Key considerations:</em> time entries early, select limited-supply locations, and prioritize features with durable premiums.</p>
-  `,
-                    },
-                    {
-                      id: "future-outlook",
-                      title: "Future Outlook: 2024–2025",
-                      content: `
-  <ul>
-    <li>Luxury price appreciation: <strong>~15–20% p.a.</strong></li>
-    <li>Rental yields: <strong>~6–8% gross</strong></li>
-    <li>International buyer share: <strong>~80–85%</strong></li>
-    <li>Supply absorption: <strong>~90–95%</strong></li>
-  </ul>
-  <p><em>Drivers:</em> global wealth migration, infrastructure build-out, diversified GDP growth, and political stability.</p>
-  `,
-                    },
-                  ],
-                },
-              },
-            },
+          ],
+        },
+      },
+    },
 
-            // === Article 6
+    // === Article 5
+    {
+      id: 5,
+      slug: "luxury-property-trends-2024",
+      title: "Luxury Property Trends 2024",
+      description:
+        "Smart homes, sustainable design, wellness architecture, and waterfront premiums are redefining Dubai’s high-end market.",
+      image:
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2075&q=80",
+      readTime: "7 min read",
+      category: "Market Trends",
+      cta: "Read Trends",
+      articleData: {
+        hero: {
+          title:
+            "Luxury Property Trends Dubai 2024: Smart Homes & Premium Locations",
+          subtitle:
+            "Exclusive analysis of emerging luxury trends in Dubai—AI smart homes, sustainability, wellness design, and the locations leading price growth.",
+          image:
+            "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2075&q=80",
+          readTime: "7 min read",
+          category: "Market Trends",
+        },
+        tableOfContents: [
+          "Key Luxury Trends 2024",
+          "The Smart Home Revolution",
+          "Sustainable Luxury",
+          "Emerging Premium Locations",
+          "Premium Amenities",
+          "Investment Opportunities",
+          "Future Market Outlook",
+        ],
+        content: {
+          sections: [
             {
-              id: 6,
-              slug: "success-stories",
-              title: "Investor Success Stories",
-              description:
-                "Verified case studies from Dubai: real investors achieving 30–50% ROI with disciplined strategy and risk control.",
-              image:
-                "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2080&q=80",
-              readTime: "9 min read",
-              category: "Case Studies",
-              cta: "See Case Studies",
-              articleData: {
-                hero: {
-                  title:
-                    "Dubai Real Estate Success Stories: Verified 30–50% ROI Case Studies",
-                  subtitle:
-                    "Real investors, real numbers. Strategy, timing, and location selection that consistently produced outsized results.",
-                  image:
-                    "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2080&q=80",
-                  readTime: "9 min read",
-                  category: "Case Studies",
-                },
-                tableOfContents: [
-                  "Proven Investment Philosophy",
-                  "Detailed Case Studies",
-                  "Winning Strategies",
-                  "Risk Management",
-                  "Replicating Success",
-                  "Your Next Step",
-                ],
-                content: {
-                  sections: [
-                    {
-                      id: "investment-philosophy",
-                      title:
-                        "The Proven Investment Philosophy Behind the Results",
-                      content: `
-  <ul>
-    <li><strong>Data-Driven Decisions:</strong> market comps, velocity, and developer screens</li>
-    <li><strong>Prime Location Focus:</strong> established & emerging premium corridors</li>
-    <li><strong>Risk-Mitigated Structures:</strong> multiple exits, escrow, below-market entries</li>
-    <li><strong>Strategic Timing:</strong> early-phase allocations, pre-launch access</li>
-  </ul>
-  `,
-                    },
-                    {
-                      id: "case-studies",
-                      title:
-                        "Selected Case Studies (Verified & DLD-Registered)",
-                      content: `
-  <ul>
-    <li><strong>Burj Crown – Downtown:</strong> Invest AED 2.8M → Profit AED 1.26M, <strong>45% ROI</strong>, ~18 months. Strategy: pre-construction entry, early exit.</li>
-    <li><strong>Oceana Villas – Palm:</strong> Invest AED 4.2M → Profit AED 1.6M, <strong>38% ROI</strong>, 9 months. Strategy: waterfront scarcity + pre-launch access.</li>
-    <li><strong>Creek Waterside – DCH:</strong> Invest AED 1.9M → Profit AED 0.95M, <strong>50% ROI</strong>, ~4–6 months. Strategy: early-phase, secondary flip.</li>
-    <li><strong>Bay Square PH – Business Bay:</strong> Invest AED 3.5M → Profit AED 1.47M, <strong>42% ROI</strong>, 8 months. Strategy: high-floor premium asset.</li>
-    <li><strong>Golf Place – Dubai Hills:</strong> Invest AED 5.8M → Profit AED 2.03M, <strong>35% ROI</strong>, 12 months. Strategy: portfolio allocation, phased exits.</li>
-    <li><strong>Park View – JVC:</strong> Invest AED 1.2M → Profit AED 0.36M, <strong>30% ROI</strong>, 10 months. Strategy: guided entry-level off-plan.</li>
-  </ul>
-  <p><em>Aggregate metrics:</em> Total profits ~AED 7.67M • Avg ROI ~40% • Success rate 100% • Capital deployed ~AED 19.4M.</p>
-  `,
-                    },
-                    {
-                      id: "strategies",
-                      title: "Winning Strategies",
-                      content: `
-  <ul>
-    <li><strong>Pre-Construction Acquisition:</strong> avg ROI 35–50%, 6–12 months, low risk.</li>
-    <li><strong>Premium Location Focus:</strong> avg ROI 25–40%, 8–18 months, very low risk.</li>
-    <li><strong>Quick Turnaround Plays:</strong> avg ROI 20–35%, 4–8 months, medium risk.</li>
-    <li><strong>Emerging Location Strategy:</strong> avg ROI 40–60%, 12–24 months, medium-high risk.</li>
-  </ul>
-  `,
-                    },
-                    {
-                      id: "risk-management",
-                      title: "Risk Management: The Foundation of Consistency",
-                      content: `
-  <ul>
-    <li>RERA escrow accounts; developer track-record filters</li>
-    <li>20–30% below-market entries; multiple exit paths</li>
-    <li>Timing, supply-demand, and macro indicator monitoring</li>
-    <li>Full DLD registration compliance and legal diligence</li>
-  </ul>
-  `,
-                    },
-                    {
-                      id: "replication",
-                      title: "Replicating Success",
-                      content: `
-  <ol>
-    <li>Align strategy to risk/return profile</li>
-    <li>Identify opportunities via proprietary market screens</li>
-    <li>Execute structured acquisitions with expert guidance</li>
-    <li>Track performance and adjust to market signals</li>
-  </ol>
-  `,
-                    },
-                    {
-                      id: "next-steps",
-                      title: "Your Next Step",
-                      content: `
-  <p>Use the same system: focused locations, early entries, and feature sets that command durable premiums. 
-  Book a consultation to match you with a live pipeline of opportunities.</p>
-  `,
-                    },
-                  ],
-                },
-              },
+              id: "key-trends",
+              title: "Key Luxury Property Trends Shaping 2024",
+              content: `
+<p>Dubai’s luxury market is evolving fast. <strong>AI-powered living</strong>, 
+<strong>eco-conscious design</strong>, and <strong>wellness architecture</strong> now command concrete price premiums. 
+Waterfront supply remains scarce, sustaining a <strong>30–50% location premium</strong>.</p>
+<ul>
+  <li><strong>Smart Home Integration:</strong> 15–25% value premium; ~85% adoption in new luxury stock.</li>
+  <li><strong>Sustainable Luxury:</strong> 20–30% higher resale value; prioritized by ~70% of premium buyers.</li>
+  <li><strong>Wellness Architecture:</strong> 18–22% price premium; near 90% penetration in ultra-luxury.</li>
+  <li><strong>Private Amenities:</strong> spa/cinema/game rooms now standard in AED 20M+ assets.</li>
+  <li><strong>Waterfront Premium:</strong> sustained outperformance due to limited, trophy-grade supply.</li>
+</ul>
+`,
+            },
+            {
+              id: "smart-homes",
+              title: "The Smart Home Revolution in Luxury Properties",
+              content: `
+<p><strong>AI home automation</strong> has shifted from “nice-to-have” to baseline expectation, 
+enhancing security, convenience, and operating efficiency.</p>
+<h4>Home Automation</h4>
+<ul>
+  <li>Voice control, predictive climate, scene-based lighting, automated window treatments</li>
+</ul>
+<h4>Advanced Security</h4>
+<ul>
+  <li>Biometric access, AI video analytics, unified security + automation with mobile control</li>
+</ul>
+<h4>Wellness Tech</h4>
+<ul>
+  <li>Air quality monitoring, whole-house water filtration, acoustic optimization, circadian lighting</li>
+</ul>
+<blockquote>“Smart tech is adding 15–25% to values in the luxury segment.” — Mohamad Kodmane</blockquote>
+`,
+            },
+            {
+              id: "sustainability",
+              title: "Sustainable Luxury: The New Standard",
+              content: `
+<p>Eco-performance now sells. Buyers pay premiums for verified savings and healthier interiors.</p>
+<ul>
+  <li><strong>Energy:</strong> Solar + storage, smart metering, full LED, high-spec insulation</li>
+  <li><strong>Water:</strong> Greywater reuse, smart irrigation, low-flow fixtures, rain harvesting</li>
+  <li><strong>Materials:</strong> Certified timber, low-VOC finishes, recycled + locally-sourced elements</li>
+</ul>
+<div>
+  <em>Financial impact:</em> 20–30% higher resale, 40–60% lower OPEX, 70% faster sale time, 85% buyer preference.
+</div>
+`,
+            },
+            {
+              id: "emerging-locations",
+              title: "Emerging Premium Locations for 2024",
+              content: `
+<ul>
+  <li><strong>Dubai Creek Harbour:</strong> “Future city center” positioning; ~45% projected appreciation; waterfront + Downtown access.</li>
+  <li><strong>Palm Jumeirah:</strong> Ultra-luxury waterfront; strong scarcity premium; ~38% current year growth.</li>
+  <li><strong>Dubai Hills Estate:</strong> Family luxury; golf/parks; ~32% annual appreciation.</li>
+  <li><strong>Business Bay:</strong> Mixed-use luxury; Downtown adjacency + canal; ~28% YoY.</li>
+</ul>
+`,
+            },
+            {
+              id: "amenities",
+              title: "Premium Amenities Redefining Luxury Living",
+              content: `
+<h4>Wellness & Health</h4>
+<ul><li>Private spas, meditation rooms, pro-grade gyms, salt rooms</li></ul>
+<h4>Entertainment</h4>
+<ul><li>4K cinemas with Atmos, wine cellars, game rooms, rooftop theaters</li></ul>
+<h4>Business & Connectivity</h4>
+<ul><li>Executive offices, multi-gig fiber, meeting rooms, AI home assistants</li></ul>
+`,
+            },
+            {
+              id: "investment-opportunities",
+              title: "Luxury Property Investment Opportunities",
+              content: `
+<ul>
+  <li><strong>Early Adoption Plays:</strong> Target smart-home-led projects (ROI 25–40% in 18–24 months).</li>
+  <li><strong>Sustainable Premium:</strong> Eco-focused stock in prime areas (ROI 20–35% in 24–36 months).</li>
+  <li><strong>Wellness-Centric:</strong> Wellness-amenity heavy assets (ROI 30–45% in 12–18 months).</li>
+</ul>
+<p><em>Key considerations:</em> time entries early, select limited-supply locations, and prioritize features with durable premiums.</p>
+`,
+            },
+            {
+              id: "future-outlook",
+              title: "Future Outlook: 2024–2025",
+              content: `
+<ul>
+  <li>Luxury price appreciation: <strong>~15–20% p.a.</strong></li>
+  <li>Rental yields: <strong>~6–8% gross</strong></li>
+  <li>International buyer share: <strong>~80–85%</strong></li>
+  <li>Supply absorption: <strong>~90–95%</strong></li>
+</ul>
+<p><em>Drivers:</em> global wealth migration, infrastructure build-out, diversified GDP growth, and political stability.</p>
+`,
+            },
+          ],
+        },
+      },
+    },
+
+    // === Article 6
+    {
+      id: 6,
+      slug: "success-stories",
+      title: "Investor Success Stories",
+      description:
+        "Verified case studies from Dubai: real investors achieving 30–50% ROI with disciplined strategy and risk control.",
+      image:
+        "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2080&q=80",
+      readTime: "9 min read",
+      category: "Case Studies",
+      cta: "See Case Studies",
+      articleData: {
+        hero: {
+          title:
+            "Dubai Real Estate Success Stories: Verified 30–50% ROI Case Studies",
+          subtitle:
+            "Real investors, real numbers. Strategy, timing, and location selection that consistently produced outsized results.",
+          image:
+            "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=2080&q=80",
+          readTime: "9 min read",
+          category: "Case Studies",
+        },
+        tableOfContents: [
+          "Proven Investment Philosophy",
+          "Detailed Case Studies",
+          "Winning Strategies",
+          "Risk Management",
+          "Replicating Success",
+          "Your Next Step",
+        ],
+        content: {
+          sections: [
+            {
+              id: "investment-philosophy",
+              title: "The Proven Investment Philosophy Behind the Results",
+              content: `
+<ul>
+  <li><strong>Data-Driven Decisions:</strong> market comps, velocity, and developer screens</li>
+  <li><strong>Prime Location Focus:</strong> established & emerging premium corridors</li>
+  <li><strong>Risk-Mitigated Structures:</strong> multiple exits, escrow, below-market entries</li>
+  <li><strong>Strategic Timing:</strong> early-phase allocations, pre-launch access</li>
+</ul>
+`,
+            },
+            {
+              id: "case-studies",
+              title: "Selected Case Studies (Verified & DLD-Registered)",
+              content: `
+<ul>
+  <li><strong>Burj Crown – Downtown:</strong> Invest AED 2.8M → Profit AED 1.26M, <strong>45% ROI</strong>, ~18 months. Strategy: pre-construction entry, early exit.</li>
+  <li><strong>Oceana Villas – Palm:</strong> Invest AED 4.2M → Profit AED 1.6M, <strong>38% ROI</strong>, 9 months. Strategy: waterfront scarcity + pre-launch access.</li>
+  <li><strong>Creek Waterside – DCH:</strong> Invest AED 1.9M → Profit AED 0.95M, <strong>50% ROI</strong>, ~4–6 months. Strategy: early-phase, secondary flip.</li>
+  <li><strong>Bay Square PH – Business Bay:</strong> Invest AED 3.5M → Profit AED 1.47M, <strong>42% ROI</strong>, 8 months. Strategy: high-floor premium asset.</li>
+  <li><strong>Golf Place – Dubai Hills:</strong> Invest AED 5.8M → Profit AED 2.03M, <strong>35% ROI</strong>, 12 months. Strategy: portfolio allocation, phased exits.</li>
+  <li><strong>Park View – JVC:</strong> Invest AED 1.2M → Profit AED 0.36M, <strong>30% ROI</strong>, 10 months. Strategy: guided entry-level off-plan.</li>
+</ul>
+<p><em>Aggregate metrics:</em> Total profits ~AED 7.67M • Avg ROI ~40% • Success rate 100% • Capital deployed ~AED 19.4M.</p>
+`,
+            },
+            {
+              id: "strategies",
+              title: "Winning Strategies",
+              content: `
+<ul>
+  <li><strong>Pre-Construction Acquisition:</strong> avg ROI 35–50%, 6–12 months, low risk.</li>
+  <li><strong>Premium Location Focus:</strong> avg ROI 25–40%, 8–18 months, very low risk.</li>
+  <li><strong>Quick Turnaround Plays:</strong> avg ROI 20–35%, 4–8 months, medium risk.</li>
+  <li><strong>Emerging Location Strategy:</strong> avg ROI 40–60%, 12–24 months, medium-high risk.</li>
+</ul>
+`,
+            },
+            {
+              id: "risk-management",
+              title: "Risk Management: The Foundation of Consistency",
+              content: `
+<ul>
+  <li>RERA escrow accounts; developer track-record filters</li>
+  <li>20–30% below-market entries; multiple exit paths</li>
+  <li>Timing, supply-demand, and macro indicator monitoring</li>
+  <li>Full DLD registration compliance and legal diligence</li>
+</ul>
+`,
+            },
+            {
+              id: "replication",
+              title: "Replicating Success",
+              content: `
+<ol>
+  <li>Align strategy to risk/return profile</li>
+  <li>Identify opportunities via proprietary market screens</li>
+  <li>Execute structured acquisitions with expert guidance</li>
+  <li>Track performance and adjust to market signals</li>
+</ol>
+`,
+            },
+            {
+              id: "next-steps",
+              title: "Your Next Step",
+              content: `
+<p>Use the same system: focused locations, early entries, and feature sets that command durable premiums. 
+Book a consultation to match you with a live pipeline of opportunities.</p>
+`,
             },
           ],
         },
