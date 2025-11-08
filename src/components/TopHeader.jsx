@@ -216,7 +216,7 @@ export default function TopHeader() {
                 id: 401,
                 title: "Sobha SeaHaven Penthouse",
                 slug: "seahaven-penthouse",
-                image: `${CDN}/seahaven/hero-bg.jpg`,
+                image: `${CDN}/sky-parks/exterior-night-01.jpg`,
                 description: "Ultra-luxury penthouse with sea views",
               },
             ],

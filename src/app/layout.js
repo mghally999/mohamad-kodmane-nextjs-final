@@ -1,6 +1,7 @@
 import "./globals.css";
 import Footer from "../components/Footer";
 import TopHeader from "@/components/TopHeader";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 // import MegaMenu from "@/components/MegaMenu";
 
 export const metadata = {
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
         <TopHeader />
         {children}
         <Footer />
+        <FloatingWhatsApp />
       </body>
     </html>
   );

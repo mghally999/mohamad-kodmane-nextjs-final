@@ -3,8 +3,20 @@ import React from "react";
 import styles from "@/styles/Header.module.css";
 
 export default function Header() {
+  const CDN = "https://luxury-real-estate-media.b-cdn.net";
+
   return (
     <header className={styles.header}>
+      {/* Background Image with Overlay */}
+      <div
+        className={styles.heroBackground}
+        style={{
+          backgroundImage: `url('${CDN}/aquamont/intro-main.png')`,
+        }}
+      >
+        <div className={styles.heroOverlay}></div>
+      </div>
+
       <div className={styles.container}>
         <div className={styles.content}>
           {/* CENTERED TITLE SECTION */}

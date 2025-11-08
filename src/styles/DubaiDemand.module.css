@@ -1,0 +1,681 @@
+/* DubaiDemand.module.css - ELEGANT ENHANCEMENT */
+/* Import Fonts */
+@import url("https://fonts.cdnfonts.com/css/chronicle-display");
+@import url("https://fonts.cdnfonts.com/css/ringside");
+
+.demandSection {
+  position: relative;
+  min-height: 100vh;
+  background: #efefef;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 40px;
+  font-family: "Ringside", sans-serif;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.demandSection.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Background Elements */
+.backgroundElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.luxuryBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.3;
+  /* filter: grayscale(100%) brightness(110%); */
+  transition: opacity 1.5s ease;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(239, 239, 239, 0.9) 0%,
+    rgba(239, 239, 239, 0.95) 100%
+  );
+}
+
+.gridLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(
+      rgba(215, 180, 106, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(215, 180, 106, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.3;
+}
+
+.container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Enhanced Main Header */
+.mainHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.headerVisual {
+  flex-shrink: 0;
+}
+
+.demandVisual {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Elegant Image-based Chart */
+.imageChart {
+  display: flex;
+  align-items: end;
+  gap: 25px;
+  height: 200px;
+}
+
+.chartColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.chartImage {
+  width: 80px;
+  height: 160px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.5s ease;
+  border: 2px solid rgba(215, 180, 106, 0.3);
+}
+
+.chartImage:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.chartOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 8px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chartOverlay[data-type="demand"] {
+  background: linear-gradient(transparent, rgba(215, 180, 106, 0.9));
+  color: #000000;
+}
+
+.chartOverlay[data-type="supply"] {
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+  color: #000000;
+}
+
+.chartPercentage {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.chartLabel {
+  font-family: "Ringside", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chartArrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #d7b46a;
+  animation: bounceArrow 2s ease-in-out infinite;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes bounceArrow {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -60%) scale(1.1);
+  }
+}
+
+.headerContent {
+  max-width: 600px;
+}
+
+.sectionTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 25px 0;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.goldDivider {
+  width: 100px;
+  height: 2px;
+  background: #d7b46a;
+  margin: 0 0 30px 0;
+}
+
+.sectionDescription {
+  font-family: "Ringside", sans-serif;
+  color: #000000;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Enhanced Stats Section */
+.statsSection {
+  margin-bottom: 80px;
+}
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 30px;
+  /* background: #ffffff; */
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statImageBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
+  transition: all 0.6s ease;
+  /* filter: grayscale(100%) brightness(120%); */
+}
+
+.statItem.active .statImageBackground,
+.statItem:hover .statImageBackground {
+  opacity: 0.06;
+  /* filter: grayscale(50%) brightness(110%); */
+}
+
+.statItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d7b46a, #c4a15d);
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.statItem.active::before,
+.statItem:hover::before {
+  transform: scaleX(1);
+}
+
+.statItem.active,
+.statItem:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+.statVisual {
+  position: relative;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.statCircle {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d7b46a, #b8943c);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(215, 180, 106, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.statNumber {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statSuffix {
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.statPulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(215, 180, 106, 0.2);
+  animation: statPulse 2s ease-in-out infinite;
+}
+
+.statItem.active .statPulse {
+  animation: statPulseActive 1.5s ease-in-out infinite;
+}
+
+@keyframes statPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.2;
+  }
+}
+
+@keyframes statPulseActive {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+.statContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.statLabel {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000000;
+  line-height: 1.4;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Enhanced Result Section */
+.resultSection {
+  margin-bottom: 60px;
+}
+
+.resultCard {
+  /* background: #ffffff; */
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(215, 180, 106, 0.3);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.resultCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d7b46a, #c4a15d);
+}
+
+.resultIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(215, 180, 106, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d7b46a;
+  flex-shrink: 0;
+  border: 1px solid rgba(215, 180, 106, 0.2);
+}
+
+.resultContent {
+  flex: 1;
+}
+
+.resultTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.resultDescription {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.resultGraphic {
+  flex-shrink: 0;
+}
+
+.trendVisualization {
+  position: relative;
+  width: 180px;
+  height: 80px;
+}
+
+.trendPoint {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #d7b46a;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.trendPoint:nth-child(1) {
+  top: 10px;
+  left: 10px;
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.trendPoint:nth-child(2) {
+  top: 25px;
+  left: 70px;
+  animation: floatGentle 4s ease-in-out infinite 1.3s;
+}
+
+.trendPoint:nth-child(3) {
+  top: 5px;
+  left: 130px;
+  animation: floatGentle 4s ease-in-out infinite 2.6s;
+}
+
+@keyframes floatGentle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.trendLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  height: 40px;
+  z-index: 1;
+}
+
+.trendDot {
+  flex: 1;
+  height: 8px;
+  background: linear-gradient(to top, #d7b46a, #b8943c);
+  border-radius: 4px 4px 0 0;
+  animation: trendRise 2s ease-in-out infinite;
+  position: relative;
+}
+
+.trendDot:nth-child(1) {
+  animation-delay: 0s;
+  height: 12px;
+}
+.trendDot:nth-child(2) {
+  animation-delay: 0.2s;
+  height: 20px;
+}
+.trendDot:nth-child(3) {
+  animation-delay: 0.4s;
+  height: 28px;
+}
+.trendDot:nth-child(4) {
+  animation-delay: 0.6s;
+  height: 36px;
+}
+.trendDot:nth-child(5) {
+  animation-delay: 0.8s;
+  height: 44px;
+}
+
+@keyframes trendRise {
+  0%,
+  100% {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .demandSection {
+    padding: 80px 30px;
+  }
+
+  .mainHeader {
+    gap: 40px;
+  }
+
+  .statsContainer {
+    gap: 30px;
+  }
+
+  .resultCard {
+    padding: 40px;
+    gap: 30px;
+  }
+
+  .demandVisual {
+    width: 240px;
+    height: 240px;
+  }
+
+  .imageChart {
+    height: 180px;
+  }
+
+  .chartImage {
+    width: 70px;
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .demandSection {
+    padding: 60px 20px;
+  }
+
+  .mainHeader {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .headerVisual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .resultCard {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .statCircle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .statPulse {
+    width: 120px;
+    height: 120px;
+  }
+
+  .trendVisualization {
+    width: 150px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .demandSection {
+    padding: 50px 15px;
+  }
+
+  .statsContainer {
+    gap: 15px;
+  }
+
+  .statItem {
+    padding: 30px 20px;
+  }
+
+  .resultCard {
+    padding: 25px 20px;
+  }
+
+  .resultTitle {
+    font-size: 1.7rem;
+  }
+
+  .resultDescription {
+    font-size: 1.1rem;
+  }
+
+  .demandVisual {
+    width: 200px;
+    height: 200px;
+  }
+
+  .imageChart {
+    height: 150px;
+  }
+
+  .chartImage {
+    width: 60px;
+    height: 120px;
+  }
+}
