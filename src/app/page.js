@@ -11,6 +11,7 @@ import DubaiDemand from "@/components/DubaiDemand";
 import DubaiEconomicGrowth from "@/components/DubaiEconomicGrowth";
 import PortfolioInvestment from "@/components/PortfolioInvestment";
 import CapitalGrowth from "@/components/CapitalGrowth";
+import OurServices from "@/components/OurServices";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
       <CapitalGrowth /> {/* Examples of capital growth - DXB Interact */}
       <DubaiDemand /> {/* Unprecedented demand */}
       <DubaiEconomicGrowth /> {/* Economic growth + Why invest in Dubai */}
+      <OurServices />
       <MiniCallbackForm /> {/* Services + Contact */}
       {/* <MissionVision /> */}
       {/* <AboutMohamadKodmane /> */}
