@@ -320,10 +320,10 @@ export default function OurServices() {
                     )}
                   </div>
 
-                  <div className={styles.cardHover}>
+                  {/* <div className={styles.cardHover}>
                     <span>EXPLORE SERVICE</span>
                     <div className={styles.arrowIcon}>→</div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
