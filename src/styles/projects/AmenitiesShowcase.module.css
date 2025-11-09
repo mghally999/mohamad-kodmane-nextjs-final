@@ -1,9 +1,12 @@
-/* Luxury Amenities Showcase - Compact & Elegant */
+/* Import Fonts */
+@import url("https://fonts.cdnfonts.com/css/chronicle-display");
+@import url("https://fonts.cdnfonts.com/css/ringside");
+
+/* Luxury Amenities Showcase - Sobha Realty Style */
 .amenitiesSection {
-  background: #0b0b0b;
-  padding: 60px 20px;
-  border-top: 1px solid rgba(215, 180, 106, 0.1);
-  border-bottom: 1px solid rgba(215, 180, 106, 0.1);
+  background: #efefef;
+  padding: 80px 20px;
+  position: relative;
 }
 
 .container {
@@ -11,38 +14,36 @@
   margin: 0 auto;
 }
 
-/* Title */
+/* Title - Sobha Style */
 .title {
-  font-family: var(--font-serif, "Georgia", serif);
-  font-size: 2.5rem;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
   font-weight: 300;
   text-align: center;
-  color: #ffffff;
-  margin-bottom: 50px;
+  color: #000000;
+  margin-bottom: 60px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, #ffffff 0%, #d7b46a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Compact Grid */
 .amenitiesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-bottom: 50px;
+  gap: 25px;
+  margin-bottom: 60px;
 }
 
-/* Amenity Card */
+/* Amenity Card - Sobha Soft Style */
 .amenityCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(215, 180, 106, 0.2);
   border-radius: 12px;
-  padding: 25px 15px;
+  padding: 30px 20px;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -58,7 +59,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(215, 180, 106, 0.1),
+    rgba(215, 180, 106, 0.05),
     transparent
   );
   transition: left 0.6s ease;
@@ -70,133 +71,176 @@
 
 .amenityCard:hover,
 .amenityCard.active {
-  background: rgba(215, 180, 106, 0.05);
-  border-color: rgba(215, 180, 106, 0.3);
+  background: rgba(215, 180, 106, 0.02);
+  border-color: rgba(215, 180, 106, 0.4);
   transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 .iconContainer {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 15px;
-  background: rgba(215, 180, 106, 0.1);
-  border: 1px solid rgba(215, 180, 106, 0.2);
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: rgba(215, 180, 106, 0.08);
+  border: 1px solid rgba(215, 180, 106, 0.15);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .amenityCard:hover .iconContainer {
-  background: rgba(215, 180, 106, 0.15);
-  border-color: rgba(215, 180, 106, 0.4);
-  transform: scale(1.1);
+  background: rgba(215, 180, 106, 0.12);
+  border-color: rgba(215, 180, 106, 0.3);
+  transform: scale(1.05);
 }
 
 .icon {
-  font-size: 1.5rem;
-  filter: grayscale(0.7) brightness(1.2);
+  font-size: 1.8rem;
+  color: #d7b46a;
   transition: all 0.3s ease;
 }
 
 .amenityCard:hover .icon {
-  filter: grayscale(0) brightness(1.5);
+  transform: scale(1.1);
 }
 
 .label {
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #ffffff;
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  line-height: 1.3;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
   margin: 0;
   transition: all 0.3s ease;
+  -webkit-font-smoothing: antialiased;
 }
 
 .amenityCard:hover .label {
   color: #d7b46a;
 }
 
-/* CTA Buttons */
+/* CTA Buttons - Sobha Style */
 .ctaContainer {
   display: flex;
   justify-content: center;
   gap: 20px;
+  margin-top: 40px;
 }
 
 .ctaButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, #d7b46a 0%, #b89444 100%);
-  color: #000000;
-  border: none;
+  gap: 12px;
+  padding: 16px 32px;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #000000;
   border-radius: 25px;
-  font-family: var(--font-sans, "Inter", sans-serif);
+  font-family: "Ringside", sans-serif;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 .ctaButton:hover {
+  background: #d7b46a;
+  border-color: #d7b46a;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(215, 180, 106, 0.3);
+}
+
+.ctaPrimary {
+  background: #d7b46a;
+  border-color: #d7b46a;
+  color: #000000;
+}
+
+.ctaPrimary:hover {
+  background: #c4a15d;
+  border-color: #c4a15d;
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(215, 180, 106, 0.4);
+}
+
+.ctaIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .ctaIcon {
+  transform: translateX(3px);
+}
+
+.ctaText {
+  font-weight: 600;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
   .amenitiesGrid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .amenitiesSection {
+    padding: 70px 20px;
   }
 }
 
 @media (max-width: 768px) {
   .amenitiesSection {
-    padding: 40px 15px;
+    padding: 60px 15px;
   }
 
   .title {
-    font-size: 2rem;
-    margin-bottom: 40px;
+    font-size: 2.2rem;
+    margin-bottom: 50px;
   }
 
   .amenitiesGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 18px;
+    margin-bottom: 50px;
   }
 
   .amenityCard {
-    padding: 20px 10px;
+    padding: 25px 15px;
   }
 
   .iconContainer {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 12px;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 18px;
   }
 
   .icon {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
   .label {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   .ctaContainer {
     flex-direction: column;
     align-items: center;
+    gap: 15px;
   }
 
   .ctaButton {
-    width: 200px;
+    width: 220px;
     justify-content: center;
   }
 }
@@ -204,23 +248,26 @@
 @media (max-width: 480px) {
   .amenitiesGrid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 15px;
   }
 
   .amenityCard {
-    padding: 15px 10px;
+    padding: 20px 15px;
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .amenitiesSection {
+    padding: 50px 15px;
   }
 }
-/* Add these to your existing CSS */
 
 /* Accessibility Improvements */
 .amenityCard {
-  /* Add these to your existing .amenityCard */
-  outline: none; /* Remove default outline */
+  outline: none;
 }
 
 .amenityCard:focus {
@@ -229,40 +276,41 @@
 }
 
 .amenityCard:focus::before {
-  left: 100%; /* Same hover effect for keyboard focus */
+  left: 100%;
 }
 
 .amenityCard:focus,
 .amenityCard:focus .iconContainer,
 .amenityCard:focus .icon,
 .amenityCard:focus .label {
-  /* Same styles as hover for focus state */
-  background: rgba(215, 180, 106, 0.05);
-  border-color: rgba(215, 180, 106, 0.3);
+  background: rgba(215, 180, 106, 0.02);
+  border-color: rgba(215, 180, 106, 0.4);
   transform: translateY(-5px);
 }
 
 .amenityCard:focus .iconContainer {
-  background: rgba(215, 180, 106, 0.15);
-  border-color: rgba(215, 180, 106, 0.4);
-  transform: scale(1.1);
+  background: rgba(215, 180, 106, 0.12);
+  border-color: rgba(215, 180, 106, 0.3);
+  transform: scale(1.05);
 }
 
 .amenityCard:focus .icon {
-  filter: grayscale(0) brightness(1.5);
+  transform: scale(1.1);
 }
 
 .amenityCard:focus .label {
   color: #d7b46a;
 }
 
-/* Optional: Add reduced motion support */
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .amenityCard,
   .amenityCard::before,
   .iconContainer,
   .icon,
-  .label {
+  .label,
+  .ctaButton,
+  .ctaIcon {
     transition: none;
   }
 
@@ -270,4 +318,207 @@
   .amenityCard:focus {
     transform: none;
   }
+
+  .ctaButton:hover {
+    transform: none;
+  }
+}
+/* Amenity Card - Sobha Soft Style with Background Colors */
+.amenityCard {
+  background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+  border: 1px solid rgba(215, 180, 106, 0.15);
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.amenityCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(215, 180, 106, 0.08),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.amenityCard:hover::before {
+  left: 100%;
+}
+
+.amenityCard:hover,
+.amenityCard.active {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-color: rgba(215, 180, 106, 0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.iconContainer {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.amenityCard:hover .iconContainer {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(215, 180, 106, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(215, 180, 106, 0.15);
+}
+
+/* Alternative subtle background variations for visual interest */
+.amenityCard:nth-child(4n + 1) {
+  background: linear-gradient(135deg, #f9f9f9 0%, #f2f2f2 100%);
+}
+
+.amenityCard:nth-child(4n + 2) {
+  background: linear-gradient(135deg, #fafafa 0%, #f3f3f3 100%);
+}
+
+.amenityCard:nth-child(4n + 3) {
+  background: linear-gradient(135deg, #f8f8f8 0%, #f1f1f1 100%);
+}
+
+.amenityCard:nth-child(4n + 4) {
+  background: linear-gradient(135deg, #f7f7f7 0%, #f0f0f0 100%);
+}
+
+/* Hover states for all variations */
+.amenityCard:nth-child(4n + 1):hover {
+  background: linear-gradient(135deg, #f6f6f6 0%, #e9e9e9 100%);
+}
+
+.amenityCard:nth-child(4n + 2):hover {
+  background: linear-gradient(135deg, #f7f7f7 0%, #eaeaea 100%);
+}
+
+.amenityCard:nth-child(4n + 3):hover {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+}
+
+.amenityCard:nth-child(4n + 4):hover {
+  background: linear-gradient(135deg, #f4f4f4 0%, #e7e7e7 100%);
+}
+
+/* Focus states */
+.amenityCard:focus {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-color: rgba(215, 180, 106, 0.4);
+  outline: 2px solid #d7b46a;
+  outline-offset: 2px;
+}
+
+/* Amenity Card - Ultra Subtle Sobha Style */
+.amenityCard {
+  background: rgba(248, 248, 248, 0.7);
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.amenityCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(215, 180, 106, 0.05),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.amenityCard:hover::before {
+  left: 100%;
+}
+
+.amenityCard:hover,
+.amenityCard.active {
+  background: rgba(245, 245, 245, 0.9);
+  border-color: rgba(215, 180, 106, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Very subtle background variations */
+.amenityCard:nth-child(4n + 1) {
+  background: rgba(249, 249, 249, 0.7);
+}
+
+.amenityCard:nth-child(4n + 2) {
+  background: rgba(250, 250, 250, 0.7);
+}
+
+.amenityCard:nth-child(4n + 3) {
+  background: rgba(248, 248, 248, 0.7);
+}
+
+.amenityCard:nth-child(4n + 4) {
+  background: rgba(247, 247, 247, 0.7);
+}
+
+.amenityCard:nth-child(4n + 1):hover {
+  background: rgba(246, 246, 246, 0.9);
+}
+
+.amenityCard:nth-child(4n + 2):hover {
+  background: rgba(247, 247, 247, 0.9);
+}
+
+.amenityCard:nth-child(4n + 3):hover {
+  background: rgba(245, 245, 245, 0.9);
+}
+
+.amenityCard:nth-child(4n + 4):hover {
+  background: rgba(244, 244, 244, 0.9);
+}
+
+.iconContainer {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(215, 180, 106, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+}
+
+.amenityCard:hover .iconContainer {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(215, 180, 106, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(215, 180, 106, 0.1);
 }

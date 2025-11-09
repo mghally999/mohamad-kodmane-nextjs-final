@@ -1,0 +1,854 @@
+/* Import Luxury Fonts */
+@import url("https://fonts.cdnfonts.com/css/chronicle-display");
+@import url("https://fonts.cdnfonts.com/css/ringside");
+
+.contactSection {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  padding: 100px 0;
+  font-family: "Ringside", sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.contactSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #d7b46a, transparent);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Luxury Header */
+.header {
+  text-align: center;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.headerContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 15px 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  color: #d7b46a;
+  margin: 0 0 25px 0;
+  letter-spacing: 0.05em;
+}
+
+.headerDescription {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Premium Content Grid */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Left Panel - Luxury Project Showcase */
+.projectShowcase {
+  background: linear-gradient(145deg, #ffffff 0%, #fefefe 100%);
+  border: 1px solid rgba(215, 180, 106, 0.15);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.projectShowcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d7b46a, #c5a23e, #d7b46a);
+}
+
+.showcaseHeader {
+  margin-bottom: 35px;
+}
+
+.developerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(215, 180, 106, 0.1);
+  color: #d7b46a;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 15px;
+  border: 1px solid rgba(215, 180, 106, 0.2);
+}
+
+.badgeIcon {
+  font-size: 0.9rem;
+}
+
+.showcaseTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.projectStatus {
+  background: #000000;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.showcaseLocation {
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666;
+  margin: 0;
+}
+
+/* Premium Features */
+.premiumFeatures {
+  margin-bottom: 35px;
+}
+
+.featuresTitle {
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-left: 15px;
+}
+
+.featuresTitle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background: #d7b46a;
+  border-radius: 2px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.premiumFeature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: rgba(215, 180, 106, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  transition: all 0.3s ease;
+}
+
+.premiumFeature:hover {
+  background: rgba(215, 180, 106, 0.1);
+  transform: translateY(-2px);
+}
+
+.featureIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.featureText {
+  font-family: "Ringside", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.3;
+}
+
+/* Investment Highlights */
+.investmentHighlights {
+  margin-bottom: 35px;
+}
+
+.highlightTitle {
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-left: 15px;
+}
+
+.highlightTitle::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 16px;
+  background: #d7b46a;
+  border-radius: 2px;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.highlightItem {
+  text-align: center;
+  padding: 20px 15px;
+  background: rgba(215, 180, 106, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+}
+
+.highlightValue {
+  display: block;
+  font-family: "Ringside", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #d7b46a;
+  margin-bottom: 5px;
+}
+
+.highlightLabel {
+  display: block;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Action Panel */
+.actionPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.actionBtn {
+  padding: 16px 24px;
+  background: transparent;
+  border: 2px solid #d7b46a;
+  border-radius: 12px;
+  color: #000000;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.actionBtn:hover {
+  background: #d7b46a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(215, 180, 106, 0.3);
+}
+
+.primaryAction {
+  background: #d7b46a;
+  color: #000000;
+}
+
+.primaryAction:hover {
+  background: #c5a23e;
+  border-color: #c5a23e;
+}
+
+/* Right Panel - Luxury Contact Form */
+.contactForm {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 50px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  position: relative;
+}
+
+.contactForm::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #d7b46a, #c5a23e, #d7b46a);
+  border-radius: 20px 20px 0 0;
+}
+
+.formHeader {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.formTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 15px 0;
+}
+
+.formSubtitle {
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Form Grid */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.labelText {
+  font-family: "Ringside", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.required {
+  color: #e74c3c;
+  font-size: 0.8rem;
+}
+
+.input,
+.select {
+  padding: 16px 20px;
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  border-radius: 10px;
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #000000;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input:focus,
+.select:focus {
+  border-color: #d7b46a;
+  box-shadow: 0 0 0 3px rgba(215, 180, 106, 0.1);
+  transform: translateY(-1px);
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+/* Phone Input */
+.phoneInput {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.phoneInput:focus-within {
+  border-color: #d7b46a;
+  box-shadow: 0 0 0 3px rgba(215, 180, 106, 0.1);
+}
+
+.phonePrefix {
+  padding: 16px 20px;
+  background: rgba(215, 180, 106, 0.05);
+  border-right: 1px solid rgba(215, 180, 106, 0.2);
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.phoneField {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #000000;
+  background: transparent;
+  outline: none;
+}
+
+.phoneField::placeholder {
+  color: #999;
+}
+
+/* Contact Method */
+.contactMethod {
+  margin-bottom: 30px;
+}
+
+.contactLabel {
+  display: block;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contactOptions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px 20px;
+  background: rgba(215, 180, 106, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.radioOption:hover {
+  background: rgba(215, 180, 106, 0.1);
+  transform: translateY(-2px);
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioCustom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(215, 180, 106, 0.3);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.radioInput:checked + .radioCustom {
+  border-color: #d7b46a;
+  background: #d7b46a;
+}
+
+.radioInput:checked + .radioCustom::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.radioText {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #000000;
+}
+
+.radioIcon {
+  font-size: 1.1rem;
+}
+
+/* Checkboxes */
+.checkboxGroup {
+  margin-bottom: 30px;
+}
+
+.checkboxOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  padding: 15px;
+  background: rgba(215, 180, 106, 0.03);
+  border-radius: 10px;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  transition: all 0.3s ease;
+}
+
+.checkboxOption:hover {
+  background: rgba(215, 180, 106, 0.08);
+}
+
+.checkboxInput {
+  display: none;
+}
+
+.checkboxCustom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(215, 180, 106, 0.3);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkboxInput:checked + .checkboxCustom {
+  border-color: #d7b46a;
+  background: #d7b46a;
+}
+
+.checkboxInput:checked + .checkboxCustom::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.checkboxText {
+  font-family: "Ringside", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+}
+
+/* Security Notice */
+.securityNotice {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(215, 180, 106, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  margin-bottom: 30px;
+}
+
+.securityIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.securityText {
+  font-family: "Ringside", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #666;
+  line-height: 1.5;
+}
+
+.securityLink {
+  color: #d7b46a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.securityLink:hover {
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.submitButton {
+  width: 100%;
+  padding: 20px 30px;
+  background: linear-gradient(135deg, #d7b46a 0%, #c5a23e 100%);
+  border: none;
+  border-radius: 12px;
+  color: #000000;
+  font-family: "Ringside", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.submitButton:hover::before {
+  left: 100%;
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(215, 180, 106, 0.4);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submitButton.submitting {
+  background: #c5a23e;
+}
+
+.submitIcon {
+  font-size: 1.2rem;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Trust Indicators */
+.trustIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(215, 180, 106, 0.1);
+}
+
+.trustItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.trustIcon {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .contentGrid {
+    gap: 40px;
+  }
+
+  .contactForm {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .projectShowcase,
+  .contactForm {
+    padding: 30px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contactOptions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .radioOption {
+    min-width: auto;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .trustIndicators {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 40px 0;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .projectShowcase,
+  .contactForm {
+    padding: 25px 20px;
+  }
+
+  .showcaseTitle {
+    font-size: 1.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .actionBtn {
+    padding: 14px 20px;
+    font-size: 0.85rem;
+  }
+}

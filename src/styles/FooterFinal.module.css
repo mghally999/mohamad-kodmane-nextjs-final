@@ -1,0 +1,270 @@
+/* FooterFinal.module.css */
+@import url("https://fonts.cdnfonts.com/css/chronicle-display");
+@import url("https://fonts.cdnfonts.com/css/ringside");
+
+.footer {
+  background: #efefef;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  color: #212529;
+}
+
+.inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 70px 24px 30px;
+}
+
+/* Brand - Mohamad Kodmane */
+.brandWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.brandLink {
+  text-decoration: none;
+}
+
+.brandLogo {
+  height: auto;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+.brandText {
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #000;
+  font-family: "Chronicle Display", serif;
+}
+
+.brandMain {
+  display: block;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.brandSub {
+  display: block;
+  font-size: clamp(14px, 2vw, 18px);
+  letter-spacing: 0.25em;
+  font-weight: 300;
+}
+
+/* Columns */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.06); */
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.06); */
+}
+
+/* 4 equal columns on desktop */
+.col {
+  grid-column: span 3;
+  padding: 12px 16px;
+}
+
+.colTitle {
+  font-family: "Ringside", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 1;
+}
+
+.linkItem {
+  margin: 16px 0;
+  padding: 8px 0;
+}
+
+.developerName {
+  font-family: "Ringside", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #d7b46a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.link {
+  display: inline;
+  text-decoration: none;
+  font-family: "Ringside", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(33, 37, 41);
+  line-height: 1.4;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #d7b46a;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Contact Section */
+.contactSection {
+  padding: 35px 0 25px;
+}
+
+.contactInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+}
+
+.contactIcon {
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(215, 180, 106, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contactDetails {
+  flex: 1;
+}
+
+.contactLabel {
+  font-family: "Ringside", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.contactValue {
+  font-family: "Ringside", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.4;
+}
+
+/* Legal */
+.legal {
+  padding-top: 25px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  font-family: "Ringside", sans-serif;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .columns {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 24px;
+  }
+  .col {
+    grid-column: span 4;
+  }
+
+  .contactInfo {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 50px 18px 25px;
+  }
+
+  .columns {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+
+  .col {
+    grid-column: 1 / -1;
+    padding: 8px 0;
+  }
+
+  .brandMain {
+    font-size: 20px;
+  }
+
+  .brandSub {
+    font-size: 16px;
+  }
+
+  .contactItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .contactIcon {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding: 40px 15px 20px;
+  }
+
+  .brandMain {
+    font-size: 18px;
+  }
+
+  .brandSub {
+    font-size: 14px;
+  }
+
+  .colTitle {
+    font-size: 12px;
+  }
+
+  .link {
+    font-size: 13px;
+  }
+
+  .contactValue {
+    font-size: 13px;
+  }
+
+  .legal {
+    font-size: 12px;
+  }
+}

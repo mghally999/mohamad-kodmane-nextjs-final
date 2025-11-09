@@ -10,7 +10,7 @@ export default function HeroVideo() {
     <section className={styles.videoSection}>
       <div className={styles.container}>
         {/* SECTION HEADER */}
-        <div className={styles.sectionHeader}>
+        {/* <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>
             Investment Philosophy & Vision
           </h2>
@@ -21,7 +21,7 @@ export default function HeroVideo() {
             for building wealth through off-plan properties and diversified real
             estate portfolios.
           </p>
-        </div>
+        </div> */}
 
         {/* VIDEO COMPONENT */}
         <div className={styles.videoContainer}>
@@ -75,9 +75,9 @@ export default function HeroVideo() {
 
         {/* VIDEO CAPTION */}
         <div className={styles.videoCaption}>
-          <p className={styles.captionMain}>
+          {/* <p className={styles.captionMain}>
             "Building Wealth Through Strategic Real Estate Investments"
-          </p>
+          </p> */}
           <p className={styles.captionSub}>
             Exclusive insights on off-plan investments and portfolio management
           </p>

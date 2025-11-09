@@ -39,7 +39,7 @@ export default function TopHeader() {
       hasMegaMenu: true,
     },
     { href: "/articles", label: "Market Insights", type: "primary" },
-    { href: "/contact", label: "Consultation", type: "cta" },
+    // { href: "/contact", label: "Consultation", type: "cta" },
   ];
 
   // ===== ALL CDN IMAGES (Bunny) =====
@@ -579,14 +579,14 @@ export default function TopHeader() {
           )}
 
           {/* Desktop Contact */}
-          <div className={styles.desktopContact}>
+          {/* <div className={styles.desktopContact}>
             <div className={styles.contactBadge}>
               <div className={styles.contactInfo}>
                 <div className={styles.contactLabel}>Direct Line</div>
                 <div className={styles.contactNumber}>+971 56 666 5560</div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <button

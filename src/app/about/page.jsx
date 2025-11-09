@@ -115,7 +115,7 @@ export default function AboutPage() {
 
             <div className={styles.missionImage}>
               <Image
-                src={`${CDN}/sky-parks/exterior-night-01.jpg`}
+                src="/mohamad-kodmane.png"
                 alt="Dubai Skyline - Mohamad Kodmane's Investment Vision"
                 fill
                 className={styles.image}

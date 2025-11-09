@@ -4,8 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import styles from "@/styles/projects/AmenitiesShowcase.module.css";
 
 /**
- * Universal Amenities Showcase - Works for ALL projects
- * Completely generic with data-driven content
+ * Universal Amenities Showcase - Sobha Realty Style
  */
 export default function AmenitiesShowcase({ data, projectData }) {
   // SAFETY CHECK - if no data, return nothing
@@ -41,7 +40,7 @@ export default function AmenitiesShowcase({ data, projectData }) {
       />
 
       <div className={styles.container}>
-        {/* Title */}
+        {/* Title - Sobha Style */}
         <h2 className={styles.title}>{amenitiesData.title}</h2>
 
         {/* Compact Grid */}
@@ -70,7 +69,7 @@ export default function AmenitiesShowcase({ data, projectData }) {
           ))}
         </div>
 
-        {/* Optional CTA Section */}
+        {/* Optional CTA Section - Sobha Style */}
         {amenitiesData.cta && (
           <div className={styles.ctaContainer}>
             {amenitiesData.cta.buttons?.map((button, index) => (
@@ -78,9 +77,7 @@ export default function AmenitiesShowcase({ data, projectData }) {
                 key={index}
                 href={button.url}
                 className={`${styles.ctaButton} ${
-                  button.type === "primary"
-                    ? styles.ctaPrimary
-                    : styles.ctaSecondary
+                  button.type === "primary" ? styles.ctaPrimary : ""
                 }`}
                 target={button.url?.startsWith("http") ? "_blank" : "_self"}
                 rel={
@@ -92,7 +89,12 @@ export default function AmenitiesShowcase({ data, projectData }) {
               >
                 <span className={styles.ctaText}>{button.text}</span>
                 <div className={styles.ctaIcon}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
                     <path
                       d="M5 12H19"
                       stroke="currentColor"

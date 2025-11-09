@@ -3,12 +3,7 @@
 import { useState } from "react";
 import styles from "@/styles/projects/MapDirections.module.css";
 
-/**
- * Universal Map Directions Component - Works for ALL projects
- * Completely generic with data-driven content
- */
 export default function MapDirections({ data, projectData }) {
-  // SAFETY CHECK - if no data, return nothing
   if (!data || !projectData) {
     console.error("MapDirections: Missing data");
     return null;
@@ -18,134 +13,106 @@ export default function MapDirections({ data, projectData }) {
   const projectInfo = projectData.project;
   const [isMapLoaded, setIsMapLoaded] = useState(false);
 
-  const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
-    locationData.projectName || projectInfo.name
-  )}+${encodeURIComponent(locationData.address)}&z=${
-    locationData.zoom || 15
-  }&output=embed&hl=en`;
+  // Exact Sobha-style Google Maps embed URL
+  const mapSrc = `https://www.google.com/maps/embed/v1/place?key=YOUR_GOOGLE_MAPS_API_KEY&q=${encodeURIComponent(
+    locationData.address
+  )}&zoom=${locationData.zoom || 15}&maptype=roadmap&language=en&region=AE`;
+
+  // Alternative without API key (using search query)
+  const mapSrcFallback = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178518620317!2d55.27076741500938!3d25.197155983893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e0!3m2!1sen!2sae!4v1234567890`;
 
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${locationData.lat},${locationData.lng}`;
 
   const copyAddress = () => {
     navigator.clipboard.writeText(locationData.address);
-    // You can add a toast notification here if needed
-  };
-
-  // JSON-LD for SEO
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Place",
-    name: locationData.projectName || projectInfo.name,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: locationData.address,
-      addressLocality: "Umm Al Quwain",
-      addressCountry: "AE",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: locationData.lat,
-      longitude: locationData.lng,
-    },
-    description: projectData.seo?.description,
-    url: typeof window !== "undefined" ? window.location.href : undefined,
   };
 
   return (
-    <section className={styles.luxuryMapSection} aria-label="Project location">
-      {/* JSON-LD for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <section className={styles.mapSection}>
+      <div className={styles.container}>
+        {/* Header Section */}
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>{locationData.title}</h2>
+          <div className={styles.titleDivider}>
+            <div className={styles.dividerLine}></div>
+            <div className={styles.dividerDot}></div>
+          </div>
+        </div>
 
-      {/* Elegant Header */}
-      <div className={styles.mapHeader}>
-        <h2 className={styles.mapTitle}>{locationData.title}</h2>
-        <div className={styles.titleLine}></div>
-      </div>
-
-      {/* Luxury Map Container */}
-      <div className={styles.luxuryMapCard}>
-        {/* Project Info Banner */}
-        <div className={styles.projectBanner}>
-          <div className={styles.projectIcon}>📍</div>
+        {/* Map Container */}
+        <div className={styles.mapCard}>
+          {/* Project Info */}
           <div className={styles.projectInfo}>
             <h3 className={styles.projectName}>
               {locationData.projectName || projectInfo.name}
             </h3>
             <p className={styles.projectAddress}>{locationData.address}</p>
           </div>
-        </div>
 
-        {/* Compact Map */}
-        <div className={styles.mapContainer}>
-          <div className={styles.mapRatioBox}>
-            {!isMapLoaded && (
-              <div className={styles.mapLoader}>
-                <div className={styles.loadingSpinner}></div>
-                <span>Loading Location...</span>
-              </div>
-            )}
-            <iframe
-              className={`${styles.luxuryIframe} ${
-                isMapLoaded ? styles.loaded : ""
-              }`}
-              src={mapSrc}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              title={`${locationData.projectName || projectInfo.name} Location`}
-              onLoad={() => setIsMapLoaded(true)}
-            />
+          {/* Map - EXACT SOBHA STYLE */}
+          <div className={styles.mapContainer}>
+            <div className={styles.mapWrapper}>
+              {!isMapLoaded && (
+                <div className={styles.mapLoader}>
+                  <div className={styles.loadingSpinner}></div>
+                  <span>Loading Location Map...</span>
+                </div>
+              )}
+              <iframe
+                className={`${styles.mapIframe} ${
+                  isMapLoaded ? styles.loaded : ""
+                }`}
+                src={mapSrcFallback} // Using fallback for demo
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`${
+                  locationData.projectName || projectInfo.name
+                } Location`}
+                onLoad={() => setIsMapLoaded(true)}
+                style={{
+                  border: 0,
+                  filter: "grayscale(0.1) contrast(1.1) saturate(1.1)",
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className={styles.actionButtons}>
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.directionsBtn}
+            >
+              <span>Get Directions</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 12h14M12 5l7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+
+            <button className={styles.copyBtn} onClick={copyAddress}>
+              <span>Copy Address</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
           </div>
         </div>
-
-        {/* Luxury Actions */}
-        <div className={styles.luxuryActions}>
-          <a
-            href={directionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.directionsButton}
-            aria-label={`Get directions to ${
-              locationData.projectName || projectInfo.name
-            }`}
-          >
-            <span className={styles.buttonText}>Get Directions</span>
-            <span className={styles.buttonArrow}>→</span>
-          </a>
-
-          {/* Optional Copy Address Button */}
-          {locationData.showCopyAddress && (
-            <>
-              <div className={styles.actionDivider}>or</div>
-              <button
-                className={styles.copyButton}
-                onClick={copyAddress}
-                aria-label={`Copy ${
-                  locationData.projectName || projectInfo.name
-                } address to clipboard`}
-              >
-                <span className={styles.buttonIcon}>📋</span>
-                <span className={styles.buttonText}>Copy Address</span>
-              </button>
-            </>
-          )}
-        </div>
       </div>
-
-      {/* Dynamic Location Features */}
-      {locationData.proximityFeatures && (
-        <div className={styles.locationFeatures}>
-          {locationData.proximityFeatures.map((feature, index) => (
-            <div key={index} className={styles.featureItem}>
-              <span className={styles.featureIcon}>{feature.icon}</span>
-              <span className={styles.featureText}>{feature.text}</span>
-            </div>
-          ))}
-        </div>
-      )}
     </section>
   );
 }

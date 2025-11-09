@@ -25,7 +25,6 @@ export default function HomePage() {
       <DubaiDemand /> {/* Unprecedented demand */}
       <DubaiEconomicGrowth /> {/* Economic growth + Why invest in Dubai */}
       <OurServices />
-      <MiniCallbackForm /> {/* Services + Contact */}
       {/* <MissionVision /> */}
       {/* <AboutMohamadKodmane /> */}
       {/* <CoreValues /> */}

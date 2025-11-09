@@ -1,441 +1,241 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import styles from "@/styles/projects/ProjectIntro.module.css";
 
-/**
- * Universal Project Intro Section - Works for ALL projects
- * Conditionally renders brochure styles based on number of brochures
- */
 export default function ProjectIntro({ data, projectData }) {
-  // SAFETY CHECK - if no data, return nothing
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   if (!data || !projectData) {
     console.error("ProjectIntro: Missing data");
     return null;
   }
 
-  const projectInfo = projectData.project;
-  const introData = data;
-  const [activeBrochure, setActiveBrochure] = useState(0);
-  const [showAllBrochures, setShowAllBrochures] = useState(false);
+  const { project } = projectData;
+  const intro = data;
 
-  // Check if we have multiple brochures for fancy styling
-  const hasMultipleBrochures =
-    introData.brochures && introData.brochures.length > 1;
-  const visibleBrochures = showAllBrochures
-    ? introData.brochures
-    : introData.brochures?.slice(0, 2);
+  const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Residence",
-    name: projectInfo.name,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Dubai",
-      streetAddress: projectInfo.location,
-      addressCountry: "AE",
+  // Property images with fallback
+  const propertyImages = intro.propertyImages || [
+    {
+      src: intro.imgUrl || `${CDN}/sky-parks/exterior-night-01.jpg`,
+      alt: intro.imgAlt || project.name,
+      title: project.name,
+      description: project.location || "Premium location in Dubai",
     },
-    brand: {
-      "@type": "Brand",
-      name: projectInfo.developer,
+  ];
+
+  // Key highlights data
+  const highlights = [
+    {
+      icon: "📍",
+      value: project.location || "Prime Location",
+      label: "Location",
     },
-    description: projectData.seo?.description,
-    image: introData.imgUrl,
-    url: typeof window !== "undefined" ? window.location.href : undefined,
-  };
+    {
+      icon: "💰",
+      value: project.startingPrice || "AED —",
+      label: "Starting Price",
+    },
+    {
+      icon: "📅",
+      value: project.completionDate || "TBC",
+      label: "Completion",
+    },
+    {
+      icon: "🏗️",
+      value: project.status || "Off-Plan",
+      label: "Status",
+    },
+  ];
 
-  const handleBrochureDownload = (brochure, event) => {
-    event.preventDefault();
-
-    // Create a temporary link for download
-    const link = document.createElement("a");
-    link.href = brochure.url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // Add download animation
-    const button = event.currentTarget;
-    button.classList.add(styles.downloading);
-    setTimeout(() => {
-      button.classList.remove(styles.downloading);
-    }, 2000);
-  };
+  // Features data
+  // const features = [
+  //   { icon: "⭐", text: "Luxury Finishes" },
+  //   { icon: "🌊", text: "Swimming Pool" },
+  //   { icon: "🏋️", text: "Fitness Center" },
+  //   { icon: "🅿️", text: "Parking" },
+  //   { icon: "🌴", text: "Landscaped Gardens" },
+  //   { icon: "🏊", text: "Infinity Pool" },
+  // ];
 
   return (
-    <section className={styles.projectIntro} aria-label="Project introduction">
-      {/* JSON-LD for SEO */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <section
+      className={`${styles.projectIntro} ${isVisible ? styles.visible : ""}`}
+    >
+      <div className={styles.container}>
+        {/* HERO SECTION */}
+        <div className={styles.heroSection}>
+          <div
+            className={styles.heroBackground}
+            style={{
+              backgroundImage: `url('${propertyImages[0].src}')`,
+            }}
+          >
+            <div className={styles.heroOverlay}></div>
+          </div>
+          <div className={styles.heroContent}>
+            <div className={styles.heroBadge}>
+              <span>PREMIUM DEVELOPMENT</span>
+            </div>
+            <h1 className={styles.heroTitle}>{intro.title || project.name}</h1>
+            <p className={styles.heroSubtitle}>
+              {project.location || "Luxury living in the heart of Dubai"}
+            </p>
+          </div>
+        </div>
 
-      <div className={styles.introContainer}>
-        {/* Text Content */}
-        <div className={styles.textContent}>
-          <div className={styles.titleSection}>
-            <h2 className={styles.projectTitle}>{introData.title}</h2>
-            <div className={styles.titleDivider}></div>
+        {/* MAIN CONTENT GRID */}
+        <div className={styles.contentGrid}>
+          {/* LEFT: IMAGE GALLERY */}
+          <div className={styles.gallerySection}>
+            <div className={styles.galleryContainer}>
+              <div className={styles.mainImage}>
+                <Image
+                  src={propertyImages[activeImage].src}
+                  alt={propertyImages[activeImage].alt}
+                  fill
+                  className={styles.image}
+                  priority
+                />
+                <div className={styles.imageOverlay}></div>
+                <div className={styles.imageContent}>
+                  <h3 className={styles.imageTitle}>
+                    {propertyImages[activeImage].title}
+                  </h3>
+                  <p className={styles.imageDescription}>
+                    {propertyImages[activeImage].description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Image Navigation */}
+              {propertyImages.length > 1 && (
+                <div className={styles.imageNav}>
+                  {propertyImages.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`${styles.navDot} ${
+                        activeImage === index ? styles.active : ""
+                      }`}
+                      onClick={() => setActiveImage(index)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* FEATURES GRID */}
           </div>
 
-          {/* Project Highlights Grid */}
-          <div className={styles.highlightsGrid}>
-            <div className={styles.highlightItem}>
-              <div className={styles.highlightIcon}>🏗️</div>
-              <div className={styles.highlightContent}>
-                <div className={styles.highlightValue}>
-                  {projectInfo.status}
-                </div>
-                <div className={styles.highlightLabel}>Status</div>
-              </div>
-            </div>
-            <div className={styles.highlightItem}>
-              <div className={styles.highlightIcon}>💰</div>
-              <div className={styles.highlightContent}>
-                <div className={styles.highlightValue}>
-                  {projectInfo.startingPrice}
-                </div>
-                <div className={styles.highlightLabel}>Starting Price</div>
-              </div>
-            </div>
-            <div className={styles.highlightItem}>
-              <div className={styles.highlightIcon}>📅</div>
-              <div className={styles.highlightContent}>
-                <div className={styles.highlightValue}>
-                  {projectInfo.completionDate}
-                </div>
-                <div className={styles.highlightLabel}>Completion</div>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.descriptionSection}>
-            {introData.paragraphs.map((p, i) => (
-              <p key={i} className={styles.projectDescription}>
-                {p}
-              </p>
-            ))}
-          </div>
-
-          {/* CONDITIONAL BROCHURES RENDERING */}
-          {hasMultipleBrochures ? (
-            /* FANCY BROCHURES SECTION (Multiple brochures) */
-            <div className={styles.brochuresSection}>
-              <div className={styles.sectionHeader}>
-                <h3 className={styles.sectionTitle}>Project Brochures</h3>
-                <div className={styles.sectionSubtitle}>
-                  Explore our exclusive collection of luxury living spaces
-                </div>
-              </div>
-
-              <div className={styles.brochuresGrid}>
-                {visibleBrochures.map((brochure, index) => (
-                  <div
-                    key={index}
-                    className={`${styles.brochureCard} ${
-                      activeBrochure === index ? styles.active : ""
-                    }`}
-                    onMouseEnter={() => setActiveBrochure(index)}
-                  >
-                    <div className={styles.brochureHeader}>
-                      <div
-                        className={styles.brochureIcon}
-                        style={{
-                          backgroundColor: `${brochure.color || "#d7b46a"}20`,
-                          borderColor: brochure.color || "#d7b46a",
-                        }}
-                      >
-                        <span className={styles.icon}>
-                          {brochure.icon || "📄"}
-                        </span>
+          {/* RIGHT: CONTENT SECTION */}
+          <div className={styles.contentSection}>
+            {/* HIGHLIGHTS */}
+            <div className={styles.highlightsSection}>
+              <h2 className={styles.sectionTitle}>PROJECT HIGHLIGHTS</h2>
+              <div className={styles.highlightsGrid}>
+                {highlights.map((highlight, index) => (
+                  <div key={index} className={styles.highlightCard}>
+                    <div className={styles.highlightIcon}>{highlight.icon}</div>
+                    <div className={styles.highlightContent}>
+                      <div className={styles.highlightValue}>
+                        {highlight.value}
                       </div>
-                      <div className={styles.brochureInfo}>
-                        <h4 className={styles.brochureName}>
-                          {brochure.title}
-                        </h4>
-                        <div className={styles.brochureMeta}>
-                          <span className={styles.brochureCategory}>
-                            {brochure.category || "Brochure"}
-                          </span>
-                          <span className={styles.brochureSize}>
-                            {brochure.size || "PDF"}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <p className={styles.brochureDescription}>
-                      {brochure.description || `Download the ${brochure.title}`}
-                    </p>
-
-                    <div className={styles.brochureActions}>
-                      <button
-                        className={styles.downloadButton}
-                        onClick={(e) => handleBrochureDownload(brochure, e)}
-                        aria-label={`Download ${brochure.title} brochure`}
-                      >
-                        <span className={styles.downloadText}>
-                          Download PDF
-                        </span>
-                        <div className={styles.downloadIcon}>
-                          <svg
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                          >
-                            <path
-                              d="M12 16L12 4"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                            />
-                            <path
-                              d="M7 11L12 16L17 11"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                            />
-                            <path
-                              d="M5 20H19"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                        </div>
-                      </button>
-
-                      <div className={styles.fileName}>
-                        {brochure.fileName || `${brochure.title}.pdf`}
+                      <div className={styles.highlightLabel}>
+                        {highlight.label}
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* Show More/Less Toggle */}
-              {introData.brochures.length > 2 && (
-                <button
-                  className={styles.toggleBrochures}
-                  onClick={() => setShowAllBrochures(!showAllBrochures)}
-                >
-                  <span>
-                    {showAllBrochures
-                      ? "Show Less"
-                      : `+${introData.brochures.length - 2} More Brochures`}
-                  </span>
-                  <div
-                    className={`${styles.toggleIcon} ${
-                      showAllBrochures ? styles.expanded : ""
-                    }`}
-                  >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M6 9L12 15L18 9"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </div>
-                </button>
-              )}
+            {/* DESCRIPTION */}
+            <div className={styles.descriptionSection}>
+              <h3 className={styles.sectionTitle}>PROJECT OVERVIEW</h3>
+              <div className={styles.descriptionContent}>
+                {intro.paragraphs?.map((paragraph, index) => (
+                  <p key={index} className={styles.paragraph}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
 
-              {/* Quick Download All */}
-              <div className={styles.downloadAllSection}>
-                <button
-                  className={styles.downloadAllButton}
-                  onClick={() => {
-                    // Download all brochures
-                    introData.brochures.forEach((brochure, index) => {
-                      setTimeout(() => {
-                        const link = document.createElement("a");
-                        link.href = brochure.url;
-                        link.target = "_blank";
-                        link.rel = "noopener noreferrer";
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                      }, index * 300);
-                    });
-                  }}
-                >
-                  <div className={styles.downloadAllIcon}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M12 16L12 4"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M7 11L12 16L17 11"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M5 20H19"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M19 16V20H5V16"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
+            {/* DEVELOPER INFO */}
+            <div className={styles.developerSection}>
+              <div className={styles.developerCard}>
+                <div className={styles.developerIcon}>🏢</div>
+                <div className={styles.developerContent}>
+                  <h4 className={styles.developerTitle}>DEVELOPER</h4>
+                  <div className={styles.developerName}>
+                    {project.developer || "Premium Developer"}
                   </div>
-                  <span>
-                    Download All Brochures ({introData.brochures.length})
-                  </span>
-                </button>
-                <div className={styles.downloadAllInfo}>
-                  ZIP file • {Math.round(introData.brochures.length * 4.5)} MB
-                  total
+                  <p className={styles.developerDescription}>
+                    Trusted developer with proven track record in luxury real
+                    estate
+                  </p>
                 </div>
               </div>
             </div>
-          ) : (
-            /* SIMPLE BROCHURES SECTION (Single brochure) */
-            <div className={styles.actionSection}>
-              {introData.brochures?.map((brochure, index) => {
-                const isExternalPdf =
-                  brochure.url.startsWith("http") ||
-                  brochure.url.endsWith(".pdf");
-                const BrochureComponent = isExternalPdf ? "a" : Link;
-                const brochureProps = isExternalPdf
-                  ? {
-                      href: brochure.url,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }
-                  : {
-                      href: brochure.url,
-                    };
 
-                return (
-                  <BrochureComponent
-                    key={index}
-                    {...brochureProps}
-                    className={`${styles.downloadBrochure} ${
-                      styles[brochure.type] || styles.main
-                    }`}
-                    aria-label={`View ${
-                      projectInfo.name
-                    } ${brochure.title.toLowerCase()}`}
-                  >
-                    <span className={styles.brochureText}>
-                      {brochure.title || "View Brochure"}
-                    </span>
-                    <div className={styles.downloadIcon}>
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                      >
-                        <path
-                          d="M12 16L12 4"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M7 11L12 16L17 11"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M5 20H19"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </div>
-                  </BrochureComponent>
-                );
-              })}
-            </div>
-          )}
-        </div>
-
-        {/* Creative Image Display */}
-        <div className={styles.imageSection}>
-          <div className={styles.imageContainer}>
-            {/* Main Image with Creative Border */}
-            <div className={styles.mainImageWrapper}>
-              <Image
-                src={introData.imgUrl}
-                alt={introData.imgAlt}
-                fill
-                className={styles.mainImage}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                priority
-              />
-              <div className={styles.imageBorder}></div>
-              <div className={styles.imageOverlay}></div>
-            </div>
-
-            {/* Dynamic Floating Cards */}
-            {introData.floatingCards?.map((card, index) => (
-              <div
-                key={index}
-                className={styles.floatingCard}
-                style={{
-                  top: card.top,
-                  right: card.right,
-                  bottom: card.bottom,
-                  left: card.left,
-                }}
-              >
-                <div className={styles.cardIcon}>{card.icon}</div>
-                <div className={styles.cardContent}>
-                  <div className={styles.cardValue}>{card.value}</div>
-                  <div className={styles.cardLabel}>{card.label}</div>
-                </div>
-              </div>
-            ))}
-
-            {/* Floating Brochure Cards (only for multiple brochures) */}
-            {hasMultipleBrochures &&
-              introData.brochures?.slice(0, 3).map((brochure, index) => (
-                <div
+            {/* CALL TO ACTION */}
+            <div className={styles.actionsSection}>
+              {intro.brochures?.map((brochure, index) => (
+                <a
                   key={index}
-                  className={styles.floatingBrochureCard}
-                  style={{
-                    top: `${20 + index * 25}%`,
-                    right: index % 2 === 0 ? "-30px" : "auto",
-                    left: index % 2 !== 0 ? "-30px" : "auto",
-                    animationDelay: `${index * 1.5}s`,
-                  }}
+                  href={brochure.url}
+                  className={styles.primaryButton}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <div
-                    className={styles.floatingCardIcon}
-                    style={{ backgroundColor: brochure.color || "#d7b46a" }}
-                  >
-                    {brochure.icon || "📄"}
-                  </div>
-                  <div className={styles.floatingCardContent}>
-                    <div className={styles.floatingCardName}>
-                      {brochure.title}
-                    </div>
-                    <div className={styles.floatingCardCategory}>
-                      {brochure.category || "Brochure"}
-                    </div>
-                  </div>
-                </div>
+                  <span>{brochure.title || "DOWNLOAD BROCHURE"}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M12 16V4"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M7 11l5 5 5-5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M5 20h14"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </a>
               ))}
+              <button className={styles.secondaryButton}>
+                <span>SCHEDULE VIEWING</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M22 6l-10 7L2 6"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

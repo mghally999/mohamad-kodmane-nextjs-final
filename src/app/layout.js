@@ -2,7 +2,8 @@ import "./globals.css";
 import Footer from "../components/Footer";
 import TopHeader from "@/components/TopHeader";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-// import MegaMenu from "@/components/MegaMenu";
+import FooterFinal from "@/components/FooterFinal";
+import { menuData } from "@/data/menuData"; // Import your menuData
 
 export const metadata = {
   title: "Dubai Real Estate Experts | Market Insights & Investment Strategies",
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
       <body>
         <TopHeader />
         {children}
+        <FooterFinal menuData={menuData} />
         <Footer />
         <FloatingWhatsApp />
       </body>
