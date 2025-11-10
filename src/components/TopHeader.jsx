@@ -825,12 +825,12 @@ export default function TopHeader() {
                   <div className={styles.contactValue}>+971 56 666 5560</div>
                 </div>
               </div>
-              <div className={styles.contactItem}>
+              {/* <div className={styles.contactItem}>
                 <div className={styles.contactDetails}>
                   <div className={styles.contactType}>Email</div>
                   <div className={styles.contactValue}>info@sodhia.com</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </nav>
         </div>

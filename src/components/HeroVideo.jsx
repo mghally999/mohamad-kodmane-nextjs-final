@@ -1,63 +1,55 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/styles/HeroVideo.module.css";
-import Image from "next/image";
 
 export default function HeroVideo() {
   const [showVideoModal, setShowVideoModal] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   return (
     <section className={styles.videoSection}>
       <div className={styles.container}>
-        {/* SECTION HEADER */}
-        {/* <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>
-            Investment Philosophy & Vision
-          </h2>
-          <div className={styles.goldDivider}></div>
-          <p className={styles.sectionDescription}>
-            Discover the strategic approach behind successful real estate
-            investments in Dubai. Mohamad Kodmane shares his proven methodology
-            for building wealth through off-plan properties and diversified real
-            estate portfolios.
-          </p>
-        </div> */}
-
-        {/* VIDEO COMPONENT */}
+        {/* VIDEO COMPONENT - 100% FULL WIDTH */}
         <div className={styles.videoContainer}>
           <div
             className={styles.videoCard}
             onClick={() => setShowVideoModal(true)}
           >
             <div className={styles.videoThumbnail}>
-              <Image
-                src="/video-thumbnail.png"
-                alt="Mohamad Kodmane - Investment Strategy Video"
-                fill
-                className={styles.thumbnailImage}
-                priority
-                sizes="100vw"
-              />
+              {/* Fallback if image doesn't load */}
+              {!imageError ? (
+                <img
+                  src="/video-thumbnail.png"
+                  alt="Mohamad Kodmane - Investment Strategy Video"
+                  className={styles.thumbnailImage}
+                  onError={() => setImageError(true)}
+                />
+              ) : (
+                <div className={styles.fallbackBackground}>
+                  <div className={styles.fallbackText}>
+                    <h3>Mohamad Kodmane</h3>
+                    <p>Investment Strategy Video</p>
+                  </div>
+                </div>
+              )}
+
               <div className={styles.videoOverlay}></div>
 
               {/* Play Button */}
-              <div className={styles.playButton}>
+              {/* <div className={styles.playButton}>
                 <div className={styles.playIcon}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <svg width="35" height="35" viewBox="0 0 24 24" fill="none">
                     <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
                   </svg>
                 </div>
-              </div>
+              </div> */}
 
-              {/* Video Info */}
+              {/* Video Info - LARGER TEXT */}
               <div className={styles.videoInfo}>
                 <div className={styles.videoBadge}>
                   <span className={styles.badgeIcon}>▶️</span>
                   Play Video
                 </div>
-                {/* <h3 className={styles.videoTitle}>
-                  Dubai Investment Masterclass
-                </h3> */}
                 <div className={styles.videoStats}>
                   <div className={styles.videoStat}>
                     <span className={styles.statNumber}>15:42</span>
@@ -74,17 +66,14 @@ export default function HeroVideo() {
         </div>
 
         {/* VIDEO CAPTION */}
-        <div className={styles.videoCaption}>
-          {/* <p className={styles.captionMain}>
-            "Building Wealth Through Strategic Real Estate Investments"
-          </p> */}
+        {/* <div className={styles.videoCaption}>
           <p className={styles.captionSub}>
             Exclusive insights on off-plan investments and portfolio management
           </p>
-        </div>
+        </div> */}
       </div>
 
-      {/* VIDEO MODAL */}
+      {/* VIDEO MODAL - 100% FULL WIDTH */}
       {showVideoModal && (
         <div
           className={styles.modalOverlay}
@@ -109,13 +98,13 @@ export default function HeroVideo() {
 
             <div className={styles.videoWrapper}>
               <iframe
-                src="https://drive.google.com/file/d/1RdxoerPUOKV5mkI-cC7AVQmY19jt-0jw/preview"
+                src="https://drive.google.com/file/d/1RdxoerPUOKV5mkI-cC7AVQmY19jt-0jw/preview?autoplay=1"
                 width="100%"
                 height="100%"
                 allow="autoplay; fullscreen"
                 allowFullScreen
                 title="Mohamad Kodmane - Investment Strategy"
-                loading="lazy"
+                loading="eager"
               />
             </div>
           </div>

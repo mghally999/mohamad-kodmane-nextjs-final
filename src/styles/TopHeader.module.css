@@ -4342,3 +4342,114 @@ body.mobileMenuOpen {
 }
 
 /* Rest of your existing CSS remains the same... */
+/* FIX MOBILE MENU VISIBILITY - ADD THESE OVERRIDES */
+.mobileNavBackground {
+  background: rgba(255, 255, 255, 0.98) !important; /* SOLID WHITE BACKGROUND */
+  backdrop-filter: none !important; /* REMOVE BLUR */
+}
+
+.mobileNavContainer {
+  background: transparent !important;
+}
+
+.mobileNavContent {
+  background: transparent !important;
+}
+
+/* Ensure text is visible against white background */
+.mobileNavLink {
+  color: #333333 !important; /* DARK TEXT */
+  border: 1px solid rgba(0, 0, 0, 0.1) !important; /* SUBTLE BORDER */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ) !important; /* SLIGHTLY DIFFERENT WHITE */
+}
+
+.mobileNavLink:hover,
+.mobileNavLink.active {
+  color: #000000 !important; /* BLACK ON HOVER */
+  background: rgba(199, 173, 102, 0.1) !important; /* GOLD TINT */
+  border-color: rgba(199, 173, 102, 0.3) !important;
+}
+
+/* Fix mega menu sections in mobile */
+.mobileMegaMenuContent {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.mobileCategoryButton,
+.mobileDeveloperButton {
+  color: #333333 !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.mobileProjectLink {
+  color: #333333 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Contact section */
+.mobileContact {
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.contactItem {
+  color: #333333 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.contactType {
+  color: #666666 !important;
+}
+
+.contactValue {
+  color: #000000 !important;
+}
+
+/* Mobile header */
+.mobileNavHeader {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.mobileLogoText {
+  color: #333333 !important;
+}
+
+.mobileLogoSubtitle {
+  color: #666666 !important;
+}
+
+.mobileCloseButton {
+  color: #333333 !important;
+}
+
+/* Remove any blur effects that might cause transparency issues */
+@media (max-width: 1023px) {
+  .mobileNavBackground {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .mobileNavContainer {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+/* Hide mobile logo when mobile menu is open - desktop logo will remain visible */
+.mobileNavHeader .mobileLogo {
+  display: none !important;
+}
+
+/* Adjust mobile header spacing when logo is hidden */
+.mobileNavHeader {
+  justify-content: flex-end !important;
+  padding: 1rem 1.5rem !important;
+}
