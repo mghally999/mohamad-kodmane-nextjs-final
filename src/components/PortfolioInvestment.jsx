@@ -50,7 +50,7 @@ export default function PortfolioInvestment() {
       alt: "Luxury Lifestyle Integration",
       category: "Wealth Ecosystem",
       title: "Complete Portfolio",
-      metrics: "90% Tax Efficiency",
+      metrics: "0% Tax",
       description: "Integrated properties offering premium living",
     },
   ];

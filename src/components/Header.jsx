@@ -8,14 +8,14 @@ export default function Header() {
   return (
     <header className={styles.header}>
       {/* Background Image with Overlay */}
-      <div
+      {/* <div
         className={styles.heroBackground}
         style={{
           backgroundImage: `url('${CDN}/aquamont/intro-main.png')`,
         }}
       >
         <div className={styles.heroOverlay}></div>
-      </div>
+      </div> */}
 
       <div className={styles.container}>
         <div className={styles.content}>

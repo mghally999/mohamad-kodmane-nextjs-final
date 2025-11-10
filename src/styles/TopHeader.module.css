@@ -3784,3 +3784,561 @@ body.mobileMenuOpen {
   color: #171717; /* CHANGED: Dark text */
   line-height: 1.3;
 }
+/* ===== MULTI-LEVEL MEGA MENU STYLES ===== */
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fcfbfc;
+  backdrop-filter: blur(3px);
+  border-top: 1px solid rgba(199, 173, 102, 0.28);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  animation: fadeInDown 0.3s ease;
+}
+
+.megaMenuContainer {
+  max-width: 1400px;
+  padding: 2rem;
+}
+
+.megaMenuContent {
+  display: grid;
+  grid-template-columns: 280px 280px 280px 1fr;
+  gap: 1.5rem;
+  min-height: 500px;
+  align-items: start;
+}
+
+/* Menu Levels */
+.menuLevel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+.menuLevelHeader {
+  border-bottom: 1px solid rgba(199, 173, 102, 0.28);
+  padding-bottom: 1rem;
+}
+
+.menuLevelTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #c7ad66;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.menuLevelDescription {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Categories Grid */
+.categoriesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+  padding-right: 0.5rem;
+}
+
+.categoryCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(199, 173, 102, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.categoryCard:hover,
+.categoryCard.active {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(199, 173, 102, 0.5);
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(199, 173, 102, 0.15);
+}
+
+.categoryInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.categoryName {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #171717;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.categoryDescription {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.categoryArrow {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: #c7ad66;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.categoryCard:hover .categoryArrow {
+  transform: translateX(3px);
+}
+
+/* Developers List */
+.developersList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.developerItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(199, 173, 102, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  color: inherit;
+  font: inherit;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.developerItem:hover,
+.developerItem.active {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(199, 173, 102, 0.5);
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(199, 173, 102, 0.15);
+}
+
+.developerHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* BIGGER Developer Logos */
+.developerLogo {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(199, 173, 102, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.developerLogoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.developerInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.developerName {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #171717;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.projectCount {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+}
+
+.developerArrow {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: #c7ad66;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.developerItem:hover .developerArrow {
+  transform: translateX(3px);
+}
+
+/* Projects List */
+.projectsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.projectItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(199, 173, 102, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.projectItem:hover,
+.projectItem.active {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(199, 173, 102, 0.5);
+  transform: translateX(5px);
+  box-shadow: 0 8px 25px rgba(199, 173, 102, 0.15);
+}
+
+.projectInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.projectTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #171717;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.projectDescription {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.projectArrow {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+  color: #c7ad66;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.projectItem:hover .projectArrow {
+  transform: translateX(3px);
+}
+
+/* Image Preview Panel - BIGGER and GLOWING */
+.imagePreviewPanel {
+  border-left: 1px solid rgba(199, 173, 102, 0.28);
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.imagePreviewContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.previewImageLink {
+  display: block;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.previewImageLink:hover {
+  transform: scale(1.02);
+}
+
+.previewImage {
+  height: 320px !important;
+  width: 100% !important;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* GLOWING EFFECT for Project Images */
+.projectImageActive {
+  animation: glowPulse 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 20px rgba(199, 173, 102, 0.4), 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 20px rgba(199, 173, 102, 0.4), 0 8px 30px rgba(0, 0, 0, 0.2);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(199, 173, 102, 0.6),
+      0 8px 40px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.previewImage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+.previewInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
+.previewTitle {
+  font-family: "Inter", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #c7ad66;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.previewDescription {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: #444;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.previewStats {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #c7ad66;
+  padding: 0.4rem 0.8rem;
+  background: rgba(199, 173, 102, 0.12);
+  border: 1px solid rgba(199, 173, 102, 0.28);
+  border-radius: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.previewButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.8rem;
+  background: linear-gradient(135deg, #c7ad66 0%, #a98d4e 100%);
+  color: #000000;
+  text-decoration: none;
+  border-radius: 25px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  width: fit-content;
+  box-shadow: 0 6px 20px rgba(199, 173, 102, 0.3);
+}
+
+.previewButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(199, 173, 102, 0.4);
+  background: linear-gradient(135deg, #d6bd77 0%, #b8954f 100%);
+}
+
+.buttonArrow {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.previewButton:hover .buttonArrow {
+  transform: translateX(3px);
+}
+
+/* ===== MOBILE MENU BUTTON - FIXED BLACK COLOR ===== */
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1001;
+}
+
+.mobileMenuButton span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #000000 !important; /* FORCE BLACK COLOR */
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.mobileMenuButton.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background: #000000 !important; /* FORCE BLACK COLOR */
+}
+
+.mobileMenuButton.active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.mobileMenuButton.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background: #000000 !important; /* FORCE BLACK COLOR */
+}
+
+/* Ensure black color in all states */
+.header .mobileMenuButton span,
+.header.scrolled .mobileMenuButton span,
+.mobileMenuButton span,
+.mobileMenuButton.active span {
+  background: #000000 !important;
+}
+
+/* BIGGER Mobile Developer Logos */
+.mobileDeveloperLogo {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-right: 10px;
+  flex-shrink: 0;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(199, 173, 102, 0.3);
+}
+
+.mobileDeveloperLogoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 5px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet Landscape (900px - 1023px) - MOBILE MENU ACTIVATES HERE */
+@media (max-width: 1023px) {
+  .desktopNav {
+    display: none;
+  }
+
+  .desktopContact {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: flex;
+  }
+
+  .logo {
+    flex: 1;
+  }
+
+  .megaMenu {
+    display: none;
+  }
+}
+
+/* Smaller Desktop (1100px - 1199px) */
+@media (max-width: 1199px) {
+  .megaMenuContent {
+    grid-template-columns: 250px 250px 250px 1fr;
+    gap: 1rem;
+    min-height: 450px;
+  }
+
+  .previewImage {
+    height: 280px !important;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .mobileDeveloperLogo {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Rest of your existing CSS remains the same... */

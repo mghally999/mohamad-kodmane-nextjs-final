@@ -119,9 +119,9 @@ export const centralData = {
       "https://luxury-real-estate-media.b-cdn.net/sobha-central/exterior-towers-angled-02.jpg",
       "https://luxury-real-estate-media.b-cdn.net/sobha-central/exterior-iconic-view-01.jpg",
       "https://luxury-real-estate-media.b-cdn.net/sobha-central/exterior-iconic-view-02.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/sobha-central/new/interior-living-dining-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/sobha-central/interior-living-dining-01.jpg",
       "https://luxury-real-estate-media.b-cdn.net/sobha-central/new/interior-bedroom-master-01.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/sobha-central/new/interior-bathroom-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/sobha-central/interior-living-dining-01.jpg",
     ],
     projectTag: "Central",
   },
@@ -189,7 +189,7 @@ export const centralData = {
         images: [
           "https://luxury-real-estate-media.b-cdn.net/sobha-central/interior-living-lounge-01.jpg",
           "https://luxury-real-estate-media.b-cdn.net/sobha-central/amenity-pool-deck-02.png",
-          "https://luxury-real-estate-media.b-cdn.net/sobha-central/new/interior-bathroom-01.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/sobha-central/interior-bedroom-01.jpg",
         ],
         features: [
           "Double Master",
@@ -239,19 +239,53 @@ export const centralData = {
     ],
   },
   location: {
-    title: "Project Location",
+    title: "Exact Location",
     projectName: "Sobha Central",
-    address: "Business Bay, Dubai, UAE",
-    lat: 25.1874304,
-    lng: 55.2573965,
-    zoom: 15,
+    address: "Plot JVC-07, Sheikh Zayed Road, Business Bay, Dubai, UAE",
+    lat: 25.186874, // Exact coordinates
+    lng: 55.256392, // Exact coordinates
+    zoom: 17,
+    preciseLocation: {
+      building: "Sobha Central Tower",
+      plotNumber: "JVC-07",
+      nearestLandmark: "Between Business Bay Metro Station & Downtown Dubai",
+      accessRoad: "Sheikh Zayed Road (E11)",
+      district: "Business Bay District 7",
+    },
     proximityFeatures: [
-      { icon: "⏱️", text: "20 min from Dubai Airport" },
-      { icon: "🏙️", text: "Downtown Access" },
-      { icon: "🛣️", text: "Major Highway Proximity" },
+      { icon: "🚇", text: "450m to Business Bay Metro Station (6 min walk)" },
+      { icon: "🏙️", text: "1.2km to Downtown Dubai (3 min drive)" },
+      { icon: "🛣️", text: "Direct Sheikh Zayed Road access" },
+      { icon: "🏢", text: "In Business Bay financial district" },
+      { icon: "🛍️", text: "2.5km to Dubai Mall (7 min drive)" },
+      { icon: "🌊", text: "1.8km to Dubai Water Canal" },
     ],
+    exactCoordinates: {
+      latitude: 25.186874,
+      longitude: 55.256392,
+      plusCode: "8HQ7+4Q Dubai, United Arab Emirates",
+    },
+    transportation: {
+      metro: {
+        station: "Business Bay Metro Station",
+        distance: "0.45 km",
+        walkingTime: "6 minutes",
+        line: "Red Line",
+      },
+      majorRoads: {
+        primary: "Sheikh Zayed Road (E11) - Direct Access",
+        secondary: "Al Khail Road (E44) - 2 minutes",
+        tertiary: "Financial Center Road - 1 minute",
+      },
+      keyDistances: {
+        burjKhalifa: "2.1 km (5 min drive)",
+        dubaiMall: "2.5 km (7 min drive)",
+        dxbAirport: "12 km (15 min drive)",
+        dmcc: "8 km (12 min drive)",
+        difc: "3.2 km (8 min drive)",
+      },
+    },
   },
-
   nearbyAttractions: {
     title: "City Proximity",
     attractions: [

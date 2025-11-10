@@ -138,8 +138,8 @@ export default function OffPlanInvestment() {
               <div className={styles.statLabel}>Price Advantage</div>
             </div>
             <div className={styles.statItem}>
-              <div className={styles.statNumber}>90%</div>
-              <div className={styles.statLabel}>Tax Exemption</div>
+              <div className={styles.statNumber}>0%</div>
+              <div className={styles.statLabel}>Tax</div>
             </div>
           </div>
         </div>

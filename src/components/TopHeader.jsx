@@ -29,6 +29,22 @@ export default function TopHeader() {
     };
   }, [isMobileMenuOpen]);
 
+  // Close mega menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        activeMegaMenu &&
+        !event.target.closest(`.${styles.megaMenu}`) &&
+        !event.target.closest(`.${styles.megaMenuTrigger}`)
+      ) {
+        handleMegaMenuLeave();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [activeMegaMenu]);
+
   const navItems = [
     { href: "/", label: "Home", type: "primary" },
     { href: "/about", label: "About", type: "primary" },
@@ -39,7 +55,6 @@ export default function TopHeader() {
       hasMegaMenu: true,
     },
     { href: "/articles", label: "Market Insights", type: "primary" },
-    // { href: "/contact", label: "Consultation", type: "cta" },
   ];
 
   // ===== ALL CDN IMAGES (Bunny) =====
@@ -59,7 +74,7 @@ export default function TopHeader() {
             name: "Sobha Realty",
             slug: "sobha",
             image: `${CDN}/aquamont/intro-main.png`,
-            logo: `${CDN}/developers/sobha-logo.png`, // Developer logo
+            logo: `/Sobha-Realty-Square-Logo.jpg`,
             projects: [
               {
                 id: 101,
@@ -96,7 +111,7 @@ export default function TopHeader() {
             name: "Nakheel",
             slug: "nakheel",
             image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-            logo: `${CDN}/developers/nakheel-logo.png`, // Developer logo
+            logo: `/Nakheel-Developments.webp`,
             projects: [
               {
                 id: 106,
@@ -121,7 +136,7 @@ export default function TopHeader() {
             name: "Sobha Realty",
             slug: "sobha",
             image: `${CDN}/hartland/hero-bg.jpg`,
-            logo: `${CDN}/developers/sobha-logo.png`, // Developer logo
+            logo: `/Sobha-Realty-Square-Logo.jpg`,
             projects: [
               {
                 id: 201,
@@ -144,7 +159,7 @@ export default function TopHeader() {
             name: "Arada",
             slug: "arada",
             image: `${CDN}/massar-3/hero-bg.jpg`,
-            logo: `${CDN}/developers/arada-logo.png`, // Developer logo
+            logo: `/arada-developer.avif`,
             projects: [
               {
                 id: 203,
@@ -169,7 +184,7 @@ export default function TopHeader() {
             name: "Omniyat",
             slug: "omniyat",
             image: `${CDN}/lumena-alta/hero-bg.jpg`,
-            logo: `${CDN}/developers/omniyat-logo.png`, // Developer logo
+            logo: `omniyat-logo.avif`,
             projects: [
               {
                 id: 305,
@@ -185,7 +200,7 @@ export default function TopHeader() {
             name: "Azizi Developments",
             slug: "azizi",
             image: `${CDN}/riviera/hero-bg.jpg`,
-            logo: `${CDN}/developers/azizi-logo.png`, // Developer logo
+            logo: `/azizi.jpg`,
             projects: [
               {
                 id: 301,
@@ -210,7 +225,7 @@ export default function TopHeader() {
             name: "Sobha Realty",
             slug: "sobha",
             image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-            logo: `${CDN}/developers/sobha-logo.png`, // Developer logo
+            logo: `/Sobha-Realty-Square-Logo.jpg`,
             projects: [
               {
                 id: 401,
@@ -229,6 +244,7 @@ export default function TopHeader() {
   const handleMegaMenuEnter = (item) => {
     if (!item.hasMegaMenu) return;
     setActiveMegaMenu(item.label);
+    // Set default selections when opening mega menu
     setSelectedCategory(menuData.categories[0]);
     setSelectedDeveloper(menuData.categories[0]?.developers[0] || null);
     setSelectedProject(
@@ -333,12 +349,12 @@ export default function TopHeader() {
             ))}
           </nav>
 
-          {/* Mega Menu */}
+          {/* Mega Menu - ALL COLUMNS VISIBLE AT SAME TIME */}
           {activeMegaMenu && (
             <div className={styles.megaMenu} onMouseLeave={handleMegaMenuLeave}>
               <div className={styles.megaMenuContainer}>
                 <div className={styles.megaMenuContent}>
-                  {/* Level 1: Categories */}
+                  {/* Column 1: Categories - Always Visible */}
                   <div className={styles.menuLevel}>
                     <div className={styles.menuLevelHeader}>
                       <h3 className={styles.menuLevelTitle}>Property Types</h3>
@@ -371,105 +387,104 @@ export default function TopHeader() {
                     </div>
                   </div>
 
-                  {/* Level 2: Developers */}
-                  {selectedCategory && (
-                    <div className={styles.menuLevel}>
-                      <div className={styles.menuLevelHeader}>
-                        <h3 className={styles.menuLevelTitle}>
-                          Developers in {selectedCategory.name}
-                        </h3>
-                        <p className={styles.menuLevelDescription}>
-                          Select a developer to view their projects
-                        </p>
-                      </div>
-                      <div className={styles.developersList}>
-                        {selectedCategory.developers.map((developer) => (
-                          <button
-                            key={developer.id}
-                            className={`${styles.developerItem} ${
-                              selectedDeveloper?.id === developer.id
-                                ? styles.active
-                                : ""
-                            }`}
-                            onMouseEnter={() => handleDeveloperHover(developer)}
-                          >
-                            <div className={styles.developerHeader}>
-                              {/* Developer Logo */}
-                              {developer.logo && (
-                                <div className={styles.developerLogo}>
-                                  <img
-                                    src={developer.logo}
-                                    alt={`${developer.name} logo`}
-                                    className={styles.developerLogoImage}
-                                  />
-                                </div>
-                              )}
-                              <div className={styles.developerInfo}>
-                                <h4 className={styles.developerName}>
-                                  {developer.name}
-                                </h4>
-                                <p className={styles.projectCount}>
-                                  {developer.projects.length} project
-                                  {developer.projects.length !== 1 ? "s" : ""}
-                                </p>
-                              </div>
-                              <span className={styles.developerArrow}>→</span>
-                            </div>
-                          </button>
-                        ))}
-                      </div>
+                  {/* Column 2: Developers - Always Visible */}
+                  <div className={styles.menuLevel}>
+                    <div className={styles.menuLevelHeader}>
+                      <h3 className={styles.menuLevelTitle}>
+                        Developers{" "}
+                        {selectedCategory && `in ${selectedCategory.name}`}
+                      </h3>
+                      <p className={styles.menuLevelDescription}>
+                        Select a developer to view their projects
+                      </p>
                     </div>
-                  )}
-
-                  {/* Level 3: Projects */}
-                  {selectedDeveloper && (
-                    <div className={styles.menuLevel}>
-                      <div className={styles.menuLevelHeader}>
-                        <h3 className={styles.menuLevelTitle}>
-                          Projects by {selectedDeveloper.name}
-                        </h3>
-                        <p className={styles.menuLevelDescription}>
-                          Browse available properties
-                        </p>
-                      </div>
-                      <div className={styles.projectsList}>
-                        {selectedDeveloper.projects.map((project) => (
-                          <a
-                            key={project.id}
-                            href={`/projects/${selectedCategory.slug}/${selectedDeveloper.slug}/${project.slug}`}
-                            className={`${styles.projectItem} ${
-                              selectedProject?.id === project.id
-                                ? styles.active
-                                : ""
-                            }`}
-                            onMouseEnter={() => handleProjectHover(project)}
-                          >
-                            <div className={styles.projectInfo}>
-                              <h4 className={styles.projectTitle}>
-                                {project.title}
+                    <div className={styles.developersList}>
+                      {selectedCategory?.developers.map((developer) => (
+                        <button
+                          key={developer.id}
+                          className={`${styles.developerItem} ${
+                            selectedDeveloper?.id === developer.id
+                              ? styles.active
+                              : ""
+                          }`}
+                          onMouseEnter={() => handleDeveloperHover(developer)}
+                        >
+                          <div className={styles.developerHeader}>
+                            {/* Developer Logo - BIGGER SIZE */}
+                            {developer.logo && (
+                              <div className={styles.developerLogo}>
+                                <img
+                                  src={developer.logo}
+                                  alt={`${developer.name} logo`}
+                                  className={styles.developerLogoImage}
+                                />
+                              </div>
+                            )}
+                            <div className={styles.developerInfo}>
+                              <h4 className={styles.developerName}>
+                                {developer.name}
                               </h4>
-                              <p className={styles.projectDescription}>
-                                {project.description}
+                              <p className={styles.projectCount}>
+                                {developer.projects.length} project
+                                {developer.projects.length !== 1 ? "s" : ""}
                               </p>
                             </div>
-                            <span className={styles.projectArrow}>→</span>
-                          </a>
-                        ))}
-                      </div>
+                            <span className={styles.developerArrow}>→</span>
+                          </div>
+                        </button>
+                      ))}
                     </div>
-                  )}
+                  </div>
 
-                  {/* Preview Panel */}
+                  {/* Column 3: Projects - Always Visible */}
+                  <div className={styles.menuLevel}>
+                    <div className={styles.menuLevelHeader}>
+                      <h3 className={styles.menuLevelTitle}>
+                        Projects{" "}
+                        {selectedDeveloper && `by ${selectedDeveloper.name}`}
+                      </h3>
+                      <p className={styles.menuLevelDescription}>
+                        Browse available properties
+                      </p>
+                    </div>
+                    <div className={styles.projectsList}>
+                      {selectedDeveloper?.projects.map((project) => (
+                        <a
+                          key={project.id}
+                          href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${project.slug}`}
+                          className={`${styles.projectItem} ${
+                            selectedProject?.id === project.id
+                              ? styles.active
+                              : ""
+                          }`}
+                          onMouseEnter={() => handleProjectHover(project)}
+                        >
+                          <div className={styles.projectInfo}>
+                            <h4 className={styles.projectTitle}>
+                              {project.title}
+                            </h4>
+                            <p className={styles.projectDescription}>
+                              {project.description}
+                            </p>
+                          </div>
+                          <span className={styles.projectArrow}>→</span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Preview Panel - Always Visible with Corresponding Content */}
                   <div className={styles.imagePreviewPanel}>
                     <div className={styles.imagePreviewContent}>
                       {selectedProject ? (
+                        // Project Preview
                         <>
                           <a
-                            href={`/projects/${selectedCategory.slug}/${selectedDeveloper.slug}/${selectedProject.slug}`}
+                            href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                             className={styles.previewImageLink}
                           >
                             <div
-                              className={styles.previewImage}
+                              className={`${styles.previewImage} ${styles.projectImageActive}`}
                               style={{
                                 backgroundImage: `url(${selectedProject.image})`,
                               }}
@@ -484,15 +499,15 @@ export default function TopHeader() {
                             </p>
                             <div className={styles.previewStats}>
                               <span className={styles.stat}>
-                                {selectedCategory.name}
+                                {selectedCategory?.name}
                               </span>
                               <span className={styles.stat}>
-                                {selectedDeveloper.name}
+                                {selectedDeveloper?.name}
                               </span>
                               <span className={styles.stat}>Luxury</span>
                             </div>
                             <a
-                              href={`/projects/${selectedCategory.slug}/${selectedDeveloper.slug}/${selectedProject.slug}`}
+                              href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                               className={styles.previewButton}
                             >
                               View Project Details
@@ -501,6 +516,7 @@ export default function TopHeader() {
                           </div>
                         </>
                       ) : selectedDeveloper ? (
+                        // Developer Preview
                         <>
                           <div
                             className={styles.previewImage}
@@ -513,7 +529,7 @@ export default function TopHeader() {
                               {selectedDeveloper.name}
                             </h3>
                             <p className={styles.previewDescription}>
-                              Premium developer in {selectedCategory.name}
+                              Premium developer in {selectedCategory?.name}
                             </p>
                             <div className={styles.previewStats}>
                               <span className={styles.stat}>
@@ -525,6 +541,7 @@ export default function TopHeader() {
                           </div>
                         </>
                       ) : selectedCategory ? (
+                        // Category Preview
                         <>
                           <div
                             className={styles.previewImage}
@@ -549,6 +566,7 @@ export default function TopHeader() {
                           </div>
                         </>
                       ) : (
+                        // Default Preview
                         <>
                           <div
                             className={styles.previewImage}
@@ -578,17 +596,7 @@ export default function TopHeader() {
             </div>
           )}
 
-          {/* Desktop Contact */}
-          {/* <div className={styles.desktopContact}>
-            <div className={styles.contactBadge}>
-              <div className={styles.contactInfo}>
-                <div className={styles.contactLabel}>Direct Line</div>
-                <div className={styles.contactNumber}>+971 56 666 5560</div>
-              </div>
-            </div>
-          </div> */}
-
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - FIXED BLACK COLOR */}
           <button
             className={`${styles.mobileMenuButton} ${
               isMobileMenuOpen ? styles.active : ""
@@ -706,7 +714,7 @@ export default function TopHeader() {
                                           toggleMobileDeveloper(developer.id)
                                         }
                                       >
-                                        {/* Developer Logo in Mobile */}
+                                        {/* Developer Logo in Mobile - BIGGER */}
                                         {developer.logo && (
                                           <div
                                             className={

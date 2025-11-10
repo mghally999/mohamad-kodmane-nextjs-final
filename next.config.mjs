@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // DO NOT put unoptimized: true
     formats: ["image/avif", "image/webp"],
-    domains: ["luxury-real-estate-media.b-cdn.net", "images.unsplash.com"],
+    domains: ["luxury-real-estate-media.b-cdn.net"],
     remotePatterns: [
-      { protocol: "https", hostname: "luxury-real-estate-media.b-cdn.net" },
-      { protocol: "https", hostname: "images.unsplash.com" },
+      {
+        protocol: "https",
+        hostname: "luxury-real-estate-media.b-cdn.net",
+      },
     ],
-    deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
-    imageSizes: [64, 96, 128, 256, 320, 384, 512],
+    // Let Bunny handle optimization
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  experimental: {
+    optimizeCss: true, // Enable CSS optimization
   },
 };
 
