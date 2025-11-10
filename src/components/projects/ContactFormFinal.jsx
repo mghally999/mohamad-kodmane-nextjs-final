@@ -85,14 +85,40 @@ export default function ContactFormFinal({ currentProjectName = null }) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    console.log("Form submitted:", formData);
-    setIsSubmitting(false);
+      const result = await response.json();
 
-    // Show success message (you can replace with toast notification)
-    alert("Thank you for your inquiry! We'll contact you shortly.");
+      if (result.success) {
+        alert(result.message);
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: "",
+          project: currentProjectName || ALL_PROJECTS[0]?.project?.name || "",
+          unitType: "",
+          contactMethod: "phone",
+          agreePrivacy: false,
+          agreeNews: false,
+        });
+      } else {
+        alert(result.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Network error. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -151,8 +177,6 @@ export default function ContactFormFinal({ currentProjectName = null }) {
 
         {/* Premium Content Grid */}
         <div className={styles.contentGrid}>
-          {/* Left Panel - Luxury Project Showcase */}
-
           {/* Right Panel - Luxury Contact Form */}
           <form className={styles.contactForm} onSubmit={handleSubmit}>
             <div className={styles.formHeader}>
@@ -335,60 +359,6 @@ export default function ContactFormFinal({ currentProjectName = null }) {
                 </label>
               </div>
             </div>
-
-            {/* Premium Checkboxes */}
-            {/* <div className={styles.checkboxGroup}>
-              <label className={styles.checkboxOption}>
-                <input
-                  type="checkbox"
-                  name="agreePrivacy"
-                  checked={formData.agreePrivacy}
-                  onChange={handleChange}
-                  className={styles.checkboxInput}
-                  required
-                />
-                <span className={styles.checkboxCustom}></span>
-                <span className={styles.checkboxText}>
-                  I have read and agree to the privacy policy and terms of
-                  service.
-                  <span className={styles.required}> *</span>
-                </span>
-              </label>
-
-              <label className={styles.checkboxOption}>
-                <input
-                  type="checkbox"
-                  name="agreeNews"
-                  checked={formData.agreeNews}
-                  onChange={handleChange}
-                  className={styles.checkboxInput}
-                />
-                <span className={styles.checkboxCustom}></span>
-                <span className={styles.checkboxText}>
-                  I would like to receive exclusive updates, news, and special
-                  offers about luxury properties and investment opportunities.
-                </span>
-              </label>
-            </div> */}
-
-            {/* Security Notice */}
-            {/* <div className={styles.securityNotice}>
-              <div className={styles.securityIcon}>🔒</div>
-              <div className={styles.securityText}>
-                <strong>Your information is secure with us.</strong>
-                <br />
-                This site is protected by reCAPTCHA and the Google{" "}
-                <a href="#" className={styles.securityLink}>
-                  Privacy Policy
-                </a>{" "}
-                and{" "}
-                <a href="#" className={styles.securityLink}>
-                  Terms of Service
-                </a>{" "}
-                apply. We respect your privacy and never share your information
-                with third parties.
-              </div>
-            </div> */}
 
             {/* Submit Button */}
             <button

@@ -10,20 +10,47 @@ export default function CallbackForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [activeField, setActiveField] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError("");
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      console.log("🔄 Submitting form...", formData);
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", phone: "", interest: "" });
-    }, 3000);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      console.log("📨 API Response:", result);
+
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", phone: "", interest: "" });
+
+        // Reset form after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        setSubmitError(
+          result.message || "Something went wrong. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("❌ Submission error:", error);
+      setSubmitError("Network error. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -66,7 +93,7 @@ export default function CallbackForm() {
               <div className={styles.dividerLine}></div>
             </div>
             <p className={styles.formSubtitle}>
-              Connect with <strong>Mohamad Kodmane</strong> for exclusive real
+              Connect with <strong>Mohamad Kodmani</strong> for exclusive real
               estate opportunities. We transform your investment vision into
               tangible Dubai property success.
             </p>
@@ -87,9 +114,8 @@ export default function CallbackForm() {
               </div>
               <h3 className={styles.successTitle}>Connection Established</h3>
               <p className={styles.successMessage}>
-                Mohamad Kodmane's team will contact you within{" "}
-                <strong>15 minutes</strong>. Prepare to discuss premium Dubai
-                investment opportunities.
+                Mohamad Kodmani will contact you within{" "}
+                <strong>15 minutes</strong>. Check your email for confirmation.
               </p>
               <div className={styles.successParticles}>
                 <div className={styles.particle}></div>
@@ -99,6 +125,14 @@ export default function CallbackForm() {
             </div>
           ) : (
             <form className={styles.creativeForm} onSubmit={handleSubmit}>
+              {/* Error Message */}
+              {submitError && (
+                <div className={styles.errorMessage}>
+                  <div className={styles.errorIcon}>⚠️</div>
+                  <span>{submitError}</span>
+                </div>
+              )}
+
               {/* Form Fields with Creative Layout */}
               <div className={styles.formFields}>
                 <div className={styles.fieldGroup}>
@@ -116,12 +150,12 @@ export default function CallbackForm() {
                       onChange={handleChange}
                       className={styles.creativeInput}
                       required
+                      disabled={isSubmitting}
                     />
                     <label className={styles.floatingLabel}>
                       Your Full Name
                     </label>
                     <div className={styles.inputLine}></div>
-                    {/* <div className={styles.fieldIcon}>👤</div> */}
                   </div>
 
                   <div
@@ -138,12 +172,12 @@ export default function CallbackForm() {
                       onChange={handleChange}
                       className={styles.creativeInput}
                       required
+                      disabled={isSubmitting}
                     />
                     <label className={styles.floatingLabel}>
                       Contact Number
                     </label>
                     <div className={styles.inputLine}></div>
-                    {/* <div className={styles.fieldIcon}>📱</div> */}
                   </div>
                 </div>
 
@@ -160,6 +194,7 @@ export default function CallbackForm() {
                     onChange={handleChange}
                     className={styles.creativeSelect}
                     required
+                    disabled={isSubmitting}
                   >
                     <option value="">Select Investment Focus</option>
                     <option value="off-plan">🏗️ Off-Plan Properties</option>
@@ -168,7 +203,6 @@ export default function CallbackForm() {
                     <option value="consultation">🎯 Expert Consultation</option>
                   </select>
                   <div className={styles.selectArrow}></div>
-                  {/* <div className={styles.fieldIcon}>🎯</div> */}
                 </div>
               </div>
 
@@ -200,38 +234,13 @@ export default function CallbackForm() {
               </button>
             </form>
           )}
-
-          {/* Trust Badges */}
-          {/* <div className={styles.trustBadges}>
-            <div className={styles.trustBadge}>
-              <div className={styles.badgeIcon}>⚡</div>
-              <div className={styles.badgeContent}>
-                <span className={styles.badgeTitle}>15-Minute Response</span>
-                <span className={styles.badgeSubtitle}>Guaranteed</span>
-              </div>
-            </div>
-            <div className={styles.trustBadge}>
-              <div className={styles.badgeIcon}>🛡️</div>
-              <div className={styles.badgeContent}>
-                <span className={styles.badgeTitle}>Confidential</span>
-                <span className={styles.badgeSubtitle}>&gt;Conversation</span>
-              </div>
-            </div>
-            <div className={styles.trustBadge}>
-              <div className={styles.badgeIcon}>🏆</div>
-              <div className={styles.badgeContent}>
-                <span className={styles.badgeTitle}>Expert</span>
-                <span className={styles.badgeSubtitle}>Guidance</span>
-              </div>
-            </div>
-          </div> */}
         </div>
 
         {/* Bottom Decoration */}
         <div className={styles.bottomDecoration}>
           <div className={styles.decorationLine}></div>
           <div className={styles.decorationText}>
-            MOHAMAD KODMANE REAL ESTATE BROKERAGE
+            MOHAMAD KODMANI REAL ESTATE BROKERAGE
           </div>
           <div className={styles.decorationLine}></div>
         </div>

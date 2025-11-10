@@ -14,17 +14,36 @@ export default function MiniCallbackForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const result = await response.json();
 
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", phone: "" });
-    }, 3000);
+      if (result.success) {
+        setIsSubmitted(true);
+        setFormData({ name: "", phone: "" });
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        alert(result.message || "Something went wrong. Please try again.");
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Network error. Please try again or contact us directly.");
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -150,22 +169,6 @@ export default function MiniCallbackForm() {
                 </div>
               </button>
             </div>
-
-            {/* Trust Indicators */}
-            {/* <div className={styles.trustIndicators}>
-              <div className={styles.trustItem}>
-                <div className={styles.trustIcon}>⚡</div>
-                <span>15-MINUTE RESPONSE</span>
-              </div>
-              <div className={styles.trustItem}>
-                <div className={styles.trustIcon}>🛡️</div>
-                <span>CONFIDENTIAL</span>
-              </div>
-              <div className={styles.trustItem}>
-                <div className={styles.trustIcon}>🎯</div>
-                <span>EXPERT ADVICE</span>
-              </div>
-            </div> */}
           </form>
         )}
 
