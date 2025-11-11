@@ -44,18 +44,19 @@ export const palmCentralData = {
     projectName: "Palm Central",
     location: "Palm Jumeirah, Dubai",
   },
-
   gallery: {
     title: "A Visual Symphony",
     slides: [
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-1.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-2.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-3.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-4.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-5.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-6.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/palm-central/gallery-7.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-aerial-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-beach-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-lagoon-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-green-court-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-podium-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-rooftop-pool-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-rooftop-lounge-01.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/palm-central/intro-main.jpg",
     ],
+    projectTag: "Palm Central",
   },
 
   floorPlans: {
@@ -73,8 +74,8 @@ export const palmCentralData = {
           "Starting Price": "Contact for Pricing",
         },
         images: [
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-1br.jpg",
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/interior-living-room.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/hero-inset.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-beach-01.jpg",
         ],
         features: [
           "Lagoon Views",
@@ -96,7 +97,7 @@ export const palmCentralData = {
         },
         images: [
           "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-2br.jpg",
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/interior-living-room.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-lagoon-01.jpg",
         ],
         features: [
           "Panoramic Views",
@@ -117,8 +118,8 @@ export const palmCentralData = {
           "Starting Price": "Contact for Pricing",
         },
         images: [
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-3br.jpg",
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/interior-bedroom.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-aerial-01.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-podium-01.jpg",
         ],
         features: [
           "Expansive Balcony",
@@ -139,8 +140,8 @@ export const palmCentralData = {
           "Starting Price": "Contact for Pricing",
         },
         images: [
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-4br.jpg",
-          "https://luxury-real-estate-media.b-cdn.net/palm-central/interterior-penthouse.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-rooftop-pool-01.jpg",
+          "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-rooftop-lounge-01.jpg",
         ],
         features: [
           "Private Terrace",
@@ -153,7 +154,6 @@ export const palmCentralData = {
     brochureHref:
       "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
   },
-
   amenities: {
     title: "Resort-Style Amenities",
     amenities: [

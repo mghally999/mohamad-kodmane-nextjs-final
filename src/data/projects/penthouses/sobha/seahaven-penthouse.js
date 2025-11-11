@@ -24,7 +24,7 @@ export const seahavenPenthouseData = {
 
   hero: {
     backgroundUrl:
-      "https://luxury-real-estate-media.b-cdn.net/seahaven/hero-bg.jpg",
+      "https://luxury-real-estate-media.b-cdn.net/seahaven/hero-bg.jpg%20.jpg",
     squareImageUrl:
       "https://luxury-real-estate-media.b-cdn.net/seahaven/hero-inset.jpg",
     companyName: "Sobha Realty",

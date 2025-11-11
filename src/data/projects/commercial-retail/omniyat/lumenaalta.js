@@ -106,7 +106,7 @@ export const lumenaAltaData = {
       "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-02.jpg",
       "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-03.jpg",
       "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-04.jpg",
-      "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-05.jpg",
+      // "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-05.jpg",
       "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-06.jpg",
       "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-07.jpg",
       "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-08.jpg",
@@ -162,7 +162,7 @@ export const lumenaAltaData = {
         },
         images: [
           "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-04.jpg",
-          "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-05.jpg",
+          // "https://luxury-real-estate-media.b-cdn.net/lumena-alta/visual-05.jpg",
         ],
         features: [
           "Expansive Workspace",
