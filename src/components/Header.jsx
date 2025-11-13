@@ -10,6 +10,16 @@ export default function Header() {
         <div className={styles.circle1}></div>
         <div className={styles.circle2}></div>
         <div className={styles.line}></div>
+
+        {/* OWNER PICTURE AS BACKGROUND ELEMENT */}
+        <div className={styles.ownerBackground}>
+          <img
+            src="/mohamad-kodmane.png"
+            alt="Mohamad Kodmane - Real Estate Advisor"
+            className={styles.ownerBgImage}
+          />
+          <div className={styles.ownerBgOverlay}></div>
+        </div>
       </div>
 
       <div className={styles.container}>
@@ -37,7 +47,7 @@ export default function Header() {
 
               <div className={styles.titleElegant}>
                 <h2 className={styles.subtitle}>
-                  REAL ESTATE ADVISOR & INVESTMENT EXPERT IN DUBAI
+                  REAL ESTATE ADVISOR <br /> & INVESTMENT EXPERT IN DUBAI
                 </h2>
               </div>
 

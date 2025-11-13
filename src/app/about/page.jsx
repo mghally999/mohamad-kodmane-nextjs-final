@@ -59,11 +59,10 @@ export default function AboutPage() {
             <div className={styles.photoSection}>
               <div className={styles.imageWrapper}>
                 <Image
-                  src={`${CDN}/aquamont/intro-main.png`}
-                  alt="Mohamad Kodmane - Dubai Real Estate Expert"
+                  src="/mohamad-kodmane.png"
+                  alt="Dubai Skyline - Mohamad Kodmane's Investment Vision"
                   fill
                   className={styles.image}
-                  priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className={styles.photoBadges}>
@@ -115,10 +114,11 @@ export default function AboutPage() {
 
             <div className={styles.missionImage}>
               <Image
-                src="/mohamad-kodmane.png"
-                alt="Dubai Skyline - Mohamad Kodmane's Investment Vision"
+                src={`${CDN}/aquamont/intro-main.png`}
+                alt="Mohamad Kodmane - Dubai Real Estate Expert"
                 fill
                 className={styles.image}
+                priority
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
