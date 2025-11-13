@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/TopHeader.module.css";
+import Link from "next/link";
 
 export default function TopHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,6 +56,7 @@ export default function TopHeader() {
       hasMegaMenu: true,
     },
     { href: "/articles", label: "Market Insights", type: "primary" },
+    { href: "/", label: "AR", type: "primary" },
   ];
 
   // ===== ALL CDN IMAGES (Bunny) =====
@@ -311,10 +313,10 @@ export default function TopHeader() {
         <div className={styles.container}>
           {/* Logo */}
           <div className={styles.logo}>
-            <a href="/" className={styles.logoLink}>
+            <Link href="/" className={styles.logoLink}>
               <div className={styles.logoText}>MOHAMAD KODMANE</div>
               <div className={styles.logoSubtitle}>LUXURY REAL ESTATE</div>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Nav */}
@@ -335,7 +337,7 @@ export default function TopHeader() {
                     <span className={styles.dropdownArrow}>▼</span>
                   </button>
                 ) : (
-                  <a
+                  <Link
                     href={item.href}
                     className={`${styles.navLink} ${
                       item.type === "cta" ? styles.ctaButton : ""
@@ -343,7 +345,7 @@ export default function TopHeader() {
                   >
                     {item.label}
                     {item.type === "cta" && <span className={styles.ctaGlow} />}
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}
@@ -449,7 +451,7 @@ export default function TopHeader() {
                     </div>
                     <div className={styles.projectsList}>
                       {selectedDeveloper?.projects.map((project) => (
-                        <a
+                        <Link
                           key={project.id}
                           href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${project.slug}`}
                           className={`${styles.projectItem} ${
@@ -468,7 +470,7 @@ export default function TopHeader() {
                             </p>
                           </div>
                           <span className={styles.projectArrow}>→</span>
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -479,7 +481,7 @@ export default function TopHeader() {
                       {selectedProject ? (
                         // Project Preview
                         <>
-                          <a
+                          <Link
                             href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                             className={styles.previewImageLink}
                           >
@@ -489,7 +491,7 @@ export default function TopHeader() {
                                 backgroundImage: `url(${selectedProject.image})`,
                               }}
                             />
-                          </a>
+                          </Link>
                           <div className={styles.previewInfo}>
                             <h3 className={styles.previewTitle}>
                               {selectedProject.title}
@@ -506,13 +508,13 @@ export default function TopHeader() {
                               </span>
                               <span className={styles.stat}>Luxury</span>
                             </div>
-                            <a
+                            <Link
                               href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                               className={styles.previewButton}
                             >
                               View Project Details
                               <span className={styles.buttonArrow}>→</span>
-                            </a>
+                            </Link>
                           </div>
                         </>
                       ) : selectedDeveloper ? (
@@ -753,7 +755,7 @@ export default function TopHeader() {
                                           className={styles.mobileProjectsList}
                                         >
                                           {developer.projects.map((project) => (
-                                            <a
+                                            <Link
                                               key={project.id}
                                               href={`/projects/${category.slug}/${developer.slug}/${project.slug}`}
                                               className={
@@ -789,7 +791,7 @@ export default function TopHeader() {
                                                   →
                                                 </span>
                                               </div>
-                                            </a>
+                                            </Link>
                                           ))}
                                         </div>
                                       )}
@@ -804,7 +806,7 @@ export default function TopHeader() {
                     )}
                   </div>
                 ) : (
-                  <a
+                  <Link
                     href={item.href}
                     className={`${styles.mobileNavLink} ${
                       item.type === "cta" ? styles.mobileCta : ""
@@ -812,7 +814,7 @@ export default function TopHeader() {
                     onClick={closeAllMobileMenus}
                   >
                     <span className={styles.mobileNavText}>{item.label}</span>
-                  </a>
+                  </Link>
                 )}
               </div>
             ))}

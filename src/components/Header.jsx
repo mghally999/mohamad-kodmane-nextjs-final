@@ -37,7 +37,7 @@ export default function Header() {
 
               <div className={styles.titleElegant}>
                 <h2 className={styles.subtitle}>
-                  Entrepreneur & Real-Estate Investor in Dubai
+                  REAL ESTATE ADVISOR & INVESTMENT EXPERT IN DUBAI
                 </h2>
               </div>
 
@@ -45,33 +45,44 @@ export default function Header() {
                 <p className={styles.organicText}>
                   At{" "}
                   <strong className={styles.highlight}>
-                    Mohamad Kodmane Real Estate Brokerage
+                    Mohamad Kodmane Real Estate
                   </strong>
-                  , we believe everyone deserves to own property and invest with
-                  confidence in Dubai. We guide new buyers{" "}
-                  <strong className={styles.highlight}>step-by-step</strong> to
-                  purchase{" "}
-                  <strong className={styles.highlight}>off-plan</strong>{" "}
-                  properties, and we build{" "}
-                  <strong className={styles.highlight}>
-                    diversified real-estate portfolios
-                  </strong>{" "}
-                  across ready and under-construction assets—managing them to
-                  achieve the best returns.
+                  , we believe that everyone deserves the opportunity to own
+                  property and invest with confidence in Dubai.
                 </p>
 
                 <p className={styles.organicText}>
-                  We support investors in Dubai with{" "}
+                  We guide our clients through every stage of property
+                  acquisition, from{" "}
                   <strong className={styles.highlight}>
-                    professional expertise
+                    off-plan developments
+                  </strong>{" "}
+                  to{" "}
+                  <strong className={styles.highlight}>
+                    ready luxury assets
+                  </strong>
+                  , helping them build strategically{" "}
+                  <strong className={styles.highlight}>
+                    diversified real estate portfolios
+                  </strong>{" "}
+                  that deliver consistent and sustainable returns.
+                </p>
+
+                <p className={styles.organicText}>
+                  With{" "}
+                  <strong className={styles.highlight}>
+                    deep market expertise
                   </strong>
                   ,{" "}
                   <strong className={styles.highlight}>
-                    full transparency
+                    transparent processes
                   </strong>
                   , and{" "}
-                  <strong className={styles.highlight}>precise details</strong>{" "}
-                  that ensure optimal investment results.
+                  <strong className={styles.highlight}>
+                    data-driven insights
+                  </strong>
+                  , we empower investors to make informed decisions and achieve
+                  optimal growth in Dubai's dynamic property market.
                 </p>
               </div>
             </div>

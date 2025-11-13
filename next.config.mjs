@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
-    domains: ["luxury-real-estate-media.b-cdn.net"],
+    domains: ["luxury-real-estate-media.b-cdn.net", "images.unsplash.com"],
     remotePatterns: [
       {
         protocol: "https",
