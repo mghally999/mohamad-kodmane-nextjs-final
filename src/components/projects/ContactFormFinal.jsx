@@ -3,16 +3,16 @@ import React, { useState, useEffect } from "react";
 import styles from "@/styles/projects/ContactFormFinal.module.css";
 
 // Import all your project data
-import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central";
-import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest";
-import { centralData } from "@/data/projects/apartments/sobha/central";
-import { skyParksData } from "@/data/projects/apartments/sobha/skyparks";
-import { rivieraRetailsData } from "@/data/projects/commercial-retail/azizi/riviera-retails";
-import { lumenaAltaData } from "@/data/projects/commercial-retail/omniyat/lumenaalta";
-import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven-penthouse";
-import { massar3Data } from "@/data/projects/villas/arada/massar";
-import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island";
-import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland";
+import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
+import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
+import { centralData } from "@/data/projects/apartments/sobha/central/central";
+import { skyParksData } from "@/data/projects/apartments/sobha/skyparks/skyparks";
+import { rivieraRetailsData } from "@/data/projects/commercial-retail/azizi/riviera-retails/riviera-retails";
+import { lumenaAltaData } from "@/data/projects/commercial-retail/omniyat/lumenaalta/lumenaalta";
+import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven/seahaven-penthouse";
+import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
+import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
+import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
 
 // Combine all projects for dropdown
 const ALL_PROJECTS = [

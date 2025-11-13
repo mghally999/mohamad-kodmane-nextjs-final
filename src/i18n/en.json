@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "marketInsights": "Market Insights",
+    "propertyTypes": "Property Types",
+    "developers": "Developers",
+    "projectsList": "Projects",
+    "explorePortfolio": "Explore our luxury property portfolio",
+    "selectDeveloper": "Select a developer to view their projects",
+    "browseProperties": "Browse available properties",
+    "viewProjectDetails": "View Project Details",
+    "contactUs": "Contact Us",
+    "directLine": "Direct Line"
+  },
+  "categories": {
+    "apartments": "Apartments",
+    "villas": "Villas",
+    "commercial": "Commercial / Retail",
+    "penthouses": "Penthouses"
+  },
+  "descriptions": {
+    "apartments": "Luxury apartments in Dubai's most sought-after areas",
+    "villas": "Exclusive villa developments and waterfront communities",
+    "commercial": "High-ROI commercial and mixed-use developments",
+    "penthouses": "Ultra-luxury penthouses with panoramic views",
+    "developerIn": "Developers in {category}",
+    "projectsBy": "Projects by {developer}",
+    "premiumDeveloper": "Premium developer in {category}",
+    "discoverPortfolio": "Discover our premium real estate portfolio"
+  },
+  "Header": {
+    "title": "MOHAMAD KODMANE",
+    "subtitle": "LUXURY REAL ESTATE",
+    "introPrefix": "At ",
+    "companyName": "Mohamad Kodmane Real Estate",
+    "introSuffix": ", we believe that everyone deserves the opportunity to own property and invest with confidence in Dubai.",
+    "portfolio": "We guide our clients through every stage of property acquisition, from off-plan developments to ready luxury assets, helping them build strategically diversified real estate portfolios that deliver consistent and sustainable returns.",
+    "expertise": "With deep market expertise, transparent processes, and data-driven insights, we empower investors to make informed decisions and achieve optimal growth in Dubai's dynamic property market."
+  }
+}

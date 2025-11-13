@@ -1,24 +1,67 @@
 import "./globals.css";
-import Footer from "../components/Footer";
+import Footer from "@/components/Footer";
 import TopHeader from "@/components/TopHeader";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FooterFinal from "@/components/FooterFinal";
-import { menuData } from "@/data/menuData"; // Import your menuData
+import { menuData } from "@/data/menuData";
+import LanguageProvider from "@/components/LanguageProvider";
 
 export const metadata = {
-  title: "Dubai Real Estate Experts | Market Insights & Investment Strategies",
+  title:
+    "Mohamad Kodmane - Dubai Real Estate Expert | Luxury Properties & Investment Advisor",
   description:
-    "Expert analysis and proven investment strategies for Dubai real estate. Achieve 15-45% returns with our data-driven market insights and premium property opportunities.",
+    "Mohamad Kodmane - Premier real estate advisor and investment expert in Dubai. Specializing in luxury apartments, villas, penthouses, and commercial properties. Get expert market insights and personalized investment strategies.",
   keywords:
-    "Dubai real estate, property investment, off-plan properties, rental yields, luxury properties, market analysis",
+    "Dubai real estate, luxury properties, investment advisor, Mohamad Kodmane, apartments Dubai, villas Dubai, penthouses, commercial real estate, property investment",
   authors: [{ name: "Mohamad Kodmane" }],
+  creator: "Mohamad Kodmane",
+  publisher: "Mohamad Kodmane Real Estate",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://mohamadkodmane.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/",
+      ar: "/ar",
+    },
+  },
   openGraph: {
-    title:
-      "Dubai Real Estate Experts | Market Insights & Investment Strategies",
+    title: "Mohamad Kodmane - Dubai Real Estate Expert",
     description:
-      "Expert analysis and proven investment strategies for Dubai real estate.",
+      "Premier real estate advisor and investment expert in Dubai. Luxury properties and investment opportunities.",
+    url: "https://mohamadkodmane.com",
+    siteName: "Mohamad Kodmane Real Estate",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Mohamad Kodmane - Dubai Real Estate Expert",
+      },
+    ],
+    locale: "en_US",
     type: "website",
-    locale: "en_AE",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohamad Kodmane - Dubai Real Estate Expert",
+    description: "Premier real estate advisor and investment expert in Dubai",
+    images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -28,7 +71,6 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="icon" href="/logo.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
-        {/* Preconnect to Bunny CDN for faster image TTFB */}
         <link
           rel="preconnect"
           href="https://luxury-real-estate-media.b-cdn.net"
@@ -40,11 +82,13 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <TopHeader />
-        {children}
-        <FooterFinal menuData={menuData} />
-        <Footer />
-        <FloatingWhatsApp />
+        <LanguageProvider>
+          <TopHeader />
+          {children}
+          <FooterFinal menuData={menuData} />
+          <Footer />
+          <FloatingWhatsApp />
+        </LanguageProvider>
       </body>
     </html>
   );

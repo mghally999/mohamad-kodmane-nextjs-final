@@ -4,7 +4,6 @@ body {
   padding: 0;
   background-color: #0d0d0d; /* same as header */
 
-
 /* Prevent layout jump while Next Image loads */
 img,
 .next-image {
@@ -24,4 +23,193 @@ img,
     padding: 25px !important;
     margin-top: 100px !important;
   }
-} */
+}
+*/
+
+/* Add to globals.css */
+body {
+  transition: all 0.3s ease;
+}
+
+body.language-transitioning {
+  overflow: hidden;
+  cursor: wait;
+}
+
+body.language-transitioning * {
+  pointer-events: none !important;
+}
+
+/* Smooth RTL/LTR transitions */
+html[dir="ltr"] {
+  --text-direction: ltr;
+}
+
+html[dir="rtl"] {
+  --text-direction: rtl;
+}
+
+/* Prevent layout shift during transition */
+.smooth-language-transition {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced language toggle animations */
+.langToggleActive {
+  position: relative;
+  overflow: hidden;
+}
+
+.langToggleActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.langToggleActive:hover::before {
+  left: 100%;
+}
+/* Add to globals.css */
+body {
+  transition: all 0.3s ease;
+}
+
+body.language-transitioning {
+  overflow: hidden;
+  cursor: wait;
+}
+
+body.language-transitioning * {
+  pointer-events: none !important;
+}
+
+/* Smooth RTL/LTR transitions */
+html[dir="ltr"] {
+  --text-direction: ltr;
+}
+
+html[dir="rtl"] {
+  --text-direction: rtl;
+}
+
+/* Prevent layout shift during transition */
+.smooth-language-transition {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced language toggle animations */
+.langToggleActive {
+  position: relative;
+  overflow: hidden;
+}
+
+.langToggleActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.langToggleActive:hover::before {
+  left: 100%;
+}
+/* Add to globals.css */
+body {
+  transition: all 0.2s ease; /* 🔥 FAST */
+}
+
+body.language-transitioning {
+  overflow: hidden;
+  cursor: wait;
+}
+
+body.language-transitioning * {
+  pointer-events: none !important;
+}
+
+/* Smooth RTL/LTR transitions */
+html[dir="ltr"] {
+  --text-direction: ltr;
+}
+
+html[dir="rtl"] {
+  --text-direction: rtl;
+}
+
+/* Prevent layout shift - FAST */
+.smooth-language-transition {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* globals.css – language transition & RTL/LTR base */
+
+body {
+  transition: all 0.2s ease;
+}
+
+body.language-transitioning {
+  overflow: hidden;
+  cursor: wait;
+}
+
+body.language-transitioning * {
+  pointer-events: none !important;
+}
+
+/* Smooth RTL/LTR direction variable */
+html[dir="ltr"] {
+  --text-direction: ltr;
+}
+
+html[dir="rtl"] {
+  --text-direction: rtl;
+}
+
+/* Use on containers you want to animate when language flips */
+.smooth-language-transition {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optional: fancier language toggle */
+.langToggleActive {
+  position: relative;
+  overflow: hidden;
+}
+
+.langToggleActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.langToggleActive:hover::before {
+  left: 100%;
+}

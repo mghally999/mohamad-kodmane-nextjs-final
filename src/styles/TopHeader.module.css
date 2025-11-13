@@ -4453,3 +4453,217 @@ body.mobileMenuOpen {
   justify-content: flex-end !important;
   padding: 1rem 1.5rem !important;
 }
+/* ===== LANGUAGE TOGGLE STYLES ===== */
+
+/* Desktop Language Toggle */
+.languageToggle {
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.langButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(199, 173, 102, 0.3);
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.langButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(199, 173, 102, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(199, 173, 102, 0.2);
+}
+
+.langButton.arabicActive {
+  background: rgba(199, 173, 102, 0.2);
+  border-color: rgba(199, 173, 102, 0.6);
+}
+
+.langText {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  position: relative;
+  color: #000000;
+}
+
+.langIndicator {
+  width: 40px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  position: relative;
+  border: 1px solid rgba(199, 173, 102, 0.3);
+  transition: all 0.3s ease;
+}
+
+.langSlider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, #c7ad66, #a98d4e);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.langSlider[data-lang="ar"] {
+  left: calc(100% - 18px);
+  background: linear-gradient(135deg, #0056b3, #003d82);
+}
+
+/* Mobile Language Toggle */
+.mobileLanguageToggle {
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.mobileLangButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(199, 173, 102, 0.3);
+  border-radius: 12px;
+  color: #333;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobileLangButton:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(199, 173, 102, 0.5);
+  transform: translateX(5px);
+}
+
+.mobileLangButton.arabicActive {
+  background: rgba(199, 173, 102, 0.15);
+  border-color: rgba(199, 173, 102, 0.6);
+}
+
+.mobileLangText {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.mobileLangIndicator {
+  width: 44px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  position: relative;
+  border: 1px solid rgba(199, 173, 102, 0.3);
+}
+
+.mobileLangSlider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #c7ad66, #a98d4e);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mobileLangSlider[data-lang="ar"] {
+  left: calc(100% - 20px);
+  background: linear-gradient(135deg, #0056b3, #003d82);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1023px) {
+  .languageToggle {
+    display: none;
+  }
+
+  .mobileLanguageToggle {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobileLanguageToggle {
+    display: none;
+  }
+
+  .languageToggle {
+    display: block;
+  }
+}
+
+/* RTL Support (when Arabic is active) */
+[dir="rtl"] .langSlider[data-lang="en"] {
+  left: calc(100% - 18px);
+}
+
+[dir="rtl"] .langSlider[data-lang="ar"] {
+  left: 2px;
+}
+
+[dir="rtl"] .mobileLangSlider[data-lang="en"] {
+  left: calc(100% - 20px);
+}
+
+[dir="rtl"] .mobileLangSlider[data-lang="ar"] {
+  left: 2px;
+}
+/* Language toggle loading states - FAST */
+.langButton.transitioning,
+.mobileLangButton.transitioning {
+  opacity: 0.8;
+  cursor: wait !important;
+  transform: scale(0.98);
+  transition: all 0.15s ease; /* 🔥 FAST */
+}
+
+.langButton:disabled,
+.mobileLangButton:disabled {
+  cursor: wait !important;
+}
+
+.langSlider.pulsing,
+.mobileLangSlider.pulsing {
+  animation: pulse 0.6s ease-in-out infinite; /* 🔥 FASTER */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Ensure header stays smooth during transitions */
+.header {
+  transition: all 0.2s ease; /* 🔥 FAST */
+}
+
+body.language-transitioning .header {
+  opacity: 0.9;
+}

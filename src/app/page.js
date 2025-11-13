@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/components/LanguageProvider";
 import HeroVideo from "@/components/HeroVideo";
 import MiniCallbackForm from "@/components/MiniCallbackForm";
 import AboutMohamadKodmane from "@/components/AboutMohamadKodmane";
@@ -7,29 +10,31 @@ import CoreValues from "@/components/CoreValues";
 import Header from "@/components/Header";
 import CallbackForm from "@/components/CallbackForm";
 import OffPlanInvestment from "@/components/OffPlanInvestment";
-import DubaiDemand from "@/components/DubaiDemand";
-import DubaiEconomicGrowth from "@/components/DubaiEconomicGrowth";
 import PortfolioInvestment from "@/components/PortfolioInvestment";
 import CapitalGrowth from "@/components/CapitalGrowth";
+import DubaiDemand from "@/components/DubaiDemand";
+import DubaiEconomicGrowth from "@/components/DubaiEconomicGrowth";
 import OurServices from "@/components/OurServices";
 
 export default function HomePage() {
+  const { locale } = useLanguage();
+
   return (
     <>
       <Header />
-      <HeroVideo /> {/* Welcome & Company Intro */}
-      <CallbackForm /> {/* Services + Contact */}
-      <OffPlanInvestment /> {/* What is off-plan investment? */}
-      <PortfolioInvestment /> {/* What is building portfolios? */}
-      <CapitalGrowth /> {/* Examples of capital growth - DXB Interact */}
-      <DubaiDemand /> {/* Unprecedented demand */}
-      <DubaiEconomicGrowth /> {/* Economic growth + Why invest in Dubai */}
-      <OurServices />
-      {/* <MissionVision /> */}
-      {/* <AboutMohamadKodmane /> */}
-      {/* <CoreValues /> */}
-      {/* <FreeServices /> */}
-      {/* <MiniCallbackForm /> */}
+      <HeroVideo locale={locale} />
+      <CallbackForm locale={locale} />
+      <OffPlanInvestment locale={locale} />
+      <PortfolioInvestment locale={locale} />
+      <CapitalGrowth locale={locale} />
+      <DubaiDemand locale={locale} />
+      <DubaiEconomicGrowth locale={locale} />
+      <OurServices locale={locale} />
+      {/* <MissionVision locale={locale} /> */}
+      {/* <AboutMohamadKodmane locale={locale} /> */}
+      {/* <CoreValues locale={locale} /> */}
+      {/* <FreeServices locale={locale} /> */}
+      {/* <MiniCallbackForm locale={locale} /> */}
     </>
   );
 }

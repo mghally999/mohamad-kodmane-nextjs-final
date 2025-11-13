@@ -9,7 +9,7 @@ export async function getProjectData(category, developer, project) {
   try {
     // Use alias import path compatible with Next.js build
     const module = await import(
-      `@/data/projects/${category}/${developer}/${project}.js`
+      `@/data/projects/${category}/${developer}/${project}/${project}.js`
     );
 
     // Find export key ending with "Data"
@@ -19,7 +19,7 @@ export async function getProjectData(category, developer, project) {
 
     if (!exportKey) {
       throw new Error(
-        `❌ No exported variable ending with "Data" found in @/data/projects/${category}/${developer}/${project}.js`
+        `❌ No exported variable ending with "Data" found in @/data/projects/${category}/${developer}/${project}/${project}.js`
       );
     }
 

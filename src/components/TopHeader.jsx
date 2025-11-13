@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/TopHeader.module.css";
-import Link from "next/link";
+import { useLanguage } from "./LanguageProvider";
 
 export default function TopHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,7 +16,147 @@ export default function TopHeader() {
     categoryId: null,
     developerId: null,
   });
+
+  const { locale, switchLanguage, isTransitioning, t } = useLanguage();
   const pathname = usePathname();
+
+  const CDN = "https://luxury-real-estate-media.b-cdn.net";
+
+  // Menu data with translations
+  const menuData = useMemo(() => {
+    const data = {
+      categories: [
+        {
+          id: 1,
+          name: t("categories.apartments"),
+          slug: "apartments",
+          description: t("descriptions.apartments"),
+          image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+          developers: [
+            {
+              id: 1,
+              name: "Sobha Realty",
+              slug: "sobha",
+              image: `${CDN}/aquamont/intro-main.png`,
+              logo: `/Sobha-Realty-Square-Logo.jpg`,
+              projects: [
+                {
+                  id: 101,
+                  title: "Sobha SkyParks",
+                  slug: "skyparks",
+                  image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+                  description: "Luxury high-rise with panoramic city views",
+                },
+                {
+                  id: 102,
+                  title: "Sobha AquaCrest",
+                  slug: "aqua-crest",
+                  image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
+                  description: "Beachfront luxury residences",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: t("categories.villas"),
+          slug: "villas",
+          description: t("descriptions.villas"),
+          image: `${CDN}/hartland/hero-bg.jpg`,
+          developers: [
+            {
+              id: 1,
+              name: "Sobha Realty",
+              slug: "sobha",
+              image: `${CDN}/hartland/hero-bg.jpg`,
+              logo: `/Sobha-Realty-Square-Logo.jpg`,
+              projects: [
+                {
+                  id: 201,
+                  title: "Sobha Hartland 2 Villas",
+                  slug: "hartland",
+                  image: `${CDN}/hartland/hero-bg.jpg`,
+                  description: "Premium waterfront villas",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 3,
+          name: t("categories.commercial"),
+          slug: "commercial-retail",
+          description: t("descriptions.commercial"),
+          image: `${CDN}/riviera-retails/hero-bg.jpg`,
+          developers: [
+            {
+              id: 1,
+              name: "Azizi Developments",
+              slug: "azizi",
+              image: `${CDN}/riviera/hero-bg.jpg`,
+              logo: `/azizi.jpg`,
+              projects: [
+                {
+                  id: 301,
+                  title: "Azizi Riviera – Retails",
+                  slug: "riviera-retails",
+                  image: `${CDN}/riviera/hero-bg.jpg`,
+                  description: "Premium retail spaces",
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 4,
+          name: t("categories.penthouses"),
+          slug: "penthouses",
+          description: t("descriptions.penthouses"),
+          image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+          developers: [
+            {
+              id: 1,
+              name: "Sobha Realty",
+              slug: "sobha",
+              image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+              logo: `/Sobha-Realty-Square-Logo.jpg`,
+              projects: [
+                {
+                  id: 401,
+                  title: "Sobha SeaHaven Penthouse",
+                  slug: "seahaven-penthouse",
+                  image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+                  description: "Ultra-luxury penthouse with sea views",
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+    return data;
+  }, [t, locale]);
+
+  // Navigation items with translation keys
+  const navItems = useMemo(
+    () => [
+      { href: "/", label: t("nav.home"), type: "primary" },
+      { href: "/about", label: t("nav.about"), type: "primary" },
+      {
+        href: "/projects",
+        label: t("nav.projects"),
+        type: "primary",
+        hasMegaMenu: true,
+      },
+      {
+        href: "/articles",
+        label: t("nav.marketInsights"),
+        type: "primary",
+      },
+    ],
+    [t, locale]
+  );
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
@@ -30,7 +170,11 @@ export default function TopHeader() {
     };
   }, [isMobileMenuOpen]);
 
-  // Close mega menu when clicking outside
+  const toggleLanguage = () => {
+    const newLang = locale === "en" ? "ar" : "en";
+    switchLanguage(newLang);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -46,207 +190,9 @@ export default function TopHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [activeMegaMenu]);
 
-  const navItems = [
-    { href: "/", label: "Home", type: "primary" },
-    { href: "/about", label: "About", type: "primary" },
-    {
-      href: "/projects",
-      label: "Projects",
-      type: "primary",
-      hasMegaMenu: true,
-    },
-    { href: "/articles", label: "Market Insights", type: "primary" },
-    { href: "/", label: "AR", type: "primary" },
-  ];
-
-  // ===== ALL CDN IMAGES (Bunny) =====
-  const CDN = "https://luxury-real-estate-media.b-cdn.net";
-
-  const menuData = {
-    categories: [
-      {
-        id: 1,
-        name: "Apartments",
-        slug: "apartments",
-        description: "Luxury apartments in Dubai's most sought-after areas",
-        image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-        developers: [
-          {
-            id: 1,
-            name: "Sobha Realty",
-            slug: "sobha",
-            image: `${CDN}/aquamont/intro-main.png`,
-            logo: `/Sobha-Realty-Square-Logo.jpg`,
-            projects: [
-              {
-                id: 101,
-                title: "Sobha SkyParks",
-                slug: "skyparks",
-                image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-                description: "Luxury high-rise with panoramic city views",
-              },
-              {
-                id: 102,
-                title: "Sobha AquaCrest",
-                slug: "aqua-crest",
-                image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
-                description: "Beachfront luxury residences",
-              },
-              {
-                id: 103,
-                title: "Sobha Central",
-                slug: "central",
-                image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
-                description: "Downtown premium apartments",
-              },
-              {
-                id: 104,
-                title: "Sobha Aquamont",
-                slug: "aquamont",
-                image: `${CDN}/aquamont/intro-main.png`,
-                description: "Mountain view luxury residences",
-              },
-            ],
-          },
-          {
-            id: 2,
-            name: "Nakheel",
-            slug: "nakheel",
-            image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-            logo: `/Nakheel-Developments.webp`,
-            projects: [
-              {
-                id: 106,
-                title: "Palm Central – Nakheel",
-                slug: "palm-central",
-                image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-                description: "Palm Jumeirah luxury living",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "Villas",
-        slug: "villas",
-        description: "Exclusive villa developments and waterfront communities",
-        image: `${CDN}/hartland/hero-bg.jpg`,
-        developers: [
-          {
-            id: 1,
-            name: "Sobha Realty",
-            slug: "sobha",
-            image: `${CDN}/hartland/hero-bg.jpg`,
-            logo: `/Sobha-Realty-Square-Logo.jpg`,
-            projects: [
-              {
-                id: 201,
-                title: "Sobha Hartland 2 Villas",
-                slug: "hartland",
-                image: `${CDN}/hartland/hero-bg.jpg`,
-                description: "Premium waterfront villas",
-              },
-              {
-                id: 202,
-                title: "Sobha Al Sinniyyah Island",
-                slug: "al-sinniyyah-island",
-                image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
-                description: "Private island luxury villas",
-              },
-            ],
-          },
-          {
-            id: 2,
-            name: "Arada",
-            slug: "arada",
-            image: `${CDN}/massar-3/hero-bg.jpg`,
-            logo: `/arada-developer.avif`,
-            projects: [
-              {
-                id: 203,
-                title: "Arada – Massar 3",
-                slug: "massar",
-                image: `${CDN}/massar-3/hero-bg.jpg`,
-                description: "Gated community luxury villas",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 3,
-        name: "Commercial / Retail",
-        slug: "commercial-retail",
-        description: "High-ROI commercial and mixed-use developments",
-        image: `${CDN}/riviera-retails/hero-bg.jpg`,
-        developers: [
-          {
-            id: 2,
-            name: "Omniyat",
-            slug: "omniyat",
-            image: `${CDN}/lumena-alta/hero-bg.jpg`,
-            logo: `omniyat-logo.avif`,
-            projects: [
-              {
-                id: 305,
-                title: "Lumina Alta – Omniyat",
-                slug: "lumenaalta",
-                image: `${CDN}/lumena-alta/hero-bg.jpg`,
-                description: "Ultra-luxury office tower",
-              },
-            ],
-          },
-          {
-            id: 1,
-            name: "Azizi Developments",
-            slug: "azizi",
-            image: `${CDN}/riviera/hero-bg.jpg`,
-            logo: `/azizi.jpg`,
-            projects: [
-              {
-                id: 301,
-                title: "Azizi Riviera – Retails",
-                slug: "riviera-retails",
-                image: `${CDN}/riviera/hero-bg.jpg`,
-                description: "Premium retail spaces",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 4,
-        name: "Penthouses",
-        slug: "penthouses",
-        description: "Ultra-luxury penthouses with panoramic views",
-        image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-        developers: [
-          {
-            id: 1,
-            name: "Sobha Realty",
-            slug: "sobha",
-            image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-            logo: `/Sobha-Realty-Square-Logo.jpg`,
-            projects: [
-              {
-                id: 401,
-                title: "Sobha SeaHaven Penthouse",
-                slug: "seahaven-penthouse",
-                image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-                description: "Ultra-luxury penthouse with sea views",
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  };
-
   const handleMegaMenuEnter = (item) => {
     if (!item.hasMegaMenu) return;
     setActiveMegaMenu(item.label);
-    // Set default selections when opening mega menu
     setSelectedCategory(menuData.categories[0]);
     setSelectedDeveloper(menuData.categories[0]?.developers[0] || null);
     setSelectedProject(
@@ -274,7 +220,6 @@ export default function TopHeader() {
 
   const handleProjectHover = (project) => setSelectedProject(project);
 
-  // FIXED MOBILE FUNCTIONS
   const toggleMobileCategory = (categoryId) => {
     setMobileExpandedItems((prev) => ({
       categories: "luxury-projects",
@@ -306,7 +251,8 @@ export default function TopHeader() {
       <header
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
           isMobileMenuOpen ? styles.mobileMenuOpen : ""
-        }`}
+        } ${locale === "ar" ? styles.rtl : ""}`}
+        dir={locale === "ar" ? "rtl" : "ltr"}
       >
         <div className={styles.backgroundOverlay} />
 
@@ -314,8 +260,8 @@ export default function TopHeader() {
           {/* Logo */}
           <div className={styles.logo}>
             <a href="/" className={styles.logoLink}>
-              <div className={styles.logoText}>MOHAMAD KODMANE</div>
-              <div className={styles.logoSubtitle}>LUXURY REAL ESTATE</div>
+              <div className={styles.logoText}>{t("Header.title")}</div>
+              <div className={styles.logoSubtitle}>{t("Header.subtitle")}</div>
             </a>
           </div>
 
@@ -351,17 +297,43 @@ export default function TopHeader() {
             ))}
           </nav>
 
-          {/* Mega Menu - ALL COLUMNS VISIBLE AT SAME TIME */}
+          {/* Language Toggle Button */}
+          <div className={styles.languageToggle}>
+            <button
+              onClick={toggleLanguage}
+              disabled={isTransitioning}
+              className={`${styles.langButton} ${
+                locale === "ar" ? styles.arabicActive : ""
+              } ${isTransitioning ? styles.transitioning : ""}`}
+              aria-label={`Switch to ${locale === "en" ? "Arabic" : "English"}`}
+            >
+              <span className={styles.langText}>
+                {isTransitioning ? "⟳" : locale === "en" ? "العربية" : "EN"}
+              </span>
+              <div className={styles.langIndicator}>
+                <div
+                  className={`${styles.langSlider} ${
+                    isTransitioning ? styles.pulsing : ""
+                  }`}
+                  data-lang={locale}
+                ></div>
+              </div>
+            </button>
+          </div>
+
+          {/* Mega Menu */}
           {activeMegaMenu && (
             <div className={styles.megaMenu} onMouseLeave={handleMegaMenuLeave}>
               <div className={styles.megaMenuContainer}>
                 <div className={styles.megaMenuContent}>
-                  {/* Column 1: Categories - Always Visible */}
+                  {/* Column 1: Categories */}
                   <div className={styles.menuLevel}>
                     <div className={styles.menuLevelHeader}>
-                      <h3 className={styles.menuLevelTitle}>Property Types</h3>
+                      <h3 className={styles.menuLevelTitle}>
+                        {t("nav.propertyTypes")}
+                      </h3>
                       <p className={styles.menuLevelDescription}>
-                        Explore our luxury property portfolio
+                        {t("nav.explorePortfolio")}
                       </p>
                     </div>
                     <div className={styles.categoriesGrid}>
@@ -389,15 +361,18 @@ export default function TopHeader() {
                     </div>
                   </div>
 
-                  {/* Column 2: Developers - Always Visible */}
+                  {/* Column 2: Developers */}
                   <div className={styles.menuLevel}>
                     <div className={styles.menuLevelHeader}>
                       <h3 className={styles.menuLevelTitle}>
-                        Developers{" "}
-                        {selectedCategory && `in ${selectedCategory.name}`}
+                        {t("nav.developers")}{" "}
+                        {selectedCategory &&
+                          t("descriptions.developerIn", {
+                            category: selectedCategory.name,
+                          })}
                       </h3>
                       <p className={styles.menuLevelDescription}>
-                        Select a developer to view their projects
+                        {t("nav.selectDeveloper")}
                       </p>
                     </div>
                     <div className={styles.developersList}>
@@ -412,7 +387,6 @@ export default function TopHeader() {
                           onMouseEnter={() => handleDeveloperHover(developer)}
                         >
                           <div className={styles.developerHeader}>
-                            {/* Developer Logo - BIGGER SIZE */}
                             {developer.logo && (
                               <div className={styles.developerLogo}>
                                 <img
@@ -427,8 +401,8 @@ export default function TopHeader() {
                                 {developer.name}
                               </h4>
                               <p className={styles.projectCount}>
-                                {developer.projects.length} project
-                                {developer.projects.length !== 1 ? "s" : ""}
+                                {developer.projects.length}{" "}
+                                {t("nav.projectsList").toLowerCase()}
                               </p>
                             </div>
                             <span className={styles.developerArrow}>→</span>
@@ -438,15 +412,18 @@ export default function TopHeader() {
                     </div>
                   </div>
 
-                  {/* Column 3: Projects - Always Visible */}
+                  {/* Column 3: Projects */}
                   <div className={styles.menuLevel}>
                     <div className={styles.menuLevelHeader}>
                       <h3 className={styles.menuLevelTitle}>
-                        Projects{" "}
-                        {selectedDeveloper && `by ${selectedDeveloper.name}`}
+                        {t("nav.projectsList")}{" "}
+                        {selectedDeveloper &&
+                          t("descriptions.projectsBy", {
+                            developer: selectedDeveloper.name,
+                          })}
                       </h3>
                       <p className={styles.menuLevelDescription}>
-                        Browse available properties
+                        {t("nav.browseProperties")}
                       </p>
                     </div>
                     <div className={styles.projectsList}>
@@ -475,11 +452,10 @@ export default function TopHeader() {
                     </div>
                   </div>
 
-                  {/* Preview Panel - Always Visible with Corresponding Content */}
+                  {/* Preview Panel */}
                   <div className={styles.imagePreviewPanel}>
                     <div className={styles.imagePreviewContent}>
                       {selectedProject ? (
-                        // Project Preview
                         <>
                           <a
                             href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
@@ -512,13 +488,12 @@ export default function TopHeader() {
                               href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                               className={styles.previewButton}
                             >
-                              View Project Details
+                              {t("nav.viewProjectDetails")}
                               <span className={styles.buttonArrow}>→</span>
                             </a>
                           </div>
                         </>
                       ) : selectedDeveloper ? (
-                        // Developer Preview
                         <>
                           <div
                             className={styles.previewImage}
@@ -531,11 +506,14 @@ export default function TopHeader() {
                               {selectedDeveloper.name}
                             </h3>
                             <p className={styles.previewDescription}>
-                              Premium developer in {selectedCategory?.name}
+                              {t("descriptions.premiumDeveloper", {
+                                category: selectedCategory?.name,
+                              })}
                             </p>
                             <div className={styles.previewStats}>
                               <span className={styles.stat}>
-                                {selectedDeveloper.projects.length} Projects
+                                {selectedDeveloper.projects.length}{" "}
+                                {t("nav.projectsList")}
                               </span>
                               <span className={styles.stat}>Luxury</span>
                               <span className={styles.stat}>Premium</span>
@@ -543,7 +521,6 @@ export default function TopHeader() {
                           </div>
                         </>
                       ) : selectedCategory ? (
-                        // Category Preview
                         <>
                           <div
                             className={styles.previewImage}
@@ -560,7 +537,8 @@ export default function TopHeader() {
                             </p>
                             <div className={styles.previewStats}>
                               <span className={styles.stat}>
-                                {selectedCategory.developers.length} Developers
+                                {selectedCategory.developers.length}{" "}
+                                {t("nav.developers")}
                               </span>
                               <span className={styles.stat}>Premium</span>
                               <span className={styles.stat}>Luxury</span>
@@ -568,7 +546,6 @@ export default function TopHeader() {
                           </div>
                         </>
                       ) : (
-                        // Default Preview
                         <>
                           <div
                             className={styles.previewImage}
@@ -577,13 +554,16 @@ export default function TopHeader() {
                             }}
                           />
                           <div className={styles.previewInfo}>
-                            <h3 className={styles.previewTitle}>Projects</h3>
+                            <h3 className={styles.previewTitle}>
+                              {t("nav.projects")}
+                            </h3>
                             <p className={styles.previewDescription}>
-                              Discover our premium real estate portfolio
+                              {t("descriptions.discoverPortfolio")}
                             </p>
                             <div className={styles.previewStats}>
                               <span className={styles.stat}>
-                                {menuData.categories.length} Categories
+                                {menuData.categories.length}{" "}
+                                {t("nav.propertyTypes")}
                               </span>
                               <span className={styles.stat}>Premium</span>
                               <span className={styles.stat}>Exclusive</span>
@@ -598,7 +578,7 @@ export default function TopHeader() {
             </div>
           )}
 
-          {/* Mobile Menu Button - FIXED BLACK COLOR */}
+          {/* Mobile Menu Button */}
           <button
             className={`${styles.mobileMenuButton} ${
               isMobileMenuOpen ? styles.active : ""
@@ -613,19 +593,20 @@ export default function TopHeader() {
         </div>
       </header>
 
-      {/* Mobile Nav - FIXED VERSION */}
+      {/* Mobile Nav */}
       <div
         className={`${styles.mobileNav} ${
           isMobileMenuOpen ? styles.active : ""
-        }`}
+        } ${locale === "ar" ? styles.rtl : ""}`}
+        dir={locale === "ar" ? "rtl" : "ltr"}
       >
         <div className={styles.mobileNavBackground} />
         <div className={styles.mobileNavContainer}>
           <div className={styles.mobileNavHeader}>
             <div className={styles.mobileLogo}>
-              <div className={styles.mobileLogoText}>MOHAMAD KODMANE</div>
+              <div className={styles.mobileLogoText}>{t("Header.title")}</div>
               <div className={styles.mobileLogoSubtitle}>
-                LUXURY REAL ESTATE
+                {t("Header.subtitle")}
               </div>
             </div>
             <button
@@ -638,6 +619,29 @@ export default function TopHeader() {
           </div>
 
           <nav className={styles.mobileNavContent}>
+            {/* Mobile Language Toggle */}
+            <div className={styles.mobileLanguageToggle}>
+              <button
+                onClick={toggleLanguage}
+                className={`${styles.mobileLangButton} ${
+                  locale === "ar" ? styles.arabicActive : ""
+                }`}
+                aria-label={`Switch to ${
+                  locale === "en" ? "Arabic" : "English"
+                }`}
+              >
+                <span className={styles.mobileLangText}>
+                  {locale === "en" ? "العربية" : "English"}
+                </span>
+                <div className={styles.mobileLangIndicator}>
+                  <div
+                    className={styles.mobileLangSlider}
+                    data-lang={locale}
+                  ></div>
+                </div>
+              </button>
+            </div>
+
             {navItems.map((item) => (
               <div key={item.href}>
                 {item.hasMegaMenu ? (
@@ -662,7 +666,7 @@ export default function TopHeader() {
                       <div className={styles.mobileMegaMenuContent}>
                         <div className={styles.mobileMenuLevel}>
                           <h4 className={styles.mobileMenuLevelTitle}>
-                            Property Types
+                            {t("nav.propertyTypes")}
                           </h4>
 
                           {menuData.categories.map((category) => (
@@ -695,7 +699,9 @@ export default function TopHeader() {
                                 category.id && (
                                 <div className={styles.mobileDevelopersList}>
                                   <h5 className={styles.mobileDevelopersTitle}>
-                                    Developers in {category.name}
+                                    {t("descriptions.developerIn", {
+                                      category: category.name,
+                                    })}
                                   </h5>
 
                                   {category.developers.map((developer) => (
@@ -716,7 +722,6 @@ export default function TopHeader() {
                                           toggleMobileDeveloper(developer.id)
                                         }
                                       >
-                                        {/* Developer Logo in Mobile - BIGGER */}
                                         {developer.logo && (
                                           <div
                                             className={
@@ -820,19 +825,17 @@ export default function TopHeader() {
             ))}
 
             <div className={styles.mobileContact}>
-              <div className={styles.mobileContactTitle}>Contact Us</div>
+              <div className={styles.mobileContactTitle}>
+                {t("nav.contactUs")}
+              </div>
               <div className={styles.contactItem}>
                 <div className={styles.contactDetails}>
-                  <div className={styles.contactType}>Direct Line</div>
+                  <div className={styles.contactType}>
+                    {t("nav.directLine")}
+                  </div>
                   <div className={styles.contactValue}>+971 56 666 5560</div>
                 </div>
               </div>
-              {/* <div className={styles.contactItem}>
-                <div className={styles.contactDetails}>
-                  <div className={styles.contactType}>Email</div>
-                  <div className={styles.contactValue}>info@sodhia.com</div>
-                </div>
-              </div> */}
             </div>
           </nav>
         </div>
