@@ -1,11 +1,14 @@
-// CapitalGrowth.jsx - FINAL FULL WIDTH VERSION
 "use client";
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/CapitalGrowth.module.css";
 
 export default function CapitalGrowth() {
+  const { locale, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [activeMetric, setActiveMetric] = useState(0);
+
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     setIsVisible(true);
@@ -13,7 +16,6 @@ export default function CapitalGrowth() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // Luxury Villa Images from your CDN
   const luxuryImages = [
     {
       url: `${CDN}/hartland/hero-bg.jpg`,
@@ -25,49 +27,42 @@ export default function CapitalGrowth() {
       url: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
       alt: "Al Sinniyyah Island Villas",
       title: "Private Island Living",
-      description:
-        "Exclusive island developments offering exceptional privacy and serenity",
+      description: "Exclusive island developments offering exceptional privacy",
     },
     {
       url: `${CDN}/massar-3/hero-bg.jpg`,
       alt: "Arada Massar Luxury Villas",
       title: "Gated Community Excellence",
-      description:
-        "Green, family-focused villa communities leading off-plan demand",
+      description: "Green, family-focused villa communities",
     },
   ];
 
-  // QUALITATIVE METRICS ONLY - No number repetition
   const growthMetrics = [
     {
-      value: "Premium",
-      label: "Locations",
-      description:
-        "Prime waterfront and island developments in Dubai's most exclusive areas",
+      value: t("capitalGrowth.metricLocationsValue"),
+      label: t("capitalGrowth.metricLocationsLabel"),
+      description: t("capitalGrowth.metricLocationsDesc"),
       image: luxuryImages[1].url,
       alt: luxuryImages[1].alt,
     },
     {
-      value: "Luxury",
-      label: "Amenities",
-      description:
-        "World-class facilities including pools, gyms, and private beach access",
+      value: t("capitalGrowth.metricAmenitiesValue"),
+      label: t("capitalGrowth.metricAmenitiesLabel"),
+      description: t("capitalGrowth.metricAmenitiesDesc"),
       image: luxuryImages[0].url,
       alt: luxuryImages[0].alt,
     },
     {
-      value: "Investment",
-      label: "Returns",
-      description:
-        "Strong capital growth and rental yields in premium villa communities",
+      value: t("capitalGrowth.metricReturnsValue"),
+      label: t("capitalGrowth.metricReturnsLabel"),
+      description: t("capitalGrowth.metricReturnsDesc"),
       image: luxuryImages[2].url,
       alt: luxuryImages[2].alt,
     },
     {
-      value: "Community",
-      label: "Features",
-      description:
-        "Gated communities with security, greenery, and family-focused living",
+      value: t("capitalGrowth.metricCommunityValue"),
+      label: t("capitalGrowth.metricCommunityLabel"),
+      description: t("capitalGrowth.metricCommunityDesc"),
       image: `${CDN}/sky-parks/exterior-night-01.jpg`,
       alt: "Luxury Community Living",
     },
@@ -77,10 +72,10 @@ export default function CapitalGrowth() {
     <section
       className={`${styles.capitalGrowthSection} ${
         isVisible ? styles.visible : ""
-      }`}
+      } ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* Hero Section */}
         <div className={styles.heroSection}>
           <div
             className={styles.heroBackground}
@@ -90,24 +85,22 @@ export default function CapitalGrowth() {
           </div>
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>
-              <span>MARKET INSIGHTS 2024</span>
+              <span>{t("capitalGrowth.heroBadge")}</span>
             </div>
-            <h1 className={styles.heroTitle}>
-              EXCEPTIONAL CAPITAL GROWTH IN DUBAI VILLAS
-            </h1>
+            <h1 className={styles.heroTitle}>{t("capitalGrowth.heroTitle")}</h1>
             <p className={styles.heroSubtitle}>
-              Premium villa communities delivering strong returns and sustained
-              appreciation
+              {t("capitalGrowth.heroSubtitle")}
             </p>
           </div>
         </div>
 
-        {/* Interactive Metrics Gallery - QUALITATIVE ONLY */}
         <div className={styles.metricsGallery}>
           <div className={styles.galleryHeader}>
-            <h2 className={styles.galleryTitle}>VILLA MARKET PERFORMANCE</h2>
+            <h2 className={styles.galleryTitle}>
+              {t("capitalGrowth.galleryTitle")}
+            </h2>
             <p className={styles.gallerySubtitle}>
-              Key drivers of luxury villa investments in Dubai
+              {t("capitalGrowth.gallerySubtitle")}
             </p>
           </div>
 
@@ -150,24 +143,25 @@ export default function CapitalGrowth() {
           </div>
         </div>
 
-        {/* UPDATED INTEGRATED SECTION: Full Width Layout */}
         <div className={styles.fullWidthIntegratedSection}>
           <div className={styles.fullWidthIntegratedCard}>
-            {/* Top Row - Villa Portfolio Mix + Strong Villa Market Fundamentals */}
             <div className={styles.topRow}>
-              {/* Villa Portfolio Mix */}
               <div className={styles.portfolioMix}>
                 <div className={styles.mixHeader}>
-                  <h3 className={styles.mixTitle}>VILLA PORTFOLIO MIX</h3>
+                  <h3 className={styles.mixTitle}>
+                    {t("capitalGrowth.mixTitle")}
+                  </h3>
                   <p className={styles.mixSubtitle}>
-                    Strategic allocation for maximum returns
+                    {t("capitalGrowth.mixSubtitle")}
                   </p>
                 </div>
 
                 <div className={styles.mixBars}>
                   <div className={styles.barItem}>
                     <div className={styles.barLabel}>
-                      <span>UNDER CONSTRUCTION</span>
+                      <span>
+                        {t("capitalGrowth.mixUnderConstructionLabel")}
+                      </span>
                       <span className={styles.barPercentage}>63%</span>
                     </div>
                     <div className={styles.barContainer}>
@@ -180,7 +174,7 @@ export default function CapitalGrowth() {
 
                   <div className={styles.barItem}>
                     <div className={styles.barLabel}>
-                      <span>READY VILLAS</span>
+                      <span>{t("capitalGrowth.mixReadyLabel")}</span>
                       <span className={styles.barPercentage}>37%</span>
                     </div>
                     <div className={styles.barContainer}>
@@ -194,69 +188,69 @@ export default function CapitalGrowth() {
 
                 <div className={styles.mixInsight}>
                   <p className={styles.insightText}>
-                    <strong>
-                      Most investors choose off-plan villas for better capital
-                      growth potential
-                    </strong>
+                    <strong>{t("capitalGrowth.mixInsight")}</strong>
                   </p>
                 </div>
               </div>
 
-              {/* Strong Villa Market Fundamentals */}
               <div className={styles.fundamentalsBlock}>
                 <div className={styles.fundamentalsContent}>
                   <h2 className={styles.fundamentalsTitle}>
-                    STRONG VILLA MARKET FUNDAMENTALS
+                    {t("capitalGrowth.fundamentalsTitle")}
                   </h2>
 
                   <div className={styles.fundamentalsStats}>
                     <div className={styles.statItem}>
-                      <div className={styles.statValue}>AED 254B</div>
-                      <div className={styles.statLabel}>OFF-PLAN SALES</div>
+                      <div className={styles.statValue}>
+                        {t("capitalGrowth.fundamentalsStat1Value")}
+                      </div>
+                      <div className={styles.statLabel}>
+                        {t("capitalGrowth.fundamentalsStat1Label")}
+                      </div>
                     </div>
                     <div className={styles.statItem}>
-                      <div className={styles.statValue}>+51%</div>
-                      <div className={styles.statLabel}>TRANSACTION GROWTH</div>
+                      <div className={styles.statValue}>
+                        {t("capitalGrowth.fundamentalsStat2Value")}
+                      </div>
+                      <div className={styles.statLabel}>
+                        {t("capitalGrowth.fundamentalsStat2Label")}
+                      </div>
                     </div>
                     <div className={styles.statItem}>
-                      <div className={styles.statValue}>AED 180K</div>
-                      <div className={styles.statLabel}>AVERAGE VILLA RENT</div>
+                      <div className={styles.statValue}>
+                        {t("capitalGrowth.fundamentalsStat3Value")}
+                      </div>
+                      <div className={styles.statLabel}>
+                        {t("capitalGrowth.fundamentalsStat3Label")}
+                      </div>
                     </div>
                   </div>
 
                   <p className={styles.fundamentalsText}>
-                    <strong>
-                      Dubai's villa market continues to show exceptional growth
-                    </strong>{" "}
-                    with record-breaking demand across premium communities like
-                    Hartland, Al Sinniyyah Island, and Massar.
+                    <strong>{t("capitalGrowth.fundamentalsText")}</strong>
                   </p>
 
                   <div className={styles.sourceNote}>
-                    <strong>
-                      DATA SOURCE: DXB INTERACT MARKET ANALYSIS 2024
-                    </strong>
+                    <strong>{t("capitalGrowth.fundamentalsSource")}</strong>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Row - Full Width Dubai Premium Villa Communities Image */}
             <div className={styles.bottomRow}>
               <div className={styles.fullWidthImageContainer}>
                 <img
                   src={luxuryImages[1].url}
-                  alt="Dubai Premium Villa Communities"
+                  alt={t("capitalGrowth.communitiesTitle")}
                   className={styles.fullWidthImage}
                 />
                 <div className={styles.fullWidthImageOverlay}>
                   <div className={styles.fullWidthImageContent}>
                     <h3 className={styles.fullWidthImageTitle}>
-                      DUBAI PREMIUM VILLA COMMUNITIES
+                      {t("capitalGrowth.communitiesTitle")}
                     </h3>
                     <p className={styles.fullWidthImageDescription}>
-                      Exclusive developments offering luxury living and strong
-                      investment potential across prime locations
+                      {t("capitalGrowth.communitiesDesc")}
                     </p>
                   </div>
                 </div>

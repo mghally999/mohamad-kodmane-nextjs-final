@@ -1,4 +1,4 @@
-// src/data/projects/penthouses/sobha/seahaven-penthouse.js
+// src/data/projects/penthouses/sobha/seahaven-penthouse/seahaven-penthouse.js
 
 export const seahavenPenthouseData = {
   seo: {

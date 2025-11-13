@@ -1,11 +1,14 @@
-// OurServices.jsx - OPTIMIZED & CLEANED
 "use client";
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/OurServices.module.css";
 
 export default function OurServices() {
+  const { locale, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [activeService, setActiveService] = useState(0);
+
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     setIsVisible(true);
@@ -16,81 +19,78 @@ export default function OurServices() {
   const services = [
     {
       id: 1,
-      title: "STRATEGIC INVESTMENT & PORTFOLIO MANAGEMENT",
-      description:
-        "Complete investment planning and portfolio construction for optimal returns",
+      title: t("services.service1Title"),
+      description: t("services.service1Desc"),
       features: [
-        "Strategic investment planning & market analysis",
-        "Portfolio construction & diversification",
-        "Off-plan & ready property acquisition",
-        "Payment plan optimization",
-        "Risk management strategies",
+        t("services.service1Features.0"),
+        t("services.service1Features.1"),
+        t("services.service1Features.2"),
+        t("services.service1Features.3"),
+        t("services.service1Features.4"),
       ],
       image: `${CDN}/sky-parks/exterior-night-01.jpg`,
       color: "#d7b46a",
-      stage: "Before Purchase",
+      stage: t("services.service1Stage"),
     },
     {
       id: 2,
-      title: "PROPERTY HANDOVER & QUALITY ASSURANCE",
-      description:
-        "Seamless property reception with comprehensive quality control",
+      title: t("services.service2Title"),
+      description: t("services.service2Desc"),
       features: [
-        "Professional quality inspection",
-        "Documentation & legal processing",
-        "Defect & snag management",
-        "Developer coordination",
-        "Smooth transition to ownership",
+        t("services.service2Features.0"),
+        t("services.service2Features.1"),
+        t("services.service2Features.2"),
+        t("services.service2Features.3"),
+        t("services.service2Features.4"),
       ],
       image: `${CDN}/hartland/hero-bg.jpg`,
       color: "#c4a15d",
-      stage: "During Ownership",
+      stage: t("services.service2Stage"),
     },
     {
       id: 3,
-      title: "PREMIUM RENTAL & PROPERTY MANAGEMENT",
-      description: "Complete rental solutions and professional property care",
+      title: t("services.service3Title"),
+      description: t("services.service3Desc"),
       features: [
-        "Tenant screening & placement",
-        "Rental optimization & pricing",
-        "Maintenance coordination",
-        "Financial reporting",
-        "24/7 property care",
+        t("services.service3Features.0"),
+        t("services.service3Features.1"),
+        t("services.service3Features.2"),
+        t("services.service3Features.3"),
+        t("services.service3Features.4"),
       ],
       image: `${CDN}/lumena-alta/hero-bg.jpg`,
       color: "#b8941f",
-      stage: "During Ownership",
+      stage: t("services.service3Stage"),
     },
     {
       id: 4,
-      title: "MAXIMUM RETURN RESALE STRATEGIES",
-      description: "Data-driven resale planning for optimal profit realization",
+      title: t("services.service4Title"),
+      description: t("services.service4Desc"),
       features: [
-        "Market timing analysis",
-        "Premium marketing exposure",
-        "Expert negotiation",
-        "Competitive pricing strategy",
-        "Maximum profit realization",
+        t("services.service4Features.0"),
+        t("services.service4Features.1"),
+        t("services.service4Features.2"),
+        t("services.service4Features.3"),
+        t("services.service4Features.4"),
       ],
       image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
       color: "#d7b46a",
-      stage: "After Completion",
+      stage: t("services.service4Stage"),
     },
     {
       id: 5,
-      title: "TURNKEY INTERIOR DESIGN & FURNISHING",
-      description:
-        "Complete design solutions for luxury living and premium rental appeal",
+      title: t("services.service5Title"),
+      description: t("services.service5Desc"),
       features: [
-        "Custom interior design concepts",
-        "Premium material selection",
-        "Project management",
-        "Styling & property staging",
-        "Furniture procurement",
+        t("services.service5Features.0"),
+        t("services.service5Features.1"),
+        t("services.service5Features.2"),
+        t("services.service5Features.3"),
+        t("services.service5Features.4"),
       ],
       image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
       color: "#c4a15d",
-      stage: "After Completion",
+      stage: t("services.service5Stage"),
     },
   ];
 
@@ -98,35 +98,29 @@ export default function OurServices() {
     <section
       className={`${styles.portfolioSection} ${
         isVisible ? styles.visible : ""
-      }`}
+      } ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* Elegant Header */}
         <div className={styles.elegantHeader}>
           <div className={styles.headerOrnament}>
             <div className={styles.ornamentLine}></div>
             <div className={styles.ornamentDot}></div>
             <div className={styles.ornamentLine}></div>
           </div>
-          <h1 className={styles.mainTitle}>360° Real Estate Management</h1>
+          <h1 className={styles.mainTitle}>{t("services.headerTitle")}</h1>
           <div className={styles.titleDivider}></div>
-          <p className={styles.tagline}>
-            From Purchase to Profit — Complete end-to-end property management
-            ensuring your investment journey in Dubai is effortless, profitable,
-            and secure.
-          </p>
+          <p className={styles.tagline}>{t("services.headerTagline")}</p>
         </div>
 
-        {/* Investment Journey Timeline */}
         <div className={styles.journeySection}>
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>
-              Your Complete Investment Journey
+              {t("services.journeyTitle")}
             </h2>
             <div className={styles.sectionDivider}></div>
             <p className={styles.sectionSubtitle}>
-              From the moment you choose your property until you realize your
-              returns, every detail is handled with precision and transparency.
+              {t("services.journeySubtitle")}
             </p>
           </div>
 
@@ -134,51 +128,53 @@ export default function OurServices() {
             <div className={styles.timelineItem}>
               <div className={styles.timelineStage}>
                 <div className={styles.stageBadge}>1</div>
-                <h3 className={styles.stageTitle}>Before Purchase</h3>
+                <h3 className={styles.stageTitle}>
+                  {t("services.journeyStep1Title")}
+                </h3>
               </div>
               <p className={styles.stageDescription}>
-                Strategic investment planning and portfolio construction aligned
-                with your financial goals
+                {t("services.journeyStep1Desc")}
               </p>
             </div>
 
             <div className={styles.timelineItem}>
               <div className={styles.timelineStage}>
                 <div className={styles.stageBadge}>2</div>
-                <h3 className={styles.stageTitle}>During Ownership</h3>
+                <h3 className={styles.stageTitle}>
+                  {t("services.journeyStep2Title")}
+                </h3>
               </div>
               <p className={styles.stageDescription}>
-                Seamless property handover and professional management for
-                consistent rental income
+                {t("services.journeyStep2Desc")}
               </p>
             </div>
 
             <div className={styles.timelineItem}>
               <div className={styles.timelineStage}>
                 <div className={styles.stageBadge}>3</div>
-                <h3 className={styles.stageTitle}>After Completion</h3>
+                <h3 className={styles.stageTitle}>
+                  {t("services.journeyStep3Title")}
+                </h3>
               </div>
               <p className={styles.stageDescription}>
-                Maximum return strategies through premium resale and
-                value-enhancing services
+                {t("services.journeyStep3Desc")}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Interactive Services Showcase */}
         <div className={styles.servicesShowcase}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Our Comprehensive Services</h2>
+            <h2 className={styles.sectionTitle}>
+              {t("services.servicesTitle")}
+            </h2>
             <div className={styles.sectionDivider}></div>
             <p className={styles.sectionSubtitle}>
-              Professional expertise, complete transparency, and long-term value
-              — all under one roof
+              {t("services.servicesSubtitle")}
             </p>
           </div>
 
           <div className={styles.showcaseContainer}>
-            {/* Services Navigation */}
             <div className={styles.servicesNav}>
               {services.map((service, index) => (
                 <button
@@ -209,7 +205,6 @@ export default function OurServices() {
               ))}
             </div>
 
-            {/* Service Details Display */}
             <div className={styles.serviceDisplay}>
               <div
                 className={styles.displayBackground}
@@ -267,15 +262,21 @@ export default function OurServices() {
                 <div className={styles.serviceStats}>
                   <div className={styles.stat}>
                     <div className={styles.statNumber}>100%</div>
-                    <div className={styles.statLabel}>CLIENT SATISFACTION</div>
+                    <div className={styles.statLabel}>
+                      {t("services.statsSatisfaction")}
+                    </div>
                   </div>
                   <div className={styles.stat}>
                     <div className={styles.statNumber}>500+</div>
-                    <div className={styles.statLabel}>PROPERTIES MANAGED</div>
+                    <div className={styles.statLabel}>
+                      {t("services.statsManaged")}
+                    </div>
                   </div>
                   <div className={styles.stat}>
                     <div className={styles.statNumber}>15+</div>
-                    <div className={styles.statLabel}>YEARS EXPERIENCE</div>
+                    <div className={styles.statLabel}>
+                      {t("services.statsExperience")}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -283,28 +284,25 @@ export default function OurServices() {
           </div>
         </div>
 
-        {/* Final Promise Section */}
         <div className={styles.promiseSection}>
           <div className={styles.promiseCard}>
             <div className={styles.promiseMain}>
               <div className={styles.promiseHeader}>
                 <div className={styles.promiseOrnament}></div>
-                <h2 className={styles.promiseTitle}>Our Promise to You</h2>
+                <h2 className={styles.promiseTitle}>
+                  {t("services.promiseTitle")}
+                </h2>
               </div>
 
               <div className={styles.promiseBody}>
                 <p className={styles.promiseStatement}>
-                  We handle every stage of your real estate journey — so you
-                  enjoy returns, not responsibilities. From strategic
-                  acquisition to premium resale, we manage every detail ensuring
-                  maximum returns with complete peace of mind.
+                  {t("services.promiseStatement")}
                 </p>
 
                 <div className={styles.promiseHighlight}>
                   <div className={styles.highlightAccent}></div>
                   <div className={styles.highlightText}>
-                    Complete End-to-End Management • Maximum Return Optimization
-                    • Premium Service Guarantee
+                    {t("services.promiseHighlight")}
                   </div>
                 </div>
               </div>

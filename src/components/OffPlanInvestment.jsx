@@ -1,11 +1,14 @@
-// OffPlanInvestment.jsx
 "use client";
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/OffPlanInvestment.module.css";
 
 export default function OffPlanInvestment() {
+  const { locale, t } = useLanguage();
   const [currentImage, setCurrentImage] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     setIsVisible(true);
@@ -17,10 +20,8 @@ export default function OffPlanInvestment() {
     return () => clearInterval(interval);
   }, []);
 
-  // ===== ALL CDN IMAGES (Bunny) =====
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // Updated propertyImages array with your actual CDN images
   const propertyImages = [
     {
       src: `${CDN}/sky-parks/exterior-night-01.jpg`,
@@ -40,45 +41,27 @@ export default function OffPlanInvestment() {
       title: "Commercial Spaces",
       description: "Premium office and retail opportunities",
     },
-    {
-      src: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
-      alt: "Sobha AquaCrest Beachfront",
-      title: "Beachfront Residences",
-      description: "Luxury living with direct beach access",
-    },
-    {
-      src: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-      alt: "Palm Central Luxury Development",
-      title: "Palm Jumeirah Living",
-      description: "Exclusive properties on the iconic Palm",
-    },
   ];
 
   return (
     <section
       className={`${styles.investmentSection} ${
         isVisible ? styles.visible : ""
-      }`}
+      } ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* SECTION HEADER */}
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>
-            Off-Plan Real Estate Investment in Dubai
-          </h2>
+          <h2 className={styles.sectionTitle}>{t("offPlan.sectionTitle")}</h2>
           <div className={styles.goldDivider}></div>
           <p className={styles.sectionDescription}>
-            Secure your property at the earliest stage — before construction
-            begins — with flexible payment plans and high capital growth
-            potential.
+            {t("offPlan.sectionDescriptionMain")}
           </p>
           <p className={styles.sectionSubDescription}>
-            Buying off-plan in Dubai means purchasing directly from developers
-            at launch prices, long before market appreciation.
+            {t("offPlan.sectionDescriptionSub")}
           </p>
         </div>
 
-        {/* VISUAL HERO SECTION */}
         <div className={styles.visualHero}>
           <div className={styles.imageCarousel}>
             <div
@@ -105,7 +88,6 @@ export default function OffPlanInvestment() {
               ))}
             </div>
 
-            {/* Carousel Navigation */}
             <div className={styles.carouselNav}>
               {propertyImages.map((_, index) => (
                 <button
@@ -118,7 +100,6 @@ export default function OffPlanInvestment() {
               ))}
             </div>
 
-            {/* Progress Bar */}
             <div className={styles.progressBar}>
               <div
                 className={styles.progressFill}
@@ -132,35 +113,33 @@ export default function OffPlanInvestment() {
             </div>
           </div>
 
-          {/* Investment Stats Overlay */}
           <div className={styles.statsOverlay}>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>7-9%</div>
-              <div className={styles.statLabel}>Average ROI</div>
+              <div className={styles.statLabel}>
+                {t("offPlan.statRoiLabel")}
+              </div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>40%</div>
-              <div className={styles.statLabel}>Price Advantage</div>
+              <div className={styles.statLabel}>
+                {t("offPlan.statPriceAdvantageLabel")}
+              </div>
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>0%</div>
-              <div className={styles.statLabel}>Property Tax</div>
+              <div className={styles.statLabel}>
+                {t("offPlan.statTaxLabel")}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* STRATEGY OVERVIEW */}
         <div className={styles.strategyOverview}>
-          <p className={styles.strategyText}>
-            Whether you're seeking a home in Dubai's most prestigious areas or
-            building a long-term investment portfolio, off-plan projects offer
-            the smartest entry point into the market.
-          </p>
+          <p className={styles.strategyText}>{t("offPlan.strategyText")}</p>
         </div>
 
-        {/* MAIN CONTENT */}
         <div className={styles.contentGrid}>
-          {/* LEFT COLUMN - DEFINITION */}
           <div className={styles.definitionCard}>
             <div className={styles.definitionIcon}>
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -174,29 +153,27 @@ export default function OffPlanInvestment() {
               </svg>
             </div>
             <div className={styles.definitionContent}>
-              <h3 className={styles.definitionTitle}>What It Means</h3>
+              <h3 className={styles.definitionTitle}>
+                {t("offPlan.definitionTitle")}
+              </h3>
               <p className={styles.definitionText}>
-                Invest early → Gain higher value upon completion
+                {t("offPlan.definitionShort")}
               </p>
               <div className={styles.paymentHighlight}>
                 <span className={styles.highlightText}>
-                  Secure your property at the lowest launch price, then benefit
-                  from natural market appreciation once the project is
-                  completed.
+                  {t("offPlan.definitionHighlight")}
                 </span>
               </div>
               <div className={styles.paymentNote}>
-                Make instalment payments directly to the developer — no bank
-                loan or mortgage required.
+                {t("offPlan.definitionNote")}
               </div>
             </div>
           </div>
 
-          {/* RIGHT COLUMN - BENEFITS */}
           <div className={styles.benefitsCard}>
             <div className={styles.benefitsHeader}>
               <h3 className={styles.benefitsTitle}>
-                Benefits of This Investment Type
+                {t("offPlan.benefitsTitle")}
               </h3>
               <div className={styles.benefitsIcon}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
@@ -219,10 +196,11 @@ export default function OffPlanInvestment() {
                   </div>
                 </div>
                 <div className={styles.benefitContent}>
-                  <h4 className={styles.benefitHeading}>Lower Entry Price</h4>
+                  <h4 className={styles.benefitHeading}>
+                    {t("offPlan.benefit1Title")}
+                  </h4>
                   <p className={styles.benefitDescription}>
-                    Purchase below market value at pre-construction stage — a
-                    smart start for capital growth.
+                    {t("offPlan.benefit1Desc")}
                   </p>
                 </div>
               </div>
@@ -235,11 +213,10 @@ export default function OffPlanInvestment() {
                 </div>
                 <div className={styles.benefitContent}>
                   <h4 className={styles.benefitHeading}>
-                    High Profit Potential
+                    {t("offPlan.benefit2Title")}
                   </h4>
                   <p className={styles.benefitDescription}>
-                    Enjoy substantial appreciation by the time of handover or
-                    through resale before completion.
+                    {t("offPlan.benefit2Desc")}
                   </p>
                 </div>
               </div>
@@ -252,11 +229,10 @@ export default function OffPlanInvestment() {
                 </div>
                 <div className={styles.benefitContent}>
                   <h4 className={styles.benefitHeading}>
-                    Developer Payment Plans
+                    {t("offPlan.benefit3Title")}
                   </h4>
                   <p className={styles.benefitDescription}>
-                    Flexible instalment structures directly with developers — no
-                    interest, no bank pressure.
+                    {t("offPlan.benefit3Desc")}
                   </p>
                 </div>
               </div>
@@ -264,47 +240,35 @@ export default function OffPlanInvestment() {
           </div>
         </div>
 
-        {/* VISUAL TIMELINE */}
         <div className={styles.timelineSection}>
-          <h3 className={styles.timelineTitle}>Investment Journey</h3>
+          <h3 className={styles.timelineTitle}>{t("offPlan.timelineTitle")}</h3>
           <div className={styles.timeline}>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h4>Initial Investment</h4>
-                <p>
-                  Reserve your unit at pre-launch or early construction prices
-                </p>
+                <h4>{t("offPlan.timelineStep1Title")}</h4>
+                <p>{t("offPlan.timelineStep1Desc")}</p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h4>Construction Phase</h4>
-                <p>
-                  Continue paying instalments according to the developer's
-                  flexible plan
-                </p>
+                <h4>{t("offPlan.timelineStep2Title")}</h4>
+                <p>{t("offPlan.timelineStep2Desc")}</p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h4>Project Completion</h4>
-                <p>
-                  Watch your property value increase as the area develops and
-                  demand rises
-                </p>
+                <h4>{t("offPlan.timelineStep3Title")}</h4>
+                <p>{t("offPlan.timelineStep3Desc")}</p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h4>Handover & Returns</h4>
-                <p>
-                  Take ownership, rent it out, or resell it for profit —
-                  achieving your investment goal
-                </p>
+                <h4>{t("offPlan.timelineStep4Title")}</h4>
+                <p>{t("offPlan.timelineStep4Desc")}</p>
               </div>
             </div>
           </div>

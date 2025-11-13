@@ -9,7 +9,7 @@ import { centralData } from "@/data/projects/apartments/sobha/central/central";
 import { skyParksData } from "@/data/projects/apartments/sobha/skyparks/skyparks";
 import { rivieraRetailsData } from "@/data/projects/commercial-retail/azizi/riviera-retails/riviera-retails";
 import { lumenaAltaData } from "@/data/projects/commercial-retail/omniyat/lumenaalta/lumenaalta";
-import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven/seahaven-penthouse";
+import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven-penthouse/seahaven-penthouse";
 import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
 import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
 import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";

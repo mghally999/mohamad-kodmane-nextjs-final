@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-assign-module-variable */
 
 /**
- * ✅ 100% WORKING VERSION - Universal project data loader
- * Fixed slug mapping to match actual file structure
+ * ✅ 100% WORKING VERSION - Fixed to match YOUR TOPHEADER SLUGS
  */
 
 export async function getProjectData(category, developer, project) {
@@ -34,8 +33,7 @@ export async function getProjectData(category, developer, project) {
 }
 
 /**
- * ✅ UPDATED: Static project routes that MATCH YOUR ACTUAL FILES
- * Based on your folder structure
+ * ✅ UPDATED: Static project routes that MATCH YOUR TOPHEADER EXACTLY
  */
 export function getAllProjectSlugs() {
   return [
@@ -63,17 +61,17 @@ export function getAllProjectSlugs() {
       project: "lumenaalta",
     },
 
-    // Penthouses
+    // ✅ CORRECTED: Penthouses - matches your TopHeader EXACTLY
     {
       category: "penthouses",
       developer: "sobha",
-      project: "seahaven-penthouse",
+      project: "seahaven-penthouse", // This matches your TopHeader
     },
   ];
 }
 
 /**
- * ✅ Fallback data when a project file is missing
+ * ✅ Enhanced fallback data
  */
 export const FALLBACK_PROJECT_DATA = {
   seo: {
@@ -112,4 +110,6 @@ export const FALLBACK_PROJECT_DATA = {
     description: "Get in touch with our experts today.",
     buttons: [{ text: "Contact Us", type: "primary", url: "/contact" }],
   },
+  // ✅ ADD THIS to prevent the images error
+  images: ["/images/fallback-gallery.jpg"],
 };

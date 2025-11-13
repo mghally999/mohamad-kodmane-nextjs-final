@@ -45,19 +45,50 @@ export default function TopHeader() {
                   title: "Sobha SkyParks",
                   slug: "skyparks",
                   image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-                  description: "Luxury high-rise with panoramic city views",
+                  description: t("projects.skyparks"),
                 },
                 {
                   id: 102,
                   title: "Sobha AquaCrest",
                   slug: "aqua-crest",
                   image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
-                  description: "Beachfront luxury residences",
+                  description: t("projects.aquacrest"),
+                },
+                {
+                  id: 103,
+                  title: "Sobha Central",
+                  slug: "central",
+                  image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
+                  description: t("projects.central"),
+                },
+                {
+                  id: 104,
+                  title: "Sobha Aquamont",
+                  slug: "aquamont",
+                  image: `${CDN}/aquamont/intro-main.png`,
+                  description: t("projects.aquamont"),
+                },
+              ],
+            },
+            {
+              id: 2,
+              name: "Nakheel",
+              slug: "nakheel",
+              image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
+              logo: `/Nakheel-Developments.webp`,
+              projects: [
+                {
+                  id: 106,
+                  title: "Palm Central – Nakheel",
+                  slug: "palm-central",
+                  image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
+                  description: t("projects.palm_central"),
                 },
               ],
             },
           ],
         },
+
         {
           id: 2,
           name: t("categories.villas"),
@@ -77,19 +108,59 @@ export default function TopHeader() {
                   title: "Sobha Hartland 2 Villas",
                   slug: "hartland",
                   image: `${CDN}/hartland/hero-bg.jpg`,
-                  description: "Premium waterfront villas",
+                  description: t("projects.hartland2"),
+                },
+                {
+                  id: 202,
+                  title: "Sobha Al Sinniyyah Island",
+                  slug: "al-sinniyyah-island",
+                  image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
+                  description: t("projects.al_sinniyyah"),
+                },
+              ],
+            },
+            {
+              id: 2,
+              name: "Arada",
+              slug: "arada",
+              image: `${CDN}/massar-3/hero-bg.jpg`,
+              logo: `/arada-developer.avif`,
+              projects: [
+                {
+                  id: 203,
+                  title: "Arada – Massar 3",
+                  slug: "massar",
+                  image: `${CDN}/massar-3/hero-bg.jpg`,
+                  description: t("projects.massar"),
                 },
               ],
             },
           ],
         },
+
         {
           id: 3,
-          name: t("categories.commercial"),
+          name: t("categories.commercial_retail"),
           slug: "commercial-retail",
-          description: t("descriptions.commercial"),
+          description: t("descriptions.commercial_retail"),
           image: `${CDN}/riviera-retails/hero-bg.jpg`,
           developers: [
+            {
+              id: 2,
+              name: "Omniyat",
+              slug: "omniyat",
+              image: `${CDN}/lumena-alta/hero-bg.jpg`,
+              logo: `omniyat-logo.avif`,
+              projects: [
+                {
+                  id: 305,
+                  title: "Lumina Alta – Omniyat",
+                  slug: "lumenaalta",
+                  image: `${CDN}/lumena-alta/hero-bg.jpg`,
+                  description: t("projects.lumina_alta"),
+                },
+              ],
+            },
             {
               id: 1,
               name: "Azizi Developments",
@@ -102,12 +173,13 @@ export default function TopHeader() {
                   title: "Azizi Riviera – Retails",
                   slug: "riviera-retails",
                   image: `${CDN}/riviera/hero-bg.jpg`,
-                  description: "Premium retail spaces",
+                  description: t("projects.riviera_retails"),
                 },
               ],
             },
           ],
         },
+
         {
           id: 4,
           name: t("categories.penthouses"),
@@ -127,7 +199,7 @@ export default function TopHeader() {
                   title: "Sobha SeaHaven Penthouse",
                   slug: "seahaven-penthouse",
                   image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-                  description: "Ultra-luxury penthouse with sea views",
+                  description: t("projects.seahaven_penthouse"),
                 },
               ],
             },
@@ -135,6 +207,7 @@ export default function TopHeader() {
         },
       ],
     };
+
     return data;
   }, [t, locale]);
 

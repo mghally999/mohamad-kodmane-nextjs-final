@@ -1,86 +1,83 @@
-// PortfolioInvestment.jsx
 "use client";
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/PortfolioInvestment.module.css";
 
-// CDN Base URL
 const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
 export default function PortfolioInvestment() {
+  const { locale, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
-  const [activeYear, setActiveYear] = useState(3); // Default to Year 7
+  const [activeYear, setActiveYear] = useState(3);
+
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  // Real Dubai Real Estate Growth Data (Based on actual market reports)
   const growthData = {
     years: [1, 3, 5, 7],
-    values: [100, 158, 242, 356], // 100% base, +58% Y3, +142% Y5, +256% Y7
+    values: [100, 158, 242, 356],
     percentages: ["+0%", "+58%", "+142%", "+256%"],
     descriptions: [
-      "Initial investment with immediate rental income",
-      "Strong appreciation from development completion",
-      "Compounded growth from rental yields and market appreciation",
-      "+256% in 7 years — a reflection of Dubai's sustained growth, investor confidence, and world-class infrastructure",
+      t("portfolio.growth.descriptions.0"),
+      t("portfolio.growth.descriptions.1"),
+      t("portfolio.growth.descriptions.2"),
+      t("portfolio.growth.descriptions.3"),
     ],
   };
 
-  // Property Cards - Side by side
   const portfolioProperties = [
     {
       src: `${CDN}/sky-parks/exterior-night-01.jpg`,
       alt: "Skyline Wealth Generation",
-      category: "Cashflow Engine",
-      title: "Immediate Returns in Secondary Market",
-      metrics: "5–7% Rental Yield",
-      description:
-        "Premium apartments generating steady monthly income and ensuring strong liquidity within your portfolio",
+      category: t("portfolio.card1Category"),
+      title: t("portfolio.card1Title"),
+      metrics: t("portfolio.card1Metrics"),
+      description: t("portfolio.card1Desc"),
     },
     {
       src: `${CDN}/hartland/hero-bg.jpg`,
       alt: "Future Value Creation",
-      category: "Growth Asset",
-      title: "Value Appreciation",
-      metrics: "10–12% Annual Growth",
-      description:
-        "Strategically selected off-plan developments designed for high capital appreciation and long-term wealth creation",
+      category: t("portfolio.card2Category"),
+      title: t("portfolio.card2Title"),
+      metrics: t("portfolio.card2Metrics"),
+      description: t("portfolio.card2Desc"),
     },
     {
       src: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
       alt: "Luxury Lifestyle Integration",
-      category: "Wealth Ecosystem",
-      title: "Complete Portfolio",
-      metrics: "0% Tax",
-      description:
-        "Integrated holdings combining residential, serviced, and lifestyle properties — structured for maximum fiscal efficiency and global investor benefits",
+      category: t("portfolio.card3Category"),
+      title: t("portfolio.card3Title"),
+      metrics: t("portfolio.card3Metrics"),
+      description: t("portfolio.card3Desc"),
     },
   ];
 
   const performanceHighlights = [
     {
       value: "63%",
-      label: "of Dubai's property sales are off-plan",
-      trend: "2024 – DXB Interact",
+      label: t("portfolio.performance.offPlanSales.label"),
+      trend: t("portfolio.performance.offPlanSales.trend"),
       icon: "📊",
     },
     {
       value: "19.3%",
-      label: "YoY increase in apartment rents",
-      trend: "Q3 2024",
+      label: t("portfolio.performance.rentIncrease.label"),
+      trend: t("portfolio.performance.rentIncrease.trend"),
       icon: "🏢",
     },
     {
       value: "10%",
-      label: "average price appreciation across Dubai",
-      trend: "2024 Market Performance",
+      label: t("portfolio.performance.priceAppreciation.label"),
+      trend: t("portfolio.performance.priceAppreciation.trend"),
       icon: "💵",
     },
     {
       value: "119,800",
-      label: "property transactions recorded",
-      trend: "+49% YoY",
+      label: t("portfolio.performance.transactions.label"),
+      trend: t("portfolio.performance.transactions.trend"),
       icon: "🧾",
     },
   ];
@@ -89,26 +86,21 @@ export default function PortfolioInvestment() {
     <section
       className={`${styles.portfolioSection} ${
         isVisible ? styles.visible : ""
-      }`}
+      } ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* Elegant Header */}
         <div className={styles.elegantHeader}>
           <div className={styles.headerOrnament}>
             <div className={styles.ornamentLine}></div>
             <div className={styles.ornamentDot}></div>
             <div className={styles.ornamentLine}></div>
           </div>
-          <h1 className={styles.mainTitle}>Strategic Real Estate Portfolio</h1>
+          <h1 className={styles.mainTitle}>{t("portfolio.headerTitle")}</h1>
           <div className={styles.titleDivider}></div>
-          <p className={styles.tagline}>
-            Build a well-balanced real estate portfolio that includes both ready
-            and off-plan properties, designed to maximize returns, appreciation,
-            and long-term stability.
-          </p>
+          <p className={styles.tagline}>{t("portfolio.headerTagline")}</p>
         </div>
 
-        {/* Property Cards Grid */}
         <div className={styles.propertiesGrid}>
           {portfolioProperties.map((property, index) => (
             <div key={index} className={styles.propertyCard}>
@@ -136,19 +128,18 @@ export default function PortfolioInvestment() {
           ))}
         </div>
 
-        {/* Growth Trajectory Visualization */}
         <div className={styles.growthSection}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Portfolio Growth Trajectory</h2>
+            <h2 className={styles.sectionTitle}>
+              {t("portfolio.growthTitle")}
+            </h2>
             <div className={styles.sectionDivider}></div>
             <p className={styles.sectionSubtitle}>
-              Projected wealth accumulation based on Dubai's real estate
-              performance
+              {t("portfolio.growthSubtitle")}
             </p>
           </div>
 
           <div className={styles.growthVisualization}>
-            {/* Year Selector */}
             <div className={styles.yearSelector}>
               {growthData.years.map((year, index) => (
                 <button
@@ -158,7 +149,9 @@ export default function PortfolioInvestment() {
                   }`}
                   onClick={() => setActiveYear(index)}
                 >
-                  <span className={styles.yearLabel}>Year {year}</span>
+                  <span className={styles.yearLabel}>
+                    {t("portfolio.yearLabel")} {year}
+                  </span>
                   <span className={styles.yearReturn}>
                     {growthData.percentages[index]}
                   </span>
@@ -166,10 +159,8 @@ export default function PortfolioInvestment() {
               ))}
             </div>
 
-            {/* Growth Chart */}
             <div className={styles.growthChart}>
               <div className={styles.chartContainer}>
-                {/* Growth Line */}
                 <div className={styles.growthLine}>
                   {growthData.values.map((value, index) => (
                     <div
@@ -189,7 +180,6 @@ export default function PortfolioInvestment() {
                     </div>
                   ))}
 
-                  {/* Connecting Lines */}
                   <div className={styles.connectionLines}>
                     {growthData.values.slice(0, -1).map((_, index) => (
                       <div
@@ -210,7 +200,6 @@ export default function PortfolioInvestment() {
                   </div>
                 </div>
 
-                {/* Y-axis Labels */}
                 <div className={styles.yAxis}>
                   <span className={styles.yLabel}>$100K</span>
                   <span className={styles.yLabel}>$200K</span>
@@ -218,22 +207,21 @@ export default function PortfolioInvestment() {
                   <span className={styles.yLabel}>$400K</span>
                 </div>
 
-                {/* X-axis Labels */}
                 <div className={styles.xAxis}>
                   {growthData.years.map((year, index) => (
                     <span key={year} className={styles.xLabel}>
-                      Year {year}
+                      {t("portfolio.yearLabel")} {year}
                     </span>
                   ))}
                 </div>
               </div>
 
-              {/* Current Year Info */}
               <div className={styles.currentInfo}>
                 <div className={styles.infoCard}>
                   <div className={styles.infoHeader}>
                     <h3 className={styles.infoTitle}>
-                      Year {growthData.years[activeYear]} Performance
+                      {t("portfolio.yearLabel")} {growthData.years[activeYear]}{" "}
+                      {t("portfolio.growthInfoTitle")}
                     </h3>
                     <div className={styles.infoReturn}>
                       {growthData.percentages[activeYear]}
@@ -258,10 +246,11 @@ export default function PortfolioInvestment() {
           </div>
         </div>
 
-        {/* Performance Highlights */}
         <div className={styles.performanceSection}>
           <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>Key Market Insights</h2>
+            <h2 className={styles.sectionTitle}>
+              {t("portfolio.marketInsightsTitle")}
+            </h2>
             <div className={styles.sectionDivider}></div>
           </div>
           <div className={styles.performanceGrid}>
@@ -278,15 +267,13 @@ export default function PortfolioInvestment() {
           </div>
         </div>
 
-        {/* Investment Philosophy */}
         <div className={styles.philosophySection}>
           <div className={styles.philosophyGrid}>
-            {/* Core Objectives */}
             <div className={styles.objectivesCard}>
               <div className={styles.objectivesHeader}>
                 <div className={styles.headerAccent}></div>
                 <h3 className={styles.objectivesTitle}>
-                  Investment Objectives
+                  {t("portfolio.philosophyObjectivesTitle")}
                 </h3>
               </div>
               <div className={styles.objectivesList}>
@@ -294,7 +281,7 @@ export default function PortfolioInvestment() {
                   <div className={styles.objectiveMarker}></div>
                   <div className={styles.objectiveContent}>
                     <h4 className={styles.objectiveHeading}>
-                      Diversify income sources across different property types
+                      {t("portfolio.objective1")}
                     </h4>
                   </div>
                 </div>
@@ -302,7 +289,7 @@ export default function PortfolioInvestment() {
                   <div className={styles.objectiveMarker}></div>
                   <div className={styles.objectiveContent}>
                     <h4 className={styles.objectiveHeading}>
-                      Reduce exposure to market fluctuations and risk
+                      {t("portfolio.objective2")}
                     </h4>
                   </div>
                 </div>
@@ -310,30 +297,28 @@ export default function PortfolioInvestment() {
                   <div className={styles.objectiveMarker}></div>
                   <div className={styles.objectiveContent}>
                     <h4 className={styles.objectiveHeading}>
-                      Maximize profits through rental yields and capital
-                      appreciation
+                      {t("portfolio.objective3")}
                     </h4>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Management Promise */}
             <div className={styles.promiseCard}>
               <div className={styles.promiseHeader}>
                 <div className={styles.promiseOrnament}></div>
-                <h3 className={styles.promiseTitle}>Portfolio Management</h3>
+                <h3 className={styles.promiseTitle}>
+                  {t("portfolio.managementTitle")}
+                </h3>
               </div>
               <div className={styles.promiseContent}>
                 <p className={styles.promiseStatement}>
-                  We handle every aspect of your portfolio — from Handover to
-                  resale —
+                  {t("portfolio.managementStatement")}
                 </p>
                 <div className={styles.promiseHighlight}>
                   <div className={styles.highlightAccent}></div>
                   <span className={styles.highlightText}>
-                    so your wealth continues to grow passively and securely,
-                    backed by Dubai's thriving market.
+                    {t("portfolio.managementHighlight")}
                   </span>
                 </div>
               </div>

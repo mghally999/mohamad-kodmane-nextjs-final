@@ -1,8 +1,10 @@
 "use client";
 import React, { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/CallbackForm.module.css";
 
 export default function CallbackForm() {
+  const { locale, t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -12,6 +14,8 @@ export default function CallbackForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [activeField, setActiveField] = useState(null);
+
+  const isRTL = locale === "ar";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,18 +40,15 @@ export default function CallbackForm() {
         setIsSubmitted(true);
         setFormData({ name: "", phone: "", interest: "" });
 
-        // Reset form after 5 seconds
         setTimeout(() => {
           setIsSubmitted(false);
         }, 5000);
       } else {
-        setSubmitError(
-          result.message || "Something went wrong. Please try again."
-        );
+        setSubmitError(result.message || t("callback.errorGeneric"));
       }
     } catch (error) {
       console.error("❌ Submission error:", error);
-      setSubmitError("Network error. Please try again or contact us directly.");
+      setSubmitError(t("callback.errorNetwork"));
     } finally {
       setIsSubmitting(false);
     }
@@ -61,8 +62,10 @@ export default function CallbackForm() {
   };
 
   return (
-    <section className={styles.callbackSection}>
-      {/* Animated Background Elements */}
+    <section
+      className={`${styles.callbackSection} ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       <div className={styles.backgroundElements}>
         <div className={styles.floatingOrb}></div>
         <div className={styles.floatingOrb}></div>
@@ -71,36 +74,74 @@ export default function CallbackForm() {
       </div>
 
       <div className={styles.container}>
-        {/* Creative Header */}
-        <div className={styles.creativeHeader}>
-          <div className={styles.headerVisual}>
-            <div className={styles.visualElement}>
-              <div className={styles.pulseRing}></div>
-              <div className={styles.pulseRing}></div>
-              <div className={styles.centerDot}></div>
-            </div>
-          </div>
-
-          <div className={styles.headerContent}>
-            <h2 className={styles.formTitle}>
-              <span className={styles.titleLine}>Begin Your</span>
-              <span className={styles.titleAccent}>Dubai Investment</span>
-              <span className={styles.titleLine}>Journey</span>
-            </h2>
-            <div className={styles.creativeDivider}>
-              <div className={styles.dividerLine}></div>
-              <div className={styles.dividerDot}></div>
-              <div className={styles.dividerLine}></div>
-            </div>
-            <p className={styles.formSubtitle}>
-              Connect with <strong>Mohamad Kodmani</strong> for exclusive real
-              estate opportunities. We transform your investment vision into
-              tangible Dubai property success.
-            </p>
-          </div>
+        <div className={`${styles.creativeHeader} ${isRTL ? styles.rtl : ""}`}>
+          {isRTL ? (
+            <>
+              <div className={styles.headerContent}>
+                <h2 className={styles.formTitle}>
+                  <span className={styles.titleLine}>
+                    {t("callback.sectionTitleLine1")}
+                  </span>
+                  <span className={styles.titleAccent}>
+                    {t("callback.sectionTitleAccent")}
+                  </span>
+                  <span className={styles.titleLine}>
+                    {t("callback.sectionTitleLine2")}
+                  </span>
+                </h2>
+                <div className={styles.creativeDivider}>
+                  <div className={styles.dividerLine}></div>
+                  <div className={styles.dividerDot}></div>
+                  <div className={styles.dividerLine}></div>
+                </div>
+                <p
+                  className={styles.formSubtitle}
+                  dangerouslySetInnerHTML={{ __html: t("callback.subtitle") }}
+                />
+              </div>
+              <div className={styles.headerVisual}>
+                <div className={styles.visualElement}>
+                  <div className={styles.pulseRing}></div>
+                  <div className={styles.pulseRing}></div>
+                  <div className={styles.centerDot}></div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={styles.headerVisual}>
+                <div className={styles.visualElement}>
+                  <div className={styles.pulseRing}></div>
+                  <div className={styles.pulseRing}></div>
+                  <div className={styles.centerDot}></div>
+                </div>
+              </div>
+              <div className={styles.headerContent}>
+                <h2 className={styles.formTitle}>
+                  <span className={styles.titleLine}>
+                    {t("callback.sectionTitleLine1")}
+                  </span>
+                  <span className={styles.titleAccent}>
+                    {t("callback.sectionTitleAccent")}
+                  </span>
+                  <span className={styles.titleLine}>
+                    {t("callback.sectionTitleLine2")}
+                  </span>
+                </h2>
+                <div className={styles.creativeDivider}>
+                  <div className={styles.dividerLine}></div>
+                  <div className={styles.dividerDot}></div>
+                  <div className={styles.dividerLine}></div>
+                </div>
+                <p
+                  className={styles.formSubtitle}
+                  dangerouslySetInnerHTML={{ __html: t("callback.subtitle") }}
+                />
+              </div>
+            </>
+          )}
         </div>
 
-        {/* Main Form Container */}
         <div className={styles.formContainer}>
           {isSubmitted ? (
             <div className={styles.successState}>
@@ -112,11 +153,15 @@ export default function CallbackForm() {
                   <div className={styles.checkmarkKick}></div>
                 </div>
               </div>
-              <h3 className={styles.successTitle}>Connection Established</h3>
-              <p className={styles.successMessage}>
-                Mohamad Kodmani will contact you within{" "}
-                <strong>15 minutes</strong>. Check your email for confirmation.
-              </p>
+              <h3 className={styles.successTitle}>
+                {t("callback.successTitle")}
+              </h3>
+              <p
+                className={styles.successMessage}
+                dangerouslySetInnerHTML={{
+                  __html: t("callback.successMessage"),
+                }}
+              />
               <div className={styles.successParticles}>
                 <div className={styles.particle}></div>
                 <div className={styles.particle}></div>
@@ -125,7 +170,6 @@ export default function CallbackForm() {
             </div>
           ) : (
             <form className={styles.creativeForm} onSubmit={handleSubmit}>
-              {/* Error Message */}
               {submitError && (
                 <div className={styles.errorMessage}>
                   <div className={styles.errorIcon}>⚠️</div>
@@ -133,13 +177,12 @@ export default function CallbackForm() {
                 </div>
               )}
 
-              {/* Form Fields with Creative Layout */}
               <div className={styles.formFields}>
                 <div className={styles.fieldGroup}>
                   <div
                     className={`${styles.inputContainer} ${
                       activeField === "name" ? styles.active : ""
-                    }`}
+                    } ${isRTL ? styles.inputContainerRTL : ""}`}
                     onFocus={() => setActiveField("name")}
                     onBlur={() => setActiveField(null)}
                   >
@@ -148,12 +191,19 @@ export default function CallbackForm() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={styles.creativeInput}
+                      className={`${styles.creativeInput} ${
+                        isRTL ? styles.creativeInputRTL : ""
+                      }`}
                       required
                       disabled={isSubmitting}
+                      dir={isRTL ? "rtl" : "ltr"}
                     />
-                    <label className={styles.floatingLabel}>
-                      Your Full Name
+                    <label
+                      className={`${styles.floatingLabel} ${
+                        isRTL ? styles.floatingLabelRTL : ""
+                      }`}
+                    >
+                      {t("callback.nameLabel")}
                     </label>
                     <div className={styles.inputLine}></div>
                   </div>
@@ -161,7 +211,7 @@ export default function CallbackForm() {
                   <div
                     className={`${styles.inputContainer} ${
                       activeField === "phone" ? styles.active : ""
-                    }`}
+                    } ${isRTL ? styles.inputContainerRTL : ""}`}
                     onFocus={() => setActiveField("phone")}
                     onBlur={() => setActiveField(null)}
                   >
@@ -170,12 +220,19 @@ export default function CallbackForm() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={styles.creativeInput}
+                      className={`${styles.creativeInput} ${
+                        isRTL ? styles.creativeInputRTL : ""
+                      }`}
                       required
                       disabled={isSubmitting}
+                      dir={isRTL ? "rtl" : "ltr"}
                     />
-                    <label className={styles.floatingLabel}>
-                      Contact Number
+                    <label
+                      className={`${styles.floatingLabel} ${
+                        isRTL ? styles.floatingLabelRTL : ""
+                      }`}
+                    >
+                      {t("callback.phoneLabel")}
                     </label>
                     <div className={styles.inputLine}></div>
                   </div>
@@ -184,7 +241,7 @@ export default function CallbackForm() {
                 <div
                   className={`${styles.selectContainer} ${
                     activeField === "interest" ? styles.active : ""
-                  }`}
+                  } ${isRTL ? styles.selectContainerRTL : ""}`}
                   onFocus={() => setActiveField("interest")}
                   onBlur={() => setActiveField(null)}
                 >
@@ -192,35 +249,51 @@ export default function CallbackForm() {
                     name="interest"
                     value={formData.interest}
                     onChange={handleChange}
-                    className={styles.creativeSelect}
+                    className={`${styles.creativeSelect} ${
+                      isRTL ? styles.creativeSelectRTL : ""
+                    }`}
                     required
                     disabled={isSubmitting}
+                    dir={isRTL ? "rtl" : "ltr"}
                   >
-                    <option value="">Select Investment Focus</option>
-                    <option value="off-plan">🏗️ Off-Plan Properties</option>
-                    <option value="ready">🏢 Ready Properties</option>
-                    <option value="portfolio">📊 Portfolio Building</option>
-                    <option value="consultation">🎯 Expert Consultation</option>
+                    <option value="">{t("callback.interestLabel")}</option>
+                    <option value="off-plan">
+                      {t("callback.optionOffPlan")}
+                    </option>
+                    <option value="ready">{t("callback.optionReady")}</option>
+                    <option value="portfolio">
+                      {t("callback.optionPortfolio")}
+                    </option>
+                    <option value="consultation">
+                      {t("callback.optionConsultation")}
+                    </option>
                   </select>
-                  <div className={styles.selectArrow}></div>
+                  <div
+                    className={`${styles.selectArrow} ${
+                      isRTL ? styles.selectArrowRTL : ""
+                    }`}
+                  ></div>
                 </div>
               </div>
 
-              {/* Creative Submit Button */}
               <button
                 type="submit"
                 className={`${styles.creativeSubmit} ${
                   isSubmitting ? styles.submitting : ""
-                }`}
+                } ${isRTL ? styles.creativeSubmitRTL : ""}`}
                 disabled={isSubmitting}
               >
                 <span className={styles.buttonContent}>
                   <span className={styles.buttonText}>
                     {isSubmitting
-                      ? "Establishing Connection..."
-                      : "Request Priority Access"}
+                      ? t("callback.submitSubmitting")
+                      : t("callback.submitIdle")}
                   </span>
-                  <span className={styles.buttonArrow}>
+                  <span
+                    className={`${styles.buttonArrow} ${
+                      isRTL ? styles.buttonArrowRTL : ""
+                    }`}
+                  >
                     <div className={styles.arrowLine}></div>
                     <div className={styles.arrowHead}></div>
                   </span>
@@ -236,11 +309,10 @@ export default function CallbackForm() {
           )}
         </div>
 
-        {/* Bottom Decoration */}
         <div className={styles.bottomDecoration}>
           <div className={styles.decorationLine}></div>
           <div className={styles.decorationText}>
-            MOHAMAD KODMANI REAL ESTATE BROKERAGE
+            {t("callback.bottomDecoration")}
           </div>
           <div className={styles.decorationLine}></div>
         </div>

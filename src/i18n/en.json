@@ -14,12 +14,14 @@
     "contactUs": "Contact Us",
     "directLine": "Direct Line"
   },
+
   "categories": {
     "apartments": "Apartments",
     "villas": "Villas",
     "commercial": "Commercial / Retail",
     "penthouses": "Penthouses"
   },
+
   "descriptions": {
     "apartments": "Luxury apartments in Dubai's most sought-after areas",
     "villas": "Exclusive villa developments and waterfront communities",
@@ -30,15 +32,17 @@
     "premiumDeveloper": "Premium developer in {category}",
     "discoverPortfolio": "Discover our premium real estate portfolio"
   },
+
   "Header": {
     "title": "MOHAMAD KODMANE",
-    "subtitle": "LUXURY REAL ESTATE",
+    "subtitle": "REAL ESTATE ADVISOR & INVESTMENT EXPERT IN DUBAI",
     "introPrefix": "At ",
     "companyName": "Mohamad Kodmane Real Estate",
     "introSuffix": ", we believe that everyone deserves the opportunity to own property and invest with confidence in Dubai.",
     "portfolio": "We guide our clients through every stage of property acquisition, from off-plan developments to ready luxury assets, helping them build strategically diversified real estate portfolios that deliver consistent and sustainable returns.",
     "expertise": "With deep market expertise, transparent processes, and data-driven insights, we empower investors to make informed decisions and achieve optimal growth in Dubai's dynamic property market."
   },
+
   "video": {
     "playVideo": "Play Video",
     "duration": "Duration",
@@ -47,5 +51,275 @@
     "videoDescription": "Exclusive insights on off-plan investments and portfolio management",
     "close": "Close",
     "minutes": "min"
+  },
+
+  "brands": {
+    "sobhaRealty": "Sobha Realty",
+    "aziziDevelopments": "Azizi Developments",
+    "sobhaSkyParks": "Sobha SkyParks",
+    "sobhaAquaCrest": "Sobha AquaCrest",
+    "sobhaHartland2Villas": "Sobha Hartland 2 Villas",
+    "aziziRivieraRetails": "Azizi Riviera – Retails",
+    "sobhaSeaHavenPenthouse": "Sobha SeaHaven Penthouse"
+  },
+
+  "callback": {
+    "sectionTitleLine1": "Begin Your",
+    "sectionTitleAccent": "Dubai Investment",
+    "sectionTitleLine2": "Journey",
+    "subtitle": "Connect with Mohamad Kodmane for exclusive real estate opportunities. We transform your investment vision into tangible Dubai property success.",
+    "nameLabel": "Your Full Name",
+    "phoneLabel": "Contact Number",
+    "interestLabel": "Select Investment Focus",
+    "optionOffPlan": "🏗️ Off-plan properties",
+    "optionReady": "🏢 Ready properties",
+    "optionPortfolio": "📊 Portfolio building",
+    "optionConsultation": "🎯 Expert consultation",
+    "submitIdle": "Request Priority Access",
+    "submitSubmitting": "Establishing connection...",
+    "successTitle": "Connection Established",
+    "successMessage": "Mohamad Kodmane will contact you within 15 minutes. Check your email for confirmation.",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorNetwork": "Network error. Please try again or contact us directly.",
+    "bottomDecoration": "MOHAMAD KODMANE REAL ESTATE BROKERAGE"
+  },
+
+  "offPlan": {
+    "sectionTitle": "Off-plan Real Estate Investment in Dubai",
+    "sectionDescriptionMain": "Secure your property at the earliest stage — before construction begins — with flexible payment plans and high capital growth potential.",
+    "sectionDescriptionSub": "Buying off-plan in Dubai means purchasing directly from developers at launch prices, long before market appreciation.",
+    "statRoiLabel": "Average ROI",
+    "statPriceAdvantageLabel": "Price advantage",
+    "statTaxLabel": "Property tax",
+    "strategyText": "Whether you're seeking a home in Dubai's most prestigious areas or building a long-term investment portfolio, off-plan projects offer the smartest entry point into the market.",
+    "definitionTitle": "What it means",
+    "definitionShort": "Invest early → gain higher value upon completion.",
+    "definitionHighlight": "Secure your property at the lowest launch price, then benefit from natural market appreciation once the project is completed.",
+    "definitionNote": "Make instalment payments directly to the developer — no bank loan or mortgage required.",
+    "benefitsTitle": "Benefits of this investment type",
+    "benefit1Title": "Lower entry price",
+    "benefit1Desc": "Purchase below market value at the pre-construction stage — a smart start for capital growth.",
+    "benefit2Title": "High profit potential",
+    "benefit2Desc": "Enjoy substantial appreciation by handover, or through resale before completion.",
+    "benefit3Title": "Developer payment plans",
+    "benefit3Desc": "Flexible instalment structures directly with developers — no interest and no bank pressure.",
+    "timelineTitle": "Investment journey",
+    "timelineStep1Title": "Initial investment",
+    "timelineStep1Desc": "Reserve your unit at pre-launch or early construction prices.",
+    "timelineStep2Title": "Construction phase",
+    "timelineStep2Desc": "Continue paying instalments according to the developer's flexible plan.",
+    "timelineStep3Title": "Project completion",
+    "timelineStep3Desc": "Watch your property value increase as the area develops and demand rises.",
+    "timelineStep4Title": "Handover & returns",
+    "timelineStep4Desc": "Take ownership, rent it out, or resell it for profit — achieving your investment goal."
+  },
+
+  "portfolio": {
+    "headerTitle": "Strategic Real Estate Portfolio",
+    "headerTagline": "Build a well-balanced real estate portfolio that includes both ready and off-plan properties, designed to maximize returns, appreciation, and long-term stability.",
+    "card1Category": "Cashflow engine",
+    "card1Title": "Immediate returns in the secondary market",
+    "card1Metrics": "5–7% rental yield",
+    "card1Desc": "Premium apartments generating steady monthly income and ensuring strong liquidity within your portfolio.",
+    "card2Category": "Growth asset",
+    "card2Title": "Value appreciation",
+    "card2Metrics": "10–12% annual growth",
+    "card2Desc": "Strategically selected off-plan developments designed for high capital appreciation and long-term wealth creation.",
+    "card3Category": "Wealth ecosystem",
+    "card3Title": "Complete portfolio",
+    "card3Metrics": "0% tax",
+    "card3Desc": "Integrated holdings combining residential, serviced, and lifestyle properties — structured for maximum fiscal efficiency and global investor benefits.",
+    "growthTitle": "Portfolio growth trajectory",
+    "growthSubtitle": "Projected wealth accumulation based on Dubai's real estate performance.",
+    "yearLabel": "Year",
+    "growthInfoTitle": "Performance overview",
+    "marketInsightsTitle": "Key market insights",
+    "philosophyObjectivesTitle": "Investment objectives",
+    "objective1": "Diversify income sources across different property types.",
+    "objective2": "Reduce exposure to market fluctuations and risk.",
+    "objective3": "Maximize profits through rental yields and capital appreciation.",
+    "managementTitle": "Portfolio management",
+    "managementStatement": "We handle every aspect of your portfolio — from handover to resale —",
+    "managementHighlight": "so your wealth continues to grow passively and securely, backed by Dubai's thriving market."
+  },
+
+  "capitalGrowth": {
+    "heroBadge": "MARKET INSIGHTS 2024",
+    "heroTitle": "EXCEPTIONAL CAPITAL GROWTH IN DUBAI VILLAS",
+    "heroSubtitle": "Premium villa communities delivering strong returns and sustained appreciation.",
+    "galleryTitle": "VILLA MARKET PERFORMANCE",
+    "gallerySubtitle": "Key drivers of luxury villa investments in Dubai.",
+    "metricLocationsValue": "Premium",
+    "metricLocationsLabel": "Locations",
+    "metricLocationsDesc": "Prime waterfront and island developments in Dubai's most exclusive areas.",
+    "metricAmenitiesValue": "Luxury",
+    "metricAmenitiesLabel": "Amenities",
+    "metricAmenitiesDesc": "World-class facilities including pools, gyms, and private beach access.",
+    "metricReturnsValue": "Investment",
+    "metricReturnsLabel": "Returns",
+    "metricReturnsDesc": "Strong capital growth and rental yields in premium villa communities.",
+    "metricCommunityValue": "Community",
+    "metricCommunityLabel": "Features",
+    "metricCommunityDesc": "Gated communities with security, greenery, and family-focused living.",
+    "mixTitle": "VILLA PORTFOLIO MIX",
+    "mixSubtitle": "Strategic allocation for maximum returns.",
+    "mixUnderConstructionLabel": "Under construction",
+    "mixReadyLabel": "Ready villas",
+    "mixInsight": "Most investors choose off-plan villas for better capital growth potential.",
+    "fundamentalsTitle": "STRONG VILLA MARKET FUNDAMENTALS",
+    "fundamentalsText": "Dubai's villa market continues to show exceptional growth with record-breaking demand across premium communities like Hartland, Al Sinniyyah Island, and Massar.",
+    "fundamentalsSource": "DATA SOURCE: DXB Interact market analysis 2024",
+    "fundamentalsStat1Value": "AED 254B",
+    "fundamentalsStat1Label": "Off-plan sales",
+    "fundamentalsStat2Value": "+51%",
+    "fundamentalsStat2Label": "Transaction growth",
+    "fundamentalsStat3Value": "AED 180K",
+    "fundamentalsStat3Label": "Average villa rent",
+    "communitiesTitle": "Dubai premium villa communities",
+    "communitiesDesc": "Exclusive developments offering luxury living and strong investment potential across prime locations."
+  },
+
+  "dubaiDemand": {
+    "badge": "MARKET ANALYSIS",
+    "title": "Continuous demand for Dubai real estate",
+    "description": "Dubai's property market continues to witness unprecedented global demand, supported by record-breaking visitor numbers, new investors, and international corporations relocating their headquarters to the emirate.",
+    "welcomesTitle": "Dubai welcomes:",
+    "visitorsTitle": "Millions of visitors annually",
+    "visitorsDesc": "A world tourism hub that fuels short-term rental demand and boosts ROI for investors.",
+    "visitorsStat": "Annual visitors",
+    "investorsTitle": "Thousands of new investors",
+    "investorsDesc": "High-net-worth individuals and families securing assets in Dubai's fast-growing property sector.",
+    "investorsStat": "New investors",
+    "corporationsTitle": "International corporations",
+    "corporationsDesc": "Global companies expanding or moving operations to Dubai — driving commercial and residential demand alike.",
+    "corporationsStat": "HQ relocations",
+    "resultBadge": "THE RESULT",
+    "resultTitle": "Unprecedented growth",
+    "resultHighlight": "Demand consistently outpaces supply → leading to continuous growth in prices, rental values, and overall investment returns.",
+    "resultPriceGrowth": "Price growth",
+    "resultRentalYield": "Rental yield",
+    "resultRoi": "ROI",
+    "resultConclusion": "Dubai remains one of the most resilient and profitable real estate markets worldwide, offering unmatched stability and long-term value appreciation.",
+    "chartTitle": "Market dynamics 2024",
+    "chartSubtitle": "Demand vs supply analysis",
+    "chartDemandLabel": "Demand",
+    "chartSupplyLabel": "Supply",
+    "chartDemandGrowth": "High demand growth",
+    "chartSupplyGrowth": "Supply growth"
+  },
+
+  "dubaiEconomy": {
+    "sectionTitle": "Economic growth powering Dubai's real estate",
+    "descriptionMain": "Dubai's dynamic economy isn't just growing — it's fueling one of the strongest real estate markets in the world.",
+    "descriptionSub": "Every sector contributes to sustained property demand and rising asset values:",
+    "driversTitle": "Key economic drivers",
+    "sector1Name": "Trade & tourism",
+    "sector1Desc": "An ever-growing flow of visitors, entrepreneurs, and businesses continuously drives demand for both residential and hospitality properties.",
+    "sector2Name": "Finance & headquarters",
+    "sector2Desc": "Global corporations and investors establishing regional offices in Dubai create a consistent need for premium office and housing spaces.",
+    "sector3Name": "Technology & innovation",
+    "sector3Desc": "The city's focus on AI, fintech, and smart-city initiatives attracts a new generation of professionals — increasing demand for modern living communities.",
+    "sector4Name": "Infrastructure & connectivity",
+    "sector4Desc": "World-class infrastructure, tax-free regulations, and investor-friendly policies position Dubai as a global capital for sustainable investment and long-term growth.",
+    "resultTitle": "The result:",
+    "resultHighlight": "Dubai's diversified economy directly translates into real estate stability and profitability — making it a secure, high-yield destination for investors worldwide.",
+    "resultGdp": "GDP growth",
+    "resultValues": "Property values",
+    "resultYields": "Rental yields",
+    "featureSecurity": "Investment security",
+    "featureStability": "Stable growth",
+    "featureGlobalAppeal": "Global appeal",
+    "impactTitle": "Direct economic impact",
+    "economyBarLabel": "Economic growth",
+    "realEstateBarLabel": "Real estate growth"
+  },
+
+  "services": {
+    "headerTitle": "360° Real Estate Management",
+    "headerTagline": "From purchase to profit — complete end-to-end property management ensuring your investment journey in Dubai is effortless, profitable, and secure.",
+    "journeyTitle": "Your complete investment journey",
+    "journeySubtitle": "From the moment you choose your property until you realize your returns, every detail is handled with precision and transparency.",
+    "journeyStep1Title": "Before purchase",
+    "journeyStep1Desc": "Strategic investment planning and portfolio construction aligned with your financial goals.",
+    "journeyStep2Title": "During ownership",
+    "journeyStep2Desc": "Seamless property handover and professional management for consistent rental income.",
+    "journeyStep3Title": "After completion",
+    "journeyStep3Desc": "Maximum return strategies through premium resale and value-enhancing services.",
+    "servicesTitle": "Our comprehensive services",
+    "servicesSubtitle": "Professional expertise, complete transparency, and long-term value — all under one roof.",
+    "service1Title": "Strategic investment & portfolio management",
+    "service1Stage": "Before purchase",
+    "service1Desc": "Complete investment planning and portfolio construction for optimal returns.",
+    "service2Title": "Property handover & quality assurance",
+    "service2Stage": "During ownership",
+    "service2Desc": "Seamless property reception with comprehensive quality control.",
+    "service3Title": "Premium rental & property management",
+    "service3Stage": "During ownership",
+    "service3Desc": "Complete rental solutions and professional property care.",
+    "service4Title": "Maximum return resale strategies",
+    "service4Stage": "After completion",
+    "service4Desc": "Data-driven resale planning for optimal profit realization.",
+    "service5Title": "Turnkey interior design & furnishing",
+    "service5Stage": "After completion",
+    "service5Desc": "Complete design solutions for luxury living and premium rental appeal.",
+    "statsSatisfaction": "Client satisfaction",
+    "statsManaged": "Properties managed",
+    "statsExperience": "Years experience",
+    "promiseTitle": "Our promise to you",
+    "promiseStatement": "We handle every stage of your real estate journey — so you enjoy returns, not responsibilities. From strategic acquisition to premium resale, we manage every detail ensuring maximum returns with complete peace of mind.",
+    "promiseHighlight": "Complete end-to-end management • Maximum return optimization • Premium service guarantee"
+  },
+  "about": {
+    "hero": {
+      "badge": "Founder & Visionary",
+      "title": "Mohamad",
+      "highlight": "Kodmane",
+      "subtitle": "Transforming Dubai real estate through strategic investment and unparalleled market expertise. Your trusted partner in building lasting wealth.",
+      "stats": {
+        "portfolio": "Portfolio Value",
+        "clients": "Clients Served",
+        "excellence": "Market Excellence"
+      },
+      "cta": {
+        "startJourney": "Start Your Journey",
+        "myPhilosophy": "My Philosophy"
+      }
+    },
+    "mission": {
+      "title": "My",
+      "highlight": "Mission",
+      "paragraph1": "To democratize premium Dubai real estate investment, making exclusive opportunities accessible to visionary investors worldwide.",
+      "paragraph2": "Through strategic partnerships with Dubai's top developers and data-driven market analysis, I provide clients with unparalleled access to high-yield investment opportunities.",
+      "paragraph3": "Every client relationship is built on transparency, trust, and tangible results—transforming investment goals into realized wealth.",
+      "stats": {
+        "satisfaction": "Client Satisfaction",
+        "averageROI": "Average ROI"
+      }
+    },
+    "values": {
+      "title": "Core",
+      "highlight": "Values",
+      "subtitle": "The principles that guide every investment decision",
+      "strategic": {
+        "title": "Strategic Vision",
+        "description": "Identifying emerging opportunities before market trends, ensuring first-mover advantage and maximum returns for every investment."
+      },
+      "partnership": {
+        "title": "Client Partnership",
+        "description": "Building long-term relationships based on trust, transparency, and shared success. Your goals become my mission."
+      },
+      "execution": {
+        "title": "Execution Excellence",
+        "description": "Rapid, precise deal execution with comprehensive due diligence and seamless transaction management from start to finish."
+      }
+    },
+    "finalCta": {
+      "title": "Ready to Invest in",
+      "highlight": "Dubai?",
+      "description": "Let's discuss your investment goals and create a personalized strategy for exceptional returns.",
+      "whatsapp": "WhatsApp Consultation",
+      "directCall": "Direct Call",
+      "trustNote": "Premium Developer Access • Full Transparency • Proven Results"
+    }
   }
 }

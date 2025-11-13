@@ -1,11 +1,14 @@
-// DubaiEconomicGrowth.jsx - UPDATED WITH YOUR CONTENT
 "use client";
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/DubaiEconomicGrowth.module.css";
 
 export default function DubaiEconomicGrowth() {
+  const { locale, t } = useLanguage();
   const [activeSector, setActiveSector] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,33 +26,29 @@ export default function DubaiEconomicGrowth() {
 
   const sectors = [
     {
-      name: "Trade & Tourism",
-      description:
-        "An ever-growing flow of visitors, entrepreneurs, and businesses continuously drives demand for both residential and hospitality properties.",
+      name: t("dubaiEconomy.sector1Name"),
+      description: t("dubaiEconomy.sector1Desc"),
       icon: "🌍",
       color: "#d7b46a",
       image: luxuryImages.trade,
     },
     {
-      name: "Finance & Headquarters",
-      description:
-        "Global corporations and investors establishing regional offices in Dubai create a consistent need for premium office and housing spaces.",
+      name: t("dubaiEconomy.sector2Name"),
+      description: t("dubaiEconomy.sector2Desc"),
       icon: "🏢",
       color: "#b8943c",
       image: luxuryImages.finance,
     },
     {
-      name: "Technology & Innovation",
-      description:
-        "The city's focus on AI, fintech, and smart-city initiatives attracts a new generation of professionals — increasing demand for modern living communities.",
+      name: t("dubaiEconomy.sector3Name"),
+      description: t("dubaiEconomy.sector3Desc"),
       icon: "💻",
       color: "#9c7a2a",
       image: luxuryImages.technology,
     },
     {
-      name: "Infrastructure & Connectivity",
-      description:
-        "World-class infrastructure, tax-free regulations, and investor-friendly policies position Dubai as a global capital for sustainable investment and long-term growth.",
+      name: t("dubaiEconomy.sector4Name"),
+      description: t("dubaiEconomy.sector4Desc"),
       icon: "🚀",
       color: "#7d6320",
       image: luxuryImages.infrastructure,
@@ -58,9 +57,11 @@ export default function DubaiEconomicGrowth() {
 
   return (
     <section
-      className={`${styles.growthSection} ${isVisible ? styles.visible : ""}`}
+      className={`${styles.growthSection} ${isVisible ? styles.visible : ""} ${
+        isRTL ? styles.rtl : ""
+      }`}
+      dir={isRTL ? "rtl" : "ltr"}
     >
-      {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
         <div
           className={styles.luxuryBackground}
@@ -74,7 +75,6 @@ export default function DubaiEconomicGrowth() {
       </div>
 
       <div className={styles.container}>
-        {/* Main Header - UPDATED WITH YOUR CONTENT */}
         <div className={styles.mainHeader}>
           <div className={styles.headerVisual}>
             <div className={styles.growthVisual}>
@@ -98,25 +98,24 @@ export default function DubaiEconomicGrowth() {
 
           <div className={styles.headerContent}>
             <h2 className={styles.sectionTitle}>
-              Economic Growth Powering Dubai's Real Estate
+              {t("dubaiEconomy.sectionTitle")}
             </h2>
             <div className={styles.goldDivider}></div>
             <p className={styles.sectionDescription}>
-              Dubai's dynamic economy isn't just growing — it's fueling one of
-              the strongest real estate markets in the world.
+              {t("dubaiEconomy.descriptionMain")}
             </p>
             <p className={styles.sectionSubtitle}>
-              Every sector contributes to sustained property demand and rising
-              asset values:
+              {t("dubaiEconomy.descriptionSub")}
             </p>
           </div>
         </div>
 
-        {/* Diversified Economy Section - UPDATED WITH YOUR CONTENT */}
         <div className={styles.economySection}>
           <div className={styles.economyCard}>
             <div className={styles.economyHeader}>
-              <h3 className={styles.economyTitle}>Key Economic Drivers</h3>
+              <h3 className={styles.economyTitle}>
+                {t("dubaiEconomy.driversTitle")}
+              </h3>
               <div className={styles.economyIcon}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
                   <path
@@ -172,7 +171,6 @@ export default function DubaiEconomicGrowth() {
           </div>
         </div>
 
-        {/* The Result Section - ADDED YOUR CONTENT */}
         <div className={styles.resultSection}>
           <div className={styles.resultCard}>
             <div className={styles.resultVisual}>
@@ -182,7 +180,9 @@ export default function DubaiEconomicGrowth() {
                     <div className={styles.barFill} style={{ height: "95%" }}>
                       <span className={styles.barValue}>95%</span>
                     </div>
-                    <div className={styles.barLabel}>Economic Growth</div>
+                    <div className={styles.barLabel}>
+                      {t("dubaiEconomy.economyBarLabel")}
+                    </div>
                   </div>
                   <div className={styles.chartArrow}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -199,52 +199,62 @@ export default function DubaiEconomicGrowth() {
                     <div className={styles.barFill} style={{ height: "88%" }}>
                       <span className={styles.barValue}>88%</span>
                     </div>
-                    <div className={styles.barLabel}>Real Estate Growth</div>
+                    <div className={styles.barLabel}>
+                      {t("dubaiEconomy.realEstateBarLabel")}
+                    </div>
                   </div>
                 </div>
-                <div className={styles.chartTitle}>Direct Economic Impact</div>
+                <div className={styles.chartTitle}>
+                  {t("dubaiEconomy.impactTitle")}
+                </div>
               </div>
             </div>
 
             <div className={styles.resultContent}>
               <div className={styles.resultHeader}>
-                <h3 className={styles.resultTitle}>The Result:</h3>
+                <h3 className={styles.resultTitle}>
+                  {t("dubaiEconomy.resultTitle")}
+                </h3>
               </div>
 
               <div className={styles.resultText}>
                 <p className={styles.resultHighlight}>
-                  Dubai's diversified economy directly translates into real
-                  estate stability and profitability — making it a secure,
-                  high-yield destination for investors worldwide.
+                  {t("dubaiEconomy.resultHighlight")}
                 </p>
 
                 <div className={styles.resultStats}>
                   <div className={styles.resultStat}>
                     <span className={styles.statValue}>+6.8%</span>
-                    <span className={styles.statLabel}>GDP Growth</span>
+                    <span className={styles.statLabel}>
+                      {t("dubaiEconomy.resultGdp")}
+                    </span>
                   </div>
                   <div className={styles.resultStat}>
                     <span className={styles.statValue}>+18%</span>
-                    <span className={styles.statLabel}>Property Values</span>
+                    <span className={styles.statLabel}>
+                      {t("dubaiEconomy.resultValues")}
+                    </span>
                   </div>
                   <div className={styles.resultStat}>
                     <span className={styles.statValue}>+22%</span>
-                    <span className={styles.statLabel}>Rental Yields</span>
+                    <span className={styles.statLabel}>
+                      {t("dubaiEconomy.resultYields")}
+                    </span>
                   </div>
                 </div>
 
                 <div className={styles.investmentFeatures}>
                   <div className={styles.feature}>
                     <div className={styles.featureIcon}>🛡️</div>
-                    <span>Investment Security</span>
+                    <span>{t("dubaiEconomy.featureSecurity")}</span>
                   </div>
                   <div className={styles.feature}>
                     <div className={styles.featureIcon}>📈</div>
-                    <span>Stable Growth</span>
+                    <span>{t("dubaiEconomy.featureStability")}</span>
                   </div>
                   <div className={styles.feature}>
                     <div className={styles.featureIcon}>🌍</div>
-                    <span>Global Appeal</span>
+                    <span>{t("dubaiEconomy.featureGlobalAppeal")}</span>
                   </div>
                 </div>
               </div>

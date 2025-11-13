@@ -1,43 +1,32 @@
 "use client";
 import React from "react";
+import { useLanguage } from "@/components/LanguageProvider";
 import styles from "./about.module.css";
 import Image from "next/image";
 
 export default function AboutPage() {
+  const { locale, t } = useLanguage();
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
+  const isRTL = locale === "ar";
 
   return (
-    <div className={styles.page}>
+    <div
+      className={`${styles.page} ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.container}>
           <div className={styles.heroGrid}>
             <div className={styles.heroContent}>
-              <div className={styles.badge}>Founder & Visionary</div>
+              <div className={styles.badge}>{t("about.hero.badge")}</div>
               <h1>
-                Mohamad <span className={styles.highlight}>Kodmane</span>
+                {t("about.hero.title")}{" "}
+                <span className={styles.highlight}>
+                  {t("about.hero.highlight")}
+                </span>
               </h1>
-              <p className={styles.subtitle}>
-                Transforming Dubai real estate through strategic investment and
-                unparalleled market expertise. Your trusted partner in building
-                lasting wealth.
-              </p>
-
-              {/* Trust Stats */}
-              {/* <div className={styles.stats}>
-                <div className={styles.stat}>
-                  <strong>AED 500M+</strong>
-                  <span>Portfolio Value</span>
-                </div>
-                <div className={styles.stat}>
-                  <strong>100+</strong>
-                  <span>Clients Served</span>
-                </div>
-                <div className={styles.stat}>
-                  <strong>4+ Years</strong>
-                  <span>Market Excellence</span>
-                </div>
-              </div> */}
+              <p className={styles.subtitle}>{t("about.hero.subtitle")}</p>
 
               {/* CTA */}
               <div className={styles.ctaSection}>
@@ -47,10 +36,10 @@ export default function AboutPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Start Your Journey
+                  {t("about.hero.cta.startJourney")}
                 </a>
                 <a href="#mission" className={styles.secondaryBtn}>
-                  My Philosophy
+                  {t("about.hero.cta.myPhilosophy")}
                 </a>
               </div>
             </div>
@@ -60,7 +49,11 @@ export default function AboutPage() {
               <div className={styles.imageWrapper}>
                 <Image
                   src="/mohamad-kodmane.png"
-                  alt="Dubai Skyline - Mohamad Kodmane's Investment Vision"
+                  alt={
+                    isRTL
+                      ? "محمد قضماني - مستشار عقاري في دبي"
+                      : "Mohamad Kodmane - Dubai Real Estate Advisor"
+                  }
                   fill
                   className={styles.image}
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -82,32 +75,23 @@ export default function AboutPage() {
           <div className={styles.missionGrid}>
             <div className={styles.missionContent}>
               <h2>
-                My <span className={styles.highlight}>Mission</span>
+                {t("about.mission.title")}{" "}
+                <span className={styles.highlight}>
+                  {t("about.mission.highlight")}
+                </span>
               </h2>
-              <p>
-                To democratize premium Dubai real estate investment, making
-                exclusive opportunities accessible to visionary investors
-                worldwide.
-              </p>
-              <p>
-                Through strategic partnerships with Dubai's top developers and
-                data-driven market analysis, I provide clients with unparalleled
-                access to high-yield investment opportunities.
-              </p>
-              <p>
-                Every client relationship is built on transparency, trust, and
-                tangible results—transforming investment goals into realized
-                wealth.
-              </p>
+              <p>{t("about.mission.paragraph1")}</p>
+              <p>{t("about.mission.paragraph2")}</p>
+              <p>{t("about.mission.paragraph3")}</p>
 
               <div className={styles.missionStats}>
                 <div className={styles.missionStat}>
                   <strong>100%</strong>
-                  <span>Client Satisfaction</span>
+                  <span>{t("about.mission.stats.satisfaction")}</span>
                 </div>
                 <div className={styles.missionStat}>
                   <strong>AED 2.1M</strong>
-                  <span>Average ROI</span>
+                  <span>{t("about.mission.stats.averageROI")}</span>
                 </div>
               </div>
             </div>
@@ -115,7 +99,11 @@ export default function AboutPage() {
             <div className={styles.missionImage}>
               <Image
                 src={`${CDN}/aquamont/intro-main.png`}
-                alt="Mohamad Kodmane - Dubai Real Estate Expert"
+                alt={
+                  isRTL
+                    ? "محمد قضماني - خبير العقارات في دبي"
+                    : "Mohamad Kodmane - Dubai Real Estate Expert"
+                }
                 fill
                 className={styles.image}
                 priority
@@ -131,38 +119,28 @@ export default function AboutPage() {
         <div className={styles.container}>
           <div className={styles.valuesHeader}>
             <h2>
-              Core <span className={styles.highlight}>Values</span>
+              {t("about.values.title")}{" "}
+              <span className={styles.highlight}>
+                {t("about.values.highlight")}
+              </span>
             </h2>
-            <p>The principles that guide every investment decision</p>
+            <p>{t("about.values.subtitle")}</p>
           </div>
 
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
-              {/* <div className={styles.valueIcon}>🔍</div> */}
-              <h3>Strategic Vision</h3>
-              <p>
-                Identifying emerging opportunities before market trends,
-                ensuring first-mover advantage and maximum returns for every
-                investment.
-              </p>
+              <h3>{t("about.values.strategic.title")}</h3>
+              <p>{t("about.values.strategic.description")}</p>
             </div>
 
             <div className={styles.valueCard}>
-              {/* <div className={styles.valueIcon}>🤝</div> */}
-              <h3>Client Partnership</h3>
-              <p>
-                Building long-term relationships based on trust, transparency,
-                and shared success. Your goals become my mission.
-              </p>
+              <h3>{t("about.values.partnership.title")}</h3>
+              <p>{t("about.values.partnership.description")}</p>
             </div>
 
             <div className={styles.valueCard}>
-              {/* <div className={styles.valueIcon}>⚡</div> */}
-              <h3>Execution Excellence</h3>
-              <p>
-                Rapid, precise deal execution with comprehensive due diligence
-                and seamless transaction management from start to finish.
-              </p>
+              <h3>{t("about.values.execution.title")}</h3>
+              <p>{t("about.values.execution.description")}</p>
             </div>
           </div>
         </div>
@@ -173,13 +151,12 @@ export default function AboutPage() {
         <div className={styles.container}>
           <div className={styles.ctaCard}>
             <h2>
-              Ready to Invest in{" "}
-              <span className={styles.highlight}>Dubai?</span>
+              {t("about.finalCta.title")}{" "}
+              <span className={styles.highlight}>
+                {t("about.finalCta.highlight")}
+              </span>
             </h2>
-            <p>
-              Let's discuss your investment goals and create a personalized
-              strategy for exceptional returns.
-            </p>
+            <p>{t("about.finalCta.description")}</p>
 
             <div className={styles.ctaButtons}>
               <a
@@ -188,17 +165,15 @@ export default function AboutPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                WhatsApp Consultation
+                {t("about.finalCta.whatsapp")}
               </a>
               <a href="tel:+971501234567" className={styles.callBtn}>
-                Direct Call
+                {t("about.finalCta.directCall")}
               </a>
             </div>
 
             <div className={styles.trustNote}>
-              <strong>
-                Premium Developer Access • Full Transparency • Proven Results
-              </strong>
+              <strong>{t("about.finalCta.trustNote")}</strong>
             </div>
           </div>
         </div>
