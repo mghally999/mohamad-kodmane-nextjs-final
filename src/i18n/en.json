@@ -38,5 +38,14 @@
     "introSuffix": ", we believe that everyone deserves the opportunity to own property and invest with confidence in Dubai.",
     "portfolio": "We guide our clients through every stage of property acquisition, from off-plan developments to ready luxury assets, helping them build strategically diversified real estate portfolios that deliver consistent and sustainable returns.",
     "expertise": "With deep market expertise, transparent processes, and data-driven insights, we empower investors to make informed decisions and achieve optimal growth in Dubai's dynamic property market."
+  },
+  "video": {
+    "playVideo": "Play Video",
+    "duration": "Duration",
+    "views": "Views",
+    "videoTitle": "Investment Strategy Video",
+    "videoDescription": "Exclusive insights on off-plan investments and portfolio management",
+    "close": "Close",
+    "minutes": "min"
   }
 }

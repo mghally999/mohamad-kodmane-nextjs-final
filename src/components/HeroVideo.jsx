@@ -1,13 +1,32 @@
 "use client";
 import React, { useState } from "react";
 import styles from "@/styles/HeroVideo.module.css";
+import { useLanguage } from "./LanguageProvider"; // Adjust path as needed
 
 export default function HeroVideo() {
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const { locale, t } = useLanguage();
+
+  // Video translations
+  const videoTranslations = {
+    playVideo: t("video.playVideo", "Play Video"),
+    duration: t("video.duration", "Duration"),
+    views: t("video.views", "Views"),
+    videoTitle: t("video.videoTitle", "Investment Strategy Video"),
+    videoDescription: t(
+      "video.videoDescription",
+      "Exclusive insights on off-plan investments and portfolio management"
+    ),
+    close: t("video.close", "Close"),
+    minutes: t("video.minutes", "min"),
+  };
 
   return (
-    <section className={styles.videoSection}>
+    <section
+      className={`${styles.videoSection} ${locale === "ar" ? styles.rtl : ""}`}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+    >
       <div className={styles.container}>
         {/* VIDEO COMPONENT - 100% FULL WIDTH */}
         <div className={styles.videoContainer}>
@@ -20,44 +39,43 @@ export default function HeroVideo() {
               {!imageError ? (
                 <img
                   src="/video-thumbnail.png"
-                  alt="Mohamad Kodmane - Investment Strategy Video"
+                  alt={videoTranslations.videoTitle}
                   className={styles.thumbnailImage}
                   onError={() => setImageError(true)}
                 />
               ) : (
                 <div className={styles.fallbackBackground}>
                   <div className={styles.fallbackText}>
-                    <h3>Mohamad Kodmane</h3>
-                    <p>Investment Strategy Video</p>
+                    <h3>{t("Header.title", "MOHAMAD KODMANE")}</h3>
+                    <p>{videoTranslations.videoTitle}</p>
                   </div>
                 </div>
               )}
 
               <div className={styles.videoOverlay}></div>
 
-              {/* Play Button */}
-              {/* <div className={styles.playButton}>
-                <div className={styles.playIcon}>
-                  <svg width="35" height="35" viewBox="0 0 24 24" fill="none">
-                    <path d="M8 5v14l11-7-11-7z" fill="currentColor" />
-                  </svg>
-                </div>
-              </div> */}
-
               {/* Video Info - LARGER TEXT */}
-              <div className={styles.videoInfo}>
+              <div
+                className={`${styles.videoInfo} ${
+                  locale === "ar" ? styles.videoInfoRtl : ""
+                }`}
+              >
                 <div className={styles.videoBadge}>
                   <span className={styles.badgeIcon}>▶️</span>
-                  Play Video
+                  {videoTranslations.playVideo}
                 </div>
                 <div className={styles.videoStats}>
                   <div className={styles.videoStat}>
                     <span className={styles.statNumber}>15:42</span>
-                    <span className={styles.statLabel}>Duration</span>
+                    <span className={styles.statLabel}>
+                      {videoTranslations.duration}
+                    </span>
                   </div>
                   <div className={styles.videoStat}>
                     <span className={styles.statNumber}>500+</span>
-                    <span className={styles.statLabel}>Views</span>
+                    <span className={styles.statLabel}>
+                      {videoTranslations.views}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -68,7 +86,7 @@ export default function HeroVideo() {
         {/* VIDEO CAPTION */}
         {/* <div className={styles.videoCaption}>
           <p className={styles.captionSub}>
-            Exclusive insights on off-plan investments and portfolio management
+            {videoTranslations.videoDescription}
           </p>
         </div> */}
       </div>
@@ -84,8 +102,11 @@ export default function HeroVideo() {
             onClick={(e) => e.stopPropagation()}
           >
             <button
-              className={styles.closeButton}
+              className={`${styles.closeButton} ${
+                locale === "ar" ? styles.closeButtonRtl : ""
+              }`}
               onClick={() => setShowVideoModal(false)}
+              aria-label={videoTranslations.close}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
@@ -103,7 +124,7 @@ export default function HeroVideo() {
                 height="100%"
                 allow="autoplay; fullscreen"
                 allowFullScreen
-                title="Mohamad Kodmane - Investment Strategy"
+                title={videoTranslations.videoTitle}
                 loading="eager"
               />
             </div>

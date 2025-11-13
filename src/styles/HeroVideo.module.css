@@ -5,7 +5,7 @@
 .videoSection {
   position: relative;
   min-height: 90vh;
-  background: #1a1a1a; /* Dark background to avoid white screen */
+  background: #1a1a1a;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -13,6 +13,11 @@
   padding: 0;
   font-family: "Ringside", sans-serif;
   width: 100%;
+}
+
+/* RTL Support */
+.videoSection.rtl {
+  direction: rtl;
 }
 
 .container {
@@ -45,7 +50,7 @@
   height: 100%;
   cursor: pointer;
   transition: transform 0.3s ease;
-  background: #1a1a1a; /* Ensure dark background */
+  background: #1a1a1a;
 }
 
 .videoCard:hover {
@@ -55,9 +60,9 @@
 .videoThumbnail {
   position: relative;
   width: 100%;
-  height: 90vh; /* Full viewport height */
+  height: 90vh;
   overflow: hidden;
-  background: #1a1a1a; /* Dark fallback */
+  background: #1a1a1a;
 }
 
 .thumbnailImage {
@@ -112,44 +117,6 @@
   z-index: 1;
 }
 
-/* Play Button */
-.playButton {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.playIcon {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: #d7b46a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  box-shadow: 0 20px 50px rgba(215, 180, 106, 0.6);
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 3;
-}
-
-.videoCard:hover .playIcon {
-  transform: scale(1.15);
-  box-shadow: 0 25px 60px rgba(215, 180, 106, 0.8);
-}
-
-.playIcon svg {
-  margin-left: 4px;
-  width: 35px;
-  height: 35px;
-}
-
 /* Video Info - LARGER TEXT */
 .videoInfo {
   position: absolute;
@@ -160,6 +127,12 @@
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
   color: white;
   z-index: 2;
+  text-align: center;
+}
+
+/* RTL Video Info */
+.videoInfoRtl {
+  text-align: center;
 }
 
 .videoBadge {
@@ -230,6 +203,7 @@
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  text-align: center;
 }
 
 /* VIDEO MODAL - 100% FULL WIDTH */
@@ -293,6 +267,12 @@
   z-index: 10;
 }
 
+/* RTL Close Button */
+.closeButtonRtl {
+  right: auto;
+  left: 25px;
+}
+
 .closeButton:hover {
   background: rgba(215, 180, 106, 0.5);
   transform: scale(1.1);
@@ -316,16 +296,6 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-  .playIcon {
-    width: 80px;
-    height: 80px;
-  }
-
-  .playIcon svg {
-    width: 28px;
-    height: 28px;
-  }
-
   .videoInfo {
     padding: 30px;
   }
@@ -358,19 +328,21 @@
   .fallbackText p {
     font-size: 1.2rem;
   }
+
+  .closeButton {
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .closeButtonRtl {
+    right: auto;
+    left: 20px;
+  }
 }
 
 @media (max-width: 480px) {
-  .playIcon {
-    width: 70px;
-    height: 70px;
-  }
-
-  .playIcon svg {
-    width: 24px;
-    height: 24px;
-  }
-
   .videoInfo {
     padding: 25px;
   }
@@ -398,10 +370,15 @@
   }
 
   .closeButton {
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .closeButtonRtl {
+    right: auto;
+    left: 15px;
   }
 
   .fallbackText h3 {
