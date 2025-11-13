@@ -1,4 +1,4 @@
-/* CapitalGrowth.module.css */
+/* CapitalGrowth.module.css - FINAL FULL WIDTH VERSION */
 @import url("https://fonts.cdnfonts.com/css/chronicle-display");
 @import url("https://fonts.cdnfonts.com/css/ringside");
 
@@ -62,7 +62,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Light overlay for text readability */
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .heroContent {
@@ -82,9 +82,9 @@
   border-radius: 25px;
   font-family: "Ringside", sans-serif;
   font-size: 0.9rem;
-  font-weight: 700; /* BOLD */
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px; /* Increased spacing */
+  letter-spacing: 2px;
   margin-bottom: 30px;
   backdrop-filter: blur(10px);
 }
@@ -92,19 +92,19 @@
 .heroTitle {
   font-family: "Chronicle Display", serif;
   font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 600; /* BOLDER */
+  font-weight: 600;
   color: #ffffff;
   margin: 0 0 20px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  text-transform: uppercase; /* ALL CAPS */
+  text-transform: uppercase;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .heroSubtitle {
   font-family: "Ringside", sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
-  font-weight: 600; /* BOLDER */
+  font-weight: 600;
   color: #ffffff;
   line-height: 1.5;
   margin: 0;
@@ -124,17 +124,17 @@
 .galleryTitle {
   font-family: "Chronicle Display", serif;
   font-size: clamp(2.2rem, 4vw, 3rem);
-  font-weight: 600; /* BOLDER */
+  font-weight: 600;
   color: #000000;
   margin: 0 0 15px 0;
   line-height: 1.2;
-  text-transform: uppercase; /* ALL CAPS */
+  text-transform: uppercase;
 }
 
 .gallerySubtitle {
   font-family: "Ringside", sans-serif;
   font-size: 1.2rem;
-  font-weight: 500; /* MEDIUM */
+  font-weight: 500;
   color: #000000;
   margin: 0;
   opacity: 0.8;
@@ -155,7 +155,7 @@
 
 .navButton {
   background: rgba(215, 180, 106, 0.05);
-  border: 2px solid rgba(215, 180, 106, 0.2); /* THICKER BORDER */
+  border: 2px solid rgba(215, 180, 106, 0.2);
   border-radius: 16px;
   padding: 25px 20px;
   cursor: pointer;
@@ -178,8 +178,8 @@
 .navValue {
   display: block;
   font-family: "Chronicle Display", serif;
-  font-size: 2rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
+  font-size: 2rem;
+  font-weight: 600;
   color: #d7b46a;
   line-height: 1;
   margin-bottom: 5px;
@@ -187,10 +187,10 @@
 
 .navLabel {
   font-family: "Ringside", sans-serif;
-  font-size: 1.1rem; /* LARGER */
-  font-weight: 700; /* BOLD */
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #000000;
-  text-transform: uppercase; /* ALL CAPS */
+  text-transform: uppercase;
 }
 
 .metricsDisplay {
@@ -198,7 +198,7 @@
   border-radius: 24px;
   overflow: hidden;
   height: 500px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); /* STRONGER SHADOW */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
 .metricImage {
@@ -232,7 +232,7 @@
 .metricValueLarge {
   font-family: "Chronicle Display", serif;
   font-size: 4rem;
-  font-weight: 600; /* BOLDER */
+  font-weight: 600;
   color: #d7b46a;
   line-height: 1;
   margin-bottom: 10px;
@@ -240,57 +240,72 @@
 
 .metricLabelLarge {
   font-family: "Ringside", sans-serif;
-  font-size: 1.8rem; /* LARGER */
-  font-weight: 700; /* BOLD */
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #ffffff;
   margin-bottom: 10px;
-  text-transform: uppercase; /* ALL CAPS */
+  text-transform: uppercase;
 }
 
 .metricDescription {
   font-family: "Ringside", sans-serif;
-  font-size: 1.2rem; /* LARGER */
-  font-weight: 500; /* MEDIUM */
+  font-size: 1.2rem;
+  font-weight: 500;
   color: #ffffff;
   opacity: 0.9;
 }
 
-/* Portfolio Section */
-.portfolioSection {
-  margin-bottom: 100px;
+/* FULL WIDTH INTEGRATED SECTION */
+.fullWidthIntegratedSection {
+  margin: 100px 0;
 }
 
-.portfolioVisual {
+.fullWidthIntegratedCard {
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(215, 180, 106, 0.2);
+}
+
+/* Top Row - Villa Portfolio Mix + Strong Villa Market Fundamentals */
+.topRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  gap: 50px;
+  padding: 50px;
+  align-items: start;
 }
 
-.mixCard {
+/* Villa Portfolio Mix */
+.portfolioMix {
   background: rgba(215, 180, 106, 0.05);
-  border: 2px solid rgba(215, 180, 106, 0.2); /* THICKER BORDER */
-  border-radius: 24px;
-  padding: 40px;
+  border-radius: 20px;
+  padding: 35px;
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  height: 100%;
 }
 
 .mixHeader {
   margin-bottom: 30px;
+  text-align: center;
 }
 
 .mixTitle {
   font-family: "Chronicle Display", serif;
-  font-size: 2.2rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #000000;
-  margin: 0 0 10px 0;
-  text-transform: uppercase; /* ALL CAPS */
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .mixSubtitle {
   font-family: "Ringside", sans-serif;
-  font-size: 1.1rem; /* LARGER */
-  font-weight: 500; /* MEDIUM */
+  font-size: 1.1rem;
+  font-weight: 500;
   color: #000000;
   margin: 0;
   opacity: 0.8;
@@ -300,13 +315,13 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .barItem {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .barLabel {
@@ -314,327 +329,209 @@
   justify-content: space-between;
   align-items: center;
   font-family: "Ringside", sans-serif;
-  font-size: 1rem; /* LARGER */
-  font-weight: 700; /* BOLD */
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #000000;
-  text-transform: uppercase; /* ALL CAPS */
 }
 
 .barPercentage {
+  font-family: "Chronicle Display", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
   color: #d7b46a;
-  font-weight: 800; /* BOLDER */
-  font-size: 1.2rem; /* LARGER */
 }
 
 .barContainer {
   width: 100%;
-  height: 12px; /* THICKER */
-  background: rgba(215, 180, 106, 0.2);
-  border-radius: 6px;
+  height: 14px;
+  background: rgba(215, 180, 106, 0.15);
+  border-radius: 7px;
   overflow: hidden;
 }
 
 .barFill {
   height: 100%;
   background: linear-gradient(90deg, #d7b46a, #c4a15d);
-  border-radius: 6px;
+  border-radius: 7px;
   transition: width 1.5s ease;
+  box-shadow: 0 4px 15px rgba(215, 180, 106, 0.3);
 }
 
 .mixInsight {
-  background: rgba(215, 180, 106, 0.1);
-  padding: 25px;
-  border-radius: 12px;
-  border-left: 4px solid #d7b46a; /* THICKER */
+  text-align: center;
+  padding-top: 25px;
+  border-top: 1px solid rgba(215, 180, 106, 0.3);
 }
 
 .insightText {
   font-family: "Ringside", sans-serif;
-  font-size: 1.1rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #000000;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.portfolioImage {
-  border-radius: 24px;
-  overflow: hidden;
-  height: 400px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); /* STRONGER SHADOW */
-}
-
-.portfolioImg {
-  width: 100%;
+/* Strong Villa Market Fundamentals */
+.fundamentalsBlock {
   height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s ease;
-}
-
-.portfolioImage:hover .portfolioImg {
-  transform: scale(1.05);
-}
-
-/* Highlights Section - FIXED IMAGES */
-.highlightsSection {
-  margin-bottom: 100px;
-}
-
-.highlightsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-.highlightCard {
-  background: #ffffff;
-  border: 2px solid rgba(215, 180, 106, 0.2); /* THICKER BORDER */
-  border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* STRONGER SHADOW */
-}
-
-.highlightCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-  border-color: rgba(215, 180, 106, 0.5);
-}
-
-.highlightImage {
-  height: 200px;
-  overflow: hidden;
-}
-
-.highlightImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s ease;
-}
-
-.highlightCard:hover .highlightImg {
-  transform: scale(1.1);
-}
-
-.highlightContent {
-  padding: 30px;
-}
-
-.highlightTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: 1.4rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
-  color: #000000;
-  margin: 0 0 15px 0;
-  text-transform: uppercase; /* ALL CAPS */
-}
-
-.highlightValue {
-  font-family: "Chronicle Display", serif;
-  font-size: 2.2rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
-  color: #d7b46a;
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.highlightDescription {
-  font-family: "Ringside", sans-serif;
-  font-size: 1rem; /* LARGER */
-  font-weight: 500; /* MEDIUM */
-  color: #000000;
-  margin: 0;
-  line-height: 1.5;
-  opacity: 0.8;
-}
-
-/* Summary Section */
-.summarySection {
-  margin-bottom: 80px;
-}
-
-.summaryCard {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  background: rgba(215, 180, 106, 0.05);
-  border: 2px solid rgba(215, 180, 106, 0.2); /* THICKER BORDER */
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-.summaryImage {
-  height: 100%;
-}
-
-.summaryImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s ease;
-}
-
-.summaryCard:hover .summaryImg {
-  transform: scale(1.05);
-}
-
-.summaryContent {
-  padding: 40px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
 }
 
-.summaryTitle {
+.fundamentalsContent {
+  width: 100%;
+}
+
+.fundamentalsTitle {
   font-family: "Chronicle Display", serif;
-  font-size: 2.5rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
+  font-size: 2.2rem;
+  font-weight: 700;
   color: #000000;
-  margin: 0 0 30px 0;
+  margin: 0 0 40px 0;
   line-height: 1.2;
-  text-transform: uppercase; /* ALL CAPS */
+  text-transform: uppercase;
+  text-align: center;
 }
 
-.summaryStats {
+.fundamentalsStats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-bottom: 30px;
+  margin: 40px 0;
 }
 
 .statItem {
+  background: rgba(215, 180, 106, 0.08);
+  border-radius: 16px;
+  padding: 25px 20px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 12px;
-  border: 2px solid rgba(215, 180, 106, 0.3); /* THICKER BORDER */
+  border: 1px solid rgba(215, 180, 106, 0.2);
+  transition: all 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(215, 180, 106, 0.2);
+  background: rgba(215, 180, 106, 0.12);
 }
 
 .statValue {
   font-family: "Chronicle Display", serif;
-  font-size: 1.8rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
+  font-size: 1.8rem;
+  font-weight: 700;
   color: #d7b46a;
   line-height: 1;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .statLabel {
   font-family: "Ringside", sans-serif;
-  font-size: 0.9rem; /* LARGER */
-  font-weight: 700; /* BOLD */
+  font-size: 0.8rem;
+  font-weight: 700;
   color: #000000;
-  text-transform: uppercase; /* ALL CAPS */
-  letter-spacing: 1px; /* INCREASED SPACING */
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.summaryText {
+.fundamentalsText {
   font-family: "Ringside", sans-serif;
-  font-size: 1.1rem; /* LARGER */
-  font-weight: 500; /* MEDIUM */
+  font-size: 1.1rem;
+  font-weight: 500;
   color: #000000;
   line-height: 1.6;
-  margin: 0 0 20px 0;
-  opacity: 0.9;
+  margin: 0 0 30px 0;
+  text-align: center;
 }
 
 .sourceNote {
-  font-family: "Ringside", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700; /* BOLD */
-  color: #d7b46a;
-  text-transform: uppercase; /* ALL CAPS */
-  letter-spacing: 1.5px; /* INCREASED SPACING */
-}
-
-/* Featured Projects */
-.featuredProjects {
-  margin-bottom: 80px;
-}
-
-.sectionHeader {
   text-align: center;
-  margin-bottom: 50px;
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(215, 180, 106, 0.3);
 }
 
-.sectionTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: clamp(2.2rem, 4vw, 3rem);
-  font-weight: 600; /* BOLDER */
-  color: #000000;
-  margin: 0 0 15px 0;
-  line-height: 1.2;
-  text-transform: uppercase; /* ALL CAPS */
-}
-
-.sectionSubtitle {
+.sourceNote strong {
   font-family: "Ringside", sans-serif;
-  font-size: 1.2rem;
-  font-weight: 500; /* MEDIUM */
+  font-size: 0.8rem;
+  font-weight: 700;
   color: #000000;
-  margin: 0;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+/* Bottom Row - Full Width Dubai Premium Villa Communities Image */
+.bottomRow {
+  width: 100%;
 }
 
-.projectCard {
-  background: #ffffff;
-  border: 2px solid rgba(215, 180, 106, 0.2); /* THICKER BORDER */
-  border-radius: 20px;
+.fullWidthImageContainer {
+  position: relative;
+  width: 100%;
+  height: 400px;
   overflow: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* STRONGER SHADOW */
+  transition: all 0.5s ease;
+  cursor: pointer;
 }
 
-.projectCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-  border-color: rgba(215, 180, 106, 0.5);
+.fullWidthImageContainer:hover {
+  transform: translateY(-5px);
 }
 
-.projectImage {
-  height: 250px;
-  overflow: hidden;
-}
-
-.projectImage img {
+.fullWidthImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 1.2s ease;
 }
 
-.projectCard:hover .projectImage img {
-  transform: scale(1.1);
+.fullWidthImageContainer:hover .fullWidthImage {
+  transform: scale(1.05);
 }
 
-.projectContent {
-  padding: 30px;
+.fullWidthImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(215, 180, 106, 0.3) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
-.projectTitle {
+.fullWidthImageContent {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  text-align: center;
+  max-width: 800px;
+}
+
+.fullWidthImageTitle {
   font-family: "Chronicle Display", serif;
-  font-size: 1.4rem; /* LARGER */
-  font-weight: 600; /* BOLDER */
-  color: #000000;
-  margin: 0 0 10px 0;
-  text-transform: uppercase; /* ALL CAPS */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-.projectDescription {
+.fullWidthImageDescription {
   font-family: "Ringside", sans-serif;
-  font-size: 1rem; /* LARGER */
-  font-weight: 500; /* MEDIUM */
-  color: #000000;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
   margin: 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   line-height: 1.5;
-  opacity: 0.8;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -644,21 +541,23 @@
     gap: 30px;
   }
 
-  .portfolioVisual {
+  .topRow {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
+    padding: 40px 30px;
   }
 
-  .highlightsGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .fundamentalsStats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
   }
 
-  .summaryCard {
-    grid-template-columns: 1fr;
+  .fullWidthImageTitle {
+    font-size: 2rem;
   }
 
-  .projectsGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .fullWidthImageDescription {
+    font-size: 1.1rem;
   }
 }
 
@@ -673,24 +572,34 @@
     height: 400px;
   }
 
-  .highlightsGrid {
+  .topRow {
+    padding: 30px 20px;
+    gap: 30px;
+  }
+
+  .fundamentalsStats {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
 
-  .summaryStats {
-    grid-template-columns: repeat(2, 1fr);
+  .fundamentalsTitle {
+    font-size: 1.8rem;
   }
 
-  .projectsGrid {
-    grid-template-columns: 1fr;
+  .mixTitle {
+    font-size: 1.5rem;
   }
 
-  .mixCard {
-    padding: 30px 25px;
+  .fullWidthImageContainer {
+    height: 300px;
   }
 
-  .summaryContent {
-    padding: 30px 25px;
+  .fullWidthImageTitle {
+    font-size: 1.6rem;
+  }
+
+  .fullWidthImageDescription {
+    font-size: 1rem;
   }
 }
 
@@ -717,9 +626,28 @@
     font-size: 3rem;
   }
 
-  .summaryStats {
-    grid-template-columns: 1fr;
-    gap: 15px;
+  .topRow {
+    padding: 25px 15px;
+  }
+
+  .portfolioMix {
+    padding: 20px;
+  }
+
+  .fundamentalsTitle {
+    font-size: 1.6rem;
+  }
+
+  .fullWidthImageContainer {
+    height: 250px;
+  }
+
+  .fullWidthImageTitle {
+    font-size: 1.3rem;
+  }
+
+  .fullWidthImageDescription {
+    font-size: 0.9rem;
   }
 
   .navButton {

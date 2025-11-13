@@ -155,8 +155,7 @@ export default function OurServices() {
             </div>
             <h1 className={styles.heroTitle}>PREMIUM REAL ESTATE SERVICES</h1>
             <p className={styles.heroSubtitle}>
-              End-to-end luxury property solutions designed for exceptional
-              returns and peace of mind
+              360° Real Estate Management — From Purchase to Profit
             </p>
           </div>
         </div>

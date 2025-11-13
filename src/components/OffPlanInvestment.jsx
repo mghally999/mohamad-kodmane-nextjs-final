@@ -68,8 +68,13 @@ export default function OffPlanInvestment() {
           </h2>
           <div className={styles.goldDivider}></div>
           <p className={styles.sectionDescription}>
-            Purchasing property in its early stages before construction begins
-            with profitable installments
+            Secure your property at the earliest stage — before construction
+            begins — with flexible payment plans and high capital growth
+            potential.
+          </p>
+          <p className={styles.sectionSubDescription}>
+            Buying off-plan in Dubai means purchasing directly from developers
+            at launch prices, long before market appreciation.
           </p>
         </div>
 
@@ -139,9 +144,18 @@ export default function OffPlanInvestment() {
             </div>
             <div className={styles.statItem}>
               <div className={styles.statNumber}>0%</div>
-              <div className={styles.statLabel}>Tax</div>
+              <div className={styles.statLabel}>Property Tax</div>
             </div>
           </div>
+        </div>
+
+        {/* STRATEGY OVERVIEW */}
+        <div className={styles.strategyOverview}>
+          <p className={styles.strategyText}>
+            Whether you're seeking a home in Dubai's most prestigious areas or
+            building a long-term investment portfolio, off-plan projects offer
+            the smartest entry point into the market.
+          </p>
         </div>
 
         {/* MAIN CONTENT */}
@@ -162,13 +176,18 @@ export default function OffPlanInvestment() {
             <div className={styles.definitionContent}>
               <h3 className={styles.definitionTitle}>What It Means</h3>
               <p className={styles.definitionText}>
-                Lower price today → Higher value upon delivery
+                Invest early → Gain higher value upon completion
               </p>
               <div className={styles.paymentHighlight}>
                 <span className={styles.highlightText}>
-                  You pay installments during construction without needing bank
-                  financing
+                  Secure your property at the lowest launch price, then benefit
+                  from natural market appreciation once the project is
+                  completed.
                 </span>
+              </div>
+              <div className={styles.paymentNote}>
+                Make instalment payments directly to the developer — no bank
+                loan or mortgage required.
               </div>
             </div>
           </div>
@@ -200,11 +219,10 @@ export default function OffPlanInvestment() {
                   </div>
                 </div>
                 <div className={styles.benefitContent}>
-                  <h4 className={styles.benefitHeading}>
-                    Lower Purchase Price
-                  </h4>
+                  <h4 className={styles.benefitHeading}>Lower Entry Price</h4>
                   <p className={styles.benefitDescription}>
-                    Compared to ready properties
+                    Purchase below market value at pre-construction stage — a
+                    smart start for capital growth.
                   </p>
                 </div>
               </div>
@@ -216,9 +234,12 @@ export default function OffPlanInvestment() {
                   </div>
                 </div>
                 <div className={styles.benefitContent}>
-                  <h4 className={styles.benefitHeading}>Profit Potential</h4>
+                  <h4 className={styles.benefitHeading}>
+                    High Profit Potential
+                  </h4>
                   <p className={styles.benefitDescription}>
-                    Realize profit at the moment of handover
+                    Enjoy substantial appreciation by the time of handover or
+                    through resale before completion.
                   </p>
                 </div>
               </div>
@@ -230,10 +251,12 @@ export default function OffPlanInvestment() {
                   </div>
                 </div>
                 <div className={styles.benefitContent}>
-                  <h4 className={styles.benefitHeading}>Flexible Payment</h4>
+                  <h4 className={styles.benefitHeading}>
+                    Developer Payment Plans
+                  </h4>
                   <p className={styles.benefitDescription}>
-                    Pay in installments directly with the developer without
-                    financial pressure
+                    Flexible instalment structures directly with developers — no
+                    interest, no bank pressure.
                   </p>
                 </div>
               </div>
@@ -249,28 +272,39 @@ export default function OffPlanInvestment() {
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
                 <h4>Initial Investment</h4>
-                <p>Secure property at pre-construction prices</p>
+                <p>
+                  Reserve your unit at pre-launch or early construction prices
+                </p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
                 <h4>Construction Phase</h4>
-                <p>Flexible payment plan during development</p>
+                <p>
+                  Continue paying instalments according to the developer's
+                  flexible plan
+                </p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
                 <h4>Project Completion</h4>
-                <p>Property value appreciates significantly</p>
+                <p>
+                  Watch your property value increase as the area develops and
+                  demand rises
+                </p>
               </div>
             </div>
             <div className={styles.timelineItem}>
               <div className={styles.timelineDot}></div>
               <div className={styles.timelineContent}>
-                <h4>Handover & Profit</h4>
-                <p>Realize returns upon delivery</p>
+                <h4>Handover & Returns</h4>
+                <p>
+                  Take ownership, rent it out, or resell it for profit —
+                  achieving your investment goal
+                </p>
               </div>
             </div>
           </div>

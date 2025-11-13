@@ -8,7 +8,7 @@ const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
 export default function PortfolioInvestment() {
   const [isVisible, setIsVisible] = useState(false);
-  const [activeYear, setActiveYear] = useState(3); // Default to Year 3
+  const [activeYear, setActiveYear] = useState(3); // Default to Year 7
 
   useEffect(() => {
     setIsVisible(true);
@@ -23,7 +23,7 @@ export default function PortfolioInvestment() {
       "Initial investment with immediate rental income",
       "Strong appreciation from development completion",
       "Compounded growth from rental yields and market appreciation",
-      "Substantial wealth accumulation through strategic portfolio management",
+      "+256% in 7 years — a reflection of Dubai's sustained growth, investor confidence, and world-class infrastructure",
     ],
   };
 
@@ -33,17 +33,19 @@ export default function PortfolioInvestment() {
       src: `${CDN}/sky-parks/exterior-night-01.jpg`,
       alt: "Skyline Wealth Generation",
       category: "Cashflow Engine",
-      title: "Immediate Returns",
-      metrics: "5-7% Rental Yield",
-      description: "Premium apartments generating consistent monthly income",
+      title: "Immediate Returns in Secondary Market",
+      metrics: "5–7% Rental Yield",
+      description:
+        "Premium apartments generating steady monthly income and ensuring strong liquidity within your portfolio",
     },
     {
       src: `${CDN}/hartland/hero-bg.jpg`,
       alt: "Future Value Creation",
       category: "Growth Asset",
       title: "Value Appreciation",
-      metrics: "10-12% Annual Growth",
-      description: "Strategic developments for capital appreciation",
+      metrics: "10–12% Annual Growth",
+      description:
+        "Strategically selected off-plan developments designed for high capital appreciation and long-term wealth creation",
     },
     {
       src: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
@@ -51,36 +53,38 @@ export default function PortfolioInvestment() {
       category: "Wealth Ecosystem",
       title: "Complete Portfolio",
       metrics: "0% Tax",
-      description: "Integrated properties offering premium living",
+      description:
+        "Integrated holdings combining residential, serviced, and lifestyle properties — structured for maximum fiscal efficiency and global investor benefits",
     },
   ];
 
   const performanceHighlights = [
     {
       value: "63%",
-      label: "Off-plan Share (2024)",
-      trend: "DXB Interact",
+      label: "of Dubai's property sales are off-plan",
+      trend: "2024 – DXB Interact",
       icon: "📊",
     },
     {
       value: "19.3%",
-      label: "Apartment Rent YoY",
-      trend: "Q3-2024",
+      label: "YoY increase in apartment rents",
+      trend: "Q3 2024",
       icon: "🏢",
     },
     {
       value: "10%",
-      label: "Avg Price/sqft YoY",
-      trend: "2024 • avg AED 1,600",
+      label: "average price appreciation across Dubai",
+      trend: "2024 Market Performance",
       icon: "💵",
     },
     {
       value: "119,800",
-      label: "Total Transactions",
-      trend: "+51% YoY (2024)",
+      label: "property transactions recorded",
+      trend: "+49% YoY",
       icon: "🧾",
     },
   ];
+
   return (
     <section
       className={`${styles.portfolioSection} ${
@@ -95,13 +99,12 @@ export default function PortfolioInvestment() {
             <div className={styles.ornamentDot}></div>
             <div className={styles.ornamentLine}></div>
           </div>
-          <h1 className={styles.mainTitle}>
-            Strategic Real Estate Portfolio Architecture
-          </h1>
+          <h1 className={styles.mainTitle}>Strategic Real Estate Portfolio</h1>
           <div className={styles.titleDivider}></div>
           <p className={styles.tagline}>
-            That you own more than one property including ready and under
-            construction with the goal of:
+            Build a well-balanced real estate portfolio that includes both ready
+            and off-plan properties, designed to maximize returns, appreciation,
+            and long-term stability.
           </p>
         </div>
 
@@ -139,7 +142,8 @@ export default function PortfolioInvestment() {
             <h2 className={styles.sectionTitle}>Portfolio Growth Trajectory</h2>
             <div className={styles.sectionDivider}></div>
             <p className={styles.sectionSubtitle}>
-              Projected wealth accumulation based on Dubai market performance
+              Projected wealth accumulation based on Dubai's real estate
+              performance
             </p>
           </div>
 
@@ -256,11 +260,14 @@ export default function PortfolioInvestment() {
 
         {/* Performance Highlights */}
         <div className={styles.performanceSection}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Key Market Insights</h2>
+            <div className={styles.sectionDivider}></div>
+          </div>
           <div className={styles.performanceGrid}>
             {performanceHighlights.map((highlight, index) => (
               <div key={index} className={styles.performanceCard}>
                 <div className={styles.cardOrnament}></div>
-                {/* <div className={styles.cardIcon}>{highlight.icon}</div> */}
                 <div className={styles.cardContent}>
                   <div className={styles.cardValue}>{highlight.value}</div>
                   <div className={styles.cardLabel}>{highlight.label}</div>
@@ -287,21 +294,24 @@ export default function PortfolioInvestment() {
                   <div className={styles.objectiveMarker}></div>
                   <div className={styles.objectiveContent}>
                     <h4 className={styles.objectiveHeading}>
-                      Diversifying income sources
+                      Diversify income sources across different property types
                     </h4>
                   </div>
                 </div>
                 <div className={styles.objectiveItem}>
                   <div className={styles.objectiveMarker}></div>
                   <div className={styles.objectiveContent}>
-                    <h4 className={styles.objectiveHeading}>Reducing risks</h4>
+                    <h4 className={styles.objectiveHeading}>
+                      Reduce exposure to market fluctuations and risk
+                    </h4>
                   </div>
                 </div>
                 <div className={styles.objectiveItem}>
                   <div className={styles.objectiveMarker}></div>
                   <div className={styles.objectiveContent}>
                     <h4 className={styles.objectiveHeading}>
-                      Maximizing profits through rental and capital growth
+                      Maximize profits through rental yields and capital
+                      appreciation
                     </h4>
                   </div>
                 </div>
@@ -316,13 +326,14 @@ export default function PortfolioInvestment() {
               </div>
               <div className={styles.promiseContent}>
                 <p className={styles.promiseStatement}>
-                  And we manage the entire portfolio for you...
+                  We handle every aspect of your portfolio — from Handover to
+                  resale —
                 </p>
                 <div className={styles.promiseHighlight}>
                   <div className={styles.highlightAccent}></div>
                   <span className={styles.highlightText}>
-                    So your real estate wealth grows without you worrying about
-                    it
+                    so your wealth continues to grow passively and securely,
+                    backed by Dubai's thriving market.
                   </span>
                 </div>
               </div>
