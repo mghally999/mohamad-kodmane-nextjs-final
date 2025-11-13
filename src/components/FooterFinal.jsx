@@ -16,7 +16,7 @@ export default function FooterFinal({
   const brandLogo = brand?.logo || null;
   const brandHref = brand?.href || "/";
 
-  // Helper: get projects by category with developer info
+  // CORRECTED: Helper to get projects by category with proper path structure
   const getCategoryItems = (slugMatch) => {
     const cat = menuData.categories.find((c) => c.slug === slugMatch);
     if (!cat) return [];
@@ -25,7 +25,7 @@ export default function FooterFinal({
       (dev.projects || []).map((p) => ({
         title: p.title,
         developer: dev.name,
-        href: `${baseHref}/${cat.slug}/${p.slug}`,
+        href: `${baseHref}/${cat.slug}/${dev.slug}/${p.slug}`,
       }))
     );
 

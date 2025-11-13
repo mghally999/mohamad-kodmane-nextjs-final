@@ -141,7 +141,7 @@
   border-radius: 15px;
   font-family: "Ringside", sans-serif;
   font-size: 0.7rem;
-  font-weight: 600;
+  font-weight: 300 !important;
   text-transform: uppercase;
   letter-spacing: 1px;
 }

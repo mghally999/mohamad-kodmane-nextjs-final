@@ -1,3 +1,4 @@
+// OurServices.jsx - OPTIMIZED & CLEANED
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/OurServices.module.css";
@@ -12,161 +13,167 @@ export default function OurServices() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // Luxury background images from your CDN
-  const serviceBackgrounds = [
-    {
-      url: `${CDN}/sky-parks/exterior-night-01.jpg`,
-      alt: "Luxury Portfolio Management",
-      title: "Portfolio Excellence",
-    },
-    {
-      url: `${CDN}/hartland/hero-bg.jpg`,
-      alt: "Property Resale Services",
-      title: "Maximum Returns",
-    },
-    {
-      url: `${CDN}/lumena-alta/hero-bg.jpg`,
-      alt: "Property Management",
-      title: "Seamless Management",
-    },
-    {
-      url: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
-      alt: "Off-Plan Investment",
-      title: "Future Opportunities",
-    },
-    {
-      url: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-      alt: "Property Handover",
-      title: "Perfect Delivery",
-    },
-    {
-      url: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
-      alt: "Interior Design",
-      title: "Luxury Furnishing",
-    },
-  ];
-
-  // Translated and enhanced services
   const services = [
     {
       id: 1,
-      title: "PORTFOLIO CONSTRUCTION & MANAGEMENT",
+      title: "STRATEGIC INVESTMENT & PORTFOLIO MANAGEMENT",
       description:
-        "Strategic building and professional management of real estate investment portfolios",
+        "Complete investment planning and portfolio construction for optimal returns",
       features: [
-        "Diversified asset allocation",
+        "Strategic investment planning & market analysis",
+        "Portfolio construction & diversification",
+        "Off-plan & ready property acquisition",
+        "Payment plan optimization",
         "Risk management strategies",
-        "Performance optimization",
-        "Regular portfolio reviews",
       ],
-      image: serviceBackgrounds[0].url,
+      image: `${CDN}/sky-parks/exterior-night-01.jpg`,
       color: "#d7b46a",
+      stage: "Before Purchase",
     },
     {
       id: 2,
-      title: "PREMIUM PROPERTY RESALE",
+      title: "PROPERTY HANDOVER & QUALITY ASSURANCE",
       description:
-        "Maximize your returns with strategic resale at optimal market timing",
+        "Seamless property reception with comprehensive quality control",
       features: [
-        "Market analysis & pricing",
-        "Premium marketing exposure",
-        "Expert negotiation",
-        "Maximum profit realization",
+        "Professional quality inspection",
+        "Documentation & legal processing",
+        "Defect & snag management",
+        "Developer coordination",
+        "Smooth transition to ownership",
       ],
-      image: serviceBackgrounds[1].url,
+      image: `${CDN}/hartland/hero-bg.jpg`,
       color: "#c4a15d",
+      stage: "During Ownership",
     },
     {
       id: 3,
-      title: "PROPERTY RENTAL & MANAGEMENT",
-      description:
-        "Comprehensive rental services and professional property management",
+      title: "PREMIUM RENTAL & PROPERTY MANAGEMENT",
+      description: "Complete rental solutions and professional property care",
       features: [
         "Tenant screening & placement",
-        "Rental optimization",
+        "Rental optimization & pricing",
         "Maintenance coordination",
         "Financial reporting",
+        "24/7 property care",
       ],
-      image: serviceBackgrounds[2].url,
+      image: `${CDN}/lumena-alta/hero-bg.jpg`,
       color: "#b8941f",
+      stage: "During Ownership",
     },
     {
       id: 4,
-      title: "OFF-PLAN INVESTMENT STRATEGY",
-      description:
-        "Strategic investment in pre-construction properties for optimal growth",
+      title: "MAXIMUM RETURN RESALE STRATEGIES",
+      description: "Data-driven resale planning for optimal profit realization",
       features: [
-        "Early access opportunities",
-        "Payment plan optimization",
-        "Market trend analysis",
-        "Developer relationship management",
+        "Market timing analysis",
+        "Premium marketing exposure",
+        "Expert negotiation",
+        "Competitive pricing strategy",
+        "Maximum profit realization",
       ],
-      image: serviceBackgrounds[3].url,
+      image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
       color: "#d7b46a",
+      stage: "After Completion",
     },
     {
       id: 5,
-      title: "PROPERTY HANDOVER EXCELLENCE",
+      title: "TURNKEY INTERIOR DESIGN & FURNISHING",
       description:
-        "Seamless property reception and quality assurance from developers",
+        "Complete design solutions for luxury living and premium rental appeal",
       features: [
-        "Quality inspection",
-        "Documentation processing",
-        "Defect management",
-        "Smooth transition",
-      ],
-      image: serviceBackgrounds[4].url,
-      color: "#c4a15d",
-    },
-    {
-      id: 6,
-      title: "COMPLETE INTERIOR DESIGN & FURNISHING",
-      description:
-        "Turnkey furnishing solutions for luxury living and premium rental appeal",
-      features: [
-        "Custom design concepts",
+        "Custom interior design concepts",
         "Premium material selection",
         "Project management",
-        "Styling & staging",
+        "Styling & property staging",
+        "Furniture procurement",
       ],
-      image: serviceBackgrounds[5].url,
-      color: "#b8941f",
+      image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
+      color: "#c4a15d",
+      stage: "After Completion",
     },
   ];
 
   return (
     <section
-      className={`${styles.servicesSection} ${isVisible ? styles.visible : ""}`}
+      className={`${styles.portfolioSection} ${
+        isVisible ? styles.visible : ""
+      }`}
     >
       <div className={styles.container}>
-        {/* Hero Section */}
-        <div className={styles.heroSection}>
-          <div
-            className={styles.heroBackground}
-            style={{
-              backgroundImage: `url('${serviceBackgrounds[0].url}')`,
-            }}
-          >
-            <div className={styles.heroOverlay}></div>
+        {/* Elegant Header */}
+        <div className={styles.elegantHeader}>
+          <div className={styles.headerOrnament}>
+            <div className={styles.ornamentLine}></div>
+            <div className={styles.ornamentDot}></div>
+            <div className={styles.ornamentLine}></div>
           </div>
-          <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>
-              <span>COMPREHENSIVE SOLUTIONS</span>
-            </div>
-            <h1 className={styles.heroTitle}>PREMIUM REAL ESTATE SERVICES</h1>
-            <p className={styles.heroSubtitle}>
-              360° Real Estate Management — From Purchase to Profit
+          <h1 className={styles.mainTitle}>360° Real Estate Management</h1>
+          <div className={styles.titleDivider}></div>
+          <p className={styles.tagline}>
+            From Purchase to Profit — Complete end-to-end property management
+            ensuring your investment journey in Dubai is effortless, profitable,
+            and secure.
+          </p>
+        </div>
+
+        {/* Investment Journey Timeline */}
+        <div className={styles.journeySection}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              Your Complete Investment Journey
+            </h2>
+            <div className={styles.sectionDivider}></div>
+            <p className={styles.sectionSubtitle}>
+              From the moment you choose your property until you realize your
+              returns, every detail is handled with precision and transparency.
             </p>
+          </div>
+
+          <div className={styles.journeyTimeline}>
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineStage}>
+                <div className={styles.stageBadge}>1</div>
+                <h3 className={styles.stageTitle}>Before Purchase</h3>
+              </div>
+              <p className={styles.stageDescription}>
+                Strategic investment planning and portfolio construction aligned
+                with your financial goals
+              </p>
+            </div>
+
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineStage}>
+                <div className={styles.stageBadge}>2</div>
+                <h3 className={styles.stageTitle}>During Ownership</h3>
+              </div>
+              <p className={styles.stageDescription}>
+                Seamless property handover and professional management for
+                consistent rental income
+              </p>
+            </div>
+
+            <div className={styles.timelineItem}>
+              <div className={styles.timelineStage}>
+                <div className={styles.stageBadge}>3</div>
+                <h3 className={styles.stageTitle}>After Completion</h3>
+              </div>
+              <p className={styles.stageDescription}>
+                Maximum return strategies through premium resale and
+                value-enhancing services
+              </p>
+            </div>
           </div>
         </div>
 
         {/* Interactive Services Showcase */}
         <div className={styles.servicesShowcase}>
-          <div className={styles.showcaseHeader}>
-            <h2 className={styles.showcaseTitle}>OUR EXPERTISE</h2>
-            <p className={styles.showcaseSubtitle}>
-              Comprehensive services covering every aspect of luxury real estate
-              investment
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>Our Comprehensive Services</h2>
+            <div className={styles.sectionDivider}></div>
+            <p className={styles.sectionSubtitle}>
+              Professional expertise, complete transparency, and long-term value
+              — all under one roof
             </p>
           </div>
 
@@ -185,6 +192,7 @@ export default function OurServices() {
                       activeService === index ? service.color : "transparent",
                   }}
                 >
+                  <div className={styles.navStage}>{service.stage}</div>
                   <div className={styles.navContent}>
                     <span className={styles.navTitle}>{service.title}</span>
                     <span className={styles.navDescription}>
@@ -192,7 +200,10 @@ export default function OurServices() {
                     </span>
                   </div>
                   <div className={styles.navIndicator}>
-                    <div className={styles.indicatorDot}></div>
+                    <div
+                      className={styles.indicatorDot}
+                      style={{ backgroundColor: service.color }}
+                    ></div>
                   </div>
                 </button>
               ))}
@@ -211,6 +222,9 @@ export default function OurServices() {
 
               <div className={styles.displayContent}>
                 <div className={styles.serviceHeader}>
+                  <div className={styles.serviceStage}>
+                    {services[activeService].stage}
+                  </div>
                   <div>
                     <h3 className={styles.serviceTitle}>
                       {services[activeService].title}
@@ -257,7 +271,7 @@ export default function OurServices() {
                   </div>
                   <div className={styles.stat}>
                     <div className={styles.statNumber}>500+</div>
-                    <div className={styles.statLabel}>PROJECTS COMPLETED</div>
+                    <div className={styles.statLabel}>PROPERTIES MANAGED</div>
                   </div>
                   <div className={styles.stat}>
                     <div className={styles.statNumber}>15+</div>
@@ -269,108 +283,41 @@ export default function OurServices() {
           </div>
         </div>
 
-        {/* All Services Grid */}
-        <div className={styles.allServicesSection}>
-          <div className={styles.sectionHeader}>
-            <h2 className={styles.sectionTitle}>
-              COMPREHENSIVE SERVICE PORTFOLIO
-            </h2>
-            <p className={styles.sectionSubtitle}>
-              Every aspect of your real estate journey, handled with excellence
-            </p>
-          </div>
-
-          <div className={styles.servicesGrid}>
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                className={styles.serviceCard}
-                onMouseEnter={() => setActiveService(index)}
-              >
-                <div
-                  className={styles.cardBackground}
-                  style={{
-                    backgroundImage: `url('${service.image}')`,
-                  }}
-                >
-                  <div className={styles.cardOverlay}></div>
-                </div>
-
-                <div className={styles.cardContent}>
-                  <h4 className={styles.cardTitle}>{service.title}</h4>
-                  <p className={styles.cardDescription}>
-                    {service.description}
-                  </p>
-
-                  <div className={styles.cardFeatures}>
-                    {service.features.slice(0, 2).map((feature, idx) => (
-                      <div key={idx} className={styles.cardFeature}>
-                        <div
-                          className={styles.featureDot}
-                          style={{ backgroundColor: service.color }}
-                        ></div>
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                    {service.features.length > 2 && (
-                      <div className={styles.moreFeatures}>
-                        +{service.features.length - 2} more features
-                      </div>
-                    )}
-                  </div>
-
-                  {/* <div className={styles.cardHover}>
-                    <span>EXPLORE SERVICE</span>
-                    <div className={styles.arrowIcon}>→</div>
-                  </div> */}
-                </div>
+        {/* Final Promise Section */}
+        <div className={styles.promiseSection}>
+          <div className={styles.promiseCard}>
+            <div className={styles.promiseMain}>
+              <div className={styles.promiseHeader}>
+                <div className={styles.promiseOrnament}></div>
+                <h2 className={styles.promiseTitle}>Our Promise to You</h2>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Final CTA Section */}
-        <div className={styles.ctaSection}>
-          <div className={styles.ctaCard}>
-            <div className={styles.ctaBackground}>
-              <div
-                className={styles.ctaImage}
-                style={{
-                  backgroundImage: `url('${CDN}/sky-parks/exterior-night-01.jpg')`,
-                }}
-              >
-                <div className={styles.ctaOverlay}></div>
+              <div className={styles.promiseBody}>
+                <p className={styles.promiseStatement}>
+                  We handle every stage of your real estate journey — so you
+                  enjoy returns, not responsibilities. From strategic
+                  acquisition to premium resale, we manage every detail ensuring
+                  maximum returns with complete peace of mind.
+                </p>
+
+                <div className={styles.promiseHighlight}>
+                  <div className={styles.highlightAccent}></div>
+                  <div className={styles.highlightText}>
+                    Complete End-to-End Management • Maximum Return Optimization
+                    • Premium Service Guarantee
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className={styles.ctaContent}>
-              <div className={styles.ctaBadge}>COMPLETE SOLUTIONS</div>
-              <h2 className={styles.ctaTitle}>
-                WE HANDLE EVERYTHING...
-                <span className={styles.highlight}>
-                  {" "}
-                  YOUR PROFITS ARE SECURE
-                </span>
-              </h2>
-              <p className={styles.ctaDescription}>
-                From strategic acquisition to premium resale, we manage every
-                detail of your real estate investment journey, ensuring maximum
-                returns with complete peace of mind.
-              </p>
-
-              <div className={styles.trustIndicators}>
-                <div className={styles.trustItem}>
-                  <div className={styles.trustIcon}>✓</div>
-                  <span>END-TO-END MANAGEMENT</span>
-                </div>
-                <div className={styles.trustItem}>
-                  <div className={styles.trustIcon}>✓</div>
-                  <span>MAXIMUM RETURN OPTIMIZATION</span>
-                </div>
-                <div className={styles.trustItem}>
-                  <div className={styles.trustIcon}>✓</div>
-                  <span>PREMIUM SERVICE GUARANTEE</span>
-                </div>
+            <div className={styles.promiseVisual}>
+              <div
+                className={styles.promiseImage}
+                style={{
+                  backgroundImage: `url('${CDN}/al-sinniyyah-island/hero-bg.jpg')`,
+                }}
+              >
+                <div className={styles.promiseOverlay}></div>
               </div>
             </div>
           </div>

@@ -1,19 +1,24 @@
+/* OurServices.module.css - CORRECTED FONT STYLING */
 /* Import Fonts */
 @import url("https://fonts.cdnfonts.com/css/chronicle-display");
 @import url("https://fonts.cdnfonts.com/css/ringside");
 
-.servicesSection {
+.portfolioSection {
   position: relative;
   min-height: 100vh;
   background: #ffffff;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
   font-family: "Ringside", sans-serif;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
 }
 
-.servicesSection.visible {
+.portfolioSection.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -22,126 +27,167 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
-/* Hero Section */
-.heroSection {
-  position: relative;
-  height: 70vh;
-  min-height: 600px;
+/* Elegant Header */
+.elegantHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.headerOrnament {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 80px;
-  border-radius: 0 0 40px 40px;
-  overflow: hidden;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
-.heroBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 1.2s ease;
+.ornamentLine {
+  width: 40px;
+  height: 1px;
+  background: #d7b46a;
 }
 
-.heroSection:hover .heroBackground {
-  transform: scale(1.05);
+.ornamentDot {
+  width: 6px;
+  height: 6px;
+  background: #d7b46a;
+  border-radius: 50%;
 }
 
-.heroOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(215, 180, 106, 0.4) 100%
-  );
-}
-
-.heroContent {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #ffffff;
-  max-width: 800px;
-  padding: 0 20px;
-}
-
-.heroBadge {
-  display: inline-flex;
-  background: rgba(215, 180, 106, 0.95);
+.mainTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 300;
   color: #000000;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-family: "Ringside", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  backdrop-filter: blur(10px);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
 }
 
-.heroTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: clamp(3.5rem, 6vw, 5rem);
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 25px 0;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
+.titleDivider {
+  width: 100px;
+  height: 2px;
+  background: #d7b46a;
+  margin: 0 auto 20px auto;
 }
 
-.heroSubtitle {
+.tagline {
   font-family: "Ringside", sans-serif;
-  font-size: clamp(1.3rem, 2vw, 1.6rem);
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.5;
+  color: #000000;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.6;
   margin: 0;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+  -webkit-font-smoothing: antialiased;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+}
+
+.sectionDivider {
+  width: 80px;
+  height: 2px;
+  background: #d7b46a;
+  margin: 0 auto 15px auto;
+}
+
+.sectionSubtitle {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #000000;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Investment Journey Timeline */
+.journeySection {
+  margin-bottom: 80px;
+}
+
+.journeyTimeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.timelineItem {
+  text-align: center;
+  padding: 40px 30px;
+  background: rgba(215, 180, 106, 0.05);
+  border-radius: 16px;
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  transition: all 0.3s ease;
+}
+
+.timelineItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(215, 180, 106, 0.3);
+}
+
+.timelineStage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stageBadge {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d7b46a, #b8943c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.stageTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0;
+}
+
+.stageDescription {
+  font-family: "Ringside", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0;
+  line-height: 1.5;
+  opacity: 0.8;
 }
 
 /* Services Showcase */
 .servicesShowcase {
-  margin-bottom: 100px;
-}
-
-.showcaseHeader {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.showcaseTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 700;
-  color: #000000;
-  margin: 0 0 15px 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.showcaseSubtitle {
-  font-family: "Ringside", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #000000;
-  margin: 0;
-  opacity: 0.9;
+  margin-bottom: 80px;
 }
 
 .showcaseContainer {
@@ -162,7 +208,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  background: rgba(215, 180, 106, 0.1);
+  background: rgba(215, 180, 106, 0.05);
   border: 2px solid transparent;
   border-left: 4px solid transparent;
   border-radius: 16px;
@@ -174,25 +220,41 @@
 }
 
 .serviceNavItem:hover {
-  background: rgba(215, 180, 106, 0.15);
+  background: rgba(215, 180, 106, 0.1);
   transform: translateX(5px);
 }
 
 .serviceNavItem.active {
-  background: rgba(215, 180, 106, 0.2);
+  background: rgba(215, 180, 106, 0.15);
   border-color: #d7b46a;
   transform: translateX(10px);
 }
 
+.navStage {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: rgba(215, 180, 106, 0.2);
+  color: #000000;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .navContent {
   flex: 1;
+  margin-top: 20px;
 }
 
 .navTitle {
   display: block;
   font-family: "Ringside", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 1rem;
+  font-weight: 500;
   color: #000000;
   margin-bottom: 8px;
   line-height: 1.2;
@@ -203,11 +265,11 @@
 .navDescription {
   display: block;
   font-family: "Ringside", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 300;
   color: #000000;
   line-height: 1.4;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .navIndicator {
@@ -223,16 +285,17 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #d7b46a;
 }
 
 /* Service Display */
 .serviceDisplay {
   position: relative;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   height: 550px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(215, 180, 106, 0.1);
+  height: 100%;
 }
 
 .displayBackground {
@@ -271,7 +334,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 50px;
+  padding: 40px;
   color: #ffffff;
 }
 
@@ -279,10 +342,24 @@
   margin-bottom: 30px;
 }
 
+.serviceStage {
+  display: inline-block;
+  background: rgba(215, 180, 106, 0.9);
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "Ringside", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
 .serviceTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2.2rem;
+  font-weight: 300;
   color: #ffffff;
   margin: 0 0 15px 0;
   line-height: 1.2;
@@ -292,8 +369,8 @@
 
 .serviceDescription {
   font-family: "Ringside", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 300;
   color: #ffffff;
   margin: 0;
   opacity: 0.95;
@@ -327,8 +404,8 @@
 
 .featureText {
   font-family: "Ringside", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 400;
   color: #ffffff;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
@@ -345,9 +422,9 @@
 }
 
 .statNumber {
-  font-family: "Chronicle Display", serif;
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 2rem;
+  font-weight: 300;
   color: #d7b46a;
   line-height: 1;
   margin-bottom: 8px;
@@ -357,7 +434,7 @@
 .statLabel {
   font-family: "Ringside", sans-serif;
   font-size: 0.9rem;
-  font-weight: 800;
+  font-weight: 600;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -365,207 +442,87 @@
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
-/* All Services Grid */
-.allServicesSection {
-  margin-bottom: 100px;
+/* Promise Section */
+.promiseSection {
+  margin-bottom: 50px;
 }
 
-.sectionHeader {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.sectionTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 700;
-  color: #000000;
-  margin: 0 0 15px 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-
-.sectionSubtitle {
-  font-family: "Ringside", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #000000;
-  margin: 0;
-  opacity: 0.9;
-}
-
-.servicesGrid {
+.promiseCard {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.serviceCard {
-  position: relative;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  background: #ffffff;
   border-radius: 20px;
   overflow: hidden;
-  height: 450px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(215, 180, 106, 0.1);
 }
 
-.serviceCard:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
-}
-
-.cardBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 1.2s ease;
-}
-
-.serviceCard:hover .cardBackground {
-  transform: scale(1.1);
-}
-
-.cardOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 0.9) 100%
-  );
-}
-
-.cardContent {
-  position: relative;
-  z-index: 2;
-  height: 100%;
+.promiseContent {
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 35px;
-  color: #ffffff;
-  transition: all 0.3s ease;
+  justify-content: center;
 }
 
-.serviceCard:hover .cardContent {
-  transform: translateY(-10px);
+.promiseHeader {
+  margin-bottom: 20px;
 }
 
-.cardTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 15px 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+.promiseOrnament {
+  width: 25px;
+  height: 2px;
+  background: #d7b46a;
+  margin-bottom: 12px;
 }
 
-.cardDescription {
-  font-family: "Ringside", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0 0 20px 0;
-  opacity: 0.95;
-  line-height: 1.4;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+.promiseTitle {
+  font-family: "Chronicle Display XLight", serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #000000;
+  margin: 0;
 }
 
-.cardFeatures {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.cardFeature {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: "Ringside", sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.featureDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.moreFeatures {
-  font-family: "Ringside", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #d7b46a;
-  margin-top: 8px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.cardHover {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.promiseStatement {
   font-family: "Ringside", sans-serif;
   font-size: 1rem;
-  font-weight: 700;
-  color: #d7b46a;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0 0 25px 0;
 }
 
-.serviceCard:hover .cardHover {
-  opacity: 1;
-  transform: translateY(0);
+.promiseHighlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(215, 180, 106, 0.1);
+  padding: 18px;
+  border-radius: 10px;
+  border-left: 3px solid #d7b46a;
 }
 
-.arrowIcon {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
+.highlightAccent {
+  width: 3px;
+  height: 30px;
+  background: #d7b46a;
+  border-radius: 2px;
 }
 
-.serviceCard:hover .arrowIcon {
-  transform: translateX(5px);
+.highlightText {
+  font-family: "Ringside", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1.4;
 }
 
-/* CTA Section */
-.ctaSection {
-  margin-bottom: 80px;
-}
-
-.ctaCard {
+.promiseVisual {
   position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
 }
 
-.ctaBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.ctaImage {
+.promiseImage {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -574,11 +531,11 @@
   transition: transform 1.2s ease;
 }
 
-.ctaCard:hover .ctaImage {
+.promiseCard:hover .promiseImage {
   transform: scale(1.05);
 }
 
-.ctaOverlay {
+.promiseOverlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -586,92 +543,9 @@
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.85) 0%,
-    rgba(215, 180, 106, 0.4) 100%
+    rgba(215, 180, 106, 0.1) 0%,
+    rgba(0, 0, 0, 0.1) 100%
   );
-}
-
-.ctaContent {
-  position: relative;
-  z-index: 2;
-  padding: 70px;
-  color: #ffffff;
-  text-align: center;
-}
-
-.ctaBadge {
-  display: inline-block;
-  background: rgba(215, 180, 106, 0.95);
-  color: #000000;
-  padding: 12px 25px;
-  border-radius: 25px;
-  font-family: "Ringside", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-}
-
-.ctaTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: clamp(3rem, 4vw, 4rem);
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 25px 0;
-  line-height: 1.2;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7);
-}
-
-.highlight {
-  color: #d7b46a;
-  display: block;
-}
-
-.ctaDescription {
-  font-family: "Ringside", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0 auto 40px;
-  max-width: 700px;
-  line-height: 1.6;
-  opacity: 0.95;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.trustIndicators {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.trustItem {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: "Ringside", sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.trustIcon {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #d7b46a;
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 800;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -681,8 +555,9 @@
     gap: 30px;
   }
 
-  .servicesGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .journeyTimeline {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .featuresGrid {
@@ -692,47 +567,45 @@
   .serviceStats {
     justify-content: space-around;
   }
+
+  .promiseCard {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 @media (max-width: 768px) {
-  .heroSection {
-    height: 50vh;
-    min-height: 400px;
-    margin-bottom: 60px;
+  .portfolioSection {
+    padding: 30px 15px;
   }
 
   .serviceDisplay {
-    height: 450px;
-  }
-
-  .servicesGrid {
-    grid-template-columns: 1fr;
+    height: 500px;
   }
 
   .displayContent {
-    padding: 35px 25px;
+    padding: 30px 25px;
   }
 
   .serviceHeader {
     text-align: center;
   }
 
-  .ctaContent {
-    padding: 50px 25px;
-  }
-
-  .trustIndicators {
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-  }
-
   .serviceTitle {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .serviceDescription {
     font-size: 1.1rem;
+  }
+
+  .promiseContent {
+    padding: 30px 25px;
+  }
+
+  .timelineStage {
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
@@ -741,31 +614,31 @@
     padding: 0 15px;
   }
 
-  .heroTitle {
-    font-size: 2.8rem;
+  .mainTitle {
+    font-size: 2rem;
   }
 
   .serviceDisplay {
-    height: 400px;
+    height: 450px;
   }
 
   .serviceTitle {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .serviceNavItem {
     padding: 20px;
   }
 
-  .cardContent {
-    padding: 30px 20px;
-  }
-
   .navTitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .navDescription {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .promiseContent {
+    padding: 25px 20px;
   }
 }

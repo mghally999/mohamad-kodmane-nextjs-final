@@ -162,7 +162,7 @@ export default function DubaiEconomicGrowth() {
                     <div className={styles.sectorProgress}>
                       <div
                         className={styles.progressBar}
-                        style={{ width: `${80 + index * 5}%` }}
+                        style={{ width: `${100 + index * 5}%` }}
                       ></div>
                     </div>
                   </div>
