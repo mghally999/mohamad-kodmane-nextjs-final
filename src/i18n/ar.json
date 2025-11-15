@@ -321,5 +321,52 @@
       "directCall": "اتصال مباشر",
       "trustNote": "وصول حصري للمطورين • شفافية كاملة • نتائج مثبتة"
     }
+  },
+  "projects": {
+    "hero": {
+      "googleReviews": "تقييمات جوجل",
+      "rating": "التقييم"
+    },
+    "intro": {
+      "projectHighlights": "أبرز معالم المشروع",
+      "projectOverview": "نظرة عامة على المشروع",
+      "developer": "المطور",
+      "downloadBrochure": "تحميل الكتيب"
+    },
+    "gallery": {
+      "view": "منظر",
+      "of": "من"
+    },
+    "floorPlans": {
+      "villaCollections": "مجموعة الفلل",
+      "penthouseCollections": "مجموعة البنتهاوس",
+      "commercialSpaces": "المساحات التجارية",
+      "residenceCollections": "مجموعة الوحدات السكنية",
+      "downloadFloorPlan": "تحميل المخطط الأرضي"
+    },
+    "amenities": {
+      "title": "مرافق المشروع"
+    },
+    "location": {
+      "getDirections": "احصل على الاتجاهات",
+      "copyAddress": "نسخ العنوان",
+      "loadingMap": "جاري تحميل الخريطة..."
+    },
+    "contact": {
+      "expressInterest": "عبّر عن اهتمامك",
+      "beginJourney": "ابدأ رحلتك الفاخرة",
+      "personalizedConsultation": "استشارة مخصصة",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "phoneNumber": "رقم الهاتف",
+      "email": "البريد الإلكتروني",
+      "projectInterest": "المشروع المطلوب",
+      "unitType": "نوع الوحدة المفضل",
+      "contactMethod": "طريقة التواصل المفضلة",
+      "phone": "هاتف",
+      "whatsapp": "واتساب",
+      "submit": "طلب استشارة مخصصة",
+      "submitting": "جاري معالجة طلبك..."
+    }
   }
 }

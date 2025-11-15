@@ -415,6 +415,9 @@
   gap: 40px;
   padding-top: 30px;
   border-top: 2px solid rgba(255, 255, 255, 0.4);
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .stat {

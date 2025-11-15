@@ -1,13 +1,17 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import styles from "@/styles/projects/ProjectHero.module.css";
+import { getLocalizedText } from "@/lib/text-utils";
+import { useLanguage } from "@/components/LanguageProvider";
 
-/**
- * Universal Project Hero - Optimized
- * - Background uses <Image fill> (better LCP + no CLS)
- * - Only the background is priority
- * - Blur placeholders from Bunny with tiny ?width=16
- */
-export default function ProjectHero({ data, projectData }) {
+export default function ProjectHero({ data, projectData, isRTL, locale }) {
+  const { locale: ctxLocale } = useLanguage();
+  const activeLocale = locale || ctxLocale || "en";
+  const activeIsRTL =
+    typeof isRTL === "boolean" ? isRTL : activeLocale === "ar";
+
   if (!data || !projectData) return null;
 
   const heroData = data;
@@ -39,9 +43,11 @@ export default function ProjectHero({ data, projectData }) {
             <div className={styles.squareCard}>
               <Image
                 src={heroData.squareImageUrl}
-                alt={`${projectInfo.name} luxury interior`}
+                alt={`${getLocalizedText(
+                  projectInfo.name,
+                  activeLocale
+                )} luxury interior`}
                 fill
-                // no priority here (keep only 1 above-the-fold image prioritized)
                 placeholder="blur"
                 blurDataURL={`${heroData.squareImageUrl}?width=16&quality=20`}
                 sizes="(max-width:480px) 60vw, (max-width:900px) 45vw, (max-width:1400px) 28vw, 320px"
@@ -86,10 +92,16 @@ export default function ProjectHero({ data, projectData }) {
               </span>
               <div className={styles.gMeta}>
                 <div className={styles.gTitle}>
-                  <span className={styles.gWord}>Google</span>
-                  <span className={styles.gReviews}>Reviews</span>
+                  <span className={styles.gWord}>
+                    {activeIsRTL ? "جوجل" : "Google"}
+                  </span>
+                  <span className={styles.gReviews}>
+                    {activeIsRTL ? "التقييمات" : "Reviews"}
+                  </span>
                 </div>
-                <div className={styles.company}>{heroData.companyName}</div>
+                <div className={styles.company}>
+                  {getLocalizedText(heroData.companyName, activeLocale)}
+                </div>
               </div>
             </div>
 
@@ -103,7 +115,7 @@ export default function ProjectHero({ data, projectData }) {
               <span
                 className={styles.stars}
                 role="img"
-                aria-label="Rating out of 5"
+                aria-label={activeIsRTL ? "التقييم من 5" : "Rating out of 5"}
               >
                 ★★★★★
               </span>

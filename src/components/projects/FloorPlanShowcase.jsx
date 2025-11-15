@@ -3,8 +3,20 @@
 import { useState } from "react";
 import Image from "next/image";
 import styles from "@/styles/projects/FloorPlanShowcase.module.css";
+import { getLocalizedText } from "@/lib/text-utils";
+import { useLanguage } from "@/components/LanguageProvider";
 
-export default function FloorPlanShowcase({ data, projectData }) {
+export default function FloorPlanShowcase({
+  data,
+  projectData,
+  isRTL,
+  locale,
+}) {
+  const { locale: ctxLocale } = useLanguage();
+  const activeLocale = locale || ctxLocale || "en";
+  const activeIsRTL =
+    typeof isRTL === "boolean" ? isRTL : activeLocale === "ar";
+
   if (!data || !projectData) {
     console.error("FloorPlanShowcase: Missing data");
     return null;
@@ -12,6 +24,17 @@ export default function FloorPlanShowcase({ data, projectData }) {
 
   const [activeTab, setActiveTab] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const getSpecs = (specs) => {
+    const translatedSpecs = {};
+    Object.keys(specs).forEach((key) => {
+      translatedSpecs[getLocalizedText(key, activeLocale)] = getLocalizedText(
+        specs[key],
+        activeLocale
+      );
+    });
+    return translatedSpecs;
+  };
 
   const currentPlan = data.plans[activeTab];
   const hasMultipleImages = currentPlan.images && currentPlan.images.length > 1;
@@ -27,22 +50,47 @@ export default function FloorPlanShowcase({ data, projectData }) {
     );
   };
 
+  // Get section title based on project type
+  const getSectionTitle = () => {
+    const type = data.type;
+    if (activeIsRTL) {
+      switch (type) {
+        case "villas":
+          return "مجموعة الفلل";
+        case "penthouses":
+          return "مجموعة البنتهاوس";
+        case "commercial":
+          return "المساحات التجارية";
+        case "offices":
+          return "المساحات المكتبية";
+        default:
+          return "مجموعة الوحدات السكنية";
+      }
+    } else {
+      switch (type) {
+        case "villas":
+          return "Villa Collections";
+        case "penthouses":
+          return "Penthouse Collections";
+        case "commercial":
+          return "Commercial Spaces";
+        case "offices":
+          return "Office Spaces";
+        default:
+          return "Residence Collections";
+      }
+    }
+  };
+
   return (
-    <section className={styles.floorplanSection}>
+    <section
+      className={styles.floorplanSection}
+      dir={activeIsRTL ? "rtl" : "ltr"}
+    >
       <div className={styles.container}>
         {/* Header Section */}
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>
-            {data.type === "villas"
-              ? "Villa Collections"
-              : data.type === "penthouses"
-              ? "Penthouse Collections"
-              : data.type === "commercial"
-              ? "Commercial Spaces"
-              : data.type === "offices"
-              ? "Office Spaces"
-              : "Residence Collections"}
-          </h2>
+          <h2 className={styles.sectionTitle}>{getSectionTitle()}</h2>
           <div className={styles.titleDivider}>
             <div className={styles.dividerLine}></div>
             <div className={styles.dividerDot}></div>
@@ -65,7 +113,9 @@ export default function FloorPlanShowcase({ data, projectData }) {
                 }}
               >
                 <div className={styles.tabContent}>
-                  <span className={styles.tabText}>{plan.title}</span>
+                  <span className={styles.tabText}>
+                    {getLocalizedText(plan.title, activeLocale)}
+                  </span>
                   <div className={styles.tabIndicator}></div>
                 </div>
               </button>
@@ -79,38 +129,31 @@ export default function FloorPlanShowcase({ data, projectData }) {
           <div className={styles.specsPanel}>
             <div className={styles.panelContent}>
               <div className={styles.planHeader}>
-                <h3 className={styles.planName}>{currentPlan.title}</h3>
+                <h3 className={styles.planName}>
+                  {getLocalizedText(currentPlan.title, activeLocale)}
+                </h3>
                 <div className={styles.planDivider}></div>
               </div>
 
               <div className={styles.specsList}>
-                {Object.entries(currentPlan.specs).map(([key, value]) => (
-                  <div key={key} className={styles.specItem}>
-                    <div className={styles.specLabel}>{key}</div>
-                    <div className={styles.specValue}>{value}</div>
-                  </div>
-                ))}
+                {Object.entries(getSpecs(currentPlan.specs)).map(
+                  ([key, value]) => (
+                    <div key={key} className={styles.specItem}>
+                      <div className={styles.specLabel}>{key}</div>
+                      <div className={styles.specValue}>{value}</div>
+                    </div>
+                  )
+                )}
               </div>
-
-              {/* Features */}
-              {/* {currentPlan.features && currentPlan.features.length > 0 && (
-                <div className={styles.featuresSection}>
-                  <h4 className={styles.featuresTitle}>Key Features</h4>
-                  <div className={styles.featuresGrid}>
-                    {currentPlan.features.map((feature, index) => (
-                      <div key={index} className={styles.featureItem}>
-                        <span className={styles.featureIcon}>✦</span>
-                        <span className={styles.featureText}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )} */}
 
               {/* CTA Button */}
               <div className={styles.ctaContainer}>
                 <button className={styles.ctaButton}>
-                  <span>Download Floor Plan</span>
+                  <span>
+                    {activeIsRTL
+                      ? "تحميل المخطط الأرضي"
+                      : "Download Floor Plan"}
+                  </span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M12 16V4"
@@ -144,7 +187,9 @@ export default function FloorPlanShowcase({ data, projectData }) {
                   currentPlan.images?.[currentImageIndex] ||
                   "/placeholder-floorplan.jpg"
                 }
-                alt={`${currentPlan.title} image ${currentImageIndex + 1}`}
+                alt={`${getLocalizedText(currentPlan.title, activeLocale)} ${
+                  activeIsRTL ? "صورة" : "image"
+                } ${currentImageIndex + 1}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                 className={styles.floorplanImage}

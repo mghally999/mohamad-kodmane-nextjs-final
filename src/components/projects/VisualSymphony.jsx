@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -6,8 +7,15 @@ import { Navigation, A11y, Keyboard, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "@/styles/projects/VisualSymphony.module.css";
+import { getLocalizedText } from "@/lib/text-utils";
+import { useLanguage } from "@/components/LanguageProvider";
 
-export default function VisualSymphony({ data }) {
+export default function VisualSymphony({ data, isRTL, locale }) {
+  const { locale: ctxLocale } = useLanguage();
+  const activeLocale = locale || ctxLocale || "en";
+  const activeIsRTL =
+    typeof isRTL === "boolean" ? isRTL : activeLocale === "ar";
+
   if (!data) return null;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,10 +81,15 @@ export default function VisualSymphony({ data }) {
 
   if (!mounted) {
     return (
-      <section className={styles.symphonySection}>
+      <section
+        className={styles.symphonySection}
+        dir={activeIsRTL ? "rtl" : "ltr"}
+      >
         <div className={styles.symphonyContainer}>
           <div className={styles.titleComposition}>
-            <h2 className={styles.mainTitle}>{data.title}</h2>
+            <h2 className={styles.mainTitle}>
+              {getLocalizedText(data.title, activeLocale)}
+            </h2>
             <div className={styles.titleAnimation}>
               <div className={styles.animationBar}></div>
               <div className={styles.animationDot}></div>
@@ -92,7 +105,7 @@ export default function VisualSymphony({ data }) {
               fontSize: "18px",
             }}
           >
-            Loading gallery...
+            {activeIsRTL ? "جاري تحميل المعرض..." : "Loading gallery..."}
           </div>
         </div>
       </section>
@@ -102,11 +115,14 @@ export default function VisualSymphony({ data }) {
   return (
     <section
       className={styles.symphonySection}
-      aria-label={`${data.title} gallery`}
+      aria-label={`${getLocalizedText(data.title, activeLocale)} gallery`}
+      dir={activeIsRTL ? "rtl" : "ltr"}
     >
       <div className={styles.symphonyContainer}>
         <div className={styles.titleComposition}>
-          <h2 className={styles.mainTitle}>{data.title}</h2>
+          <h2 className={styles.mainTitle}>
+            {getLocalizedText(data.title, activeLocale)}
+          </h2>
           <div className={styles.titleAnimation}>
             <div className={styles.animationBar}></div>
             <div className={styles.animationDot}></div>
@@ -118,7 +134,7 @@ export default function VisualSymphony({ data }) {
           <button
             ref={prevRef}
             className={`${styles.navSculpture} ${styles.navPrev}`}
-            aria-label="Previous image"
+            aria-label={activeIsRTL ? "الصورة السابقة" : "Previous image"}
           >
             <div className={styles.navCore}>
               <svg viewBox="0 0 24 24" className={styles.navIcon} aria-hidden>
@@ -137,7 +153,7 @@ export default function VisualSymphony({ data }) {
           <button
             ref={nextRef}
             className={`${styles.navSculpture} ${styles.navNext}`}
-            aria-label="Next image"
+            aria-label={activeIsRTL ? "الصورة التالية" : "Next image"}
           >
             <div className={styles.navCore}>
               <svg viewBox="0 0 24 24" className={styles.navIcon} aria-hidden>
@@ -215,7 +231,10 @@ export default function VisualSymphony({ data }) {
                   <div className={styles.imageCore}>
                     <Image
                       src={src}
-                      alt={`${data.projectTag || "Project"} view ${i + 1}`}
+                      alt={`${
+                        getLocalizedText(data.projectTag, activeLocale) ||
+                        "Project"
+                      } ${activeIsRTL ? "منظر" : "view"} ${i + 1}`}
                       fill
                       priority={i === 0}
                       sizes="(max-width: 640px) 95vw, (max-width: 1024px) 85vw, 1200px"
@@ -226,10 +245,13 @@ export default function VisualSymphony({ data }) {
                   <div className={styles.infoOrbit}>
                     <div className={styles.infoSphere}>
                       <div className={styles.sphereTitle}>
-                        {data.projectTag || "SkyParks"}
+                        {getLocalizedText(data.projectTag, activeLocale) ||
+                          "SkyParks"}
                       </div>
                       <div className={styles.sphereSubtitle}>
-                        VIEW {i + 1} OF {data.slides.length}
+                        {activeIsRTL
+                          ? `منظر ${i + 1} من ${data.slides.length}`
+                          : `VIEW ${i + 1} OF ${data.slides.length}`}
                       </div>
                     </div>
                   </div>
@@ -264,7 +286,11 @@ export default function VisualSymphony({ data }) {
               className={`${styles.cosmicDot} ${
                 i === activeIndex ? styles.cosmicDotActive : ""
               }`}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={
+                activeIsRTL
+                  ? `انتقل إلى الشريحة ${i + 1}`
+                  : `Go to slide ${i + 1}`
+              }
               onClick={() => {
                 if (swiperRef.current?.swiper) {
                   swiperRef.current.swiper.slideToLoop(i);

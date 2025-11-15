@@ -1,41 +1,12 @@
-import { getProjectData, getAllProjectSlugs } from "@/lib/project-data";
+// src/app/projects/[category]/[developer]/[project]/page.js
 import ProjectHero from "@/components/projects/ProjectHero";
 import ProjectIntro from "@/components/projects/ProjectIntro";
 import VisualSymphony from "@/components/projects/VisualSymphony";
 import FloorPlanShowcase from "@/components/projects/FloorPlanShowcase";
 import AmenitiesShowcase from "@/components/projects/AmenitiesShowcase";
 import MapDirections from "@/components/projects/MapDirections";
-import ProjectsFooter from "@/components/projects/ProjectsFooter";
-import MiniCallbackForm from "@/components/MiniCallbackForm";
 import ContactFormFinal from "@/components/projects/ContactFormFinal";
-
-export const revalidate = 300;
-
-// ✅ Automatically generate all static routes
-export async function generateStaticParams() {
-  return getAllProjectSlugs();
-}
-
-// ✅ Dynamic SEO metadata
-export async function generateMetadata({ params }) {
-  const projectData = await getProjectData(
-    params.category,
-    params.developer,
-    params.project
-  );
-
-  return {
-    title: projectData.seo?.title || "Luxury Projects | Nextis",
-    description:
-      projectData.seo?.description ||
-      "Explore Dubai's premier off-plan and ready-to-move properties.",
-    alternates: {
-      canonical:
-        projectData.seo?.canonical ||
-        `/projects/${params.category}/${params.developer}/${params.project}`,
-    },
-  };
-}
+import { getProjectData } from "@/lib/project-data";
 
 export default async function ProjectPage({ params }) {
   const projectData = await getProjectData(
@@ -58,9 +29,7 @@ export default async function ProjectPage({ params }) {
         projectData={projectData}
       />
       <MapDirections data={projectData.location} projectData={projectData} />
-      {/* <MiniCallbackForm /> */}
       <ContactFormFinal />
-      {/* <ProjectsFooter /> */}
     </main>
   );
 }

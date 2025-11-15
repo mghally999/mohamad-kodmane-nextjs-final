@@ -1,12 +1,21 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styles from "@/styles/projects/AmenitiesShowcase.module.css";
+import { getLocalizedText } from "@/lib/text-utils";
+import { useLanguage } from "@/components/LanguageProvider";
 
-/**
- * Universal Amenities Showcase - Sobha Realty Style
- */
-export default function AmenitiesShowcase({ data, projectData }) {
+export default function AmenitiesShowcase({
+  data,
+  projectData,
+  isRTL,
+  locale,
+}) {
+  const { locale: ctxLocale } = useLanguage();
+  const activeLocale = locale || ctxLocale || "en";
+  const activeIsRTL =
+    typeof isRTL === "boolean" ? isRTL : activeLocale === "ar";
+
   // SAFETY CHECK - if no data, return nothing
   if (!data || !projectData) {
     console.error("AmenitiesShowcase: Missing data");
@@ -21,9 +30,11 @@ export default function AmenitiesShowcase({ data, projectData }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Residence",
-    name: projectData.project.name,
-    description: projectData.seo?.description,
-    amenities: amenitiesData.amenities.map((amenity) => amenity.label),
+    name: getLocalizedText(projectData.project.name, activeLocale),
+    description: getLocalizedText(projectData.seo?.description, activeLocale),
+    amenities: amenitiesData.amenities.map((amenity) =>
+      getLocalizedText(amenity.label, activeLocale)
+    ),
     url: typeof window !== "undefined" ? window.location.href : undefined,
   };
 
@@ -31,7 +42,11 @@ export default function AmenitiesShowcase({ data, projectData }) {
     <section
       ref={sectionRef}
       className={styles.amenitiesSection}
-      aria-label={`${projectData.project.name} amenities`}
+      aria-label={`${getLocalizedText(
+        projectData.project.name,
+        activeLocale
+      )} ${activeIsRTL ? "المرافق" : "amenities"}`}
+      dir={activeIsRTL ? "rtl" : "ltr"}
     >
       {/* JSON-LD for SEO */}
       <script
@@ -41,7 +56,9 @@ export default function AmenitiesShowcase({ data, projectData }) {
 
       <div className={styles.container}>
         {/* Title - Sobha Style */}
-        <h2 className={styles.title}>{amenitiesData.title}</h2>
+        <h2 className={styles.title}>
+          {getLocalizedText(amenitiesData.title, activeLocale)}
+        </h2>
 
         {/* Compact Grid */}
         <div className={styles.amenitiesGrid}>
@@ -57,14 +74,18 @@ export default function AmenitiesShowcase({ data, projectData }) {
               onBlur={() => setActiveAmenity(null)}
               tabIndex={0}
               role="button"
-              aria-label={`Learn more about ${amenity.label}`}
+              aria-label={`${
+                activeIsRTL ? "تعرف على المزيد عن" : "Learn more about"
+              } ${getLocalizedText(amenity.label, activeLocale)}`}
             >
               <div className={styles.iconContainer}>
                 <span className={styles.icon} aria-hidden="true">
                   {amenity.icon}
                 </span>
               </div>
-              <h3 className={styles.label}>{amenity.label}</h3>
+              <h3 className={styles.label}>
+                {getLocalizedText(amenity.label, activeLocale)}
+              </h3>
             </div>
           ))}
         </div>
@@ -85,9 +106,11 @@ export default function AmenitiesShowcase({ data, projectData }) {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                aria-label={button.text}
+                aria-label={getLocalizedText(button.text, activeLocale)}
               >
-                <span className={styles.ctaText}>{button.text}</span>
+                <span className={styles.ctaText}>
+                  {getLocalizedText(button.text, activeLocale)}
+                </span>
                 <div className={styles.ctaIcon}>
                   <svg
                     width="16"

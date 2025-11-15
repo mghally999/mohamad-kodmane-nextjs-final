@@ -4,8 +4,15 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/projects/ProjectIntro.module.css";
+import { getLocalizedText } from "@/lib/text-utils";
+import { useLanguage } from "@/components/LanguageProvider";
 
-export default function ProjectIntro({ data, projectData }) {
+export default function ProjectIntro({ data, projectData, isRTL, locale }) {
+  const { locale: ctxLocale } = useLanguage();
+  const activeLocale = locale || ctxLocale || "en";
+  const activeIsRTL =
+    typeof isRTL === "boolean" ? isRTL : activeLocale === "ar";
+
   const [isVisible, setIsVisible] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
 
@@ -27,49 +34,46 @@ export default function ProjectIntro({ data, projectData }) {
   const propertyImages = intro.propertyImages || [
     {
       src: intro.imgUrl || `${CDN}/sky-parks/exterior-night-01.jpg`,
-      alt: intro.imgAlt || project.name,
-      title: project.name,
-      description: project.location || "Premium location in Dubai",
+      alt: intro.imgAlt || getLocalizedText(project.name, activeLocale),
+      title: getLocalizedText(project.name, activeLocale),
+      description:
+        getLocalizedText(project.location, activeLocale) ||
+        (activeIsRTL ? "موقع متميز في دبي" : "Premium location in Dubai"),
     },
   ];
 
-  // Key highlights data
+  // Key highlights data - using localized data
   const highlights = [
     {
       icon: "📍",
-      value: project.location || "Prime Location",
-      label: "Location",
+      value:
+        getLocalizedText(project.location, activeLocale) ||
+        (activeIsRTL ? "موقع متميز" : "Prime Location"),
+      label: activeIsRTL ? "الموقع" : "Location",
     },
     {
       icon: "💰",
-      value: project.startingPrice || "AED —",
-      label: "Starting Price",
+      value: getLocalizedText(project.startingPrice, activeLocale) || "AED —",
+      label: activeIsRTL ? "السعر الابتدائي" : "Starting Price",
     },
     {
       icon: "📅",
-      value: project.completionDate || "TBC",
-      label: "Completion",
+      value: getLocalizedText(project.completionDate, activeLocale) || "TBC",
+      label: activeIsRTL ? "تاريخ الانتهاء" : "Completion",
     },
     {
       icon: "🏗️",
-      value: project.status || "Off-Plan",
-      label: "Status",
+      value:
+        getLocalizedText(project.status, activeLocale) ||
+        (activeIsRTL ? "قيد الإنشاء" : "Off-Plan"),
+      label: activeIsRTL ? "الحالة" : "Status",
     },
   ];
-
-  // Features data
-  // const features = [
-  //   { icon: "⭐", text: "Luxury Finishes" },
-  //   { icon: "🌊", text: "Swimming Pool" },
-  //   { icon: "🏋️", text: "Fitness Center" },
-  //   { icon: "🅿️", text: "Parking" },
-  //   { icon: "🌴", text: "Landscaped Gardens" },
-  //   { icon: "🏊", text: "Infinity Pool" },
-  // ];
 
   return (
     <section
       className={`${styles.projectIntro} ${isVisible ? styles.visible : ""}`}
+      dir={activeIsRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
         {/* HERO SECTION */}
@@ -84,11 +88,17 @@ export default function ProjectIntro({ data, projectData }) {
           </div>
           <div className={styles.heroContent}>
             <div className={styles.heroBadge}>
-              <span>PREMIUM DEVELOPMENT</span>
+              <span>{activeIsRTL ? "تطوير متميز" : "PREMIUM DEVELOPMENT"}</span>
             </div>
-            <h1 className={styles.heroTitle}>{intro.title || project.name}</h1>
+            <h1 className={styles.heroTitle}>
+              {getLocalizedText(intro.title, activeLocale) ||
+                getLocalizedText(project.name, activeLocale)}
+            </h1>
             <p className={styles.heroSubtitle}>
-              {project.location || "Luxury living in the heart of Dubai"}
+              {getLocalizedText(project.location, activeLocale) ||
+                (activeIsRTL
+                  ? "عيش فاخر في قلب دبي"
+                  : "Luxury living in the heart of Dubai")}
             </p>
           </div>
         </div>
@@ -132,15 +142,15 @@ export default function ProjectIntro({ data, projectData }) {
                 </div>
               )}
             </div>
-
-            {/* FEATURES GRID */}
           </div>
 
           {/* RIGHT: CONTENT SECTION */}
           <div className={styles.contentSection}>
             {/* HIGHLIGHTS */}
             <div className={styles.highlightsSection}>
-              <h2 className={styles.sectionTitle}>PROJECT HIGHLIGHTS</h2>
+              <h2 className={styles.sectionTitle}>
+                {activeIsRTL ? "أبرز معالم المشروع" : "PROJECT HIGHLIGHTS"}
+              </h2>
               <div className={styles.highlightsGrid}>
                 {highlights.map((highlight, index) => (
                   <div key={index} className={styles.highlightCard}>
@@ -160,11 +170,13 @@ export default function ProjectIntro({ data, projectData }) {
 
             {/* DESCRIPTION */}
             <div className={styles.descriptionSection}>
-              <h3 className={styles.sectionTitle}>PROJECT OVERVIEW</h3>
+              <h3 className={styles.sectionTitle}>
+                {activeIsRTL ? "نظرة عامة على المشروع" : "PROJECT OVERVIEW"}
+              </h3>
               <div className={styles.descriptionContent}>
-                {intro.paragraphs?.map((paragraph, index) => (
+                {intro.paragraphs.map((paragraph, index) => (
                   <p key={index} className={styles.paragraph}>
-                    {paragraph}
+                    {getLocalizedText(paragraph, activeLocale)}
                   </p>
                 ))}
               </div>
@@ -175,13 +187,17 @@ export default function ProjectIntro({ data, projectData }) {
               <div className={styles.developerCard}>
                 <div className={styles.developerIcon}>🏢</div>
                 <div className={styles.developerContent}>
-                  <h4 className={styles.developerTitle}>DEVELOPER</h4>
+                  <h4 className={styles.developerTitle}>
+                    {activeIsRTL ? "المطور" : "DEVELOPER"}
+                  </h4>
                   <div className={styles.developerName}>
-                    {project.developer || "Premium Developer"}
+                    {getLocalizedText(project.developer, activeLocale) ||
+                      (activeIsRTL ? "مطور متميز" : "Premium Developer")}
                   </div>
                   <p className={styles.developerDescription}>
-                    Trusted developer with proven track record in luxury real
-                    estate
+                    {activeIsRTL
+                      ? "مطور موثوق بسجل حافل في مجال العقارات الفاخرة"
+                      : "Trusted developer with proven track record in luxury real estate"}
                   </p>
                 </div>
               </div>
@@ -197,7 +213,10 @@ export default function ProjectIntro({ data, projectData }) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span>{brochure.title || "DOWNLOAD BROCHURE"}</span>
+                  <span>
+                    {getLocalizedText(brochure.title, activeLocale) ||
+                      (activeIsRTL ? "تحميل الكتيب" : "DOWNLOAD BROCHURE")}
+                  </span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M12 16V4"

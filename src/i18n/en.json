@@ -321,5 +321,52 @@
       "directCall": "Direct Call",
       "trustNote": "Premium Developer Access • Full Transparency • Proven Results"
     }
+  },
+  "projects": {
+    "hero": {
+      "googleReviews": "Google Reviews",
+      "rating": "Rating"
+    },
+    "intro": {
+      "projectHighlights": "Project Highlights",
+      "projectOverview": "Project Overview",
+      "developer": "Developer",
+      "downloadBrochure": "Download Brochure"
+    },
+    "gallery": {
+      "view": "View",
+      "of": "of"
+    },
+    "floorPlans": {
+      "villaCollections": "Villa Collections",
+      "penthouseCollections": "Penthouse Collections",
+      "commercialSpaces": "Commercial Spaces",
+      "residenceCollections": "Residence Collections",
+      "downloadFloorPlan": "Download Floor Plan"
+    },
+    "amenities": {
+      "title": "Project Amenities"
+    },
+    "location": {
+      "getDirections": "Get Directions",
+      "copyAddress": "Copy Address",
+      "loadingMap": "Loading Map..."
+    },
+    "contact": {
+      "expressInterest": "Express Your Interest",
+      "beginJourney": "Begin Your Luxury Journey",
+      "personalizedConsultation": "Personalized Consultation",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phoneNumber": "Phone Number",
+      "email": "Email Address",
+      "projectInterest": "Project of Interest",
+      "unitType": "Preferred Unit Type",
+      "contactMethod": "Preferred Contact Method",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "submit": "Request Personalized Consultation",
+      "submitting": "Processing Your Request..."
+    }
   }
 }

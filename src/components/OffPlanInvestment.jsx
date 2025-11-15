@@ -25,21 +25,29 @@ export default function OffPlanInvestment() {
   const propertyImages = [
     {
       src: `${CDN}/sky-parks/exterior-night-01.jpg`,
-      alt: "Sobha SkyParks Luxury Apartment",
-      title: "Modern Apartments",
-      description: "Prime locations with panoramic city views",
+      alt: isRTL
+        ? "شقق فاخرة في سكاي باركس"
+        : "Sobha SkyParks Luxury Apartment",
+      title: isRTL ? "شقق عصرية" : "Modern Apartments",
+      description: isRTL
+        ? "مواقع مميزة بإطلالات بانورامية على المدينة"
+        : "Prime locations with panoramic city views",
     },
     {
       src: `${CDN}/hartland/hero-bg.jpg`,
-      alt: "Sobha Hartland Luxury Villas",
-      title: "Luxury Villas",
-      description: "Spacious living in gated communities",
+      alt: isRTL ? "فلل فاخرة في هارتلاند" : "Sobha Hartland Luxury Villas",
+      title: isRTL ? "فلل فاخرة" : "Luxury Villas",
+      description: isRTL
+        ? "مساحات معيشة واسعة في مجمعات سكنية مسوّرة"
+        : "Spacious living in gated communities",
     },
     {
       src: `${CDN}/lumena-alta/hero-bg.jpg`,
-      alt: "Lumina Alta Commercial Tower",
-      title: "Commercial Spaces",
-      description: "Premium office and retail opportunities",
+      alt: isRTL ? "برج لومينا ألتا التجاري" : "Lumina Alta Commercial Tower",
+      title: isRTL ? "مساحات تجارية" : "Commercial Spaces",
+      description: isRTL
+        ? "فرص متميزة للمكاتب ومساحات البيع بالتجزئة"
+        : "Premium office and retail opportunities",
     },
   ];
 
@@ -66,7 +74,11 @@ export default function OffPlanInvestment() {
           <div className={styles.imageCarousel}>
             <div
               className={styles.carouselTrack}
-              style={{ transform: `translateX(-${currentImage * 100}%)` }}
+              style={{
+                transform: isRTL
+                  ? `translateX(${currentImage * 100}%)`
+                  : `translateX(-${currentImage * 100}%)`,
+              }}
             >
               {propertyImages.map((image, index) => (
                 <div key={index} className={styles.carouselSlide}>
@@ -141,21 +153,23 @@ export default function OffPlanInvestment() {
 
         <div className={styles.contentGrid}>
           <div className={styles.definitionCard}>
-            <div className={styles.definitionIcon}>
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <div className={styles.definitionContent}>
+            <div className={styles.definitionHeader}>
+              <div className={styles.definitionIcon}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
               <h3 className={styles.definitionTitle}>
                 {t("offPlan.definitionTitle")}
               </h3>
+            </div>
+            <div className={styles.definitionContent}>
               <p className={styles.definitionText}>
                 {t("offPlan.definitionShort")}
               </p>

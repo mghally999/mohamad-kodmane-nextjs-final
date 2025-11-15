@@ -1,102 +1,173 @@
 /* eslint-disable @next/next/no-assign-module-variable */
 
+// Import all project data directly
+import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
+import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
+import { aquamontData } from "@/data/projects/apartments/sobha/aquamont/aquamont";
+import { centralData } from "@/data/projects/apartments/sobha/central/central";
+import { skyParksData } from "@/data/projects/apartments/sobha/skyparks/skyparks";
+import { rivieraRetailsData } from "@/data/projects/commercial-retail/azizi/riviera-retails/riviera-retails";
+import { lumenaAltaData } from "@/data/projects/commercial-retail/omniyat/lumenaalta/lumenaalta";
+import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven-penthouse/seahaven-penthouse";
+import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
+import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
+import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
+
 /**
- * ✅ 100% WORKING VERSION - Fixed to match YOUR TOPHEADER SLUGS
+ * ✅ PROJECT DATA MAP - Direct access to your data
  */
+const PROJECT_DATA_MAP = {
+  // Apartments - Sobha
+  skyparks: skyParksData,
+  aquamont: aquamontData,
+  "aqua-crest": aquaCrestData,
+  central: centralData,
 
-export async function getProjectData(category, developer, project) {
-  try {
-    // Use alias import path compatible with Next.js build
-    const module = await import(
-      `@/data/projects/${category}/${developer}/${project}/${project}.js`
-    );
+  // Apartments - Nakheel
+  "palm-central": palmCentralData,
 
-    // Find export key ending with "Data"
-    const exportKey = Object.keys(module).find((key) =>
-      key.toLowerCase().endsWith("data")
-    );
+  // Villas - Sobha
+  hartland: hartland2VillasData,
+  "al-sinniyyah-island": alSinniyyahIslandData,
 
-    if (!exportKey) {
-      throw new Error(
-        `❌ No exported variable ending with "Data" found in @/data/projects/${category}/${developer}/${project}/${project}.js`
-      );
-    }
+  // Villas - Arada
+  massar: massar3Data,
 
-    return module[exportKey];
-  } catch (error) {
-    console.error(
-      `❌ Failed to load project "${project}" by ${developer} (${category}):`,
-      error.message
-    );
+  // Commercial - Azizi
+  "riviera-retails": rivieraRetailsData,
+
+  // Commercial - Omniyat
+  lumenaalta: lumenaAltaData,
+
+  // Penthouses - Sobha
+  "seahaven-penthouse": seahavenPenthouseData,
+};
+
+/**
+ * 🎯 Get project data with locale support
+ */
+export async function getProjectData(
+  category,
+  developer,
+  project,
+  locale = "en"
+) {
+  console.log("🔄 Getting project:", { project, locale });
+
+  const projectData = PROJECT_DATA_MAP[project];
+
+  if (!projectData) {
+    console.warn(`❌ Project "${project}" not found`);
     return FALLBACK_PROJECT_DATA;
   }
+
+  // Get the data for the requested locale, fallback to English
+  const data = projectData[locale] || projectData.en;
+
+  if (!data) {
+    console.warn(`❌ No data for "${project}" in "${locale}"`);
+    return FALLBACK_PROJECT_DATA;
+  }
+
+  console.log("✅ Successfully loaded:", project);
+  return data;
 }
 
 /**
- * ✅ UPDATED: Static project routes that MATCH YOUR TOPHEADER EXACTLY
+ * ✅ Static project routes
  */
 export function getAllProjectSlugs() {
-  return [
-    // Apartments
-    { category: "apartments", developer: "sobha", project: "aqua-crest" },
-    { category: "apartments", developer: "sobha", project: "aquamont" },
-    { category: "apartments", developer: "sobha", project: "central" },
-    { category: "apartments", developer: "sobha", project: "skyparks" },
-    { category: "apartments", developer: "nakheel", project: "palm-central" },
+  return Object.keys(PROJECT_DATA_MAP).map((project) => {
+    let category = "apartments";
+    let developer = "sobha";
 
-    // Villas
-    { category: "villas", developer: "sobha", project: "hartland" },
-    { category: "villas", developer: "sobha", project: "al-sinniyyah-island" },
-    { category: "villas", developer: "arada", project: "massar" },
+    if (
+      project.includes("hartland") ||
+      project.includes("massar") ||
+      project.includes("al-sinniyyah")
+    ) {
+      category = "villas";
+    } else if (project.includes("riviera") || project.includes("lumena")) {
+      category = "commercial-retail";
+    } else if (project.includes("penthouse")) {
+      category = "penthouses";
+    }
 
-    // Commercial Retail
-    {
-      category: "commercial-retail",
-      developer: "azizi",
-      project: "riviera-retails",
-    },
-    {
-      category: "commercial-retail",
-      developer: "omniyat",
-      project: "lumenaalta",
-    },
+    if (project.includes("nakheel")) developer = "nakheel";
+    if (project.includes("arada")) developer = "arada";
+    if (project.includes("azizi")) developer = "azizi";
+    if (project.includes("omniyat")) developer = "omniyat";
 
-    // ✅ CORRECTED: Penthouses - matches your TopHeader EXACTLY
-    {
-      category: "penthouses",
-      developer: "sobha",
-      project: "seahaven-penthouse", // This matches your TopHeader
-    },
-  ];
+    return { category, developer, project };
+  });
 }
 
-/**
- * ✅ Enhanced fallback data
- */
+// Keep your FALLBACK_PROJECT_DATA the same
 export const FALLBACK_PROJECT_DATA = {
   seo: {
-    title: "Project Not Found | Nextis",
-    description: "The requested project could not be found.",
+    title: {
+      en: "Project Not Found | Nextis",
+      ar: "المشروع غير موجود | نيكستس",
+    },
+    description: {
+      en: "The requested project could not be found.",
+      ar: "لم يتم العثور على المشروع المطلوب.",
+    },
     canonical: "/projects",
   },
   project: {
-    name: "Unknown Project",
-    developer: "Unknown",
-    location: "N/A",
-    status: "Unavailable",
-    startingPrice: "N/A",
-    completionDate: "N/A",
-    type: "N/A",
+    name: {
+      en: "Unknown Project",
+      ar: "مشروع غير معروف",
+    },
+    developer: {
+      en: "Unknown",
+      ar: "غير معروف",
+    },
+    location: {
+      en: "N/A",
+      ar: "غير متوفر",
+    },
+    status: {
+      en: "Unavailable",
+      ar: "غير متوفر",
+    },
+    startingPrice: {
+      en: "N/A",
+      ar: "غير متوفر",
+    },
+    completionDate: {
+      en: "N/A",
+      ar: "غير متوفر",
+    },
+    type: {
+      en: "N/A",
+      ar: "غير متوفر",
+    },
   },
   hero: {
     backgroundUrl: "/images/fallback-hero.jpg",
     squareImageUrl: "/images/fallback-square.jpg",
+    companyName: {
+      en: "Unknown Developer",
+      ar: "مطور غير معروف",
+    },
+    rating: 0,
   },
   intro: {
-    title: "Project Not Found",
+    title: {
+      en: "Project Not Found",
+      ar: "المشروع غير موجود",
+    },
     paragraphs: [
-      "We couldn't find the project you're looking for.",
-      "Please check the URL or explore other listings.",
+      {
+        en: "We couldn't find the project you're looking for.",
+        ar: "لم نتمكن من العثور على المشروع الذي تبحث عنه.",
+      },
+      {
+        en: "Please check the URL or explore other listings.",
+        ar: "يرجى التحقق من الرابط أو استكشاف المشاريع الأخرى.",
+      },
     ],
   },
   gallery: {
@@ -106,10 +177,24 @@ export const FALLBACK_PROJECT_DATA = {
   amenities: { amenities: [] },
   location: { lat: 25.2048, lng: 55.2708 },
   cta: {
-    title: "Need Assistance?",
-    description: "Get in touch with our experts today.",
-    buttons: [{ text: "Contact Us", type: "primary", url: "/contact" }],
+    title: {
+      en: "Need Assistance?",
+      ar: "هل تحتاج إلى مساعدة؟",
+    },
+    description: {
+      en: "Get in touch with our experts today.",
+      ar: "تواصل مع خبرائنا اليوم.",
+    },
+    buttons: [
+      {
+        text: {
+          en: "Contact Us",
+          ar: "اتصل بنا",
+        },
+        type: "primary",
+        url: "/contact",
+      },
+    ],
   },
-  // ✅ ADD THIS to prevent the images error
   images: ["/images/fallback-gallery.jpg"],
 };
