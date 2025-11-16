@@ -14,45 +14,37 @@
     "contactUs": "Contact Us",
     "directLine": "Direct Line"
   },
-
   "categories": {
     "apartments": "Apartments",
     "villas": "Villas",
     "commercial": "Commercial / Retail",
     "penthouses": "Penthouses"
   },
-
   "descriptions": {
     "apartments": "Luxury apartments in Dubai's most sought-after areas",
     "villas": "Exclusive villa developments and waterfront communities",
     "commercial": "High-ROI commercial and mixed-use developments",
     "penthouses": "Ultra-luxury penthouses with panoramic views",
-    "developerIn": "Developers in {category}",
-    "projectsBy": "Projects by {developer}",
+    "developerIn": "in {category}",
+    "projectsBy": "by {developer}",
     "premiumDeveloper": "Premium developer in {category}",
     "discoverPortfolio": "Discover our premium real estate portfolio"
   },
-
-  "Header": {
-    "title": "MOHAMAD KODMANE",
-    "subtitle": "REAL ESTATE ADVISOR & INVESTMENT EXPERT IN DUBAI",
-    "introPrefix": "At ",
-    "companyName": "Mohamad Kodmane Real Estate",
-    "introSuffix": ", we believe that everyone deserves the opportunity to own property and invest with confidence in Dubai.",
-    "portfolio": "We guide our clients through every stage of property acquisition, from off-plan developments to ready luxury assets, helping them build strategically diversified real estate portfolios that deliver consistent and sustainable returns.",
-    "expertise": "With deep market expertise, transparent processes, and data-driven insights, we empower investors to make informed decisions and achieve optimal growth in Dubai's dynamic property market."
+  "developers": {
+    "sobhaRealty": "Sobha Realty",
+    "nakheel": "Nakheel",
+    "arada": "Arada",
+    "omniyat": "Omniyat",
+    "aziziDevelopments": "Azizi Developments"
   },
-
-  "video": {
-    "playVideo": "Play Video",
-    "duration": "Duration",
-    "views": "Views",
-    "videoTitle": "Investment Strategy Video",
-    "videoDescription": "Exclusive insights on off-plan investments and portfolio management",
-    "close": "Close",
-    "minutes": "min"
+  "projects": {
+    "sobhaCentral": "Sobha Central",
+    "sobhaAquamont": "Sobha Aquamont",
+    "sobhaAlSinniyyahIsland": "Sobha Al Sinniyyah Island",
+    "luminaAlta": "Lumina Alta",
+    "palmCentralNakheel": "Palm Central – Nakheel",
+    "aradaMassar3": "Arada – Massar 3"
   },
-
   "brands": {
     "sobhaRealty": "Sobha Realty",
     "aziziDevelopments": "Azizi Developments",
@@ -62,7 +54,24 @@
     "aziziRivieraRetails": "Azizi Riviera – Retails",
     "sobhaSeaHavenPenthouse": "Sobha SeaHaven Penthouse"
   },
-
+  "Header": {
+    "title": "MOHAMAD KODMANE",
+    "subtitle": "REAL ESTATE ADVISOR & INVESTMENT EXPERT IN DUBAI",
+    "introPrefix": "At ",
+    "companyName": "Mohamad Kodmane Real Estate",
+    "introSuffix": ", we believe that everyone deserves the opportunity to own property and invest with confidence in Dubai.",
+    "portfolio": "We guide our clients through every stage of property acquisition, from off-plan developments to ready luxury assets, helping them build strategically diversified real estate portfolios that deliver consistent and sustainable returns.",
+    "expertise": "With deep market expertise, transparent processes, and data-driven insights, we empower investors to make informed decisions and achieve optimal growth in Dubai's dynamic property market."
+  },
+  "video": {
+    "playVideo": "Play Video",
+    "duration": "Duration",
+    "views": "Views",
+    "videoTitle": "Investment Strategy Video",
+    "videoDescription": "Exclusive insights on off-plan investments and portfolio management",
+    "close": "Close",
+    "minutes": "min"
+  },
   "callback": {
     "sectionTitleLine1": "Begin Your",
     "sectionTitleAccent": "Dubai Investment",
@@ -83,7 +92,6 @@
     "errorNetwork": "Network error. Please try again or contact us directly.",
     "bottomDecoration": "MOHAMAD KODMANE REAL ESTATE BROKERAGE"
   },
-
   "offPlan": {
     "sectionTitle": "Off-plan Real Estate Investment in Dubai",
     "sectionDescriptionMain": "Secure your property at the earliest stage — before construction begins — with flexible payment plans and high capital growth potential.",
@@ -113,7 +121,6 @@
     "timelineStep4Title": "Handover & returns",
     "timelineStep4Desc": "Take ownership, rent it out, or resell it for profit — achieving your investment goal."
   },
-
   "portfolio": {
     "headerTitle": "Strategic Real Estate Portfolio",
     "headerTagline": "Build a well-balanced real estate portfolio that includes both ready and off-plan properties, designed to maximize returns, appreciation, and long-term stability.",
@@ -142,7 +149,6 @@
     "managementStatement": "We handle every aspect of your portfolio — from handover to resale —",
     "managementHighlight": "so your wealth continues to grow passively and securely, backed by Dubai's thriving market."
   },
-
   "capitalGrowth": {
     "heroBadge": "MARKET INSIGHTS 2024",
     "heroTitle": "EXCEPTIONAL CAPITAL GROWTH IN DUBAI VILLAS",
@@ -178,7 +184,6 @@
     "communitiesTitle": "Dubai premium villa communities",
     "communitiesDesc": "Exclusive developments offering luxury living and strong investment potential across prime locations."
   },
-
   "dubaiDemand": {
     "badge": "MARKET ANALYSIS",
     "title": "Continuous demand for Dubai real estate",
@@ -207,7 +212,6 @@
     "chartDemandGrowth": "High demand growth",
     "chartSupplyGrowth": "Supply growth"
   },
-
   "dubaiEconomy": {
     "sectionTitle": "Economic growth powering Dubai's real estate",
     "descriptionMain": "Dubai's dynamic economy isn't just growing — it's fueling one of the strongest real estate markets in the world.",
@@ -233,7 +237,6 @@
     "economyBarLabel": "Economic growth",
     "realEstateBarLabel": "Real estate growth"
   },
-
   "services": {
     "headerTitle": "360° Real Estate Management",
     "headerTagline": "From purchase to profit — complete end-to-end property management ensuring your investment journey in Dubai is effortless, profitable, and secure.",
