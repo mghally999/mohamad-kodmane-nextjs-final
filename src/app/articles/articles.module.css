@@ -17,6 +17,10 @@
   transform: translateY(0);
 }
 
+.page.rtl {
+  text-align: right;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -120,6 +124,10 @@
   backdrop-filter: blur(10px);
 }
 
+.rtl .heroBadge {
+  flex-direction: row-reverse;
+}
+
 .heroBadge span {
   font-family: "Ringside", sans-serif;
   font-size: 0.8rem;
@@ -133,6 +141,10 @@
   width: 20px;
   height: 1px;
   background: linear-gradient(90deg, #d7b46a, transparent);
+}
+
+.rtl .badgeLine {
+  background: linear-gradient(90deg, transparent, #d7b46a);
 }
 
 .heroTitle {
@@ -233,6 +245,10 @@
   height: 100%;
   background: linear-gradient(90deg, #d7b46a, #ffffff);
   transition: width 0.5s ease;
+}
+
+.rtl .progressFill {
+  background: linear-gradient(90deg, #ffffff, #d7b46a);
 }
 
 /* Articles Section */
@@ -352,6 +368,11 @@
   letter-spacing: 0.5px;
 }
 
+.rtl .categoryBadge {
+  left: auto;
+  right: 20px;
+}
+
 .readTime {
   position: absolute;
   top: 20px;
@@ -365,6 +386,11 @@
   font-size: 0.7rem;
   font-weight: 500;
   backdrop-filter: blur(10px);
+}
+
+.rtl .readTime {
+  right: auto;
+  left: 20px;
 }
 
 /* Hover Effect */
@@ -402,6 +428,10 @@
   gap: 10px;
 }
 
+.rtl .hoverContent {
+  flex-direction: row-reverse;
+}
+
 .arrowIcon {
   font-size: 1.3rem;
   transition: transform 0.3s ease;
@@ -409,6 +439,10 @@
 
 .articleCard:hover .arrowIcon {
   transform: translateX(5px);
+}
+
+.rtl .articleCard:hover .arrowIcon {
+  transform: translateX(-5px);
 }
 
 /* Card Content */

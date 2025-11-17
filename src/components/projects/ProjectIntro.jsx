@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/projects/ProjectIntro.module.css";
-import { getLocalizedText } from "@/lib/text-utils";
 import { useLanguage } from "@/components/LanguageProvider";
 
 export default function ProjectIntro({ data, projectData, isRTL, locale }) {
@@ -20,6 +19,16 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
     setIsVisible(true);
   }, []);
 
+  // DEBUG: Log the data to see what's being passed
+  useEffect(() => {
+    console.log("🔍 ProjectIntro Debug:");
+    console.log("Active locale:", activeLocale);
+    console.log("Is RTL:", activeIsRTL);
+    console.log("Data received:", data);
+    console.log("Project data received:", projectData);
+    console.log("Intro paragraphs:", data?.paragraphs);
+  }, [activeLocale, data, projectData]);
+
   if (!data || !projectData) {
     console.error("ProjectIntro: Missing data");
     return null;
@@ -34,38 +43,35 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
   const propertyImages = intro.propertyImages || [
     {
       src: intro.imgUrl || `${CDN}/sky-parks/exterior-night-01.jpg`,
-      alt: intro.imgAlt || getLocalizedText(project.name, activeLocale),
-      title: getLocalizedText(project.name, activeLocale),
+      alt: intro.imgAlt || project.name,
+      title: project.name,
       description:
-        getLocalizedText(project.location, activeLocale) ||
+        project.location ||
         (activeIsRTL ? "موقع متميز في دبي" : "Premium location in Dubai"),
     },
   ];
 
-  // Key highlights data - using localized data
+  // Key highlights data - using localized data directly
   const highlights = [
     {
       icon: "📍",
       value:
-        getLocalizedText(project.location, activeLocale) ||
-        (activeIsRTL ? "موقع متميز" : "Prime Location"),
+        project.location || (activeIsRTL ? "موقع متميز" : "Prime Location"),
       label: activeIsRTL ? "الموقع" : "Location",
     },
     {
       icon: "💰",
-      value: getLocalizedText(project.startingPrice, activeLocale) || "AED —",
+      value: project.startingPrice || "AED —",
       label: activeIsRTL ? "السعر الابتدائي" : "Starting Price",
     },
     {
       icon: "📅",
-      value: getLocalizedText(project.completionDate, activeLocale) || "TBC",
+      value: project.completionDate || "TBC",
       label: activeIsRTL ? "تاريخ الانتهاء" : "Completion",
     },
     {
       icon: "🏗️",
-      value:
-        getLocalizedText(project.status, activeLocale) ||
-        (activeIsRTL ? "قيد الإنشاء" : "Off-Plan"),
+      value: project.status || (activeIsRTL ? "قيد الإنشاء" : "Off-Plan"),
       label: activeIsRTL ? "الحالة" : "Status",
     },
   ];
@@ -76,6 +82,21 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
       dir={activeIsRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
+        {/* DEBUG INFO - Remove this in production */}
+        <div
+          style={{
+            background: "#ffeb3b",
+            padding: "10px",
+            marginBottom: "20px",
+            borderRadius: "5px",
+            fontSize: "14px",
+          }}
+        >
+          <strong>Debug Info:</strong> Locale: {activeLocale} | RTL:{" "}
+          {activeIsRTL.toString()} | Title: "{intro.title}" | Paragraphs count:{" "}
+          {intro.paragraphs?.length || 0}
+        </div>
+
         {/* HERO SECTION */}
         <div className={styles.heroSection}>
           <div
@@ -90,12 +111,9 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
             <div className={styles.heroBadge}>
               <span>{activeIsRTL ? "تطوير متميز" : "PREMIUM DEVELOPMENT"}</span>
             </div>
-            <h1 className={styles.heroTitle}>
-              {getLocalizedText(intro.title, activeLocale) ||
-                getLocalizedText(project.name, activeLocale)}
-            </h1>
+            <h1 className={styles.heroTitle}>{intro.title || project.name}</h1>
             <p className={styles.heroSubtitle}>
-              {getLocalizedText(project.location, activeLocale) ||
+              {project.location ||
                 (activeIsRTL
                   ? "عيش فاخر في قلب دبي"
                   : "Luxury living in the heart of Dubai")}
@@ -174,11 +192,12 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
                 {activeIsRTL ? "نظرة عامة على المشروع" : "PROJECT OVERVIEW"}
               </h3>
               <div className={styles.descriptionContent}>
-                {intro.paragraphs.map((paragraph, index) => (
-                  <p key={index} className={styles.paragraph}>
-                    {getLocalizedText(paragraph, activeLocale)}
-                  </p>
-                ))}
+                {intro.paragraphs &&
+                  intro.paragraphs.map((paragraph, index) => (
+                    <p key={index} className={styles.paragraph}>
+                      {paragraph}
+                    </p>
+                  ))}
               </div>
             </div>
 
@@ -191,7 +210,7 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
                     {activeIsRTL ? "المطور" : "DEVELOPER"}
                   </h4>
                   <div className={styles.developerName}>
-                    {getLocalizedText(project.developer, activeLocale) ||
+                    {project.developer ||
                       (activeIsRTL ? "مطور متميز" : "Premium Developer")}
                   </div>
                   <p className={styles.developerDescription}>
@@ -214,7 +233,7 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
                   rel="noopener noreferrer"
                 >
                   <span>
-                    {getLocalizedText(brochure.title, activeLocale) ||
+                    {brochure.title ||
                       (activeIsRTL ? "تحميل الكتيب" : "DOWNLOAD BROCHURE")}
                   </span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

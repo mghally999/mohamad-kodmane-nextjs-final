@@ -366,47 +366,47 @@ export const centralData = {
       ],
       brochures: [
         {
-          title: "The Tranquil",
+          title: "ذا ترانكيل",
           url: "https://luxury-real-estate-media.b-cdn.net/sobha-central/sobha-central-pdfs/The%20Tranquil%20at%20Sobha%20Central_Brochure%20(1).pdf",
           type: "tranquil",
           icon: "🌿",
           color: "#2E8B57",
           size: "4.2 MB",
-          category: "Residential",
-          fileName: "The Tranquil at Sobha Central_Brochure.pdf",
+          category: "سكني",
+          fileName: "ذا ترانكيل في Sobha Central.pdf",
           description: "مساحات سكنية هادئة بإطلالات بانورامية",
         },
         {
-          title: "The Horizon",
+          title: "ذا هورايزون",
           url: "https://luxury-real-estate-media.b-cdn.net/sobha-central/sobha-central-pdfs/Sobha%20Central%20Brochure%20-%20The%20Horizon%20(1).pdf",
           type: "horizon",
           icon: "🌅",
           color: "#FF6B35",
           size: "3.8 MB",
-          category: "Premium",
-          fileName: "Sobha Central Brochure - The Horizon.pdf",
+          category: "متميز",
+          fileName: "Sobha Central - ذا هورايزون.pdf",
           description: "إطلالات واسعة وتصميمات عصرية راقية",
         },
         {
-          title: "The Eden",
+          title: "ذا إيدن",
           url: "https://luxury-real-estate-media.b-cdn.net/sobha-central/sobha-central-pdfs/Sobha%20Central%20Brochure%20-%20The%20Eden%20(1).pdf",
           type: "eden",
           icon: "🏞️",
           color: "#4CAF50",
           size: "5.1 MB",
-          category: "Gardens",
-          fileName: "Sobha Central Brochure - The Eden.pdf",
+          category: "حدائق",
+          fileName: "Sobha Central - ذا إيدن.pdf",
           description: "مساحات خضراء متدرجة وطابع أكثر طبيعية",
         },
         {
-          title: "The Serene",
+          title: "ذا سيرين",
           url: "https://luxury-real-estate-media.b-cdn.net/sobha-central/sobha-central-pdfs/SOBHA%20CENTRAL%20-%20THE%20SERENE%20BROCHURE.pdf",
           type: "serene",
           icon: "☁️",
           color: "#2196F3",
           size: "4.7 MB",
-          category: "Luxury",
-          fileName: "SOBHA CENTRAL - THE SERENE BROCHURE.pdf",
+          category: "فاخر",
+          fileName: "Sobha Central - ذا سيرين.pdf",
           description: "ملاذ هادئ في قلب مركز المدينة",
         },
       ],
@@ -462,10 +462,10 @@ export const centralData = {
           title: "شقة غرفة نوم واحدة",
           bedrooms: 1,
           specs: {
-            الوحدة: "غرفة نوم واحدة + حمّام ماستر + غرفة معيشة + شرفة",
+            "نوع الوحدة": "1 غرفة نوم + 1 حمام ماستر + 1 منطقة معيشة + 1 شرفة",
             "المساحة الداخلية": "542.18 قدم مربع",
             "مساحة الشرفة": "89.45 قدم مربع",
-            "إجمالي المساحة": "631.63 قدم مربع",
+            "المساحة الإجمالية": "631.63 قدم مربع",
             "السعر الابتدائي": "1,784,354 درهم إماراتي",
           },
           images: [
@@ -474,7 +474,7 @@ export const centralData = {
             "https://luxury-real-estate-media.b-cdn.net/sobha-central/new/interior-bedroom-master-01.jpg",
           ],
           features: [
-            "غرفة ملابس (Walk-in Closet)",
+            "غرفة ملابس مدمجة",
             "تشطيبات عالية الجودة",
             "جاهزية لأنظمة المنزل الذكي",
             "إطلالات على المدينة",
@@ -485,10 +485,10 @@ export const centralData = {
           title: "شقة غرفتي نوم",
           bedrooms: 2,
           specs: {
-            الوحدة: "غرفتا نوم + حمّام ضيوف + غرفة خادمة + شرفة",
+            "نوع الوحدة": "2 غرفة نوم + 1 حمام ضيوف + 1 غرفة خادمة + 1 شرفة",
             "المساحة الداخلية": "752.61 قدم مربع",
             "مساحة الشرفة": "99.78 قدم مربع",
-            "إجمالي المساحة": "852.39 قدم مربع",
+            "المساحة الإجمالية": "852.39 قدم مربع",
             "السعر الابتدائي": "2,467,669 درهم إماراتي",
           },
           images: [
@@ -496,22 +496,17 @@ export const centralData = {
             "https://luxury-real-estate-media.b-cdn.net/sobha-central/new/interior-bedroom-master-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sobha-central/interior-living-lounge-01.jpg",
           ],
-          features: [
-            "غرفة خادمة",
-            "شرفة واسعة",
-            "مطبخ بتجهيزات حديثة",
-            "توزيع عملي للعائلة",
-          ],
+          features: ["غرفة خادمة", "شرفة مزدوجة", "مطبخ فاخر", "تخطيط واسع"],
         },
         {
           id: "3-bedroom",
           title: "شقة ثلاث غرف نوم",
           bedrooms: 3,
           specs: {
-            الوحدة: "3 غرف نوم + حمّاما ماستر + غرفة معيشة + شرفتان",
+            "نوع الوحدة": "3 غرف نوم + 2 حمام ماستر + 1 منطقة معيشة + 2 شرفات",
             "المساحة الداخلية": "1,993.05 قدم مربع",
             "مساحة الشرفات": "274.16 قدم مربع",
-            "إجمالي المساحة": "2,267.21 قدم مربع",
+            "المساحة الإجمالية": "2,267.21 قدم مربع",
             "السعر الابتدائي": "9,352,241 درهم إماراتي",
           },
           images: [
@@ -520,10 +515,10 @@ export const centralData = {
             "https://luxury-real-estate-media.b-cdn.net/sobha-central/interior-bedroom-01.jpg",
           ],
           features: [
-            "غرفتا ماستر مع حمّامات داخلية",
+            "غرفتي ماستر",
             "إطلالات بانورامية",
-            "سهولة وصول عبر مصعد خاص",
-            "تشطيبات فاخرة في كامل الوحدة",
+            "مصعد خاص",
+            "تشطيبات فاخرة",
           ],
         },
       ],
@@ -544,7 +539,7 @@ export const centralData = {
         { label: "ملعب بادل", icon: "🎾", color: "#d7b46a" },
         { label: "منطقة يوغا", icon: "🧘", color: "#d7b46a" },
         { label: "مساحات تمارين كاليسثينكس", icon: "💪", color: "#d7b46a" },
-        { label: "حديقة هادئة (Zen Garden)", icon: "🎋", color: "#d7b46a" },
+        { label: "حديقة زن", icon: "🎋", color: "#d7b46a" },
         { label: "مسار للجري", icon: "🏃", color: "#d7b46a" },
         { label: "منطقة شواء", icon: "🍖", color: "#d7b46a" },
         { label: "تراس للاسترخاء", icon: "😌", color: "#d7b46a" },
@@ -560,18 +555,10 @@ export const centralData = {
         { label: "منطقة طعام خاصة", icon: "🍽️", color: "#d7b46a" },
         { label: "خدمات كونسيرج", icon: "🎩", color: "#d7b46a" },
         { label: "مصاعد عالية السرعة", icon: "⬆️", color: "#d7b46a" },
-        {
-          label: "مناطق مخصّصة للحيوانات الأليفة",
-          icon: "🐕",
-          color: "#d7b46a",
-        },
-        { label: "أماكن لتخزين الدراجات", icon: "🚴", color: "#d7b46a" },
-        {
-          label: "محطات شحن للسيارات الكهربائية",
-          icon: "⚡",
-          color: "#d7b46a",
-        },
-        { label: "أنظمة أتمتة منزلية ذكية", icon: "🏠", color: "#d7b46a" },
+        { label: "مناطق للحيوانات الأليفة", icon: "🐕", color: "#d7b46a" },
+        { label: "تخزين للدراجات", icon: "🚴", color: "#d7b46a" },
+        { label: "شحن للسيارات الكهربائية", icon: "⚡", color: "#d7b46a" },
+        { label: "أنظمة منزل ذكية", icon: "🏠", color: "#d7b46a" },
       ],
     },
 
@@ -583,7 +570,7 @@ export const centralData = {
       lng: 55.256392,
       zoom: 17,
       preciseLocation: {
-        building: "Sobha Central Tower",
+        building: "برج Sobha Central",
         plotNumber: "JVC-07",
         nearestLandmark: "بين محطة مترو الخليج التجاري ووسط مدينة دبي",
         accessRoad: "شارع الشيخ زايد (E11)",
@@ -603,7 +590,7 @@ export const centralData = {
       exactCoordinates: {
         latitude: 25.186874,
         longitude: 55.256392,
-        plusCode: "8HQ7+4Q Dubai, United Arab Emirates",
+        plusCode: "8HQ7+4Q دبي، الإمارات العربية المتحدة",
       },
       transportation: {
         metro: {

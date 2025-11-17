@@ -75,6 +75,16 @@ export default function Articles() {
   const listingData = articlesData.getListingData(locale);
   const articles = articlesData.getAllArticles(locale);
 
+  // Calculate transform for RTL direction
+  const getCarouselTransform = () => {
+    if (isRTL) {
+      // For RTL: move in positive direction (opposite of LTR)
+      return `translateX(${currentImage * 100}%)`;
+    }
+    // For LTR: move in negative direction (standard)
+    return `translateX(-${currentImage * 100}%)`;
+  };
+
   return (
     <div
       className={`${styles.page} ${isVisible ? styles.visible : ""} ${
@@ -87,7 +97,7 @@ export default function Articles() {
         <div className={styles.heroCarousel}>
           <div
             className={styles.carouselTrack}
-            style={{ transform: `translateX(-${currentImage * 100}%)` }}
+            style={{ transform: getCarouselTransform() }}
           >
             {heroImages.map((image, index) => (
               <div key={index} className={styles.carouselSlide}>
