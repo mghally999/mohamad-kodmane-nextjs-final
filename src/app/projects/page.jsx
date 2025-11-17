@@ -45,7 +45,7 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "Lumina Alta – Omniyat",
+      title: "Lumena Alta – Omniyat",
       description:
         "A 380-meter architectural landmark offering ultra-luxury residences with panoramic skyline views, bespoke interiors, and a 50/50 payment plan.",
       image:

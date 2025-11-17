@@ -70,22 +70,22 @@ export default function TopHeader() {
                 },
               ],
             },
-            {
-              id: 2,
-              name: t("developers.nakheel"),
-              slug: "nakheel",
-              image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-              logo: `/Nakheel-Developments.webp`,
-              projects: [
-                {
-                  id: 106,
-                  title: t("projectNames.palmCentralNakheel"),
-                  slug: "palm-central",
-                  image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-                  description: t("descriptions.apartments"),
-                },
-              ],
-            },
+            // {
+            //   id: 2,
+            //   name: t("developers.nakheel"),
+            //   slug: "nakheel",
+            //   image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
+            //   logo: `/Nakheel-Developments.webp`,
+            //   projects: [
+            //     {
+            //       id: 106,
+            //       title: t("projectNames.palmCentralNakheel"),
+            //       slug: "palm-central",
+            //       image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
+            //       description: t("descriptions.apartments"),
+            //     },
+            //   ],
+            // },
           ],
         },
         {

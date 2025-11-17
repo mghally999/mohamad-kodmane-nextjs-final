@@ -50,20 +50,20 @@ export const menuData = {
           ],
         },
         // THEN OTHERS
-        {
-          id: 3,
-          name: "Nakheel",
-          slug: "nakheel",
-          projects: [
-            {
-              id: 106,
-              title: "Palm Central – Nakheel",
-              slug: "palm-central",
-              image:
-                "https://images.unsplash.com/photo-1520509414578-d9cbf09933a1?auto=format&fit=crop&w=800&q=80",
-            },
-          ],
-        },
+        // {
+        //   id: 3,
+        //   name: "Nakheel",
+        //   slug: "nakheel",
+        //   projects: [
+        //     {
+        //       id: 106,
+        //       title: "Palm Central – Nakheel",
+        //       slug: "palm-central",
+        //       image:
+        //         "https://images.unsplash.com/photo-1520509414578-d9cbf09933a1?auto=format&fit=crop&w=800&q=80",
+        //     },
+        //   ],
+        // },
       ],
     },
 
@@ -106,7 +106,7 @@ export const menuData = {
           projects: [
             {
               id: 203,
-              title: "Arada – Massar 3",
+              title: "Massar 3",
               slug: "massar",
               image:
                 "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",

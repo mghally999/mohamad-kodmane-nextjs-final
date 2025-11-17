@@ -73,11 +73,11 @@ export default function FooterFinal({
         developer: developerTranslations.sobha,
         href: `${baseHref}/apartments/sobha/aquamont`,
       },
-      {
-        title: "Palm Central", // Clean name without Nakheel
-        developer: developerTranslations.nakheel,
-        href: `${baseHref}/apartments/nakheel/palm-central`,
-      },
+      // {
+      //   title: "Palm Central", // Clean name without Nakheel
+      //   developer: developerTranslations.nakheel,
+      //   href: `${baseHref}/apartments/nakheel/palm-central`,
+      // },
     ];
 
     const villas = [
