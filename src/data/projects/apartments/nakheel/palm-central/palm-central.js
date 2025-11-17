@@ -17,8 +17,6 @@ export const palmCentralData = {
       status: "Off-Plan",
       startingPrice: "Contact for Pricing",
       completionDate: "2027",
-      type: "Residences",
-      units: "1-4 Bedroom Apartments & Penthouses",
     },
 
     hero: {
@@ -36,12 +34,39 @@ export const palmCentralData = {
         "Welcome to Palm Central on Palm Jumeirah — a contemporary beachside address by Nakheel. Wake up to turquoise lagoons, landscaped courts, and skyline views in a collection of refined residences.",
         "Designed for effortless everyday living, Palm Central combines resort amenities with serene architecture and calming natural palettes. Experience the perfect blend of island tranquility and urban convenience in one of Dubai's most iconic locations.",
       ],
+      brochures: [
+        {
+          title: "Download Brochure",
+          url: "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
+          type: "main",
+        },
+      ],
       imgUrl:
         "https://luxury-real-estate-media.b-cdn.net/palm-central/intro-main.jpg",
       imgAlt: "Palm Central by Nakheel overlooking the lagoon and skyline",
-      companyName: "Nakheel",
-      projectName: "Palm Central",
-      location: "Palm Jumeirah, Dubai",
+      floatingCards: [
+        {
+          top: "20%",
+          right: "-30px",
+          icon: "🏝️",
+          value: "Palm Jumeirah",
+          label: "Island Location",
+        },
+        {
+          bottom: "30%",
+          left: "-40px",
+          icon: "🌊",
+          value: "Beachfront",
+          label: "Lagoon Views",
+        },
+        {
+          bottom: "15%",
+          right: "-20px",
+          icon: "🏖️",
+          value: "Private Beach",
+          label: "Resort Access",
+        },
+      ],
     },
 
     gallery: {
@@ -68,10 +93,10 @@ export const palmCentralData = {
           bedrooms: 1,
           specs: {
             Unit: "1 BEDROOM + 1 BATHROOM + LIVING AREA + BALCONY",
-            "Suite Area": "Contact for details",
-            "Balcony Area": "Contact for details",
-            "Total Area": "Contact for details",
-            "Starting Price": "Contact for Pricing",
+            Suite: "Contact for details",
+            Balcony: "Contact for details",
+            Total: "Contact for details",
+            Price: "Contact for Pricing",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/hero-inset.jpg",
@@ -90,10 +115,10 @@ export const palmCentralData = {
           bedrooms: 2,
           specs: {
             Unit: "2 BEDROOMS + 2 BATHROOMS + LIVING AREA + BALCONY",
-            "Suite Area": "Contact for details",
-            "Balcony Area": "Contact for details",
-            "Total Area": "Contact for details",
-            "Starting Price": "Contact for Pricing",
+            Suite: "Contact for details",
+            Balcony: "Contact for details",
+            Total: "Contact for details",
+            Price: "Contact for Pricing",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-2br.jpg",
@@ -112,10 +137,10 @@ export const palmCentralData = {
           bedrooms: 3,
           specs: {
             Unit: "3 BEDROOMS + 3 BATHROOMS + LIVING AREA + LARGE BALCONY",
-            "Suite Area": "Contact for details",
-            "Balcony Area": "Contact for details",
-            "Total Area": "Contact for details",
-            "Starting Price": "Contact for Pricing",
+            Suite: "Contact for details",
+            Balcony: "Contact for details",
+            Total: "Contact for details",
+            Price: "Contact for Pricing",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-aerial-01.jpg",
@@ -134,10 +159,10 @@ export const palmCentralData = {
           bedrooms: 4,
           specs: {
             Unit: "4 BEDROOMS + 4 BATHROOMS + LIVING + DINING + TERRACE",
-            "Suite Area": "Contact for details",
-            "Balcony Area": "Contact for details",
-            "Total Area": "Contact for details",
-            "Starting Price": "Contact for Pricing",
+            Suite: "Contact for details",
+            Balcony: "Contact for details",
+            Total: "Contact for details",
+            Price: "Contact for Pricing",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-rooftop-pool-01.jpg",
@@ -151,8 +176,6 @@ export const palmCentralData = {
           ],
         },
       ],
-      brochureHref:
-        "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
     },
 
     amenities: {
@@ -175,23 +198,29 @@ export const palmCentralData = {
       address: "Palm Jumeirah, Dubai, UAE",
       lat: 25.1132,
       lng: 55.1391,
-      zoom: 14,
+      zoom: 15,
+      proximityFeatures: [
+        { icon: "🏝️", text: "Prime location on Palm Jumeirah" },
+        { icon: "🌊", text: "Direct lagoon and beach access" },
+        { icon: "🛥️", text: "Close to marina and waterfront" },
+      ],
     },
 
-    cta: {
-      title: "Ready for Island Living?",
-      description:
-        "Contact our sales team to schedule a private viewing or request more information about available units and pricing.",
-      buttons: [
+    nearbyAttractions: {
+      title: "Island Proximity",
+      attractions: [
         {
-          text: "Schedule Viewing",
-          type: "primary",
-          url: "/contact",
+          name: "The Pointe",
+          distance: "5 min",
+          time: "8 min",
+          icon: "🛍️",
         },
+        { name: "Atlantis", distance: "10 min", time: "15 min", icon: "🏨" },
         {
-          text: "Download Pricing Plan",
-          type: "secondary",
-          url: "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
+          name: "Palm West Beach",
+          distance: "8 min",
+          time: "12 min",
+          icon: "🏖️",
         },
       ],
     },
@@ -211,11 +240,9 @@ export const palmCentralData = {
       name: "Palm Central",
       developer: "Nakheel",
       location: "نخلة جميرا، دبي",
-      status: "مشروع على المخطط (Off-Plan)",
+      status: "قيد التطوير",
       startingPrice: "اتصل لمعرفة الأسعار",
       completionDate: "2027",
-      type: "مساكن",
-      units: "شقق وبنتهاوس من 1 إلى 4 غرف نوم",
     },
 
     hero: {
@@ -233,16 +260,43 @@ export const palmCentralData = {
         "مرحباً بك في بالم سنترال على نخلة جميرا – عنوان شاطئي معاصر من نخيل. استيقظ على إطلالات البحيرة الفيروزية، والساحات الخضراء، وخط أفق دبي في مجموعة من المساكن الراقية المصمّمة بعناية.",
         "تم تصميم بالم سنترال لتقديم تجربة معيشة يومية مريحة تجمع بين مرافق المنتجعات، والعمارة الهادئة، ولوحات ألوان طبيعية مريحة. استمتع بتوازن نادر بين هدوء الجزيرة وقربك من قلب دبي في واحدة من أكثر وجهاتها شهرة.",
       ],
+      brochures: [
+        {
+          title: "تحميل الكتيّب",
+          url: "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
+          type: "main",
+        },
+      ],
       imgUrl:
         "https://luxury-real-estate-media.b-cdn.net/palm-central/intro-main.jpg",
       imgAlt: "بالم سنترال من نخيل بإطلالة على البحيرة وأفق دبي",
-      companyName: "Nakheel",
-      projectName: "Palm Central",
-      location: "نخلة جميرا، دبي",
+      floatingCards: [
+        {
+          top: "20%",
+          right: "-30px",
+          icon: "🏝️",
+          value: "نخلة جميرا",
+          label: "موقع الجزيرة",
+        },
+        {
+          bottom: "30%",
+          left: "-40px",
+          icon: "🌊",
+          value: "شاطئ خاص",
+          label: "إطلالات بحيرة",
+        },
+        {
+          bottom: "15%",
+          right: "-20px",
+          icon: "🏖️",
+          value: "منتجع خاص",
+          label: "وصول مباشر",
+        },
+      ],
     },
 
     gallery: {
-      title: "سيمفونية بصرية على الواجهة البحرية",
+      title: "مشاهد من Palm Central",
       slides: [
         "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-aerial-01.jpg",
         "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-beach-01.jpg",
@@ -261,14 +315,14 @@ export const palmCentralData = {
       plans: [
         {
           id: "1-bedroom",
-          title: "شقة بغرفة نوم واحدة",
+          title: "شقة غرفة نوم واحدة",
           bedrooms: 1,
           specs: {
-            Unit: "غرفة نوم واحدة + حمّام + غرفة معيشة + شرفة",
-            "Suite Area": "يتم توفير المساحة عند الطلب",
-            "Balcony Area": "يتم توفير المساحة عند الطلب",
-            "Total Area": "يتم توفير المساحة عند الطلب",
-            "Starting Price": "اتصل لمعرفة الأسعار",
+            "نوع الوحدة": "غرفة نوم واحدة + حمّام + غرفة معيشة + شرفة",
+            "المساحة الداخلية": "يتم توفير المساحة عند الطلب",
+            "مساحة الشرفة": "يتم توفير المساحة عند الطلب",
+            "إجمالي المساحة": "يتم توفير المساحة عند الطلب",
+            "السعر الابتدائي": "اتصل لمعرفة الأسعار",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/hero-inset.jpg",
@@ -283,14 +337,14 @@ export const palmCentralData = {
         },
         {
           id: "2-bedroom",
-          title: "شقة بغرفتي نوم",
+          title: "شقة غرفتي نوم",
           bedrooms: 2,
           specs: {
-            Unit: "غرفتا نوم + حمّامان + غرفة معيشة + شرفة",
-            "Suite Area": "يتم توفير المساحة عند الطلب",
-            "Balcony Area": "يتم توفير المساحة عند الطلب",
-            "Total Area": "يتم توفير المساحة عند الطلب",
-            "Starting Price": "اتصل لمعرفة الأسعار",
+            الوحدة: "غرفتا نوم + حمّامان + غرفة معيشة + شرفة",
+            "المساحة الداخلية": "يتم توفير المساحة عند الطلب",
+            "مساحة الشرفة": "يتم توفير المساحة عند الطلب",
+            "إجمالي المساحة": "يتم توفير المساحة عند الطلب",
+            "السعر الابتدائي": "اتصل لمعرفة الأسعار",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/floor-2br.jpg",
@@ -305,14 +359,14 @@ export const palmCentralData = {
         },
         {
           id: "3-bedroom",
-          title: "شقة بثلاث غرف نوم",
+          title: "شقة ثلاث غرف نوم",
           bedrooms: 3,
           specs: {
-            Unit: "3 غرف نوم + 3 حمّامات + غرفة معيشة + شرفة واسعة",
-            "Suite Area": "يتم توفير المساحة عند الطلب",
-            "Balcony Area": "يتم توفير المساحة عند الطلب",
-            "Total Area": "يتم توفير المساحة عند الطلب",
-            "Starting Price": "اتصل لمعرفة الأسعار",
+            الوحدة: "3 غرف نوم + 3 حمّامات + غرفة معيشة + شرفة واسعة",
+            "المساحة الداخلية": "يتم توفير المساحة عند الطلب",
+            "مساحة الشرفة": "يتم توفير المساحة عند الطلب",
+            "إجمالي المساحة": "يتم توفير المساحة عند الطلب",
+            "السعر الابتدائي": "اتصل لمعرفة الأسعار",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-aerial-01.jpg",
@@ -327,14 +381,14 @@ export const palmCentralData = {
         },
         {
           id: "4-bedroom",
-          title: "بنتهاوس بأربع غرف نوم",
+          title: "بنتهاوس أربع غرف نوم",
           bedrooms: 4,
           specs: {
-            Unit: "4 غرف نوم + 4 حمّامات + غرفة معيشة + طعام + تيراس",
-            "Suite Area": "يتم توفير المساحة عند الطلب",
-            "Balcony Area": "يتم توفير المساحة عند الطلب",
-            "Total Area": "يتم توفير المساحة عند الطلب",
-            "Starting Price": "اتصل لمعرفة الأسعار",
+            الوحدة: "4 غرف نوم + 4 حمّامات + غرفة معيشة + طعام + تيراس",
+            "المساحة الداخلية": "يتم توفير المساحة عند الطلب",
+            "مساحة الشرفة": "يتم توفير المساحة عند الطلب",
+            "إجمالي المساحة": "يتم توفير المساحة عند الطلب",
+            "السعر الابتدائي": "اتصل لمعرفة الأسعار",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/palm-central/exterior-rooftop-pool-01.jpg",
@@ -348,8 +402,6 @@ export const palmCentralData = {
           ],
         },
       ],
-      brochureHref:
-        "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
     },
 
     amenities: {
@@ -360,13 +412,9 @@ export const palmCentralData = {
         { label: "شاطئ خاص", icon: "🏖️", color: "#d7b46a" },
         { label: "نادي لياقة بدنية", icon: "💪", color: "#d7b46a" },
         { label: "سبا وعافية", icon: "💆", color: "#d7b46a" },
-        {
-          label: "تيراس سطحي بإطلالات على الأفق",
-          icon: "🏙️",
-          color: "#d7b46a",
-        },
+        { label: "لاونج على السطح", icon: "🏙️", color: "#d7b46a" },
         { label: "منطقة لعب للأطفال", icon: "👶", color: "#d7b46a" },
-        { label: "حدائق منسّقة وممرات خضراء", icon: "🌿", color: "#d7b46a" },
+        { label: "حدائق منسّقة", icon: "🌿", color: "#d7b46a" },
       ],
     },
 
@@ -376,23 +424,34 @@ export const palmCentralData = {
       address: "نخلة جميرا، دبي، الإمارات العربية المتحدة",
       lat: 25.1132,
       lng: 55.1391,
-      zoom: 14,
+      zoom: 15,
+      proximityFeatures: [
+        { icon: "🏝️", text: "موقع متميز على نخلة جميرا" },
+        { icon: "🌊", text: "وصول مباشر للبحيرة والشاطئ" },
+        { icon: "🛥️", text: "قرب من المرسى والواجهة البحرية" },
+      ],
     },
 
-    cta: {
-      title: "جاهز لأسلوب حياة الجزيرة؟",
-      description:
-        "تواصل مع فريق المبيعات لدينا لحجز زيارة خاصة أو طلب مزيد من التفاصيل حول الوحدات المتاحة وخطط الأسعار والسداد.",
-      buttons: [
+    nearbyAttractions: {
+      title: "قربك من معالم الجزيرة",
+      attractions: [
         {
-          text: "احجز موعد زيارة",
-          type: "primary",
-          url: "/contact",
+          name: "ذا بوينت",
+          distance: "5 دقائق",
+          time: "8 دقائق",
+          icon: "🛍️",
         },
         {
-          text: "حمّل خطة الأسعار والدفع",
-          type: "secondary",
-          url: "https://luxury-real-estate-media.b-cdn.net/palm-central/palm-central-prices-and-payment-plan.pdf",
+          name: "أتلانتس",
+          distance: "10 دقائق",
+          time: "15 دقيقة",
+          icon: "🏨",
+        },
+        {
+          name: "شاطئ بالم ويست",
+          distance: "8 دقائق",
+          time: "12 دقيقة",
+          icon: "🏖️",
         },
       ],
     },

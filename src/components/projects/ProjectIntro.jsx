@@ -82,21 +82,6 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
       dir={activeIsRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* DEBUG INFO - Remove this in production */}
-        <div
-          style={{
-            background: "#ffeb3b",
-            padding: "10px",
-            marginBottom: "20px",
-            borderRadius: "5px",
-            fontSize: "14px",
-          }}
-        >
-          <strong>Debug Info:</strong> Locale: {activeLocale} | RTL:{" "}
-          {activeIsRTL.toString()} | Title: "{intro.title}" | Paragraphs count:{" "}
-          {intro.paragraphs?.length || 0}
-        </div>
-
         {/* HERO SECTION */}
         <div className={styles.heroSection}>
           <div
