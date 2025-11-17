@@ -69,8 +69,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* ✅ Correct favicon from public/logo.jpg */}
         <link rel="icon" href="/logo.jpg" type="image/jpeg" />
+        <link rel="shortcut icon" href="/logo.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
+
+        {/* Performance */}
         <link
           rel="preconnect"
           href="https://luxury-real-estate-media.b-cdn.net"

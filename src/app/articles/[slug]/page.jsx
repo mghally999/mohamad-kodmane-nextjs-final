@@ -17,14 +17,16 @@ export default function ArticlePage({ params }) {
     redirect(`/articles/${resolved}`);
   }
 
+  // Get article in default language first
   const article = articlesData.getArticleBySlug(resolved);
   if (!article) return notFound();
 
-  return <ArticleTemplate article={article} />;
+  return <ArticleTemplate article={article} slug={resolved} />;
 }
 
 export async function generateStaticParams() {
-  return articlesData.getAllArticles().map((a) => ({ slug: a.slug }));
+  const articles = articlesData.getAllArticles();
+  return articles.map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }) {

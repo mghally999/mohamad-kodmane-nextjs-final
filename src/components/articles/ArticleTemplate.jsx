@@ -3,54 +3,8 @@ import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/ArticleTemplate.module.css";
-
-/**
- * ============================
- * Standard Article Data Schema
- * ============================
- * article = {
- *   id, slug, title, description, image, readTime, category,
- *   publishDate?: "YYYY-MM-DD",
- *   articleData: {
- *     hero: { title, subtitle, image, readTime, category, publishDate? },
- *     tableOfContents: string[],
- *     content: {
- *       sections: Array<{
- *         id?: string, title?: string, content?: string(HTML),
- *         // Blocks below are optional; renderers are data-driven:
- *         stats?: [{ number, label }],
- *         keyPoints?: string[],
- *         expertQuote?: { text, author },
- *         marketAnalysis?: { title?: string, metrics: [{ title, value, description }] },
- *         taxBenefits?: [{ icon?, title, description }],
- *         caseStudy?: {
- *           title?: string,
- *           comparisons?: [{
- *             location, taxes: string[], totalTax
- *           }]
- *         },
- *         positioningAdvantages?: [{ title, description }],
- *         investmentOpportunities?: [{
- *           title, icon?, details?: { [k: string]: string }
- *         }],
- *         futureProjections?: [{
- *           title?: string, items: string[] | [{ label, value }]
- *         }],
- *         roadmap?: [{ step: string|number, title, description }],
- *         rentalYields?: [{
- *           location, averageYield, premiumYield, averageRent, propertyType, demand, image?
- *         }],
- *         analysis?: [{
- *           title, data?: [{ label, value }], description?
- *         }],
- *         appreciationMetrics?: [{ label, value, trend }],
- *         marketHealth?: [{ label, value, status }],
- *         growthTimeline?: [{ year, title, description, growth }]
- *       }>
- *     }
- *   }
- * }
- */
+import { useLanguage } from "@/components/LanguageProvider";
+import articlesData from "@/data/articles/articles-data";
 
 const slugify = (s = "") => s.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
@@ -74,11 +28,11 @@ function StatsGrid({ stats }) {
   );
 }
 
-function ExpertQuote({ quote }) {
+function ExpertQuote({ quote, isRTL }) {
   if (!quote?.text) return null;
   return (
     <blockquote className={styles.expertQuote}>
-      <em>“{quote.text}”</em>
+      <em>"{quote.text}"</em>
       {quote.author && <cite>— {quote.author}</cite>}
     </blockquote>
   );
@@ -334,7 +288,140 @@ function GrowthTimeline({ items }) {
   );
 }
 
-function Section({ section }) {
+function ProcessSteps({ steps }) {
+  if (!Array.isArray(steps) || steps.length === 0) return null;
+  return (
+    <div className={styles.roadmap}>
+      {steps.map((s, i) => (
+        <div className={styles.roadmapStep} key={i}>
+          <div className={styles.stepNumber}>{s.number}</div>
+          <div className={styles.stepContent}>
+            <h4>{s.title}</h4>
+            <p>{s.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// UPDATED COMPONENTS WITH LOCALIZATION
+function CaseStudies({ caseStudies, isRTL }) {
+  if (!Array.isArray(caseStudies) || caseStudies.length === 0) return null;
+
+  const labels = {
+    investment: isRTL ? "الاستثمار" : "Investment",
+    downPayment: isRTL ? "الدفعة الأولى" : "Down Payment",
+    salePrice: isRTL ? "سعر البيع" : "Sale Price",
+    profit: isRTL ? "الربح" : "Profit",
+    roi: isRTL ? "العائد على الاستثمار" : "ROI",
+    timeframe: isRTL ? "الفترة الزمنية" : "Timeframe",
+  };
+
+  return (
+    <div className={styles.caseStudies}>
+      {caseStudies.map((cs, i) => (
+        <div className={styles.caseStudyItem} key={i}>
+          <h4>{cs.title}</h4>
+          <div className={styles.caseStudyDetails}>
+            <p>
+              <strong>{labels.investment}:</strong> {cs.investment}
+            </p>
+            <p>
+              <strong>{labels.downPayment}:</strong> {cs.downPayment}
+            </p>
+            <p>
+              <strong>{labels.salePrice}:</strong> {cs.salePrice}
+            </p>
+            <p>
+              <strong>{labels.profit}:</strong> {cs.profit}
+            </p>
+            <p>
+              <strong>{labels.roi}:</strong> {cs.roi}
+            </p>
+            <p>
+              <strong>{labels.timeframe}:</strong> {cs.timeframe}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Risks({ risks, isRTL }) {
+  if (!Array.isArray(risks) || risks.length === 0) return null;
+
+  const labels = {
+    risk: isRTL ? "المخاطر" : "Risk",
+    mitigation: isRTL ? "التخفيف" : "Mitigation",
+  };
+
+  return (
+    <div className={styles.risks}>
+      {risks.map((r, i) => (
+        <div className={styles.riskItem} key={i}>
+          <h4>{r.title}</h4>
+          <p>
+            <strong>{labels.risk}:</strong> {r.risk}
+          </p>
+          <p>
+            <strong>{labels.mitigation}:</strong> {r.mitigation}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Developments({ developments, isRTL }) {
+  if (!Array.isArray(developments) || developments.length === 0) return null;
+
+  const labels = {
+    developer: isRTL ? "المطور" : "Developer",
+    price: isRTL ? "السعر" : "Price",
+    roi: isRTL ? "العائد المتوقع" : "ROI",
+    completion: isRTL ? "موعد التسليم" : "Completion",
+  };
+
+  return (
+    <div className={styles.developments}>
+      {developments.map((d, i) => (
+        <div className={styles.developmentItem} key={i}>
+          <h4>{d.name}</h4>
+          <p>
+            <strong>{labels.developer}:</strong> {d.developer}
+          </p>
+          <p>
+            <strong>{labels.price}:</strong> {d.price}
+          </p>
+          <p>
+            <strong>{labels.roi}:</strong> {d.roi}
+          </p>
+          <p>
+            <strong>{labels.completion}:</strong> {d.completion}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Strategies({ strategies }) {
+  if (!Array.isArray(strategies) || strategies.length === 0) return null;
+  return (
+    <div className={styles.strategies}>
+      {strategies.map((s, i) => (
+        <div className={styles.strategyItem} key={i}>
+          <h4>{s.title}</h4>
+          <p>{s.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Section({ section, isRTL }) {
   const anchor = section.id || slugify(section.title || "");
   return (
     <section className={styles.contentSection} id={anchor}>
@@ -343,10 +430,10 @@ function Section({ section }) {
         <div dangerouslySetInnerHTML={{ __html: section.content }} />
       )}
 
-      {/* blocks mapped to your standardized classes */}
+      {/* Render all possible data blocks */}
       <StatsGrid stats={section.stats} />
       <KeyPoints points={section.keyPoints} />
-      <ExpertQuote quote={section.expertQuote} />
+      <ExpertQuote quote={section.expertQuote} isRTL={isRTL} />
       {section.marketAnalysis && (
         <MarketAnalysis block={section.marketAnalysis} />
       )}
@@ -365,12 +452,17 @@ function Section({ section }) {
       <RentalYields items={section.rentalYields} />
       <AnalysisBlocks items={section.analysis} />
       <GrowthTimeline items={section.growthTimeline} />
+      <ProcessSteps steps={section.processSteps} />
+      <CaseStudies caseStudies={section.caseStudies} isRTL={isRTL} />
+      <Risks risks={section.risks} isRTL={isRTL} />
+      <Developments developments={section.developments} isRTL={isRTL} />
+      <Strategies strategies={section.strategies} />
 
-      {/* appreciation/health tables (inline, small) */}
+      {/* appreciation/health tables */}
       {Array.isArray(section.appreciationMetrics) &&
         section.appreciationMetrics.length > 0 && (
           <div className={styles.marketAnalysis} style={{ marginTop: 20 }}>
-            <h3>Appreciation Metrics</h3>
+            <h3>{isRTL ? "مقاييس التقدير" : "Appreciation Metrics"}</h3>
             <div className={styles.metricsGrid}>
               {section.appreciationMetrics.map((m, i) => (
                 <div className={styles.metric} key={i}>
@@ -386,7 +478,7 @@ function Section({ section }) {
       {Array.isArray(section.marketHealth) &&
         section.marketHealth.length > 0 && (
           <div className={styles.marketAnalysis} style={{ marginTop: 20 }}>
-            <h3>Market Health</h3>
+            <h3>{isRTL ? "صحة السوق" : "Market Health"}</h3>
             <div className={styles.metricsGrid}>
               {section.marketHealth.map((m, i) => (
                 <div className={styles.metric} key={i}>
@@ -402,14 +494,22 @@ function Section({ section }) {
   );
 }
 
-export default function ArticleTemplate({ article }) {
+export default function ArticleTemplate({ article, slug }) {
+  const { locale } = useLanguage();
   const [showConsultation, setShowConsultation] = useState(false);
-  const { articleData } = article;
+
+  // Get localized article data
+  const localizedArticle = useMemo(() => {
+    return articlesData.getArticleBySlug(slug, locale) || article;
+  }, [slug, locale, article]);
+
+  const { articleData } = localizedArticle;
+  const isRTL = locale === "ar";
 
   const toc = useMemo(() => articleData?.tableOfContents || [], [articleData]);
   const published =
-    article.articleData?.hero?.publishDate ||
-    article.publishDate ||
+    articleData?.hero?.publishDate ||
+    localizedArticle.publishDate ||
     "2024-01-15";
 
   const handleConsultationSubmit = async (e) => {
@@ -418,7 +518,7 @@ export default function ArticleTemplate({ article }) {
   };
 
   return (
-    <article className={styles.articlePage}>
+    <article className={styles.articlePage} dir={isRTL ? "rtl" : "ltr"}>
       {/* Structured Data */}
       <script
         type="application/ld+json"
@@ -437,7 +537,7 @@ export default function ArticleTemplate({ article }) {
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://yourdomain.com/articles/${article.slug}`,
+              "@id": `https://yourdomain.com/articles/${localizedArticle.slug}`,
             },
           }),
         }}
@@ -447,7 +547,7 @@ export default function ArticleTemplate({ article }) {
       <header className={styles.hero}>
         <div className={styles.heroBackground}>
           <Image
-            src={article.image}
+            src={articleData.hero.image || localizedArticle.image}
             alt={articleData.hero.title}
             fill
             className={styles.heroImage}
@@ -457,8 +557,9 @@ export default function ArticleTemplate({ article }) {
 
         <div className={styles.heroContent}>
           <nav className={styles.breadcrumb}>
-            <Link href="/">Home</Link> / <Link href="/articles">Articles</Link>{" "}
-            / <span>{article.category}</span>
+            <Link href="/">{isRTL ? "الرئيسية" : "Home"}</Link> /{" "}
+            <Link href="/articles">{isRTL ? "المقالات" : "Articles"}</Link> /{" "}
+            <span>{localizedArticle.category}</span>
           </nav>
 
           <div className={styles.articleMeta}>
@@ -479,10 +580,12 @@ export default function ArticleTemplate({ article }) {
           <p className={styles.heroSubtitle}>{articleData.hero.subtitle}</p>
 
           <div className={styles.author}>
-            <div className={styles.authorAvatar}>MK</div>
+            <div className={styles.authorAvatar}>{isRTL ? "م.ق" : "MK"}</div>
             <div className={styles.authorInfo}>
-              <strong>Mohamad Kodmane</strong>
-              <span>Dubai Real Estate Expert</span>
+              <strong>{isRTL ? "محمد قضماني" : "Mohamad Kodmane"}</strong>
+              <span>
+                {isRTL ? "خبير العقارات في دبي" : "Dubai Real Estate Expert"}
+              </span>
             </div>
           </div>
         </div>
@@ -491,7 +594,7 @@ export default function ArticleTemplate({ article }) {
       {/* TOC */}
       {toc.length > 0 && (
         <aside className={styles.tableOfContents}>
-          <h2>Table of Contents</h2>
+          <h2>{isRTL ? "جدول المحتويات" : "Table of Contents"}</h2>
           <nav>
             <ul>
               {toc.map((item, i) => (
@@ -507,22 +610,23 @@ export default function ArticleTemplate({ article }) {
       {/* Content */}
       <main className={styles.articleContent}>
         {(articleData.content?.sections || []).map((section, idx) => (
-          <Section key={section.id || idx} section={section} />
+          <Section key={section.id || idx} section={section} isRTL={isRTL} />
         ))}
 
         {/* In-Article CTA */}
         <section className={styles.contentSection}>
           <div className={styles.inArticleCTA}>
-            <h3>Ready to Take Action?</h3>
+            <h3>{isRTL ? "مستعد لاتخاذ الإجراء؟" : "Ready to Take Action?"}</h3>
             <p>
-              Get personalized guidance based on this analysis to maximize your
-              returns.
+              {isRTL
+                ? "احصل على إرشادات مخصصة بناءً على هذا التحليل لتعظيم عوائدك."
+                : "Get personalized guidance based on this analysis to maximize your returns."}
             </p>
             <button
               className={styles.ctaButton}
               onClick={() => setShowConsultation(true)}
             >
-              Get Expert Consultation
+              {isRTL ? "احصل على استشارة الخبراء" : "Get Expert Consultation"}
             </button>
           </div>
         </section>
@@ -531,17 +635,24 @@ export default function ArticleTemplate({ article }) {
       {/* Final CTA */}
       <section className={styles.finalCTA}>
         <div className={styles.ctaContent}>
-          <h2>Ready to Implement These Strategies?</h2>
+          <h2>
+            {isRTL
+              ? "مستعد لتنفيذ هذه الاستراتيجيات؟"
+              : "Ready to Implement These Strategies?"}
+          </h2>
           <p>
-            Take the next step in your investment journey with personalized
-            guidance and expert support.
+            {isRTL
+              ? "اتخذ الخطوة التالية في رحلتك الاستثمارية مع إرشادات مخصصة ودعم الخبراء."
+              : "Take the next step in your investment journey with personalized guidance and expert support."}
           </p>
           <div className={styles.ctaButtons}>
             <button
               className={styles.primaryCTA}
               onClick={() => setShowConsultation(true)}
             >
-              Get Personalized Investment Plan
+              {isRTL
+                ? "احصل على خطة استثمار مخصصة"
+                : "Get Personalized Investment Plan"}
             </button>
             <a
               href="https://wa.me/971501234567?text=Hi,%20I%20read%20your%20article%20and%20want%20to%20learn%20more"
@@ -549,12 +660,14 @@ export default function ArticleTemplate({ article }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              💬 Quick Consultation
+              {isRTL ? "💬 استشارة سريعة" : "💬 Quick Consultation"}
             </a>
           </div>
           <div className={styles.guarantee}>
             <strong>
-              Expert Guidance • Proven Results • Personalized Strategy
+              {isRTL
+                ? "إرشادات الخبراء • نتائج مثبتة • استراتيجية مخصصة"
+                : "Expert Guidance • Proven Results • Personalized Strategy"}
             </strong>
           </div>
         </div>
@@ -570,32 +683,65 @@ export default function ArticleTemplate({ article }) {
             >
               ×
             </button>
-            <h3>Get Expert Guidance</h3>
+            <h3>
+              {isRTL ? "احصل على إرشادات الخبراء" : "Get Expert Guidance"}
+            </h3>
             <p>
-              Receive personalized investment recommendations based on this
-              article's insights
+              {isRTL
+                ? "تلقي توصيات استثمارية مخصصة بناءً على رؤى هذه المقالة"
+                : "Receive personalized investment recommendations based on this article's insights"}
             </p>
             <form
               className={styles.consultationForm}
               onSubmit={handleConsultationSubmit}
             >
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email Address" required />
-              <input type="tel" placeholder="Phone Number" required />
+              <input
+                type="text"
+                placeholder={isRTL ? "الاسم الكامل" : "Full Name"}
+                required
+              />
+              <input
+                type="email"
+                placeholder={isRTL ? "البريد الإلكتروني" : "Email Address"}
+                required
+              />
+              <input
+                type="tel"
+                placeholder={isRTL ? "رقم الهاتف" : "Phone Number"}
+                required
+              />
               <select required>
-                <option value="">Investment Interest</option>
-                <option value="off-plan">Off-Plan Properties</option>
-                <option value="ready">Ready Properties</option>
-                <option value="rental">Rental Investments</option>
-                <option value="luxury">Luxury Properties</option>
+                <option value="">
+                  {isRTL ? "مجال الاهتمام الاستثماري" : "Investment Interest"}
+                </option>
+                <option value="off-plan">
+                  {isRTL ? "العقارات على المخطط" : "Off-Plan Properties"}
+                </option>
+                <option value="ready">
+                  {isRTL ? "العقارات الجاهزة" : "Ready Properties"}
+                </option>
+                <option value="rental">
+                  {isRTL ? "الاستثمارات الإيجارية" : "Rental Investments"}
+                </option>
+                <option value="luxury">
+                  {isRTL ? "العقارات الفاخرة" : "Luxury Properties"}
+                </option>
               </select>
               <select required>
-                <option value="">Investment Budget</option>
-                <option value="1-2M">AED 1-2 Million</option>
-                <option value="2-5M">AED 2-5 Million</option>
+                <option value="">
+                  {isRTL ? "ميزانية الاستثمار" : "Investment Budget"}
+                </option>
+                <option value="1-2M">
+                  AED 1-2 {isRTL ? "مليون" : "Million"}
+                </option>
+                <option value="2-5M">
+                  AED 2-5 {isRTL ? "مليون" : "Million"}
+                </option>
                 <option value="5M+">AED 5M+</option>
               </select>
-              <button type="submit">Get Expert Advice</button>
+              <button type="submit">
+                {isRTL ? "احصل على نصيحة الخبراء" : "Get Expert Advice"}
+              </button>
             </form>
           </div>
         </div>

@@ -4,11 +4,14 @@ import styles from "./articles.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import articlesData from "@/data/articles/articles-data";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Articles() {
   const router = useRouter();
+  const { locale, t } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
+  const isRTL = locale === "ar";
 
   useEffect(() => {
     setIsVisible(true);
@@ -20,31 +23,65 @@ export default function Articles() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
+  // Hero images with translations
   const heroImages = [
     {
       src: `${CDN}/sky-parks/exterior-night-01.jpg`,
-      alt: "Dubai Real Estate Market Insights",
-      title: "Investment Guides",
-      description: "Maximize returns with strategic property investments",
+      alt: isRTL
+        ? "تحليلات سوق العقارات في دبي"
+        : "Dubai Real Estate Market Insights",
+      title: isRTL ? "دليل الاستثمار" : "Investment Guides",
+      description: isRTL
+        ? "حقّق أقصى عائد من خلال الاستثمار الاستراتيجي في العقارات"
+        : "Maximize returns with strategic property investments",
     },
     {
       src: `${CDN}/hartland/hero-bg.jpg`,
-      alt: "Investment Strategies",
-      title: "Market Analysis",
-      description: "Expert insights on Dubai's luxury property trends",
+      alt: isRTL ? "استراتيجيات الاستثمار" : "Investment Strategies",
+      title: isRTL ? "تحليل السوق" : "Market Analysis",
+      description: isRTL
+        ? "رؤى الخبراء حول اتجاهات العقارات الفاخرة في دبي"
+        : "Expert insights on Dubai's luxury property trends",
     },
     {
       src: `${CDN}/lumena-alta/hero-bg.jpg`,
-      alt: "Property Development",
-      title: "Development News",
-      description: "Latest updates on premium Dubai developments",
+      alt: isRTL ? "تطوير العقارات" : "Property Development",
+      title: isRTL ? "أخبار التطوير" : "Development News",
+      description: isRTL
+        ? "أحدث التحديثات حول المشاريع العقارية المتميزة في دبي"
+        : "Latest updates on premium Dubai developments",
+    },
+  ];
+
+  // Trust stats with translations
+  const trustStats = [
+    {
+      number: "15+",
+      label: isRTL ? "سنوات خبرة" : "Years Experience",
+    },
+    {
+      number: "500+",
+      label: isRTL ? "مشروع مكتمل" : "Projects Completed",
+    },
+    {
+      number: "98%",
+      label: isRTL ? "رضا العملاء" : "Client Satisfaction",
     },
   ];
 
   const handleArticleClick = (slug) => router.push(`/articles/${slug}`);
 
+  // Get localized data
+  const listingData = articlesData.getListingData(locale);
+  const articles = articlesData.getAllArticles(locale);
+
   return (
-    <div className={`${styles.page} ${isVisible ? styles.visible : ""}`}>
+    <div
+      className={`${styles.page} ${isVisible ? styles.visible : ""} ${
+        isRTL ? styles.rtl : ""
+      }`}
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* HERO (carousel) */}
       <section className={styles.hero}>
         <div className={styles.heroCarousel}>
@@ -67,31 +104,21 @@ export default function Articles() {
                 <div className={styles.heroContent}>
                   <div className={styles.heroContentInner}>
                     <div className={styles.heroBadge}>
-                      <span>Expert Insights</span>
+                      <span>{isRTL ? "رؤى الخبراء" : "Expert Insights"}</span>
                       <div className={styles.badgeLine}></div>
                     </div>
                     <h1 className={styles.heroTitle}>
-                      Dubai Real Estate{" "}
+                      {isRTL ? "العقارات في دبي" : "Dubai Real Estate"}{" "}
                       <span className={styles.highlight}>{image.title}</span>
                     </h1>
                     <p className={styles.heroSubtitle}>{image.description}</p>
                     <div className={styles.trustStats}>
-                      <div className={styles.statItem}>
-                        <div className={styles.statNumber}>15+</div>
-                        <div className={styles.statLabel}>Years Experience</div>
-                      </div>
-                      <div className={styles.statItem}>
-                        <div className={styles.statNumber}>500+</div>
-                        <div className={styles.statLabel}>
-                          Projects Completed
+                      {trustStats.map((stat, index) => (
+                        <div key={index} className={styles.statItem}>
+                          <div className={styles.statNumber}>{stat.number}</div>
+                          <div className={styles.statLabel}>{stat.label}</div>
                         </div>
-                      </div>
-                      <div className={styles.statItem}>
-                        <div className={styles.statNumber}>98%</div>
-                        <div className={styles.statLabel}>
-                          Client Satisfaction
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -128,21 +155,21 @@ export default function Articles() {
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <div className={styles.sectionBadge}>
-              {articlesData.listing.sectionHeader.badge}
+              {listingData.sectionHeader.badge}
             </div>
             <h2 className={styles.sectionTitle}>
-              {articlesData.listing.sectionHeader.title}{" "}
+              {listingData.sectionHeader.title}{" "}
               <span className={styles.highlight}>
-                {articlesData.listing.sectionHeader.highlight}
+                {listingData.sectionHeader.highlight}
               </span>
             </h2>
             <p className={styles.sectionSubtitle}>
-              {articlesData.listing.sectionHeader.subtitle}
+              {listingData.sectionHeader.subtitle}
             </p>
           </div>
 
           <div className={styles.articlesGrid}>
-            {articlesData.getAllArticles().map((article) => (
+            {articles.map((article) => (
               <article
                 key={article.id}
                 className={styles.articleCard}
@@ -165,8 +192,10 @@ export default function Articles() {
                   </div>
                   <div className={styles.cardHover}>
                     <div className={styles.hoverContent}>
-                      <span>Read Article</span>
-                      <div className={styles.arrowIcon}>→</div>
+                      <span>{isRTL ? "اقرأ المقال" : "Read Article"}</span>
+                      <div className={styles.arrowIcon}>
+                        {isRTL ? "←" : "→"}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -196,20 +225,18 @@ export default function Articles() {
       <section className={styles.ctaSection}>
         <div className={styles.container}>
           <div className={styles.ctaCard}>
-            <div className={styles.ctaBadge}>
-              {articlesData.listing.cta.badge}
-            </div>
+            <div className={styles.ctaBadge}>{listingData.cta.badge}</div>
             <h2 className={styles.ctaTitle}>
-              {articlesData.listing.cta.title}{" "}
+              {listingData.cta.title}{" "}
               <span className={styles.highlight}>
-                {articlesData.listing.cta.highlight}
+                {listingData.cta.highlight}
               </span>
             </h2>
             <p className={styles.ctaDescription}>
-              {articlesData.listing.cta.description}
+              {listingData.cta.description}
             </p>
             <div className={styles.ctaButtons}>
-              {articlesData.listing.cta.buttons.map((b, i) => (
+              {listingData.cta.buttons.map((b, i) => (
                 <a
                   key={i}
                   href={b.href}
@@ -226,7 +253,7 @@ export default function Articles() {
               ))}
             </div>
             <div className={styles.trustNote}>
-              <strong>{articlesData.listing.cta.trustNote}</strong>
+              <strong>{listingData.cta.trustNote}</strong>
             </div>
           </div>
         </div>
