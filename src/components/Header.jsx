@@ -40,7 +40,7 @@ export default function Header() {
         <div className={styles.circle2}></div>
         <div className={styles.line}></div>
 
-        {/* DESKTOP OWNER PICTURE - HIDDEN ON MOBILE */}
+        {/* DESKTOP OWNER PICTURE - NOW VISIBLE ON ALL SCREENS */}
         <div
           className={`${styles.ownerBackground} ${
             isRTL ? styles.ownerBackgroundRTL : ""

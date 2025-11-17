@@ -187,7 +187,7 @@
 }
 
 .megaMenuContainer {
-  max-width: 1400px;
+  max-width: 100%;
   padding: 2.5rem;
 }
 
@@ -1887,7 +1887,7 @@ body.mobileMenuOpen {
 }
 
 .megaMenuContainer {
-  max-width: 1400px;
+  max-width: 100%;
   padding: 2.5rem;
 }
 
@@ -3421,7 +3421,7 @@ body.mobileMenuOpen {
 }
 
 .megaMenuContainer {
-  max-width: 1400px;
+  max-width: 100%;
   padding: 2.5rem;
 }
 
@@ -3799,13 +3799,13 @@ body.mobileMenuOpen {
 }
 
 .megaMenuContainer {
-  max-width: 1400px;
+  max-width: 100%;
   padding: 2rem;
 }
 
 .megaMenuContent {
   display: grid;
-  grid-template-columns: 280px 280px 280px 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   min-height: 500px;
   align-items: start;
@@ -4081,7 +4081,8 @@ body.mobileMenuOpen {
 .imagePreviewPanel {
   border-left: 1px solid rgba(199, 173, 102, 0.28);
   padding: 1.5rem;
-  height: 100%;
+  height: auto;
+  width: 700px;
 }
 
 .imagePreviewContent {

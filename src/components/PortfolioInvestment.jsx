@@ -16,15 +16,24 @@ export default function PortfolioInvestment() {
     setIsVisible(true);
   }, []);
 
+  // Growth data with translations
   const growthData = {
     years: [1, 3, 5, 7],
     values: [100, 158, 242, 356],
     percentages: ["+0%", "+58%", "+142%", "+256%"],
     descriptions: [
-      t("portfolio.growth.descriptions.0"),
-      t("portfolio.growth.descriptions.1"),
-      t("portfolio.growth.descriptions.2"),
-      t("portfolio.growth.descriptions.3"),
+      locale === "ar"
+        ? "مرحلة الاستثمار الأولي مع اختيار عقاري استراتيجي"
+        : "Initial investment phase with strategic property selection",
+      locale === "ar"
+        ? "نمو رأسمالي قوي من استثمارات قيد الإنشاء تنضج"
+        : "Strong capital growth from off-plan investments maturing",
+      locale === "ar"
+        ? "تنويع المحفظة يظهر عوائد كبيرة"
+        : "Portfolio diversification showing significant returns",
+      locale === "ar"
+        ? "تراكم ثروة طويلة الأجل بأقصى عائد استثماري"
+        : "Long-term wealth accumulation with maximum ROI",
     ],
   };
 
@@ -55,29 +64,32 @@ export default function PortfolioInvestment() {
     },
   ];
 
+  // Performance highlights with translations
   const performanceHighlights = [
     {
       value: "63%",
-      label: t("portfolio.performance.offPlanSales.label"),
-      trend: t("portfolio.performance.offPlanSales.trend"),
+      label:
+        locale === "ar" ? "نمو مبيعات قيد الإنشاء" : "Off-plan sales growth",
+      trend: locale === "ar" ? "زيادة سنوية" : "Year-over-year increase",
       icon: "📊",
     },
     {
       value: "19.3%",
-      label: t("portfolio.performance.rentIncrease.label"),
-      trend: t("portfolio.performance.rentIncrease.trend"),
+      label:
+        locale === "ar" ? "زيادة العائد الإيجاري" : "Rental yield increase",
+      trend: locale === "ar" ? "مواقع متميزة" : "Premium locations",
       icon: "🏢",
     },
     {
       value: "10%",
-      label: t("portfolio.performance.priceAppreciation.label"),
-      trend: t("portfolio.performance.priceAppreciation.trend"),
+      label: locale === "ar" ? "ارتفاع الأسعار" : "Price appreciation",
+      trend: locale === "ar" ? "متوسط سنوي" : "Annual average",
       icon: "💵",
     },
     {
       value: "119,800",
-      label: t("portfolio.performance.transactions.label"),
-      trend: t("portfolio.performance.transactions.trend"),
+      label: locale === "ar" ? "إجمالي المعاملات" : "Total transactions",
+      trend: locale === "ar" ? "حجم السوق" : "Market volume",
       icon: "🧾",
     },
   ];
@@ -175,7 +187,9 @@ export default function PortfolioInvestment() {
                         bottom: `${((value - 100) / 300) * 100}%`,
                       }}
                     >
-                      <div className={styles.pointValue}>${value}K</div>
+                      <div className={styles.pointValue}>
+                        {locale === "ar" ? `${value} ألف` : `$${value}K`}
+                      </div>
                       <div className={styles.pointDot}></div>
                     </div>
                   ))}
@@ -201,10 +215,18 @@ export default function PortfolioInvestment() {
                 </div>
 
                 <div className={styles.yAxis}>
-                  <span className={styles.yLabel}>$100K</span>
-                  <span className={styles.yLabel}>$200K</span>
-                  <span className={styles.yLabel}>$300K</span>
-                  <span className={styles.yLabel}>$400K</span>
+                  <span className={styles.yLabel}>
+                    {locale === "ar" ? "100 ألف" : "$100K"}
+                  </span>
+                  <span className={styles.yLabel}>
+                    {locale === "ar" ? "200 ألف" : "$200K"}
+                  </span>
+                  <span className={styles.yLabel}>
+                    {locale === "ar" ? "300 ألف" : "$300K"}
+                  </span>
+                  <span className={styles.yLabel}>
+                    {locale === "ar" ? "400 ألف" : "$400K"}
+                  </span>
                 </div>
 
                 <div className={styles.xAxis}>
@@ -220,8 +242,8 @@ export default function PortfolioInvestment() {
                 <div className={styles.infoCard}>
                   <div className={styles.infoHeader}>
                     <h3 className={styles.infoTitle}>
-                      {t("portfolio.yearLabel")} {growthData.years[activeYear]}{" "}
-                      {t("portfolio.growthInfoTitle")}
+                      {locale === "ar" ? "أداء" : "Performance"}{" "}
+                      {t("portfolio.yearLabel")} {growthData.years[activeYear]}
                     </h3>
                     <div className={styles.infoReturn}>
                       {growthData.percentages[activeYear]}

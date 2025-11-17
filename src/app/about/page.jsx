@@ -9,6 +9,13 @@ export default function AboutPage() {
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
   const isRTL = locale === "ar";
 
+  // Badge translations
+  const badgeTranslations = {
+    dldCertified: isRTL ? "معتمد من دائرة الأراضي والأملاك" : "DLD Certified",
+    premiumPartner: isRTL ? "شريك متميز" : "Premium Partner",
+    roi: isRTL ? "15-30% عائد استثماري" : "15-30% ROI",
+  };
+
   return (
     <div
       className={`${styles.page} ${isRTL ? styles.rtl : ""}`}
@@ -59,9 +66,15 @@ export default function AboutPage() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className={styles.photoBadges}>
-                  <div className={styles.photoBadge}>DLD Certified</div>
-                  <div className={styles.photoBadge}>Premium Partner</div>
-                  <div className={styles.photoBadge}>15-30% ROI</div>
+                  <div className={styles.photoBadge}>
+                    {badgeTranslations.dldCertified}
+                  </div>
+                  <div className={styles.photoBadge}>
+                    {badgeTranslations.premiumPartner}
+                  </div>
+                  <div className={styles.photoBadge}>
+                    {badgeTranslations.roi}
+                  </div>
                 </div>
               </div>
             </div>

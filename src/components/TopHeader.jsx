@@ -22,7 +22,7 @@ export default function TopHeader() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // Menu data with translations
+  // Fixed menu data with projectNames
   const menuData = useMemo(() => {
     const data = {
       categories: [
@@ -35,35 +35,35 @@ export default function TopHeader() {
           developers: [
             {
               id: 1,
-              name: "Sobha Realty",
+              name: t("developers.sobhaRealty"),
               slug: "sobha",
               image: `${CDN}/aquamont/intro-main.png`,
               logo: `/Sobha-Realty-Square-Logo.jpg`,
               projects: [
                 {
                   id: 101,
-                  title: t("brands.sobhaSkyParks"),
+                  title: t("projectNames.sobhaSkyParks"),
                   slug: "skyparks",
                   image: `${CDN}/sky-parks/exterior-night-01.jpg`,
                   description: t("descriptions.apartments"),
                 },
                 {
                   id: 102,
-                  title: t("brands.sobhaAquaCrest"),
+                  title: t("projectNames.sobhaAquaCrest"),
                   slug: "aqua-crest",
                   image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
                   description: t("descriptions.apartments"),
                 },
                 {
                   id: 103,
-                  title: "Sobha Central",
+                  title: t("projectNames.sobhaCentral"),
                   slug: "central",
                   image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
                   description: t("descriptions.apartments"),
                 },
                 {
                   id: 104,
-                  title: "Sobha Aquamont",
+                  title: t("projectNames.sobhaAquamont"),
                   slug: "aquamont",
                   image: `${CDN}/aquamont/intro-main.png`,
                   description: t("descriptions.apartments"),
@@ -72,14 +72,14 @@ export default function TopHeader() {
             },
             {
               id: 2,
-              name: "Nakheel",
+              name: t("developers.nakheel"),
               slug: "nakheel",
               image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
               logo: `/Nakheel-Developments.webp`,
               projects: [
                 {
                   id: 106,
-                  title: "Palm Central – Nakheel",
+                  title: t("projectNames.palmCentralNakheel"),
                   slug: "palm-central",
                   image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
                   description: t("descriptions.apartments"),
@@ -97,21 +97,21 @@ export default function TopHeader() {
           developers: [
             {
               id: 1,
-              name: "Sobha Realty",
+              name: t("developers.sobhaRealty"),
               slug: "sobha",
               image: `${CDN}/hartland/hero-bg.jpg`,
               logo: `/Sobha-Realty-Square-Logo.jpg`,
               projects: [
                 {
                   id: 201,
-                  title: t("brands.sobhaHartland2Villas"),
+                  title: t("projectNames.sobhaHartland2Villas"),
                   slug: "hartland",
                   image: `${CDN}/hartland/hero-bg.jpg`,
                   description: t("descriptions.villas"),
                 },
                 {
                   id: 202,
-                  title: "Sobha Al Sinniyyah Island",
+                  title: t("projectNames.sobhaAlSinniyyahIsland"),
                   slug: "al-sinniyyah-island",
                   image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
                   description: t("descriptions.villas"),
@@ -120,14 +120,14 @@ export default function TopHeader() {
             },
             {
               id: 2,
-              name: "Arada",
+              name: t("developers.arada"),
               slug: "arada",
               image: `${CDN}/massar-3/hero-bg.jpg`,
               logo: `/arada-developer.avif`,
               projects: [
                 {
                   id: 203,
-                  title: "Arada – Massar 3",
+                  title: t("projectNames.aradaMassar3"),
                   slug: "massar",
                   image: `${CDN}/massar-3/hero-bg.jpg`,
                   description: t("descriptions.villas"),
@@ -145,14 +145,14 @@ export default function TopHeader() {
           developers: [
             {
               id: 2,
-              name: "Omniyat",
+              name: t("developers.omniyat"),
               slug: "omniyat",
               image: `${CDN}/lumena-alta/hero-bg.jpg`,
               logo: `/omniyat-logo.avif`,
               projects: [
                 {
                   id: 305,
-                  title: "Lumina Alta – Omniyat",
+                  title: t("projectNames.luminaAlta"),
                   slug: "lumenaalta",
                   image: `${CDN}/lumena-alta/hero-bg.jpg`,
                   description: t("descriptions.commercial"),
@@ -161,14 +161,14 @@ export default function TopHeader() {
             },
             {
               id: 1,
-              name: "Azizi Developments",
+              name: t("developers.aziziDevelopments"),
               slug: "azizi",
               image: `${CDN}/riviera/hero-bg.jpg`,
               logo: `/azizi.jpg`,
               projects: [
                 {
                   id: 301,
-                  title: t("brands.aziziRivieraRetails"),
+                  title: t("projectNames.aziziRivieraRetails"),
                   slug: "riviera-retails",
                   image: `${CDN}/riviera/hero-bg.jpg`,
                   description: t("descriptions.commercial"),
@@ -186,14 +186,14 @@ export default function TopHeader() {
           developers: [
             {
               id: 1,
-              name: "Sobha Realty",
+              name: t("developers.sobhaRealty"),
               slug: "sobha",
               image: `${CDN}/sky-parks/exterior-night-01.jpg`,
               logo: `/Sobha-Realty-Square-Logo.jpg`,
               projects: [
                 {
                   id: 401,
-                  title: t("brands.sobhaSeaHavenPenthouse"),
+                  title: t("projectNames.sobhaSeaHavenPenthouse"),
                   slug: "seahaven-penthouse",
                   image: `${CDN}/sky-parks/exterior-night-01.jpg`,
                   description: t("descriptions.penthouses"),

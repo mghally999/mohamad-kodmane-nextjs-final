@@ -37,22 +37,18 @@
     "omniyat": "أومنيات",
     "aziziDevelopments": "عزيزي للتطوير العقاري"
   },
-  "projects": {
+  "projectNames": {
+    "sobhaSkyParks": "شوبا سكاي باركس",
+    "sobhaAquaCrest": "شوبا أكوا كريست",
     "sobhaCentral": "شوبا سنترال",
     "sobhaAquamont": "شوبا أكوامونت",
     "sobhaAlSinniyyahIsland": "شوبا جزيرة السنية",
-    "luminaAlta": "لومينا ألتا",
-    "palmCentralNakheel": "بالم سنترال - نخيل",
-    "aradaMassar3": "عرادة - مسار 3"
-  },
-  "brands": {
-    "sobhaRealty": "شوبا العقارية",
-    "aziziDevelopments": "عزيزي للتطوير العقاري",
-    "sobhaSkyParks": "شوبا سكاي باركس",
-    "sobhaAquaCrest": "شوبا أكوا كريست",
     "sobhaHartland2Villas": "فلل شوبا هارتلاند 2",
-    "aziziRivieraRetails": "محلات عزيزي ريفييرا التجارية",
-    "sobhaSeaHavenPenthouse": "بنتهاوس شوبا سي هافن"
+    "sobhaSeaHavenPenthouse": "بنتهاوس شوبا سي هافن",
+    "palmCentralNakheel": "بالم سنترال - نخيل",
+    "aradaMassar3": "عرادة - مسار 3",
+    "luminaAlta": "لومينا ألتا",
+    "aziziRivieraRetails": "محلات عزيزي ريفييرا التجارية"
   },
   "Header": {
     "title": "محمد قضماني",

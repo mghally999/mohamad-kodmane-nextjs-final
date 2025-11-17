@@ -444,7 +444,6 @@
   opacity: 0.9;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
-
 /* Promise Section */
 .promiseSection {
   margin-bottom: 50px;
@@ -461,54 +460,60 @@
   border: 1px solid rgba(215, 180, 106, 0.1);
 }
 
-.promiseContent {
-  padding: 40px;
+.promiseMain {
+  padding: 1.5rem; /* Add padding to the text container only */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .promiseHeader {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .promiseOrnament {
   width: 25px;
   height: 2px;
   background: #d7b46a;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .promiseTitle {
   font-family: "Chronicle Display XLight", serif;
-  font-size: 1.4rem;
+  font-size: 1.8rem; /* Slightly larger for better hierarchy */
   font-weight: 300;
   color: #000000;
   margin: 0;
+  line-height: 1.3;
+}
+
+.promiseBody {
+  flex: 1;
 }
 
 .promiseStatement {
   font-family: "Ringside", sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem; /* Slightly larger for better readability */
   font-weight: 300;
   color: #000000;
-  line-height: 1.5;
-  margin: 0 0 25px 0;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+  opacity: 0.9;
 }
 
 .promiseHighlight {
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(215, 180, 106, 0.1);
-  padding: 18px;
-  border-radius: 10px;
+  gap: 15px;
+  background: rgba(215, 180, 106, 0.08);
+  padding: 20px;
+  border-radius: 12px;
   border-left: 3px solid #d7b46a;
 }
 
 .highlightAccent {
   width: 3px;
-  height: 30px;
+  height: 35px;
   background: #d7b46a;
   border-radius: 2px;
 }
@@ -518,16 +523,18 @@
   font-size: 0.95rem;
   font-weight: 500;
   color: #000000;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .promiseVisual {
   position: relative;
+  /* No padding for the image container */
 }
 
 .promiseImage {
   width: 100%;
   height: 100%;
+  min-height: 400px; /* Ensure minimum height */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -551,97 +558,55 @@
   );
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* Update responsive design for promise section */
 @media (max-width: 1024px) {
-  .showcaseContainer {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .journeyTimeline {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .featuresGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .serviceStats {
-    justify-content: space-around;
-  }
-
   .promiseCard {
     grid-template-columns: 1fr;
     gap: 0;
   }
+
+  .promiseMain {
+    padding: 50px 40px; /* Adjust padding for tablet */
+  }
+
+  .promiseImage {
+    min-height: 300px; /* Adjust height for tablet */
+  }
 }
 
 @media (max-width: 768px) {
-  .portfolioSection {
-    padding: 30px 15px;
+  .promiseMain {
+    padding: 40px 30px; /* Adjust padding for mobile */
   }
 
-  .serviceDisplay {
-    height: 500px;
+  .promiseTitle {
+    font-size: 1.6rem;
   }
 
-  .displayContent {
-    padding: 30px 25px;
+  .promiseStatement {
+    font-size: 1rem;
   }
 
-  .serviceHeader {
-    text-align: center;
-  }
-
-  .serviceTitle {
-    font-size: 1.8rem;
-  }
-
-  .serviceDescription {
-    font-size: 1.1rem;
-  }
-
-  .promiseContent {
-    padding: 30px 25px;
-  }
-
-  .timelineStage {
-    flex-direction: column;
-    gap: 10px;
+  .promiseImage {
+    min-height: 250px; /* Adjust height for mobile */
   }
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 15px;
+  .promiseMain {
+    padding: 30px 25px; /* Smaller padding for small screens */
   }
 
-  .mainTitle {
-    font-size: 2rem;
+  .promiseTitle {
+    font-size: 1.4rem;
   }
 
-  .serviceDisplay {
-    height: 450px;
+  .promiseHighlight {
+    padding: 15px;
+    gap: 12px;
   }
 
-  .serviceTitle {
-    font-size: 1.6rem;
-  }
-
-  .serviceNavItem {
-    padding: 20px;
-  }
-
-  .navTitle {
-    font-size: 0.9rem;
-  }
-
-  .navDescription {
-    font-size: 0.85rem;
-  }
-
-  .promiseContent {
-    padding: 25px 20px;
+  .promiseImage {
+    min-height: 200px;
   }
 }

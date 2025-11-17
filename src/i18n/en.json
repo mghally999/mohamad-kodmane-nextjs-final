@@ -37,22 +37,18 @@
     "omniyat": "Omniyat",
     "aziziDevelopments": "Azizi Developments"
   },
-  "projects": {
+  "projectNames": {
+    "sobhaSkyParks": "Sobha SkyParks",
+    "sobhaAquaCrest": "Sobha AquaCrest",
     "sobhaCentral": "Sobha Central",
     "sobhaAquamont": "Sobha Aquamont",
     "sobhaAlSinniyyahIsland": "Sobha Al Sinniyyah Island",
-    "luminaAlta": "Lumina Alta",
-    "palmCentralNakheel": "Palm Central – Nakheel",
-    "aradaMassar3": "Arada – Massar 3"
-  },
-  "brands": {
-    "sobhaRealty": "Sobha Realty",
-    "aziziDevelopments": "Azizi Developments",
-    "sobhaSkyParks": "Sobha SkyParks",
-    "sobhaAquaCrest": "Sobha AquaCrest",
     "sobhaHartland2Villas": "Sobha Hartland 2 Villas",
-    "aziziRivieraRetails": "Azizi Riviera – Retails",
-    "sobhaSeaHavenPenthouse": "Sobha SeaHaven Penthouse"
+    "sobhaSeaHavenPenthouse": "Sobha SeaHaven Penthouse",
+    "palmCentralNakheel": "Palm Central – Nakheel",
+    "aradaMassar3": "Arada – Massar 3",
+    "luminaAlta": "Lumina Alta",
+    "aziziRivieraRetails": "Azizi Riviera – Retails"
   },
   "Header": {
     "title": "MOHAMAD KODMANE",

@@ -33,6 +33,23 @@ export default function DubaiDemand() {
       : luxuryImages[imageKey];
   };
 
+  // Translation for hardcoded text
+  const translations = {
+    comparisonText: isRTL ? "يتجاوز بـ" : "Outpaces by",
+    yearOverYear: isRTL ? "سنوياً" : "YoY",
+    visitorsNumber: isRTL ? "+25 مليون" : "25M+",
+    investorsNumber: isRTL ? "+15 ألف" : "15K+",
+    corporationsNumber: isRTL ? "+500" : "500+",
+    priceGrowth: isRTL ? "+18%" : "+18%",
+    rentalYield: isRTL ? "+22%" : "+22%",
+    roi: isRTL ? "+35%" : "+35%",
+    demandGrowth: isRTL ? "+25% سنوياً" : "+25% YoY",
+    supplyGrowth: isRTL ? "+15% سنوياً" : "+15% YoY",
+    demandValue: isRTL ? "100%" : "100%",
+    supplyValue: isRTL ? "75%" : "75%",
+    comparisonValue: isRTL ? "25%" : "25%",
+  };
+
   return (
     <section
       className={`${styles.demandSection} ${isVisible ? styles.visible : ""} ${
@@ -122,7 +139,9 @@ export default function DubaiDemand() {
                   {t("dubaiDemand.visitorsDesc")}
                 </p>
                 <div className={styles.cardStat}>
-                  <span className={styles.statNumber}>25M+</span>
+                  <span className={styles.statNumber}>
+                    {translations.visitorsNumber}
+                  </span>
                   <span className={styles.statLabel}>
                     {t("dubaiDemand.visitorsStat")}
                   </span>
@@ -161,7 +180,9 @@ export default function DubaiDemand() {
                   {t("dubaiDemand.investorsDesc")}
                 </p>
                 <div className={styles.cardStat}>
-                  <span className={styles.statNumber}>15K+</span>
+                  <span className={styles.statNumber}>
+                    {translations.investorsNumber}
+                  </span>
                   <span className={styles.statLabel}>
                     {t("dubaiDemand.investorsStat")}
                   </span>
@@ -207,7 +228,9 @@ export default function DubaiDemand() {
                   {t("dubaiDemand.corporationsDesc")}
                 </p>
                 <div className={styles.cardStat}>
-                  <span className={styles.statNumber}>500+</span>
+                  <span className={styles.statNumber}>
+                    {translations.corporationsNumber}
+                  </span>
                   <span className={styles.statLabel}>
                     {t("dubaiDemand.corporationsStat")}
                   </span>
@@ -232,12 +255,16 @@ export default function DubaiDemand() {
                 <div className={styles.chartContainer}>
                   <div className={styles.chartBar} data-type="demand">
                     <div className={styles.barFill}>
-                      <span className={styles.barValue}>100%</span>
+                      <span className={styles.barValue}>
+                        {translations.demandValue}
+                      </span>
                     </div>
                     <div className={styles.barLabel}>
                       {t("dubaiDemand.chartDemandLabel")}
                     </div>
-                    <div className={styles.barPercentage}>+25% YoY</div>
+                    <div className={styles.barPercentage}>
+                      {translations.demandGrowth}
+                    </div>
                   </div>
 
                   <div className={styles.chartComparison}>
@@ -258,19 +285,25 @@ export default function DubaiDemand() {
                       </svg>
                     </div>
                     <div className={styles.comparisonText}>
-                      <span>Outpaces by</span>
-                      <span className={styles.comparisonValue}>25%</span>
+                      <span>{translations.comparisonText}</span>
+                      <span className={styles.comparisonValue}>
+                        {translations.comparisonValue}
+                      </span>
                     </div>
                   </div>
 
                   <div className={styles.chartBar} data-type="supply">
                     <div className={styles.barFill}>
-                      <span className={styles.barValue}>75%</span>
+                      <span className={styles.barValue}>
+                        {translations.supplyValue}
+                      </span>
                     </div>
                     <div className={styles.barLabel}>
                       {t("dubaiDemand.chartSupplyLabel")}
                     </div>
-                    <div className={styles.barPercentage}>+15% YoY</div>
+                    <div className={styles.barPercentage}>
+                      {translations.supplyGrowth}
+                    </div>
                   </div>
                 </div>
 
@@ -310,19 +343,23 @@ export default function DubaiDemand() {
 
                 <div className={styles.resultStats}>
                   <div className={styles.resultStat}>
-                    <span className={styles.statValue}>+18%</span>
+                    <span className={styles.statValue}>
+                      {translations.priceGrowth}
+                    </span>
                     <span className={styles.statLabel}>
                       {t("dubaiDemand.resultPriceGrowth")}
                     </span>
                   </div>
                   <div className={styles.resultStat}>
-                    <span className={styles.statValue}>+22%</span>
+                    <span className={styles.statValue}>
+                      {translations.rentalYield}
+                    </span>
                     <span className={styles.statLabel}>
                       {t("dubaiDemand.resultRentalYield")}
                     </span>
                   </div>
                   <div className={styles.resultStat}>
-                    <span className={styles.statValue}>+35%</span>
+                    <span className={styles.statValue}>{translations.roi}</span>
                     <span className={styles.statLabel}>
                       {t("dubaiDemand.resultRoi")}
                     </span>

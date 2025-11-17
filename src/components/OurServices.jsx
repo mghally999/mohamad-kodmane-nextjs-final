@@ -16,18 +16,98 @@ export default function OurServices() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
+  // Translation for hardcoded text
+  const translations = {
+    satisfaction: isRTL ? "100%" : "100%",
+    managed: isRTL ? "+500" : "500+",
+    experience: isRTL ? "+15" : "15+",
+  };
+
+  // Service features translations for both languages
+  const serviceFeatures = {
+    service1: isRTL
+      ? [
+          "تحليل المحفظة وتطوير الاستراتيجية",
+          "البحث السوقي وتحديد الفرص",
+          "تقييم المخاطر وتخطيط التنويع",
+          "تحديد الجدول الزمني والهدف الاستثماري",
+          "مراقبة الأداء والتحسين المستمر",
+        ]
+      : [
+          "Portfolio analysis & strategy development",
+          "Market research & opportunity identification",
+          "Risk assessment & diversification planning",
+          "Investment timeline & goal setting",
+          "Performance monitoring & optimization",
+        ],
+    service2: isRTL
+      ? [
+          "فحص العقار والتحقق من الجودة",
+          "التنسيق مع المطور وإتمام المستندات",
+          "تحديد العيوب وإيجاد الحلول",
+          "إدارة عملية التسليم",
+          "الدعم والإرشاد بعد التسليم",
+        ]
+      : [
+          "Property inspection & quality verification",
+          "Developer coordination & documentation",
+          "Defect identification & resolution",
+          "Handover process management",
+          "Post-handover support & guidance",
+        ],
+    service3: isRTL
+      ? [
+          "فحص المستأجرين وإدارة العقود",
+          "تحصيل الإيجار والتقارير المالية",
+          "تنسيق الصيانة والعناية بالعقار",
+          "الامتثال القانوني وإدارة المستندات",
+          "خدمات الدعم الطارئ على مدار 24/7",
+        ]
+      : [
+          "Tenant screening & lease management",
+          "Rent collection & financial reporting",
+          "Maintenance coordination & property care",
+          "Legal compliance & documentation",
+          "24/7 emergency support services",
+        ],
+    service4: isRTL
+      ? [
+          "التقييم السوقي واستراتيجية التسعير",
+          "التسويق وعرض العقار",
+          "فحص المشترين والمفاوضات",
+          "المستندات القانونية وإدارة المعاملات",
+          "استراتيجيات تعظيم أرباح رأس المال",
+        ]
+      : [
+          "Market valuation & pricing strategy",
+          "Marketing & property presentation",
+          "Buyer screening & negotiation",
+          "Legal documentation & transaction management",
+          "Capital gains optimization strategies",
+        ],
+    service5: isRTL
+      ? [
+          "مفاهيم التصميم الداخلي المخصص",
+          "اختيار الأثاث والتوريد",
+          "إدارة المشروع والتركيب",
+          "مراقبة الجودة والفحص النهائي",
+          "التنسيق لجاذبية الإيجار القصوى",
+        ]
+      : [
+          "Custom interior design concepts",
+          "Furniture selection & procurement",
+          "Project management & installation",
+          "Quality control & final inspection",
+          "Styling for maximum rental appeal",
+        ],
+  };
+
   const services = [
     {
       id: 1,
       title: t("services.service1Title"),
       description: t("services.service1Desc"),
-      features: [
-        t("services.service1Features.0"),
-        t("services.service1Features.1"),
-        t("services.service1Features.2"),
-        t("services.service1Features.3"),
-        t("services.service1Features.4"),
-      ],
+      features: serviceFeatures.service1,
       image: `${CDN}/sky-parks/exterior-night-01.jpg`,
       color: "#d7b46a",
       stage: t("services.service1Stage"),
@@ -36,13 +116,7 @@ export default function OurServices() {
       id: 2,
       title: t("services.service2Title"),
       description: t("services.service2Desc"),
-      features: [
-        t("services.service2Features.0"),
-        t("services.service2Features.1"),
-        t("services.service2Features.2"),
-        t("services.service2Features.3"),
-        t("services.service2Features.4"),
-      ],
+      features: serviceFeatures.service2,
       image: `${CDN}/hartland/hero-bg.jpg`,
       color: "#c4a15d",
       stage: t("services.service2Stage"),
@@ -51,13 +125,7 @@ export default function OurServices() {
       id: 3,
       title: t("services.service3Title"),
       description: t("services.service3Desc"),
-      features: [
-        t("services.service3Features.0"),
-        t("services.service3Features.1"),
-        t("services.service3Features.2"),
-        t("services.service3Features.3"),
-        t("services.service3Features.4"),
-      ],
+      features: serviceFeatures.service3,
       image: `${CDN}/lumena-alta/hero-bg.jpg`,
       color: "#b8941f",
       stage: t("services.service3Stage"),
@@ -66,13 +134,7 @@ export default function OurServices() {
       id: 4,
       title: t("services.service4Title"),
       description: t("services.service4Desc"),
-      features: [
-        t("services.service4Features.0"),
-        t("services.service4Features.1"),
-        t("services.service4Features.2"),
-        t("services.service4Features.3"),
-        t("services.service4Features.4"),
-      ],
+      features: serviceFeatures.service4,
       image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
       color: "#d7b46a",
       stage: t("services.service4Stage"),
@@ -81,13 +143,7 @@ export default function OurServices() {
       id: 5,
       title: t("services.service5Title"),
       description: t("services.service5Desc"),
-      features: [
-        t("services.service5Features.0"),
-        t("services.service5Features.1"),
-        t("services.service5Features.2"),
-        t("services.service5Features.3"),
-        t("services.service5Features.4"),
-      ],
+      features: serviceFeatures.service5,
       image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
       color: "#c4a15d",
       stage: t("services.service5Stage"),
@@ -261,19 +317,25 @@ export default function OurServices() {
 
                 <div className={styles.serviceStats}>
                   <div className={styles.stat}>
-                    <div className={styles.statNumber}>100%</div>
+                    <div className={styles.statNumber}>
+                      {translations.satisfaction}
+                    </div>
                     <div className={styles.statLabel}>
                       {t("services.statsSatisfaction")}
                     </div>
                   </div>
                   <div className={styles.stat}>
-                    <div className={styles.statNumber}>500+</div>
+                    <div className={styles.statNumber}>
+                      {translations.managed}
+                    </div>
                     <div className={styles.statLabel}>
                       {t("services.statsManaged")}
                     </div>
                   </div>
                   <div className={styles.stat}>
-                    <div className={styles.statNumber}>15+</div>
+                    <div className={styles.statNumber}>
+                      {translations.experience}
+                    </div>
                     <div className={styles.statLabel}>
                       {t("services.statsExperience")}
                     </div>
