@@ -4,7 +4,6 @@ import styles from "@/styles/projects/ContactFormFinal.module.css";
 import { useLanguage } from "@/components/LanguageProvider";
 
 // Import all your project data
-// import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
 import { centralData } from "@/data/projects/apartments/sobha/central/central";
 import { skyParksData } from "@/data/projects/apartments/sobha/skyparks/skyparks";
@@ -17,18 +16,16 @@ import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartl
 
 // Helper function to get project info from the new data structure
 const getProjectInfo = (projectData) => {
-  // Handle both old structure (projectData.project) and new structure (projectData.en.project)
   if (projectData.en && projectData.en.project) {
-    return projectData.en.project; // New structure
+    return projectData.en.project;
   } else if (projectData.project) {
-    return projectData.project; // Old structure
+    return projectData.project;
   }
   return { name: "Unknown Project", developer: "Unknown Developer" };
 };
 
 // Combine all projects for dropdown
 const ALL_PROJECTS = [
-  // palmCentralData,
   aquaCrestData,
   centralData,
   skyParksData,
@@ -58,6 +55,28 @@ const UNIT_TYPES = {
   mixed: ["Studio", "1 Bedroom", "2 Bedroom", "3 Bedroom", "Villa"],
 };
 
+// Custom Toast Notification Component
+const Toast = ({ message, type, onClose }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  return (
+    <div className={`${styles.toast} ${styles[type]}`}>
+      <div className={styles.toastContent}>
+        <span className={styles.toastMessage}>{message}</span>
+        <button className={styles.toastClose} onClick={onClose}>
+          ×
+        </button>
+      </div>
+    </div>
+  );
+};
+
 export default function ContactFormFinal({ currentProjectName = null }) {
   const { locale } = useLanguage();
   const isRTL = locale === "ar";
@@ -70,12 +89,11 @@ export default function ContactFormFinal({ currentProjectName = null }) {
     project: currentProjectName || ALL_PROJECTS[0]?.info?.name || "",
     unitType: "",
     contactMethod: "phone",
-    agreePrivacy: false,
-    agreeNews: false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedProjectData, setSelectedProjectData] = useState(null);
+  const [toast, setToast] = useState(null);
 
   // Auto-select current project when component mounts
   useEffect(() => {
@@ -99,8 +117,52 @@ export default function ContactFormFinal({ currentProjectName = null }) {
     }
   }, [currentProjectName]);
 
+  const showToast = (message, type = "success") => {
+    setToast({ message, type });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate required fields
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.phone ||
+      !formData.email
+    ) {
+      showToast(
+        isRTL
+          ? "يرجى ملء جميع الحقول المطلوبة"
+          : "Please fill in all required fields",
+        "error"
+      );
+      return;
+    }
+
+    // Validate phone number
+    if (formData.phone.length < 9) {
+      showToast(
+        isRTL
+          ? "يرجى إدخال رقم هاتف صحيح"
+          : "Please enter a valid phone number",
+        "error"
+      );
+      return;
+    }
+
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      showToast(
+        isRTL
+          ? "يرجى إدخال بريد إلكتروني صحيح"
+          : "Please enter a valid email address",
+        "error"
+      );
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -109,13 +171,22 @@ export default function ContactFormFinal({ currentProjectName = null }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          formType: "PROJECT_FORM",
+          locale: locale, // ADD THIS LINE
+        }),
       });
 
       const result = await response.json();
 
       if (result.success) {
-        alert(result.message);
+        showToast(
+          isRTL
+            ? "شكراً لك! سيتواصل معك مستشار العقارات الفاخرة خلال 24 ساعة."
+            : result.message,
+          "success"
+        );
         // Reset form
         setFormData({
           firstName: "",
@@ -125,15 +196,24 @@ export default function ContactFormFinal({ currentProjectName = null }) {
           project: currentProjectName || ALL_PROJECTS[0]?.info?.name || "",
           unitType: "",
           contactMethod: "phone",
-          agreePrivacy: false,
-          agreeNews: false,
         });
       } else {
-        alert(result.message || "Something went wrong. Please try again.");
+        showToast(
+          result.message ||
+            (isRTL
+              ? "حدث خطأ. يرجى المحاولة مرة أخرى."
+              : "Something went wrong. Please try again."),
+          "error"
+        );
       }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Network error. Please try again or contact us directly.");
+      showToast(
+        isRTL
+          ? "خطأ في الشبكة. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة."
+          : "Network error. Please try again or contact us directly.",
+        "error"
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -182,6 +262,15 @@ export default function ContactFormFinal({ currentProjectName = null }) {
   return (
     <section className={styles.contactSection} dir={isRTL ? "rtl" : "ltr"}>
       <div className={styles.container}>
+        {/* Toast Notifications */}
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
+
         {/* Elegant Header */}
         <div className={styles.header}>
           <div className={styles.headerContent}>
@@ -201,7 +290,7 @@ export default function ContactFormFinal({ currentProjectName = null }) {
 
         {/* Premium Content Grid */}
         <div className={styles.contentGrid}>
-          {/* Right Panel - Luxury Contact Form */}
+          {/* Luxury Contact Form */}
           <form className={styles.contactForm} onSubmit={handleSubmit}>
             <div className={styles.formHeader}>
               <h4 className={styles.formTitle}>
@@ -273,7 +362,7 @@ export default function ContactFormFinal({ currentProjectName = null }) {
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     className={styles.phoneField}
-                    placeholder={isRTL ? "XX XXX XXXX" : "XX XXX XXXX"}
+                    placeholder={isRTL ? "50 123 4567" : "50 123 4567"}
                     maxLength={9}
                     required
                   />
@@ -406,7 +495,17 @@ export default function ContactFormFinal({ currentProjectName = null }) {
               </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Security Notice */}
+            <div className={styles.securityNotice}>
+              <span className={styles.securityIcon}>🔒</span>
+              <p className={styles.securityText}>
+                {isRTL
+                  ? "بياناتك محمية وآمنة. نحن نلتزم بحماية خصوصيتك ولا نشارك معلوماتك مع أطراف ثالثة."
+                  : "Your data is protected and secure. We are committed to protecting your privacy and do not share your information with third parties."}
+              </p>
+            </div>
+
+            {/* Submit Button - NOW ALWAYS CLICKABLE */}
             <button
               type="submit"
               className={`${styles.submitButton} ${
@@ -428,6 +527,22 @@ export default function ContactFormFinal({ currentProjectName = null }) {
                 </>
               )}
             </button>
+
+            {/* Trust Indicators */}
+            <div className={styles.trustIndicators}>
+              <div className={styles.trustItem}>
+                <span className={styles.trustIcon}>⏰</span>
+                {isRTL ? "رد خلال 24 ساعة" : "24h Response"}
+              </div>
+              <div className={styles.trustItem}>
+                <span className={styles.trustIcon}>🔒</span>
+                {isRTL ? "بيانات آمنة" : "Secure Data"}
+              </div>
+              <div className={styles.trustItem}>
+                <span className={styles.trustIcon}>👑</span>
+                {isRTL ? "خدمة فاخرة" : "Luxury Service"}
+              </div>
+            </div>
           </form>
         </div>
       </div>

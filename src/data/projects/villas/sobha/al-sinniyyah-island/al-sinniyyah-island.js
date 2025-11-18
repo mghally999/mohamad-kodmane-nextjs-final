@@ -4,22 +4,22 @@ export const alSinniyyahIslandData = {
   en: {
     seo: {
       title:
-        "Sobha Siniya Island | Luxury Beach Residences & Villas in Umm Al Quwain | Sobha Realty",
+        "Sobha Sinniyah Island | Luxury Villas in Umm Al Quwain | Sobha Realty",
       description:
-        "Premium beachfront residences and luxury villas on Siniya Island, Umm Al Quwain. Experience island living with world-class amenities, lagoon views, and exclusive community by Sobha Realty.",
+        "Premium luxury villas on Sinniyah Island, Umm Al Quwain. Experience island living with world-class amenities, lagoon views, and exclusive community by Sobha Realty.",
       keywords:
-        "sobha siniya island, umm al quwain, beach residences, luxury villas, sobha realty, siniya island uaq, beachfront apartments",
+        "sobha sinniyah island, umm al quwain, luxury villas, sobha realty, sinniyah island uaq, beachfront villas",
       canonical: "/projects/islands/sobha/al-sinniyyah-island",
     },
     project: {
-      name: "Sobha Siniya Island",
+      name: "Sobha Sinniyah Island",
       developer: "Sobha Realty",
-      location: "Siniya Island, Umm Al Quwain",
+      location: "Sinniyah Island, Umm Al Quwain",
       status: "Off-Plan",
-      startingPrice: "AED 1,446,596",
+      startingPrice: "AED 10.7M",
       completionDate: "2029-2030",
-      type: "Mixed Use",
-      units: "Apartments & Villas",
+      type: "Residential",
+      units: "Luxury Villas",
     },
     hero: {
       backgroundUrl:
@@ -32,8 +32,8 @@ export const alSinniyyahIslandData = {
     intro: {
       title: "ISLAND LIVING REDEFINED",
       paragraphs: [
-        "Sobha Siniya Island presents an exclusive collection of beach residences and luxury villas on the pristine shores of Umm Al Quwain. This master-planned island community combines natural beauty with sophisticated living, offering residents direct beach access, lagoon views, and world-class amenities.",
-        "Choose from 1-3 bedroom apartments in beach residences or 4-6 bedroom luxury villas, each designed to maximize the island lifestyle. Experience the perfect harmony of tranquility and luxury in one of the UAE's most promising destinations.",
+        "Sobha Sinniyah Island presents an exclusive collection of luxury villas on the pristine shores of Umm Al Quwain. This master-planned island community combines natural beauty with sophisticated living, offering residents direct beach access, lagoon views, and world-class amenities.",
+        "Choose from 4-6 bedroom luxury villas, each designed to maximize the island lifestyle with private gardens, pools, and premium finishes. Experience the perfect harmony of tranquility and luxury in one of the UAE's most promising destinations with 70% of the island dedicated to green spaces and amenities.",
       ],
       brochures: [
         {
@@ -42,21 +42,21 @@ export const alSinniyyahIslandData = {
           type: "main",
           icon: "🏝️",
           color: "#3A7BD5",
-          size: "15.2 MB",
+          size: "84.24 MB",
           category: "Overview",
-          fileName: "Sobha Siniya Island Digital Brochure.pdf",
+          fileName: "Sobha Sinniyah Island Digital Brochure.pdf",
           description: "Complete project overview and lifestyle guide",
         },
       ],
       imgUrl:
         "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/intro-main.jpg",
-      imgAlt: "Sobha Siniya Island luxury beach residences and villas",
+      imgAlt: "Sobha Sinniyah Island luxury villas",
       floatingCards: [
         {
           top: "20%",
           right: "-30px",
           icon: "🏝️",
-          value: "Siniya Island",
+          value: "Sinniyah Island",
           label: "Private Island",
         },
         {
@@ -70,8 +70,8 @@ export const alSinniyyahIslandData = {
           bottom: "15%",
           right: "-20px",
           icon: "🏡",
-          value: "Villas & Apartments",
-          label: "Multiple Options",
+          value: "Luxury Villas",
+          label: "4-6 Bedrooms",
         },
       ],
     },
@@ -89,147 +89,19 @@ export const alSinniyyahIslandData = {
         "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-inset.jpg",
         "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-bg.jpg",
       ],
-      projectTag: "Siniya Island",
+      projectTag: "Sinniyah Island",
     },
     floorPlans: {
-      type: "mixed",
+      type: "villas",
       plans: [
         {
-          id: "1br-beach",
-          title: "1 BR Beach Residence",
-          bedrooms: 1,
-          specs: {
-            Unit: "1 BEDROOM + 1 BATHROOM + LIVING AREA + BALCONY",
-            "Suite Area": "513.87 SQ.FT.",
-            "Balcony Area": "151.23 SQ.FT.",
-            "Total Area": "665.10 SQ.FT.",
-            "Starting Price": "AED 1,446,596",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
-          ],
-          features: [
-            "Beach Views",
-            "Spacious Balcony",
-            "Premium Finishes",
-            "Modern Kitchen",
-          ],
-        },
-        {
-          id: "2br-beach",
-          title: "2 BR Beach Residence",
-          bedrooms: 2,
-          specs: {
-            Unit: "2 BEDROOMS + 2 BATHROOMS + LIVING AREA + BALCONY",
-            "Suite Area": "727.21 SQ.FT.",
-            "Balcony Area": "48.65 SQ.FT.",
-            "Total Area": "775.86 SQ.FT.",
-            "Starting Price": "AED 1,842,667",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
-          ],
-          features: [
-            "Sea Views",
-            "Master Ensuite",
-            "Walk-in Closet",
-            "Premium Appliances",
-          ],
-        },
-        {
-          id: "3br-duplex-beach",
-          title: "3 BR Duplex Beach Residence",
-          bedrooms: 3,
-          specs: {
-            Unit: "3 BEDROOMS + MULTIPLE BATHROOMS + DUPLEX LIVING + BALCONY",
-            "Suite Area": "1,874.43 SQ.FT.",
-            "Balcony Area": "147.68 SQ.FT.",
-            "Total Area": "2,022.11 SQ.FT.",
-            "Starting Price": "AED 4,954,169",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
-          ],
-          features: [
-            "Duplex Layout",
-            "Panoramic Views",
-            "Private Elevator",
-            "Premium Finishes",
-          ],
-        },
-        {
-          id: "1br-marina",
-          title: "1 BR Marina Residence",
-          bedrooms: 1,
-          specs: {
-            Unit: "1 BEDROOM + 1 BATHROOM + LIVING AREA + BALCONY",
-            "Suite Area": "465.54 SQ.FT.",
-            "Balcony Area": "47.79 SQ.FT.",
-            "Total Area": "513.33 SQ.FT.",
-            "Starting Price": "AED 1,334,658",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-          ],
-          features: [
-            "Marina Views",
-            "Compact Layout",
-            "Modern Finishes",
-            "Efficient Design",
-          ],
-        },
-        {
-          id: "2br-marina",
-          title: "2 BR Marina Residence",
-          bedrooms: 2,
-          specs: {
-            Unit: "2 BEDROOMS + 2 BATHROOMS + LIVING AREA + BALCONY",
-            "Suite Area": "603.21 SQ.FT.",
-            "Balcony Area": "81.38 SQ.FT.",
-            "Total Area": "684.58 SQ.FT.",
-            "Starting Price": "AED 1,677,232",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-          ],
-          features: [
-            "Marina Access",
-            "Spacious Layout",
-            "Water Views",
-            "Premium Kitchen",
-          ],
-        },
-        {
-          id: "3br-marina",
-          title: "3 BR Marina Residence",
-          bedrooms: 3,
-          specs: {
-            Unit: "3 BEDROOMS + MULTIPLE BATHROOMS + LIVING AREA + BALCONY",
-            "Suite Area": "1,843.43 SQ.FT.",
-            "Balcony Area": "311.18 SQ.FT.",
-            "Total Area": "2,154.61 SQ.FT.",
-            "Starting Price": "AED 5,386,529",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-          ],
-          features: [
-            "Expansive Balcony",
-            "Marina Front",
-            "Luxury Finishes",
-            "Smart Home Ready",
-          ],
-        },
-        {
-          id: "4br-villa",
-          title: "4 BR Luxury Villa",
+          id: "4br-villa-type-a",
+          title: "4 BR Luxury Villa - Type A",
           bedrooms: 4,
           specs: {
-            Unit: "4 BEDROOMS + MULTIPLE BATHROOMS + LIVING AREAS + GARDEN",
-            "Total Area": "4,884.77 SQ.FT.",
+            "Unit Type":
+              "4 Bedrooms + Multiple Bathrooms + Living Areas + Garden",
+            "Built-up Area": "4,884.77 SQ.FT.",
             "Plot Area": "5,839.42 SQ.FT.",
             "Starting Price": "AED 10,746,494",
             Handover: "Q4 2027",
@@ -237,21 +109,25 @@ export const alSinniyyahIslandData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-front-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-pool-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
           ],
           features: [
             "Private Garden",
             "Maid's Room",
             "Modern Kitchen",
             "Premium Finishes",
+            "Spacious Living Area",
           ],
         },
         {
-          id: "5br-villa",
+          id: "5br-villa-type-b",
           title: "5 BR Luxury Villa",
           bedrooms: 5,
           specs: {
-            Unit: "5 BEDROOMS + MULTIPLE BATHROOMS + LIVING AREAS + GARDEN",
-            "Total Area": "7,226.14 SQ.FT.",
+            "Unit Type":
+              "5 Bedrooms + Multiple Bathrooms + Living Areas + Garden",
+            "Built-up Area": "7,226.14 SQ.FT.",
             "Plot Area": "8,853.32 SQ.FT.",
             "Starting Price": "AED 18,065,350",
             Handover: "Q4 2027",
@@ -259,21 +135,25 @@ export const alSinniyyahIslandData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-front-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-pool-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
           ],
           features: [
             "Private Pool",
             "Family Lounge",
             "Outdoor Dining",
             "Waterfront Feel",
+            "Expansive Terrace",
           ],
         },
         {
-          id: "6br-villa",
+          id: "6br-villa-type-b",
           title: "6 BR Luxury Villa",
           bedrooms: 6,
           specs: {
-            Unit: "6 BEDROOMS + MULTIPLE BATHROOMS + LIVING AREAS + GARDEN",
-            "Total Area": "9,739.83 SQ.FT.",
+            "Unit Type":
+              "6 Bedrooms + Multiple Bathrooms + Living Areas + Garden",
+            "Built-up Area": "9,739.83 SQ.FT.",
             "Plot Area": "11,966.03 SQ.FT.",
             "Starting Price": "AED 23,375,592",
             Handover: "Q4 2027",
@@ -281,12 +161,15 @@ export const alSinniyyahIslandData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-facade-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-lagoon-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
           ],
           features: [
             "Grand Arrival",
             "Signature Facade",
             "Direct Lagoon Edge",
             "Luxury Finishes",
+            "Panoramic Views",
           ],
         },
       ],
@@ -316,22 +199,12 @@ export const alSinniyyahIslandData = {
         { label: "BARBEQUE AREAS", icon: "🍖", color: "#d7b46a" },
         { label: "COMMUNITY CENTER", icon: "🏛️", color: "#d7b46a" },
         { label: "BUSINESS CENTER", icon: "💼", color: "#d7b46a" },
-        { label: "CO-WORKING SPACES", icon: "👨‍💻", color: "#d7b46a" },
-        { label: "LIBRARY", icon: "📚", color: "#d7b46a" },
-        { label: "CINEMA", icon: "🎬", color: "#d7b46a" },
-        { label: "GAMES ROOM", icon: "🎮", color: "#d7b46a" },
-        { label: "EVENT LAWN", icon: "🎪", color: "#d7b46a" },
-        { label: "WEDDING PAVILION", icon: "💒", color: "#d7b46a" },
-        { label: "CONCIERGE SERVICES", icon: "🎩", color: "#d7b46a" },
-        { label: "24/7 SECURITY", icon: "🔒", color: "#d7b46a" },
-        { label: "VALET PARKING", icon: "🅿️", color: "#d7b46a" },
-        { label: "ELECTRIC CAR CHARGING", icon: "⚡", color: "#d7b46a" },
       ],
     },
     location: {
       title: "Island Location",
-      projectName: "Sobha Siniya Island",
-      address: "Siniya Island, Umm Al Quwain, UAE",
+      projectName: "Sobha Sinniyah Island",
+      address: "Sinniyah Island, Umm Al Quwain, UAE",
       lat: 25.565,
       lng: 55.555,
       zoom: 12,
@@ -371,7 +244,7 @@ export const alSinniyyahIslandData = {
     cta: {
       title: "Ready for Island Living?",
       description:
-        "Contact our sales team to schedule a private viewing or request more information about available units and pricing.",
+        "Contact our sales team to schedule a private viewing or request more information about available villas and pricing.",
       buttons: [
         {
           text: "Schedule Viewing",
@@ -388,23 +261,22 @@ export const alSinniyyahIslandData = {
   },
   ar: {
     seo: {
-      title:
-        "جزيرة صوبا سينية | شقق وشقق شاطئية وفلل فاخرة في أم القيوين | Sobha Realty",
+      title: "جزيرة صوبا السينية | فلل فاخرة في أم القيوين | Sobha Realty",
       description:
-        "شقق شاطئية وفلل فاخرة على جزيرة سينية في أم القيوين. أسلوب حياة جزيري مع إطلالات على البحيرة ومرافق عالمية المستوى ضمن مجتمع خاص من صوبا العقارية.",
+        "فلل فاخرة على جزيرة السينية في أم القيوين. أسلوب حياة جزيري مع إطلالات على البحيرة ومرافق عالمية المستوى ضمن مجتمع خاص من صوبا العقارية.",
       keywords:
-        "جزيرة صوبا سينية, Sobha Siniya Island, أم القيوين, شقق على البحر, فلل فاخرة أم القيوين, جزيرة سينية, واجهة بحرية, مساكن شاطئية, فلل على البحيرة",
+        "جزيرة صوبا السينية, Sobha Sinniyah Island, أم القيوين, فلل فاخرة أم القيوين, جزيرة السينية, واجهة بحرية, فلل على البحيرة",
       canonical: "/projects/islands/sobha/al-sinniyyah-island",
     },
     project: {
-      name: "Sobha Siniya Island",
+      name: "Sobha Sinniyah Island",
       developer: "Sobha Realty",
-      location: "جزيرة سينية، أم القيوين",
+      location: "جزيرة السينية، أم القيوين",
       status: "تحت الإنشاء",
-      startingPrice: "AED 1,446,596",
+      startingPrice: "10.7 مليون درهم إماراتي",
       completionDate: "2029-2030",
-      type: "مشروع متعدد الاستخدامات",
-      units: "شقق وفلل",
+      type: "سكني",
+      units: "فلل فاخرة",
     },
     hero: {
       backgroundUrl:
@@ -417,8 +289,8 @@ export const alSinniyyahIslandData = {
     intro: {
       title: "أسلوب حياة جزيري بمعايير جديدة",
       paragraphs: [
-        "يقدّم مشروع صوبا سينية آيلاند مجموعة مميّزة من الشقق الشاطئية والفلل الفاخرة على شواطئ أم القيوين الهادئة. يجمع هذا المجتمع الجزيري المخطّط بعناية بين الطبيعة الخلابة والتصميم المعاصر، مع وصول مباشر إلى الشاطئ وإطلالات على البحيرات والمسطحات المائية.",
-        "اختر بين شقق 1–3 غرف نوم في مباني الشاطئ أو فلل فاخرة من 4–6 غرف نوم، جميعها مصممة لتعظيم تجربة العيش على الجزيرة مع مساحات خارجية رحبة، إضاءة طبيعية وافرة، وخدمات تلبي أسلوب الحياة الراقي.",
+        "يقدّم مشروع صوبا سينية آيلاند مجموعة مميّزة من الفلل الفاخرة على شواطئ أم القيوين الهادئة. يجمع هذا المجتمع الجزيري المخطّط بعناية بين الطبيعة الخلابة والتصميم المعاصر، مع وصول مباشر إلى الشاطئ وإطلالات على البحيرات والمسطحات المائية.",
+        "اختر بين فلل فاخرة من 4–6 غرف نوم، جميعها مصممة لتعظيم تجربة العيش على الجزيرة مع حدائق خاصة، مسابح، وتشطيبات فاخرة. 70% من مساحة الجزيرة مخصصة للمساحات الخضراء والمرافق.",
       ],
       brochures: [
         {
@@ -427,21 +299,21 @@ export const alSinniyyahIslandData = {
           type: "main",
           icon: "🏝️",
           color: "#3A7BD5",
-          size: "15.2 MB",
+          size: "84.24 MB",
           category: "نظرة عامة",
-          fileName: "Sobha Siniya Island Digital Brochure.pdf",
-          description: "نظرة شاملة على المشروع وأسلوب الحياة في جزيرة سينية",
+          fileName: "Sobha Sinniyah Island Digital Brochure.pdf",
+          description: "نظرة شاملة على المشروع وأسلوب الحياة في جزيرة السينية",
         },
       ],
       imgUrl:
         "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/intro-main.jpg",
-      imgAlt: "مساكن شاطئية وفلل فاخرة في مشروع صوبا سينية آيلاند",
+      imgAlt: "فلل فاخرة في مشروع صوبا سينية آيلاند",
       floatingCards: [
         {
           top: "20%",
           right: "-30px",
           icon: "🏝️",
-          value: "جزيرة سينية",
+          value: "جزيرة السينية",
           label: "جزيرة خاصة",
         },
         {
@@ -455,8 +327,8 @@ export const alSinniyyahIslandData = {
           bottom: "15%",
           right: "-20px",
           icon: "🏡",
-          value: "فلل وشقق",
-          label: "خيارات متعددة",
+          value: "فلل فاخرة",
+          label: "6-4 غرف نوم",
         },
       ],
     },
@@ -474,199 +346,84 @@ export const alSinniyyahIslandData = {
         "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-inset.jpg",
         "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-bg.jpg",
       ],
-      projectTag: "Siniya Island",
+      projectTag: "Sinniyah Island",
     },
     floorPlans: {
-      type: "mixed",
+      type: "villas",
       plans: [
         {
-          id: "1br-beach",
-          title: "شقة شاطئية غرفـة نوم واحدة",
-          bedrooms: 1,
-          specs: {
-            Unit: "1 غرفة نوم + حمام + غرفة معيشة + شرفة",
-            "Suite Area": "513.87 قدم²",
-            "Balcony Area": "151.23 قدم²",
-            "Total Area": "665.10 قدم²",
-            "Starting Price": "AED 1,446,596",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
-          ],
-          features: [
-            "إطلالات على الشاطئ",
-            "شرفة واسعة",
-            "تشطيبات عصرية",
-            "مطبخ حديث",
-          ],
-        },
-        {
-          id: "2br-beach",
-          title: "شقة شاطئية غرفتي نوم",
-          bedrooms: 2,
-          specs: {
-            Unit: "2 غرفة نوم + 2 حمام + غرفة معيشة + شرفة",
-            "Suite Area": "727.21 قدم²",
-            "Balcony Area": "48.65 قدم²",
-            "Total Area": "775.86 قدم²",
-            "Starting Price": "AED 1,842,667",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
-          ],
-          features: [
-            "إطلالات بحرية",
-            "غرفة نوم رئيسية بحمام داخلي",
-            "خزانة ملابس",
-            "أجهزة مطبخ عالية الجودة",
-          ],
-        },
-        {
-          id: "3br-duplex-beach",
-          title: "شقة شاطئية دوبلكس 3 غرف نوم",
-          bedrooms: 3,
-          specs: {
-            Unit: "3 غرف نوم + عدة حمامات + مساحات معيشة دوبلكس + شرفة",
-            "Suite Area": "1,874.43 قدم²",
-            "Balcony Area": "147.68 قدم²",
-            "Total Area": "2,022.11 قدم²",
-            "Starting Price": "AED 4,954,169",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
-          ],
-          features: [
-            "تصميم دوبلكس عصري",
-            "إطلالات بانورامية",
-            "إمكانية إضافة مصعد داخلي",
-            "تشطيبات فاخرة",
-          ],
-        },
-        {
-          id: "1br-marina",
-          title: "شقة غرفـة نوم واحدة – مرسى",
-          bedrooms: 1,
-          specs: {
-            Unit: "1 غرفة نوم + حمام + غرفة معيشة + شرفة",
-            "Suite Area": "465.54 قدم²",
-            "Balcony Area": "47.79 قدم²",
-            "Total Area": "513.33 قدم²",
-            "Starting Price": "AED 1,334,658",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-          ],
-          features: [
-            "إطلالات على المرسى",
-            "مساحة عملية",
-            "تشطيبات حديثة",
-            "تصميم فعّال للمساحات",
-          ],
-        },
-        {
-          id: "2br-marina",
-          title: "شقة غرفتي نوم – مرسى",
-          bedrooms: 2,
-          specs: {
-            Unit: "2 غرفة نوم + 2 حمام + غرفة معيشة + شرفة",
-            "Suite Area": "603.21 قدم²",
-            "Balcony Area": "81.38 قدم²",
-            "Total Area": "684.58 قدم²",
-            "Starting Price": "AED 1,677,232",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-          ],
-          features: [
-            "وصول قريب إلى المرسى",
-            "تخطيط مريح",
-            "إطلالات مائية",
-            "مطبخ بمواصفات مميزة",
-          ],
-        },
-        {
-          id: "3br-marina",
-          title: "شقة 3 غرف نوم – مرسى",
-          bedrooms: 3,
-          specs: {
-            Unit: "3 غرف نوم + عدة حمامات + غرفة معيشة + شرفة",
-            "Suite Area": "1,843.43 قدم²",
-            "Balcony Area": "311.18 قدم²",
-            "Total Area": "2,154.61 قدم²",
-            "Starting Price": "AED 5,386,529",
-          },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-          ],
-          features: [
-            "شرفة كبيرة",
-            "واجهة مباشرة على المرسى",
-            "تشطيبات فاخرة",
-            "جاهزية لنظام المنزل الذكي",
-          ],
-        },
-        {
-          id: "4br-villa",
+          id: "4br-villa-type-a",
           title: "فيلا فاخرة 4 غرف نوم",
           bedrooms: 4,
           specs: {
-            Unit: "4 غرف نوم + عدة حمامات + مناطق معيشة + حديقة",
-            "Total Area": "4,884.77 قدم²",
-            "Plot Area": "5,839.42 قدم²",
-            "Starting Price": "AED 10,746,494",
-            Handover: "الربع الرابع 2027",
+            "نوع الوحدة": "4 غرف نوم + عدة حمامات + مناطق معيشة + حديقة",
+            "المساحة المبنية": "4,884.77 قدم²",
+            "مساحة الأرض": "5,839.42 قدم²",
+            "السعر الابتدائي": "10,746,494 درهم إماراتي",
+            "موعد التسليم": "الربع الرابع 2027",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-front-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-pool-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
           ],
-          features: ["حديقة خاصة", "غرفة خادمة", "مطبخ عصري", "تشطيبات فاخرة"],
+          features: [
+            "حديقة خاصة",
+            "غرفة خادمة",
+            "مطبخ عصري",
+            "تشطيبات فاخرة",
+            "منطقة معيشة فسيحة",
+          ],
         },
         {
-          id: "5br-villa",
+          id: "5br-villa-type-b",
           title: "فيلا فاخرة 5 غرف نوم",
           bedrooms: 5,
           specs: {
-            Unit: "5 غرف نوم + عدة حمامات + مناطق معيشة + حديقة",
-            "Total Area": "7,226.14 قدم²",
-            "Plot Area": "8,853.32 قدم²",
-            "Starting Price": "AED 18,065,350",
-            Handover: "الربع الرابع 2027",
+            "نوع الوحدة": "5 غرف نوم + عدة حمامات + مناطق معيشة + حديقة",
+            "المساحة المبنية": "7,226.14 قدم²",
+            "مساحة الأرض": "8,853.32 قدم²",
+            "السعر الابتدائي": "18,065,350 درهم إماراتي",
+            "موعد التسليم": "الربع الرابع 2027",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-front-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-pool-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
           ],
           features: [
             "مسبح وحديقة خاصة",
             "غرفة عائلية",
             "مساحة خارجية للطعام",
             "إحساس واجهة مائية",
+            "تراس واسع",
           ],
         },
         {
-          id: "6br-villa",
-          title: "فيلا فاخرة 6 غرف نوم",
+          id: "6br-villa-type-b",
+          title: "فيلا فاخرة 6 غرف نوم - النوع ب",
           bedrooms: 6,
           specs: {
-            Unit: "6 غرف نوم + عدة حمامات + مناطق معيشة + حديقة",
-            "Total Area": "9,739.83 قدم²",
-            "Plot Area": "11,966.03 قدم²",
-            "Starting Price": "AED 23,375,592",
-            Handover: "الربع الرابع 2027",
+            "نوع الوحدة": "6 غرف نوم + عدة حمامات + مناطق معيشة + حديقة",
+            "المساحة المبنية": "9,739.83 قدم²",
+            "مساحة الأرض": "11,966.03 قدم²",
+            "السعر الابتدائي": "23,375,592 درهم إماراتي",
+            "موعد التسليم": "الربع الرابع 2027",
           },
           images: [
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-facade-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-lagoon-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
           ],
           features: [
             "مدخل فخم",
             "واجهة معمارية مميزة",
             "وصول مباشر لحافة البحيرة",
             "تشطيبات عالية الفخامة",
+            "إطلالات بانورامية",
           ],
         },
       ],
@@ -696,22 +453,12 @@ export const alSinniyyahIslandData = {
         { label: "مناطق للشواء", icon: "🍖", color: "#d7b46a" },
         { label: "مركز مجتمعي", icon: "🏛️", color: "#d7b46a" },
         { label: "مركز أعمال", icon: "💼", color: "#d7b46a" },
-        { label: "مساحات عمل مشتركة", icon: "👨‍💻", color: "#d7b46a" },
-        { label: "مكتبة", icon: "📚", color: "#d7b46a" },
-        { label: "سينما", icon: "🎬", color: "#d7b46a" },
-        { label: "غرفة ألعاب", icon: "🎮", color: "#d7b46a" },
-        { label: "ساحة فعاليات", icon: "🎪", color: "#d7b46a" },
-        { label: "جناح للمناسبات الخاصة", icon: "💒", color: "#d7b46a" },
-        { label: "خدمات كونسيرج", icon: "🎩", color: "#d7b46a" },
-        { label: "أمن على مدار الساعة", icon: "🔒", color: "#d7b46a" },
-        { label: "خدمة صف السيارات", icon: "🅿️", color: "#d7b46a" },
-        { label: "محطات شحن سيارات كهربائية", icon: "⚡", color: "#d7b46a" },
       ],
     },
     location: {
       title: "موقع الجزيرة",
-      projectName: "Sobha Siniya Island",
-      address: "جزيرة سينية، أم القيوين، الإمارات العربية المتحدة",
+      projectName: "Sobha Sinniyah Island",
+      address: "جزيرة السينية، أم القيوين، الإمارات العربية المتحدة",
       lat: 25.565,
       lng: 55.555,
       zoom: 12,
@@ -766,7 +513,7 @@ export const alSinniyyahIslandData = {
     cta: {
       title: "جاهز لتجربة العيش على الجزيرة؟",
       description:
-        "تواصل مع فريق المبيعات لحجز جولة خاصة أو طلب مزيد من المعلومات حول الأسعار والوحدات المتاحة في صوبا سينية آيلاند.",
+        "تواصل مع فريق المبيعات لحجز جولة خاصة أو طلب مزيد من المعلومات حول الأسعار والفلل المتاحة في صوبا سينية آيلاند.",
       buttons: [
         {
           text: "حجز جولة",

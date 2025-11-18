@@ -30,7 +30,10 @@ export default function CallbackForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          locale: locale, // ADD THIS LINE
+        }),
       });
 
       const result = await response.json();
