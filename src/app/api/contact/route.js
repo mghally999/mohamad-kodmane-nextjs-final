@@ -1018,7 +1018,7 @@ function getContactMethodLabel(method, locale = "en") {
 }
 
 /* ------------------------------------------------------------------
-   CORS OPTIONS HANDLER
+   CORS OPTIONS HANDLER (push purposes)
 ------------------------------------------------------------------- */
 
 export async function OPTIONS(request) {
