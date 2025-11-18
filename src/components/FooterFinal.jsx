@@ -44,7 +44,7 @@ export default function FooterFinal({
     "al-sinniyyah-island": t("projectNames.sobhaAlSinniyyahIsland"),
     hartland: t("projectNames.sobhaHartland2Villas"),
     "seahaven-penthouse": t("projectNames.sobhaSeaHavenPenthouse"),
-    "palm-central": t("projectNames.palmCentralNakheel"),
+    // "palm-central": t("projectNames.palmCentralNakheel"),
     massar: t("projectNames.aradaMassar3"),
     lumenaalta: t("projectNames.luminaAlta"),
     "riviera-retails": t("projectNames.aziziRivieraRetails"),

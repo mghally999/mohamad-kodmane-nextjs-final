@@ -147,7 +147,7 @@ export default function FloorPlanShowcase({
               </div>
 
               {/* CTA Button */}
-              <div className={styles.ctaContainer}>
+              {/* <div className={styles.ctaContainer}>
                 <button className={styles.ctaButton}>
                   <span>
                     {activeIsRTL
@@ -175,7 +175,7 @@ export default function FloorPlanShowcase({
                     />
                   </svg>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-assign-module-variable */
 
 // Import all project data directly
-import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
+// import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
 import { aquamontData } from "@/data/projects/apartments/sobha/aquamont/aquamont";
 import { centralData } from "@/data/projects/apartments/sobha/central/central";
@@ -24,7 +24,7 @@ const PROJECT_DATA_MAP = {
   central: centralData,
 
   // Apartments - Nakheel
-  "palm-central": palmCentralData,
+  // "palm-central": palmCentralData,
 
   // Villas - Sobha
   hartland: hartland2VillasData,

@@ -91,7 +91,7 @@ export const skyParksData = {
           bedrooms: 1,
           specs: {
             Unit: "1 BEDROOM + 1 MASTER BATH + 1 LIVING AREA + 1 BALCONY",
-            Suite: "665.31 SQ.FT.",
+            Suite: "655.31 SQ.FT.",
             Balcony: "60.28 SQ.FT.",
             Total: "715.59 SQ.FT.",
             Price: "AED 2,880,250",
@@ -99,6 +99,7 @@ export const skyParksData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bedroom-master-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/sky-parks/1A_0.png",
           ],
           features: ["Walk-in Closet", "Premium Finishes", "Smart Home Ready"],
         },
@@ -116,6 +117,7 @@ export const skyParksData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-02.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bathroom-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/sky-parks/2C_0.png",
           ],
           features: ["Maid's Room", "Double Balcony", "Premium Kitchen"],
         },
@@ -133,6 +135,7 @@ export const skyParksData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/sky-parks/3A.png",
           ],
           features: ["Double Master", "Panoramic Views", "Private Elevator"],
         },
@@ -280,7 +283,7 @@ export const skyParksData = {
           bedrooms: 1,
           specs: {
             الوحدة: "غرفة نوم واحدة + حمّام ماستر + غرفة معيشة + شرفة",
-            "المساحة الداخلية": "665.31 قدم مربع",
+            "المساحة الداخلية": "655.31 قدم مربع",
             "مساحة الشرفة": "60.28 قدم مربع",
             "إجمالي المساحة": "715.59 قدم مربع",
             "السعر الابتدائي": "2,880,250 درهم إماراتي",
@@ -288,6 +291,7 @@ export const skyParksData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bedroom-master-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/sky-parks/1A_0.png",
           ],
           features: [
             "غرفة ملابس (Walk-in Closet)",
@@ -309,6 +313,7 @@ export const skyParksData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-02.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bathroom-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/sky-parks/2C_0.png",
           ],
           features: ["غرفة خادمة", "شرفة واسعة", "مطبخ بتجهيزات حديثة"],
         },
@@ -326,6 +331,7 @@ export const skyParksData = {
           images: [
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/sky-parks/3A.png",
           ],
           features: [
             "غرفتا ماستر مع حمّامات داخلية",

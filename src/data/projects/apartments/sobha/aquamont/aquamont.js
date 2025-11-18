@@ -104,6 +104,7 @@ export const aquamontData = {
             "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bathroom-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
+            "https://luxury-real-estate-media.b-cdn.net/aquamont/1%20Bedroom%20Type%20D.webp",
           ],
           features: [
             "Premium Finishes",
@@ -127,6 +128,7 @@ export const aquamontData = {
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-view.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/aquamont/2%20Bedroom%20Type%20B.webp",
           ],
           features: [
             "Spacious Layout",
@@ -150,6 +152,7 @@ export const aquamontData = {
             "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-3bhk-duplex-type-b.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-daytime-02.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-01.png",
+            "https://luxury-real-estate-media.b-cdn.net/aquamont/3%20Bedroom%20Type%20A.webp",
           ],
           features: [
             "Double Master",
@@ -389,6 +392,7 @@ export const aquamontData = {
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-view.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/aquamont/2%20Bedroom%20Type%20B.webp",
           ],
           features: [
             "مساحات رحبة تناسب العائلات الصغيرة",
@@ -412,6 +416,7 @@ export const aquamontData = {
             "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-3bhk-duplex-type-b.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-daytime-02.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-01.png",
+            "https://luxury-real-estate-media.b-cdn.net/aquamont/3%20Bedroom%20Type%20A.webp",
           ],
           features: [
             "غرفتا ماستر مع حمّامات داخلية",

@@ -115,7 +115,7 @@
 /* Content Area - FIXED EQUAL HEIGHT */
 .contentArea {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   gap: 40px;
   align-items: stretch;
   min-height: 500px; /* Fixed base height */

@@ -71,7 +71,7 @@ export const centralData = {
         },
         {
           title: "The Serene",
-          url: "https://luxury-real-estate-media.b-cdn.net/sobha-central/sobha-central-pdfs/SOBHA%20CENTRAL%20-%20THE%20SERENE%20BROCHURE.pdf",
+          url: "https://luxury-real-estate-media.b-cdn.net/sobha-central/sobha-central-pdfs/SOBHA%20CENTRAL%20-%20THE%20SERENE%20BROCHURE%20(1).pdf",
           type: "serene",
           icon: "☁️",
           color: "#2196F3",

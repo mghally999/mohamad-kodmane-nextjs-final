@@ -4,7 +4,7 @@ import styles from "@/styles/projects/ContactFormFinal.module.css";
 import { useLanguage } from "@/components/LanguageProvider";
 
 // Import all your project data
-import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
+// import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
 import { centralData } from "@/data/projects/apartments/sobha/central/central";
 import { skyParksData } from "@/data/projects/apartments/sobha/skyparks/skyparks";
@@ -28,7 +28,7 @@ const getProjectInfo = (projectData) => {
 
 // Combine all projects for dropdown
 const ALL_PROJECTS = [
-  palmCentralData,
+  // palmCentralData,
   aquaCrestData,
   centralData,
   skyParksData,
