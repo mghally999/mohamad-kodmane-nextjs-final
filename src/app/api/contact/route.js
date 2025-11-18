@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Translation dictionaries
+/* ------------------------------------------------------------------
+   TRANSLATIONS
+------------------------------------------------------------------- */
+
 const translations = {
   en: {
     callback: {
@@ -89,8 +92,13 @@ const interestLabels = {
   },
 };
 
+/* ------------------------------------------------------------------
+   MAIN HANDLER
+------------------------------------------------------------------- */
+
 export async function POST(request) {
-  console.log("📧 API Route Called - Production");
+  console.log("📧 API Route Called");
+  debugEnvironment();
 
   try {
     const formData = await request.json();
@@ -114,89 +122,81 @@ export async function POST(request) {
 
     console.log("✅ Form validation passed");
 
-    // Create email transporter with PRODUCTION settings
+    // Create email transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: parseInt(process.env.EMAIL_PORT) || 465,
+      host: process.env.EMAIL_HOST || "smtp.hostinger.com",
+      port: parseInt(process.env.EMAIL_PORT || "465"),
       secure: true,
       auth: {
-        user: process.env.EMAIL_USER,
+        user: process.env.EMAIL_USER || "info@mohamadkodmani.ae",
         pass: process.env.EMAIL_PASS,
       },
-      connectionTimeout: 60000,
-      greetingTimeout: 60000,
-      socketTimeout: 60000,
       tls: {
         rejectUnauthorized: false,
       },
     });
 
-    // Send emails + push to respond.io - PARALLEL execution
-    let respondIoResult;
-    let emailResults = [];
-
+    // Verify connection (helps catch wrong SMTP config in dev/prod)
     try {
-      // Run respond.io and emails in parallel for better performance
-      [respondIoResult, emailResults] = await Promise.allSettled([
-        // 1. Respond.io (most important - run first)
-        sendToRespondIO(formData, formType.toLowerCase()),
-
-        // 2. Emails (run in parallel)
-        (async () => {
-          try {
-            if (formType === "CALLBACK_FORM") {
-              return await Promise.allSettled([
-                sendCallbackEmailToAdmin(transporter, formData),
-                sendAutoReplyToUser(transporter, formData, "callback"),
-              ]);
-            } else if (formType === "PROJECT_FORM") {
-              return await Promise.allSettled([
-                sendProjectEmailToAdmin(transporter, formData),
-                sendAutoReplyToUser(transporter, formData, "project"),
-              ]);
-            } else {
-              return await Promise.allSettled([
-                sendGenericEmail(transporter, formData),
-              ]);
-            }
-          } catch (emailError) {
-            console.error("❌ Email processing failed:", emailError);
-            return [];
-          }
-        })(),
-      ]);
-
-      // Log results
-      if (respondIoResult.status === "fulfilled" && respondIoResult.value) {
-        console.log("✅ Respond.io contact created & tagged successfully");
-      } else {
-        console.log("❌ Respond.io failed");
-      }
-
-      if (emailResults.status === "fulfilled") {
-        emailResults.value?.forEach((result, index) => {
-          if (result.status === "fulfilled") {
-            console.log(`✅ Email ${index + 1} sent successfully`);
-          } else {
-            console.error(
-              `❌ Email ${index + 1} failed:`,
-              result.reason?.message
-            );
-          }
-        });
-      }
+      await transporter.verify();
+      console.log("✅ SMTP connection verified");
     } catch (error) {
-      console.error("❌ Main processing failed:", error);
+      console.error("❌ SMTP connection failed:", error);
     }
 
-    // Return success response regardless of email/respond.io results
+    // Send emails + push to respond.io
+    let adminEmailResult, userEmailResult, respondIoResult;
+
+    try {
+      if (formType === "CALLBACK_FORM") {
+        adminEmailResult = await sendCallbackEmailToAdmin(
+          transporter,
+          formData
+        );
+        userEmailResult = await sendAutoReplyToUser(
+          transporter,
+          formData,
+          "callback"
+        );
+        respondIoResult = await sendToRespondIO(formData, "callback");
+      } else if (formType === "PROJECT_FORM") {
+        adminEmailResult = await sendProjectEmailToAdmin(transporter, formData);
+        userEmailResult = await sendAutoReplyToUser(
+          transporter,
+          formData,
+          "project"
+        );
+        respondIoResult = await sendToRespondIO(formData, "project");
+      } else {
+        adminEmailResult = await sendGenericEmail(transporter, formData);
+        respondIoResult = await sendToRespondIO(formData, "generic");
+      }
+
+      // More accurate respond.io logging
+      if (respondIoResult && !respondIoResult.tagError) {
+        console.log(
+          "✅ Emails sent and respond.io contact created & tagged successfully"
+        );
+      } else if (respondIoResult && respondIoResult.tagError) {
+        console.log(
+          "⚠️ Emails sent, contact created in respond.io, but tag application failed"
+        );
+      } else {
+        console.log(
+          "✅ Emails sent, but respond.io failed or was skipped (no token / invalid data)"
+        );
+      }
+    } catch (emailError) {
+      console.error("❌ Email / respond.io sending failed:", emailError);
+    }
+
+    // Return success response
     return NextResponse.json(
       {
         success: true,
         message: getSuccessMessage(formType, formData.locale),
         data: {
           formType: formType,
-          respondIoSuccess: !!respondIoResult?.value,
           ...formData,
         },
       },
@@ -208,6 +208,7 @@ export async function POST(request) {
       {
         success: false,
         message: "Server error. Please try again later or contact us directly.",
+        error: error.message,
       },
       { status: 500 }
     );
@@ -215,46 +216,59 @@ export async function POST(request) {
 }
 
 /* ------------------------------------------------------------------
-   RESPOND.IO INTEGRATION (PRODUCTION FIXED)
+   DEBUG ENV
+------------------------------------------------------------------- */
+
+function debugEnvironment() {
+  console.log("🔧 Environment Debug:");
+  console.log("EMAIL_HOST:", process.env.EMAIL_HOST || "smtp.hostinger.com");
+  console.log("EMAIL_PORT:", process.env.EMAIL_PORT || "465");
+  console.log("EMAIL_USER:", process.env.EMAIL_USER ? "Set" : "Not set");
+  console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Set" : "Not set");
+  console.log("ADMIN_EMAIL:", process.env.ADMIN_EMAIL ? "Set" : "Not set");
+  console.log(
+    "RESPONDIO_TOKEN:",
+    process.env.RESPONDIO_TOKEN ? "Set" : "Not set"
+  );
+}
+
+/* ------------------------------------------------------------------
+   RESPOND.IO INTEGRATION (Contact Creation + Tag Application)
 ------------------------------------------------------------------- */
 
 // Format phone number to E.164 standard
 function formatPhoneNumber(phone) {
   if (!phone) return null;
 
+  // Remove all non-digit characters
   const cleaned = phone.replace(/\D/g, "");
 
+  // Handle different UAE phone formats
   if (cleaned.startsWith("971") && cleaned.length === 12) {
-    return cleaned;
+    return cleaned; // Already in 971501234567 format
   }
 
   if (cleaned.startsWith("+971") && cleaned.length === 13) {
-    return cleaned.substring(1);
+    return cleaned.substring(1); // Remove the + prefix
   }
 
   if (cleaned.startsWith("0") && cleaned.length === 10) {
-    return `971${cleaned.substring(1)}`;
+    return `971${cleaned.substring(1)}`; // 0501234567 -> 971501234567
   }
 
   if (cleaned.startsWith("5") && cleaned.length === 9) {
-    return `971${cleaned}`;
+    return `971${cleaned}`; // 501234567 -> 971501234567
   }
 
+  // Default - assume it's a UAE number and add 971
   return `971${cleaned}`;
 }
 
-// Create contact AND apply website-lead tag in respond.io - PRODUCTION FIXED
+// Create contact AND apply website-lead tag in respond.io
 async function sendToRespondIO(data, formType) {
   const token = process.env.RESPONDIO_TOKEN;
-
   if (!token) {
-    console.log("❌ Respond.io token missing in production");
-    return null;
-  }
-
-  // Validate token in production
-  if (typeof token !== "string" || !token.startsWith("eyJ")) {
-    console.log("❌ Invalid Respond.io token format in production");
+    console.log("❌ Respond.io token missing");
     return null;
   }
 
@@ -287,13 +301,9 @@ async function sendToRespondIO(data, formType) {
     countryCode: "AE",
   };
 
-  // Clean null values for production
+  // Clean null/empty values
   Object.keys(contactData).forEach((key) => {
-    if (
-      contactData[key] === null ||
-      contactData[key] === "" ||
-      contactData[key] === undefined
-    ) {
+    if (contactData[key] === null || contactData[key] === "") {
       delete contactData[key];
     }
   });
@@ -301,21 +311,17 @@ async function sendToRespondIO(data, formType) {
   const contactUrl = `https://api.respond.io/v2/contact/${encodeURIComponent(
     identifier
   )}`;
-  const tags = ["website-lead"];
+  const tags = ["website-lead"]; // ONLY website-lead tag
 
-  console.log("📤 Creating contact in respond.io (Production):", {
+  console.log("📤 Creating contact in respond.io:", {
     identifier,
-    hasFirstName: !!contactData.firstName,
-    hasPhone: !!contactData.phone,
-    hasEmail: !!contactData.email,
+    contactData,
     formType,
+    tags,
   });
 
   try {
-    // STEP 1: Create or update contact with production timeout
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-
+    // STEP 1: Create or update contact
     const contactResponse = await fetch(contactUrl, {
       method: "POST",
       headers: {
@@ -324,13 +330,12 @@ async function sendToRespondIO(data, formType) {
         Authorization: `Bearer ${token.trim()}`,
       },
       body: JSON.stringify(contactData),
-      signal: controller.signal,
     });
 
-    clearTimeout(timeoutId);
-
     const contactResponseText = await contactResponse.text();
-    console.log(`📡 Contact API Response: ${contactResponse.status}`);
+    console.log(
+      `📡 Contact API Response: ${contactResponse.status} - ${contactResponseText}`
+    );
 
     let contactCreated = false;
 
@@ -338,7 +343,9 @@ async function sendToRespondIO(data, formType) {
       console.log("✅ Contact created/updated successfully");
       contactCreated = true;
     } else if (contactResponse.status === 403) {
-      console.log("ℹ️ Contact already exists - proceeding to tag");
+      console.log(
+        "ℹ️ Contact already exists in respond.io (403) - proceeding to tag"
+      );
       contactCreated = true;
     } else {
       console.error(
@@ -347,13 +354,10 @@ async function sendToRespondIO(data, formType) {
       return null;
     }
 
-    // STEP 2: Apply website-lead tag with production timeout
+    // STEP 2: Apply website-lead tag (only if contact was created or exists)
     if (contactCreated) {
       const tagUrl = `${contactUrl}/tag`;
-      console.log("🏷️ Applying website-lead tag in production");
-
-      const tagController = new AbortController();
-      const tagTimeoutId = setTimeout(() => tagController.abort(), 10000);
+      console.log("🏷️ Applying tag:", tags);
 
       const tagResponse = await fetch(tagUrl, {
         method: "POST",
@@ -363,20 +367,21 @@ async function sendToRespondIO(data, formType) {
           Authorization: `Bearer ${token.trim()}`,
         },
         body: JSON.stringify(tags),
-        signal: tagController.signal,
       });
 
-      clearTimeout(tagTimeoutId);
-
       const tagResponseText = await tagResponse.text();
-      console.log(`📡 Tag API Response: ${tagResponse.status}`);
+      console.log(
+        `📡 Tag API Response: ${tagResponse.status} - ${tagResponseText}`
+      );
 
       if (tagResponse.ok) {
-        console.log("✅ website-lead tag applied successfully in production");
+        console.log("✅ website-lead tag applied successfully");
         return {
           success: true,
           identifier,
           tags: tags,
+          contactCreated: contactResponse.status === 200,
+          tagError: false,
         };
       } else {
         console.error(
@@ -386,6 +391,7 @@ async function sendToRespondIO(data, formType) {
           success: true,
           identifier,
           tags: [],
+          contactCreated: contactResponse.status === 200,
           tagError: true,
         };
       }
@@ -393,11 +399,7 @@ async function sendToRespondIO(data, formType) {
 
     return null;
   } catch (error) {
-    if (error.name === "AbortError") {
-      console.error("❌ Respond.io request timeout in production");
-    } else {
-      console.error("❌ Network error contacting respond.io:", error.message);
-    }
+    console.error("❌ Network error contacting respond.io:", error);
     return null;
   }
 }
@@ -475,51 +477,50 @@ function getSuccessMessage(formType, locale = "en") {
 }
 
 /* ------------------------------------------------------------------
-   EMAIL SENDING FUNCTIONS (FULL HTML TEMPLATES)
+   EMAIL SENDING FUNCTIONS
 ------------------------------------------------------------------- */
 
 async function sendCallbackEmailToAdmin(transporter, data) {
-  try {
-    const formattedPhone = formatPhoneNumber(data.phone);
-    const userLocale = data.locale || "en";
-    const isRTL = userLocale === "ar";
+  const formattedPhone = formatPhoneNumber(data.phone);
+  const userLocale = data.locale || "en";
+  const isRTL = userLocale === "ar";
 
-    const adminTranslations = {
-      en: {
-        subject: "New Callback Request - Mohamad Kodmani Real Estate",
-        title: "New Callback Request",
-        priority: "⏰ High Priority - Callback Required Within 15 Minutes",
-        clientName: "Client Name:",
-        phoneNumber: "Phone Number:",
-        investmentInterest: "Investment Interest:",
-        userLanguage: "User Language:",
-        submissionTime: "Submission Time:",
-        callClient: "📞 Call Client",
-        whatsapp: "💬 WhatsApp",
-        brokerage: "Mohamad Kodmani Real Estate Brokerage",
-        submittedThrough:
-          "This request was submitted through the website callback form",
-      },
-      ar: {
-        subject: "طلب اتصال جديد - محمد قضماني للعقارات",
-        title: "طلب اتصال جديد",
-        priority: "⏰ أولوية عالية - مطلوب اتصال خلال 15 دقيقة",
-        clientName: "اسم العميل:",
-        phoneNumber: "رقم الهاتف:",
-        investmentInterest: "مجال الاهتمام:",
-        userLanguage: "لغة المستخدم:",
-        submissionTime: "وقت الإرسال:",
-        callClient: "📞 اتصل بالعميل",
-        whatsapp: "💬 واتساب",
-        brokerage: "محمد قضماني للوساطة العقارية",
-        submittedThrough: "تم إرسال هذا الطلب عبر نموذج الاتصال في الموقع",
-      },
-    };
+  const adminTranslations = {
+    en: {
+      subject: "New Callback Request - Mohamad Kodmani Real Estate",
+      title: "New Callback Request",
+      priority: "⏰ High Priority - Callback Required Within 15 Minutes",
+      clientName: "Client Name:",
+      phoneNumber: "Phone Number:",
+      investmentInterest: "Investment Interest:",
+      userLanguage: "User Language:",
+      submissionTime: "Submission Time:",
+      callClient: "📞 Call Client",
+      whatsapp: "💬 WhatsApp",
+      brokerage: "Mohamad Kodmani Real Estate Brokerage",
+      submittedThrough:
+        "This request was submitted through the website callback form",
+    },
+    ar: {
+      subject: "طلب اتصال جديد - محمد قضماني للعقارات",
+      title: "طلب اتصال جديد",
+      priority: "⏰ أولوية عالية - مطلوب اتصال خلال 15 دقيقة",
+      clientName: "اسم العميل:",
+      phoneNumber: "رقم الهاتف:",
+      investmentInterest: "مجال الاهتمام:",
+      userLanguage: "لغة المستخدم:",
+      submissionTime: "وقت الإرسال:",
+      callClient: "📞 اتصل بالعميل",
+      whatsapp: "💬 واتساب",
+      brokerage: "محمد قضماني للوساطة العقارية",
+      submittedThrough: "تم إرسال هذا الطلب عبر نموذج الاتصال في الموقع",
+    },
+  };
 
-    const t = adminTranslations[userLocale] || adminTranslations.en;
-    const userLanguage = userLocale === "ar" ? "Arabic 🇦🇪" : "English 🇺🇸";
+  const t = adminTranslations[userLocale] || adminTranslations.en;
+  const userLanguage = userLocale === "ar" ? "Arabic 🇦🇪" : "English 🇺🇸";
 
-    const emailHtml = `
+  const emailHtml = `
 <!DOCTYPE html>
 <html lang="${userLocale}" dir="${isRTL ? "rtl" : "ltr"}">
 <head>
@@ -528,10 +529,10 @@ async function sendCallbackEmailToAdmin(transporter, data) {
     <title>${t.subject}</title>
 </head>
 <body style="font-family: ${
-      isRTL ? "Arial, Tahoma, sans-serif" : "Arial, sans-serif"
-    }; max-width: 600px; margin: 0 auto; background: #f8f9fa; color: #333; line-height: 1.6; text-align: ${
-      isRTL ? "right" : "left"
-    };">
+    isRTL ? "Arial, Tahoma, sans-serif" : "Arial, sans-serif"
+  }; max-width: 600px; margin: 0 auto; background: #f8f9fa; color: #333; line-height: 1.6; text-align: ${
+    isRTL ? "right" : "left"
+  };">
     <div style="background: #ffffff; border-radius: 12px; overflow: hidden; margin: 20px auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <div style="background: #1a1a1a; color: #d4af37; padding: 25px; text-align: center; border-bottom: 4px solid #d4af37;">
             <h1 style="margin: 0; font-size: 22px; font-weight: bold;">${
@@ -585,13 +586,13 @@ async function sendCallbackEmailToAdmin(transporter, data) {
                     <span style="color: #495057; text-align: ${
                       isRTL ? "left" : "right"
                     };">${new Date().toLocaleString("en-US", {
-      timeZone: "Asia/Dubai",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    })}</span>
+    timeZone: "Asia/Dubai",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  })}</span>
                 </div>
             </div>
             
@@ -600,10 +601,10 @@ async function sendCallbackEmailToAdmin(transporter, data) {
                     ${t.callClient}
                 </a>
                 <a href="https://wa.me/${formattedPhone}?text=Hi%20${encodeURIComponent(
-      data.name
-    )}%2C%20I'm%20Mohamad%20Kodmani%20following%20up%20on%20your%20callback%20request%20for%20${encodeURIComponent(
-      getInterestLabel(data.interest, userLocale)
-    )}." 
+    data.name
+  )}%2C%20I'm%20Mohamad%20Kodmani%20following%20up%20on%20your%20callback%20request%20for%20${encodeURIComponent(
+    getInterestLabel(data.interest, userLocale)
+  )}." 
                    style="background: #25D366; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; margin: 5px; font-size: 14px;">
                     ${t.whatsapp}
                 </a>
@@ -617,29 +618,43 @@ async function sendCallbackEmailToAdmin(transporter, data) {
     </div>
 </body>
 </html>
-    `;
+  `;
 
-    const mailOptions = {
-      from: `"Mohamad Kodmani Real Estate" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL,
-      subject: t.subject,
-      html: emailHtml,
-    };
+  const emailText = `
+${t.title.toUpperCase()}
 
-    const result = await transporter.sendMail(mailOptions);
-    console.log("✅ Callback admin email sent");
-    return result;
-  } catch (error) {
-    console.error("❌ Callback admin email failed:", error.message);
-    throw error;
-  }
+${t.clientName} ${data.name}
+${t.phoneNumber} +${formattedPhone}
+${t.investmentInterest} ${getInterestLabel(data.interest, userLocale)}
+${t.userLanguage} ${userLanguage}
+${t.submissionTime} ${new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Dubai",
+    dateStyle: "full",
+    timeStyle: "medium",
+  })}
+
+${t.priority}
+
+${t.brokerage}
+  `;
+
+  const mailOptions = {
+    from: `"Mohamad Kodmani Real Estate" <${
+      process.env.EMAIL_USER || "info@mohamadkodmani.ae"
+    }>`,
+    to: process.env.ADMIN_EMAIL || "info@mohamadkodmani.ae",
+    subject: t.subject,
+    text: emailText,
+    html: emailHtml,
+  };
+
+  return await transporter.sendMail(mailOptions);
 }
 
 async function sendProjectEmailToAdmin(transporter, data) {
-  try {
-    const formattedPhone = formatPhoneNumber(data.phone);
+  const formattedPhone = formatPhoneNumber(data.phone);
 
-    const emailHtml = `
+  const emailHtml = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -754,96 +769,120 @@ async function sendProjectEmailToAdmin(transporter, data) {
     </div>
 </body>
 </html>
-    `;
+  `;
 
-    const mailOptions = {
-      from: `"Mohamad Kodmani Real Estate" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL,
-      subject: `Project Inquiry - ${data.project} - ${data.firstName} ${data.lastName}`,
-      html: emailHtml,
-      replyTo: data.email,
-    };
+  const emailText = `
+NEW PROJECT INQUIRY
 
-    const result = await transporter.sendMail(mailOptions);
-    console.log("✅ Project admin email sent");
-    return result;
-  } catch (error) {
-    console.error("❌ Project admin email failed:", error.message);
-    throw error;
-  }
+CLIENT INFORMATION:
+Name: ${data.firstName} ${data.lastName}
+Phone: +${formattedPhone}
+Email: ${data.email}
+
+PROJECT DETAILS:
+Project: ${data.project}
+Unit Type: ${data.unitType || "Not specified"}
+Contact Preference: ${getContactMethodLabel(data.contactMethod, "en")}
+
+SUBMITTED: ${new Date().toLocaleString("en-US", {
+    timeZone: "Asia/Dubai",
+    dateStyle: "full",
+    timeStyle: "medium",
+  })}
+
+ACTION REQUIRED:
+Please contact this client within 24 hours using their preferred method.
+
+---
+Mohamad Kodmani Real Estate Brokerage
+  `;
+
+  const mailOptions = {
+    from: `"Mohamad Kodmani Real Estate" <${
+      process.env.EMAIL_USER || "info@mohamadkodmani.ae"
+    }>`,
+    to: process.env.ADMIN_EMAIL || "info@mohamadkodmani.ae",
+    subject: `Project Inquiry - ${data.project} - ${data.firstName} ${data.lastName}`,
+    text: emailText,
+    html: emailHtml,
+    replyTo: data.email,
+  };
+
+  return await transporter.sendMail(mailOptions);
 }
 
+// Send auto-reply to user
 async function sendAutoReplyToUser(transporter, data, formType) {
-  try {
-    const userLocale = data.locale || "en";
-    const isRTL = userLocale === "ar";
-    const t = translations[userLocale][formType];
-    const formattedPhone = formatPhoneNumber(data.phone);
+  const userLocale = data.locale || "en";
+  const isRTL = userLocale === "ar";
+  const t = translations[userLocale][formType];
+  const formattedPhone = formatPhoneNumber(data.phone);
 
-    let subject, title, message, details, userEmail;
+  let subject, title, message, details, userEmail;
 
-    if (formType === "callback") {
-      subject = t.subject;
-      title = t.title;
-      message = `${t.greeting} ${data.name},<br><br>${
-        t.message
-      } <strong>${getInterestLabel(data.interest, userLocale)}</strong>.`;
-      details = `
-        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #d4af37;">
-          <div style="margin-bottom: 8px;"><strong>${
-            isRTL ? "الاسم:" : "Name:"
-          }</strong> ${data.name}</div>
-          <div style="margin-bottom: 8px;"><strong>${
-            isRTL ? "رقم الهاتف:" : "Phone:"
-          }</strong> +${formattedPhone}</div>
-          <div><strong>${
-            isRTL ? "مجال الاهتمام:" : "Interest:"
-          }</strong> ${getInterestLabel(data.interest, userLocale)}</div>
-        </div>
-      `;
-      userEmail = data.email;
-    } else {
-      subject = t.subject.replace("{project}", data.project);
-      title = t.title;
-      message = `${t.greeting} ${data.firstName},<br><br>${t.message} <strong>${data.project}</strong>.`;
-      details = `
-        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #d4af37;">
-          <div style="margin-bottom: 8px;"><strong>${
-            isRTL ? "الاسم:" : "Name:"
-          }</strong> ${data.firstName} ${data.lastName}</div>
-          <div style="margin-bottom: 8px;"><strong>${
-            isRTL ? "رقم الهاتف:" : "Phone:"
-          }</strong> +${formattedPhone}</div>
-          <div style="margin-bottom: 8px;"><strong>${
-            isRTL ? "البريد الإلكتروني:" : "Email:"
-          }</strong> ${data.email}</div>
-          <div style="margin-bottom: 8px;"><strong>${t.project}:</strong> ${
-        data.project
-      }</div>
-          ${
-            data.unitType
-              ? `<div style="margin-bottom: 8px;"><strong>${
-                  isRTL ? "نوع الوحدة:" : "Unit Type:"
-                }</strong> ${data.unitType}</div>`
-              : ""
-          }
-          <div><strong>${
-            isRTL ? "طريقة التواصل المفضلة:" : "Preferred Contact:"
-          }</strong> ${getContactMethodLabel(
-        data.contactMethod,
-        userLocale
-      )}</div>
-        </div>
-      `;
-      userEmail = data.email;
-    }
+  if (formType === "callback") {
+    subject = t.subject;
+    title = t.title;
+    message = `${t.greeting} ${data.name},<br><br>${
+      t.message
+    } <strong>${getInterestLabel(data.interest, userLocale)}</strong>.`;
+    details = `
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #d4af37;">
+        <div style="margin-bottom: 8px;"><strong>${
+          isRTL ? "الاسم:" : "Name:"
+        }</strong> ${data.name}</div>
+        <div style="margin-bottom: 8px;"><strong>${
+          isRTL ? "رقم الهاتف:" : "Phone:"
+        }</strong> +${formattedPhone}</div>
+        <div><strong>${
+          isRTL ? "مجال الاهتمام:" : "Interest:"
+        }</strong> ${getInterestLabel(data.interest, userLocale)}</div>
+      </div>
+    `;
+    userEmail = data.email;
+  } else {
+    subject = t.subject.replace("{project}", data.project);
+    title = t.title;
+    message = `${t.greeting} ${data.firstName},<br><br>${t.message} <strong>${data.project}</strong>.`;
+    details = `
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #d4af37;">
+        <div style="margin-bottom: 8px;"><strong>${
+          isRTL ? "الاسم:" : "Name:"
+        }</strong> ${data.firstName} ${data.lastName}</div>
+        <div style="margin-bottom: 8px;"><strong>${
+          isRTL ? "رقم الهاتف:" : "Phone:"
+        }</strong> +${formattedPhone}</div>
+        <div style="margin-bottom: 8px;"><strong>${
+          isRTL ? "البريد الإلكتروني:" : "Email:"
+        }</strong> ${data.email}</div>
+        <div style="margin-bottom: 8px;"><strong>${t.project}:</strong> ${
+      data.project
+    }</div>
+        ${
+          data.unitType
+            ? `<div style="margin-bottom: 8px;"><strong>${
+                isRTL ? "نوع الوحدة:" : "Unit Type:"
+              }</strong> ${data.unitType}</div>`
+            : ""
+        }
+        <div><strong>${
+          isRTL ? "طريقة التواصل المفضلة:" : "Preferred Contact:"
+        }</strong> ${getContactMethodLabel(
+      data.contactMethod,
+      userLocale
+    )}</div>
+      </div>
+    `;
+    userEmail = data.email;
+  }
 
-    if (!userEmail) {
-      console.log("No email provided for auto-reply");
-      return;
-    }
+  // If no email provided for callback form, skip user email
+  if (formType === "callback" && !userEmail) {
+    console.log("No email provided for callback auto-reply");
+    return;
+  }
 
-    const emailHtml = `
+  const emailHtml = `
 <!DOCTYPE html>
 <html lang="${userLocale}" dir="${isRTL ? "rtl" : "ltr"}">
 <head>
@@ -852,10 +891,10 @@ async function sendAutoReplyToUser(transporter, data, formType) {
     <title>${subject}</title>
 </head>
 <body style="font-family: ${
-      isRTL ? "Arial, Tahoma, sans-serif" : "Arial, sans-serif"
-    }; max-width: 600px; margin: 0 auto; background: #f8f9fa; color: #333; line-height: 1.6; text-align: ${
-      isRTL ? "right" : "left"
-    };">
+    isRTL ? "Arial, Tahoma, sans-serif" : "Arial, sans-serif"
+  }; max-width: 600px; margin: 0 auto; background: #f8f9fa; color: #333; line-height: 1.6; text-align: ${
+    isRTL ? "right" : "left"
+  };">
     <div style="background: #ffffff; border-radius: 12px; overflow: hidden; margin: 20px auto; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
         <div style="background: #1a1a1a; color: #d4af37; padding: 30px; text-align: center; border-bottom: 4px solid #d4af37;">
             <h1 style="margin: 0; font-size: 24px; font-weight: bold;">${title}</h1>
@@ -896,40 +935,77 @@ async function sendAutoReplyToUser(transporter, data, formType) {
     </div>
 </body>
 </html>
-    `;
+  `;
 
-    const mailOptions = {
-      from: `"Mohamad Kodmani Real Estate" <${process.env.EMAIL_USER}>`,
-      to: userEmail,
-      subject: subject,
-      html: emailHtml,
-    };
+  const emailText = `
+${title}
 
-    const result = await transporter.sendMail(mailOptions);
-    console.log("✅ Auto-reply email sent");
-    return result;
-  } catch (error) {
-    console.error("❌ Auto-reply email failed:", error.message);
-    throw error;
-  }
+${
+  formType === "callback"
+    ? `Dear ${data.name},
+
+We have received your callback request for ${getInterestLabel(
+        data.interest,
+        userLocale
+      )}.
+
+Mohamad Kodmani will contact you within 15 minutes at the phone number you provided.
+
+Name: ${data.name}
+Phone: +${formattedPhone}
+Interest: ${getInterestLabel(data.interest, userLocale)}
+
+Best regards,
+Mohamad Kodmani Real Estate Brokerage`
+    : `Dear ${data.firstName},
+
+We have received your inquiry for ${data.project}.
+
+Our luxury property specialist will contact you within 24 hours using your preferred contact method: ${getContactMethodLabel(
+        data.contactMethod,
+        userLocale
+      )}.
+
+Name: ${data.firstName} ${data.lastName}
+Phone: +${formattedPhone}
+Email: ${data.email}
+Project: ${data.project}
+${
+  data.unitType ? `Unit Type: ${data.unitType}\n` : ""
+}Preferred Contact: ${getContactMethodLabel(data.contactMethod, userLocale)}
+
+Best regards,
+Mohamad Kodmani Real Estate Brokerage`
+}
+
+This is an automated message. Please do not reply to this email.
+  `;
+
+  const mailOptions = {
+    from: `"Mohamad Kodmani Real Estate" <${
+      process.env.EMAIL_USER || "info@mohamadkodmani.ae"
+    }>`,
+    to: userEmail,
+    subject: subject,
+    text: emailText,
+    html: emailHtml,
+  };
+
+  return await transporter.sendMail(mailOptions);
 }
 
 async function sendGenericEmail(transporter, data) {
-  try {
-    const mailOptions = {
-      from: `"Mohamad Kodmani Real Estate" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL,
-      subject: "New Website Inquiry",
-      html: `<pre>${JSON.stringify(data, null, 2)}</pre>`,
-    };
+  const mailOptions = {
+    from: `"Mohamad Kodmani Real Estate" <${
+      process.env.EMAIL_USER || "info@mohamadkodmani.ae"
+    }>`,
+    to: process.env.ADMIN_EMAIL || "info@mohamadkodmani.ae",
+    subject: `New Website Inquiry`,
+    text: JSON.stringify(data, null, 2),
+    html: `<pre>${JSON.stringify(data, null, 2)}</pre>`,
+  };
 
-    const result = await transporter.sendMail(mailOptions);
-    console.log("✅ Generic email sent");
-    return result;
-  } catch (error) {
-    console.error("❌ Generic email failed:", error.message);
-    throw error;
-  }
+  return await transporter.sendMail(mailOptions);
 }
 
 // Helper functions
@@ -940,6 +1016,10 @@ function getInterestLabel(interest, locale = "en") {
 function getContactMethodLabel(method, locale = "en") {
   return contactMethodLabels[locale]?.[method] || method;
 }
+
+/* ------------------------------------------------------------------
+   CORS OPTIONS HANDLER
+------------------------------------------------------------------- */
 
 export async function OPTIONS(request) {
   return new NextResponse(null, {
