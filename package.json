@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "dev:production": "NODE_ENV=production next dev",
+    "build:production": "NODE_ENV=production next build",
+    "start:production": "NODE_ENV=production next start"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

@@ -1,6 +1,14 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Environment detection
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+const IS_DEVELOPMENT = process.env.NODE_ENV === "development";
+
+console.log(`🚀 Environment: ${process.env.NODE_ENV || "development"}`);
+console.log(`📍 Production Mode: ${IS_PRODUCTION}`);
+console.log(`🔧 Development Mode: ${IS_DEVELOPMENT}`);
+
 /* ------------------------------------------------------------------
    TRANSLATIONS
 ------------------------------------------------------------------- */
@@ -97,12 +105,16 @@ const interestLabels = {
 ------------------------------------------------------------------- */
 
 export async function POST(request) {
-  console.log("📧 API Route Called");
+  console.log("📧 ========== API ROUTE CALLED ==========");
+  console.log(
+    `🌍 Environment: ${IS_PRODUCTION ? "PRODUCTION" : "DEVELOPMENT"}`
+  );
+
   debugEnvironment();
 
   try {
     const formData = await request.json();
-    console.log("📝 Form Data Received:", formData);
+    console.log("📝 Form Data Received:", JSON.stringify(formData, null, 2));
 
     // Determine form type and validate accordingly
     const formType = determineFormType(formData);
@@ -111,6 +123,7 @@ export async function POST(request) {
     // Validate based on form type
     const validation = validateFormData(formData, formType);
     if (!validation.isValid) {
+      console.log("❌ Form validation failed:", validation.message);
       return NextResponse.json(
         {
           success: false,
@@ -122,8 +135,8 @@ export async function POST(request) {
 
     console.log("✅ Form validation passed");
 
-    // Create email transporter
-    const transporter = nodemailer.createTransport({
+    // Enhanced transporter for production testing
+    const transporterConfig = {
       host: process.env.EMAIL_HOST || "smtp.hostinger.com",
       port: parseInt(process.env.EMAIL_PORT || "465"),
       secure: true,
@@ -134,81 +147,214 @@ export async function POST(request) {
       tls: {
         rejectUnauthorized: false,
       },
+      // Production-specific settings
+      ...(IS_PRODUCTION && {
+        connectionTimeout: 30000,
+        greetingTimeout: 30000,
+        socketTimeout: 30000,
+        debug: true,
+        logger: true,
+      }),
+    };
+
+    console.log("🔧 Transporter Config:", {
+      host: transporterConfig.host,
+      port: transporterConfig.port,
+      user: transporterConfig.auth.user,
+      environment: IS_PRODUCTION ? "PRODUCTION" : "DEVELOPMENT",
     });
 
-    // Verify connection (helps catch wrong SMTP config in dev/prod)
+    const transporter = nodemailer.createTransport(transporterConfig);
+
+    // Verify connection
     try {
+      console.log("🔌 Verifying SMTP connection...");
       await transporter.verify();
-      console.log("✅ SMTP connection verified");
+      console.log("✅ SMTP connection verified successfully");
     } catch (error) {
       console.error("❌ SMTP connection failed:", error);
+      if (IS_PRODUCTION) {
+        console.error("🚨 PRODUCTION SMTP ERROR - Check your credentials!");
+      }
     }
 
-    // Send emails + push to respond.io
-    let adminEmailResult, userEmailResult, respondIoResult;
+    // Execute all operations
+    let results = {
+      adminEmail: { success: false, error: null },
+      userEmail: { success: false, error: null },
+      respondIo: { success: false, error: null },
+    };
 
     try {
       if (formType === "CALLBACK_FORM") {
-        adminEmailResult = await sendCallbackEmailToAdmin(
-          transporter,
-          formData
-        );
-        userEmailResult = await sendAutoReplyToUser(
-          transporter,
-          formData,
-          "callback"
-        );
-        respondIoResult = await sendToRespondIO(formData, "callback");
+        console.log("🔄 Processing CALLBACK_FORM...");
+
+        // Admin email
+        try {
+          results.adminEmail.data = await sendCallbackEmailToAdmin(
+            transporter,
+            formData
+          );
+          results.adminEmail.success = true;
+          console.log("✅ Callback admin email sent successfully");
+        } catch (error) {
+          results.adminEmail.error = error.message;
+          console.error("❌ Callback admin email failed:", error);
+        }
+
+        // User auto-reply
+        try {
+          results.userEmail.data = await sendAutoReplyToUser(
+            transporter,
+            formData,
+            "callback"
+          );
+          results.userEmail.success = true;
+          console.log("✅ Callback user auto-reply sent successfully");
+        } catch (error) {
+          results.userEmail.error = error.message;
+          console.error("❌ Callback user auto-reply failed:", error);
+        }
+
+        // Respond.io
+        try {
+          results.respondIo.data = await sendToRespondIO(formData, "callback");
+          results.respondIo.success = true;
+          console.log("✅ Respond.io callback processed");
+        } catch (error) {
+          results.respondIo.error = error.message;
+          console.error("❌ Respond.io callback failed:", error);
+        }
       } else if (formType === "PROJECT_FORM") {
-        adminEmailResult = await sendProjectEmailToAdmin(transporter, formData);
-        userEmailResult = await sendAutoReplyToUser(
-          transporter,
-          formData,
-          "project"
-        );
-        respondIoResult = await sendToRespondIO(formData, "project");
+        console.log("🔄 Processing PROJECT_FORM...");
+
+        // Admin email
+        try {
+          results.adminEmail.data = await sendProjectEmailToAdmin(
+            transporter,
+            formData
+          );
+          results.adminEmail.success = true;
+          console.log("✅ Project admin email sent successfully");
+        } catch (error) {
+          results.adminEmail.error = error.message;
+          console.error("❌ Project admin email failed:", error);
+        }
+
+        // User auto-reply
+        try {
+          results.userEmail.data = await sendAutoReplyToUser(
+            transporter,
+            formData,
+            "project"
+          );
+          results.userEmail.success = true;
+          console.log("✅ Project user auto-reply sent successfully");
+        } catch (error) {
+          results.userEmail.error = error.message;
+          console.error("❌ Project user auto-reply failed:", error);
+        }
+
+        // Respond.io
+        try {
+          results.respondIo.data = await sendToRespondIO(formData, "project");
+          results.respondIo.success = true;
+          console.log("✅ Respond.io project processed");
+        } catch (error) {
+          results.respondIo.error = error.message;
+          console.error("❌ Respond.io project failed:", error);
+        }
       } else {
-        adminEmailResult = await sendGenericEmail(transporter, formData);
-        respondIoResult = await sendToRespondIO(formData, "generic");
+        console.log("🔄 Processing UNKNOWN_FORM...");
+
+        try {
+          results.adminEmail.data = await sendGenericEmail(
+            transporter,
+            formData
+          );
+          results.adminEmail.success = true;
+          console.log("✅ Generic email sent successfully");
+        } catch (error) {
+          results.adminEmail.error = error.message;
+          console.error("❌ Generic email failed:", error);
+        }
+
+        try {
+          results.respondIo.data = await sendToRespondIO(formData, "generic");
+          results.respondIo.success = true;
+          console.log("✅ Respond.io generic processed");
+        } catch (error) {
+          results.respondIo.error = error.message;
+          console.error("❌ Respond.io generic failed:", error);
+        }
       }
 
-      // More accurate respond.io logging
-      if (respondIoResult && !respondIoResult.tagError) {
-        console.log(
-          "✅ Emails sent and respond.io contact created & tagged successfully"
-        );
-      } else if (respondIoResult && respondIoResult.tagError) {
-        console.log(
-          "⚠️ Emails sent, contact created in respond.io, but tag application failed"
-        );
-      } else {
-        console.log(
-          "✅ Emails sent, but respond.io failed or was skipped (no token / invalid data)"
-        );
+      // Comprehensive logging
+      console.log("📊 ========== EXECUTION RESULTS ==========");
+      console.log(
+        "📨 Admin Email:",
+        results.adminEmail.success ? "✅ SUCCESS" : "❌ FAILED"
+      );
+      console.log(
+        "📧 User Auto-Reply:",
+        results.userEmail.success ? "✅ SUCCESS" : "❌ FAILED/SKIPPED"
+      );
+      console.log(
+        "🤖 Respond.io:",
+        results.respondIo.success ? "✅ SUCCESS" : "❌ FAILED/SKIPPED"
+      );
+      console.log(
+        "🌍 Environment:",
+        IS_PRODUCTION ? "PRODUCTION" : "DEVELOPMENT"
+      );
+      console.log("🎯 Form Type:", formType);
+
+      if (!results.adminEmail.success && results.adminEmail.error) {
+        console.error("📨 Admin Email Error:", results.adminEmail.error);
       }
-    } catch (emailError) {
-      console.error("❌ Email / respond.io sending failed:", emailError);
+      if (!results.userEmail.success && results.userEmail.error) {
+        console.error("📧 User Email Error:", results.userEmail.error);
+      }
+      if (!results.respondIo.success && results.respondIo.error) {
+        console.error("🤖 Respond.io Error:", results.respondIo.error);
+      }
+    } catch (mainError) {
+      console.error("❌ Main processing error:", mainError);
     }
 
-    // Return success response
+    // Return success response even if some components failed
     return NextResponse.json(
       {
         success: true,
         message: getSuccessMessage(formType, formData.locale),
         data: {
           formType: formType,
+          environment: IS_PRODUCTION ? "production" : "development",
+          components: {
+            adminEmail: results.adminEmail.success,
+            userEmail: results.userEmail.success,
+            respondIo: results.respondIo.success,
+          },
           ...formData,
         },
       },
       { status: 200 }
     );
   } catch (error) {
-    console.error("❌ API Error:", error);
+    console.error("❌ ========== CRITICAL API ERROR ==========");
+    console.error("💥 Error Message:", error.message);
+    console.error("📝 Stack Trace:", error.stack);
+    console.error(
+      "🌍 Environment:",
+      IS_PRODUCTION ? "PRODUCTION" : "DEVELOPMENT"
+    );
+
     return NextResponse.json(
       {
         success: false,
         message: "Server error. Please try again later or contact us directly.",
-        error: error.message,
+        error: IS_PRODUCTION ? undefined : error.message,
+        environment: IS_PRODUCTION ? "production" : "development",
       },
       { status: 500 }
     );
@@ -216,24 +362,36 @@ export async function POST(request) {
 }
 
 /* ------------------------------------------------------------------
-   DEBUG ENV
+   DEBUG ENV - Enhanced for Production Testing
 ------------------------------------------------------------------- */
 
 function debugEnvironment() {
-  console.log("🔧 Environment Debug:");
+  console.log("🔧 ========== ENVIRONMENT DEBUG ==========");
+  console.log("NODE_ENV:", process.env.NODE_ENV || "development");
   console.log("EMAIL_HOST:", process.env.EMAIL_HOST || "smtp.hostinger.com");
   console.log("EMAIL_PORT:", process.env.EMAIL_PORT || "465");
-  console.log("EMAIL_USER:", process.env.EMAIL_USER ? "Set" : "Not set");
-  console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "Set" : "Not set");
-  console.log("ADMIN_EMAIL:", process.env.ADMIN_EMAIL ? "Set" : "Not set");
+  console.log("EMAIL_USER:", process.env.EMAIL_USER ? "✅ Set" : "❌ Not set");
+  console.log("EMAIL_PASS:", process.env.EMAIL_PASS ? "✅ Set" : "❌ Not set");
+  console.log(
+    "ADMIN_EMAIL:",
+    process.env.ADMIN_EMAIL ? "✅ Set" : "❌ Not set"
+  );
   console.log(
     "RESPONDIO_TOKEN:",
-    process.env.RESPONDIO_TOKEN ? "Set" : "Not set"
+    process.env.RESPONDIO_TOKEN ? "✅ Set" : "❌ Not set"
   );
+
+  if (process.env.RESPONDIO_TOKEN) {
+    console.log(
+      "🔑 Token Preview:",
+      process.env.RESPONDIO_TOKEN.substring(0, 20) + "..."
+    );
+  }
+  console.log("===========================================");
 }
 
 /* ------------------------------------------------------------------
-   RESPOND.IO INTEGRATION (Contact Creation + Tag Application)
+   RESPOND.IO INTEGRATION
 ------------------------------------------------------------------- */
 
 // Format phone number to E.164 standard
@@ -1018,7 +1176,7 @@ function getContactMethodLabel(method, locale = "en") {
 }
 
 /* ------------------------------------------------------------------
-   CORS OPTIONS HANDLER (push purposess)
+   CORS OPTIONS HANDLER
 ------------------------------------------------------------------- */
 
 export async function OPTIONS(request) {
