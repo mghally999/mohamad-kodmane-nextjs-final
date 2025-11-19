@@ -12,6 +12,7 @@ import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven
 import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
 import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
 import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
+import { damacIslands2Data } from "@/data/projects/villas/damac/damac-islands-2";
 
 /**
  * ✅ PROJECT DATA MAP - Direct access to your data
@@ -32,6 +33,7 @@ const PROJECT_DATA_MAP = {
 
   // Villas - Arada
   massar: massar3Data,
+  "damac-islands-2": damacIslands2Data,
 
   // Commercial - Azizi
   "riviera-retails": rivieraRetailsData,
@@ -84,7 +86,8 @@ export function getAllProjectSlugs() {
     if (
       project.includes("hartland") ||
       project.includes("massar") ||
-      project.includes("al-sinniyyah")
+      project.includes("al-sinniyyah") ||
+      project.includes("damac") // ADD THIS LINE
     ) {
       category = "villas";
     } else if (project.includes("riviera") || project.includes("lumena")) {
@@ -97,6 +100,7 @@ export function getAllProjectSlugs() {
     if (project.includes("arada")) developer = "arada";
     if (project.includes("azizi")) developer = "azizi";
     if (project.includes("omniyat")) developer = "omniyat";
+    if (project.includes("damac")) developer = "damac"; // ADD THIS LINE
 
     return { category, developer, project };
   });

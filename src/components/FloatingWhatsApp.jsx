@@ -1,17 +1,24 @@
 // FloatingWhatsApp.jsx
 "use client";
 import { useState, useEffect } from "react";
+import { useLanguage } from "./LanguageProvider";
 import styles from "@/styles/FloatingWhatsApp.module.css";
-
-const numberE164 = "971566665560";
-const prefilled = encodeURIComponent(
-  "Hi! I'm interested in Dubai real estate. Could you help me with investment options?"
-);
-const waLink = `https://wa.me/${numberE164}?text=${prefilled}`;
 
 export default function FloatingWhatsApp() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const { locale, t } = useLanguage();
+
+  const numberE164 = "971566665560";
+
+  // Dynamic pre-filled message based on language
+  const prefilled = encodeURIComponent(
+    locale === "ar"
+      ? "مرحباً! أنا مهتم بالاستثمار العقاري في دبي. هل يمكنكم مساعدتي بخيارات الاستثمار؟"
+      : "Hi! I'm interested in Dubai real estate. Could you help me with investment options?"
+  );
+
+  const waLink = `https://wa.me/${numberE164}?text=${prefilled}`;
 
   useEffect(() => {
     // Show after a brief delay for elegant entrance
@@ -22,18 +29,23 @@ export default function FloatingWhatsApp() {
     return () => clearTimeout(timer);
   }, []);
 
+  const isRTL = locale === "ar";
+
   return (
     <div
       className={`${styles.whatsappContainer} ${
         isVisible ? styles.visible : ""
-      }`}
+      } ${isRTL ? styles.rtl : ""}`}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Luxury Badge */}
       <div
         className={`${styles.luxuryBadge} ${isHovered ? styles.hovered : ""}`}
       >
         <div className={styles.badgeContent}>
-          <span className={styles.badgeText}>Premium Advisor</span>
+          <span className={styles.badgeText}>
+            {locale === "ar" ? "مستشار متميز" : "Premium Advisor"}
+          </span>
           <div className={styles.badgeDivider}></div>
         </div>
       </div>
@@ -43,7 +55,11 @@ export default function FloatingWhatsApp() {
         href={waLink}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with Luxury Real Estate Advisor on WhatsApp"
+        aria-label={
+          locale === "ar"
+            ? "محادثة مع مستشار عقاري فاخر على واتساب"
+            : "Chat with Luxury Real Estate Advisor on WhatsApp"
+        }
         className={`${styles.whatsappFab} ${isHovered ? styles.hovered : ""}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -64,14 +80,18 @@ export default function FloatingWhatsApp() {
 
         {/* Luxury Text Content */}
         <div className={styles.textContent}>
-          <span className={styles.waTitle}>Premium Consultation</span>
+          <span className={styles.waTitle}>
+            {locale === "ar" ? "استشارة متميزة" : "Premium Consultation"}
+          </span>
           <span className={styles.waNumber}>+971 56 666 5560</span>
         </div>
 
         {/* Luxury Status Indicator */}
         <div className={styles.statusIndicator}>
           <div className={styles.statusDot}></div>
-          <span className={styles.statusText}>Available</span>
+          <span className={styles.statusText}>
+            {locale === "ar" ? "متاح" : "Available"}
+          </span>
         </div>
 
         {/* Luxury Hover Effect */}

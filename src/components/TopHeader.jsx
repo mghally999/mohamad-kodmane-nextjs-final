@@ -134,6 +134,22 @@ export default function TopHeader() {
                 },
               ],
             },
+            {
+              id: 3, // New ID for DAMAC
+              name: t("developers.damacProperties"), // You'll need to add this translation
+              slug: "damac",
+              image: `${CDN}/damac-islands-2/hero-masterplan-aerial.jpg`, // Use your DAMAC image
+              logo: `/damac-logo.png`, // You'll need a DAMAC logo
+              projects: [
+                {
+                  id: 204, // New ID for DAMAC project
+                  title: t("projectNames.damacIslands2"), // You'll need to add this translation
+                  slug: "damac-islands-2",
+                  image: `${CDN}/damac-islands-2/hero-masterplan-aerial.jpg`,
+                  description: t("descriptions.villas"), // Or create a specific description
+                },
+              ],
+            },
           ],
         },
         {

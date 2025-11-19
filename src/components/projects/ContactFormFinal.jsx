@@ -5,6 +5,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 // Import all your project data
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
+import { aquamontData } from "@/data/projects/apartments/sobha/aquamont/aquamont";
 import { centralData } from "@/data/projects/apartments/sobha/central/central";
 import { skyParksData } from "@/data/projects/apartments/sobha/skyparks/skyparks";
 import { rivieraRetailsData } from "@/data/projects/commercial-retail/azizi/riviera-retails/riviera-retails";
@@ -13,6 +14,7 @@ import { seahavenPenthouseData } from "@/data/projects/penthouses/sobha/seahaven
 import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
 import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
 import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
+import { damacIslands2Data } from "@/data/projects/villas/damac/damac-islands-2";
 
 // Helper function to get project info from the new data structure
 const getProjectInfo = (projectData) => {
@@ -27,6 +29,7 @@ const getProjectInfo = (projectData) => {
 // Combine all projects for dropdown
 const ALL_PROJECTS = [
   aquaCrestData,
+  aquamontData,
   centralData,
   skyParksData,
   rivieraRetailsData,
@@ -35,6 +38,7 @@ const ALL_PROJECTS = [
   massar3Data,
   alSinniyyahIslandData,
   hartland2VillasData,
+  damacIslands2Data, // ADDED DAMAC PROJECT
 ].map((projectData) => ({
   data: projectData,
   info: getProjectInfo(projectData),

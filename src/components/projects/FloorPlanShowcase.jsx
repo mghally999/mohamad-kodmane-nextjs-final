@@ -25,15 +25,95 @@ export default function FloorPlanShowcase({
   const [activeTab, setActiveTab] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const getSpecs = (specs) => {
+  // Enhanced translation mapping for specs with proper spacing
+  const getTranslatedSpecs = (specs) => {
+    const translationMap = {
+      // English to Arabic mapping for common spec terms
+      Bedroom: activeIsRTL ? "غرفة نوم" : "Bedroom",
+      Bathroom: activeIsRTL ? "حمام" : "Bathroom",
+      "Master Bath": activeIsRTL ? "حمام رئيسي" : "Master Bath",
+      "Living Area": activeIsRTL ? "منطقة المعيشة" : "Living Area",
+      Balcony: activeIsRTL ? "شرفة" : "Balcony",
+      Terrace: activeIsRTL ? "تراس" : "Terrace",
+      Kitchen: activeIsRTL ? "مطبخ" : "Kitchen",
+      "Dining Area": activeIsRTL ? "منطقة الطعام" : "Dining Area",
+      "Study Room": activeIsRTL ? "غرفة دراسة" : "Study Room",
+      "Maid Room": activeIsRTL ? "غرفة خادمة" : "Maid Room",
+      Storage: activeIsRTL ? "مخزن" : "Storage",
+      Parking: activeIsRTL ? "موقف سيارات" : "Parking",
+      Garden: activeIsRTL ? "حديقة" : "Garden",
+      Pool: activeIsRTL ? "مسبح" : "Pool",
+
+      // Unit types and numbers
+      "1 BEDROOM": activeIsRTL ? "1 غرفة نوم" : "1 BEDROOM",
+      "2 BEDROOMS": activeIsRTL ? "2 غرفة نوم" : "2 BEDROOMS",
+      "3 BEDROOMS": activeIsRTL ? "3 غرفة نوم" : "3 BEDROOMS",
+      "4 BEDROOMS": activeIsRTL ? "4 غرفة نوم" : "4 BEDROOMS",
+      "5 BEDROOMS": activeIsRTL ? "5 غرفة نوم" : "5 BEDROOMS",
+
+      // Measurements and areas
+      Area: activeIsRTL ? "المساحة" : "Area",
+      Size: activeIsRTL ? "الحجم" : "Size",
+      "Sq. Ft.": activeIsRTL ? "قدم مربع" : "Sq. Ft.",
+      "Sq. M.": activeIsRTL ? "متر مربع" : "Sq. M.",
+      Price: activeIsRTL ? "السعر" : "Price",
+      "Starting From": activeIsRTL ? "تبدأ من" : "Starting From",
+
+      // Features
+      View: activeIsRTL ? "الإطلالة" : "View",
+      Floor: activeIsRTL ? "الطابق" : "Floor",
+      "Unit Type": activeIsRTL ? "نوع الوحدة" : "Unit Type",
+      Completion: activeIsRTL ? "تاريخ التسليم" : "Completion",
+      "Payment Plan": activeIsRTL ? "خطة السداد" : "Payment Plan",
+    };
+
     const translatedSpecs = {};
     Object.keys(specs).forEach((key) => {
-      translatedSpecs[getLocalizedText(key, activeLocale)] = getLocalizedText(
-        specs[key],
-        activeLocale
-      );
+      const value = specs[key];
+
+      // Translate both key and value
+      const translatedKey = translationMap[key] || key;
+      let translatedValue = value;
+
+      // Check if value exists in translation map
+      if (translationMap[value]) {
+        translatedValue = translationMap[value];
+      } else {
+        // Handle combined strings like "1 BEDROOM + 1 MASTER BATH..." with proper spacing
+        let processedValue = value;
+
+        // Add proper spacing around plus signs
+        processedValue = processedValue.replace(/\s*\+\s*/g, " + ");
+
+        // Translate individual components while preserving spacing
+        for (const [english, arabic] of Object.entries(translationMap)) {
+          if (processedValue.includes(english)) {
+            // Use word boundaries to ensure exact matches
+            const regex = new RegExp(`\\b${english}\\b`, "g");
+            processedValue = processedValue.replace(regex, arabic);
+          }
+        }
+
+        translatedValue = processedValue;
+      }
+
+      translatedSpecs[translatedKey] = translatedValue;
     });
+
     return translatedSpecs;
+  };
+
+  // Format unit specifications with proper spacing
+  const formatUnitSpec = (value) => {
+    if (typeof value !== "string") return value;
+
+    // Add proper spacing around plus signs and ensure consistent formatting
+    let formatted = value
+      .replace(/\s*\+\s*/g, " + ") // Ensure space around plus signs
+      .replace(/\s+/g, " ") // Normalize multiple spaces
+      .trim();
+
+    return formatted;
   };
 
   const currentPlan = data.plans[activeTab];
@@ -136,11 +216,13 @@ export default function FloorPlanShowcase({
               </div>
 
               <div className={styles.specsList}>
-                {Object.entries(getSpecs(currentPlan.specs)).map(
+                {Object.entries(getTranslatedSpecs(currentPlan.specs)).map(
                   ([key, value]) => (
                     <div key={key} className={styles.specItem}>
                       <div className={styles.specLabel}>{key}</div>
-                      <div className={styles.specValue}>{value}</div>
+                      <div className={styles.specValue}>
+                        {formatUnitSpec(value)}
+                      </div>
                     </div>
                   )
                 )}
@@ -206,7 +288,7 @@ export default function FloorPlanShowcase({
                   >
                     <svg viewBox="0 0 24 24" fill="none">
                       <path
-                        d="M15 18l-6-6 6-6"
+                        d={activeIsRTL ? "M9 18l6-6-6-6" : "M15 18l-6-6 6-6"}
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
@@ -220,7 +302,7 @@ export default function FloorPlanShowcase({
                   >
                     <svg viewBox="0 0 24 24" fill="none">
                       <path
-                        d="M9 18l6-6-6-6"
+                        d={activeIsRTL ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6"}
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"

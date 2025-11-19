@@ -17,6 +17,42 @@
   transform: translateY(0) scale(1);
 }
 
+/* RTL Layout Support */
+.whatsappContainer.rtl {
+  right: auto;
+  left: max(24px, env(safe-area-inset-left));
+}
+
+.whatsappContainer.rtl .whatsappFab {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.whatsappContainer.rtl .textContent {
+  text-align: right;
+}
+
+.whatsappContainer.rtl .statusIndicator {
+  margin-left: 0;
+  margin-right: 8px;
+  flex-direction: row-reverse;
+}
+
+.whatsappContainer.rtl .floatingParticles .particle:nth-child(1) {
+  right: auto;
+  left: 20px;
+}
+
+.whatsappContainer.rtl .floatingParticles .particle:nth-child(2) {
+  right: auto;
+  left: 40px;
+}
+
+.whatsappContainer.rtl .floatingParticles .particle:nth-child(3) {
+  right: auto;
+  left: 60px;
+}
+
 /* Luxury Badge */
 .luxuryBadge {
   position: absolute;
@@ -30,6 +66,11 @@
   opacity: 0;
   transition: all 0.4s ease;
   z-index: -1;
+}
+
+.whatsappContainer.rtl .luxuryBadge {
+  right: auto;
+  left: 0;
 }
 
 .luxuryBadge.hovered {
@@ -189,6 +230,9 @@
   font-weight: 700;
   letter-spacing: 0.2px;
   opacity: 0.9;
+  direction: ltr; /* Force LTR for phone numbers */
+  text-align: inherit;
+  unicode-bidi: embed;
 }
 
 /* Status Indicator */
@@ -314,6 +358,11 @@
   .whatsappContainer {
     right: max(16px, env(safe-area-inset-right));
     bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+
+  .whatsappContainer.rtl {
+    right: auto;
+    left: max(16px, env(safe-area-inset-left));
   }
 
   .whatsappFab {
