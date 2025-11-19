@@ -4,20 +4,21 @@ export const damacIslands2Data = {
   en: {
     seo: {
       title:
-        "DAMAC Islands 2 | 4–6 Bedroom Townhouses & Villas in DAMAC Lagoons | DAMAC",
+        "DAMAC Islands 2 | 4–6 Bedroom Townhouses & Villas in Dubailand, Dubai | DAMAC",
       description:
-        "Waterfront master community in Dubai offering 4 & 5 bedroom townhouses, 5 bedroom twin villas and 6 bedroom luxury villas around a crystal lagoon, climate dome and eco-themed experiences.",
+        "Waterfront master community in Dubailand, Dubai offering 4 & 5 bedroom townhouses, 5 bedroom twin villas and 6 bedroom luxury villas around a crystal lagoon, climate dome and eco-themed experiences.",
       keywords:
-        "DAMAC Islands 2, Damac Lagoons, Dubai villas, Dubai townhouses, 4 bedroom townhouse, 5 bedroom townhouse, 5 bedroom twin villa, 6 bedroom villa, lagoon community",
+        "DAMAC Islands 2, Dubailand villas, Dubai villas, Dubai townhouses, 4 bedroom townhouse, 5 bedroom townhouse, 5 bedroom twin villa, 6 bedroom villa, lagoon community",
       canonical: "/projects/villas/damac/damac-islands-2",
     },
 
     project: {
       name: "DAMAC Islands 2",
       developer: "DAMAC Properties",
-      location: "DAMAC Lagoons, Dubai, UAE",
+      location: "Dubailand, Dubai, UAE",
       status: "Off-Plan",
-      startingPrice: "27,50,000", // 4-BR starting from AED 2.75M
+      // From price sheet: 2.75 M
+      startingPrice: "AED 2,750,000",
       completionDate: "30 June 2030",
       type: "Waterfront Townhouses & Villas",
       units: "4–6 Bedroom Townhouses & Villas",
@@ -41,7 +42,7 @@ export const damacIslands2Data = {
     intro: {
       title: "PARADISE HAS A SEQUEL",
       paragraphs: [
-        "DAMAC Islands 2 is the next chapter of island-inspired living at DAMAC Lagoons – a collection of 4 & 5 bedroom townhouses, 5 bedroom twin villas and 6 bedroom luxury villas wrapped around a crystal lagoon, eco-trails and immersive climate-controlled experiences.",
+        "After the sell-out success of DAMAC Islands, the vision continues with DAMAC Islands 2 – an elevated island-inspired lifestyle in Dubailand, Dubai. Reimagined as a seamless continuation of the master community, it introduces new spaces and experiences shaped by tropical living.",
         "Wake up to turquoise water, lush landscapes and a community designed around wellness and nature-based eco living. From the Whispering Waterfall and Opal Yoga Deck to the floating gardens, solar park and climate dome, every day feels like a gentle escape just minutes away from the city.",
       ],
       brochures: [
@@ -96,54 +97,33 @@ export const damacIslands2Data = {
       title: "A Visual Journey Through DAMAC Islands 2",
       slides: [
         // 1) Hero masterplan night / aerial
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.50 (1).jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50%20%281%29.jpeg",
-
         // 2) Full masterplan daylight aerial
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.51.jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51.jpeg",
-
         // 3) Lagoon & waterfront promenade (also intro)
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.52.jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.52.jpeg",
-
         // 4) Elevated view with slides / treetop walkway
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.54.jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.54.jpeg",
-
         // 5) Night event plaza with lights & crowd
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.55 (1).jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.55%20%281%29.jpeg",
-
         // 6) Lagoon with circular island clubhouse
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.55.jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.55.jpeg",
-
         // 7) Long lagoon canal at golden hour
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.56 (1).jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%281%29.jpeg",
-
         // 8) Multi-pool aqua experience
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.56 (2).jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%282%29.jpeg",
-
         // 9) Climate dome / lush interior forest
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.56.jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56.jpeg",
-
         // 10) Resort-style pools & cabanas
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.57 (1).jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.57%20%281%29.jpeg",
-
         // 11) Waterpark pools with slides & lagoon
-        // Bunny: "WhatsApp Image 2025-11-19 at 13.26.57.jpeg"
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.57.jpeg",
       ],
       projectTag: "DAMAC Islands 2",
     },
 
     floorPlans: {
-      // IMPORTANT: keep it "villas" so it behaves like Masaar 3
+      // IMPORTANT: keep it "villas" so it behaves like your Masaar 3 component
       type: "villas",
       plans: [
         {
@@ -157,7 +137,7 @@ export const damacIslands2Data = {
             "Starting Price": "AED 2,750,000",
             Handover: "30 June 2030",
           },
-          // use lagoon + townhouse style views
+          // lagoon + townhouse style views
           images: [
             "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.52.jpeg",
             "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.55.jpeg",
@@ -255,7 +235,7 @@ export const damacIslands2Data = {
           type: "4 BR Townhouse (Mid)",
           totalAreaSqm: 203.04,
           totalAreaSqft: 2185.5,
-          startingPrice: "27,50,000",
+          startingPrice: "AED 2,750,000",
           handover: "30 June 2030",
           availability: "Limited Release",
         },
@@ -263,7 +243,7 @@ export const damacIslands2Data = {
           type: "5 BR Townhouse (Mid)",
           totalAreaSqm: 262.85,
           totalAreaSqft: 2829.29,
-          startingPrice: "36,70,000",
+          startingPrice: "AED 3,670,000",
           handover: "30 June 2030",
           availability: "Limited Release",
         },
@@ -271,7 +251,7 @@ export const damacIslands2Data = {
           type: "5 BR Twin Villa",
           totalAreaSqm: 324.44,
           totalAreaSqft: 3492.24,
-          startingPrice: "5,000,000",
+          startingPrice: "AED 5,000,000",
           handover: "30 June 2030",
           availability: "Limited Release",
         },
@@ -279,13 +259,13 @@ export const damacIslands2Data = {
           type: "6 BR Villa",
           totalAreaSqm: 583.09,
           totalAreaSqft: 6276.33,
-          startingPrice: "95,10,000",
+          startingPrice: "AED 9,510,000",
           handover: "30 June 2030",
           availability: "Exclusive Collection",
         },
       ],
       paymentPlan: {
-        title: "100% Over 49 Months + Handover",
+        title: "20/55/25 Payment Plan – 100% Over 49 Months + Handover",
         summary:
           "20% deposit on booking, 55% distributed over 49 monthly installments during construction, and 25% on completion (30 June 2030).",
         phases: [
@@ -352,7 +332,7 @@ export const damacIslands2Data = {
     location: {
       title: "Project Location",
       projectName: "DAMAC Islands 2",
-      address: "DAMAC Lagoons, Hessa Street, Dubai, UAE",
+      address: "Dubailand, Dubai, UAE",
       lat: 25.033,
       lng: 55.265,
       zoom: 13,
@@ -363,7 +343,7 @@ export const damacIslands2Data = {
           text: "Approx 25–35 min to Dubai Intl & Al Maktoum Airports",
         },
         { icon: "🏙️", text: "Easy access to Dubai Marina & Downtown" },
-        { icon: "🛣️", text: "Connected via Hessa Street & major highways" },
+        { icon: "🛣️", text: "Connected via major Dubai highways" },
       ],
     },
 
@@ -409,7 +389,7 @@ export const damacIslands2Data = {
       description:
         "DAMAC Properties is a leading luxury real estate developer in the Middle East, known for creating landmark communities and resort-style living experiences that blend architectural innovation, lifestyle amenities and long-term investment value.",
       projects: [
-        "DAMAC Lagoons",
+        "DAMAC Islands",
         "DAMAC Hills",
         "DAMAC Hills 2",
         "AYKON City",
@@ -437,27 +417,26 @@ export const damacIslands2Data = {
   ar: {
     seo: {
       title:
-        "داماك آيلاندز 2 | تاون هاوس وفلل 4–6 غرف نوم في داماك لاجونز | داماك",
+        "داماك آيلاندز 2 | تاون هاوس وفلل 4–6 غرف نوم في دبي لاند، دبي | داماك",
       description:
-        "مجتمع سكني واجهة مائية في دبي يقدّم تاون هاوس 4 و5 غرف نوم، فيلات توأم 5 غرف، وفيلات فاخرة 6 غرف حول لاجون كريستالي وقبة مناخية وتجارب حياة مستوحاة من الطبيعة.",
+        "مجتمع سكني على الواجهة المائية في دبي لاند – دبي يقدّم تاون هاوس 4 و5 غرف نوم، فيلات توأم 5 غرف، وفيلات فاخرة 6 غرف حول لاجون كريستالي وقبة مناخية وتجارب حياة مستوحاة من الطبيعة.",
       keywords:
-        "داماك آيلاندز 2، داماك لاجونز، تاون هاوس دبي، فلل دبي، فلل على البحيرات، تاون هاوس 4 غرف، تاون هاوس 5 غرف، فيلا 6 غرف، DAMAC Islands 2",
+        "داماك آيلاندز 2، دبي لاند، تاون هاوس دبي، فلل دبي، فلل على البحيرات، تاون هاوس 4 غرف، تاون هاوس 5 غرف، فيلا 6 غرف، DAMAC Islands 2",
       canonical: "/projects/villas/damac/damac-islands-2",
     },
 
     project: {
       name: "DAMAC Islands 2",
       developer: "داماك العقارية",
-      location: "داماك لاجونز، دبي، الإمارات العربية المتحدة",
+      location: "دبي لاند، دبي، الإمارات العربية المتحدة",
       status: "قيد التطوير",
-      startingPrice: "27,50,000",
+      startingPrice: "2,750,000 درهم إماراتي",
       completionDate: "30 يونيو 2030",
       type: "تاون هاوس وفلل على الواجهة المائية",
       units: "تاون هاوس وفلل 4 إلى 6 غرف نوم",
     },
 
     hero: {
-      // نفس صور الـ EN
       backgroundUrl:
         "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50.jpeg",
       squareImageUrl:
@@ -469,7 +448,7 @@ export const damacIslands2Data = {
     intro: {
       title: "للجنة فَصْلٌ ثانٍ",
       paragraphs: [
-        "يقدّم مشروع «DAMAC Islands 2» امتداداً جديداً لأسلوب الحياة الجُزُري في مجتمع «داماك لاجونز»؛ مجموعة من تاون هاوس 4 و5 غرف نوم، فيلات توأم 5 غرف، وفيلات فاخرة 6 غرف تطل جميعها على لاجون كريستالي ومسارات خضراء وتجارب حياة بيئية مبتكرة.",
+        "بعد النجاح الكبير لمشروع «DAMAC Islands»، يأتي «DAMAC Islands 2» ليقدّم امتداداً جديداً لأسلوب الحياة الجُزُري في دبي لاند – دبي؛ مجموعة من تاون هاوس 4 و5 غرف نوم، فيلات توأم 5 غرف، وفيلات فاخرة 6 غرف تطل جميعها على لاجون كريستالي ومساحات خضراء وتجارب حياة بيئية مبتكرة.",
         "استيقظ على مشهد الماء الفيروزي والمساحات الخضراء والتجارب المصمّمة للرفاهية؛ من شلال «Whispering Waterfall» وتراس اليوغا «Opal Yoga Deck» إلى الحدائق العائمة، والحديقة الشمسية، والقبة المناخية. هنا تعيش إحساس المنتجع يومياً وعلى بُعد دقائق فقط من قلب دبي.",
       ],
       brochures: [
@@ -644,7 +623,7 @@ export const damacIslands2Data = {
           type: "تاون هاوس 4 غرف (وسط)",
           totalAreaSqm: 203.04,
           totalAreaSqft: 2185.5,
-          startingPrice: "27,50,000",
+          startingPrice: "2,750,000 درهم إماراتي",
           handover: "30 يونيو 2030",
           availability: "طرح محدود",
         },
@@ -652,7 +631,7 @@ export const damacIslands2Data = {
           type: "تاون هاوس 5 غرف (وسط)",
           totalAreaSqm: 262.85,
           totalAreaSqft: 2829.29,
-          startingPrice: "36,70,000",
+          startingPrice: "3,670,000 درهم إماراتي",
           handover: "30 يونيو 2030",
           availability: "طرح محدود",
         },
@@ -660,7 +639,7 @@ export const damacIslands2Data = {
           type: "فيلا توأم 5 غرف",
           totalAreaSqm: 324.44,
           totalAreaSqft: 3492.24,
-          startingPrice: "5,000,000",
+          startingPrice: "5,000,000 درهم إماراتي",
           handover: "30 يونيو 2030",
           availability: "وحدات محدودة",
         },
@@ -668,13 +647,13 @@ export const damacIslands2Data = {
           type: "فيلا 6 غرف نوم",
           totalAreaSqm: 583.09,
           totalAreaSqft: 6276.33,
-          startingPrice: "95,10,000",
+          startingPrice: "9,510,000 درهم إماراتي",
           handover: "30 يونيو 2030",
           availability: "مجموعة حصرية",
         },
       ],
       paymentPlan: {
-        title: "خطة دفع موزّعة حتى التسليم",
+        title: "خطة دفع 20/55/25 موزّعة حتى التسليم",
         summary:
           "20٪ دفعة أولى عند البيع، 55٪ موزّعة على 49 قسطاً شهرياً أثناء الإنشاء، و25٪ عند التسليم في 30 يونيو 2030.",
         phases: [
@@ -745,7 +724,7 @@ export const damacIslands2Data = {
     location: {
       title: "موقع المشروع",
       projectName: "DAMAC Islands 2",
-      address: "داماك لاجونز، شارع حصة، دبي، الإمارات العربية المتحدة",
+      address: "دبي لاند، دبي، الإمارات العربية المتحدة",
       lat: 25.033,
       lng: 55.265,
       zoom: 13,
@@ -762,7 +741,7 @@ export const damacIslands2Data = {
           icon: "🏙️",
           text: "وصول سهل إلى دبي مارينا ووسط مدينة دبي",
         },
-        { icon: "🛣️", text: "ارتباط مباشر بشارع حصة والطرق السريعة الرئيسية" },
+        { icon: "🛣️", text: "ارتباط مباشر بالطرق السريعة الرئيسية في دبي" },
       ],
     },
 
@@ -808,7 +787,7 @@ export const damacIslands2Data = {
       description:
         "تُعد داماك العقارية من أبرز المطورين العقاريين في منطقة الشرق الأوسط في مجال المشاريع الفاخرة؛ حيث تقدّم مجتمعات سكنية متكاملة بتصاميم معمارية مميّزة وتجارب حياة منتجعية، مع تركيز على القيمة الاستثمارية طويلة الأمد.",
       projects: [
-        "DAMAC Lagoons",
+        "DAMAC Islands",
         "DAMAC Hills",
         "DAMAC Hills 2",
         "AYKON City",

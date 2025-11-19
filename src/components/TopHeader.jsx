@@ -138,7 +138,7 @@ export default function TopHeader() {
               id: 3, // New ID for DAMAC
               name: t("developers.damacProperties"), // You'll need to add this translation
               slug: "damac",
-              image: `${CDN}/damac-islands-2/hero-masterplan-aerial.jpg`, // Use your DAMAC image
+              image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`, // Use your DAMAC image
               logo: `/damac-logo.png`, // You'll need a DAMAC logo
               projects: [
                 {
