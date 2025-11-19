@@ -147,6 +147,7 @@ export default function FloorPlanShowcase({
               </div>
 
               {/* CTA Button */}
+              {/* Pushing Purposes */}
               {/* <div className={styles.ctaContainer}>
                 <button className={styles.ctaButton}>
                   <span>
