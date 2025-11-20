@@ -457,6 +457,14 @@ async function sendToRespondIO(data, formType) {
     email: data.email ? data.email.trim().toLowerCase() : null,
     language: data.locale === "ar" ? "ar" : "en",
     countryCode: "AE",
+
+    // 🔥 CUSTOM FIELDS — MUST MATCH Respond.io EXACTLY
+    project: data.project || null,
+    unit_type: data.unitType || null,
+    contact_method: data.contactMethod || null,
+    form_type: data.formType || "PROJECT_FORM",
+    locale_language: data.locale || "en", // ← EXACT FIX
+    lead_source: "website",
   };
 
   // Clean null/empty values

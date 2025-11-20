@@ -22,7 +22,35 @@ export default function TopHeader() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // Fixed menu data with projectNames
+  // Meta Pixel helper
+  const track = (event, params = {}, standard = false) => {
+    if (typeof window === "undefined" || typeof window.fbq !== "function")
+      return;
+    if (standard) window.fbq("track", event, params);
+    else window.fbq("trackCustom", event, params);
+  };
+
+  const handleNavClick = (item, location) => {
+    track("NavClick", {
+      label: item.label,
+      href: item.href,
+      location,
+      locale,
+    });
+  };
+
+  const handleProjectNavClick = (category, developer, project, location) => {
+    if (!category || !developer || !project) return;
+    track("NavProjectClick", {
+      category: category.slug,
+      developer: developer.slug,
+      project: project.slug,
+      project_title: project.title,
+      location,
+      locale,
+    });
+  };
+
   const menuData = useMemo(() => {
     const data = {
       categories: [
@@ -70,22 +98,6 @@ export default function TopHeader() {
                 },
               ],
             },
-            // {
-            //   id: 2,
-            //   name: t("developers.nakheel"),
-            //   slug: "nakheel",
-            //   image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-            //   logo: `/Nakheel-Developments.webp`,
-            //   projects: [
-            //     {
-            //       id: 106,
-            //       title: t("projectNames.palmCentralNakheel"),
-            //       slug: "palm-central",
-            //       image: `${CDN}/palm-central/exterior-lagoon-01.jpg`,
-            //       description: t("descriptions.apartments"),
-            //     },
-            //   ],
-            // },
           ],
         },
         {
@@ -135,18 +147,18 @@ export default function TopHeader() {
               ],
             },
             {
-              id: 3, // New ID for DAMAC
-              name: t("developers.damacProperties"), // You'll need to add this translation
+              id: 3,
+              name: t("developers.damacProperties"),
               slug: "damac",
-              image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`, // Use your DAMAC image
-              logo: `/damac-logo.png`, // You'll need a DAMAC logo
+              image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
+              logo: `/damac-logo.png`,
               projects: [
                 {
-                  id: 204, // New ID for DAMAC project
-                  title: t("projectNames.damacIslands2"), // You'll need to add this translation
+                  id: 204,
+                  title: t("projectNames.damacIslands2"),
                   slug: "damac-islands-2",
                   image: `${CDN}/damac-islands-2/hero-masterplan-aerial.jpg`,
-                  description: t("descriptions.villas"), // Or create a specific description
+                  description: t("descriptions.villas"),
                 },
               ],
             },
@@ -224,7 +236,6 @@ export default function TopHeader() {
     return data;
   }, [t, locale]);
 
-  // Navigation items with translation keys
   const navItems = useMemo(
     () => [
       { href: "/", label: t("nav.home"), type: "primary" },
@@ -258,6 +269,12 @@ export default function TopHeader() {
 
   const toggleLanguage = () => {
     const newLang = locale === "en" ? "ar" : "en";
+
+    track("LanguageChange", {
+      from: locale,
+      to: newLang,
+    });
+
     switchLanguage(newLang);
   };
 
@@ -374,6 +391,7 @@ export default function TopHeader() {
                     className={`${styles.navLink} ${
                       item.type === "cta" ? styles.ctaButton : ""
                     } ${pathname === item.href ? styles.active : ""}`}
+                    onClick={() => handleNavClick(item, "desktop")}
                   >
                     {item.label}
                     {item.type === "cta" && <span className={styles.ctaGlow} />}
@@ -523,6 +541,14 @@ export default function TopHeader() {
                               : ""
                           }`}
                           onMouseEnter={() => handleProjectHover(project)}
+                          onClick={() =>
+                            handleProjectNavClick(
+                              selectedCategory,
+                              selectedDeveloper,
+                              project,
+                              "mega_desktop"
+                            )
+                          }
                         >
                           <div className={styles.projectInfo}>
                             <h4 className={styles.projectTitle}>
@@ -546,6 +572,14 @@ export default function TopHeader() {
                           <a
                             href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                             className={styles.previewImageLink}
+                            onClick={() =>
+                              handleProjectNavClick(
+                                selectedCategory,
+                                selectedDeveloper,
+                                selectedProject,
+                                "mega_desktop_preview"
+                              )
+                            }
                           >
                             <div
                               className={`${styles.previewImage} ${styles.projectImageActive}`}
@@ -573,6 +607,14 @@ export default function TopHeader() {
                             <a
                               href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
                               className={styles.previewButton}
+                              onClick={() =>
+                                handleProjectNavClick(
+                                  selectedCategory,
+                                  selectedDeveloper,
+                                  selectedProject,
+                                  "mega_desktop_button"
+                                )
+                              }
                             >
                               {t("nav.viewProjectDetails")}
                               <span className={styles.buttonArrow}>→</span>
@@ -852,7 +894,15 @@ export default function TopHeader() {
                                               className={
                                                 styles.mobileProjectLink
                                               }
-                                              onClick={closeAllMobileMenus}
+                                              onClick={() => {
+                                                handleProjectNavClick(
+                                                  category,
+                                                  developer,
+                                                  project,
+                                                  "mega_mobile"
+                                                );
+                                                closeAllMobileMenus();
+                                              }}
                                             >
                                               <div
                                                 className={
@@ -902,7 +952,10 @@ export default function TopHeader() {
                     className={`${styles.mobileNavLink} ${
                       item.type === "cta" ? styles.mobileCta : ""
                     } ${pathname === item.href ? styles.active : ""}`}
-                    onClick={closeAllMobileMenus}
+                    onClick={() => {
+                      handleNavClick(item, "mobile");
+                      closeAllMobileMenus();
+                    }}
                   >
                     <span className={styles.mobileNavText}>{item.label}</span>
                   </a>

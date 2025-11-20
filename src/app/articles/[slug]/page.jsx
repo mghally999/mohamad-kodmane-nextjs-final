@@ -1,7 +1,7 @@
-// /app/articles/[slug]/page.jsx
 import { notFound, redirect } from "next/navigation";
 import ArticleTemplate from "@/components/articles/ArticleTemplate";
 import articlesData from "@/data/articles/articles-data";
+import ArticleViewClient from "@/components/articles/ArticleViewClient";
 
 // If you ever rename slugs, map old → new here.
 const slugAliases = {
@@ -21,7 +21,13 @@ export default function ArticlePage({ params }) {
   const article = articlesData.getArticleBySlug(resolved);
   if (!article) return notFound();
 
-  return <ArticleTemplate article={article} slug={resolved} />;
+  const title = article.articleData.hero.title;
+
+  return (
+    <ArticleViewClient slug={resolved} title={title}>
+      <ArticleTemplate article={article} slug={resolved} />
+    </ArticleViewClient>
+  );
 }
 
 export async function generateStaticParams() {

@@ -15,12 +15,31 @@ export default function CallbackForm() {
   const [submitError, setSubmitError] = useState("");
   const [activeField, setActiveField] = useState(null);
 
+  // 🔹 keep track of which fields we already tracked typing for
+  const [trackedFields, setTrackedFields] = useState({});
+
   const isRTL = locale === "ar";
+
+  // 🔹 Meta Pixel helper (same pattern as other components)
+  const track = (eventName, params = {}) => {
+    if (typeof window === "undefined" || typeof window.fbq !== "function") {
+      return;
+    }
+    window.fbq("trackCustom", eventName, params);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError("");
+
+    // 🔹 track submit attempt
+    track("CallbackFormSubmit", {
+      locale,
+      hasName: !!formData.name,
+      hasPhone: !!formData.phone,
+      interest: formData.interest || null,
+    });
 
     try {
       console.log("🔄 Submitting form...", formData);
@@ -32,7 +51,7 @@ export default function CallbackForm() {
         },
         body: JSON.stringify({
           ...formData,
-          locale: locale, // ADD THIS LINE
+          locale: locale,
         }),
       });
 
@@ -40,6 +59,12 @@ export default function CallbackForm() {
       console.log("📨 API Response:", result);
 
       if (result.success) {
+        // 🔹 track successful submit
+        track("CallbackFormSubmitSuccess", {
+          locale,
+          interest: formData.interest || null,
+        });
+
         setIsSubmitted(true);
         setFormData({ name: "", phone: "", interest: "" });
 
@@ -58,10 +83,21 @@ export default function CallbackForm() {
   };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // 🔹 track typing once per field (to avoid spamming on every keystroke)
+    if (!trackedFields[name]) {
+      setTrackedFields((prev) => ({ ...prev, [name]: true }));
+      track("CallbackFormFieldChange", {
+        field: name,
+        locale,
+      });
+    }
   };
 
   return (

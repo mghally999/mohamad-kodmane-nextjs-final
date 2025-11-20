@@ -13,6 +13,14 @@ export default function Articles() {
   const [currentImage, setCurrentImage] = useState(0);
   const isRTL = locale === "ar";
 
+  // 🔹 Meta Pixel helper – used only for the 3 events you requested
+  const track = (eventName, params = {}) => {
+    if (typeof window === "undefined" || typeof window.fbq !== "function") {
+      return;
+    }
+    window.fbq("trackCustom", eventName, params);
+  };
+
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
@@ -69,7 +77,18 @@ export default function Articles() {
     },
   ];
 
-  const handleArticleClick = (slug) => router.push(`/articles/${slug}`);
+  const handleArticleClick = (article, location) => {
+    // 🔹 ArticleClick
+    track("ArticleClick", {
+      slug: article.slug,
+      title: article.title,
+      category: article.category,
+      location, // "card" or "cta"
+      locale,
+    });
+
+    router.push(`/articles/${article.slug}`);
+  };
 
   // Get localized data
   const listingData = articlesData.getListingData(locale);
@@ -123,8 +142,8 @@ export default function Articles() {
                     </h1>
                     <p className={styles.heroSubtitle}>{image.description}</p>
                     <div className={styles.trustStats}>
-                      {trustStats.map((stat, index) => (
-                        <div key={index} className={styles.statItem}>
+                      {trustStats.map((stat, i) => (
+                        <div key={i} className={styles.statItem}>
                           <div className={styles.statNumber}>{stat.number}</div>
                           <div className={styles.statLabel}>{stat.label}</div>
                         </div>
@@ -183,7 +202,7 @@ export default function Articles() {
               <article
                 key={article.id}
                 className={styles.articleCard}
-                onClick={() => handleArticleClick(article.slug)}
+                onClick={() => handleArticleClick(article, "card")}
               >
                 <div className={styles.imageContainer}>
                   <Image
@@ -218,7 +237,7 @@ export default function Articles() {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleArticleClick(article.slug);
+                      handleArticleClick(article, "cta");
                     }}
                     className={styles.articleCTA}
                   >
@@ -257,6 +276,13 @@ export default function Articles() {
                   }
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track("ArticlesCTAButtonClick", {
+                      label: b.text,
+                      href: b.href,
+                      locale,
+                    })
+                  }
                 >
                   {b.text}
                 </a>

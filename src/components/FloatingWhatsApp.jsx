@@ -11,6 +11,14 @@ export default function FloatingWhatsApp() {
 
   const numberE164 = "971566665560";
 
+  // Meta Pixel helper
+  const track = (event, params = {}, standard = false) => {
+    if (typeof window === "undefined" || typeof window.fbq !== "function")
+      return;
+    if (standard) window.fbq("track", event, params);
+    else window.fbq("trackCustom", event, params);
+  };
+
   // Dynamic pre-filled message based on language
   const prefilled = encodeURIComponent(
     locale === "ar"
@@ -21,7 +29,6 @@ export default function FloatingWhatsApp() {
   const waLink = `https://wa.me/${numberE164}?text=${prefilled}`;
 
   useEffect(() => {
-    // Show after a brief delay for elegant entrance
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 2000);
@@ -30,6 +37,29 @@ export default function FloatingWhatsApp() {
   }, []);
 
   const isRTL = locale === "ar";
+
+  const handleWhatsAppClick = () => {
+    // Custom event for funnel analysis
+    track("WhatsAppClick", {
+      placement: "floating_button",
+      phone: "+971566665560",
+      locale,
+    });
+
+    // Standard Lead event for Meta optimization
+    track(
+      "Lead",
+      {
+        content_name: "WhatsApp Chat",
+        content_category: "contact",
+        value: 0,
+        currency: "AED",
+        source: "whatsapp_floating",
+        locale,
+      },
+      true
+    );
+  };
 
   return (
     <div
@@ -63,8 +93,8 @@ export default function FloatingWhatsApp() {
         className={`${styles.whatsappFab} ${isHovered ? styles.hovered : ""}`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={handleWhatsAppClick}
       >
-        {/* Luxury Icon Container */}
         <div className={styles.iconContainer}>
           <div className={styles.iconBackground}></div>
           <svg
@@ -78,7 +108,6 @@ export default function FloatingWhatsApp() {
           </svg>
         </div>
 
-        {/* Luxury Text Content */}
         <div className={styles.textContent}>
           <span className={styles.waTitle}>
             {locale === "ar" ? "استشارة متميزة" : "Premium Consultation"}
@@ -86,7 +115,6 @@ export default function FloatingWhatsApp() {
           <span className={styles.waNumber}>+971 56 666 5560</span>
         </div>
 
-        {/* Luxury Status Indicator */}
         <div className={styles.statusIndicator}>
           <div className={styles.statusDot}></div>
           <span className={styles.statusText}>
@@ -94,11 +122,9 @@ export default function FloatingWhatsApp() {
           </span>
         </div>
 
-        {/* Luxury Hover Effect */}
         <div className={styles.hoverGlow}></div>
       </a>
 
-      {/* Floating Luxury Particles */}
       <div className={styles.floatingParticles}>
         <div className={styles.particle}></div>
         <div className={styles.particle}></div>

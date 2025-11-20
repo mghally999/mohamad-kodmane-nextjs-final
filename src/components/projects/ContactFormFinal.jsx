@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import styles from "@/styles/projects/ContactFormFinal.module.css";
 import { useLanguage } from "@/components/LanguageProvider";
 
-// Import all your project data
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
 import { aquamontData } from "@/data/projects/apartments/sobha/aquamont/aquamont";
 import { centralData } from "@/data/projects/apartments/sobha/central/central";
@@ -15,6 +14,16 @@ import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
 import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
 import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
 import { damacIslands2Data } from "@/data/projects/villas/damac/damac-islands-2";
+
+// FB tracking helper
+const fbTrack = (type, eventName, params = {}) => {
+  if (typeof window === "undefined" || !window.fbq) return;
+  if (type === "custom") {
+    window.fbq("trackCustom", eventName, params);
+  } else {
+    window.fbq("track", eventName, params);
+  }
+};
 
 // Helper function to get project info from the new data structure
 const getProjectInfo = (projectData) => {
@@ -38,7 +47,7 @@ const ALL_PROJECTS = [
   massar3Data,
   alSinniyyahIslandData,
   hartland2VillasData,
-  damacIslands2Data, // ADDED DAMAC PROJECT
+  damacIslands2Data,
 ].map((projectData) => ({
   data: projectData,
   info: getProjectInfo(projectData),
@@ -98,6 +107,7 @@ export default function ContactFormFinal({ currentProjectName = null }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedProjectData, setSelectedProjectData] = useState(null);
   const [toast, setToast] = useState(null);
+  const [hasStartedTyping, setHasStartedTyping] = useState(false);
 
   // Auto-select current project when component mounts
   useEffect(() => {
@@ -125,11 +135,23 @@ export default function ContactFormFinal({ currentProjectName = null }) {
     setToast({ message, type });
   };
 
+  // 🔥 Track first typing interaction
+  const trackFormStartedIfNeeded = (fieldName) => {
+    if (hasStartedTyping) return;
+
+    setHasStartedTyping(true);
+    fbTrack("custom", "FormStarted", {
+      form: "ContactFormFinal",
+      project: formData.project,
+      field: fieldName,
+      locale,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate required fields
-    // Comment To Push
     if (
       !formData.firstName ||
       !formData.lastName ||
@@ -179,19 +201,29 @@ export default function ContactFormFinal({ currentProjectName = null }) {
         body: JSON.stringify({
           ...formData,
           formType: "PROJECT_FORM",
-          locale: locale, // ADD THIS LINE
+          locale: locale,
         }),
       });
 
       const result = await response.json();
 
       if (result.success) {
+        // 🔥 Track successful lead
+        fbTrack("standard", "Lead", {
+          source: "ContactFormFinal",
+          project: formData.project,
+          unitType: formData.unitType || "Any",
+          contactMethod: formData.contactMethod,
+          locale,
+        });
+
         showToast(
           isRTL
             ? "شكراً لك! سيتواصل معك مستشار العقارات الفاخرة خلال 24 ساعة."
             : result.message,
           "success"
         );
+
         // Reset form
         setFormData({
           firstName: "",
@@ -202,6 +234,7 @@ export default function ContactFormFinal({ currentProjectName = null }) {
           unitType: "",
           contactMethod: "phone",
         });
+        setHasStartedTyping(false);
       } else {
         showToast(
           result.message ||
@@ -226,20 +259,32 @@ export default function ContactFormFinal({ currentProjectName = null }) {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
 
-    // Update selected project data when project changes
-    if (name === "project") {
-      const project = ALL_PROJECTS.find((p) => p.info.name === value);
-      setSelectedProjectData(project?.data || null);
-    }
+    // Track first typing
+    trackFormStartedIfNeeded(name);
+
+    setFormData((prev) => {
+      const updated = {
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      };
+
+      // Update selected project data when project changes
+      if (name === "project") {
+        const project = ALL_PROJECTS.find((p) => p.info.name === value);
+        setSelectedProjectData(project?.data || null);
+      }
+
+      return updated;
+    });
   };
 
   const handlePhoneChange = (e) => {
     const value = e.target.value.replace(/[^\d]/g, "");
+
+    // Track first typing (phone field)
+    trackFormStartedIfNeeded("phone");
+
     setFormData((prev) => ({
       ...prev,
       phone: value,
@@ -510,7 +555,7 @@ export default function ContactFormFinal({ currentProjectName = null }) {
               </p>
             </div>
 
-            {/* Submit Button - NOW ALWAYS CLICKABLE */}
+            {/* Submit Button */}
             <button
               type="submit"
               className={`${styles.submitButton} ${
