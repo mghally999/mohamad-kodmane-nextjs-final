@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import ArticleTemplate from "@/components/articles/ArticleTemplate";
 import articlesData from "@/data/articles/articles-data";
-import ArticleViewClient from "@/components/articles/ArticleViewClient";
+import ArticleViewClient from "@/components/ArticleViewClient";
 
 // If you ever rename slugs, map old → new here.
 const slugAliases = {
