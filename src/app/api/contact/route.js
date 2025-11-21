@@ -430,26 +430,49 @@ async function sendToRespondIO(data, formType) {
     return null;
   }
 
-  // Build identifier - either email or phone
+  // Build identifier (email or phone)
   let identifier;
   if (data.email) {
     identifier = `email:${data.email.trim().toLowerCase()}`;
-    console.log(`📧 Using email identifier: ${identifier}`);
+    console.log("📧 Identifier:", identifier);
   } else if (data.phone) {
     const formattedPhone = formatPhoneNumber(data.phone);
-    if (formattedPhone) {
-      identifier = `phone:+${formattedPhone}`;
-      console.log(`📞 Using phone identifier: ${identifier}`);
-    } else {
-      console.log("❌ Invalid phone number format");
+    if (!formattedPhone) {
+      console.log("❌ Invalid phone format");
       return null;
     }
+    identifier = `phone:+${formattedPhone}`;
+    console.log("📞 Identifier:", identifier);
   } else {
-    console.log("❌ No phone or email provided for respond.io");
+    console.log("❌ No contact identifier");
     return null;
   }
 
-  // Prepare contact data
+  /* ------------------------------------------------
+    BUILD CUSTOM FIELDS (correct Respond.io format)
+  -------------------------------------------------- */
+
+  const customFields = [];
+
+  if (data.project) {
+    customFields.push({ name: "project", value: data.project });
+  }
+  if (data.unitType) {
+    customFields.push({ name: "unit_type", value: data.unitType });
+  }
+  if (data.contactMethod) {
+    customFields.push({ name: "contact_method", value: data.contactMethod });
+  }
+
+  // Required defaults
+  customFields.push({ name: "form_type", value: formType });
+  customFields.push({ name: "lead_source", value: "website" });
+  customFields.push({
+    name: "locale_language",
+    value: data.locale || "en",
+  });
+
+  // FINAL CONTACT BODY sent to respond.io
   const contactData = {
     firstName: data.firstName || data.name || "Website Lead",
     lastName: data.lastName || "",
@@ -457,37 +480,28 @@ async function sendToRespondIO(data, formType) {
     email: data.email ? data.email.trim().toLowerCase() : null,
     language: data.locale === "ar" ? "ar" : "en",
     countryCode: "AE",
-
-    // 🔥 CUSTOM FIELDS — MUST MATCH Respond.io EXACTLY
-    project: data.project || null,
-    unit_type: data.unitType || null,
-    contact_method: data.contactMethod || null,
-    form_type: data.formType || "PROJECT_FORM",
-    locale_language: data.locale || "en", // ← EXACT FIX
-    lead_source: "website",
+    custom_fields: customFields,
   };
 
-  // Clean null/empty values
+  // Remove nulls
   Object.keys(contactData).forEach((key) => {
-    if (contactData[key] === null || contactData[key] === "") {
-      delete contactData[key];
-    }
+    if (!contactData[key]) delete contactData[key];
+  });
+
+  console.log("📤 Sending to Respond.io:", {
+    identifier,
+    contactData,
   });
 
   const contactUrl = `https://api.respond.io/v2/contact/${encodeURIComponent(
     identifier
   )}`;
-  const tags = ["website-lead"]; // ONLY website-lead tag
-
-  console.log("📤 Creating contact in respond.io:", {
-    identifier,
-    contactData,
-    formType,
-    tags,
-  });
+  const tags = ["website-lead"];
 
   try {
-    // STEP 1: Create or update contact
+    /* ----------------------------------------
+      STEP 1 – CREATE OR UPDATE CONTACT
+    ---------------------------------------- */
     const contactResponse = await fetch(contactUrl, {
       method: "POST",
       headers: {
@@ -498,32 +512,29 @@ async function sendToRespondIO(data, formType) {
       body: JSON.stringify(contactData),
     });
 
-    const contactResponseText = await contactResponse.text();
+    const contactText = await contactResponse.text();
     console.log(
-      `📡 Contact API Response: ${contactResponse.status} - ${contactResponseText}`
+      `📡 Contact Response: ${contactResponse.status} - ${contactText}`
     );
 
-    let contactCreated = false;
+    let existsOrCreated = false;
 
     if (contactResponse.ok) {
-      console.log("✅ Contact created/updated successfully");
-      contactCreated = true;
+      console.log("✅ Contact created/updated");
+      existsOrCreated = true;
     } else if (contactResponse.status === 403) {
-      console.log(
-        "ℹ️ Contact already exists in respond.io (403) - proceeding to tag"
-      );
-      contactCreated = true;
+      console.log("ℹ️ Contact exists (403) – continue");
+      existsOrCreated = true;
     } else {
-      console.error(
-        `❌ Contact creation failed: ${contactResponse.status} - ${contactResponseText}`
-      );
+      console.log("❌ Failed to create contact");
       return null;
     }
 
-    // STEP 2: Apply website-lead tag (only if contact was created or exists)
-    if (contactCreated) {
+    /* ----------------------------------------
+      STEP 2 – APPLY TAG
+    ---------------------------------------- */
+    if (existsOrCreated) {
       const tagUrl = `${contactUrl}/tag`;
-      console.log("🏷️ Applying tag:", tags);
 
       const tagResponse = await fetch(tagUrl, {
         method: "POST",
@@ -535,37 +546,21 @@ async function sendToRespondIO(data, formType) {
         body: JSON.stringify(tags),
       });
 
-      const tagResponseText = await tagResponse.text();
-      console.log(
-        `📡 Tag API Response: ${tagResponse.status} - ${tagResponseText}`
-      );
+      const tagText = await tagResponse.text();
+      console.log(`🏷️ Tag Response: ${tagResponse.status} - ${tagText}`);
 
-      if (tagResponse.ok) {
-        console.log("✅ website-lead tag applied successfully");
-        return {
-          success: true,
-          identifier,
-          tags: tags,
-          contactCreated: contactResponse.status === 200,
-          tagError: false,
-        };
-      } else {
-        console.error(
-          `❌ Tag application failed: ${tagResponse.status} - ${tagResponseText}`
-        );
-        return {
-          success: true,
-          identifier,
-          tags: [],
-          contactCreated: contactResponse.status === 200,
-          tagError: true,
-        };
+      if (!tagResponse.ok) {
+        console.log("⚠️ Tag failed, but contact created");
       }
     }
 
-    return null;
-  } catch (error) {
-    console.error("❌ Network error contacting respond.io:", error);
+    return {
+      success: true,
+      identifier,
+      custom_fields_sent: customFields,
+    };
+  } catch (err) {
+    console.error("❌ Respond.io Network Error:", err);
     return null;
   }
 }

@@ -44,7 +44,7 @@ const articlesData = {
             type: "secondary",
           },
         ],
-        trustNote: "100+ Success Stories • 0% Bullshit • 100% Results",
+        trustNote: "100+ Success Stories • 100% Results",
       },
     },
 
