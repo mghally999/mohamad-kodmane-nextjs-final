@@ -1,0 +1,157 @@
+/* components/PillarsSection.module.css */
+
+/* Background section */
+.newLaunchSection {
+  position: relative;
+  background: #efefef;
+}
+
+/* Container (Bootstrap-like) */
+.container {
+  width: 100%;
+  max-width: 1320px; /* matches their xl container width */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Vertical spacing utilities */
+.sectionSpaceTop {
+  padding-top: 50px;
+}
+
+.sectionSpaceBottom {
+  padding-bottom: 50px;
+}
+
+/* Extra bottom space for this block */
+.latestImageBoxes {
+  padding-bottom: 100px;
+}
+
+/* Title + lines */
+.titleSection {
+  text-align: center;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.heading2 {
+  font-family: "Ringside", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Clone of .lines-on-sides from original CSS */
+.linesOnSides {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 30px;
+}
+
+.linesOnSides::before,
+.linesOnSides::after {
+  content: "";
+  flex: 1 1 120px;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+/* Layout of the three cards */
+.homeSlider {
+  position: relative;
+}
+
+.slidesWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* equivalent to their ±8px gutters */
+}
+
+.slide {
+  flex: 0 0 33.333%;
+}
+
+/* 2nd card lower (desktop) – clone of .home-slider .swiper-slide:nth-child(2) */
+.middleSlide {
+  margin-top: 95px;
+}
+
+@media (max-width: 1000px) {
+  .slidesWrapper {
+    flex-direction: column;
+  }
+
+  .slide {
+    flex: 1 1 auto;
+  }
+
+  .middleSlide {
+    margin-top: 0;
+  }
+}
+
+/* Inner boxes */
+.latestBoxes {
+  height: 100%;
+}
+
+.latestBoxesCol {
+  height: 100%;
+}
+
+/* Top image */
+.latestBoxThumb {
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.latestBoxThumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+  transition: transform 0.5s ease;
+}
+
+/* Zoom-on-hover like the original */
+.latestBoxThumb img:hover {
+  transform: scale(1.2);
+}
+
+/* Text block under image – direct copy of .new-launch-section .latest-box-content */
+.latestBoxContent {
+  margin-left: 72px;
+  padding: 100px 0 0 22px;
+  border-left: 1px solid #dbdbdb;
+}
+
+@media (max-width: 1000px) {
+  .latestBoxContent {
+    margin-left: 0;
+    margin-bottom: 40px;
+    padding-top: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Typography inside the text block */
+.latestBoxContent h4 {
+  margin-bottom: 23px;
+  font-size: 34px;
+  line-height: 41px;
+  font-weight: 400;
+}
+
+.latestBoxContent p {
+  margin-bottom: 0;
+  font-size: 21px;
+  line-height: 30px;
+}
+
+@media (max-width: 1000px) {
+  .latestBoxContent p {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}

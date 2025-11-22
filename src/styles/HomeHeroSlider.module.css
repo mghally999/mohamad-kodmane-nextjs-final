@@ -1,0 +1,322 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Slider area */
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  max-height: 720px;
+  min-height: 480px;
+}
+
+/* Background image (Next.js fill) */
+.backgroundImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  z-index: 10;
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.arrowPrev {
+  left: 24px;
+}
+
+.arrowNext {
+  right: 24px;
+}
+
+.arrow:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.6);
+  border-color: #ffffff;
+}
+
+/* Pure CSS chevron */
+.arrowIcon {
+  position: relative;
+  display: block;
+  width: 10px;
+  height: 18px;
+}
+
+.arrowIcon::before,
+.arrowIcon::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: #ffffff;
+  left: 50%;
+  transform-origin: center;
+}
+
+.arrowPrev .arrowIcon::before,
+.arrowPrev .arrowIcon::after {
+  transform: translateX(-50%) rotate(45deg);
+  top: 2px;
+}
+
+.arrowPrev .arrowIcon::after {
+  transform: translateX(-50%) rotate(-45deg);
+  top: 8px;
+}
+
+.arrowNext .arrowIcon::before,
+.arrowNext .arrowIcon::after {
+  transform: translateX(-50%) rotate(-45deg);
+  top: 2px;
+}
+
+.arrowNext .arrowIcon::after {
+  transform: translateX(-50%) rotate(45deg);
+  top: 8px;
+}
+
+/* ---------- BOTTOM STRIP – PRISTINE BAR ---------- */
+
+.bottomStrip {
+  width: 100%;
+  background-color: #efefef;
+  border-top: 1px solid #dedede;
+}
+
+.bottomInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px 80px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TOP ROW */
+
+.topRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 80px;
+}
+
+/* LEFT – title block */
+
+.projectTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.projectNameMain {
+  font-family: "Times New Roman", "Georgia", serif;
+  font-size: 42px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+.projectSubtitle {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a7a7a;
+}
+
+/* RIGHT – amenities with vertical dividers */
+
+.amenitiesRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: 64px;
+}
+
+.amenity {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  min-height: 64px;
+}
+
+.amenity:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background-color: #dbcfc4;
+}
+
+.amenityLabel {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #555555;
+  white-space: nowrap;
+}
+
+/* BOTTOM ROW – button */
+
+.buttonRow {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.exploreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 72px;
+  border-radius: 999px;
+  border: 1px solid #111111;
+  background: transparent;
+  color: #111111;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.exploreButton:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1200px) {
+  .sliderWrapper {
+    height: 70vh;
+    min-height: 480px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .bottomInner {
+    padding: 40px 32px 72px;
+  }
+
+  .topRow {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    row-gap: 32px;
+  }
+
+  .projectNameMain {
+    font-size: 34px;
+  }
+
+  .amenitiesRow {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .amenity {
+    padding: 0 24px;
+  }
+
+  .amenity:not(:first-child)::before {
+    top: 0;
+    bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .sliderWrapper {
+    height: 60vh;
+    min-height: 360px;
+  }
+
+  .bottomInner {
+    padding: 32px 20px 56px;
+  }
+
+  .projectNameMain {
+    font-size: 28px;
+    letter-spacing: 0.06em;
+  }
+
+  .projectSubtitle {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+
+  .amenitiesRow {
+    gap: 20px;
+  }
+
+  .amenity {
+    padding: 0 16px;
+    min-height: 48px;
+  }
+
+  .amenity:not(:first-child)::before {
+    display: none;
+  }
+
+  .exploreButton {
+    width: 100%;
+    max-width: 280px;
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sliderWrapper {
+    height: 55vh;
+    min-height: 300px;
+  }
+
+  .bottomInner {
+    padding: 14px 12px 40px;
+  }
+
+  .projectNameMain {
+    font-size: 22px;
+  }
+
+  .amenitiesRow {
+    gap: 16px;
+  }
+
+  .amenityLabel {
+    font-size: 10px;
+  }
+}

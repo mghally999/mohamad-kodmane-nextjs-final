@@ -122,8 +122,8 @@ export default function RootLayout({ children }) {
           <TopHeader />
           {children}
           <FooterFinal menuData={menuData} />
-          <Footer />
-          <FloatingWhatsApp />
+          {/* <Footer /> */}
+          {/* <FloatingWhatsApp /> */}
         </LanguageProvider>
       </body>
     </html>

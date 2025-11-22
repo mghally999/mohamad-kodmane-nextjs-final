@@ -12,7 +12,8 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
@@ -76,7 +77,8 @@
 }
 
 .tagline {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   color: #000000;
   font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 300;
@@ -139,7 +141,8 @@
   color: #000000;
   padding: 6px 12px;
   border-radius: 15px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -160,7 +163,8 @@
 }
 
 .propertyMetrics {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: #d7b46a;
@@ -168,7 +172,8 @@
 }
 
 .propertyDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 300;
   color: #000000;
@@ -210,7 +215,8 @@
 }
 
 .sectionSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 300;
   color: #000000;
@@ -260,7 +266,8 @@
 }
 
 .yearLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   color: #000000;
@@ -330,7 +337,8 @@
   color: #ffffff;
   padding: 6px 12px;
   border-radius: 8px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   white-space: nowrap;
@@ -398,7 +406,8 @@
 }
 
 .yLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   color: #000000;
@@ -416,7 +425,8 @@
 }
 
 .xLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   color: #000000;
@@ -454,14 +464,16 @@
 }
 
 .infoReturn {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
   color: #d7b46a;
 }
 
 .infoDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.95rem;
   font-weight: 300;
   color: #000000;
@@ -542,7 +554,8 @@
 }
 
 .cardLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: #000000;
@@ -550,7 +563,8 @@
 }
 
 .cardTrend {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: #d7b46a;
@@ -641,7 +655,8 @@
 }
 
 .objectiveHeading {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: #000000;
@@ -682,7 +697,8 @@
 }
 
 .promiseStatement {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: #000000;
@@ -708,7 +724,8 @@
 }
 
 .highlightText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   color: #000000;
@@ -847,7 +864,8 @@
 
 /* Update property descriptions for better readability */
 .propertyDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 300;
   color: #000000;
@@ -859,7 +877,8 @@
 
 /* Update performance card labels for better text wrapping */
 .cardLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   color: #000000;
@@ -870,7 +889,8 @@
 
 /* Update objective headings for better text handling */
 .objectiveHeading {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: #000000;
@@ -881,7 +901,8 @@
 
 /* Update promise statement for better text flow */
 .promiseStatement {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: #000000;
@@ -892,7 +913,8 @@
 
 /* Update highlight text for better readability */
 .highlightText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   color: #000000;

@@ -1,270 +1,247 @@
-/* FooterFinal.module.css */
-@import url("https://fonts.cdnfonts.com/css/chronicle-display");
-@import url("https://fonts.cdnfonts.com/css/ringside");
-
 .footer {
-  background: #efefef;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-  color: #212529;
+  background-color: #f9f9f9;
+  color: #333333;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-.inner {
-  max-width: 1380px;
+/* ========== TOP LOGO BAR (center logo + lines) ========== */
+
+.logoBar {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eceae6;
+}
+
+.logoBarInner {
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 70px 24px 30px;
+  padding: 32px 20px 28px;
 }
 
-/* Brand - Mohamad Kodmane */
-.brandWrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logoWrap {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 18px 40px;
+  text-align: center;
+}
+
+/* horizontal lines left & right of the logo */
+.logoWrap::before,
+.logoWrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  height: 1px;
+  background-color: #dad4c9;
+  opacity: 0.8;
+}
+
+.logoWrap::before {
+  right: 100%;
+}
+
+.logoWrap::after {
+  left: 100%;
+}
+
+.logoImage {
+  display: inline-block;
+  height: auto;
+}
+
+/* ========== MAIN FOOTER AREA ========== */
+
+.footerMain {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 80px 40px;
+}
+
+.footerMainInner {
+  border-bottom: 1px solid #eceae6;
   padding-bottom: 40px;
 }
 
-.brandLink {
-  text-decoration: none;
-}
+/* First row – properties columns */
 
-.brandLogo {
-  border-radius: 10px;
-  height: 220px;
-  width: 220px;
-  max-width: 220px;
-  object-fit: contain;
-}
-
-.brandText {
-  text-align: center;
-  line-height: 1.1;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #000;
-  font-family: "Chronicle Display", serif;
-}
-
-.brandMain {
-  display: block;
-  font-size: clamp(22px, 3vw, 28px);
-  font-weight: 400;
-  margin-bottom: 4px;
-}
-
-.brandSub {
-  display: block;
-  font-size: clamp(14px, 2vw, 18px);
-  letter-spacing: 0.25em;
-  font-weight: 300;
-}
-
-/* Columns */
-.columns {
+.propertiesRow {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 32px;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  /* border-top: 1px solid rgba(0, 0, 0, 0.06); */
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.06); */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 64px;
+  row-gap: 20px;
 }
 
-/* 4 equal columns on desktop */
-.col {
-  grid-column: span 3;
-  padding: 12px 16px;
+.colBlock {
+  min-width: 0;
 }
 
 .colTitle {
-  font-family: "Ringside", sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.15em;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 20px;
-  font-weight: 700;
+  color: #777777;
+  margin-bottom: 16px;
 }
 
 .linkList {
   list-style: none;
-  padding: 0;
   margin: 0;
-  columns: 1;
+  padding: 0;
 }
 
 .linkItem {
-  margin: 16px 0;
-  padding: 8px 0;
+  margin-bottom: 6px;
 }
 
-.developerName {
-  font-family: "Ringside", sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: #d7b46a;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 4px;
+.linkItem:last-child {
+  margin-bottom: 0;
+}
+
+.linkItemMuted {
+  font-size: 12px;
+  color: #b0aca3;
 }
 
 .link {
-  display: inline;
+  font-size: 12px;
+  color: #444444;
   text-decoration: none;
-  font-family: "Ringside", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgb(33, 37, 41);
-  line-height: 1.4;
-  transition: all 0.25s ease;
-  cursor: pointer;
+  line-height: 1.6;
 }
 
 .link:hover {
-  color: #d7b46a;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  color: #111111;
 }
 
-/* Contact Section */
-.contactSection {
-  padding: 35px 0 25px;
+/* ========== SECOND ROW – COMMUNITIES / MEDIA / ABOUT / CONTACT ========== */
+
+.footerMiddle {
+  padding: 32px 0 36px;
+  border-bottom: 1px solid #eceae6;
 }
 
-.contactInfo {
+.footerMiddleInner {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin: 0 auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 64px;
+  row-gap: 24px;
 }
 
-.contactItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  padding: 15px;
+.middleCol {
+  min-width: 0;
 }
 
-.contactIcon {
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
-  background: rgba(215, 180, 106, 0.1);
-  border-radius: 50%;
+.middleTitle {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777777;
+  margin-bottom: 16px;
+}
+
+/* ========== BOTTOM ROW ========== */
+
+.footerBottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  align-items: center;
+  padding: 24px 0 32px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.bottomLeft {
+  text-align: left;
+}
+
+.bottomCenter {
+  text-align: center;
+}
+
+.bottomRight {
+  text-align: right;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottomContact {
+  text-decoration: none;
+  color: #777777;
+}
+
+.bottomContact:hover {
+  color: #111111;
+}
+
+.bottomDivider {
+  color: #cccccc;
+}
+
+/* Social icons */
+
+.socialIcons {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.socialLink {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
 
-.contactDetails {
-  flex: 1;
+.socialIconImage {
+  display: block;
 }
 
-.contactLabel {
-  font-family: "Ringside", sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.7);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 4px;
-}
+/* ========== RESPONSIVE ========== */
 
-.contactValue {
-  font-family: "Ringside", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: #000000;
-  line-height: 1.4;
-}
-
-/* Legal */
-.legal {
-  padding-top: 25px;
-  padding-bottom: 30px;
-  display: flex;
-  justify-content: center;
-  font-family: "Ringside", sans-serif;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-/* Responsive */
 @media (max-width: 1024px) {
-  .columns {
-    grid-template-columns: repeat(8, 1fr);
-    gap: 24px;
-  }
-  .col {
-    grid-column: span 4;
+  .footerMain {
+    padding: 32px 32px 32px;
   }
 
-  .contactInfo {
+  .propertiesRow,
+  .footerMiddleInner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+
+  .footerBottom {
     grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .inner {
-    padding: 50px 18px 25px;
-  }
-
-  .columns {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
-  }
-
-  .col {
-    grid-column: 1 / -1;
-    padding: 8px 0;
-  }
-
-  .brandMain {
-    font-size: 20px;
-  }
-
-  .brandSub {
-    font-size: 16px;
-  }
-
-  .contactItem {
-    flex-direction: column;
+    row-gap: 12px;
     text-align: center;
-    gap: 10px;
   }
 
-  .contactIcon {
-    align-self: center;
+  .bottomLeft,
+  .bottomCenter,
+  .bottomRight {
+    text-align: center;
+    justify-content: center;
   }
 }
 
-@media (max-width: 480px) {
-  .inner {
-    padding: 40px 15px 20px;
+@media (max-width: 640px) {
+  .footerMain {
+    padding: 24px 20px 28px;
   }
 
-  .brandMain {
-    font-size: 18px;
+  .propertiesRow,
+  .footerMiddleInner {
+    grid-template-columns: 1fr;
   }
 
-  .brandSub {
-    font-size: 14px;
+  .logoWrap {
+    padding-inline: 24px;
   }
 
-  .colTitle {
-    font-size: 12px;
-  }
-
-  .link {
-    font-size: 13px;
-  }
-
-  .contactValue {
-    font-size: 13px;
-  }
-
-  .legal {
-    font-size: 12px;
+  .footerBottom {
+    font-size: 10px;
   }
 }

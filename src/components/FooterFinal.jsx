@@ -3,215 +3,299 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "@/styles/FooterFinal.module.css";
-import { useLanguage } from "./LanguageProvider";
 
-export default function FooterFinal({
-  menuData,
-  baseHref = "/projects",
-  brand,
-}) {
-  const { locale, t } = useLanguage();
-  const isRTL = locale === "ar";
+export default function FooterFinal() {
+  // ---- DATA (edit titles/links as you like) ----
 
-  if (!menuData?.categories?.length) return null;
+  const apartments = [
+    {
+      label: "Sobha SkyParks",
+      href: "/projects/apartments/sobha/skyparks",
+    },
+    {
+      label: "Sobha AquaCrest",
+      href: "/projects/apartments/sobha/aqua-crest",
+    },
+    {
+      label: "Sobha Central",
+      href: "/projects/apartments/sobha/central",
+    },
+    {
+      label: "Sobha Aquamont",
+      href: "/projects/apartments/sobha/aquamont",
+    },
+  ];
 
-  const brandLogo = "/logo.jpg";
-  const brandHref = brand?.href || "/";
+  const villas = [
+    {
+      label: "Sobha Hartland Villas",
+      href: "/projects/villas/sobha/hartland",
+    },
+    {
+      label: "Sobha Al Sinniyyah Island",
+      href: "/projects/villas/sobha/al-sinniyyah-island",
+    },
+    {
+      label: "Masaar by Arada",
+      href: "/projects/villas/arada/massar",
+    },
+    {
+      label: "Damac Islands 2",
+      href: "/projects/villas/damac/damac-islands-2",
+    },
+  ];
 
-  // Category labels (taken from i18n JSON)
-  const categoryTranslations = {
-    apartments: t("categories.apartments"),
-    villas: t("categories.villas"),
-    "commercial-retail": t("categories.commercial"),
-    penthouses: t("categories.penthouses"),
-  };
+  const penthouses = [
+    {
+      label: "Sobha SeaHaven Penthouse",
+      href: "/projects/penthouses/sobha/seahaven-penthouse",
+    },
+  ];
 
-  // Developer names (slugs from menuData → i18n JSON)
-  const developerTranslations = {
-    sobha: t("developers.sobhaRealty"),
-    nakheel: t("developers.nakheel"),
-    arada: t("developers.arada"),
-    omniyat: t("developers.omniyat"),
-    azizi: t("developers.aziziDevelopments"),
-  };
+  const communities = [
+    { label: "Sobha SkyParks", href: "/projects/apartments/sobha/skyparks" },
+    { label: "Sobha Central", href: "/projects/apartments/sobha/central" },
+    { label: "Sobha Hartland", href: "/projects/villas/sobha/hartland" },
+    {
+      label: "Al Sinniyyah Island",
+      href: "/projects/villas/sobha/al-sinniyyah-island",
+    },
+    { label: "Masaar by Arada", href: "/projects/villas/arada/massar" },
+    {
+      label: "Damac Islands 2",
+      href: "/projects/villas/damac/damac-islands-2",
+    },
+  ];
 
-  // Project titles (slugs from menuData → i18n JSON) - cleaned up
-  const projectTranslations = {
-    skyparks: t("projectNames.sobhaSkyParks"),
-    "aqua-crest": t("projectNames.sobhaAquaCrest"),
-    central: t("projectNames.sobhaCentral"),
-    aquamont: t("projectNames.sobhaAquamont"),
-    "al-sinniyyah-island": t("projectNames.sobhaAlSinniyyahIsland"),
-    hartland: t("projectNames.sobhaHartland2Villas"),
-    "seahaven-penthouse": t("projectNames.sobhaSeaHavenPenthouse"),
-    // "palm-central": t("projectNames.palmCentralNakheel"),
-    massar: t("projectNames.aradaMassar3"),
-    lumenaalta: t("projectNames.luminaAlta"),
-    "riviera-retails": t("projectNames.aziziRivieraRetails"),
-  };
+  const mediaCenter = [
+    { label: "Media Center", href: "/media-center" },
+    { label: "Blogs", href: "/media-center/blogs" },
+    { label: "Reports", href: "/media-center/reports" },
+  ];
 
-  // Manual structure based on your exact requirements
-  const getManualStructure = () => {
-    const apartments = [
-      {
-        title: projectTranslations.skyparks,
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/apartments/sobha/skyparks`,
-      },
-      {
-        title: projectTranslations["aqua-crest"],
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/apartments/sobha/aqua-crest`,
-      },
-      {
-        title: projectTranslations.central,
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/apartments/sobha/central`,
-      },
-      {
-        title: projectTranslations.aquamont,
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/apartments/sobha/aquamont`,
-      },
-      // {
-      //   title: "Palm Central", // Clean name without Nakheel
-      //   developer: developerTranslations.nakheel,
-      //   href: `${baseHref}/apartments/nakheel/palm-central`,
-      // },
-    ];
+  const aboutUs = [
+    { label: "About Mohamad Kodmane", href: "/about" },
+    { label: "Legacy & Experience", href: "/about/legacy" },
+    { label: "Thoughtful Advice", href: "/about/thoughtful-advice" },
+  ];
 
-    const villas = [
-      {
-        title: projectTranslations.hartland,
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/villas/sobha/hartland`,
-      },
-      {
-        title: projectTranslations["al-sinniyyah-island"],
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/villas/sobha/al-sinniyyah-island`,
-      },
-      {
-        title: projectTranslations.massar,
-        developer: developerTranslations.arada,
-        href: `${baseHref}/villas/arada/massar`,
-      },
-    ];
+  const contactUs = [
+    { label: "Contact Us", href: "/contact" },
+    { label: "Channel Partner", href: "/channel-partner" },
+    { label: "Careers", href: "/careers" },
+    { label: "Our Presence", href: "/our-presence" },
+    { label: "FAQ", href: "/faq" },
+  ];
 
-    const commercial = [
-      {
-        title: projectTranslations["riviera-retails"],
-        developer: developerTranslations.azizi,
-        href: `${baseHref}/commercial-retail/azizi/riviera-retails`,
-      },
-      {
-        title: projectTranslations.lumenaalta,
-        developer: developerTranslations.omniyat,
-        href: `${baseHref}/commercial-retail/omniyat/lumenaalta`,
-      },
-    ];
+  const socials = [
+    {
+      id: "instagram",
+      href: "https://www.instagram.com/mohamadkodmane/",
+      icon: "https://api.iconify.design/mdi:instagram.svg",
+      alt: "Instagram",
+    },
+    {
+      id: "facebook",
+      href: "https://www.facebook.com/mo.kodmane/",
+      icon: "https://api.iconify.design/mdi:facebook.svg",
+      alt: "Facebook",
+    },
+    {
+      id: "youtube",
+      href: "https://www.youtube.com/@Mohamad.Kodmane",
+      icon: "https://api.iconify.design/mdi:youtube.svg",
+      alt: "YouTube",
+    },
+    // If later you have more:
+    // { id: "tiktok", href: "#", icon: "https://api.iconify.design/mdi:tiktok.svg", alt: "TikTok" },
+    // { id: "linkedin", href: "#", icon: "https://api.iconify.design/mdi:linkedin.svg", alt: "LinkedIn" },
+    // { id: "x", href: "#", icon: "https://api.iconify.design/mdi:twitter.svg", alt: "X (Twitter)" },
+  ];
 
-    const penthouses = [
-      {
-        title: projectTranslations["seahaven-penthouse"],
-        developer: developerTranslations.sobha,
-        href: `${baseHref}/penthouses/sobha/seahaven-penthouse`,
-      },
-    ];
+  const year = new Date().getFullYear();
 
-    return { apartments, villas, commercial, penthouses };
-  };
-
-  const { apartments, villas, commercial, penthouses } = getManualStructure();
-
-  const Column = ({ title, items }) =>
-    !items?.length ? null : (
-      <div className={styles.col}>
-        <div className={styles.colTitle}>{title}</div>
-        <ul className={styles.linkList}>
-          {items.map((item, i) => (
-            <li key={`${title}-${i}`} className={styles.linkItem}>
-              {item.developer && (
-                <div className={styles.developerName}>{item.developer}</div>
-              )}
-              <Link href={item.href} className={styles.link}>
-                {item.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-
-  const phoneLabel = t("projects.contact.phone");
-  const emailLabel = t("projects.contact.email");
-  const locationLabel = isRTL ? "الموقع" : "Location";
+  // ---- RENDER ----
 
   return (
-    <footer
-      className={`${styles.footer} ${isRTL ? styles.rtl : ""}`}
-      dir={isRTL ? "rtl" : "ltr"}
-    >
-      <div className={styles.inner}>
-        {/* Brand - Only Logo */}
-        <div className={styles.brandWrap}>
-          <Link
-            href={brandHref}
-            className={styles.brandLink}
-            aria-label="Company Logo"
-          >
-            <Image
-              src={brandLogo}
-              alt="Company Logo"
-              width={200}
-              height={45}
-              className={styles.brandLogo}
-              priority
-            />
-          </Link>
+    <footer className={styles.footer}>
+      {/* TOP LOGO BAR WITH LEFT/RIGHT LINES – Sobha style */}
+      <div className={styles.logoBar}>
+        <div className={styles.logoBarInner}>
+          <div className={styles.logoWrap}>
+            <Link href="/" aria-label="Mohamad Kodmane Real Estate">
+              <Image
+                src="/logo-transparent.png" // put your MK logo here
+                alt="Mohamad Kodmane Real Estate"
+                width={180}
+                height={60}
+                className={styles.logoImage}
+                priority
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN FOOTER CONTENT */}
+      <div className={styles.footerMain}>
+        {/* FIRST ROW – PROPERTIES (like APARTMENTS / VILLAS / VILLAMENTS / PENTHOUSES) */}
+        <div className={styles.footerMainInner}>
+          <div className={styles.propertiesRow}>
+            <div className={styles.colBlock}>
+              <h4 className={styles.colTitle}>APARTMENTS</h4>
+              <ul className={styles.linkList}>
+                {apartments.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.colBlock}>
+              <h4 className={styles.colTitle}>VILLAS</h4>
+              <ul className={styles.linkList}>
+                {villas.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* <div className={styles.colBlock}>
+              <h4 className={styles.colTitle}>VILLAMENTS</h4>
+              <ul className={styles.linkList}>
+                {villaments.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+
+                {villaments.length === 0 && (
+                  <li className={styles.linkItemMuted}>Coming Soon</li>
+                )}
+              </ul>
+            </div> */}
+
+            <div className={styles.colBlock}>
+              <h4 className={styles.colTitle}>PENTHOUSES</h4>
+              <ul className={styles.linkList}>
+                {penthouses.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
-        {/* Project columns */}
-        <div className={styles.columns}>
-          <Column title={categoryTranslations.apartments} items={apartments} />
-          <Column title={categoryTranslations.villas} items={villas} />
-          <Column
-            title={categoryTranslations["commercial-retail"]}
-            items={commercial}
-          />
-          <Column title={categoryTranslations.penthouses} items={penthouses} />
+        {/* SECOND ROW – COMMUNITIES / MEDIA CENTER / ABOUT US / CONTACT US */}
+        <div className={styles.footerMiddle}>
+          <div className={styles.footerMiddleInner}>
+            <div className={styles.middleCol}>
+              <div className={styles.middleTitle}>COMMUNITIES</div>
+              <ul className={styles.linkList}>
+                {communities.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.middleCol}>
+              <div className={styles.middleTitle}>MEDIA CENTER</div>
+              <ul className={styles.linkList}>
+                {mediaCenter.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.middleCol}>
+              <div className={styles.middleTitle}>ABOUT US</div>
+              <ul className={styles.linkList}>
+                {aboutUs.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.middleCol}>
+              <div className={styles.middleTitle}>CONTACT</div>
+              <ul className={styles.linkList}>
+                {contactUs.map((item) => (
+                  <li key={item.label} className={styles.linkItem}>
+                    <Link href={item.href} className={styles.link}>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
-        {/* Contact info */}
-        <div className={styles.contactSection}>
-          <div className={styles.contactInfo}>
-            <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>📞</div>
-              <div className={styles.contactDetails}>
-                <div className={styles.contactLabel}>{phoneLabel}</div>
-                <div className={styles.contactValue}>+971 56 666 5560</div>
-              </div>
-            </div>
+        {/* BOTTOM ROW – COPYRIGHT + SOCIALS + QUICK CONTACT */}
+        <div className={styles.footerBottom}>
+          <div className={styles.bottomLeft}>
+            © {year} Mohamad Kodmane Real Estate Broker. All rights reserved.
+          </div>
 
-            <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>✉️</div>
-              <div className={styles.contactDetails}>
-                <div className={styles.contactLabel}>{emailLabel}</div>
-                <div className={styles.contactValue}>
-                  info@mohamadkodmani.ae
-                </div>
-              </div>
+          <div className={styles.bottomCenter}>
+            <div className={styles.socialIcons}>
+              {socials.map((s) => (
+                <a
+                  key={s.id}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.socialLink}
+                  aria-label={s.alt}
+                >
+                  <Image
+                    src={s.icon}
+                    alt={s.alt}
+                    width={18}
+                    height={18}
+                    className={styles.socialIconImage}
+                  />
+                </a>
+              ))}
             </div>
+          </div>
 
-            <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>📍</div>
-              <div className={styles.contactDetails}>
-                <div className={styles.contactLabel}>{locationLabel}</div>
-                <div className={styles.contactValue}>
-                  {isRTL ? "دبي، الإمارات العربية المتحدة" : "Dubai, UAE"}
-                </div>
-              </div>
-            </div>
+          <div className={styles.bottomRight}>
+            <Link href="tel:+971566665560" className={styles.bottomContact}>
+              +971 56 666 5560
+            </Link>
+            <span className={styles.bottomDivider}>|</span>
+            <Link
+              href="mailto:info@mohamadkodmane.ae"
+              className={styles.bottomContact}
+            >
+              info@mohamadkodmane.ae
+            </Link>
           </div>
         </div>
       </div>

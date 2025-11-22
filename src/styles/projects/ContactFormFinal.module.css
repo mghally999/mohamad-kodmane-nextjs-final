@@ -5,7 +5,8 @@
 .contactSection {
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   padding: 100px 0;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   position: relative;
   overflow: hidden;
 }
@@ -59,7 +60,8 @@
 }
 
 .headerDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 300;
   color: #666;
@@ -109,7 +111,8 @@
   color: #d7b46a;
   padding: 8px 16px;
   border-radius: 20px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -140,7 +143,8 @@
   color: #ffffff;
   padding: 6px 14px;
   border-radius: 15px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -148,7 +152,8 @@
 }
 
 .showcaseLocation {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: #666;
@@ -161,7 +166,8 @@
 }
 
 .featuresTitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: #000000;
@@ -212,7 +218,8 @@
 }
 
 .featureText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
   color: #000000;
@@ -225,7 +232,8 @@
 }
 
 .highlightTitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: #000000;
@@ -264,7 +272,8 @@
 
 .highlightValue {
   display: block;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: #d7b46a;
@@ -273,7 +282,8 @@
 
 .highlightLabel {
   display: block;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: #666;
@@ -294,7 +304,8 @@
   border: 2px solid #d7b46a;
   border-radius: 12px;
   color: #000000;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -359,7 +370,8 @@
 }
 
 .formSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: #666;
@@ -388,7 +400,8 @@
 }
 
 .labelText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: #000000;
@@ -406,7 +419,8 @@
   padding: 16px 20px;
   border: 1px solid rgba(215, 180, 106, 0.2);
   border-radius: 10px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: #000000;
@@ -446,7 +460,8 @@
   padding: 16px 20px;
   background: rgba(215, 180, 106, 0.05);
   border-right: 1px solid rgba(215, 180, 106, 0.2);
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #666;
@@ -456,7 +471,8 @@
   flex: 1;
   padding: 16px 20px;
   border: none;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   color: #000000;
@@ -475,7 +491,8 @@
 
 .contactLabel {
   display: block;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: #000000;
@@ -544,7 +561,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   color: #000000;
@@ -608,7 +626,8 @@
 }
 
 .checkboxText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 300;
   color: #000000;
@@ -634,7 +653,8 @@
 }
 
 .securityText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 300;
   color: #666;
@@ -659,7 +679,8 @@
   border: none;
   border-radius: 12px;
   color: #000000;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -745,7 +766,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
   color: #666;
@@ -873,7 +895,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 .toast.success .toastContent {

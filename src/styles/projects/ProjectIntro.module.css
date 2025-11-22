@@ -7,7 +7,8 @@
   min-height: 100vh;
   background: #efefef;
   overflow: hidden;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
@@ -81,7 +82,8 @@
   color: #000000;
   padding: 12px 24px;
   border-radius: 25px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -101,7 +103,8 @@
 }
 
 .heroSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 500;
   color: #ffffff;
@@ -184,7 +187,8 @@
 }
 
 .imageDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 300; /* Mission section style */
   margin: 0;
@@ -263,7 +267,8 @@
 }
 
 .featureText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 300; /* Mission section style */
   color: #000000;
@@ -322,7 +327,8 @@
 }
 
 .highlightLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 12px;
   font-weight: 300; /* Mission section style */
   color: #000000;
@@ -344,7 +350,8 @@
 }
 
 .paragraph {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #000000;
@@ -374,7 +381,8 @@
 }
 
 .developerTitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 12px;
   font-weight: 300; /* Mission section style */
   color: #d7b46a;
@@ -394,7 +402,8 @@
 }
 
 .developerDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 300; /* Mission section style */
   color: #000000;
@@ -421,7 +430,8 @@
   color: #000000;
   text-decoration: none;
   border-radius: 12px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 600; /* Keep buttons slightly bolder for readability */
   text-transform: uppercase;
@@ -449,7 +459,8 @@
   color: #000000;
   text-decoration: none;
   border-radius: 12px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 600; /* Keep buttons slightly bolder for readability */
   text-transform: uppercase;

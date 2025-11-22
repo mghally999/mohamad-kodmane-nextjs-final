@@ -1,0 +1,237 @@
+/* === HERO LAYOUT (Sobha clone) ======================================= */
+
+/* === HERO LAYOUT (Sobha clone) ======================================= */
+
+.hero {
+  position: relative; /* 🔥 was: fixed */
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0; /* header still above if it has higher z-index */
+}
+
+/* Wrapper needed for next/image with fill */
+.mediaWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Background image with smooth transition */
+.heroImage {
+  object-fit: cover;
+  object-position: top center;
+  transition: opacity 0.6s ease-in-out, transform 1s ease-in-out;
+  transform: scale(1);
+}
+
+/* Image transition effect */
+.imageTransition {
+  opacity: 0.8;
+  transform: scale(1.03);
+}
+
+/* Desktop / mobile toggles (you can later use different sources) */
+.onlyDesk {
+  display: block;
+}
+
+.onlyMob {
+  display: none;
+}
+
+@media (max-width: 575px) {
+  .onlyDesk {
+    display: none;
+  }
+  .onlyMob {
+    display: block;
+  }
+}
+
+/* === BOTTOM GRADIENT + TEXT (matches .explore-more-arrow) =========== */
+
+.bottomGradient {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(66, 98, 118, 0) 100%
+  );
+  pointer-events: none; /* text still clickable via children */
+}
+
+.textBlock {
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: 4.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto; /* re-enable for CTA */
+}
+
+/* Enhanced developer label - bigger */
+.kicker {
+  font-family: "ringside_regularbook", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px; /* Increased from 11px */
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+  margin: 0 0 15px; /* Slightly more spacing */
+  transition: all 0.5s ease-in-out 0.1s; /* Staggered transition */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Main heading – The Mirage */
+.heading {
+  font-family: "Chronicle Display", "Times New Roman", serif;
+  font-size: 60px;
+  line-height: 1.1;
+  font-weight: 300;
+  margin: 0 0 15px; /* Slightly more spacing */
+  transition: all 0.5s ease-in-out 0.2s; /* Staggered transition */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Subheading – bigger */
+.subheading {
+  font-family: "ringside_regularbook", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px; /* Increased from 14px */
+  letter-spacing: 4.5px;
+  text-transform: none;
+  margin: 0 0 35px;
+  transition: all 0.5s ease-in-out 0.3s; /* Staggered transition */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text transition states */
+.textTransition {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+/* CTA – glass pill button identical to Sobha */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 186px;
+  height: 51px;
+  padding: 0 48px;
+  border-radius: 33.5px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.52);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  font-size: 14px;
+  font-weight: 350;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: all 0.5s ease-in-out 0.4s, background 0.5s ease, color 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.ctaTransition {
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+/* === SLIDER DOTS (bottom right) ===================================== */
+
+.dots {
+  position: absolute;
+  right: 40px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: transparent;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  opacity: 0.8;
+}
+
+.dotActive {
+  width: 18px;
+  opacity: 1;
+  background: #ffffff;
+}
+
+/* === DUMMY HEIGHT (pushes content below hero) ======================= */
+
+.dummyHeight {
+  height: 100vh;
+  width: 100%;
+}
+
+/* === RESPONSIVE TWEAKS ============================================== */
+
+@media (max-width: 1000px) {
+  .bottomGradient {
+    height: 300px;
+    bottom: 30px; /* matches Sobha mobile spacing */
+  }
+
+  .heading {
+    font-size: 40px;
+  }
+
+  .subheading {
+    font-size: 14px; /* Adjusted for mobile */
+    margin-bottom: 25px;
+  }
+
+  .kicker {
+    font-size: 12px; /* Adjusted for mobile */
+  }
+}
+
+@media (max-width: 575px) {
+  .subheading {
+    font-size: 13px; /* Further adjusted for small mobile */
+  }
+
+  .kicker {
+    font-size: 11px; /* Further adjusted for small mobile */
+  }
+}
+/* CSEI-like background layer for active slide */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}

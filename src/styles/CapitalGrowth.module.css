@@ -7,7 +7,8 @@
   min-height: 100vh;
   background: #ffffff;
   overflow: hidden;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
@@ -80,7 +81,8 @@
   color: #000000;
   padding: 12px 24px;
   border-radius: 25px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -102,7 +104,8 @@
 }
 
 .heroSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   font-weight: 600;
   color: #ffffff;
@@ -132,7 +135,8 @@
 }
 
 .gallerySubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   color: #000000;
@@ -186,7 +190,8 @@
 }
 
 .navLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   color: #000000;
@@ -239,7 +244,8 @@
 }
 
 .metricLabelLarge {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: #ffffff;
@@ -248,7 +254,8 @@
 }
 
 .metricDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
   color: #ffffff;
@@ -303,7 +310,8 @@
 }
 
 .mixSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
   color: #000000;
@@ -328,7 +336,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   color: #000000;
@@ -364,7 +373,8 @@
 }
 
 .insightText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 600;
   color: #000000;
@@ -426,7 +436,8 @@
 }
 
 .statLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   color: #000000;
@@ -435,7 +446,8 @@
 }
 
 .fundamentalsText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
   color: #000000;
@@ -452,7 +464,8 @@
 }
 
 .sourceNote strong {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   color: #000000;
@@ -525,7 +538,8 @@
 }
 
 .fullWidthImageDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);

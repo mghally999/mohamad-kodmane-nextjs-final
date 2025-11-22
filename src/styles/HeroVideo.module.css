@@ -11,7 +11,8 @@
   align-items: center;
   justify-content: center;
   padding: 0;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   width: 100%;
 }
 
@@ -100,7 +101,8 @@
 }
 
 .fallbackText p {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.5rem;
   color: #ffffff;
   margin: 0;
@@ -145,7 +147,8 @@
   border-radius: 25px;
   font-size: 16px;
   font-weight: 700;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -170,14 +173,16 @@
 }
 
 .statNumber {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: #d7b46a;
 }
 
 .statLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.9);
   text-transform: uppercase;
@@ -195,7 +200,8 @@
 }
 
 .captionSub {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   color: #ffffff;
   font-size: clamp(1.2rem, 1.8vw, 1.6rem);
   font-weight: 350;

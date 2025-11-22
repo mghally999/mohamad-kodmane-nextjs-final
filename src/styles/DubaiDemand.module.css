@@ -12,7 +12,8 @@
   align-items: center;
   justify-content: center;
   padding: 120px 40px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
@@ -134,7 +135,8 @@
   color: #ffffff;
   padding: 12px 28px;
   border-radius: 25px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -162,7 +164,8 @@
 }
 
 .sectionDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.3rem;
   font-weight: 500;
   color: #000000;
@@ -311,7 +314,8 @@
 }
 
 .cardDescription {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #000000;
@@ -338,7 +342,8 @@
 }
 
 .statLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   color: #000000;
@@ -440,7 +445,8 @@
 }
 
 .barLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   color: #000000;
@@ -462,7 +468,8 @@
 }
 
 .comparisonText {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   color: #000000;
@@ -498,7 +505,8 @@
   color: #ffffff;
   padding: 8px 20px;
   border-radius: 20px;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -523,7 +531,8 @@
 }
 
 .resultHighlight {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
   color: #000000;
@@ -573,7 +582,8 @@
 }
 
 .statLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   color: #000000;
@@ -583,7 +593,8 @@
 }
 
 .resultConclusion {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
   color: #000000;
@@ -776,7 +787,8 @@
 }
 
 .chartSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   color: #000000;
@@ -844,7 +856,8 @@
 }
 
 .barLabel {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
   color: #000000;
@@ -853,7 +866,8 @@
 }
 
 .barPercentage {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   color: #000000;
@@ -892,7 +906,8 @@
 }
 
 .comparisonText span:first-child {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 600;
   color: #000000;
@@ -931,7 +946,8 @@
 }
 
 .legendItem span {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 0.8rem;
   font-weight: 500;
   color: #000000;

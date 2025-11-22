@@ -8,7 +8,8 @@
   position: relative;
   overflow: hidden;
   color: #000000;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
 .callbackSection.rtl {
@@ -242,7 +243,8 @@
 }
 
 .formSubtitle {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   color: #000000;
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   font-weight: 300;
@@ -315,7 +317,8 @@
   padding: 24px 50px 12px 20px;
   border: none;
   background: transparent;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 16px;
   color: #000000;
   outline: none;
@@ -346,7 +349,8 @@
   font-weight: 400;
   pointer-events: none;
   transition: all 0.3s ease;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   text-align: left;
 }
 
@@ -431,7 +435,8 @@
   border-radius: 16px;
   padding: 24px 40px;
   color: #000000;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
@@ -671,7 +676,8 @@
 }
 
 .successMessage {
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   color: #000000;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -774,7 +780,8 @@
   border-radius: 10px;
   margin-bottom: 25px;
   color: #e74c3c;
-  font-family: "Ringside", sans-serif;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 500;
 }

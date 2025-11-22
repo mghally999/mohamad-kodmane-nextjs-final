@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from "react";
 import { usePathname } from "next/navigation";
 import styles from "@/styles/TopHeader.module.css";
 import { useLanguage } from "./LanguageProvider";
+import Link from "next/link";
 
 export default function TopHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -236,29 +237,49 @@ export default function TopHeader() {
     return data;
   }, [t, locale]);
 
+  // Navigation items - used for MOBILE nav
   const navItems = useMemo(
     () => [
-      { href: "/", label: t("nav.home"), type: "primary" },
-      { href: "/about", label: t("nav.about"), type: "primary" },
+      { href: "/", label: "HOME", type: "primary" },
+      { href: "/about", label: "ABOUT", type: "primary" },
       {
-        href: "/projects",
-        label: t("nav.projects"),
+        href: "/properties-in-dubai/",
+        label: "PROPERTIES",
         type: "primary",
         hasMegaMenu: true,
       },
       {
-        href: "/articles",
-        label: t("nav.marketInsights"),
+        href: "/our-communities",
+        label: "COMMUNITIES",
+        type: "primary",
+      },
+      {
+        href: "/media-center/press-releases/",
+        label: "MEDIA CENTER",
+        type: "primary",
+      },
+      {
+        href: "/careers",
+        label: "CAREERS",
+        type: "primary",
+      },
+      {
+        href: "/contact-us/",
+        label: "CONTACT US",
         type: "primary",
       },
     ],
-    [t, locale]
+    [locale]
   );
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
-    if (isMobileMenuOpen) document.body.classList.add(styles.mobileMenuOpen);
-    else document.body.classList.remove(styles.mobileMenuOpen);
+
+    if (isMobileMenuOpen) {
+      document.body.classList.add(styles.mobileMenuOpen);
+    } else {
+      document.body.classList.remove(styles.mobileMenuOpen);
+    }
 
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -293,6 +314,15 @@ export default function TopHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [activeMegaMenu]);
 
+  useEffect(() => {
+    // Close all menus on route change
+    setActiveMegaMenu(null);
+    setSelectedCategory(null);
+    setSelectedDeveloper(null);
+    setSelectedProject(null);
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
   const handleMegaMenuEnter = (item) => {
     if (!item.hasMegaMenu) return;
     setActiveMegaMenu(item.label);
@@ -325,7 +355,7 @@ export default function TopHeader() {
 
   const toggleMobileCategory = (categoryId) => {
     setMobileExpandedItems((prev) => ({
-      categories: "luxury-projects",
+      categories: "luxury-properties",
       categoryId: prev.categoryId === categoryId ? null : categoryId,
       developerId: prev.categoryId === categoryId ? prev.developerId : null,
     }));
@@ -349,365 +379,144 @@ export default function TopHeader() {
 
   return (
     <>
-      <div className={styles.headerSpacer} />
+      {/* <div className={styles.headerSpacer} /> */}
 
       <header
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
-          isMobileMenuOpen ? styles.mobileMenuOpen : ""
+          isMobileMenuOpen ? styles.mobileMenuOpenHeader : ""
         } ${locale === "ar" ? styles.rtl : ""}`}
         dir={locale === "ar" ? "rtl" : "ltr"}
+        onMouseLeave={(e) => {
+          // Only close when the mouse leaves the whole header area,
+          // not when moving between trigger and mega menu
+          if (!e.currentTarget.contains(e.relatedTarget)) {
+            handleMegaMenuLeave();
+          }
+        }}
       >
         <div className={styles.backgroundOverlay} />
 
         <div className={styles.container}>
-          {/* Logo */}
-          <div className={styles.logo}>
-            <a href="/" className={styles.logoLink}>
-              <div className={styles.logoText}>{t("Header.title")}</div>
-              <div className={styles.logoSubtitle}>{t("Header.subtitle")}</div>
-            </a>
-          </div>
+          {/* LEFT MENU */}
+          <div
+            className={`${styles.menuLeft} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
+          >
+            <ul className={styles.navLinks}>
+              <li className={styles.menuItemHasChildren}>
+                <a
+                  className={styles.level1Menu}
+                  href="/about"
+                  data-translated-text="ABOUT"
+                >
+                  ABOUT
+                </a>
+              </li>
 
-          {/* Desktop Nav */}
-          <nav className={styles.desktopNav}>
-            {navItems.map((item) => (
-              <div
-                key={item.href}
-                className={styles.navItemWrapper}
-                onMouseEnter={() => handleMegaMenuEnter(item)}
+              {/* PROPERTIES WITH MEGA MENU */}
+              <li
+                className={styles.menuItemHasChildren}
+                onMouseEnter={() =>
+                  handleMegaMenuEnter({
+                    label: "PROPERTIES",
+                    hasMegaMenu: true,
+                  })
+                }
               >
-                {item.hasMegaMenu ? (
-                  <button
-                    className={`${styles.navLink} ${styles.megaMenuTrigger} ${
-                      activeMegaMenu === item.label ? styles.active : ""
-                    }`}
-                  >
-                    {item.label}
-                    <span className={styles.dropdownArrow}>▼</span>
-                  </button>
-                ) : (
-                  <a
-                    href={item.href}
-                    className={`${styles.navLink} ${
-                      item.type === "cta" ? styles.ctaButton : ""
-                    } ${pathname === item.href ? styles.active : ""}`}
-                    onClick={() => handleNavClick(item, "desktop")}
-                  >
-                    {item.label}
-                    {item.type === "cta" && <span className={styles.ctaGlow} />}
-                  </a>
-                )}
-              </div>
-            ))}
-          </nav>
-
-          {/* Language Toggle Button */}
-          <div className={styles.languageToggle}>
-            <button
-              onClick={toggleLanguage}
-              disabled={isTransitioning}
-              className={`${styles.langButton} ${
-                locale === "ar" ? styles.arabicActive : ""
-              } ${isTransitioning ? styles.transitioning : ""}`}
-              aria-label={`Switch to ${locale === "en" ? "Arabic" : "English"}`}
-            >
-              <span className={styles.langText}>
-                {isTransitioning ? "⟳" : locale === "en" ? "العربية" : "EN"}
-              </span>
-              <div className={styles.langIndicator}>
-                <div
-                  className={`${styles.langSlider} ${
-                    isTransitioning ? styles.pulsing : ""
+                <button
+                  type="button"
+                  className={`${styles.level1Menu} ${styles.megaMenuTrigger} ${
+                    activeMegaMenu === "PROPERTIES" ? styles.active : ""
                   }`}
-                  data-lang={locale}
-                ></div>
-              </div>
-            </button>
+                  onClick={() => {
+                    if (activeMegaMenu === "PROPERTIES") {
+                      handleMegaMenuLeave();
+                    } else {
+                      handleMegaMenuEnter({
+                        label: "PROPERTIES",
+                        hasMegaMenu: true,
+                      });
+                    }
+                  }}
+                >
+                  PROPERTIES
+                  <span className={styles.dropdownArrow}>▼</span>
+                </button>
+              </li>
+            </ul>
           </div>
 
-          {/* Mega Menu */}
-          {activeMegaMenu && (
-            <div className={styles.megaMenu} onMouseLeave={handleMegaMenuLeave}>
-              <div className={styles.megaMenuContainer}>
-                <div className={styles.megaMenuContent}>
-                  {/* Column 1: Categories */}
-                  <div className={styles.menuLevel}>
-                    <div className={styles.menuLevelHeader}>
-                      <h3 className={styles.menuLevelTitle}>
-                        {t("nav.propertyTypes")}
-                      </h3>
-                      <p className={styles.menuLevelDescription}>
-                        {t("nav.explorePortfolio")}
-                      </p>
-                    </div>
-                    <div className={styles.categoriesGrid}>
-                      {menuData.categories.map((category) => (
-                        <button
-                          key={category.id}
-                          className={`${styles.categoryCard} ${
-                            selectedCategory?.id === category.id
-                              ? styles.active
-                              : ""
-                          }`}
-                          onMouseEnter={() => handleCategoryHover(category)}
-                        >
-                          <div className={styles.categoryInfo}>
-                            <h4 className={styles.categoryName}>
-                              {category.name}
-                            </h4>
-                            <p className={styles.categoryDescription}>
-                              {category.description}
-                            </p>
-                          </div>
-                          <span className={styles.categoryArrow}>→</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+          {/* CENTER LOGO */}
+          <div
+            className={`${styles.logoSec} ${styles.col12} ${styles.colLg2} ${styles.onlyDesk}`}
+          >
+            <Link href="/" className={styles.logoLink}>
+              <img
+                src="/logo-transparent.png"
+                alt="Sobha Realty"
+                className={styles.logoImage}
+                width={125}
+                height={45}
+              />
+            </Link>
+          </div>
 
-                  {/* Column 2: Developers */}
-                  <div className={styles.menuLevel}>
-                    <div className={styles.menuLevelHeader}>
-                      <h3 className={styles.menuLevelTitle}>
-                        {t("nav.developers")}{" "}
-                        {selectedCategory &&
-                          t("descriptions.developerIn", {
-                            category: selectedCategory.name,
-                          })}
-                      </h3>
-                      <p className={styles.menuLevelDescription}>
-                        {t("nav.selectDeveloper")}
-                      </p>
-                    </div>
-                    <div className={styles.developersList}>
-                      {selectedCategory?.developers.map((developer) => (
-                        <button
-                          key={developer.id}
-                          className={`${styles.developerItem} ${
-                            selectedDeveloper?.id === developer.id
-                              ? styles.active
-                              : ""
-                          }`}
-                          onMouseEnter={() => handleDeveloperHover(developer)}
-                        >
-                          <div className={styles.developerHeader}>
-                            {developer.logo && (
-                              <div className={styles.developerLogo}>
-                                <img
-                                  src={developer.logo}
-                                  alt={`${developer.name} logo`}
-                                  className={styles.developerLogoImage}
-                                />
-                              </div>
-                            )}
-                            <div className={styles.developerInfo}>
-                              <h4 className={styles.developerName}>
-                                {developer.name}
-                              </h4>
-                              <p className={styles.projectCount}>
-                                {developer.projects.length}{" "}
-                                {t("nav.projectsList").toLowerCase()}
-                              </p>
-                            </div>
-                            <span className={styles.developerArrow}>→</span>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+          {/* RIGHT MENU */}
+          <div
+            className={`${styles.menuRight} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
+          >
+            <ul className={styles.navLinks}>
+              <li className={styles.menuItemHasChildren}>
+                <a
+                  className={styles.level1Menu}
+                  href="/articles"
+                  data-translated-text="MEDIA CENTER"
+                >
+                  MEDIA CENTER
+                </a>
+              </li>
 
-                  {/* Column 3: Projects */}
-                  <div className={styles.menuLevel}>
-                    <div className={styles.menuLevelHeader}>
-                      <h3 className={styles.menuLevelTitle}>
-                        {t("nav.projectsList")}{" "}
-                        {selectedDeveloper &&
-                          t("descriptions.projectsBy", {
-                            developer: selectedDeveloper.name,
-                          })}
-                      </h3>
-                      <p className={styles.menuLevelDescription}>
-                        {t("nav.browseProperties")}
-                      </p>
-                    </div>
-                    <div className={styles.projectsList}>
-                      {selectedDeveloper?.projects.map((project) => (
-                        <a
-                          key={project.id}
-                          href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${project.slug}`}
-                          className={`${styles.projectItem} ${
-                            selectedProject?.id === project.id
-                              ? styles.active
-                              : ""
-                          }`}
-                          onMouseEnter={() => handleProjectHover(project)}
-                          onClick={() =>
-                            handleProjectNavClick(
-                              selectedCategory,
-                              selectedDeveloper,
-                              project,
-                              "mega_desktop"
-                            )
-                          }
-                        >
-                          <div className={styles.projectInfo}>
-                            <h4 className={styles.projectTitle}>
-                              {project.title}
-                            </h4>
-                            <p className={styles.projectDescription}>
-                              {project.description}
-                            </p>
-                          </div>
-                          <span className={styles.projectArrow}>→</span>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
+              <li className={styles.menuItemHasChildren}>
+                <a
+                  className={styles.level1Menu}
+                  href="/contact-us/"
+                  data-translated-text="CONTACT US"
+                >
+                  CONTACT US
+                </a>
+              </li>
 
-                  {/* Preview Panel */}
-                  <div className={styles.imagePreviewPanel}>
-                    <div className={styles.imagePreviewContent}>
-                      {selectedProject ? (
-                        <>
-                          <a
-                            href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
-                            className={styles.previewImageLink}
-                            onClick={() =>
-                              handleProjectNavClick(
-                                selectedCategory,
-                                selectedDeveloper,
-                                selectedProject,
-                                "mega_desktop_preview"
-                              )
-                            }
-                          >
-                            <div
-                              className={`${styles.previewImage} ${styles.projectImageActive}`}
-                              style={{
-                                backgroundImage: `url(${selectedProject.image})`,
-                              }}
-                            />
-                          </a>
-                          <div className={styles.previewInfo}>
-                            <h3 className={styles.previewTitle}>
-                              {selectedProject.title}
-                            </h3>
-                            <p className={styles.previewDescription}>
-                              {selectedProject.description}
-                            </p>
-                            <div className={styles.previewStats}>
-                              <span className={styles.stat}>
-                                {selectedCategory?.name}
-                              </span>
-                              <span className={styles.stat}>
-                                {selectedDeveloper?.name}
-                              </span>
-                              <span className={styles.stat}>Luxury</span>
-                            </div>
-                            <a
-                              href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
-                              className={styles.previewButton}
-                              onClick={() =>
-                                handleProjectNavClick(
-                                  selectedCategory,
-                                  selectedDeveloper,
-                                  selectedProject,
-                                  "mega_desktop_button"
-                                )
-                              }
-                            >
-                              {t("nav.viewProjectDetails")}
-                              <span className={styles.buttonArrow}>→</span>
-                            </a>
-                          </div>
-                        </>
-                      ) : selectedDeveloper ? (
-                        <>
-                          <div
-                            className={styles.previewImage}
-                            style={{
-                              backgroundImage: `url(${selectedDeveloper.image})`,
-                            }}
-                          />
-                          <div className={styles.previewInfo}>
-                            <h3 className={styles.previewTitle}>
-                              {selectedDeveloper.name}
-                            </h3>
-                            <p className={styles.previewDescription}>
-                              {t("descriptions.premiumDeveloper", {
-                                category: selectedCategory?.name,
-                              })}
-                            </p>
-                            <div className={styles.previewStats}>
-                              <span className={styles.stat}>
-                                {selectedDeveloper.projects.length}{" "}
-                                {t("nav.projectsList")}
-                              </span>
-                              <span className={styles.stat}>Luxury</span>
-                              <span className={styles.stat}>Premium</span>
-                            </div>
-                          </div>
-                        </>
-                      ) : selectedCategory ? (
-                        <>
-                          <div
-                            className={styles.previewImage}
-                            style={{
-                              backgroundImage: `url(${selectedCategory.image})`,
-                            }}
-                          />
-                          <div className={styles.previewInfo}>
-                            <h3 className={styles.previewTitle}>
-                              {selectedCategory.name}
-                            </h3>
-                            <p className={styles.previewDescription}>
-                              {selectedCategory.description}
-                            </p>
-                            <div className={styles.previewStats}>
-                              <span className={styles.stat}>
-                                {selectedCategory.developers.length}{" "}
-                                {t("nav.developers")}
-                              </span>
-                              <span className={styles.stat}>Premium</span>
-                              <span className={styles.stat}>Luxury</span>
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div
-                            className={styles.previewImage}
-                            style={{
-                              backgroundImage: `url(${CDN}/sky-parks/exterior-night-01.jpg)`,
-                            }}
-                          />
-                          <div className={styles.previewInfo}>
-                            <h3 className={styles.previewTitle}>
-                              {t("nav.projects")}
-                            </h3>
-                            <p className={styles.previewDescription}>
-                              {t("descriptions.discoverPortfolio")}
-                            </p>
-                            <div className={styles.previewStats}>
-                              <span className={styles.stat}>
-                                {menuData.categories.length}{" "}
-                                {t("nav.propertyTypes")}
-                              </span>
-                              <span className={styles.stat}>Premium</span>
-                              <span className={styles.stat}>Exclusive</span>
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
+              {/* Language Toggle */}
+              <li className={styles.languageToggle}>
+                <button
+                  type="button"
+                  onClick={toggleLanguage}
+                  disabled={isTransitioning}
+                  className={`${styles.langButton} ${
+                    locale === "ar" ? styles.arabicActive : ""
+                  } ${isTransitioning ? styles.transitioning : ""}`}
+                  aria-label={`Switch to ${
+                    locale === "en" ? "Arabic" : "English"
+                  }`}
+                >
+                  <span className={styles.langText}>
+                    {isTransitioning ? "⟳" : locale === "en" ? "العربية" : "EN"}
+                  </span>
+                  <div className={styles.langIndicator}>
+                    <div
+                      className={`${styles.langSlider} ${
+                        isTransitioning ? styles.pulsing : ""
+                      }`}
+                      data-lang={locale}
+                    ></div>
                   </div>
-                </div>
-              </div>
-            </div>
-          )}
+                </button>
+              </li>
+            </ul>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             className={`${styles.mobileMenuButton} ${
               isMobileMenuOpen ? styles.active : ""
             }`}
@@ -719,6 +528,281 @@ export default function TopHeader() {
             <span></span>
           </button>
         </div>
+
+        {/* MEGA MENU - Connected to PROPERTIES */}
+        {activeMegaMenu === "PROPERTIES" && (
+          <div
+            className={styles.megaMenu}
+            onMouseEnter={() => setActiveMegaMenu("PROPERTIES")}
+            onMouseLeave={handleMegaMenuLeave}
+          >
+            <div className={styles.megaMenuContainer}>
+              <div className={styles.megaMenuContent}>
+                {/* Column 1: Categories */}
+                <div className={styles.menuLevel}>
+                  <div className={styles.menuLevelHeader}>
+                    <h3 className={styles.menuLevelTitle}>Property Types</h3>
+                    <p className={styles.menuLevelDescription}>
+                      Explore our luxury portfolio
+                    </p>
+                  </div>
+                  <div className={styles.categoriesGrid}>
+                    {menuData.categories.map((category) => (
+                      <button
+                        key={category.id}
+                        type="button"
+                        className={`${styles.categoryCard} ${
+                          selectedCategory?.id === category.id
+                            ? styles.active
+                            : ""
+                        }`}
+                        onMouseEnter={() => handleCategoryHover(category)}
+                      >
+                        <div className={styles.categoryInfo}>
+                          <h4 className={styles.categoryName}>
+                            {category.name}
+                          </h4>
+                          <p className={styles.categoryDescription}>
+                            {category.description}
+                          </p>
+                        </div>
+                        <span className={styles.categoryArrow}>→</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Column 2: Developers */}
+                <div className={styles.menuLevel}>
+                  <div className={styles.menuLevelHeader}>
+                    <h3 className={styles.menuLevelTitle}>
+                      Developers{" "}
+                      {selectedCategory && `in ${selectedCategory.name}`}
+                    </h3>
+                    <p className={styles.menuLevelDescription}>
+                      Select your preferred developer
+                    </p>
+                  </div>
+                  <div className={styles.developersList}>
+                    {selectedCategory?.developers.map((developer) => (
+                      <button
+                        key={developer.id}
+                        type="button"
+                        className={`${styles.developerItem} ${
+                          selectedDeveloper?.id === developer.id
+                            ? styles.active
+                            : ""
+                        }`}
+                        onMouseEnter={() => handleDeveloperHover(developer)}
+                      >
+                        <div className={styles.developerHeader}>
+                          {developer.logo && (
+                            <div className={styles.developerLogo}>
+                              <img
+                                src={developer.logo}
+                                alt={`${developer.name} logo`}
+                                className={styles.developerLogoImage}
+                              />
+                            </div>
+                          )}
+                          <div className={styles.developerInfo}>
+                            <h4 className={styles.developerName}>
+                              {developer.name}
+                            </h4>
+                            <p className={styles.projectCount}>
+                              {developer.projects.length} projects
+                            </p>
+                          </div>
+                          <span className={styles.developerArrow}>→</span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Column 3: Projects */}
+                <div className={styles.menuLevel}>
+                  <div className={styles.menuLevelHeader}>
+                    <h3 className={styles.menuLevelTitle}>
+                      Projects{" "}
+                      {selectedDeveloper && `by ${selectedDeveloper.name}`}
+                    </h3>
+                    <p className={styles.menuLevelDescription}>
+                      Browse available properties
+                    </p>
+                  </div>
+                  <div className={styles.projectsList}>
+                    {selectedDeveloper?.projects.map((project) => (
+                      <a
+                        key={project.id}
+                        href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${project.slug}`}
+                        className={`${styles.projectItem} ${
+                          selectedProject?.id === project.id
+                            ? styles.active
+                            : ""
+                        }`}
+                        onMouseEnter={() => handleProjectHover(project)}
+                        onClick={() =>
+                          handleProjectNavClick(
+                            selectedCategory,
+                            selectedDeveloper,
+                            project,
+                            "mega_desktop"
+                          )
+                        }
+                      >
+                        <div className={styles.projectInfo}>
+                          <h4 className={styles.projectTitle}>
+                            {project.title}
+                          </h4>
+                          <p className={styles.projectDescription}>
+                            {project.description}
+                          </p>
+                        </div>
+                        <span className={styles.projectArrow}>→</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Column 4: Preview Panel */}
+                <div className={styles.imagePreviewPanel}>
+                  <div className={styles.imagePreviewContent}>
+                    {selectedProject ? (
+                      <>
+                        <a
+                          href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
+                          className={styles.previewImageLink}
+                          onClick={() =>
+                            handleProjectNavClick(
+                              selectedCategory,
+                              selectedDeveloper,
+                              selectedProject,
+                              "mega_desktop_preview"
+                            )
+                          }
+                        >
+                          <div
+                            className={`${styles.previewImage} ${styles.projectImageActive}`}
+                            style={{
+                              backgroundImage: `url(${selectedProject.image})`,
+                            }}
+                          />
+                        </a>
+                        <div className={styles.previewInfo}>
+                          <h3 className={styles.previewTitle}>
+                            {selectedProject.title}
+                          </h3>
+                          <p className={styles.previewDescription}>
+                            {selectedProject.description}
+                          </p>
+                          <div className={styles.previewStats}>
+                            <span className={styles.stat}>
+                              {selectedCategory?.name}
+                            </span>
+                            <span className={styles.stat}>
+                              {selectedDeveloper?.name}
+                            </span>
+                            <span className={styles.stat}>Luxury</span>
+                          </div>
+                          <a
+                            href={`/projects/${selectedCategory?.slug}/${selectedDeveloper?.slug}/${selectedProject.slug}`}
+                            className={styles.previewButton}
+                            onClick={() =>
+                              handleProjectNavClick(
+                                selectedCategory,
+                                selectedDeveloper,
+                                selectedProject,
+                                "mega_desktop_button"
+                              )
+                            }
+                          >
+                            View Project Details
+                            <span className={styles.buttonArrow}>→</span>
+                          </a>
+                        </div>
+                      </>
+                    ) : selectedDeveloper ? (
+                      <>
+                        <div
+                          className={styles.previewImage}
+                          style={{
+                            backgroundImage: `url(${selectedDeveloper.image})`,
+                          }}
+                        />
+                        <div className={styles.previewInfo}>
+                          <h3 className={styles.previewTitle}>
+                            {selectedDeveloper.name}
+                          </h3>
+                          <p className={styles.previewDescription}>
+                            Premium developer specializing in{" "}
+                            {selectedCategory?.name}
+                          </p>
+                          <div className={styles.previewStats}>
+                            <span className={styles.stat}>
+                              {selectedDeveloper.projects.length} Projects
+                            </span>
+                            <span className={styles.stat}>Luxury</span>
+                            <span className={styles.stat}>Premium</span>
+                          </div>
+                        </div>
+                      </>
+                    ) : selectedCategory ? (
+                      <>
+                        <div
+                          className={styles.previewImage}
+                          style={{
+                            backgroundImage: `url(${selectedCategory.image})`,
+                          }}
+                        />
+                        <div className={styles.previewInfo}>
+                          <h3 className={styles.previewTitle}>
+                            {selectedCategory.name}
+                          </h3>
+                          <p className={styles.previewDescription}>
+                            {selectedCategory.description}
+                          </p>
+                          <div className={styles.previewStats}>
+                            <span className={styles.stat}>
+                              {selectedCategory.developers.length} Developers
+                            </span>
+                            <span className={styles.stat}>Premium</span>
+                            <span className={styles.stat}>Luxury</span>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          className={styles.previewImage}
+                          style={{
+                            backgroundImage: `url(${CDN}/sky-parks/exterior-night-01.jpg)`,
+                          }}
+                        />
+                        <div className={styles.previewInfo}>
+                          <h3 className={styles.previewTitle}>
+                            Luxury Properties
+                          </h3>
+                          <p className={styles.previewDescription}>
+                            Discover our exclusive portfolio of premium
+                            properties in Dubai
+                          </p>
+                          <div className={styles.previewStats}>
+                            <span className={styles.stat}>
+                              {menuData.categories.length} Property Types
+                            </span>
+                            <span className={styles.stat}>Premium</span>
+                            <span className={styles.stat}>Exclusive</span>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Mobile Nav */}
@@ -732,12 +816,18 @@ export default function TopHeader() {
         <div className={styles.mobileNavContainer}>
           <div className={styles.mobileNavHeader}>
             <div className={styles.mobileLogo}>
-              <div className={styles.mobileLogoText}>{t("Header.title")}</div>
-              <div className={styles.mobileLogoSubtitle}>
-                {t("Header.subtitle")}
-              </div>
+              <Link href="/" className={styles.logoLink}>
+                <img
+                  src="/logo-transparent.png"
+                  alt="Sobha Realty"
+                  className={styles.logoImage}
+                  width={125}
+                  height={45}
+                />
+              </Link>
             </div>
             <button
+              type="button"
               className={styles.mobileCloseButton}
               onClick={closeAllMobileMenus}
               aria-label="Close menu"
@@ -750,6 +840,7 @@ export default function TopHeader() {
             {/* Mobile Language Toggle */}
             <div className={styles.mobileLanguageToggle}>
               <button
+                type="button"
                 onClick={toggleLanguage}
                 className={`${styles.mobileLangButton} ${
                   locale === "ar" ? styles.arabicActive : ""
@@ -775,13 +866,14 @@ export default function TopHeader() {
                 {item.hasMegaMenu ? (
                   <div className={styles.mobileMegaMenuItem}>
                     <button
+                      type="button"
                       className={`${styles.mobileNavLink} ${styles.mobileMegaMenuTrigger}`}
-                      onClick={() => toggleMobileCategory("luxury-projects")}
+                      onClick={() => toggleMobileCategory("luxury-properties")}
                     >
                       <span className={styles.mobileNavText}>{item.label}</span>
                       <span
                         className={`${styles.mobileDropdownArrow} ${
-                          mobileExpandedItems.categories === "luxury-projects"
+                          mobileExpandedItems.categories === "luxury-properties"
                             ? styles.expanded
                             : ""
                         }`}
@@ -790,11 +882,11 @@ export default function TopHeader() {
                       </span>
                     </button>
 
-                    {mobileExpandedItems.categories === "luxury-projects" && (
+                    {mobileExpandedItems.categories === "luxury-properties" && (
                       <div className={styles.mobileMegaMenuContent}>
                         <div className={styles.mobileMenuLevel}>
                           <h4 className={styles.mobileMenuLevelTitle}>
-                            {t("nav.propertyTypes")}
+                            Property Types
                           </h4>
 
                           {menuData.categories.map((category) => (
@@ -803,6 +895,7 @@ export default function TopHeader() {
                               className={styles.mobileCategoryItem}
                             >
                               <button
+                                type="button"
                                 className={`${styles.mobileCategoryButton} ${
                                   mobileExpandedItems.categoryId === category.id
                                     ? styles.expanded
@@ -827,9 +920,7 @@ export default function TopHeader() {
                                 category.id && (
                                 <div className={styles.mobileDevelopersList}>
                                   <h5 className={styles.mobileDevelopersTitle}>
-                                    {t("descriptions.developerIn", {
-                                      category: category.name,
-                                    })}
+                                    Developers in {category.name}
                                   </h5>
 
                                   {category.developers.map((developer) => (
@@ -838,6 +929,7 @@ export default function TopHeader() {
                                       className={styles.mobileDeveloperItem}
                                     >
                                       <button
+                                        type="button"
                                         className={`${
                                           styles.mobileDeveloperButton
                                         } ${
@@ -964,14 +1056,10 @@ export default function TopHeader() {
             ))}
 
             <div className={styles.mobileContact}>
-              <div className={styles.mobileContactTitle}>
-                {t("nav.contactUs")}
-              </div>
+              <div className={styles.mobileContactTitle}>Contact Us</div>
               <div className={styles.contactItem}>
                 <div className={styles.contactDetails}>
-                  <div className={styles.contactType}>
-                    {t("nav.directLine")}
-                  </div>
+                  <div className={styles.contactType}>Direct Line</div>
                   <div className={styles.contactValue}>+971 56 666 5560</div>
                 </div>
               </div>

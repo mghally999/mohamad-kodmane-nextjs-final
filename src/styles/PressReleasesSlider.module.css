@@ -1,0 +1,350 @@
+/* ====== SECTION WRAPPER ====== */
+
+.sobhaStoriesSec {
+  padding: 96px 0 120px;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* Heading "PRESS RELEASES" */
+
+.heading {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #111111;
+  margin: 0 0 40px;
+}
+
+/* ====== SLIDER SHELL ====== */
+
+.sliderShell {
+  position: relative;
+}
+
+/* Swiper root – grey band like Sobha */
+
+.storiesSlider {
+  position: relative;
+  padding: 0 140px 90px; /* room for side peeks + arrows */
+}
+
+.storiesSlider::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Each slide width – main card in the middle */
+
+.slide {
+  width: 820px; /* desktop main card width */
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ====== CARD ====== */
+
+.card {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Image – tall like Sobha */
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  /* aspect ratio ~ Sobha press card */
+  aspect-ratio: 16 / 10;
+  /* fallback for older browsers */
+  padding-top: 62%;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Card body */
+
+.cardBody {
+  padding: 28px 40px 24px;
+  background-color: #ffffff;
+}
+
+.cardText {
+  margin-bottom: 22px;
+}
+
+/* Title – serif like Sobha */
+
+.cardTitle {
+  font-family: "Times New Roman", "Georgia", serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #111111;
+  margin: 0;
+}
+
+/* Meta row: left empty, right "Published on" */
+
+.cardMetaRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.emptyMeta {
+  flex: 1;
+}
+
+.publishedMeta {
+  text-align: right;
+  min-width: 140px;
+}
+
+.publishedLabel {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #999999;
+  margin-bottom: 4px;
+}
+
+.publishedDate {
+  font-size: 13px;
+  color: #333333;
+}
+
+/* ====== NAV ARROWS (left / right circles) ====== */
+
+.navArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.navPrev {
+  left: 40px;
+}
+
+.navNext {
+  right: 40px;
+}
+
+.navArrow:hover {
+  background: #111111;
+  border-color: #111111;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* little chevron (CSS only) */
+
+.arrowIcon {
+  position: relative;
+  width: 9px;
+  height: 16px;
+}
+
+.arrowIcon::before,
+.arrowIcon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 11px;
+  background-color: #000000;
+  transform-origin: center;
+}
+
+.navArrow:hover .arrowIcon::before,
+.navArrow:hover .arrowIcon::after {
+  background-color: #ffffff;
+}
+
+/* left arrow */
+
+.navPrev .arrowIcon::before {
+  top: 1px;
+  transform: translateX(-50%) rotate(45deg);
+}
+.navPrev .arrowIcon::after {
+  bottom: 1px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* right arrow */
+
+.navNext .arrowIcon::before {
+  top: 1px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+.navNext .arrowIcon::after {
+  bottom: 1px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ====== VIEW ALL BUTTON ====== */
+
+.viewAllRow {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 70px;
+  border-radius: 999px;
+  border: 1px solid #111111;
+  background: transparent;
+  color: #111111;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.viewAllBtn:hover {
+  background: #111111;
+  color: #ffffff;
+  border-color: #111111;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== RESPONSIVE ====== */
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .storiesSlider {
+    padding: 0 60px 70px;
+  }
+
+  .slide {
+    width: 640px;
+  }
+
+  .cardBody {
+    padding: 24px 28px 20px;
+  }
+
+  .navPrev {
+    left: 20px;
+  }
+
+  .navNext {
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sobhaStoriesSec {
+    padding: 56px 0 72px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .heading {
+    font-size: 15px;
+    letter-spacing: 0.24em;
+    margin-bottom: 28px;
+  }
+
+  .storiesSlider {
+    padding: 0 24px 50px;
+  }
+
+  .slide {
+    width: 100%;
+  }
+
+  .cardBody {
+    padding: 20px 18px 18px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .navArrow {
+    display: none; /* hide arrows on smaller viewports */
+  }
+
+  .viewAllBtn {
+    width: 100%;
+    max-width: 260px;
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .storiesSlider {
+    padding: 0 0 40px;
+  }
+
+  .cardBody {
+    padding: 18px 14px 16px;
+  }
+
+  .cardTitle {
+    font-size: 15px;
+  }
+
+  .publishedMeta {
+    min-width: 0;
+  }
+
+  .publishedLabel {
+    font-size: 10px;
+  }
+
+  .publishedDate {
+    font-size: 12px;
+  }
+}
