@@ -33,3 +33,7 @@ a {
     color: #171717;
   }
 }
+section,
+div {
+  max-width: 100%;
+}
