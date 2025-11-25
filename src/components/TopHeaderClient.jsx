@@ -711,18 +711,6 @@ export default function TopHeader() {
             className={`${styles.menuLeft} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
             <ul className={styles.navLinks}>
-              <li>
-                <Link
-                  href="/"
-                  className={styles.level1Menu}
-                  onClick={() => {
-                    handleMegaMenuLeave();
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  HOME
-                </Link>
-              </li>
               {/* ABOUT MEGA MENU */}
               <li
                 className={styles.menuItemHasChildren}
