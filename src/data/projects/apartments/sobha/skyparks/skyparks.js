@@ -22,7 +22,7 @@ export const skyParksData = {
       backgroundUrl:
         "https://luxury-real-estate-media.b-cdn.net/sky-parks/hero-day.jpg",
       squareImageUrl:
-        "https://luxury-real-estate-media.b-cdn.net/sky-parks/hero-inset.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/projects-profile-pictures/skyparks.svg",
       companyName: "Sobha Realty",
       rating: 4.7,
     },

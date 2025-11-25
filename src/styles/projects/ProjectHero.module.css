@@ -1,438 +1,260 @@
-/* ===== HERO ===== */
+/* ROOT */
+.root {
+  position: relative;
+  background: #ffffff;
+  --container: 1180px;
+  --side-pad: 24px;
+}
+
+/* ===== HERO (TOP BANNER IMAGE) ===== */
 .hero {
   position: relative;
-  height: 70vh;
-  min-height: 520px;
-  max-height: 800px;
   width: 100%;
-  background-color: #efefef;
-  /* MUST be visible so the square can hang outside the hero without being clipped */
-  overflow: visible;
+  background-color: #000;
 }
 
-/* Background image */
-.backgroundImage {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 1; /* base */
+/* We mimic Sobha’s tall banner feeling here */
+.heroBgWrap {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 78vh, 860px);
+  overflow: hidden;
+  z-index: 1;
 }
 
-/* Subtle top/bottom vignette like the reference */
+.heroImage {
+  object-fit: cover;
+}
+
 .vignette {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.12) 0%,
-    rgba(0, 0, 0, 0) 42%,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0) 45%,
     rgba(0, 0, 0, 0.18) 100%
   );
   pointer-events: none;
-  z-index: 2;
 }
 
-/* Aligns inner content with the white bar width */
-.edgeContainer {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: min(var(--container, 1200px), 92vw);
-  padding-left: var(--side-pad, 24px);
-  padding-right: var(--side-pad, 24px);
-  z-index: 20; /* above hero visuals + white bar */
-}
-
-/* Overlap container */
-.squareWrap {
-  transform: translateY(50%); /* center sits on the hero bottom edge */
-  pointer-events: none; /* never block clicks below */
-}
-
-/* The white rounded square card (on top) */
-.squareCard {
-  --sq: clamp(140px, 19vw, 320px);
-  width: var(--sq);
-  height: var(--sq);
-  border-radius: 16px;
-  overflow: hidden;
-  background: #fff;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45),
-    0 2px 0 rgba(255, 255, 255, 0.25) inset;
+/* ===== SECOND WRAPPER: WHITE STRIP UNDER HERO ===== */
+.secondWrapper {
   position: relative;
-  z-index: 21; /* sits above the white bar */
+  background: #ffffff;
+  z-index: 2; /* sits above hero bottom edge */
 }
 
-.squareImg {
-  object-fit: cover;
-  position: absolute;
+/* This is basically Sobha’s .container.row section */
+.innerRow {
+  max-width: min(var(--container), 92vw);
+  margin: 0 auto;
+  padding: 0 var(--side-pad) 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 3rem;
+  row-gap: 2rem;
+}
+
+/* ===== LEFT: LOGO CARD (OVERLAP) ===== */
+
+/* Sobha: .det-logo-content{max-width:240px;margin-top:-110px;display:flex;justify-content:center;} */
+.detLogoContent {
+  max-width: 240px;
+  margin-top: -110px; /* OVERLAP onto the hero, like Sobha */
+  display: flex;
+  justify-content: center;
+}
+
+/* Sobha: .detail-client-logo-wrapper{padding:50px 30px;border:1px solid #DDD;background:#fff;border-radius:7px;box-shadow:-1px 9px 23px -19px rgba(0,0,0,.75);} */
+.logoCard {
   width: 100%;
-  height: 100%;
+  margin: 0;
+  padding: 50px 30px;
+  border: 1px solid #dddddd;
+  background: #ffffff;
+  border-radius: 7px;
+  box-shadow: -1px 9px 23px -19px rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== WHITE BAR SECTION ===== */
-.whiteBar {
-  background: #efefef;
-  position: relative; /* create stack context under the card */
-  z-index: 10; /* still under squareCard (21) and edgeContainer (20) */
-  visibility: hidden;
+.logoImg {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-.barContainer {
-  max-width: min(var(--container, 1200px), 92vw);
-  margin-left: auto;
-  margin-right: auto;
+/* ===== RIGHT: GOOGLE REVIEWS BLOCK ===== */
 
-  /* top padding clears half of the square height + small offset (perfect Sobha gap) */
-  padding-top: 76px;
-  padding-bottom: 76px;
-  padding-left: var(--side-pad, 24px);
-  padding-right: var(--side-pad, 24px);
-
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: end;
-  gap: 2rem;
-}
-
-/* Invisible block that reserves space equal to the square size */
-.leftSpacer {
-  width: clamp(140px, 19vw, 320px); /* matches --sq */
-  height: 1px;
-  visibility: hidden;
-}
-
-/* ===== GOOGLE REVIEWS (right) ===== */
-.reviews {
-  display: inline-flex;
+.googleReview {
+  margin-top: 40px; /* matches row padding-top:40px on Sobha */
+  margin-bottom: 10px;
+  display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
   gap: 0.4rem;
-  justify-self: end; /* right edge */
-  color: #111;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #111111;
 }
 
-.googleRow {
+/* Top row: Google logo + “Google Reviews” + “Sobha Realty” */
+.googleLeft {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.gLogo {
+/* Google logo box */
+.gLogoBox {
   display: inline-flex;
-  width: 36px;
-  height: 36px;
-  background: #fff;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
   border-radius: 8px;
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  flex-shrink: 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
 }
 
 .gSvg {
   display: block;
 }
+
+/* Google text meta */
 .gMeta {
   line-height: 1.25;
 }
 
-.gTitle {
+.gTitleRow {
   display: inline-flex;
+  align-items: center;
   gap: 0.25rem;
-  font-family: "Inter", system-ui, Arial, sans-serif;
   font-weight: 700;
   font-size: 1rem;
-  color: #111;
-  align-items: center;
 }
+
 .gWord {
   color: #1a73e8;
-} /* "Google" blue */
+}
+
 .gReviews {
-  color: #111;
+  color: #111111;
   font-weight: 600;
 }
 
-.company {
-  font-family: "Inter", system-ui, Arial, sans-serif;
-  font-size: 0.9rem;
-  color: #555;
+.sobhaTitle {
+  display: block;
   margin-top: 2px;
+  font-size: 0.9rem;
   font-weight: 500;
+  color: #555555;
 }
 
-.scoreRow {
+/* Rating row */
+.ratingRow {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
 }
 
-.score {
-  font-family: "Inter", system-ui, Arial, sans-serif;
+.ratingValue {
   font-weight: 800;
-  font-size: 1.3rem;
-  color: #111;
-  line-height: 1;
+  font-size: 1.1rem;
+  color: #111111;
 }
 
-.outOf {
-  font-family: "Inter", system-ui, Arial, sans-serif;
-  font-weight: 600;
-  color: #666;
-  font-size: 0.95rem;
-  line-height: 1;
-}
-
-.stars {
+.ratingStars {
   font-size: 1.1rem;
   letter-spacing: 0.08em;
   color: #f4c150;
-  line-height: 1;
 }
 
-/* ===== TEST SPACER (simulates next component below) ===== */
-.nextSectionTest {
-  height: 300px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-top: 1px solid #dee2e6;
-  display: grid;
-  place-items: center;
-  position: relative;
-  z-index: 1;
-}
-.testContent {
-  text-align: center;
-  padding: 2rem;
-}
-.testTitle {
-  font-family: "Inter", system-ui, Arial, sans-serif;
-  font-weight: 700;
-  color: #495057;
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
-.testPara {
-  font-family: "Inter", system-ui, Arial, sans-serif;
-  color: #6c757d;
-  font-size: 0.95rem;
-  margin: 0;
-}
+/* ===== RESPONSIVE ===== */
 
-/* ===== RESPONSIVE BREAKPOINTS ===== */
-
-/* Large Desktop */
+/* Big desktop */
 @media (min-width: 1440px) {
-  .hero {
-    min-height: 580px;
+  .heroBgWrap {
+    height: 760px;
   }
 }
 
-/* Desktop */
-@media (max-width: 1199px) {
-  .hero {
-    min-height: 480px;
-  }
-}
-
-/* Tablet Landscape */
-@media (max-width: 1024px) {
-  .hero {
-    min-height: 450px;
-    height: 60vh;
-  }
-
-  .barContainer {
-    padding-top: calc(clamp(80px, 11vw, 140px) + 20px);
-  }
-}
-
-/* Tablet Portrait */
-@media (max-width: 900px) {
-  .barContainer {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding-top: calc(clamp(75px, 10vw, 130px) + 24px);
-  }
-
-  .leftSpacer {
-    display: none;
-  }
-
-  .reviews {
-    justify-self: start;
-    width: 100%;
-  }
-
-  .squareCard {
-    --sq: clamp(130px, 22vw, 280px);
-  }
-}
-
-/* Mobile Landscape */
-@media (max-width: 768px) {
-  .hero {
-    min-height: 400px;
-    height: 55vh;
-  }
-
-  .googleRow {
-    gap: 0.65rem;
-  }
-
-  .gLogo {
-    width: 34px;
-    height: 34px;
-  }
-
-  .gTitle {
-    font-size: 0.95rem;
-  }
-
-  .company {
-    font-size: 0.85rem;
-  }
-
-  .score {
-    font-size: 1.2rem;
-  }
-
-  .stars {
-    font-size: 1.05rem;
-  }
-}
-
-/* Mobile Portrait */
-@media (max-width: 680px) {
-  .hero {
-    min-height: 380px;
-    height: 50vh;
-  }
-
-  .barContainer {
-    padding-top: calc(clamp(70px, 9vw, 120px) + 20px);
-    padding-bottom: 28px;
-  }
-
-  .squareCard {
-    --sq: clamp(120px, 25vw, 260px);
-    border-radius: 14px;
-  }
-
-  .reviews {
-    gap: 0.35rem;
-  }
-
-  .scoreRow {
-    gap: 0.4rem;
-  }
-}
-
-/* Small Mobile */
-@media (max-width: 480px) {
-  .hero {
-    min-height: 340px;
-    height: 45vh;
-    max-height: 500px;
-  }
-
-  .barContainer {
-    padding-top: calc(clamp(65px, 8vw, 110px) + 16px);
-    padding-bottom: 24px;
-  }
-
-  .squareCard {
-    --sq: clamp(110px, 28vw, 240px);
-    border-radius: 12px;
-    border-width: 1px;
-  }
-
-  .gLogo {
-    width: 32px;
-    height: 32px;
-  }
-
-  .gTitle {
-    font-size: 0.9rem;
+/* Tablet / small desktop */
+@media (max-width: 1000px) {
+  /* Sobha: @media (max-width:1000px){.det-logo-content{margin:0px auto;margin-top:-90px;margin-bottom:40px;}} */
+  .innerRow {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.1rem;
+    align-items: center;
+    text-align: center;
   }
 
-  .company {
-    font-size: 0.82rem;
+  .detLogoContent {
+    margin: 0 auto;
+    margin-top: -90px;
+    margin-bottom: 40px;
   }
 
-  .score {
-    font-size: 1.15rem;
+  .googleReview {
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  .heroBgWrap {
+    height: clamp(420px, 65vh, 540px);
   }
 
-  .outOf {
-    font-size: 0.9rem;
+  .logoCard {
+    padding: 40px 24px;
   }
 
-  .stars {
+  .ratingValue {
     font-size: 1rem;
   }
 
-  .nextSectionTest {
-    height: 200px;
+  .gLogoBox {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+  .heroBgWrap {
+    height: clamp(360px, 60vh, 480px);
   }
 
-  .testContent {
-    padding: 1.5rem;
+  .innerRow {
+    padding: 0 16px 40px;
   }
 
-  .testTitle {
-    font-size: 1.1rem;
+  .logoCard {
+    padding: 34px 22px;
   }
 
-  .testPara {
+  .gTitleRow {
     font-size: 0.9rem;
   }
-}
 
-/* Extra Small Mobile */
-@media (max-width: 360px) {
-  .hero {
-    min-height: 300px;
-    height: 40vh;
+  .sobhaTitle {
+    font-size: 0.84rem;
   }
 
-  .barContainer {
-    padding-top: calc(clamp(60px, 7vw, 100px) + 12px);
+  .ratingValue {
+    font-size: 0.98rem;
   }
 
-  .squareCard {
-    --sq: clamp(100px, 30vw, 220px);
-  }
-
-  .googleRow {
-    gap: 0.5rem;
-  }
-
-  .gLogo {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-/* ===== REDUCED MOTION ===== */
-@media (prefers-reduced-motion: reduce) {
-  .squareCard {
-    transition: none;
-  }
-}
-
-/* ===== TOUCH OPTIMIZATIONS ===== */
-@media (hover: none) and (pointer: coarse) {
-  .hero {
-    -webkit-overflow-scrolling: touch;
+  .ratingStars {
+    font-size: 1rem;
   }
 }

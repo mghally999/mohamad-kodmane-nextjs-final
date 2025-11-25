@@ -485,7 +485,7 @@
   height: 100%; /* <— fixed height, same for Hartland, Masaar, etc. */
   width: 100%;
   object-fit: cover;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
 }
 
 /* text title (when no logo) – same vertical slot */

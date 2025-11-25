@@ -17,11 +17,14 @@ export default function ProjectHero({ data, projectData, isRTL, locale }) {
   const heroData = data;
   const projectInfo = projectData.project;
 
+  const projectName = getLocalizedText(projectInfo.name, activeLocale);
+  const companyName = getLocalizedText(heroData.companyName, activeLocale);
+
   return (
     <div className={styles.root}>
-      {/* HERO */}
+      {/* HERO (top image) */}
       <section className={styles.hero} aria-label="Project hero">
-        <div className={styles.bgWrap} aria-hidden="true">
+        <div className={styles.heroBgWrap} aria-hidden="true">
           <Image
             src={heroData.backgroundUrl}
             alt=""
@@ -31,44 +34,38 @@ export default function ProjectHero({ data, projectData, isRTL, locale }) {
             placeholder="blur"
             blurDataURL={`${heroData.backgroundUrl}?width=16&quality=20`}
             sizes="100vw"
-            className={styles.bgImage}
+            className={styles.heroImage}
           />
           <div className={styles.vignette} />
         </div>
+      </section>
 
-        {/* Edge anchor: aligns with white bar container width */}
-        <div className={styles.edgeContainer}>
-          {/* Overlapping square */}
-          <div className={styles.squareWrap}>
-            <div className={styles.squareCard}>
+      {/* SECOND WRAPPER (white area with logo card + Google reviews) */}
+      <section
+        className={styles.secondWrapper}
+        aria-label="Project logo and Google reviews"
+      >
+        <div className={styles.innerRow}>
+          {/* LEFT: Logo card (overlapping the hero) */}
+          <div className={styles.detLogoContent}>
+            <div className={styles.logoCard}>
               <Image
                 src={heroData.squareImageUrl}
-                alt={`${getLocalizedText(
-                  projectInfo.name,
-                  activeLocale
-                )} luxury interior`}
-                fill
-                placeholder="blur"
-                blurDataURL={`${heroData.squareImageUrl}?width=16&quality=20`}
-                sizes="(max-width:480px) 60vw, (max-width:900px) 45vw, (max-width:1400px) 28vw, 320px"
-                className={styles.squareImg}
+                alt={`${projectName} logo`}
+                width={220}
+                height={80}
+                className={styles.logoImg}
               />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* WHITE BAR BELOW HERO */}
-      <section className={styles.whiteBar} aria-label="Review summary strip">
-        <div className={styles.barContainer}>
-          <div className={styles.leftSpacer} aria-hidden="true" />
-
-          <div className={styles.reviews}>
-            <div className={styles.googleRow}>
-              <span className={styles.gLogo} aria-hidden="true">
+          {/* RIGHT: Google Reviews */}
+          {/* <div className={styles.googleReview}>
+            <div className={styles.googleLeft}>
+              <span className={styles.gLogoBox} aria-hidden="true">
                 <svg
-                  width="24"
-                  height="24"
+                  width="26"
+                  height="26"
                   viewBox="0 0 24 24"
                   className={styles.gSvg}
                 >
@@ -90,8 +87,9 @@ export default function ProjectHero({ data, projectData, isRTL, locale }) {
                   />
                 </svg>
               </span>
+
               <div className={styles.gMeta}>
-                <div className={styles.gTitle}>
+                <div className={styles.gTitleRow}>
                   <span className={styles.gWord}>
                     {activeIsRTL ? "جوجل" : "Google"}
                   </span>
@@ -99,28 +97,26 @@ export default function ProjectHero({ data, projectData, isRTL, locale }) {
                     {activeIsRTL ? "التقييمات" : "Reviews"}
                   </span>
                 </div>
-                <div className={styles.company}>
-                  {getLocalizedText(heroData.companyName, activeLocale)}
-                </div>
+                <span className={styles.sobhaTitle}>{companyName}</span>
               </div>
             </div>
 
-            <div className={styles.scoreRow}>
-              <span className={styles.score}>
+            <div className={styles.ratingRow}>
+              <span className={styles.ratingValue}>
                 {heroData?.rating !== undefined
                   ? heroData.rating.toFixed(1)
-                  : "N/A"}
+                  : "N/A"}{" "}
+                / 5
               </span>
-              <span className={styles.outOf}>/ 5</span>
               <span
-                className={styles.stars}
+                className={styles.ratingStars}
                 role="img"
                 aria-label={activeIsRTL ? "التقييم من 5" : "Rating out of 5"}
               >
                 ★★★★★
               </span>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

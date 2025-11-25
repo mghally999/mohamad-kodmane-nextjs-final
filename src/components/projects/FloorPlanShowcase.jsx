@@ -25,10 +25,25 @@ export default function FloorPlanShowcase({
   const [activeTab, setActiveTab] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Enhanced translation mapping for specs with proper spacing
+  const currentPlan = data.plans[activeTab];
+  const hasMultipleImages = currentPlan.images && currentPlan.images.length > 1;
+
+  const nextImage = () => {
+    if (!hasMultipleImages) return;
+    setCurrentImageIndex((prev) => (prev + 1) % currentPlan.images.length);
+  };
+
+  const prevImage = () => {
+    if (!hasMultipleImages) return;
+    setCurrentImageIndex(
+      (prev) =>
+        (prev - 1 + currentPlan.images.length) % currentPlan.images.length
+    );
+  };
+
+  // --- SPEC TRANSLATION (same logic you already had) ---
   const getTranslatedSpecs = (specs) => {
     const translationMap = {
-      // English to Arabic mapping for common spec terms
       Bedroom: activeIsRTL ? "غرفة نوم" : "Bedroom",
       Bathroom: activeIsRTL ? "حمام" : "Bathroom",
       "Master Bath": activeIsRTL ? "حمام رئيسي" : "Master Bath",
@@ -44,14 +59,12 @@ export default function FloorPlanShowcase({
       Garden: activeIsRTL ? "حديقة" : "Garden",
       Pool: activeIsRTL ? "مسبح" : "Pool",
 
-      // Unit types and numbers
       "1 BEDROOM": activeIsRTL ? "1 غرفة نوم" : "1 BEDROOM",
       "2 BEDROOMS": activeIsRTL ? "2 غرفة نوم" : "2 BEDROOMS",
       "3 BEDROOMS": activeIsRTL ? "3 غرفة نوم" : "3 BEDROOMS",
       "4 BEDROOMS": activeIsRTL ? "4 غرفة نوم" : "4 BEDROOMS",
       "5 BEDROOMS": activeIsRTL ? "5 غرفة نوم" : "5 BEDROOMS",
 
-      // Measurements and areas
       Area: activeIsRTL ? "المساحة" : "Area",
       Size: activeIsRTL ? "الحجم" : "Size",
       "Sq. Ft.": activeIsRTL ? "قدم مربع" : "Sq. Ft.",
@@ -59,7 +72,6 @@ export default function FloorPlanShowcase({
       Price: activeIsRTL ? "السعر" : "Price",
       "Starting From": activeIsRTL ? "تبدأ من" : "Starting From",
 
-      // Features
       View: activeIsRTL ? "الإطلالة" : "View",
       Floor: activeIsRTL ? "الطابق" : "Floor",
       "Unit Type": activeIsRTL ? "نوع الوحدة" : "Unit Type",
@@ -70,31 +82,18 @@ export default function FloorPlanShowcase({
     const translatedSpecs = {};
     Object.keys(specs).forEach((key) => {
       const value = specs[key];
-
-      // Translate both key and value
       const translatedKey = translationMap[key] || key;
       let translatedValue = value;
 
-      // Check if value exists in translation map
       if (translationMap[value]) {
         translatedValue = translationMap[value];
-      } else {
-        // Handle combined strings like "1 BEDROOM + 1 MASTER BATH..." with proper spacing
-        let processedValue = value;
-
-        // Add proper spacing around plus signs
-        processedValue = processedValue.replace(/\s*\+\s*/g, " + ");
-
-        // Translate individual components while preserving spacing
+      } else if (typeof value === "string") {
+        let processed = value.replace(/\s*\+\s*/g, " + ");
         for (const [english, arabic] of Object.entries(translationMap)) {
-          if (processedValue.includes(english)) {
-            // Use word boundaries to ensure exact matches
-            const regex = new RegExp(`\\b${english}\\b`, "g");
-            processedValue = processedValue.replace(regex, arabic);
-          }
+          const regex = new RegExp(`\\b${english}\\b`, "g");
+          processed = processed.replace(regex, arabic);
         }
-
-        translatedValue = processedValue;
+        translatedValue = processed;
       }
 
       translatedSpecs[translatedKey] = translatedValue;
@@ -103,64 +102,18 @@ export default function FloorPlanShowcase({
     return translatedSpecs;
   };
 
-  // Format unit specifications with proper spacing
   const formatUnitSpec = (value) => {
     if (typeof value !== "string") return value;
-
-    // Add proper spacing around plus signs and ensure consistent formatting
-    let formatted = value
-      .replace(/\s*\+\s*/g, " + ") // Ensure space around plus signs
-      .replace(/\s+/g, " ") // Normalize multiple spaces
+    return value
+      .replace(/\s*\+\s*/g, " + ")
+      .replace(/\s+/g, " ")
       .trim();
-
-    return formatted;
   };
 
-  const currentPlan = data.plans[activeTab];
-  const hasMultipleImages = currentPlan.images && currentPlan.images.length > 1;
+  const translatedSpecs = getTranslatedSpecs(currentPlan.specs || {});
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % currentPlan.images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex(
-      (prev) =>
-        (prev - 1 + currentPlan.images.length) % currentPlan.images.length
-    );
-  };
-
-  // Get section title based on project type
-  const getSectionTitle = () => {
-    const type = data.type;
-    if (activeIsRTL) {
-      switch (type) {
-        case "villas":
-          return "مجموعة الفلل";
-        case "penthouses":
-          return "مجموعة البنتهاوس";
-        case "commercial":
-          return "المساحات التجارية";
-        case "offices":
-          return "المساحات المكتبية";
-        default:
-          return "مجموعة الوحدات السكنية";
-      }
-    } else {
-      switch (type) {
-        case "villas":
-          return "Villa Collections";
-        case "penthouses":
-          return "Penthouse Collections";
-        case "commercial":
-          return "Commercial Spaces";
-        case "offices":
-          return "Office Spaces";
-        default:
-          return "Residence Collections";
-      }
-    }
-  };
+  // Helper: section heading “Floor Plan”
+  const getSectionTitle = () => (activeIsRTL ? "مخطط الطوابق" : "Floor Plan");
 
   return (
     <section
@@ -168,163 +121,117 @@ export default function FloorPlanShowcase({
       dir={activeIsRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* Header Section */}
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>{getSectionTitle()}</h2>
-          <div className={styles.titleDivider}>
-            <div className={styles.dividerLine}></div>
-            <div className={styles.dividerDot}></div>
-            <div className={styles.dividerLine}></div>
-          </div>
-        </div>
+        {/* TITLE */}
+        <header className={styles.header}>
+          <h2 className={styles.floorTitle}>{getSectionTitle()}</h2>
+          <div className={styles.floorUnderline} />
+        </header>
 
-        {/* Creative Tab Navigation */}
-        <div className={styles.tabNavigation}>
-          <div className={styles.tabContainer}>
+        {/* TABS: 1 BR / 2 BR / 3 BR */}
+        <nav className={styles.tabsWrapper} aria-label="Floor plan tabs">
+          <ul className={styles.detailTabs}>
             {data.plans.map((plan, index) => (
-              <button
-                key={plan.id}
-                className={`${styles.tabButton} ${
-                  activeTab === index ? styles.tabActive : ""
-                }`}
-                onClick={() => {
-                  setActiveTab(index);
-                  setCurrentImageIndex(0);
-                }}
-              >
-                <div className={styles.tabContent}>
-                  <span className={styles.tabText}>
-                    {getLocalizedText(plan.title, activeLocale)}
-                  </span>
-                  <div className={styles.tabIndicator}></div>
-                </div>
-              </button>
+              <li key={plan.id || index} className={styles.detailTabItem}>
+                <button
+                  type="button"
+                  className={`${styles.navLink} ${
+                    activeTab === index ? styles.navLinkActive : ""
+                  }`}
+                  onClick={() => {
+                    setActiveTab(index);
+                    setCurrentImageIndex(0);
+                  }}
+                >
+                  {getLocalizedText(
+                    plan.shortLabel || plan.title,
+                    activeLocale
+                  )}
+                </button>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </nav>
 
-        {/* Content Area - Equal Height */}
-        <div className={styles.contentArea}>
-          {/* Specifications Panel */}
-          <div className={styles.specsPanel}>
-            <div className={styles.panelContent}>
-              <div className={styles.planHeader}>
-                <h3 className={styles.planName}>
-                  {getLocalizedText(currentPlan.title, activeLocale)}
-                </h3>
-                <div className={styles.planDivider}></div>
-              </div>
+        {/* TAB CONTENT */}
+        <div className={styles.tabContent}>
+          <div className={styles.row}>
+            {/* LEFT: specs */}
+            <div className={styles.colText}>
+              <h4 className={styles.planHeading}>
+                {getLocalizedText(
+                  currentPlan.fullTitle || currentPlan.title,
+                  activeLocale
+                )}
+              </h4>
 
-              <div className={styles.specsList}>
-                {Object.entries(getTranslatedSpecs(currentPlan.specs)).map(
-                  ([key, value]) => (
-                    <div key={key} className={styles.specItem}>
-                      <div className={styles.specLabel}>{key}</div>
-                      <div className={styles.specValue}>
-                        {formatUnitSpec(value)}
-                      </div>
-                    </div>
-                  )
+              <ul className={styles.specList}>
+                {Object.entries(translatedSpecs).map(([key, value]) => (
+                  <li key={key} className={styles.specItem}>
+                    <span className={styles.specLabel}>{key} :</span>
+                    <span className={styles.specValue}>
+                      {formatUnitSpec(value)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {currentPlan.brochureUrl && (
+                <ul className={styles.buttonList}>
+                  <li>
+                    <a
+                      href={currentPlan.brochureUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.buttonMain}
+                    >
+                      <span className={styles.buttonText}>
+                        {activeIsRTL
+                          ? "تحميل مخطط الطابق"
+                          : "Download Floor Plan"}
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              )}
+            </div>
+
+            {/* RIGHT: image with Sobha-style base shape */}
+            <div className={styles.colImage}>
+              <div className={styles.virtualTourWrapper}>
+                <Image
+                  src={
+                    currentPlan.images?.[currentImageIndex] ||
+                    "/placeholder-floorplan.jpg"
+                  }
+                  alt={`${getLocalizedText(currentPlan.title, activeLocale)} ${
+                    activeIsRTL ? "مخطط" : "floor plan"
+                  }`}
+                  fill
+                  className={styles.planImage}
+                  sizes="(max-width: 767px) 90vw, (max-width: 1200px) 460px, 540px"
+                />
+
+                {hasMultipleImages && (
+                  <div className={styles.commonArrow}>
+                    <button
+                      type="button"
+                      className={`${styles.swiperButton} ${styles.prev}`}
+                      onClick={prevImage}
+                      aria-label={activeIsRTL ? "السابق" : "Previous"}
+                    >
+                      <span />
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.swiperButton} ${styles.next}`}
+                      onClick={nextImage}
+                      aria-label={activeIsRTL ? "التالي" : "Next"}
+                    >
+                      <span />
+                    </button>
+                  </div>
                 )}
               </div>
-
-              {/* CTA Button */}
-              {/* Pushing Purposes */}
-              {/* <div className={styles.ctaContainer}>
-                <button className={styles.ctaButton}>
-                  <span>
-                    {activeIsRTL
-                      ? "تحميل المخطط الأرضي"
-                      : "Download Floor Plan"}
-                  </span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 16V4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M7 11l5 5 5-5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M5 20h14"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </button>
-              </div> */}
-            </div>
-          </div>
-
-          {/* Image Gallery */}
-          <div className={styles.galleryPanel}>
-            <div className={styles.imageContainer}>
-              <Image
-                src={
-                  currentPlan.images?.[currentImageIndex] ||
-                  "/placeholder-floorplan.jpg"
-                }
-                alt={`${getLocalizedText(currentPlan.title, activeLocale)} ${
-                  activeIsRTL ? "صورة" : "image"
-                } ${currentImageIndex + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                className={styles.floorplanImage}
-                priority={activeTab === 0 && currentImageIndex === 0}
-              />
-
-              {/* Navigation Arrows */}
-              {hasMultipleImages && (
-                <>
-                  <button
-                    className={`${styles.navButton} ${styles.navPrev}`}
-                    onClick={prevImage}
-                  >
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path
-                        d={activeIsRTL ? "M9 18l6-6-6-6" : "M15 18l-6-6 6-6"}
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    className={`${styles.navButton} ${styles.navNext}`}
-                    onClick={nextImage}
-                  >
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <path
-                        d={activeIsRTL ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6"}
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </>
-              )}
-
-              {/* Image Counter */}
-              {hasMultipleImages && (
-                <div className={styles.imageCounter}>
-                  <span className={styles.counterCurrent}>
-                    {currentImageIndex + 1}
-                  </span>
-                  <span className={styles.counterSeparator}>/</span>
-                  <span className={styles.counterTotal}>
-                    {currentPlan.images.length}
-                  </span>
-                </div>
-              )}
             </div>
           </div>
         </div>

@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "@/styles/projects/ProjectIntro.module.css";
 import { useLanguage } from "@/components/LanguageProvider";
 
@@ -13,68 +12,154 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
     typeof isRTL === "boolean" ? isRTL : activeLocale === "ar";
 
   const [isVisible, setIsVisible] = useState(false);
-  const [activeImage, setActiveImage] = useState(0);
+  const canvasRef = useRef(null);
+  const animationRef = useRef(null);
+  const cloudsRef = useRef([]);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  // DEBUG: Log the data to see what's being passed
+  // Cloud animation effect
   useEffect(() => {
-    console.log("🔍 ProjectIntro Debug:");
-    console.log("Active locale:", activeLocale);
-    console.log("Is RTL:", activeIsRTL);
-    console.log("Data received:", data);
-    console.log("Project data received:", projectData);
-    console.log("Intro paragraphs:", data?.paragraphs);
-  }, [activeLocale, data, projectData]);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-  if (!data || !projectData) {
-    console.error("ProjectIntro: Missing data");
-    return null;
-  }
+    const ctx = canvas.getContext("2d");
 
-  const { project } = projectData;
+    // Set canvas dimensions
+    const updateCanvasSize = () => {
+      if (canvas.parentElement) {
+        const { width, height } = canvas.parentElement.getBoundingClientRect();
+        canvas.width = width;
+        canvas.height = height;
+      }
+    };
+
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+
+    // Cloud class
+    class Cloud {
+      constructor() {
+        this.reset();
+        this.particles = [];
+        this.initParticles();
+      }
+
+      initParticles() {
+        const particleCount = 6 + Math.floor(Math.random() * 4);
+        for (let i = 0; i < particleCount; i++) {
+          this.particles.push({
+            x: (Math.random() - 0.5) * this.size * 1.2,
+            y: (Math.random() - 0.5) * this.size * 0.8,
+            size: this.size * (0.4 + Math.random() * 0.3),
+          });
+        }
+      }
+
+      reset() {
+        const width = canvas.width;
+        const height = canvas.height;
+
+        this.x = width + Math.random() * 100;
+        this.y = 60 + Math.random() * (height - 120);
+        this.size = 50 + Math.random() * 40;
+        this.speed = 0.3 + Math.random() * 0.4;
+        this.opacity = 0.08 + Math.random() * 0.12;
+      }
+
+      update() {
+        this.x -= this.speed;
+
+        if (this.x < -this.size * 2) {
+          this.reset();
+          this.particles = [];
+          this.initParticles();
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = "#ffffff";
+
+        // Draw cloud using multiple circles
+        ctx.beginPath();
+        this.particles.forEach((particle) => {
+          ctx.moveTo(this.x + particle.x + particle.size, this.y + particle.y);
+          ctx.arc(
+            this.x + particle.x,
+            this.y + particle.y,
+            particle.size,
+            0,
+            Math.PI * 2
+          );
+        });
+        ctx.fill();
+
+        ctx.restore();
+      }
+    }
+
+    // Initialize clouds
+    if (cloudsRef.current.length === 0) {
+      for (let i = 0; i < 5; i++) {
+        cloudsRef.current.push(new Cloud());
+      }
+    }
+
+    // Animation loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Update and draw clouds
+      cloudsRef.current.forEach((cloud) => {
+        cloud.update();
+        cloud.draw();
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", updateCanvasSize);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
+  if (!data || !projectData) return null;
+
   const intro = data;
+  const { project } = projectData;
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // Property images with fallback
-  const propertyImages = intro.propertyImages || [
-    {
-      src: intro.imgUrl || `${CDN}/sky-parks/exterior-night-01.jpg`,
-      alt: intro.imgAlt || project.name,
-      title: project.name,
-      description:
-        project.location ||
-        (activeIsRTL ? "موقع متميز في دبي" : "Premium location in Dubai"),
-    },
-  ];
+  // MAIN IMAGE (right side)
+  const mainImage = (intro.propertyImages && intro.propertyImages[0]) || {
+    src: intro.imgUrl || `${CDN}/sky-parks/exterior-day-01.jpg`,
+    alt: intro.imgAlt || project.name,
+  };
 
-  // Key highlights data - using localized data directly
-  const highlights = [
-    {
-      icon: "📍",
-      value:
-        project.location || (activeIsRTL ? "موقع متميز" : "Prime Location"),
-      label: activeIsRTL ? "الموقع" : "Location",
-    },
-    {
-      icon: "💰",
-      value: project.startingPrice || "AED —",
-      label: activeIsRTL ? "السعر الابتدائي" : "Starting Price",
-    },
-    {
-      icon: "📅",
-      value: project.completionDate || "TBC",
-      label: activeIsRTL ? "تاريخ الانتهاء" : "Completion",
-    },
-    {
-      icon: "🏗️",
-      value: project.status || (activeIsRTL ? "قيد الإنشاء" : "Off-Plan"),
-      label: activeIsRTL ? "الحالة" : "Status",
-    },
-  ];
+  const heading =
+    intro.title ||
+    intro.heading ||
+    (activeIsRTL ? "عنوان المشروع" : "LIVE WHERE THE SKY FEELS LIKE HOME");
+
+  const paragraphs =
+    intro.paragraphs && intro.paragraphs.length
+      ? intro.paragraphs
+      : [
+          activeIsRTL
+            ? "هنا يمكنك إضافة وصف عربي للمشروع يشبه نص صفحة سوبها الأصلية."
+            : "Here you can add a detailed English description of the project similar to the original Sobha page.",
+        ];
+
+  const brochures = intro.brochures || [];
 
   return (
     <section
@@ -82,167 +167,61 @@ export default function ProjectIntro({ data, projectData, isRTL, locale }) {
       dir={activeIsRTL ? "rtl" : "ltr"}
     >
       <div className={styles.container}>
-        {/* HERO SECTION */}
-        <div className={styles.heroSection}>
-          <div
-            className={styles.heroBackground}
-            style={{
-              backgroundImage: `url('${propertyImages[0].src}')`,
-            }}
-          >
-            <div className={styles.heroOverlay}></div>
-          </div>
-          <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>
-              <span>{activeIsRTL ? "تطوير متميز" : "PREMIUM DEVELOPMENT"}</span>
+        <div className={styles.row}>
+          {/* LEFT: TEXT + DOWNLOAD */}
+          <div className={styles.colLeft}>
+            <h2 className={styles.heading}>{heading}</h2>
+
+            <div className={styles.textBlock}>
+              {paragraphs.map((p, idx) => (
+                <p key={idx} className={styles.paragraph}>
+                  {p}
+                </p>
+              ))}
             </div>
-            <h1 className={styles.heroTitle}>{intro.title || project.name}</h1>
-            <p className={styles.heroSubtitle}>
-              {project.location ||
-                (activeIsRTL
-                  ? "عيش فاخر في قلب دبي"
-                  : "Luxury living in the heart of Dubai")}
-            </p>
-          </div>
-        </div>
 
-        {/* MAIN CONTENT GRID */}
-        <div className={styles.contentGrid}>
-          {/* LEFT: IMAGE GALLERY */}
-          <div className={styles.gallerySection}>
-            <div className={styles.galleryContainer}>
-              <div className={styles.mainImage}>
-                <Image
-                  src={propertyImages[activeImage].src}
-                  alt={propertyImages[activeImage].alt}
-                  fill
-                  className={styles.image}
-                  priority
-                />
-                <div className={styles.imageOverlay}></div>
-                <div className={styles.imageContent}>
-                  <h3 className={styles.imageTitle}>
-                    {propertyImages[activeImage].title}
-                  </h3>
-                  <p className={styles.imageDescription}>
-                    {propertyImages[activeImage].description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Image Navigation */}
-              {propertyImages.length > 1 && (
-                <div className={styles.imageNav}>
-                  {propertyImages.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`${styles.navDot} ${
-                        activeImage === index ? styles.active : ""
-                      }`}
-                      onClick={() => setActiveImage(index)}
-                    />
-                  ))}
-                </div>
+            <div className={styles.bottomRow}>
+              {/* Download brochure (left side) */}
+              {brochures.length > 0 ? (
+                brochures.map((brochure, idx) => (
+                  <a
+                    key={idx}
+                    href={brochure.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.downloadBtn}
+                  >
+                    {brochure.title ||
+                      (activeIsRTL ? "تحميل الكتيب" : "DOWNLOAD BROCHURE")}
+                  </a>
+                ))
+              ) : (
+                <button type="button" className={styles.downloadBtn}>
+                  {activeIsRTL ? "تحميل الكتيب" : "DOWNLOAD BROCHURE"}
+                </button>
               )}
             </div>
           </div>
 
-          {/* RIGHT: CONTENT SECTION */}
-          <div className={styles.contentSection}>
-            {/* HIGHLIGHTS */}
-            <div className={styles.highlightsSection}>
-              <h2 className={styles.sectionTitle}>
-                {activeIsRTL ? "أبرز معالم المشروع" : "PROJECT HIGHLIGHTS"}
-              </h2>
-              <div className={styles.highlightsGrid}>
-                {highlights.map((highlight, index) => (
-                  <div key={index} className={styles.highlightCard}>
-                    <div className={styles.highlightIcon}>{highlight.icon}</div>
-                    <div className={styles.highlightContent}>
-                      <div className={styles.highlightValue}>
-                        {highlight.value}
-                      </div>
-                      <div className={styles.highlightLabel}>
-                        {highlight.label}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+          {/* RIGHT: IMAGE WITH CLOUD EFFECTS */}
+          <div className={styles.colRight}>
+            <div className={styles.cloudImageContainer}>
+              <div className={styles.imageWrap}>
+                <Image
+                  src={mainImage.src}
+                  alt={mainImage.alt}
+                  fill
+                  priority={false}
+                  className={styles.cloudShapeImage}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 55vw, 640px"
+                />
               </div>
-            </div>
 
-            {/* DESCRIPTION */}
-            <div className={styles.descriptionSection}>
-              <h3 className={styles.sectionTitle}>
-                {activeIsRTL ? "نظرة عامة على المشروع" : "PROJECT OVERVIEW"}
-              </h3>
-              <div className={styles.descriptionContent}>
-                {intro.paragraphs &&
-                  intro.paragraphs.map((paragraph, index) => (
-                    <p key={index} className={styles.paragraph}>
-                      {paragraph}
-                    </p>
-                  ))}
-              </div>
-            </div>
+              {/* Animated Cloud Canvas */}
+              <canvas ref={canvasRef} className={styles.cloudCanvas} />
 
-            {/* DEVELOPER INFO */}
-            <div className={styles.developerSection}>
-              <div className={styles.developerCard}>
-                <div className={styles.developerIcon}>🏢</div>
-                <div className={styles.developerContent}>
-                  <h4 className={styles.developerTitle}>
-                    {activeIsRTL ? "المطور" : "DEVELOPER"}
-                  </h4>
-                  <div className={styles.developerName}>
-                    {project.developer ||
-                      (activeIsRTL ? "مطور متميز" : "Premium Developer")}
-                  </div>
-                  <p className={styles.developerDescription}>
-                    {activeIsRTL
-                      ? "مطور موثوق بسجل حافل في مجال العقارات الفاخرة"
-                      : "Trusted developer with proven track record in luxury real estate"}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* CALL TO ACTION */}
-            <div className={styles.actionsSection}>
-              {intro.brochures?.map((brochure, index) => (
-                <a
-                  key={index}
-                  href={brochure.url}
-                  className={styles.primaryButton}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span>
-                    {brochure.title ||
-                      (activeIsRTL ? "تحميل الكتيب" : "DOWNLOAD BROCHURE")}
-                  </span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M12 16V4"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M7 11l5 5 5-5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                    <path
-                      d="M5 20h14"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </a>
-              ))}
+              {/* Cloud Glow Effect */}
+              <div className={styles.cloudGlow}></div>
             </div>
           </div>
         </div>

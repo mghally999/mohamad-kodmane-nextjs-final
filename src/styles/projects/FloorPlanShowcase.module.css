@@ -1,511 +1,394 @@
 @import url("https://fonts.cdnfonts.com/css/chronicle-display");
 @import url("https://fonts.cdnfonts.com/css/ringside");
 
+/* ===== SECTION WRAPPER ===== */
+
 .floorplanSection {
-  background: #efefef;
-  padding: 80px 0;
+  background: #ffffff;
+  padding: 120px 0 110px;
   position: relative;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
 }
 
-/* Header Section */
-.sectionHeader {
+/* ===== HEADER (Floor Plan) ===== */
+
+.header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 
-.sectionTitle {
+.floorTitle {
   font-family: "Chronicle Display", serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: 48px;
   font-weight: 300;
-  color: #000000;
-  margin: 0 0 20px 0;
+  letter-spacing: 0.04em;
+  color: #000;
+  margin: 0 0 24px 0;
   -webkit-font-smoothing: antialiased;
 }
 
-.titleDivider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.dividerLine {
-  width: 80px;
+.floorUnderline {
+  width: 120px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #d7b46a, transparent);
+  margin: 0 auto;
+  background: #000;
 }
 
-.dividerDot {
-  width: 6px;
-  height: 6px;
-  background: #d7b46a;
-  border-radius: 50%;
-}
+/* ===== TABS (1 BR / 2 BR / 3 BR) ===== */
 
-/* Creative Tab Navigation */
-.tabNavigation {
+.tabsWrapper {
   display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
+  justify-content: flex-start;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eeeeee;
 }
 
-.tabContainer {
+.detailTabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  background: rgba(215, 180, 106, 0.05);
-  border: 1px solid rgba(215, 180, 106, 0.1);
-  border-radius: 12px;
-  padding: 6px;
-  gap: 4px;
+  gap: 40px;
 }
 
-.tabButton {
-  padding: 12px 24px;
-  background: transparent;
+.detailTabItem {
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  background: none;
   border: none;
-  border-radius: 8px;
+  padding: 0 0 14px 0;
+  font-family: "Ringside", "ringside_regularbook", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #a7a7a7;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  min-width: 120px;
 }
 
-.tabButton:hover {
-  background: rgba(215, 180, 106, 0.1);
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: transparent;
+  transition: background 0.25s ease;
 }
 
-.tabActive {
-  background: rgba(215, 180, 106, 0.15);
+.navLinkActive {
+  color: #000000;
 }
+
+.navLinkActive::after {
+  background: #000;
+}
+
+/* ===== LAYOUT (TEXT LEFT / IMAGE RIGHT) ===== */
 
 .tabContent {
+  padding-top: 80px;
+}
+
+.row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 80px;
 }
 
-.tabText {
-  font-size: 13px;
-  font-weight: 600;
-  color: #000000;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
+.colText,
+.colImage {
+  flex: 0 0 50%;
 }
 
-.tabIndicator {
-  width: 0;
-  height: 2px;
-  background: #d7b46a;
-  transition: width 0.3s ease;
-}
-
-.tabActive .tabIndicator {
-  width: 16px;
-}
-
-/* Content Area - FIXED EQUAL HEIGHT */
-.contentArea {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 40px;
-  align-items: stretch;
-  min-height: 500px; /* Fixed base height */
-}
-
-/* Specifications Panel - FIXED HEIGHT */
-.specsPanel {
-  background: rgba(215, 180, 106, 0.03);
-  border: 1px solid rgba(215, 180, 106, 0.1);
-  border-radius: 16px;
-  padding: 40px;
-  height: 100%; /* Take full height of grid */
+.colImage {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.panelContent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
+/* ===== LEFT COLUMN (TITLE + SPECS + BUTTON) ===== */
 
-.planHeader {
-  margin-bottom: 30px;
-}
-
-.planName {
+.planHeading {
+  margin: 0;
+  padding: 0 0 0 0;
   font-family: "Chronicle Display", serif;
-  font-size: 1.8rem;
+  font-size: 24px;
   font-weight: 300;
-  color: #000000;
-  margin: 0 0 15px 0;
+  color: #c7a386;
+  letter-spacing: 0.03em;
   -webkit-font-smoothing: antialiased;
 }
 
-.planDivider {
-  width: 50px;
-  height: 2px;
-  background: #d7b46a;
-}
-
-/* Specifications List */
-.specsList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 30px;
-  flex: 1;
+.specList {
+  list-style: none;
+  padding: 58px 0 0 0;
+  margin: 0;
 }
 
 .specItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(215, 180, 106, 0.1);
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 14px;
+  color: #000000;
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.specItem:last-child {
+  margin-bottom: 0;
 }
 
 .specLabel {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #000000;
+  display: block;
+  font-size: 16px;
+  letter-spacing: 2.5px;
+  font-family: "ringside_regularbook", "Ringside", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  flex-shrink: 0;
-  min-width: 120px;
-  margin-right: 20px;
 }
 
 .specValue {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: #000000;
-  -webkit-font-smoothing: antialiased;
-  text-align: right;
-  flex: 1;
-  line-height: 1.5;
-  word-spacing: 0.2em;
-  letter-spacing: 0.02em;
+  display: inline-block;
+  margin-top: 2px;
 }
 
-/* Unit Specification Styling - FIXED SPACING */
-.unitSpec {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  margin: 0 0.2em;
-  white-space: nowrap;
+/* download button list (matches Sobha) */
+
+.buttonList {
+  list-style: none;
+  padding: 32px 0 0 0;
+  margin: 0;
 }
 
-.unitSpec::before {
-  content: "+";
-  color: #d7b46a;
-  font-weight: 600;
-  margin-right: 0.3em;
-}
-
-.unitSpec:first-child::before {
-  content: "";
-  margin-right: 0;
-}
-
-/* Features Section */
-.featuresSection {
-  margin-bottom: 30px;
-}
-
-.featuresTitle {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #000000;
-  margin: 0 0 20px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.featuresGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.featureItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 8px;
-  border: 1px solid rgba(215, 180, 106, 0.1);
-}
-
-.featureIcon {
-  color: #d7b46a;
-  font-size: 14px;
-}
-
-.featureText {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: #000000;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* CTA Container */
-.ctaContainer {
-  margin-top: auto; /* Push to bottom */
-}
-
-.ctaButton {
+.buttonMain {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #d7b46a 0%, #b89444 100%);
-  color: #000000;
-  border: none;
-  border-radius: 8px;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  min-width: 210px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1px solid #e5e5e5;
+  background: #ffffff;
+  text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-.ctaButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(215, 180, 106, 0.3);
-}
-
-/* Gallery Panel - FIXED EQUAL HEIGHT */
-.galleryPanel {
-  height: 100%; /* Match specs panel height */
-}
-
-.imageContainer {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  background: #f8f9fa;
-  height: 100%; /* Take full height */
-  width: 100%;
-}
-
-.floorplanImage {
-  object-fit: cover;
-  object-position: center;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-/* Navigation Buttons */
-.navButton {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(215, 180, 106, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.navButton:hover {
-  background: rgba(215, 180, 106, 0.1);
-  border-color: #d7b46a;
-}
-
-.navPrev {
-  left: 20px;
-}
-
-.navNext {
-  right: 20px;
-}
-
-.navButton svg {
-  width: 18px;
-  height: 18px;
-  color: #d7b46a;
-}
-
-/* Image Counter */
-.imageCounter {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+.buttonText {
+  font-family: "Ringside", "ringside_regularbook", system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 13px;
-  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.buttonMain:hover {
+  background: #f8f8f8;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* ===== RIGHT COLUMN (IMAGE + OVAL SHADOW SHAPE) ===== */
+
+.virtualTourWrapper {
+  position: relative;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+}
+
+.planImage {
+  position: relative;
+  z-index: 2;
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+/* Sobha’s white “plate” + shadow behind the plan (approximation) */
+.virtualTourWrapper::after {
+  content: "";
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: 18px;
+  height: 160px;
+  margin: 0 auto;
+  z-index: 1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.06) 35%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  opacity: 0.85;
+}
+
+/* ===== ARROWS (only if multiple images) ===== */
+
+.commonArrow {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
   display: flex;
-  align-items: center;
-  gap: 5px;
-  -webkit-font-smoothing: antialiased;
+  justify-content: center;
+  gap: 40px;
+  z-index: 3;
 }
 
-.counterCurrent {
-  color: #d7b46a;
-  font-weight: 600;
+.swiperButton {
+  width: 42px;
+  height: 22px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
 }
 
-.counterSeparator {
-  opacity: 0.6;
+.swiperButton span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: 42px 22px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.counterTotal {
-  opacity: 0.8;
+/* simple arrow shapes instead of external SVGs */
+.prev span {
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  transform: rotate(-45deg);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+.next span {
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: rotate(45deg);
+}
+
+/* ===== RESPONSIVE ===== */
+
 @media (max-width: 1024px) {
-  .contentArea {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    min-height: auto;
+  .container {
+    padding: 0 24px;
   }
 
-  .specsPanel {
-    height: auto;
-    min-height: 400px;
+  .row {
+    gap: 50px;
   }
 
-  .galleryPanel {
-    height: 400px; /* Fixed height on tablet */
+  .tabContent {
+    padding-top: 60px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .floorplanSection {
-    padding: 60px 0;
+    padding: 80px 0 80px;
   }
 
-  .container {
-    padding: 0 15px;
-  }
-
-  .sectionHeader {
+  .header {
     margin-bottom: 40px;
   }
 
-  .tabContainer {
-    flex-wrap: wrap;
-    justify-content: center;
+  .floorTitle {
+    font-size: 36px;
   }
 
-  .tabButton {
-    min-width: 100px;
-    padding: 10px 16px;
+  .tabsWrapper {
+    margin-bottom: 32px;
+    border-bottom: none;
+    overflow-x: auto;
   }
 
-  .specsPanel {
-    padding: 30px;
+  .detailTabs {
+    gap: 24px;
   }
 
-  .galleryPanel {
-    height: 350px;
+  .navLink {
+    padding-bottom: 10px;
   }
 
-  .navButton {
-    width: 40px;
-    height: 40px;
+  .tabContent {
+    padding-top: 20px;
   }
 
-  .navButton svg {
-    width: 16px;
-    height: 16px;
+  .row {
+    flex-direction: column-reverse; /* image on top, text below (Sobha mobile) */
+    text-align: center;
+    gap: 30px;
   }
 
-  .specItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .colText,
+  .colImage {
+    flex: 0 0 100%;
   }
 
-  .specLabel {
-    margin-right: 0;
-    min-width: auto;
+  .specList {
+    padding-top: 24px;
   }
 
-  .specValue {
-    text-align: left;
-    width: 100%;
+  .virtualTourWrapper {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .virtualTourWrapper::after {
+    height: 110px;
+    left: -12%;
+    right: -12%;
+    bottom: 10px;
+  }
+
+  .commonArrow {
+    bottom: -30px;
   }
 }
 
 @media (max-width: 480px) {
-  .floorplanSection {
-    padding: 40px 0;
+  .container {
+    padding: 0 18px;
   }
 
-  .sectionTitle {
-    font-size: 2rem;
+  .floorTitle {
+    font-size: 30px;
   }
 
-  .tabContainer {
-    flex-direction: column;
-    width: 100%;
-    max-width: 250px;
+  .detailTabs {
+    gap: 18px;
   }
 
-  .tabButton {
-    width: 100%;
+  .navLink {
+    font-size: 14px;
+    letter-spacing: 2px;
   }
 
-  .specsPanel {
-    padding: 25px;
+  .planHeading {
+    font-size: 22px;
   }
 
-  .galleryPanel {
-    height: 280px;
+  .virtualTourWrapper {
+    max-width: 360px;
   }
 
-  .specItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-  }
-
-  .featuresGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .specValue {
-    font-size: 13px;
-    line-height: 1.6;
+  .virtualTourWrapper::after {
+    height: 90px;
   }
 }

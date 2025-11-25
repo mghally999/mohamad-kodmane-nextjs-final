@@ -1,11 +1,11 @@
-/* MapDirections.module.css */
 @import url("https://fonts.cdnfonts.com/css/chronicle-display");
 @import url("https://fonts.cdnfonts.com/css/ringside");
 
+/* ===== SECTION LAYOUT ===== */
+
 .mapSection {
   background: #efefef;
-  padding: 80px 0;
-  position: relative;
+  padding: 80px 0 90px;
 }
 
 .container {
@@ -14,393 +14,156 @@
   padding: 0 20px;
 }
 
-/* Header Section */
-.sectionHeader {
+/* Title – Sobha style */
+
+.heading {
+  margin: 0 0 32px 0;
   text-align: center;
-  margin-bottom: 60px;
-}
-
-.sectionTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  text-transform: uppercase;
+  font-family: "Chronicle Display XLight", serif;
   font-weight: 300;
+  font-size: 32px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
   color: #000000;
-  margin: 0 0 20px 0;
-  -webkit-font-smoothing: antialiased;
 }
 
-.titleDivider {
-  display: flex;
-  align-items: center;
+/* ===== CATEGORY TABS (Schools / Shop / etc.) ===== */
+
+.categoryTab {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 14px;
+  margin: 0 auto 26px;
   justify-content: center;
-  gap: 15px;
+  width: 100%;
 }
 
-.dividerLine {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #d7b46a, transparent);
-}
-
-.dividerDot {
-  width: 6px;
-  height: 6px;
-  background: #d7b46a;
-  border-radius: 50%;
-}
-
-/* Map Card */
-.mapCard {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  margin-bottom: 40px;
-}
-
-/* Project Info */
-.projectInfo {
-  padding: 30px 40px;
-  border-bottom: 1px solid rgba(215, 180, 106, 0.1);
-  background: rgba(215, 180, 106, 0.02);
-}
-
-.projectName {
-  font-family: "Chronicle Display", serif;
-  font-size: 1.6rem;
-  font-weight: 300;
-  color: #000000;
-  margin: 0 0 8px 0;
-  -webkit-font-smoothing: antialiased;
-}
-
-.projectAddress {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
-  color: #666666;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1.5;
-}
-
-/* Map Container - EXACT SOBHA STYLING */
-.mapContainer {
-  padding: 0;
+.tab {
   position: relative;
+  background: transparent;
+  border: none;
+  padding: 6px 14px;
+  font-family: "Ringside", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #777777;
+  cursor: pointer;
+  transition: color 0.25s ease;
 }
+
+.tab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  margin: 0 auto;
+  width: 0;
+  height: 2px;
+  background: #d7b46a;
+  transition: width 0.25s ease;
+}
+
+.tab:hover {
+  color: #000000;
+}
+
+.tabActive {
+  color: #000000;
+}
+
+.tabActive::after {
+  width: 100%;
+}
+
+/* ===== MAP WRAPPER ===== */
 
 .mapWrapper {
-  position: relative;
-  width: 100%;
-  height: 500px; /* Exact Sobha height */
-  background: #f8f9fa;
+  margin-top: 10px;
+  border-radius: 14px;
   overflow: hidden;
-  cursor: grab;
-}
-
-.mapWrapper:active {
-  cursor: grabbing;
-}
-
-.mapLoader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  background: #f8f9fa;
-  color: #666666;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 12px; /* Exact Sobha font size */
-  z-index: 1;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-.loadingSpinner {
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgba(215, 180, 106, 0.3);
-  border-top: 2px solid #d7b46a;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.mapIframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; /* Exact Sobha font */
-  font-size: 12px; /* Exact Sobha font size */
-  font-weight: 400; /* Exact Sobha font weight */
-  line-height: 20px; /* Exact Sobha line height */
-  color: rgb(33, 37, 41); /* Exact Sobha text color */
-  overflow: clip;
-  box-sizing: border-box;
-  text-align: start;
-  text-size-adjust: 100%;
-}
-
-.mapIframe:active {
-  cursor: grabbing;
-}
-
-.mapIframe.loaded {
-  opacity: 1;
-}
-
-/* Action Buttons */
-.actionButtons {
-  display: flex;
-  gap: 15px;
-  padding: 30px 40px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.09);
   background: #ffffff;
-  border-top: 1px solid rgba(215, 180, 106, 0.1);
 }
 
-.directionsBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: linear-gradient(135deg, #d7b46a 0%, #b89444 100%);
-  color: #000000;
+.mapInner {
+  width: 100%;
+  height: 520px; /* Sobha-ish height */
+}
+
+/* ===== MARKER ===== */
+
+.marker {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #b89444;
+  border: 3px solid #f5e3b8;
+  box-shadow: 0 0 0 4px rgba(184, 148, 68, 0.25);
+}
+
+/* ===== POPUP STYLES (Sobha-ish) ===== */
+
+.popupContent {
+  font-family: "Ringside", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #111111;
+}
+
+.popupDesc {
+  margin-top: 4px;
+  color: #555555;
+}
+
+.popupDirectionsLink {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #b89444;
   text-decoration: none;
-  border-radius: 8px;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  flex: 1;
 }
 
-.directionsBtn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(215, 180, 106, 0.3);
+.popupDirectionsLink:hover {
+  text-decoration: underline;
 }
 
-.copyBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: transparent;
-  color: #000000;
-  border: 1px solid rgba(215, 180, 106, 0.3);
-  border-radius: 8px;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  flex: 1;
-}
-
-.copyBtn:hover {
-  background: rgba(215, 180, 106, 0.1);
-  border-color: rgba(215, 180, 106, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Location Features */
-.locationFeatures {
-  text-align: center;
-}
-
-.featuresTitle {
-  font-family: "Chronicle Display", serif;
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: #000000;
-  margin: 0 0 30px 0;
-  -webkit-font-smoothing: antialiased;
-}
-
-.featuresGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.featureItem {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(215, 180, 106, 0.1);
-}
-
-.featureItem:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-color: rgba(215, 180, 106, 0.2);
-}
-
-.featureIcon {
-  font-size: 1.5rem;
-  width: 50px;
-  height: 50px;
-  background: rgba(215, 180, 106, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.featureText {
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 300;
-  color: #000000;
-  -webkit-font-smoothing: antialiased;
-  text-align: left;
-  flex: 1;
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1024px) {
-  .mapSection {
-    padding: 60px 0;
-  }
-
-  .mapWrapper {
-    height: 450px;
-  }
-
-  .featuresGrid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-  }
-}
+/* ===== RESPONSIVE ===== */
 
 @media (max-width: 768px) {
   .mapSection {
-    padding: 40px 0;
+    padding: 60px 0 70px;
   }
 
-  .container {
-    padding: 0 15px;
+  .heading {
+    font-size: 26px;
   }
 
-  .sectionHeader {
-    margin-bottom: 40px;
-  }
-
-  .projectInfo {
-    padding: 25px;
-  }
-
-  .mapWrapper {
-    height: 400px;
-  }
-
-  .actionButtons {
-    flex-direction: column;
-    gap: 12px;
-    padding: 25px;
-  }
-
-  .directionsBtn,
-  .copyBtn {
-    width: 100%;
-  }
-
-  .featuresGrid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .featureItem {
-    padding: 18px;
+  .mapInner {
+    height: 420px;
   }
 }
 
 @media (max-width: 480px) {
   .mapSection {
-    padding: 30px 0;
+    padding: 50px 0 60px;
   }
 
-  .sectionTitle {
-    font-size: 2rem;
+  .heading {
+    font-size: 22px;
+    letter-spacing: 0.07em;
   }
 
-  .projectInfo {
-    padding: 20px;
-    text-align: center;
-  }
-
-  .projectName {
-    font-size: 1.4rem;
-  }
-
-  .mapWrapper {
-    height: 350px;
-  }
-
-  .featureItem {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-
-  .featureText {
-    text-align: center;
-  }
-}
-
-/* Reduced motion for accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .directionsBtn,
-  .copyBtn,
-  .featureItem,
-  .mapIframe {
-    transition: none;
-  }
-
-  .loadingSpinner {
-    animation: none;
+  .mapInner {
+    height: 360px;
   }
 }
