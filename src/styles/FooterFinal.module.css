@@ -1,61 +1,64 @@
 .footer {
   background-color: #f9f9f9;
-  color: #333333;
+  color: #000000;
   font-family: "Helvetica Neue", Arial, sans-serif;
+  position: relative;
+  padding: 108px 0 50px 0;
+  margin-bottom: -1px;
 }
 
-/* ========== TOP LOGO BAR (center logo + lines) ========== */
+/* long golden line behind the logo – Sobha style */
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 135px;
+  width: 100%;
+  height: 1px;
+  background: #d5b9a1;
+  z-index: 0;
+}
+
+/* ========== TOP LOGO AREA ========== */
 
 .logoBar {
   background-color: #f9f9f9;
-  border-bottom: 1px solid #eceae6;
 }
 
 .logoBarInner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 32px 20px 28px;
+  padding: 0 20px;
 }
 
 .logoWrap {
-  position: relative;
+  background: #f9f9f9;
   max-width: 320px;
-  margin: 0 auto;
-  padding: 18px 40px;
+  margin: 0 auto 25px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 18px 40px;
 }
 
-/* horizontal lines left & right of the logo */
+/* we use footer::before for the lines, so hide local ones */
 .logoWrap::before,
 .logoWrap::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 9999px;
-  height: 1px;
-  background-color: #dad4c9;
-  opacity: 0.8;
-}
-
-.logoWrap::before {
-  right: 100%;
-}
-
-.logoWrap::after {
-  left: 100%;
+  content: none;
 }
 
 .logoImage {
   display: inline-block;
   height: auto;
+  max-width: 100%;
 }
 
-/* ========== MAIN FOOTER AREA ========== */
+/* ========== MAIN FOOTER AREA (LINK COLUMNS) ========== */
 
 .footerMain {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 40px 80px 40px;
+  padding: 0 80px;
 }
 
 .footerMainInner {
@@ -63,7 +66,7 @@
   padding-bottom: 40px;
 }
 
-/* First row – properties columns */
+/* First row – APARTMENTS / VILLAS / PENTHOUSES */
 
 .propertiesRow {
   display: grid;
@@ -77,11 +80,12 @@
 }
 
 .colTitle {
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 16px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: #777777;
+  color: #000000;
   margin-bottom: 16px;
+  text-align: left;
 }
 
 .linkList {
@@ -91,7 +95,7 @@
 }
 
 .linkItem {
-  margin-bottom: 6px;
+  margin: 10px 0;
 }
 
 .linkItem:last-child {
@@ -105,19 +109,19 @@
 
 .link {
   font-size: 12px;
-  color: #444444;
+  color: #4f5459;
   text-decoration: none;
   line-height: 1.6;
 }
 
 .link:hover {
-  color: #111111;
+  color: #c9a485;
 }
 
 /* ========== SECOND ROW – COMMUNITIES / MEDIA / ABOUT / CONTACT ========== */
 
 .footerMiddle {
-  padding: 32px 0 36px;
+  padding: 45px 0 45px;
   border-bottom: 1px solid #eceae6;
 }
 
@@ -133,78 +137,138 @@
 }
 
 .middleTitle {
-  font-size: 11px;
-  letter-spacing: 0.18em;
+  font-size: 16px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: #777777;
+  color: #000000;
   margin-bottom: 16px;
+  text-align: left;
 }
 
 /* ========== BOTTOM ROW ========== */
 
 .footerBottom {
-  display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
-  align-items: center;
-  padding: 24px 0 32px;
+  padding: 45px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #000000;
+  gap: 40px;
+}
+
+/* LEFT – copyright + address + licenses */
+
+.bottomLeft {
+  flex: 1.4;
+  text-align: left;
+}
+
+.bottomBrand {
+  margin-bottom: 8px;
+}
+
+.bottomAddress {
   font-size: 11px;
   letter-spacing: 0.08em;
+  text-transform: none;
+  color: #4f5459;
+  line-height: 1.6;
+}
+
+.bottomLicense {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4f5459;
+}
+
+.bottomLicense span {
+  color: #000000;
+}
+
+/* CENTER – socials */
+
+.bottomCenter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.socialBlock {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.socialLabel {
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #777777;
 }
 
-.bottomLeft {
-  text-align: left;
-}
-
-.bottomCenter {
-  text-align: center;
-}
-
-.bottomRight {
-  text-align: right;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 8px;
-}
-
-.bottomContact {
-  text-decoration: none;
-  color: #777777;
-}
-
-.bottomContact:hover {
-  color: #111111;
-}
-
-.bottomDivider {
-  color: #cccccc;
-}
-
-/* Social icons */
-
 .socialIcons {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 24px;
 }
 
 .socialLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.socialLink:hover {
+  transform: scale(1.2);
 }
 
 .socialIconImage {
   display: block;
 }
 
+/* RIGHT – phone + mobile + email */
+
+.bottomRight {
+  flex: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 4px;
+}
+
+.bottomContact {
+  text-decoration: none;
+  color: #000000;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bottomContact:hover {
+  color: #c9a485;
+}
+
 /* ========== RESPONSIVE ========== */
+
+@media (max-width: 1200px) {
+  .footerMain {
+    padding: 0 40px;
+  }
+}
 
 @media (max-width: 1024px) {
   .footerMain {
-    padding: 32px 32px 32px;
+    padding: 0 32px;
   }
 
   .propertiesRow,
@@ -212,36 +276,265 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 32px;
   }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 80px 0 40px 0;
+  }
+
+  .logoWrap {
+    max-width: 182px;
+    margin-bottom: 60px;
+    padding-inline: 24px;
+  }
+
+  .footerMain {
+    padding: 0 20px;
+  }
+
+  .propertiesRow,
+  .footerMiddleInner {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
 
   .footerBottom {
-    grid-template-columns: 1fr;
-    row-gap: 12px;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    padding-top: 35px;
   }
 
   .bottomLeft,
   .bottomCenter,
   .bottomRight {
     text-align: center;
-    justify-content: center;
+    align-items: center;
+  }
+
+  .bottomLeft {
+    margin-bottom: 20px;
+  }
+
+  .bottomRight {
+    margin-top: 12px;
   }
 }
 
 @media (max-width: 640px) {
-  .footerMain {
-    padding: 24px 20px 28px;
-  }
-
-  .propertiesRow,
-  .footerMiddleInner {
-    grid-template-columns: 1fr;
-  }
-
-  .logoWrap {
-    padding-inline: 24px;
-  }
-
   .footerBottom {
-    font-size: 10px;
+    font-size: 11px;
+  }
+
+  .bottomContact {
+    font-size: 11px;
+  }
+
+  .link {
+    font-size: 13px;
+  }
+}
+/* ========== BOTTOM FOOTER - LUXURY CORPORATE ========== */
+
+.footerBottom {
+  padding: 70px 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  border-top: 1px solid #e8e6e1;
+  /* margin-top: 40px; */
+}
+
+/* Corporate Identity Block */
+.corporateBlock {
+  text-align: left;
+}
+
+.corporateName {
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.corporateTitle {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8c8c8c;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.corporateDivider {
+  width: 40px;
+  height: 1px;
+  background: #c4b5a3;
+  margin: 20px 0;
+}
+
+.legalInfo {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #666;
+  line-height: 1.8;
+}
+
+.legalInfo div {
+  margin-bottom: 4px;
+}
+
+/* Prestige Address Block */
+.prestigeAddress {
+  text-align: justify;
+}
+
+.addressTitle {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8c8c8c;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.addressDivider {
+  width: 30px;
+  height: 1px;
+  background: #c4b5a3;
+  margin: 0 auto 20px;
+}
+
+.addressLines {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000;
+  line-height: 1.8;
+}
+
+.poBox {
+  margin-top: 12px;
+  color: #666;
+  font-size: 11px;
+}
+
+/* Exclusive Contacts Block */
+.contactBlock {
+  text-align: justify;
+}
+
+.contactTitle {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8c8c8c;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.contactDivider {
+  width: 40px;
+  height: 1px;
+  background: #c4b5a3;
+  margin: 0 0 20px auto;
+}
+
+.contactDetails {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contactLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 15px;
+}
+
+.contactType {
+  color: #666;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  min-width: 60px;
+}
+
+.contactNumber,
+.contactEmail {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  text-align: left;
+  flex: 1;
+}
+
+.contactNumber:hover,
+.contactEmail:hover {
+  color: #8c8c8c;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+  .footerBottom {
+    gap: 40px;
+    padding: 50px 0 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerBottom {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .corporateBlock,
+  .prestigeAddress,
+  .contactBlock {
+    text-align: center;
+  }
+
+  .contactDivider {
+    margin: 0 auto 20px;
+  }
+
+  .contactLine {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contactType {
+    min-width: auto;
+    margin-right: 10px;
+  }
+
+  .contactNumber,
+  .contactEmail {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footerBottom {
+    gap: 30px;
+    padding: 40px 0 20px;
+  }
+
+  .contactLine {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .contactType {
+    margin-right: 0;
   }
 }

@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "@/styles/FooterFinal.module.css";
 
 export default function FooterFinal() {
-  // ---- DATA (edit titles/links as you like) ----
+  // ---- DATA ----
 
   const apartments = [
     {
@@ -82,7 +82,6 @@ export default function FooterFinal() {
   const contactUs = [
     { label: "Contact Us", href: "/contact" },
     { label: "Channel Partner", href: "/channel-partner" },
-    { label: "Careers", href: "/careers" },
     { label: "Our Presence", href: "/our-presence" },
     { label: "FAQ", href: "/faq" },
   ];
@@ -106,39 +105,24 @@ export default function FooterFinal() {
       icon: "https://api.iconify.design/mdi:youtube.svg",
       alt: "YouTube",
     },
-    // If later you have more:
-    // { id: "tiktok", href: "#", icon: "https://api.iconify.design/mdi:tiktok.svg", alt: "TikTok" },
-    // { id: "linkedin", href: "#", icon: "https://api.iconify.design/mdi:linkedin.svg", alt: "LinkedIn" },
-    // { id: "x", href: "#", icon: "https://api.iconify.design/mdi:twitter.svg", alt: "X (Twitter)" },
   ];
 
   const year = new Date().getFullYear();
 
-  // ---- RENDER ----
-
   return (
     <footer className={styles.footer}>
-      {/* TOP LOGO BAR WITH LEFT/RIGHT LINES – Sobha style */}
+      {/* TOP LOGO BAR WITH LONG LINE – Sobha style */}
       <div className={styles.logoBar}>
         <div className={styles.logoBarInner}>
           <div className={styles.logoWrap}>
-            <Link href="/" aria-label="Mohamad Kodmane Real Estate">
-              <Image
-                src="/logo-transparent.png" // put your MK logo here
-                alt="Mohamad Kodmane Real Estate"
-                width={180}
-                height={60}
-                className={styles.logoImage}
-                priority
-              />
-            </Link>
+            Mohamad Kodmane Real Estate Brokers
           </div>
         </div>
       </div>
 
       {/* MAIN FOOTER CONTENT */}
       <div className={styles.footerMain}>
-        {/* FIRST ROW – PROPERTIES (like APARTMENTS / VILLAS / VILLAMENTS / PENTHOUSES) */}
+        {/* FIRST ROW – PROJECT TYPES */}
         <div className={styles.footerMainInner}>
           <div className={styles.propertiesRow}>
             <div className={styles.colBlock}>
@@ -167,23 +151,6 @@ export default function FooterFinal() {
               </ul>
             </div>
 
-            {/* <div className={styles.colBlock}>
-              <h4 className={styles.colTitle}>VILLAMENTS</h4>
-              <ul className={styles.linkList}>
-                {villaments.map((item) => (
-                  <li key={item.label} className={styles.linkItem}>
-                    <Link href={item.href} className={styles.link}>
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-
-                {villaments.length === 0 && (
-                  <li className={styles.linkItemMuted}>Coming Soon</li>
-                )}
-              </ul>
-            </div> */}
-
             <div className={styles.colBlock}>
               <h4 className={styles.colTitle}>PENTHOUSES</h4>
               <ul className={styles.linkList}>
@@ -199,7 +166,7 @@ export default function FooterFinal() {
           </div>
         </div>
 
-        {/* SECOND ROW – COMMUNITIES / MEDIA CENTER / ABOUT US / CONTACT US */}
+        {/* SECOND ROW – COMMUNITIES / MEDIA / ABOUT / CONTACT */}
         <div className={styles.footerMiddle}>
           <div className={styles.footerMiddleInner}>
             <div className={styles.middleCol}>
@@ -256,46 +223,71 @@ export default function FooterFinal() {
           </div>
         </div>
 
-        {/* BOTTOM ROW – COPYRIGHT + SOCIALS + QUICK CONTACT */}
+        {/* BOTTOM ROW – ADDRESS + SOCIALS + CONTACT DETAILS */}
         <div className={styles.footerBottom}>
+          {/* LEFT - CORPORATE IDENTITY */}
           <div className={styles.bottomLeft}>
-            © {year} Mohamad Kodmane Real Estate Broker. All rights reserved.
-          </div>
-
-          <div className={styles.bottomCenter}>
-            <div className={styles.socialIcons}>
-              {socials.map((s) => (
-                <a
-                  key={s.id}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.socialLink}
-                  aria-label={s.alt}
-                >
-                  <Image
-                    src={s.icon}
-                    alt={s.alt}
-                    width={18}
-                    height={18}
-                    className={styles.socialIconImage}
-                  />
-                </a>
-              ))}
+            <div className={styles.corporateBlock}>
+              <div className={styles.corporateName}>MOHAMAD KODMANE</div>
+              <div className={styles.corporateTitle}>REAL ESTATE BROKER</div>
+              <div className={styles.corporateDivider} />
+              <div className={styles.legalInfo}>
+                <div>TRADE LICENSE: 1192580</div>
+                <div>ADVERTISING PERMIT: 139532</div>
+                <div>RERA CERTIFIED</div>
+              </div>
             </div>
           </div>
 
+          {/* CENTER - PRESTIGE ADDRESS */}
+          <div className={styles.bottomCenter}>
+            <div className={styles.prestigeAddress}>
+              <div className={styles.addressTitle}>HEADQUARTERS</div>
+              {/* <div className={styles.addressDivider} /> */}
+              <div className={styles.addressLines}>
+                <div>22ND FLOOR, 22ND COURT TOWER</div>
+                <div>OFFICE B08, BUSINESS BAY</div>
+                <div>DUBAI, UNITED ARAB EMIRATES</div>
+                <div className={styles.poBox}>P.O. BOX 446097</div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT - EXCLUSIVE CONTACTS */}
           <div className={styles.bottomRight}>
-            <Link href="tel:+971566665560" className={styles.bottomContact}>
-              +971 56 666 5560
-            </Link>
-            <span className={styles.bottomDivider}>|</span>
-            <Link
-              href="mailto:info@mohamadkodmane.ae"
-              className={styles.bottomContact}
-            >
-              info@mohamadkodmane.ae
-            </Link>
+            <div className={styles.contactBlock}>
+              <div className={styles.contactTitle}>PRIVATE CONSULTATION</div>
+              {/* <div className={styles.contactDivider} /> */}
+              <div className={styles.contactDetails}>
+                <div className={styles.contactLine}>
+                  <span className={styles.contactType}>DIRECT:</span>
+                  <Link
+                    href="tel:+971566665560"
+                    className={styles.contactNumber}
+                  >
+                    +971 56 666 5560
+                  </Link>
+                </div>
+                <div className={styles.contactLine}>
+                  <span className={styles.contactType}>OFFICE:</span>
+                  <Link
+                    href="tel:+97145859279"
+                    className={styles.contactNumber}
+                  >
+                    +971 4 585 9279
+                  </Link>
+                </div>
+                <div className={styles.contactLine}>
+                  <span className={styles.contactType}>EMAIL:</span>
+                  <Link
+                    href="mailto:info@mohamadkodmani.ae"
+                    className={styles.contactEmail}
+                  >
+                    INFO@MOHAMADKODMANI.AE
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

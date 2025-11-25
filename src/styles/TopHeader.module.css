@@ -1,77 +1,62 @@
-/* ===========================
-   SOBHA HEADER - CLEAN VERSION
-   =========================== */
-
-/* BASIC LAYOUT / RESET */
-.headerSpacer {
-  height: 80px;
-  width: 100%;
-}
+/* =========================================
+   GLOBAL + HEADER
+   ========================================= */
 
 .header {
   position: fixed;
-  inset: 0 auto auto 0;
+  top: 0;
+  left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 0;
-  background: rgba(21, 21, 21, 0.4);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: all 0.25s ease;
+  padding: 0.35rem 0;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(15, 15, 15, 0.45) 40%,
+      rgba(0, 0, 0, 0) 100%
+    )
+    0% 0% no-repeat padding-box transparent;
+  transition: background 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
-.header.scrolled {
-  padding: 1rem 0;
-  background: rgba(21, 21, 21, 0.92);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+.scrolled {
+  padding: 0.6rem 0;
+  background: rgba(10, 10, 10, 0.96);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
 }
 
-/* Just in case something uses it */
+.mobileMenuOpenHeader {
+  background: rgba(10, 10, 10, 0.98);
+}
+
 .backgroundOverlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-/* RTL helper */
 .rtl {
   direction: rtl;
 }
 
-/* Lock scroll when mobile menu open */
-body.mobileMenuOpen {
+/* when we add this class to body via JS */
+.mobileMenuOpen {
   overflow: hidden;
 }
 
-/* ===========================
-   CONTAINER (SOBHA WIDTH)
-   =========================== */
+/* =========================================
+       LAYOUT CONTAINER
+       ========================================= */
 
 .container {
-  max-width: 1185px;
+  max-width: 1385px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 0.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   box-sizing: border-box;
-}
-
-/* Bootstrap-like grid helpers */
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.col12 {
-  width: 100%;
-}
-
-.colLg5,
-.colLg2 {
-  width: 100%;
 }
 
 .menuLeft,
@@ -92,7 +77,15 @@ body.mobileMenuOpen {
   position: relative;
 }
 
-/* Center logo column on desktop */
+.col12 {
+  width: 100%;
+}
+
+.colLg5,
+.colLg2 {
+  width: 100%;
+}
+
 .logoSec {
   display: none;
   align-items: center;
@@ -103,7 +96,7 @@ body.mobileMenuOpen {
   display: none;
 }
 
-/* Desktop layout */
+/* Desktop grid */
 @media (min-width: 1024px) {
   .colLg5 {
     flex: 0 0 41.666%;
@@ -122,62 +115,52 @@ body.mobileMenuOpen {
   .onlyDesk {
     display: block;
   }
-
-  .navLinks {
-    display: flex;
-  }
 }
 
-/* RTL tweaks */
 .rtl .container {
   flex-direction: row-reverse;
 }
 
-.rtl .menuLeft {
-  justify-content: flex-end;
-}
-
-.rtl .menuRight {
-  justify-content: flex-start;
-}
-
-/* ===========================
-   LOGO
-   =========================== */
+/* =========================================
+       LOGO
+       ========================================= */
 
 .logoLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
 }
 
 .logoImage {
   display: block;
   max-width: 125px;
-  height: 80px;
+  height: auto;
+  object-fit: contain;
 }
 
-/* ===========================
-   DESKTOP NAV LINKS (Sobha style)
-   =========================== */
+/* =========================================
+       DESKTOP NAV
+       ========================================= */
 
 .navLinks {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
+  display: none;
   align-items: center;
   gap: 1.5rem;
 }
 
-.navLinks > li {
-  line-height: 10px;
+.menuItemHasChildren {
   position: relative;
 }
 
-.menuItemHasChildren {
-  position: relative;
+.level1Menu,
+.categoryLink,
+.projectLink,
+.megaColumnLabel {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", system-ui, sans-serif;
 }
 
 .level1Menu {
@@ -191,24 +174,22 @@ body.mobileMenuOpen {
   cursor: pointer;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", system-ui, sans-serif;
-  font-size: 11px;
-  letter-spacing: 1.1px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 600;
   color: #ffffff;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.18s ease;
 }
 
 .level1Menu::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -0.2rem;
+  bottom: -0.15rem;
   width: 0;
   height: 1px;
-  background: linear-gradient(135deg, #c7ad66, #a98d4e);
-  transition: width 0.25s ease;
+  background: linear-gradient(135deg, #c9a26a, #a27b43);
+  transition: width 0.18s ease;
 }
 
 .level1Menu:hover::after,
@@ -218,7 +199,7 @@ body.mobileMenuOpen {
 
 .level1Menu:hover,
 .level1Menu.active {
-  color: #f3e8c9;
+  color: #f9f5e9;
 }
 
 .dropdownArrow {
@@ -226,17 +207,27 @@ body.mobileMenuOpen {
   transition: transform 0.2s ease;
 }
 
+.megaMenuTrigger {
+  padding-right: 0.85rem;
+}
+
 .megaMenuTrigger.active .dropdownArrow {
   transform: rotate(180deg);
 }
 
-/* ===========================
-   LANGUAGE TOGGLE (desktop)
-   =========================== */
+/* show nav on desktop */
+@media (min-width: 1024px) {
+  .navLinks {
+    display: flex;
+  }
+}
+
+/* =========================================
+       LANGUAGE TOGGLE
+       ========================================= */
 
 .languageToggle {
   margin-left: 0.75rem;
-  flex-shrink: 0;
 }
 
 .langButton {
@@ -245,8 +236,8 @@ body.mobileMenuOpen {
   gap: 0.5rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  border: 1px solid rgba(199, 173, 102, 0.4);
-  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(201, 162, 106, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   cursor: pointer;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -259,7 +250,7 @@ body.mobileMenuOpen {
   cursor: wait;
 }
 
-.langButton.arabicActive {
+.arabicActive {
   background: #f9f5e9;
   color: #111827;
 }
@@ -272,17 +263,17 @@ body.mobileMenuOpen {
   width: 32px;
   height: 14px;
   border-radius: 999px;
-  border: 1px solid rgba(199, 173, 102, 0.4);
-  padding: 1px;
+  border: 1px solid rgba(201, 162, 106, 0.4);
   display: flex;
   align-items: center;
+  padding: 1px;
 }
 
 .langSlider {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #c7ad66, #a98d4e);
+  background: linear-gradient(135deg, #c9a26a, #a27b43);
   transform: translateX(0);
   transition: transform 0.18s ease;
 }
@@ -291,12 +282,12 @@ body.mobileMenuOpen {
   transform: translateX(16px);
 }
 
-.langButton.transitioning {
-  opacity: 0.8;
+.transitioning {
+  opacity: 0.85;
   transform: scale(0.98);
 }
 
-.langSlider.pulsing {
+.pulsing {
   animation: langPulse 0.6s ease-in-out infinite;
 }
 
@@ -312,407 +303,587 @@ body.mobileMenuOpen {
   }
 }
 
-/* ===========================
-   MEGA MENU (MULTI-COLUMN)
-   =========================== */
+/* =========================================
+       DESKTOP MEGA MENU – GENERAL WRAPPER
+       ========================================= */
+
+@keyframes curtainOpen {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scaleY(0.85);
+    transform-origin: top center;
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scaleY(1);
+    transform-origin: top center;
+    clip-path: inset(0 0 0 0);
+  }
+}
 
 .megaMenu {
   position: absolute;
   top: 100%;
-  left: 0;
-  right: 0;
-  background: #fcfbfc;
-  border-top: 1px solid rgba(199, 173, 102, 0.28);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-  animation: fadeInDown 0.25s ease;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 4px;
+  width: 100%;
+  max-width: 1185px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: curtainOpen 0.7s cubic-bezier(0.24, 0.8, 0.25, 1);
+  transform-origin: top center;
   z-index: 999;
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* =========================================
+       MEGA MENU – PROPERTIES (3 columns)
+       ========================================= */
 
-.megaMenuContainer {
-  max-width: 1185px;
-  margin: 0 auto;
-  padding: 2rem;
-  box-sizing: border-box;
-}
-
-.megaMenuContent {
+.megaMenuInner {
   display: grid;
-  grid-template-columns: 0.95fr 0.95fr 0.95fr 1.3fr;
-  column-gap: 1.75rem;
-  align-items: flex-start;
+  grid-template-columns: 190px 320px minmax(420px, 1fr);
+  min-height: 360px;
 }
 
-/* Column sections */
-.menuLevel {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+/* left column – categories */
+.megaColumnLeft {
+  background: #f9fafb;
+  padding: 22px 18px 22px 20px;
+  border-right: 1px solid rgba(209, 213, 219, 0.9);
 }
 
-.menuLevelHeader {
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid rgba(199, 173, 102, 0.32);
+.megaColumnHeader {
+  margin-bottom: 10px;
 }
 
-.menuLevelTitle {
-  margin: 0 0 0.4rem 0;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
+.megaColumnLabel {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #c7ad66;
+  color: #9ca3af;
 }
 
-.menuLevelDescription {
+.categoryList {
+  list-style: none;
   margin: 0;
-  font-size: 0.8rem;
-  color: #555555;
-}
-
-/* Categories */
-.categoriesGrid {
-  margin-top: 0.5rem;
+  padding: 4px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 6px;
 }
 
-.categoryCard {
+.categoryLink {
+  width: 100%;
+  text-align: left;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 500;
+  transition: all 0.16s ease;
+}
+
+.categoryLink:hover,
+.activeCategory {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18);
+  font-weight: bold;
+}
+
+/* middle column – projects */
+.megaColumnMiddle {
+  padding: 22px 22px 22px 22px;
+  border-right: 1px solid rgba(209, 213, 219, 0.9);
+  overflow-x: hidden;
+}
+
+.projectList {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 0;
+  max-height: 310px;
+  overflow-x: hidden;
+}
+
+.projectList::-webkit-scrollbar {
+  width: 4px;
+}
+.projectList::-webkit-scrollbar-thumb {
+  background: #c9a26a;
+  border-radius: 999px;
+}
+
+.projectLink {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 11px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #111111;
+  font-size: 13px;
+  transition: background 0.14s ease, transform 0.14s ease;
+}
+
+.projectLink:hover,
+.activeProject {
+  background: #f3f4f6;
+  transform: translateX(3px);
+}
+
+.projectTitleInline {
+  font-weight: 600;
+}
+
+.projectMeta {
+  margin-top: 2px;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+/* right column – image */
+.megaColumnRight {
+  padding: 16px 16px 16px 18px;
+  display: flex;
+  align-items: stretch;
+}
+
+.megaImageWrapper {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #000000;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.megaImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-size: cover;
+  background-position: center;
+}
+
+/* =========================================
+       MEGA MENU – COMMUNITIES
+       ========================================= */
+
+.megaMenuInnerCommunities {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  min-height: 320px;
+}
+
+/* LEFT */
+.megaCommunitiesLeft {
+  background: #f9fafb;
+  padding: 22px 22px 22px 22px;
+  border-right: 1px solid rgba(209, 213, 219, 0.9);
+}
+
+.communitySearchForm {
+  margin-bottom: 10px;
+}
+
+.communitySearchInput {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  outline: none;
+}
+
+.communitySearchInput:focus {
+  border-color: #c9a26a;
+}
+
+.communityList {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.communityList::-webkit-scrollbar {
+  width: 4px;
+}
+.communityList::-webkit-scrollbar-thumb {
+  background: #c9a26a;
+  border-radius: 999px;
+}
+
+.communityLink {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(199, 173, 102, 0.2);
-  background: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s ease;
+  justify-content: space-between;
+  padding: 8px 11px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #111827;
+  font-size: 13px;
+  transition: background 0.16s ease, transform 0.16s ease;
 }
 
-.categoryCard:hover,
-.categoryCard.active {
-  border-color: rgba(199, 173, 102, 0.6);
-  box-shadow: 0 10px 26px rgba(199, 173, 102, 0.15);
-  transform: translateX(4px);
+.communityLink:hover,
+.activeCommunity {
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
+  transform: translateX(3px);
 }
 
-.categoryInfo {
-  flex: 1;
+.communityName {
+  font-weight: 500;
 }
 
-.categoryName {
-  margin: 0 0 0.25rem 0;
-  font-size: 0.9rem;
+.communityArrow {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* RIGHT PREVIEW */
+
+.megaCommunitiesRight {
+  padding: 18px 20px 20px 20px;
+  display: flex;
+  align-items: stretch;
+}
+
+.communityPreviewWrapper {
+  display: grid;
+  grid-template-rows: minmax(220px, 1.5fr) auto;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0b1120;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.communityPreviewImage {
+  background-size: cover;
+  background-position: center;
+}
+
+.communityPreviewInfo {
+  padding: 18px 20px 18px 20px;
+  background: #ffffff;
+}
+
+.communityPreviewTitle {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.communityPreviewLocation {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.communityPreviewStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.communityStat {
+  min-width: 140px;
+}
+
+.communityStatLabel {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ca3af;
+}
+
+.communityStatValue {
+  display: block;
+  font-size: 13px;
   font-weight: 600;
   color: #111827;
 }
 
-.categoryDescription {
-  margin: 0;
-  font-size: 0.75rem;
-  color: #6b7280;
+.communityPreviewButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: none;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
-.categoryArrow {
-  font-size: 1.1rem;
-  color: #c7ad66;
+/* =========================================
+       MEGA MENU – DEVELOPERS
+       ========================================= */
+
+.megaMenuInnerDevelopers {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  min-height: 320px;
 }
 
-/* Developers */
-.developersList {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+/* left list */
+.megaDevelopersLeft {
+  background: #f9fafb;
+  padding: 22px 22px 22px 22px;
+  border-right: 1px solid rgba(209, 213, 219, 0.9);
 }
 
-.developerItem {
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(199, 173, 102, 0.2);
-  background: rgba(255, 255, 255, 0.96);
-  cursor: pointer;
-  transition: all 0.2s ease;
+.developersListDesktop {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  max-height: 270px;
+  overflow-y: auto;
 }
 
-.developerItem:hover,
-.developerItem.active {
-  border-color: rgba(199, 173, 102, 0.6);
-  box-shadow: 0 10px 26px rgba(199, 173, 102, 0.15);
-  transform: translateX(4px);
+.developersListDesktop::-webkit-scrollbar {
+  width: 4px;
+}
+.developersListDesktop::-webkit-scrollbar-thumb {
+  background: #c9a26a;
+  border-radius: 999px;
 }
 
-.developerHeader {
+.developerItemDesktop {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 10px;
+  padding: 8px 11px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: #111827;
+  font-size: 13px;
+  background: #ffffff;
+  margin-bottom: 8px;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease,
+    transform 0.16s ease;
 }
 
-.developerLogo {
-  width: 52px;
-  height: 52px;
+.developerItemDesktop:hover,
+.activeDeveloper {
+  border-color: rgba(201, 162, 106, 0.7);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18);
+  transform: translateX(3px);
+}
+
+.developerLogoDesktop {
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
-  overflow: hidden;
-  flex-shrink: 0;
   background: #f3f4f6;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(199, 173, 102, 0.28);
+  flex-shrink: 0;
 }
 
-.developerLogoImage {
+.developerLogoDesktop img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   padding: 4px;
 }
 
-.developerInfo {
+.developerInfoDesktop {
   flex: 1;
 }
 
-.developerName {
-  margin: 0 0 0.15rem 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.projectCount {
-  margin: 0;
-  font-size: 0.72rem;
-  color: #6b7280;
-}
-
-.developerArrow {
-  font-size: 1rem;
-  color: #c7ad66;
-}
-
-/* Projects */
-.projectsList {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.projectItem {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
-  border: 1px solid rgba(199, 173, 102, 0.2);
-  background: rgba(255, 255, 255, 0.96);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s ease;
-}
-
-.projectItem:hover,
-.projectItem.active {
-  border-color: rgba(199, 173, 102, 0.6);
-  box-shadow: 0 10px 26px rgba(199, 173, 102, 0.15);
-  transform: translateX(4px);
-}
-
-.projectInfo {
-  flex: 1;
-}
-
-.projectTitle {
-  margin: 0 0 0.2rem 0;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #111827;
-}
-
-.projectDescription {
-  margin: 0;
-  font-size: 0.74rem;
-  color: #6b7280;
-}
-
-.projectArrow {
-  font-size: 1rem;
-  color: #c7ad66;
-}
-
-/* Preview panel */
-.imagePreviewPanel {
-  border-left: 1px solid rgba(199, 173, 102, 0.3);
-  padding-left: 1.75rem;
-}
-
-.imagePreviewContent {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.previewImageLink {
+.developerNameDesktop {
   display: block;
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.25s ease;
+  font-weight: 600;
 }
 
-.previewImageLink:hover {
-  transform: scale(1.02);
+.developerTaglineDesktop {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
 }
 
-.previewImage {
+.developerArrowDesktop {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* right preview */
+.megaDevelopersRight {
+  padding: 18px 20px 20px 20px;
+  display: flex;
+  align-items: stretch;
+}
+
+.developerPreviewWrapper {
+  display: grid;
+  grid-template-rows: minmax(220px, 1.5fr) auto;
   width: 100%;
-  height: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #020617;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.developerPreviewImage {
   background-size: cover;
   background-position: center;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* Glow animation when project selected */
-.projectImageActive {
-  animation: glowPulse 2s ease-in-out infinite alternate;
+.developerPreviewInfo {
+  padding: 18px 20px 18px 20px;
+  background: #ffffff;
 }
 
-@keyframes glowPulse {
-  from {
-    box-shadow: 0 0 18px rgba(199, 173, 102, 0.55);
-  }
-  to {
-    box-shadow: 0 0 30px rgba(199, 173, 102, 0.9);
-  }
-}
-
-.previewInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.previewTitle {
-  margin: 0;
-  font-size: 1.05rem;
+.developerPreviewTitle {
+  margin: 0 0 4px 0;
+  font-size: 18px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #c7ad66;
 }
 
-.previewDescription {
-  margin: 0;
-  font-size: 0.85rem;
+.developerPreviewTagline {
+  margin: 0 0 12px 0;
+  font-size: 13px;
   color: #4b5563;
 }
 
-.previewStats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-}
-
-.stat {
-  padding: 0.3rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(199, 173, 102, 0.5);
-  background: rgba(199, 173, 102, 0.12);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #c7ad66;
-}
-
-.previewButton {
-  margin-top: 0.5rem;
+.developerPreviewButton {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.75rem 1.5rem;
+  justify-content: center;
+  padding: 9px 20px;
   border-radius: 999px;
   border: none;
-  background: linear-gradient(135deg, #c7ad66, #a98d4e);
-  color: #111827;
-  font-size: 0.8rem;
-  font-weight: 700;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+}
+
+/* =========================================
+       DESKTOP SEARCH ICON
+       ========================================= */
+
+.searchItem {
+  margin-left: 0.75rem;
+}
+
+.searchTrigger {
+  border: none;
+  background: none;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(199, 173, 102, 0.4);
-  transition: all 0.2s ease;
+  padding: 0.2rem;
 }
 
-.previewButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(199, 173, 102, 0.6);
+.searchIcon {
+  font-size: 18px;
+  color: #f9fafb;
 }
 
-.buttonArrow {
-  font-size: 1rem;
+/* =========================================
+       CINEMATIC SEARCH OVERLAY (top curtain)
+       ========================================= */
+
+.searchOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  pointer-events: none;
 }
 
-/* ===========================
-   DESKTOP CONTACT BADGE (if used)
-   =========================== */
+.searchPanel {
+  pointer-events: auto;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  animation: searchCurtain 0.7s cubic-bezier(0.24, 0.8, 0.25, 1);
+  transform-origin: top center;
+}
 
-.desktopContact {
+@keyframes searchCurtain {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) scaleY(0.9);
+    clip-path: inset(0 0 100% 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.searchPanelInner {
+  max-width: 1185px;
+  margin: 0 auto;
+  padding: 56px 16px 24px;
+}
+
+.searchForm {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  gap: 18px;
 }
 
-.contactBadge {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.6rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(199, 173, 102, 0.35);
-  cursor: pointer;
-  transition: all 0.2s ease;
+.searchInput {
+  flex: 1;
+  padding: 12px 4px;
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  font-size: 16px;
+  outline: none;
 }
 
-.contactBadge:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
+.searchInput:focus {
+  border-bottom-color: #c9a26a;
 }
 
-.contactInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.contactLabel {
-  font-size: 0.65rem;
+.searchButton {
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: 1px solid #111827;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
 }
 
-.contactNumber {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #c7ad66;
+.searchClose {
+  border: none;
+  background: none;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-/* ===========================
-   MOBILE MENU BUTTON
-   =========================== */
+/* =========================================
+       MOBILE MENU BUTTON
+       ========================================= */
 
 .mobileMenuButton {
   position: absolute;
@@ -725,44 +896,41 @@ body.mobileMenuOpen {
   flex-direction: column;
   justify-content: space-between;
   padding: 0;
-  border: 1px solid rgba(199, 173, 102, 0.4);
   border-radius: 4px;
-  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(201, 162, 106, 0.55);
+  background: rgba(17, 24, 39, 0.8);
   cursor: pointer;
   z-index: 1001;
 }
 
 .mobileMenuButton span {
-  display: block;
-  height: 2px;
   width: 100%;
-  background: #fef3c7;
+  height: 2px;
   border-radius: 999px;
+  background: #fef3c7;
   transition: all 0.2s ease;
 }
 
 .mobileMenuButton.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
-
 .mobileMenuButton.active span:nth-child(2) {
   opacity: 0;
 }
-
 .mobileMenuButton.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Hide burger on desktop */
+/* hide burger on desktop, show nav */
 @media (min-width: 1024px) {
   .mobileMenuButton {
     display: none;
   }
 }
 
-/* ===========================
-   MOBILE NAV OVERLAY
-   =========================== */
+/* =========================================
+       MOBILE NAV OVERLAY
+       ========================================= */
 
 .mobileNav {
   position: fixed;
@@ -770,7 +938,7 @@ body.mobileMenuOpen {
   z-index: 998;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .mobileNav.active {
@@ -797,7 +965,7 @@ body.mobileMenuOpen {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(199, 173, 102, 0.3);
+  border-bottom: 1px solid rgba(201, 162, 106, 0.35);
 }
 
 .mobileLogo {
@@ -821,7 +989,7 @@ body.mobileMenuOpen {
   gap: 0.4rem;
 }
 
-/* Mobile language toggle */
+/* language toggle - mobile */
 .mobileLanguageToggle {
   margin-bottom: 1rem;
 }
@@ -833,18 +1001,22 @@ body.mobileMenuOpen {
   justify-content: space-between;
   padding: 0.65rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid rgba(199, 173, 102, 0.5);
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(201, 162, 106, 0.7);
+  background: rgba(0, 0, 0, 0.4);
   color: #fefce8;
   font-size: 0.85rem;
   cursor: pointer;
+}
+
+.mobileLangText {
+  font-size: 0.86rem;
 }
 
 .mobileLangIndicator {
   width: 40px;
   height: 16px;
   border-radius: 999px;
-  border: 1px solid rgba(199, 173, 102, 0.4);
+  border: 1px solid rgba(201, 162, 106, 0.45);
   display: flex;
   align-items: center;
   padding: 1px;
@@ -854,7 +1026,7 @@ body.mobileMenuOpen {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #c7ad66, #a98d4e);
+  background: linear-gradient(135deg, #c9a26a, #a27b43);
   transform: translateX(0);
   transition: transform 0.18s ease;
 }
@@ -863,7 +1035,8 @@ body.mobileMenuOpen {
   transform: translateX(20px);
 }
 
-/* Mobile nav links */
+/* MOBILE LINKS */
+
 .mobileNavLink {
   display: flex;
   align-items: center;
@@ -884,8 +1057,8 @@ body.mobileMenuOpen {
 
 .mobileNavLink:hover,
 .mobileNavLink.active {
-  border-color: rgba(199, 173, 102, 0.6);
-  background: rgba(17, 24, 39, 0.9);
+  border-color: rgba(201, 162, 106, 0.7);
+  background: rgba(15, 23, 42, 0.95);
   color: #fefce8;
   transform: translateX(4px);
 }
@@ -894,20 +1067,25 @@ body.mobileMenuOpen {
   flex: 1;
 }
 
+.mobileCta {
+  border-color: rgba(201, 162, 106, 0.9);
+  background: rgba(24, 24, 27, 0.9);
+}
+
 .mobileDropdownArrow {
   font-size: 0.75rem;
-  color: #fef3c7;
   transition: transform 0.2s ease;
 }
 
-.mobileDropdownArrow.expanded {
+.expanded {
   transform: rotate(180deg);
 }
 
-/* Mobile mega menu item */
+/* MOBILE MEGA MENU */
+
 .mobileMegaMenuItem {
   border-radius: 12px;
-  border: 1px solid rgba(199, 173, 102, 0.3);
+  border: 1px solid rgba(201, 162, 106, 0.4);
   overflow: hidden;
   margin-bottom: 0.4rem;
 }
@@ -921,19 +1099,26 @@ body.mobileMenuOpen {
   background: #020617;
 }
 
+.mobileMenuLevel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
 .mobileMenuLevelTitle {
   margin: 0 0 0.6rem 0;
   font-size: 0.78rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #facc15;
 }
 
-/* Mobile categories */
+/* categories (mobile) */
+
 .mobileCategoryItem {
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.7);
   margin-bottom: 0.5rem;
 }
 
@@ -944,14 +1129,14 @@ body.mobileMenuOpen {
   align-items: center;
   gap: 0.6rem;
   border: none;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.97);
   color: #e5e7eb;
   font-size: 0.9rem;
   cursor: pointer;
 }
 
 .mobileCategoryButton.expanded {
-  background: rgba(30, 64, 175, 0.8);
+  background: rgba(30, 64, 175, 0.9);
 }
 
 .mobileCategoryName {
@@ -962,10 +1147,11 @@ body.mobileMenuOpen {
   font-size: 0.75rem;
 }
 
-/* Mobile developers */
+/* developers (mobile) */
+
 .mobileDevelopersList {
   padding: 0.6rem;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.95);
 }
 
 .mobileDevelopersTitle {
@@ -990,14 +1176,14 @@ body.mobileMenuOpen {
   gap: 0.6rem;
   padding: 0.65rem 0.8rem;
   border: none;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.9);
   color: #e5e7eb;
   font-size: 0.84rem;
   cursor: pointer;
 }
 
 .mobileDeveloperButton.expanded {
-  background: rgba(30, 64, 175, 0.85);
+  background: rgba(30, 64, 175, 0.9);
 }
 
 .mobileDeveloperLogo {
@@ -1026,10 +1212,11 @@ body.mobileMenuOpen {
   font-size: 0.75rem;
 }
 
-/* Mobile projects */
+/* projects (mobile) */
+
 .mobileProjectsList {
   padding: 0.55rem;
-  background: rgba(15, 23, 42, 0.95);
+  background: rgba(15, 23, 42, 0.98);
 }
 
 .mobileProjectLink {
@@ -1044,7 +1231,7 @@ body.mobileMenuOpen {
 }
 
 .mobileProjectLink:hover {
-  background: rgba(30, 64, 175, 0.9);
+  background: rgba(30, 64, 175, 0.92);
 }
 
 .mobileProjectImage {
@@ -1071,7 +1258,8 @@ body.mobileMenuOpen {
   font-size: 0.9rem;
 }
 
-/* Mobile contact */
+/* contact (mobile) */
+
 .mobileContact {
   margin-top: auto;
   padding-top: 1.5rem;
@@ -1091,8 +1279,8 @@ body.mobileMenuOpen {
 .contactItem {
   padding: 0.7rem 0.8rem;
   border-radius: 10px;
-  border: 1px solid rgba(55, 65, 81, 0.8);
-  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: rgba(15, 23, 42, 0.95);
 }
 
 .contactDetails {
@@ -1113,9 +1301,9 @@ body.mobileMenuOpen {
   color: #fefce8;
 }
 
-/* ===========================
-   RESPONSIVE TWEAKS
-   =========================== */
+/* =========================================
+       RESPONSIVE TWEAKS
+       ========================================= */
 
 @media (max-width: 1023px) {
   .container {
@@ -1127,15 +1315,11 @@ body.mobileMenuOpen {
   }
 
   .logoSec {
-    display: none;
+    display: block;
   }
 
   .languageToggle {
     display: none;
-  }
-
-  .headerSpacer {
-    height: 72px;
   }
 }
 
@@ -1143,123 +1327,72 @@ body.mobileMenuOpen {
   .container {
     padding: 0 1rem;
   }
-
-  .headerSpacer {
-    height: 68px;
-  }
 }
 
-@media (max-width: 480px) {
-  .headerSpacer {
-    height: 64px;
-  }
+/* ABOUT MEGA MENU (2 columns) */
 
-  .mobileNavContent {
-    padding-inline: 1rem;
-  }
-}
-/* ===========================
-   SOBHA-LIKE MEGA MENU TUNING
-   (final, safe overrides)
-   =========================== */
-
-/* Keep your original grid, just force a Sobha-like height */
-.megaMenuContent {
-  min-height: 430px; /* white panel height */
+.megaMenuInnerAbout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 260px;
 }
 
-/* Make lists scroll inside that fixed height */
-.categoriesGrid,
-.developersList,
-.projectsList {
-  max-height: 340px; /* fits under headers */
-  overflow-y: auto;
-  padding-right: 4px;
+.aboutLeft {
+  background: #f9fafb;
+  padding: 22px 18px 22px 20px;
+  border-right: 1px solid rgba(209, 213, 219, 0.9);
 }
 
-/* Subtle scrollbar styling */
-.categoriesGrid::-webkit-scrollbar,
-.developersList::-webkit-scrollbar,
-.projectsList::-webkit-scrollbar {
-  width: 4px;
-}
-
-.categoriesGrid::-webkit-scrollbar-thumb,
-.developersList::-webkit-scrollbar-thumb,
-.projectsList::-webkit-scrollbar-thumb {
-  background: rgba(199, 173, 102, 0.6);
-  border-radius: 999px;
-}
-
-/* Right preview column should stretch full height */
-.imagePreviewPanel {
-  display: flex;
-  align-items: stretch;
-}
-
-/* Make the preview image behave like Sobha’s hero inside the panel */
-.imagePreviewContent {
+.aboutList {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 6px;
+}
+
+.aboutLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: transparent;
+  text-decoration: none;
+  color: #111111;
+  font-size: 13px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.aboutLink:hover,
+.activeAbout {
+  background: #efefef;
+  transform: translateX(4px);
+}
+
+.aboutArrow {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+/* RIGHT COLUMN */
+.aboutRight {
+  padding: 18px;
+}
+
+.aboutPreviewWrapper {
   width: 100%;
   height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+  background: black;
 }
 
-.previewImage {
+.aboutPreviewImage {
   width: 100%;
-  flex: 1; /* fill available height */
-  min-height: 320px;
-  max-height: 430px;
+  aspect-ratio: 16/9;
   background-size: cover;
   background-position: center;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-/* Faster, snappier drop animation without redefining everything */
-.megaMenu {
-  animation: fadeInDown 0.18s ease; /* use existing keyframes, just faster */
-}
-/* ===========================
-   BIGGER PREVIEW IMAGE PANEL
-   =========================== */
-
-/* Make the whole mega menu panel taller and give more width to the image column */
-.megaMenuContent {
-  min-height: 560px; /* was ~430px */
-  grid-template-columns: 0.8fr 0.8fr 0.9fr 1.9fr; /* more space for image */
-}
-
-/* Lists still scroll but get a bit more room */
-.categoriesGrid,
-.developersList,
-.projectsList {
-  max-height: 440px; /* was 340px */
-}
-
-/* Ensure the preview column stretches full height */
-.imagePreviewPanel {
-  display: flex;
-  align-items: stretch;
-}
-
-/* Make the image itself much taller and fill the column */
-.imagePreviewContent {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.previewImage {
-  width: 100%;
-  flex: 1;
-  min-height: 420px; /* bigger base height */
-  max-height: 560px; /* matches megaMenuContent height */
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
 }

@@ -1,408 +1,610 @@
-.artOfDetailSection {
+/* ====== BASE SECTION WRAPPER ====== */
+.artOfDetailSec {
   position: relative;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  z-index: 2;
-  /* small overlap with the hero – tweak as you like */
-  padding-top: 18vh;
-  overflow: visible;
-}
-
-/* Background behind */
-.backgroundWrapper {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.backgroundImage {
-  object-fit: cover;
-  object-position: center top;
   width: 100%;
+  margin-top: -15vh;
+  z-index: 2;
+  background: transparent;
+}
+
+/* ====== CONTAINER ====== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
   height: 100%;
 }
 
-/* ---------- WHITE BLOCK (Sobha-like) ---------- */
-
-.artOfDetailWrapper {
-  position: relative; /* NOT fixed */
-  z-index: 2;
-  width: 100%;
-  max-width: 1330px;
-  margin: 0 auto;
-  /* pull it slightly into the hero so it "cuts" the image */
-  margin-top: -18vh;
-
-  height: 80vh; /* similar height to Sobha */
-  background: #ffffff;
-  border-radius: 50vw 50vw 0 0; /* big circular top */
+/* ====== WHITE PILL BLOCK ====== */
+.artAnimSec {
+  border-top-right-radius: 50vw;
+  border-top-left-radius: 50vw;
   overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
-
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-
-  padding: 60px 80px;
-  box-sizing: border-box;
-
+  height: 70vh;
+  background: #ffffff;
   transform-origin: center bottom;
-  /* start smaller, like the blue overlay version on Sobha */
-  transform: scale(0.7);
-  opacity: 0;
-
-  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
-    border-radius 0.8s ease, opacity 0.6s ease;
+  box-shadow: none;
 }
 
-/* when section is in view */
-.artOfDetailWrapper.active {
-  transform: scale(1);
-  border-radius: 50px 50px 0 0; /* final rounded top, like Sobha */
-  opacity: 1;
-}
-
-/* when section is fully in view - EXPAND TO FULL WIDTH */
-.artOfDetailWrapper.expanded {
-  max-width: 100vw;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  border-radius: 0;
-  padding: 60px 10%;
-}
-
-/* Inner layout */
-.artOfDetailInner {
+/* ====== LAYOUT ====== */
+.row {
   display: flex;
   width: 100%;
   height: 100%;
-  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Content fade in */
-.artOfDetailWrapper .artOfDetailInner {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+.h100vh {
+  height: 70vh;
 }
 
-.artOfDetailWrapper.active .artOfDetailInner {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* LEFT COLUMN */
-.contentCol {
-  flex: 0 0 45%;
-  max-width: 45%;
+/* ====== CONTENT COLUMN ====== */
+.artContentSec {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 80px 40px 80px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Logo block */
-.logoBlock {
-  margin-bottom: 40px;
-}
-
-.logoImage {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* Text */
+/* ====== TYPOGRAPHY ====== */
 .description {
-  font-size: 16px;
-  line-height: 28px;
-  color: #222222;
-  max-width: 430px;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0 0 40px;
-  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  color: #000;
+  font-weight: 300;
 }
 
-/* Button */
-.ctaButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 44px;
+.companyLine {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #666;
+  margin: 0 0 32px;
+  font-weight: 400;
+}
+
+/* ====== BUTTON ====== */
+.buttonMain {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.button1 {
+  position: relative;
   border-radius: 999px;
-  border: 1px solid #111111;
+  border: 1px solid #111;
   background: transparent;
-  color: #111111;
+  padding: 16px 48px;
   font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   cursor: pointer;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
   transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.ctaButton:hover {
-  background: #111111;
-  color: #ffffff;
-  border-color: #111111;
+.button1:hover {
+  background: #111;
+  color: #fff;
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.18);
   transform: translateY(-2px);
 }
 
-/* RIGHT COLUMN - Smooth image animation */
-.imageCol {
+/* ====== IMAGE SECTIONS ====== */
+.ownerImgWrapper {
   position: relative;
-  flex: 0 0 55%;
-  max-width: 55%;
-  opacity: 0;
-  transform: translateX(50px) scale(0.9);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-}
-
-.artOfDetailWrapper.active .imageCol {
-  opacity: 1;
-  transform: translateX(0) scale(1);
-}
-
-.mainImage {
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 10px;
-  transition: transform 0.6s ease;
-}
-
-.artOfDetailWrapper.active .mainImage:hover {
-  transform: scale(1.02);
-}
-
-/* ---------- Arrow button ---------- */
-
-.initialArrow {
-  position: fixed;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background-color: rgba(0, 0, 0, 0.45);
-  color: #ffffff;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
+  flex: 0 0 50%;
+  max-width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-weight: 500;
+  padding: 80px 0;
 }
 
-.initialArrow:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.9);
-  transform: translateX(-50%) translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.ownerImg {
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.25));
 }
 
-.initialArrow.hidden {
+.ownerImgMobile {
+  text-align: center;
+  /* padding: 40px 0; */
+}
+
+.ownerImgMobileImg {
+  object-fit: contain;
+  filter: drop-shadow(0 22px 55px rgba(0, 0, 0, 0.2));
+}
+
+/* ====== VISIBILITY TOGGLES ====== */
+.onlyDesk {
+  display: block;
+}
+
+.onlyMob {
+  display: none;
+}
+
+/* ============================================================================ */
+/* ============================ SLOGAN VARIATIONS ============================ */
+/* ============================================================================ */
+
+/* === VARIATION 1: ARCHITECTURAL STATEMENT === */
+.sloganV1 {
+  margin: 0 0 48px;
+}
+
+.sloganArchitectural {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sloganPre {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.sloganMainContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.sloganMain {
+  font-family: "Chronicle Display", serif;
+  font-size: 64px;
+  line-height: 0.9;
+  font-weight: 300;
+  color: #000;
+  letter-spacing: -0.01em;
+  display: block;
+}
+
+.sloganDivider {
+  width: 80px;
+  height: 1.5px;
+  background: linear-gradient(90deg, #000 0%, transparent 100%);
+  margin-top: 16px;
+  opacity: 0.6;
+}
+
+/* === VARIATION 2: VERTICAL POWER PLAY === */
+.sloganV2 {
+  margin: 0 0 56px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.sloganVertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.sloganPowerMain {
+  font-family: "Chronicle Display", serif;
+  font-size: 68px;
+  line-height: 0.85;
+  font-weight: 300;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+/* === VARIATION 3: MINIMALIST FORTUNE === */
+.sloganV3 {
+  margin: 0 0 52px;
+  position: relative;
+  padding-left: 32px;
+}
+
+.sloganV3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: #000;
+  opacity: 0.15;
+}
+
+.sloganFortuneTop {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+.sloganFortuneMain {
+  font-family: "Chronicle Display", serif;
+  font-size: 60px;
+  line-height: 0.9;
+  font-weight: 300;
+  color: #000;
+  letter-spacing: -0.01em;
+}
+
+/* === VARIATION 4: CRYPTOGRAPHIC WEALTH === */
+.sloganV4 {
+  margin: 0 0 48px;
+  font-family: monospace;
+}
+
+.sloganCodeTop {
+  font-size: 9px;
+  letter-spacing: 0.6em;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.4;
+  font-weight: 300;
+}
+
+.sloganCodeMain {
+  font-size: 52px;
+  line-height: 0.95;
+  color: #000;
+  letter-spacing: -0.005em;
+  position: relative;
+  display: inline-block;
+}
+
+.sloganCodeLine {
+  width: 100%;
+  height: 0.5px;
+  background: #000;
+  margin-top: 16px;
+  opacity: 0.1;
+}
+
+/* === VARIATION 5: GEOMETRIC PROOF === */
+.sloganV5 {
+  margin: 0 0 56px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.sloganGeometricShape {
+  width: 50px;
+  height: 50px;
+  border: 0.5px solid #000;
+  opacity: 0.15;
+  position: relative;
+}
+
+.sloganGeometricShape::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: #000;
+  opacity: 0.3;
+}
+
+.sloganGeometricMain {
+  font-family: "Chronicle Display", serif;
+  font-size: 58px;
+  line-height: 0.9;
+  font-weight: 300;
+  color: #000;
+  letter-spacing: -0.015em;
+}
+
+/* === VARIATION 6: KINETIC TYPE === */
+.sloganV6 {
+  margin: 0 0 52px;
+  overflow: hidden;
+}
+
+.sloganKineticContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sloganKineticLine {
+  font-family: "Chronicle Display", serif;
+  font-size: 56px;
+  line-height: 0.85;
+  font-weight: 300;
+  color: #000;
+  transform: translateX(-8px);
   opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(20px);
+  animation: slideIn 0.8s ease-out forwards;
 }
 
-.arrowIcon {
-  transition: transform 0.3s ease;
+.sloganKineticLine:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.sloganKineticLine:nth-child(2) {
+  animation-delay: 0.3s;
 }
 
-.initialArrow:hover .arrowIcon {
-  transform: translateY(3px);
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-/* ---------- RESPONSIVE: Phones & Tablets Vertical Layout ---------- */
+/* === VARIATION 7: FRACTIONAL ELITE === */
+.sloganV7 {
+  margin: 0 0 48px;
+}
 
-@media (max-width: 991px) {
-  .artOfDetailWrapper {
+.sloganFraction {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.sloganFractionTop {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 48px;
+  font-weight: 200;
+  color: #000;
+  opacity: 0.8;
+  line-height: 0.8;
+}
+
+.sloganFractionBar {
+  width: 1px;
+  height: 32px;
+  background: #000;
+  opacity: 0.2;
+  transform: rotate(30deg);
+}
+
+.sloganFractionMain {
+  font-family: "Chronicle Display", serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: #000;
+  line-height: 0.95;
+}
+
+/* === VARIATION 8: TYPOGRAPHIC SCULPTURE === */
+.sloganV8 {
+  margin: 0 0 60px;
+  position: relative;
+}
+
+.sloganSculpture {
+  transform: skewX(-3deg);
+  display: inline-block;
+}
+
+.sloganSculptureMain {
+  font-family: "Chronicle Display", serif;
+  font-size: 62px;
+  line-height: 0.85;
+  font-weight: 300;
+  color: #000;
+  letter-spacing: -0.02em;
+  transform: skewX(3deg);
+  display: block;
+}
+
+.sloganSculptureCaption {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.6em;
+  color: #000;
+  text-transform: uppercase;
+  margin-top: 16px;
+  opacity: 0.4;
+  transform: skewX(-3deg);
+}
+
+/* ============================================================================ */
+/* ============================ RESPONSIVE DESIGN ============================ */
+/* ============================================================================ */
+
+@media (max-width: 1000px) {
+  .artOfDetailSec {
+    margin-top: 0;
+  }
+
+  .artAnimSec {
     height: auto;
-    min-height: 80vh;
-    margin-top: -12vh;
-    padding: 40px 28px;
-    border-radius: 40px 40px 0 0;
+    background: #ffffff !important;
   }
 
-  .artOfDetailWrapper.expanded {
-    max-width: 100vw;
-    width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 40px 5%;
+  .container {
+    padding: 0;
   }
 
-  /* MOBILE/TABLET VERTICAL LAYOUT: Logo → Text → Button → Image */
-  .artOfDetailInner {
+  .row {
     flex-direction: column;
-    gap: 40px;
+    align-items: center;
+    height: auto;
   }
 
-  .contentCol,
-  .imageCol {
+  .h100vh {
+    height: auto;
+  }
+
+  .artContentSec {
+    padding: 60px 32px;
+    text-align: center;
     max-width: 100%;
     flex: 0 0 100%;
   }
 
-  /* Content column - everything stacked vertically */
-  .contentCol {
-    order: 1;
+  .ownerImgWrapper {
+    padding: 40px 0;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .companyLine {
+    font-size: 12px;
+    margin-bottom: 24px;
+  }
+
+  .buttonMain {
+    justify-content: center;
+  }
+
+  .onlyDesk {
+    display: none;
+  }
+
+  .onlyMob {
+    display: block;
+  }
+
+  /* Mobile slogan adjustments */
+  .sloganMain,
+  .sloganPowerMain,
+  .sloganFortuneMain,
+  .sloganGeometricMain,
+  .sloganKineticLine,
+  .sloganSculptureMain {
+    font-size: 42px !important;
+  }
+
+  .sloganCodeMain {
+    font-size: 38px !important;
+  }
+
+  .sloganFractionTop {
+    font-size: 36px !important;
+  }
+
+  .sloganFractionMain {
+    font-size: 28px !important;
+  }
+
+  /* Reset grid layouts */
+  .sloganV2,
+  .sloganV5 {
+    display: block;
     text-align: center;
   }
 
-  /* Logo at top */
-  .logoBlock {
-    margin-bottom: 30px;
-    order: 1;
+  .sloganVertical {
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-bottom: 16px;
+    display: block;
   }
 
-  /* Text below logo */
-  .description {
-    order: 2;
-    margin-bottom: 30px;
-    max-width: none;
+  .sloganV3 {
+    padding-left: 0;
   }
 
-  /* Button below text */
-  .ctaButton {
-    order: 3;
+  .sloganV3::before {
+    display: none;
   }
 
-  /* Image at bottom */
-  .imageCol {
-    order: 4; /* Changed to 4 to appear after all content */
-    height: 260px;
-    transform: translateY(30px) scale(0.95);
-  }
-
-  .artOfDetailWrapper.active .imageCol {
-    transform: translateY(0) scale(1);
-  }
-
-  .initialArrow {
-    bottom: 30px;
-    width: 60px;
-    height: 60px;
+  .sloganGeometricShape {
+    margin: 0 auto 20px;
   }
 }
 
-@media (max-width: 768px) {
-  .artOfDetailWrapper {
-    padding: 35px 24px;
-    margin-top: -10vh;
+@media (min-width: 767px) and (max-width: 1000px) {
+  .artContentSec {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .artContentSec {
+    padding: 48px 24px;
   }
 
-  .artOfDetailWrapper.expanded {
-    padding: 35px 5%;
+  .container {
+    padding: 0 16px;
   }
 
-  .contentCol {
-    text-align: center;
+  .sloganMain,
+  .sloganPowerMain,
+  .sloganFortuneMain,
+  .sloganGeometricMain,
+  .sloganKineticLine,
+  .sloganSculptureMain {
+    font-size: 36px !important;
+  }
+
+  .sloganCodeMain {
+    font-size: 32px !important;
+  }
+
+  .sloganFractionTop {
+    font-size: 32px !important;
+  }
+
+  .sloganFractionMain {
+    font-size: 24px !important;
   }
 
   .description {
     font-size: 15px;
-    line-height: 26px;
+    line-height: 1.5;
   }
 
-  .logoBlock {
-    margin-bottom: 25px;
-  }
-
-  .logoImage {
-    width: 180px;
-    margin: 0 auto;
-  }
-
-  .imageCol {
-    height: 220px;
-  }
-
-  .initialArrow {
-    bottom: 25px;
-    width: 55px;
-    height: 55px;
-  }
-
-  .arrowIcon {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-@media (max-width: 575px) {
-  .artOfDetailWrapper {
-    padding: 30px 20px;
-    border-radius: 30px 30px 0 0;
-    margin-top: -8vh;
-  }
-
-  .artOfDetailWrapper.expanded {
-    padding: 30px 4%;
-  }
-
-  .logoImage {
-    width: 160px;
-  }
-
-  .description {
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 25px;
-  }
-
-  .ctaButton {
-    padding: 12px 36px;
+  .button1 {
+    padding: 14px 40px;
     font-size: 11px;
   }
-
-  .imageCol {
-    height: 200px;
-  }
-
-  .initialArrow {
-    bottom: 20px;
-    width: 50px;
-    height: 50px;
-  }
-
-  .arrowIcon {
-    width: 20px;
-    height: 20px;
-  }
 }
 
-@media (max-width: 400px) {
-  .artOfDetailWrapper {
-    padding: 25px 16px;
+@media (max-width: 360px) {
+  .artContentSec {
+    padding: 40px 20px;
   }
 
-  .artOfDetailWrapper.expanded {
-    padding: 25px 3%;
+  .sloganMain,
+  .sloganPowerMain,
+  .sloganFortuneMain,
+  .sloganGeometricMain,
+  .sloganKineticLine,
+  .sloganSculptureMain {
+    font-size: 32px !important;
   }
 
-  .description {
-    font-size: 13px;
-    line-height: 22px;
-  }
-
-  .initialArrow {
-    width: 45px;
-    height: 45px;
-    bottom: 15px;
-  }
-
-  .arrowIcon {
-    width: 18px;
-    height: 18px;
+  .sloganCodeMain {
+    font-size: 28px !important;
   }
 }

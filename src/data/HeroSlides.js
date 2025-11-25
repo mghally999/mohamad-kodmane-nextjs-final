@@ -110,7 +110,7 @@ export const createMenuData = (t, locale, CDN) => {
             id: 3,
             name: t("developers.damacProperties"),
             slug: "damac",
-            image: `${CDN}/damac-islands-2/hero-masterplan-aerial.jpg`,
+            image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
             logo: `/damac-logo.png`,
             projects: [
               {

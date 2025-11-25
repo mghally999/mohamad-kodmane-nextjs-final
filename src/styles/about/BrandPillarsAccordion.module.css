@@ -1,0 +1,370 @@
+/* SECTION WRAPPER */
+.brandAccSec {
+  background-color: #ffffff;
+  padding: 80px 0 120px;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ACCORDION CORE (mimic Bootstrap accordion-item lines) */
+.accordion {
+  width: 100%;
+}
+
+.accItem {
+  border-top: 1px solid #d1d1d1;
+  border-bottom: 0;
+  overflow: hidden;
+}
+
+.accItem:last-child {
+  border-bottom: 1px solid #d1d1d1;
+}
+
+/* HEADER ROW – position like Sobha */
+.accHeader {
+  width: 100%;
+  padding: 15px 24px;
+  display: flex;
+  align-items: flex-start;
+  border: none;
+  background: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .accHeader {
+    padding: 15px 0;
+    align-items: flex-start;
+  }
+}
+
+/* PLUS / MINUS ICON – EXACT BEHAVIOUR */
+.icons {
+  transition: 0.5s ease;
+  background: url("/about/icons/plus-icon-big.svg") no-repeat center center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+}
+
+@media (min-width: 1000px) {
+  .icons {
+    opacity: 0;
+    visibility: hidden;
+    margin-left: -60px; /* hides it to the left like Sobha */
+  }
+}
+
+/* Mobile: icon always visible, aligned like original */
+@media (max-width: 1000px) {
+  .icons {
+    margin-top: 25px;
+    margin-right: 28px;
+    opacity: 1;
+  }
+}
+
+/* Hover + active: slide in + show  */
+@media (min-width: 1000px) {
+  .accHeader:hover .icons,
+  .accItemActive .icons {
+    opacity: 1;
+    visibility: visible;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
+
+/* Active state uses minus icon, same path logic as Sobha */
+.accItemActive .icons {
+  background-image: url("/about/icons/minus-icon-big.svg");
+}
+
+/* HEADER TITLE – HUGE like Sobha */
+.accTitle {
+  margin: 0;
+  font-family: "Chronicle Display XLight", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  font-size: 111px;
+  line-height: 134px;
+  color: #d9d9d9;
+  letter-spacing: 0;
+}
+
+@media (max-width: 1000px) {
+  .accTitle {
+    font-size: 60px;
+    line-height: 63px;
+    text-align: left;
+  }
+}
+
+/* Hover + active = gold heading colour */
+@media (min-width: 1000px) {
+  .accHeader:hover .accTitle,
+  .accItemActive .accTitle {
+    color: #c7a386;
+  }
+}
+
+/* when closed on desktop, Sobha shows gold – we mimic by default on desktop */
+@media (min-width: 1000px) {
+  .accItem:not(.accItemActive) .accTitle {
+    color: #d9d9d9;
+  }
+}
+
+/* BODY – COLLAPSE ANIMATION (custom, not from Sobha, but feels same) */
+.accBodyWrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.accBodyOpen {
+  max-height: 900px; /* enough for pillars layout */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.accBody {
+  padding-top: 0;
+  padding-bottom: 100px;
+}
+
+@media (max-width: 1000px) {
+  .accBody {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 50px;
+    text-align: center;
+  }
+}
+
+/* ------------- TWO-COLUMN CONTENT (VISION / MISSION) ------------- */
+
+.twoColContent {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 1000px) {
+  .twoColContent {
+    padding-top: 30px;
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .twoColContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+.twoColLeft {
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .twoColLeft {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+.twoColRight {
+  flex: 1;
+}
+
+.iconImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Typography for paragraph exactly like Sobha */
+.twoColParagraph {
+  font-family: "Chronicle Display XLight", "Times New Roman", Georgia, serif;
+  font-size: 26px;
+  line-height: 48px;
+}
+
+@media (max-width: 1000px) {
+  .twoColParagraph {
+    margin-bottom: 10px;
+  }
+}
+
+/* Limit width like .disc in Sobha */
+.disc {
+  max-width: 448px;
+}
+
+@media (max-width: 1000px) {
+  .disc {
+    max-width: 100%;
+  }
+}
+
+/* ------------- “BUILT ON 3 KEY PILLARS” TITLE ------------- */
+
+.style2 {
+  font-family: "Chronicle Display XLight", "Times New Roman", Georgia, serif;
+  font-weight: 300;
+  font-size: 34px;
+  margin: 10px 0 40px;
+  color: #c7a386;
+  text-align: center;
+  font-style: italic;
+}
+
+.style2 span {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+/* Sobha adds extra bottom margin to this in accordion-body */
+.accBodyHeadingStyle2 {
+  margin-bottom: 50px;
+}
+
+@media (max-width: 1000px) {
+  .accBodyHeadingStyle2 {
+    margin-bottom: 40px;
+    margin-top: 20px;
+    text-align: center !important;
+  }
+
+  .brandAccSec .style2 span {
+    display: block;
+  }
+}
+
+/* ------------- PILLAR CARDS ------------- */
+
+.brandAccBoxMain {
+  display: flex;
+}
+
+.brandAccBox {
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* mimic their nth-child tweaks */
+@media (min-width: 1000px) {
+  .brandAccBox:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+
+  .brandAccBox:nth-child(1),
+  .brandAccBox:nth-child(2) {
+    margin-top: 45px;
+  }
+
+  .brandAccBox:nth-child(3) {
+    margin-top: 10px;
+  }
+
+  .brandAccBox:nth-child(3) .brandPillarContent {
+    padding-bottom: 91px;
+  }
+
+  .brandAccBox:nth-child(1) .brandPillarContent,
+  .brandAccBox:nth-child(2) .brandPillarContent {
+    padding-top: 35px;
+  }
+}
+
+/* Card image wrapper */
+.brandAccThumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+}
+
+/* Image behaviour like Sobha’s card hover */
+.brandAccImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1);
+  opacity: 0.9;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.brandAccBox:hover .brandAccImage {
+  transform: scale(1.06);
+  opacity: 1;
+}
+
+/* Text under card – matches brand-piller-content  */
+.brandPillarContent {
+  border-left: 1px solid #dbdbdb;
+  margin-left: 25px;
+  padding-top: 30px;
+  padding-left: 10px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  bottom: 0;
+}
+
+.brandPillarContent h5 {
+  margin: 0;
+  max-width: 132px;
+  font-family: "Chronicle Display XLight", "Times New Roman", Georgia, serif;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 300;
+  color: #000;
+  text-align: left;
+  transition: 0.5s ease;
+}
+
+@media (max-width: 1000px) {
+  .brandPillarContent h5 {
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
+
+/* Mobile layout of pillar boxes like Sobha */
+@media (max-width: 1000px) {
+  .brandAccBoxMain {
+    margin: 0 -22px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .brandAccBox {
+    padding: 21px;
+    width: 50%;
+  }
+
+  .brandAccBox:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+
+  .brandAccBox .brandPillarContent {
+    padding-top: 12px;
+    padding-bottom: 40px;
+  }
+}

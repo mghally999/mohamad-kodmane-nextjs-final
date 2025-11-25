@@ -1,0 +1,170 @@
+/* SECTION – background + height (s-story-about-banner-sec.s-bg) */
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 725px; /* from Sobha CSS */
+  background: url("/images/patterns/s-bg.webp") repeat; /* your S pattern */
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 30%;
+  background: transparent
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.95) 21%,
+      rgba(255, 255, 255, 0) 100%
+    )
+    0% 0% no-repeat padding-box;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 120px 40px 140px;
+}
+
+/* CENTER IMAGE (s-about-banner) */
+.bannerWrapper {
+  position: relative;
+}
+
+/* Sobha: .s-about-banner{clip-path:inset(5% 35% round 10px);overflow:hidden;position:relative;} */
+.aboutBanner {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1360px;
+  aspect-ratio: 1360 / 647;
+  clip-path: inset(5% 35% round 10px);
+  overflow: hidden;
+  background: #000;
+}
+
+.bannerImage {
+  object-fit: cover;
+  transform: scale(1);
+}
+
+/* desktop vs mobile images */
+.onlyDesk {
+  display: block;
+}
+
+.onlyMob {
+  display: none;
+}
+
+/* LEFT TEXT (s-about-text) */
+.aboutText {
+  position: absolute;
+  z-index: 10;
+  min-width: 180px;
+  left: 15%;
+  top: 20%;
+  text-align: left;
+  color: #000;
+}
+
+.yearsSvg {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.aboutText h5 {
+  margin: 0;
+  color: #000;
+  font-weight: 200;
+  font-size: 26px;
+  line-height: 31px;
+  font-style: italic;
+  font-family: "Chronicle Display", "Times New Roman", serif;
+}
+
+.aboutText h5 span {
+  text-transform: uppercase;
+}
+
+/* RIGHT DESCRIPTION (s-banner-disc) */
+.bannerDisc {
+  position: absolute;
+  max-width: 250px;
+  right: 10%;
+  bottom: 20%;
+}
+
+.bannerDisc p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #000;
+  font-family: "Ringside", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+/* RESPONSIVE – copied behaviour */
+
+@media (max-width: 1000px) {
+  .heroSection {
+    min-height: auto;
+  }
+
+  .heroInner {
+    padding: 50px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutBanner {
+    clip-path: none;
+    border-radius: 0;
+    max-width: 100%;
+    aspect-ratio: 3 / 4;
+  }
+
+  .onlyDesk {
+    display: none;
+  }
+
+  .onlyMob {
+    display: block;
+  }
+
+  .aboutText {
+    position: relative;
+    z-index: 2;
+    left: auto;
+    top: auto;
+    margin-bottom: 35px;
+    padding: 0 20px;
+  }
+
+  .bannerDisc {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    max-width: none;
+    padding: 0 20px 40px;
+  }
+
+  .heroSection::before {
+    height: 100px;
+  }
+}
+
+/* very small screens tweak */
+@media (max-width: 480px) {
+  .heroInner {
+    padding: 40px 0 40px;
+  }
+}

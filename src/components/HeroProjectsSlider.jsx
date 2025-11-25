@@ -8,7 +8,6 @@ import { useLanguage } from "@/components/LanguageProvider";
 import { createMenuData } from "@/data/HeroSlides";
 import styles from "@/styles/HeroProjectsSlider.module.css";
 
-// 👇 Replace with your real CDN base URL
 const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
 export default function HeroProjectsSlider() {
@@ -17,8 +16,10 @@ export default function HeroProjectsSlider() {
   // Build projects array from your menuData
   const projects = useMemo(() => {
     const menu = createMenuData(t, locale, CDN);
-
     const list = [];
+
+    if (!menu || !menu.categories) return list;
+
     menu.categories.forEach((category) => {
       category.developers.forEach((developer) => {
         developer.projects.forEach((project) => {
@@ -39,71 +40,82 @@ export default function HeroProjectsSlider() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Auto-rotate – exactly like a hero slider
+  // Auto-rotate hero every 7s
   useEffect(() => {
     if (!projects.length) return;
 
-    const id = setInterval(() => {
+    const intervalId = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % projects.length);
     }, 7000);
 
-    return () => clearInterval(id);
+    return () => clearInterval(intervalId);
   }, [projects.length]);
 
   if (!projects.length) return null;
 
   const activeProject = projects[activeIndex];
 
+  const handleDotClick = (index) => {
+    if (index === activeIndex) return;
+    setActiveIndex(index);
+  };
+
   return (
     <>
-      {/* FIXED hero behind the header, full viewport */}
+      {/* Full viewport hero */}
       <section className={styles.hero}>
-        {/* Background image wrapper */}
-        <div className={styles.mediaWrapper}>
-          {/* Desktop image (you can later swap to a dedicated mobile src) */}
+        {/* Keyed wrapper to restart animations when slide changes */}
+        <div key={activeProject.id} className={styles.mediaWrapper}>
+          {/* Desktop image */}
           <Image
             src={activeProject.image}
             alt={activeProject.title}
             fill
             priority
             quality={100}
-            className={`${styles.heroImage} ${styles.onlyDesk}`}
+            className={`${styles.heroImage} ${styles.onlyDesk} ${styles.heroImageAnimated}`}
           />
 
-          {/* Mobile – currently same src, but separated for future override */}
+          {/* Mobile image (same src for now, but can be customized later) */}
           <Image
             src={activeProject.image}
             alt={activeProject.title}
             fill
             priority
             quality={100}
-            className={`${styles.heroImage} ${styles.onlyMob}`}
+            className={`${styles.heroImage} ${styles.onlyMob} ${styles.heroImageAnimated}`}
           />
         </div>
 
-        {/* Bottom gradient overlay (Sobha style) */}
+        {/* Bottom gradient with luxury text block */}
         <div className={styles.bottomGradient}>
-          <div className={styles.textBlock}>
+          <div key={activeProject.id} className={styles.textBlock}>
             {activeProject.developer && (
-              <p className={styles.kicker}>{activeProject.developer}</p>
+              <p className={`${styles.kicker} ${styles.fadeInUp}`}>
+                {activeProject.developer}
+              </p>
             )}
 
-            <h2 className={styles.heading}>{activeProject.title}</h2>
+            <h2 className={`${styles.heading} ${styles.fadeInUp}`}>
+              {activeProject.title}
+            </h2>
 
             {activeProject.description && (
-              <p className={styles.subheading}>{activeProject.description}</p>
+              <p className={`${styles.subheading} ${styles.fadeInUp}`}>
+                {activeProject.description}
+              </p>
             )}
 
             <Link
               href={`/projects/${activeProject.slug}`}
-              className={styles.cta}
+              className={`${styles.cta} ${styles.fadeInUp}`}
             >
               DISCOVER
             </Link>
           </div>
         </div>
 
-        {/* Slider dots at bottom-right */}
+        {/* Slider dots */}
         <div className={styles.dots}>
           {projects.map((project, index) => (
             <button
@@ -112,14 +124,14 @@ export default function HeroProjectsSlider() {
               className={`${styles.dot} ${
                 index === activeIndex ? styles.dotActive : ""
               }`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => handleDotClick(index)}
               aria-label={`Show ${project.title}`}
             />
           ))}
         </div>
       </section>
 
-      {/* This creates scroll height like Sobha's .dummy-height */}
+      {/* Optional: to push main content below hero if needed */}
       {/* <div className={styles.dummyHeight} /> */}
     </>
   );

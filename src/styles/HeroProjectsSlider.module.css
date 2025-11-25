@@ -1,14 +1,12 @@
-/* === HERO LAYOUT (Sobha clone) ======================================= */
-
-/* === HERO LAYOUT (Sobha clone) ======================================= */
+/* === HERO LAYOUT ==================================================== */
 
 .hero {
-  position: relative; /* 🔥 was: fixed */
+  position: relative;
   inset: 0;
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  z-index: 0; /* header still above if it has higher z-index */
+  z-index: 0;
 }
 
 /* Wrapper needed for next/image with fill */
@@ -18,21 +16,29 @@
   height: 100%;
 }
 
-/* Background image with smooth transition */
+/* Background image */
 .heroImage {
   object-fit: cover;
-  object-position: top center;
-  transition: opacity 0.6s ease-in-out, transform 1s ease-in-out;
-  transform: scale(1);
+  object-position: center top;
 }
 
-/* Image transition effect */
-.imageTransition {
-  opacity: 0.8;
-  transform: scale(1.03);
+/* Smooth fade + subtle zoom each time slide changes */
+.heroImageAnimated {
+  animation: heroFadeZoom 1.2s ease-in-out;
 }
 
-/* Desktop / mobile toggles (you can later use different sources) */
+@keyframes heroFadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Desktop / mobile toggles */
 .onlyDesk {
   display: block;
 }
@@ -50,7 +56,7 @@
   }
 }
 
-/* === BOTTOM GRADIENT + TEXT (matches .explore-more-arrow) =========== */
+/* === BOTTOM GRADIENT + TEXT ======================================== */
 
 .bottomGradient {
   position: absolute;
@@ -63,10 +69,10 @@
   justify-content: center;
   background: linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(66, 98, 118, 0) 100%
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0) 100%
   );
-  pointer-events: none; /* text still clickable via children */
+  pointer-events: none;
 }
 
 .textBlock {
@@ -76,52 +82,56 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  pointer-events: auto; /* re-enable for CTA */
+  pointer-events: auto;
 }
 
-/* Enhanced developer label - bigger */
+/* Developer label */
 .kicker {
   font-family: "ringside_regularbook", "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px; /* Increased from 11px */
+  font-size: 14px;
   letter-spacing: 4.5px;
   text-transform: uppercase;
-  margin: 0 0 15px; /* Slightly more spacing */
-  transition: all 0.5s ease-in-out 0.1s; /* Staggered transition */
-  opacity: 1;
-  transform: translateY(0);
+  margin: 0 0 15px;
+  font-weight: 500;
 }
 
-/* Main heading – The Mirage */
+/* Main heading */
 .heading {
   font-family: "Chronicle Display", "Times New Roman", serif;
   font-size: 60px;
   line-height: 1.1;
   font-weight: 300;
-  margin: 0 0 15px; /* Slightly more spacing */
-  transition: all 0.5s ease-in-out 0.2s; /* Staggered transition */
-  opacity: 1;
-  transform: translateY(0);
+  margin: 0 0 15px;
 }
 
-/* Enhanced Subheading – bigger */
+/* Subheading */
 .subheading {
   font-family: "ringside_regularbook", "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px; /* Increased from 14px */
-  letter-spacing: 4.5px;
+  font-size: 16px;
+  letter-spacing: 3px;
   text-transform: none;
   margin: 0 0 35px;
-  transition: all 0.5s ease-in-out 0.3s; /* Staggered transition */
-  opacity: 1;
-  transform: translateY(0);
 }
 
-/* Text transition states */
-.textTransition {
+/* Fade-in-up animation for text + button */
+.fadeInUp {
   opacity: 0;
-  transform: translateY(15px);
+  transform: translateY(12px);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* CTA – glass pill button identical to Sobha */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA – glass pill button */
 .cta {
   display: inline-flex;
   align-items: center;
@@ -140,22 +150,16 @@
   font-weight: 350;
   color: #ffffff;
   text-transform: uppercase;
-  transition: all 0.5s ease-in-out 0.4s, background 0.5s ease, color 0.5s ease;
-  opacity: 1;
-  transform: translateY(0);
+  transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
 }
 
 .cta:hover {
   background: #000000;
   color: #ffffff;
+  transform: translateY(-1px);
 }
 
-.ctaTransition {
-  opacity: 0;
-  transform: translateY(15px);
-}
-
-/* === SLIDER DOTS (bottom right) ===================================== */
+/* === SLIDER DOTS ==================================================== */
 
 .dots {
   position: absolute;
@@ -188,7 +192,7 @@
   background: #ffffff;
 }
 
-/* === DUMMY HEIGHT (pushes content below hero) ======================= */
+/* === DUMMY HEIGHT (optional) ======================================= */
 
 .dummyHeight {
   height: 100vh;
@@ -200,7 +204,7 @@
 @media (max-width: 1000px) {
   .bottomGradient {
     height: 300px;
-    bottom: 30px; /* matches Sobha mobile spacing */
+    bottom: 30px;
   }
 
   .heading {
@@ -208,25 +212,26 @@
   }
 
   .subheading {
-    font-size: 14px; /* Adjusted for mobile */
+    font-size: 14px;
     margin-bottom: 25px;
   }
 
   .kicker {
-    font-size: 12px; /* Adjusted for mobile */
+    font-size: 12px;
   }
 }
 
 @media (max-width: 575px) {
   .subheading {
-    font-size: 13px; /* Further adjusted for small mobile */
+    font-size: 13px;
   }
 
   .kicker {
-    font-size: 11px; /* Further adjusted for small mobile */
+    font-size: 11px;
   }
 }
-/* CSEI-like background layer for active slide */
+
+/* Background layer helper (if needed elsewhere) */
 .heroBg {
   position: absolute;
   inset: 0;

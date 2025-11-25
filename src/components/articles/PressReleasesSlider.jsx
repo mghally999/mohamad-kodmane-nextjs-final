@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-// Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -21,24 +20,26 @@ export default function PressReleasesSlider() {
   const isRTL = locale === "ar";
 
   const articles = articlesData.getAllArticles(locale);
+  if (!articles.length) return null;
 
   const handleClick = (article) => {
     router.push(`/articles/${article.slug}`);
   };
 
-  if (!articles.length) return null;
-
   return (
-    <section className={styles.sobhaStoriesSec} dir={isRTL ? "rtl" : "ltr"}>
+    <section
+      className={styles.sobhaStoriesSec}
+      dir={isRTL ? "rtl" : "ltr"}
+      aria-labelledby="press-releases-heading"
+    >
       <div className={styles.container}>
         {/* Heading */}
-        <h2 className={styles.heading}>
+        <h2 id="press-releases-heading" className={styles.heading}>
           {isRTL ? "البيانات الصحفية" : "PRESS RELEASES"}
         </h2>
 
-        {/* Slider wrapper with arrows */}
         <div className={styles.sliderShell}>
-          {/* Arrows */}
+          {/* arrows */}
           <button
             className={`${styles.navArrow} ${styles.navPrev} stories-prev`}
             aria-label={isRTL ? "السابق" : "Previous press release"}
@@ -60,7 +61,7 @@ export default function PressReleasesSlider() {
               nextEl: ".stories-next",
             }}
             autoplay={{
-              delay: 6000,
+              delay: 8000, // slower, more “luxury”
               disableOnInteraction: false,
             }}
             loop
@@ -68,6 +69,7 @@ export default function PressReleasesSlider() {
             centeredSlidesBounds
             slidesPerView={"auto"}
             spaceBetween={32}
+            speed={900} // slow slide transition like Sobha
             className={styles.storiesSlider}
           >
             {articles.map((article) => (
@@ -79,32 +81,44 @@ export default function PressReleasesSlider() {
                   className={styles.card}
                   onClick={() => handleClick(article)}
                 >
-                  <div className={styles.imageWrap}>
-                    <Image
-                      src={article.image}
-                      alt={article.title}
-                      fill
-                      className={styles.image}
-                      sizes="(max-width: 768px) 100vw,
-                             (max-width: 1200px) 70vw,
-                             900px"
-                    />
-                  </div>
-
-                  <div className={styles.cardBody}>
-                    <div className={styles.cardText}>
-                      <h3 className={styles.cardTitle}>{article.title}</h3>
+                  <div className={styles.cardBox}>
+                    {/* IMAGE */}
+                    <div className={styles.imageWrap}>
+                      {/* desktop */}
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        className={`${styles.image} ${styles.onlyDesk}`}
+                        sizes="(max-width: 768px) 0px,
+                               (max-width: 1200px) 70vw,
+                               900px"
+                      />
+                      {/* mobile */}
+                      <Image
+                        src={article.image}
+                        alt={article.title}
+                        fill
+                        className={`${styles.image} ${styles.onlyMob}`}
+                        sizes="100vw"
+                      />
                     </div>
 
-                    <div className={styles.cardMetaRow}>
-                      <div className={styles.emptyMeta} />
-                      <div className={styles.publishedMeta}>
-                        {/* <span className={styles.publishedLabel}>
-                          {isRTL ? "تاريخ النشر" : "Published on"}
-                        </span> */}
-                        <span className={styles.publishedDate}>
-                          {article.publishedOn || article.date || ""}
-                        </span>
+                    {/* CONTENT */}
+                    <div className={styles.cardContent}>
+                      <div className={styles.storyTitle}>
+                        <h3 className={styles.cardTitle}>{article.title}</h3>
+                      </div>
+
+                      <div className={styles.storyPublish}>
+                        <div className={styles.datePlace}>
+                          {/* <span className={styles.publishedLabel}>
+                            {isRTL ? "تاريخ النشر" : "Published on"}
+                          </span> */}
+                          <span className={styles.publishedDate}>
+                            {article.publishedOn || article.date || ""}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
