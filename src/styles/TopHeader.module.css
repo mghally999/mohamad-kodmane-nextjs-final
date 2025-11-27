@@ -515,7 +515,7 @@
   margin: 12px 0 0;
   padding: 0;
   max-height: 260px;
-  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .communityList::-webkit-scrollbar {
@@ -658,7 +658,7 @@
   margin: 8px 0 0;
   padding: 0;
   max-height: 270px;
-  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .developersListDesktop::-webkit-scrollbar {

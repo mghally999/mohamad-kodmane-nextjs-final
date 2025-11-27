@@ -1,0 +1,42 @@
+export const developersData = (CDN) => [
+  {
+    id: "sobha",
+    slug: "sobha",
+    name: "Sobha Realty",
+    logo: "/Sobha-Realty-Square-Logo.jpg",
+    image: `${CDN}/aquamont/intro-main.png`,
+    tagline: "Master developer of waterfront and park-front communities.",
+  },
+  {
+    id: "arada",
+    slug: "arada",
+    name: "Arada",
+    logo: "/arada-developer.avif",
+    image: `${CDN}/massar-3/hero-bg.jpg`,
+    tagline: "Lifestyle communities with greenery and family amenities.",
+  },
+  {
+    id: "damac",
+    slug: "damac",
+    name: "DAMAC Properties",
+    logo: "/damac-logo.png",
+    image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
+    tagline: "High-impact branded residences & resort living.",
+  },
+  {
+    id: "azizi",
+    slug: "azizi",
+    name: "Azizi Developments",
+    logo: "/azizi.jpg",
+    image: `${CDN}/riviera/hero-bg.jpg`,
+    tagline: "Strong ROI options in strategic locations across Dubai.",
+  },
+  {
+    id: "omniyat",
+    slug: "omniyat",
+    name: "Omniyat",
+    logo: "/omniyat-logo.avif",
+    image: `${CDN}/lumena-alta/hero-bg.jpg`,
+    tagline: "Ultra-luxury design-led developments on the waterfront.",
+  },
+];

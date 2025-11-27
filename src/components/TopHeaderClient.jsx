@@ -6,6 +6,13 @@ import Link from "next/link";
 import styles from "@/styles/TopHeader.module.css";
 import { useLanguage } from "./LanguageProvider";
 
+// Import data files
+import { aboutData } from "@/data/about/aboutData";
+import { propertiesData } from "@/data/propertiesData/propertiesData";
+import { whereToLiveData } from "@/data/whereToLiveData/whereToLiveData";
+import { developersData } from "@/data/developersData/developersData";
+import { navData } from "@/data/nav/navData";
+
 // Safe DOM manipulation hook
 function useSafeDOM() {
   const [isMounted, setIsMounted] = useState(false);
@@ -23,7 +30,7 @@ export default function TopHeader() {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [selectedCommunity, setSelectedCommunity] = useState(null);
+  const [selectedWhereToLive, setSelectedWhereToLive] = useState(null);
   const [selectedDeveloper, setSelectedDeveloper] = useState(null);
   const [selectedAboutItem, setSelectedAboutItem] = useState(null);
 
@@ -35,7 +42,7 @@ export default function TopHeader() {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [communitySearch, setCommunitySearch] = useState("");
+  const [whereToLiveSearch, setWhereToLiveSearch] = useState("");
 
   const { locale, switchLanguage, isTransitioning, t } = useLanguage();
   const pathname = usePathname();
@@ -44,411 +51,26 @@ export default function TopHeader() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // ================= ABOUT MENU DATA ==================
-  const aboutMenuItems = [
-    {
-      id: "about-mohamadkodmani",
-      title: "About Mohamad Kodmani",
-      slug: "about-mohamadkodmani",
-      image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-      description:
-        "Learn about the vision, leadership, and legacy behind our real estate advisory.",
-    },
-    {
-      id: "our-story",
-      title: "Our Story",
-      slug: "our-story",
-      image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
-      description:
-        "Explore our journey, milestones, and how we help clients invest in Dubai with confidence.",
-    },
-    {
-      id: "leadership",
-      title: "Leadership",
-      slug: "leadership",
-      image: `${CDN}/aquamont/intro-main.png`,
-      description:
-        "Meet the leadership and strategic partners powering our portfolio of projects.",
-    },
-    {
-      id: "design",
-      title: "Thoughtful Design",
-      slug: "thoughtful-design",
-      image: `${CDN}/lumena-alta/hero-bg.jpg`,
-      description:
-        "Discover how we curate projects with design, lifestyle, and long-term value in mind.",
-    },
-    {
-      id: "investor-services",
-      title: "Investor Services",
-      slug: "investor-services",
-      image: `${CDN}/riviera/hero-bg.jpg`,
-      description:
-        "From selection to exit strategy, we provide end-to-end support for serious investors.",
-    },
-    {
-      id: "csr",
-      title: "CSR & Community",
-      slug: "csr",
-      image: `${CDN}/massar-3/hero-bg.jpg`,
-      description:
-        "A look at how our partners build sustainable communities and long-term neighbourhood value.",
-    },
-  ];
+  // ================= DATA FETCHING ==================
+  const aboutMenuItems = useMemo(() => aboutData(CDN), [CDN]);
 
-  // ================= PROPERTIES MENU DATA ==================
-  const propertiesMenuData = useMemo(() => {
-    const data = {
-      categories: [
-        {
-          id: 1,
-          name: t?.("categories.apartments") || "Apartments",
-          slug: "apartments",
-          description:
-            t?.("descriptions.apartments") ||
-            "Luxury apartments in prime locations",
-          image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-          developers: [
-            {
-              id: 1,
-              name: t?.("developers.sobhaRealty") || "Sobha Realty",
-              slug: "sobha",
-              image: `${CDN}/aquamont/intro-main.png`,
-              logo: `/Sobha-Realty-Square-Logo.jpg`,
-              projects: [
-                {
-                  id: 101,
-                  title: t?.("projectNames.sobhaSkyParks") || "Sobha Sky Parks",
-                  slug: "skyparks",
-                  image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-                  description:
-                    t?.("descriptions.apartments") || "Luxury apartments",
-                },
-                {
-                  id: 102,
-                  title:
-                    t?.("projectNames.sobhaAquaCrest") || "Sobha Aqua Crest",
-                  slug: "aqua-crest",
-                  image: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
-                  description:
-                    t?.("descriptions.apartments") || "Luxury apartments",
-                },
-                {
-                  id: 103,
-                  title: t?.("projectNames.sobhaCentral") || "Sobha Central",
-                  slug: "central",
-                  image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
-                  description:
-                    t?.("descriptions.apartments") || "Luxury apartments",
-                },
-                {
-                  id: 104,
-                  title: t?.("projectNames.sobhaAquamont") || "Sobha Aquamont",
-                  slug: "aquamont",
-                  image: `${CDN}/aquamont/intro-main.png`,
-                  description:
-                    t?.("descriptions.apartments") || "Luxury apartments",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: t?.("categories.villas") || "Villas",
-          slug: "villas",
-          description:
-            t?.("descriptions.villas") || "Premium villas and townhouses",
-          image: `${CDN}/hartland/hero-bg.jpg`,
-          developers: [
-            {
-              id: 1,
-              name: t?.("developers.sobhaRealty") || "Sobha Realty",
-              slug: "sobha",
-              image: `${CDN}/hartland/hero-bg.jpg`,
-              logo: `/Sobha-Realty-Square-Logo.jpg`,
-              projects: [
-                {
-                  id: 201,
-                  title:
-                    t?.("projectNames.sobhaHartland2Villas") ||
-                    "Sobha Hartland 2 Villas",
-                  slug: "hartland",
-                  image: `${CDN}/hartland/hero-bg.jpg`,
-                  description: t?.("descriptions.villas") || "Premium villas",
-                },
-                {
-                  id: 202,
-                  title:
-                    t?.("projectNames.sobhaAlSinniyyahIsland") ||
-                    "Sobha Al Sinniyyah Island",
-                  slug: "al-sinniyyah-island",
-                  image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
-                  description: t?.("descriptions.villas") || "Premium villas",
-                },
-              ],
-            },
-            {
-              id: 2,
-              name: t?.("developers.arada") || "Arada",
-              slug: "arada",
-              image: `${CDN}/massar-3/hero-bg.jpg`,
-              logo: `/arada-developer.avif`,
-              projects: [
-                {
-                  id: 203,
-                  title: t?.("projectNames.aradaMassar3") || "Arada Massar 3",
-                  slug: "massar",
-                  image: `${CDN}/massar-3/hero-bg.jpg`,
-                  description: t?.("descriptions.villas") || "Premium villas",
-                },
-              ],
-            },
-            {
-              id: 3,
-              name: t?.("developers.damacProperties") || "DAMAC Properties",
-              slug: "damac",
-              image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
-              logo: `/damac-logo.png`,
-              projects: [
-                {
-                  id: 204,
-                  title: t?.("projectNames.damacIslands2") || "DAMAC Islands 2",
-                  slug: "damac-islands-2",
-                  image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
-                  description: t?.("descriptions.villas") || "Premium villas",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: t?.("categories.commercial") || "Commercial",
-          slug: "commercial-retail",
-          description:
-            t?.("descriptions.commercial") || "Commercial and retail spaces",
-          image: `${CDN}/riviera-retails/hero-bg.jpg`,
-          developers: [
-            {
-              id: 2,
-              name: t?.("developers.omniyat") || "Omniyat",
-              slug: "omniyat",
-              image: `${CDN}/lumena-alta/hero-bg.jpg`,
-              logo: `/omniyat-logo.avif`,
-              projects: [
-                {
-                  id: 305,
-                  title: t?.("projectNames.luminaAlta") || "Lumina Alta",
-                  slug: "lumenaalta",
-                  image: `${CDN}/lumena-alta/hero-bg.jpg`,
-                  description:
-                    t?.("descriptions.commercial") || "Commercial spaces",
-                },
-              ],
-            },
-            {
-              id: 1,
-              name: t?.("developers.aziziDevelopments") || "Azizi Developments",
-              slug: "azizi",
-              image: `${CDN}/riviera/hero-bg.jpg`,
-              logo: `/azizi.jpg`,
-              projects: [
-                {
-                  id: 301,
-                  title:
-                    t?.("projectNames.aziziRivieraRetails") ||
-                    "Azizi Riviera Retails",
-                  slug: "riviera-retails",
-                  image: `${CDN}/riviera/hero-bg.jpg`,
-                  description:
-                    t?.("descriptions.commercial") || "Commercial spaces",
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 4,
-          name: t?.("categories.penthouses") || "Penthouses",
-          slug: "penthouses",
-          description:
-            t?.("descriptions.penthouses") ||
-            "Luxury penthouses with premium amenities",
-          image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-          developers: [
-            {
-              id: 1,
-              name: t?.("developers.sobhaRealty") || "Sobha Realty",
-              slug: "sobha",
-              image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-              logo: `/Sobha-Realty-Square-Logo.jpg`,
-              projects: [
-                {
-                  id: 401,
-                  title:
-                    t?.("projectNames.sobhaSeaHavenPenthouse") ||
-                    "Sobha Sea Haven Penthouse",
-                  slug: "seahaven-penthouse",
-                  image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-                  description:
-                    t?.("descriptions.penthouses") || "Luxury penthouses",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
-
-    return data;
-  }, [t, locale]);
-
-  // ================= COMMUNITIES DATA ==================
-  const communitiesData = useMemo(
-    () => [
-      {
-        id: "downtown-dubai",
-        slug: "downtown-dubai",
-        name: "Downtown Dubai",
-        image: `${CDN}/sky-parks/exterior-night-01.jpg`,
-        location: "Heart of Dubai, next to Burj Khalifa & Dubai Mall",
-        avgBuy: "1BR from AED 1.5M",
-        avgRent: "1BR from AED 110K / year",
-        roi: "6–7% estimated ROI",
-      },
-      {
-        id: "business-bay",
-        slug: "business-bay",
-        name: "Business Bay",
-        image: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
-        location: "Along Dubai Canal, minutes from Downtown",
-        avgBuy: "1BR from AED 1.1M",
-        avgRent: "1BR from AED 95K / year",
-        roi: "7–8% estimated ROI",
-      },
-      {
-        id: "jvc",
-        slug: "jvc",
-        name: "Jumeirah Village Circle (JVC)",
-        image: `${CDN}/massar-3/hero-bg.jpg`,
-        location: "New Dubai, between Al Khail Road & Hessa Street",
-        avgBuy: "1BR from AED 800K",
-        avgRent: "1BR from AED 70K / year",
-        roi: "7–9% estimated ROI",
-      },
-      {
-        id: "dubai-marina",
-        slug: "dubai-marina",
-        name: "Dubai Marina",
-        image: `${CDN}/aquamont/intro-main.png`,
-        location: "Waterfront district along Sheikh Zayed Road",
-        avgBuy: "1BR from AED 1.3M",
-        avgRent: "1BR from AED 105K / year",
-        roi: "6–7% estimated ROI",
-      },
-      {
-        id: "mbr-city",
-        slug: "mbr-city",
-        name: "Mohammed Bin Rashid City",
-        image: `${CDN}/hartland/hero-bg.jpg`,
-        location: "Master community with villas & apartments near Downtown",
-        avgBuy: "Villas from AED 6M",
-        avgRent: "Villas from AED 350K / year",
-        roi: "5–6% estimated ROI",
-      },
-    ],
-    [CDN]
+  const propertiesMenuData = useMemo(
+    () => propertiesData(CDN, t, locale),
+    [CDN, t, locale]
   );
 
-  // ================= DEVELOPERS DATA ==================
-  const developersData = useMemo(
-    () => [
-      {
-        id: "sobha",
-        slug: "sobha",
-        name: "Sobha Realty",
-        logo: "/Sobha-Realty-Square-Logo.jpg",
-        image: `${CDN}/aquamont/intro-main.png`,
-        tagline: "Master developer of waterfront and park-front communities.",
-      },
-      {
-        id: "arada",
-        slug: "arada",
-        name: "Arada",
-        logo: "/arada-developer.avif",
-        image: `${CDN}/massar-3/hero-bg.jpg`,
-        tagline: "Lifestyle communities with greenery and family amenities.",
-      },
-      {
-        id: "damac",
-        slug: "damac",
-        name: "DAMAC Properties",
-        logo: "/damac-logo.png",
-        image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
-        tagline: "High-impact branded residences & resort living.",
-      },
-      {
-        id: "azizi",
-        slug: "azizi",
-        name: "Azizi Developments",
-        logo: "/azizi.jpg",
-        image: `${CDN}/riviera/hero-bg.jpg`,
-        tagline: "Strong ROI options in strategic locations across Dubai.",
-      },
-      {
-        id: "omniyat",
-        slug: "omniyat",
-        name: "Omniyat",
-        logo: "/omniyat-logo.avif",
-        image: `${CDN}/lumena-alta/hero-bg.jpg`,
-        tagline: "Ultra-luxury design-led developments on the waterfront.",
-      },
-    ],
-    [CDN]
-  );
+  const whereToLiveDataArray = useMemo(() => whereToLiveData(CDN), [CDN]);
 
-  // ================= NAV ITEMS ==================
-  const navItems = useMemo(
-    () => [
-      { href: "/", label: "HOME", type: "primary" },
-      { href: "/about", label: "ABOUT", type: "primary" },
-      {
-        href: "/properties-in-dubai/",
-        label: "PROPERTIES",
-        type: "primary",
-        hasMegaMenu: true,
-      },
-      {
-        href: "/our-communities",
-        label: "COMMUNITIES",
-        type: "primary",
-      },
-      {
-        href: "/developers",
-        label: "DEVELOPERS",
-        type: "primary",
-      },
-      {
-        href: "/articles",
-        label: "MEDIA CENTER",
-        type: "primary",
-      },
-      {
-        href: "/contact-us/",
-        label: "CONTACT US",
-        type: "primary",
-      },
-    ],
-    []
-  );
+  const developersDataArray = useMemo(() => developersData(CDN), [CDN]);
+
+  const navItems = useMemo(() => navData, []);
 
   // ================= INITIALIZE SELECTED ABOUT ITEM ==================
   useEffect(() => {
     if (!selectedAboutItem && aboutMenuItems.length > 0) {
       setSelectedAboutItem(aboutMenuItems[0]);
     }
-  }, [selectedAboutItem]);
+  }, [selectedAboutItem, aboutMenuItems]);
 
   // ================= SAFE SCROLL + BODY LOCK ==================
   useEffect(() => {
@@ -521,12 +143,12 @@ export default function TopHeader() {
     return out;
   };
 
-  const filteredCommunities = useMemo(() => {
-    if (!communitySearch.trim()) return communitiesData;
-    return communitiesData.filter((c) =>
-      c.name.toLowerCase().includes(communitySearch.toLowerCase())
+  const filteredWhereToLive = useMemo(() => {
+    if (!whereToLiveSearch.trim()) return whereToLiveDataArray;
+    return whereToLiveDataArray.filter((c) =>
+      c.name.toLowerCase().includes(whereToLiveSearch.toLowerCase())
     );
-  }, [communitiesData, communitySearch]);
+  }, [whereToLiveDataArray, whereToLiveSearch]);
 
   // ================= SAFE MEGA MENU OUTSIDE CLICK ==================
   useEffect(() => {
@@ -557,7 +179,7 @@ export default function TopHeader() {
     setActiveMegaMenu(null);
     setSelectedCategory(null);
     setSelectedProject(null);
-    setSelectedCommunity(null);
+    setSelectedWhereToLive(null);
     setSelectedDeveloper(null);
     setIsMobileMenuOpen(false);
     setIsSearchOpen(false);
@@ -578,11 +200,11 @@ export default function TopHeader() {
       setSelectedCategory(firstCategory);
       setSelectedProject(projects[0] || null);
     }
-    if (item.label === "COMMUNITIES") {
-      setSelectedCommunity(communitiesData[0] || null);
+    if (item.label === "WHERE TO LIVE") {
+      setSelectedWhereToLive(whereToLiveDataArray[0] || null);
     }
     if (item.label === "DEVELOPERS") {
-      setSelectedDeveloper(developersData[0] || null);
+      setSelectedDeveloper(developersDataArray[0] || null);
     }
   };
 
@@ -593,7 +215,7 @@ export default function TopHeader() {
       setActiveMegaMenu(null);
       setSelectedCategory(null);
       setSelectedProject(null);
-      setSelectedCommunity(null);
+      setSelectedWhereToLive(null);
       setSelectedDeveloper(null);
     }, 10);
   };
@@ -608,8 +230,8 @@ export default function TopHeader() {
     setSelectedProject(project);
   };
 
-  const handleCommunityHover = (community) => {
-    setSelectedCommunity(community);
+  const handleWhereToLiveHover = (whereToLive) => {
+    setSelectedWhereToLive(whereToLive);
   };
 
   const handleDeveloperHover = (developer) => {
@@ -772,12 +394,12 @@ export default function TopHeader() {
                 </button>
               </li>
 
-              {/* COMMUNITIES MEGA MENU */}
+              {/* WHERE TO LIVE MEGA MENU */}
               <li
                 className={styles.menuItemHasChildren}
                 onMouseEnter={() =>
                   handleMegaMenuEnter({
-                    label: "COMMUNITIES",
+                    label: "WHERE TO LIVE",
                     hasMegaMenu: true,
                   })
                 }
@@ -785,20 +407,20 @@ export default function TopHeader() {
                 <button
                   type="button"
                   className={`${styles.level1Menu} ${styles.megaMenuTrigger} ${
-                    activeMegaMenu === "COMMUNITIES" ? styles.active : ""
+                    activeMegaMenu === "WHERE TO LIVE" ? styles.active : ""
                   }`}
                   onClick={() => {
-                    if (activeMegaMenu === "COMMUNITIES") {
+                    if (activeMegaMenu === "WHERE TO LIVE") {
                       handleMegaMenuLeave();
                     } else {
                       handleMegaMenuEnter({
-                        label: "COMMUNITIES",
+                        label: "WHERE TO LIVE",
                         hasMegaMenu: true,
                       });
                     }
                   }}
                 >
-                  COMMUNITIES
+                  WHERE TO LIVE
                 </button>
               </li>
 
@@ -1079,11 +701,11 @@ export default function TopHeader() {
           </div>
         )}
 
-        {/* ========== DESKTOP MEGA MENU – COMMUNITIES ========== */}
-        {activeMegaMenu === "COMMUNITIES" && (
+        {/* ========== DESKTOP MEGA MENU – WHERE TO LIVE ========== */}
+        {activeMegaMenu === "WHERE TO LIVE" && (
           <div
             className={styles.megaMenu}
-            onMouseEnter={() => setActiveMegaMenu("COMMUNITIES")}
+            onMouseEnter={() => setActiveMegaMenu("WHERE TO LIVE")}
             onMouseLeave={handleMegaMenuLeave}
           >
             <div className={styles.megaMenuInnerCommunities}>
@@ -1091,7 +713,7 @@ export default function TopHeader() {
               <div className={styles.megaCommunitiesLeft}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>
-                    DUBAI COMMUNITIES
+                    DUBAI NEIGHBORHOODS
                   </span>
                 </div>
 
@@ -1101,27 +723,27 @@ export default function TopHeader() {
                 >
                   <input
                     type="text"
-                    placeholder="Search community (e.g. JVC, Marina)..."
+                    placeholder="Search neighborhood (e.g. JVC, Marina)..."
                     className={styles.communitySearchInput}
-                    value={communitySearch}
-                    onChange={(e) => setCommunitySearch(e.target.value)}
+                    value={whereToLiveSearch}
+                    onChange={(e) => setWhereToLiveSearch(e.target.value)}
                   />
                 </form>
 
                 <ul className={styles.communityList}>
-                  {filteredCommunities.map((community) => (
-                    <li key={community.id}>
+                  {filteredWhereToLive.map((whereToLive) => (
+                    <li key={whereToLive.id}>
                       <Link
-                        href={`/communities/${community.slug}`}
+                        href={`/where-to-live/${whereToLive.slug}`}
                         className={`${styles.communityLink} ${
-                          selectedCommunity?.id === community.id
+                          selectedWhereToLive?.id === whereToLive.id
                             ? styles.activeCommunity
                             : ""
                         }`}
-                        onMouseEnter={() => handleCommunityHover(community)}
+                        onMouseEnter={() => handleWhereToLiveHover(whereToLive)}
                       >
                         <span className={styles.communityName}>
-                          {community.name}
+                          {whereToLive.name}
                         </span>
                         <span className={styles.communityArrow}>→</span>
                       </Link>
@@ -1137,20 +759,20 @@ export default function TopHeader() {
                     className={styles.communityPreviewImage}
                     style={{
                       backgroundImage: `url(${
-                        selectedCommunity?.image ||
-                        filteredCommunities[0]?.image
+                        selectedWhereToLive?.image ||
+                        filteredWhereToLive[0]?.image
                       })`,
                     }}
                   />
                   <div className={styles.communityPreviewInfo}>
                     <h3 className={styles.communityPreviewTitle}>
-                      {selectedCommunity?.name ||
-                        filteredCommunities[0]?.name ||
-                        "Dubai Community"}
+                      {selectedWhereToLive?.name ||
+                        filteredWhereToLive[0]?.name ||
+                        "Dubai Neighborhood"}
                     </h3>
                     <p className={styles.communityPreviewLocation}>
-                      {selectedCommunity?.location ||
-                        filteredCommunities[0]?.location}
+                      {selectedWhereToLive?.location ||
+                        filteredWhereToLive[0]?.location}
                     </p>
                     <div className={styles.communityPreviewStats}>
                       <div className={styles.communityStat}>
@@ -1158,8 +780,8 @@ export default function TopHeader() {
                           Avg. Purchase
                         </span>
                         <span className={styles.communityStatValue}>
-                          {selectedCommunity?.avgBuy ||
-                            filteredCommunities[0]?.avgBuy}
+                          {selectedWhereToLive?.avgBuy ||
+                            filteredWhereToLive[0]?.avgBuy}
                         </span>
                       </div>
                       <div className={styles.communityStat}>
@@ -1167,27 +789,27 @@ export default function TopHeader() {
                           Avg. Rent
                         </span>
                         <span className={styles.communityStatValue}>
-                          {selectedCommunity?.avgRent ||
-                            filteredCommunities[0]?.avgRent}
+                          {selectedWhereToLive?.avgRent ||
+                            filteredWhereToLive[0]?.avgRent}
                         </span>
                       </div>
                       <div className={styles.communityStat}>
                         <span className={styles.communityStatLabel}>ROI</span>
                         <span className={styles.communityStatValue}>
-                          {selectedCommunity?.roi ||
-                            filteredCommunities[0]?.roi}
+                          {selectedWhereToLive?.roi ||
+                            filteredWhereToLive[0]?.roi}
                         </span>
                       </div>
                     </div>
                     <Link
-                      href={`/communities/${
-                        selectedCommunity?.slug ||
-                        filteredCommunities[0]?.slug ||
+                      href={`/where-to-live/${
+                        selectedWhereToLive?.slug ||
+                        filteredWhereToLive[0]?.slug ||
                         ""
                       }`}
                       className={styles.communityPreviewButton}
                     >
-                      VIEW COMMUNITY DETAILS
+                      VIEW NEIGHBORHOOD DETAILS
                     </Link>
                   </div>
                 </div>
@@ -1210,7 +832,7 @@ export default function TopHeader() {
                   <span className={styles.megaColumnLabel}>DEVELOPERS</span>
                 </div>
                 <ul className={styles.developersListDesktop}>
-                  {developersData.map((developer) => (
+                  {developersDataArray.map((developer) => (
                     <li key={developer.id}>
                       <Link
                         href={`/developers/${developer.slug}`}
@@ -1251,20 +873,21 @@ export default function TopHeader() {
                     className={styles.developerPreviewImage}
                     style={{
                       backgroundImage: `url(${
-                        selectedDeveloper?.image || developersData[0].image
+                        selectedDeveloper?.image || developersDataArray[0].image
                       })`,
                     }}
                   />
                   <div className={styles.developerPreviewInfo}>
                     <h3 className={styles.developerPreviewTitle}>
-                      {selectedDeveloper?.name || developersData[0].name}
+                      {selectedDeveloper?.name || developersDataArray[0].name}
                     </h3>
                     <p className={styles.developerPreviewTagline}>
-                      {selectedDeveloper?.tagline || developersData[0].tagline}
+                      {selectedDeveloper?.tagline ||
+                        developersDataArray[0].tagline}
                     </p>
                     <Link
                       href={`/developers/${
-                        selectedDeveloper?.slug || developersData[0].slug
+                        selectedDeveloper?.slug || developersDataArray[0].slug
                       }`}
                       className={styles.developerPreviewButton}
                     >
@@ -1287,7 +910,7 @@ export default function TopHeader() {
                 <input
                   type="text"
                   className={styles.searchInput}
-                  placeholder="Search projects, communities, developers, articles..."
+                  placeholder="Search projects, neighborhoods, developers, articles..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   autoFocus
@@ -1366,7 +989,7 @@ export default function TopHeader() {
                 </button>
               </div>
 
-              {/* Simple items + single mega for properties on mobile */}
+              {/* Simple items + mega menus on mobile */}
               {navItems.map((item) => (
                 <div key={item.href}>
                   {item.hasMegaMenu ? (
@@ -1374,9 +997,14 @@ export default function TopHeader() {
                       <button
                         type="button"
                         className={`${styles.mobileNavLink} ${styles.mobileMegaMenuTrigger}`}
-                        onClick={() =>
-                          toggleMobileCategory("luxury-properties")
-                        }
+                        onClick={() => {
+                          if (item.label === "PROPERTIES") {
+                            toggleMobileCategory("luxury-properties");
+                          } else {
+                            // Handle other mega menus
+                            handleMegaMenuEnter(item);
+                          }
+                        }}
                       >
                         <span className={styles.mobileNavText}>
                           {item.label}
@@ -1393,171 +1021,180 @@ export default function TopHeader() {
                         </span>
                       </button>
 
-                      {mobileExpandedItems.categories ===
-                        "luxury-properties" && (
-                        <div className={styles.mobileMegaMenuContent}>
-                          <div className={styles.mobileMenuLevel}>
-                            <h4 className={styles.mobileMenuLevelTitle}>
-                              Property Types
-                            </h4>
+                      {item.label === "PROPERTIES" &&
+                        mobileExpandedItems.categories ===
+                          "luxury-properties" && (
+                          <div className={styles.mobileMegaMenuContent}>
+                            <div className={styles.mobileMenuLevel}>
+                              <h4 className={styles.mobileMenuLevelTitle}>
+                                Property Types
+                              </h4>
 
-                            {propertiesMenuData.categories.map((category) => (
-                              <div
-                                key={category.id}
-                                className={styles.mobileCategoryItem}
-                              >
-                                <button
-                                  type="button"
-                                  className={`${styles.mobileCategoryButton} ${
-                                    mobileExpandedItems.categoryId ===
-                                    category.id
-                                      ? styles.expanded
-                                      : ""
-                                  }`}
-                                  onClick={() =>
-                                    toggleMobileCategory(category.id)
-                                  }
+                              {propertiesMenuData.categories.map((category) => (
+                                <div
+                                  key={category.id}
+                                  className={styles.mobileCategoryItem}
                                 >
-                                  <span className={styles.mobileCategoryName}>
-                                    {category.name}
-                                  </span>
-                                  <span className={styles.mobileCategoryArrow}>
-                                    {mobileExpandedItems.categoryId ===
-                                    category.id
-                                      ? "↑"
-                                      : "↓"}
-                                  </span>
-                                </button>
-
-                                {mobileExpandedItems.categoryId ===
-                                  category.id && (
-                                  <div className={styles.mobileDevelopersList}>
-                                    <h5
-                                      className={styles.mobileDevelopersTitle}
+                                  <button
+                                    type="button"
+                                    className={`${
+                                      styles.mobileCategoryButton
+                                    } ${
+                                      mobileExpandedItems.categoryId ===
+                                      category.id
+                                        ? styles.expanded
+                                        : ""
+                                    }`}
+                                    onClick={() =>
+                                      toggleMobileCategory(category.id)
+                                    }
+                                  >
+                                    <span className={styles.mobileCategoryName}>
+                                      {category.name}
+                                    </span>
+                                    <span
+                                      className={styles.mobileCategoryArrow}
                                     >
-                                      Developers in {category.name}
-                                    </h5>
+                                      {mobileExpandedItems.categoryId ===
+                                      category.id
+                                        ? "↑"
+                                        : "↓"}
+                                    </span>
+                                  </button>
 
-                                    {category.developers.map((developer) => (
-                                      <div
-                                        key={developer.id}
-                                        className={styles.mobileDeveloperItem}
+                                  {mobileExpandedItems.categoryId ===
+                                    category.id && (
+                                    <div
+                                      className={styles.mobileDevelopersList}
+                                    >
+                                      <h5
+                                        className={styles.mobileDevelopersTitle}
                                       >
-                                        <button
-                                          type="button"
-                                          className={`${
-                                            styles.mobileDeveloperButton
-                                          } ${
-                                            mobileExpandedItems.developerId ===
-                                            developer.id
-                                              ? styles.expanded
-                                              : ""
-                                          }`}
-                                          onClick={() =>
-                                            toggleMobileDeveloper(developer.id)
-                                          }
+                                        Developers in {category.name}
+                                      </h5>
+
+                                      {category.developers.map((developer) => (
+                                        <div
+                                          key={developer.id}
+                                          className={styles.mobileDeveloperItem}
                                         >
-                                          {developer.logo && (
-                                            <div
+                                          <button
+                                            type="button"
+                                            className={`${
+                                              styles.mobileDeveloperButton
+                                            } ${
+                                              mobileExpandedItems.developerId ===
+                                              developer.id
+                                                ? styles.expanded
+                                                : ""
+                                            }`}
+                                            onClick={() =>
+                                              toggleMobileDeveloper(
+                                                developer.id
+                                              )
+                                            }
+                                          >
+                                            {developer.logo && (
+                                              <div
+                                                className={
+                                                  styles.mobileDeveloperLogo
+                                                }
+                                              >
+                                                <img
+                                                  src={developer.logo}
+                                                  alt={`${developer.name} logo`}
+                                                  className={
+                                                    styles.mobileDeveloperLogoImage
+                                                  }
+                                                />
+                                              </div>
+                                            )}
+                                            <span
                                               className={
-                                                styles.mobileDeveloperLogo
+                                                styles.mobileDeveloperName
                                               }
                                             >
-                                              <img
-                                                src={developer.logo}
-                                                alt={`${developer.name} logo`}
-                                                className={
-                                                  styles.mobileDeveloperLogoImage
-                                                }
-                                              />
+                                              {developer.name}
+                                            </span>
+                                            <span
+                                              className={
+                                                styles.mobileDeveloperArrow
+                                              }
+                                            >
+                                              {mobileExpandedItems.developerId ===
+                                              developer.id
+                                                ? "↑"
+                                                : "↓"}
+                                            </span>
+                                          </button>
+
+                                          {mobileExpandedItems.developerId ===
+                                            developer.id && (
+                                            <div
+                                              className={
+                                                styles.mobileProjectsList
+                                              }
+                                            >
+                                              {developer.projects.map(
+                                                (project) => (
+                                                  <a
+                                                    key={project.id}
+                                                    href={`/projects/${category.slug}/${developer.slug}/${project.slug}`}
+                                                    className={
+                                                      styles.mobileProjectLink
+                                                    }
+                                                    onClick={() => {
+                                                      handleProjectNavClick(
+                                                        category,
+                                                        developer,
+                                                        project,
+                                                        "mega_mobile"
+                                                      );
+                                                      closeAllMobileMenus();
+                                                    }}
+                                                  >
+                                                    <div
+                                                      className={
+                                                        styles.mobileProjectImage
+                                                      }
+                                                      style={{
+                                                        backgroundImage: `url(${project.image})`,
+                                                      }}
+                                                    />
+                                                    <div
+                                                      className={
+                                                        styles.mobileProjectInfo
+                                                      }
+                                                    >
+                                                      <span
+                                                        className={
+                                                          styles.mobileProjectName
+                                                        }
+                                                      >
+                                                        {project.title}
+                                                      </span>
+                                                      <span
+                                                        className={
+                                                          styles.mobileProjectArrow
+                                                        }
+                                                      >
+                                                        →
+                                                      </span>
+                                                    </div>
+                                                  </a>
+                                                )
+                                              )}
                                             </div>
                                           )}
-                                          <span
-                                            className={
-                                              styles.mobileDeveloperName
-                                            }
-                                          >
-                                            {developer.name}
-                                          </span>
-                                          <span
-                                            className={
-                                              styles.mobileDeveloperArrow
-                                            }
-                                          >
-                                            {mobileExpandedItems.developerId ===
-                                            developer.id
-                                              ? "↑"
-                                              : "↓"}
-                                          </span>
-                                        </button>
-
-                                        {mobileExpandedItems.developerId ===
-                                          developer.id && (
-                                          <div
-                                            className={
-                                              styles.mobileProjectsList
-                                            }
-                                          >
-                                            {developer.projects.map(
-                                              (project) => (
-                                                <a
-                                                  key={project.id}
-                                                  href={`/projects/${category.slug}/${developer.slug}/${project.slug}`}
-                                                  className={
-                                                    styles.mobileProjectLink
-                                                  }
-                                                  onClick={() => {
-                                                    handleProjectNavClick(
-                                                      category,
-                                                      developer,
-                                                      project,
-                                                      "mega_mobile"
-                                                    );
-                                                    closeAllMobileMenus();
-                                                  }}
-                                                >
-                                                  <div
-                                                    className={
-                                                      styles.mobileProjectImage
-                                                    }
-                                                    style={{
-                                                      backgroundImage: `url(${project.image})`,
-                                                    }}
-                                                  />
-                                                  <div
-                                                    className={
-                                                      styles.mobileProjectInfo
-                                                    }
-                                                  >
-                                                    <span
-                                                      className={
-                                                        styles.mobileProjectName
-                                                      }
-                                                    >
-                                                      {project.title}
-                                                    </span>
-                                                    <span
-                                                      className={
-                                                        styles.mobileProjectArrow
-                                                      }
-                                                    >
-                                                      →
-                                                    </span>
-                                                  </div>
-                                                </a>
-                                              )
-                                            )}
-                                          </div>
-                                        )}
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
                     </div>
                   ) : (
                     <a

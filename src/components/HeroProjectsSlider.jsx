@@ -114,21 +114,6 @@ export default function HeroProjectsSlider() {
             </Link>
           </div>
         </div>
-
-        {/* Slider dots */}
-        <div className={styles.dots}>
-          {projects.map((project, index) => (
-            <button
-              key={project.id}
-              type="button"
-              className={`${styles.dot} ${
-                index === activeIndex ? styles.dotActive : ""
-              }`}
-              onClick={() => handleDotClick(index)}
-              aria-label={`Show ${project.title}`}
-            />
-          ))}
-        </div>
       </section>
 
       {/* Optional: to push main content below hero if needed */}

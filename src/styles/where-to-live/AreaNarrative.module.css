@@ -1,0 +1,546 @@
+/* AreaNarrative.module.css */
+
+@import url("https://fonts.cdnfonts.com/css/chronicle-display");
+@import url("https://fonts.cdnfonts.com/css/plus-jakarta-sans");
+
+/* Base Section with Premium Light Theme */
+.narrativeSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #efefef;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+/* Subtle Canvas Background */
+.canvasBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Elegant Navigation Indicators */
+.navigationIndicators {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.navIndicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+}
+
+.navIndicator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.navIndicator.activeIndicator {
+  background: #000000;
+  transform: scale(1.1);
+}
+
+.navIndicator.activeIndicator::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.navIndicator:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+
+/* Main Container */
+.narrativeContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Sophisticated Header */
+.elegantHeader {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.titleWrapper {
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.mainTitle {
+  font-family: "Chronicle Display", serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 300;
+  color: #000000;
+  line-height: 1.05; /* Improved line height */
+  margin: 0;
+  word-spacing: 0.05em; /* Added word spacing */
+}
+
+/* FIXED: Character and space styling */
+.char {
+  display: inline-block;
+  transform-origin: center bottom;
+  white-space: normal; /* Ensure normal whitespace behavior */
+}
+
+.space {
+  display: inline-block;
+  width: 0.25em; /* Proper space width */
+  white-space: normal;
+}
+
+.subtitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 500px;
+}
+
+.subtitleAccent {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, #000000, transparent);
+  flex-shrink: 0;
+}
+
+.subtitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Refined Features Grid */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 100px;
+}
+
+.featureCard {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 35px 30px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.featureOrnament {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.02),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.featureCard:hover .featureOrnament {
+  left: 100%;
+}
+
+.featureCard:hover,
+.featureCard.activeFeature {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.featureContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.featureIndex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.featureIndex span {
+  font-family: "Chronicle Display", serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+.featureCard:hover .featureIndex span {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.indexConnector {
+  width: 1px;
+  height: 30px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+  transition: height 0.3s ease;
+}
+
+.featureCard:hover .indexConnector {
+  height: 40px;
+}
+
+.featureText p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444444;
+  margin: 0;
+}
+
+.featureReveal {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(90deg, #000000, transparent);
+  transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.featureCard:hover .featureReveal {
+  width: 100%;
+}
+
+/* Premium Nutshell Section */
+.nutshellSection {
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.nutshellHeader {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.nutshellTitle {
+  font-family: "Chronicle Display", serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: #000000;
+  margin: 0;
+}
+
+.titleEmbellishment {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.2), transparent);
+  position: relative;
+}
+
+.titleEmbellishment::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #000000;
+  animation: gentlePulse 3s infinite;
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.nutshellContent {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.nutshellTextWrapper {
+  position: relative;
+}
+
+.nutshellText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0;
+  font-weight: 400;
+}
+
+.nutshellVisual {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.geometricPattern {
+  width: 150px;
+  height: 150px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: gentleMorph 10s ease-in-out infinite;
+}
+
+@keyframes gentleMorph {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  33% {
+    border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+  }
+  66% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+  }
+}
+
+/* Sophisticated Neighborhood Cards */
+.neighborhoodSection {
+  margin-bottom: 80px;
+}
+
+.neighborhoodGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.neighborhoodCard {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  padding: 45px 35px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow: hidden;
+}
+
+.cardEmbellishment {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.neighborhoodCard:hover {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.cardTitle {
+  font-family: "Chronicle Display", serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  margin: 0;
+}
+
+.cardIndicator {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.neighborhoodCard:hover .cardIndicator {
+  color: #000000;
+  transform: translateX(2px);
+}
+
+.cardContent {
+  position: relative;
+}
+
+.cardText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444444;
+  margin: 0;
+}
+
+.cardHoverLayer {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.02),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.neighborhoodCard:hover .cardHoverLayer {
+  left: 100%;
+}
+
+/* Refined Scroll Progress */
+.scrollProgress {
+  position: fixed;
+  bottom: 30px;
+  left: 40px;
+  width: 150px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.progressTrack {
+  height: 100%;
+  background: linear-gradient(90deg, #000000, transparent);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .narrativeContainer {
+    padding: 0 30px;
+  }
+
+  .nutshellContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .nutshellVisual {
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .narrativeSection {
+    padding: 80px 0;
+  }
+
+  .narrativeContainer {
+    padding: 0 20px;
+  }
+
+  .navigationIndicators {
+    right: 20px;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .neighborhoodGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .elegantHeader {
+    margin-bottom: 60px;
+  }
+
+  .subtitleWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .subtitleAccent {
+    width: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featureCard,
+  .neighborhoodCard {
+    padding: 25px 20px;
+  }
+
+  .mainTitle {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .nutshellTitle {
+    font-size: 28px;
+  }
+
+  .scrollProgress {
+    left: 20px;
+    bottom: 20px;
+    width: 120px;
+  }
+
+  .featureContent {
+    gap: 15px;
+  }
+
+  .featureIndex span {
+    font-size: 28px;
+  }
+}

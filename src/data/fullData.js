@@ -109,7 +109,7 @@
 //   },
 //   {
 //     id: 3,
-//     title: "Lumina Alta – Omniyat",
+//     title: "Lumena Alta – Omniyat",
 //     description:
 //       "An architectural landmark featuring panoramic skyline views, ultra-luxury interiors, and a 50/50 payment plan.",
 //     image:

@@ -133,7 +133,7 @@ export const menuData = {
           projects: [
             {
               id: 105,
-              title: "Lumina Alta – Omniyat",
+              title: "Lumena Alta – Omniyat",
               slug: "lumenaalta",
               image:
                 "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",

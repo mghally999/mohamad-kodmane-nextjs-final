@@ -43,7 +43,7 @@ export default function OffPlanInvestment() {
     },
     {
       src: `${CDN}/lumena-alta/hero-bg.jpg`,
-      alt: isRTL ? "برج لومينا ألتا التجاري" : "Lumina Alta Commercial Tower",
+      alt: isRTL ? "برج لومينا ألتا التجاري" : "Lumena Alta Commercial Tower",
       title: isRTL ? "مساحات تجارية" : "Commercial Spaces",
       description: isRTL
         ? "فرص متميزة للمكاتب ومساحات البيع بالتجزئة"

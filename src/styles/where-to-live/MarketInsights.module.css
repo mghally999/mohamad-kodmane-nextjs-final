@@ -1,0 +1,234 @@
+/* styles/where-to-live/MarketInsights.module.css */
+
+/* Market Section - Pill Design */
+.marketSection {
+  position: relative;
+  background: transparent;
+}
+
+.marketPill {
+  background: #efefef;
+  padding: 80px 0;
+}
+
+.marketHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.marketTitle {
+  font-family: "Chronicle Display", serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.marketSubtitle {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Market Grid */
+.marketGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.marketCard {
+  padding: 40px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+}
+
+.cardHeader {
+  margin-bottom: 30px;
+}
+
+.cardTitle {
+  font-family: "Chronicle Display", serif;
+  font-size: 24px;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.cardDivider {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, #000000, transparent);
+  opacity: 0.6;
+}
+
+/* Data Lists */
+.dataList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dataItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dataType {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400;
+}
+
+.dataValue {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  font-weight: 500;
+}
+
+/* Buildings Section */
+.buildingsSection {
+  padding-top: 60px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.buildingsHeader {
+  margin-bottom: 40px;
+}
+
+.buildingsTitle {
+  font-family: "Chronicle Display", serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.titleDivider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, #000000, transparent);
+  opacity: 0.6;
+}
+
+.buildingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.buildingCard {
+  padding: 24px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.buildingCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.buildingName {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.buildingLocation {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 1000px) {
+  .marketPill {
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    padding: 60px 0;
+  }
+
+  .marketTitle {
+    font-size: 36px;
+  }
+
+  .marketGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .buildingsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .marketSection {
+    padding: 80px 0 40px;
+  }
+
+  .marketPill {
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    padding: 40px 0;
+  }
+
+  .marketTitle {
+    font-size: 32px;
+  }
+
+  .marketCard {
+    padding: 30px 24px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .marketTitle {
+    font-size: 28px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+  }
+
+  .buildingsTitle {
+    font-size: 24px;
+  }
+
+  .marketGrid {
+    gap: 20px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+}

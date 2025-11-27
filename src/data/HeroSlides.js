@@ -117,7 +117,7 @@ export const createMenuData = (t, locale, CDN) => {
                 id: 204,
                 title: t("projectNames.damacIslands2"),
                 slug: "damac-islands-2",
-                image: `${CDN}/damac-islands-2/hero-masterplan-aerial.jpg`,
+                image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
                 description: t("descriptions.villas"),
               },
             ],
