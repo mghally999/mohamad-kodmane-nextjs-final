@@ -43,6 +43,7 @@ export default function TopHeader() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [whereToLiveSearch, setWhereToLiveSearch] = useState("");
+  const [developersSearch, setDevelopersSearch] = useState("");
 
   const { locale, switchLanguage, isTransitioning, t } = useLanguage();
   const pathname = usePathname();
@@ -150,6 +151,19 @@ export default function TopHeader() {
     );
   }, [whereToLiveDataArray, whereToLiveSearch]);
 
+  const filteredDevelopers = useMemo(() => {
+    if (!developersSearch.trim()) return developersDataArray;
+
+    const term = developersSearch.toLowerCase();
+
+    return developersDataArray.filter((dev) => {
+      const haystack = `${dev.name} ${dev.slug} ${
+        dev.tagline || ""
+      }`.toLowerCase();
+      return haystack.includes(term);
+    });
+  }, [developersSearch, developersDataArray]);
+
   // ================= SAFE MEGA MENU OUTSIDE CLICK ==================
   useEffect(() => {
     if (!isMounted || !activeMegaMenu) return;
@@ -205,6 +219,7 @@ export default function TopHeader() {
     }
     if (item.label === "DEVELOPERS") {
       setSelectedDeveloper(developersDataArray[0] || null);
+      setDevelopersSearch(""); // reset search every time you open the menu
     }
   };
 
@@ -425,6 +440,7 @@ export default function TopHeader() {
               </li>
 
               {/* DEVELOPERS MEGA MENU */}
+              {/* DEVELOPERS MEGA MENU */}
               <li
                 className={styles.menuItemHasChildren}
                 onMouseEnter={() =>
@@ -433,25 +449,25 @@ export default function TopHeader() {
                     hasMegaMenu: true,
                   })
                 }
+                onMouseLeave={() => {
+                  if (!isMobileMenuOpen) {
+                    handleMegaMenuLeave();
+                  }
+                }}
               >
-                <button
-                  type="button"
+                <Link
+                  href="/developers"
                   className={`${styles.level1Menu} ${styles.megaMenuTrigger} ${
                     activeMegaMenu === "DEVELOPERS" ? styles.active : ""
                   }`}
                   onClick={() => {
-                    if (activeMegaMenu === "DEVELOPERS") {
-                      handleMegaMenuLeave();
-                    } else {
-                      handleMegaMenuEnter({
-                        label: "DEVELOPERS",
-                        hasMegaMenu: true,
-                      });
-                    }
+                    // close mega + mobile when you actually navigate
+                    handleMegaMenuLeave();
+                    setIsMobileMenuOpen(false);
                   }}
                 >
                   DEVELOPERS
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -819,6 +835,7 @@ export default function TopHeader() {
         )}
 
         {/* ========== DESKTOP MEGA MENU – DEVELOPERS ========== */}
+        {/* ========== DESKTOP MEGA MENU – DEVELOPERS ========== */}
         {activeMegaMenu === "DEVELOPERS" && (
           <div
             className={styles.megaMenu}
@@ -826,44 +843,67 @@ export default function TopHeader() {
             onMouseLeave={handleMegaMenuLeave}
           >
             <div className={styles.megaMenuInnerDevelopers}>
-              {/* LEFT – developers list */}
+              {/* LEFT – developers list + search */}
               <div className={styles.megaDevelopersLeft}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>DEVELOPERS</span>
                 </div>
-                <ul className={styles.developersListDesktop}>
-                  {developersDataArray.map((developer) => (
-                    <li key={developer.id}>
-                      <Link
-                        href={`/developers/${developer.slug}`}
-                        className={`${styles.developerItemDesktop} ${
-                          selectedDeveloper?.id === developer.id
-                            ? styles.activeDeveloper
-                            : ""
-                        }`}
-                        onMouseEnter={() => handleDeveloperHover(developer)}
-                      >
-                        {developer.logo && (
-                          <div className={styles.developerLogoDesktop}>
-                            <img
-                              src={developer.logo}
-                              alt={`${developer.name} logo`}
-                            />
+
+                {/* Search box – same UX as WHERE TO LIVE */}
+                <form
+                  className={styles.communitySearchForm}
+                  onSubmit={(e) => e.preventDefault()}
+                >
+                  <input
+                    type="text"
+                    placeholder="Search developer (e.g. Sobha, DAMAC)..."
+                    className={styles.communitySearchInput}
+                    value={developersSearch}
+                    onChange={(e) => setDevelopersSearch(e.target.value)}
+                  />
+                </form>
+
+                {filteredDevelopers.length === 0 ? (
+                  <p className={styles.noResultsText}>
+                    No developers match your search.
+                  </p>
+                ) : (
+                  <ul className={styles.developersListDesktop}>
+                    {filteredDevelopers.map((developer) => (
+                      <li key={developer.id}>
+                        <Link
+                          href={`/developers/${developer.slug}`}
+                          className={`${styles.developerItemDesktop} ${
+                            selectedDeveloper?.id === developer.id
+                              ? styles.activeDeveloper
+                              : ""
+                          }`}
+                          onMouseEnter={() => handleDeveloperHover(developer)}
+                        >
+                          {developer.logo && (
+                            <div className={styles.developerLogoDesktop}>
+                              <img
+                                src={developer.logo}
+                                alt={`${developer.name} logo`}
+                              />
+                            </div>
+                          )}
+                          <div className={styles.developerInfoDesktop}>
+                            <span className={styles.developerNameDesktop}>
+                              {developer.name}
+                            </span>
+                            <span className={styles.developerTaglineDesktop}>
+                              {developer.tagline}
+                            </span>
                           </div>
-                        )}
-                        <div className={styles.developerInfoDesktop}>
-                          <span className={styles.developerNameDesktop}>
-                            {developer.name}
+                          <span className={styles.developerArrowDesktop}>
+                            →
                           </span>
-                          <span className={styles.developerTaglineDesktop}>
-                            {developer.tagline}
-                          </span>
-                        </div>
-                        <span className={styles.developerArrowDesktop}>→</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
               {/* RIGHT – large image preview */}
@@ -873,26 +913,35 @@ export default function TopHeader() {
                     className={styles.developerPreviewImage}
                     style={{
                       backgroundImage: `url(${
-                        selectedDeveloper?.image || developersDataArray[0].image
+                        selectedDeveloper?.image ||
+                        filteredDevelopers[0]?.image ||
+                        ""
                       })`,
                     }}
                   />
                   <div className={styles.developerPreviewInfo}>
                     <h3 className={styles.developerPreviewTitle}>
-                      {selectedDeveloper?.name || developersDataArray[0].name}
+                      {selectedDeveloper?.name ||
+                        filteredDevelopers[0]?.name ||
+                        "Developer"}
                     </h3>
                     <p className={styles.developerPreviewTagline}>
                       {selectedDeveloper?.tagline ||
-                        developersDataArray[0].tagline}
+                        filteredDevelopers[0]?.tagline ||
+                        ""}
                     </p>
-                    <Link
-                      href={`/developers/${
-                        selectedDeveloper?.slug || developersDataArray[0].slug
-                      }`}
-                      className={styles.developerPreviewButton}
-                    >
-                      VIEW DEVELOPER PROFILE
-                    </Link>
+                    {filteredDevelopers.length > 0 && (
+                      <Link
+                        href={`/developers/${
+                          selectedDeveloper?.slug ||
+                          filteredDevelopers[0]?.slug ||
+                          ""
+                        }`}
+                        className={styles.developerPreviewButton}
+                      >
+                        VIEW DEVELOPER PROFILE
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

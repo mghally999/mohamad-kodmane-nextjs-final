@@ -5,6 +5,7 @@ import React, { useState, useMemo } from "react";
 import ProjectsFiltersBar from "@/components/filters/ProjectsFiltersBar";
 import ProjectsFiltersModal from "@/components/filters/ProjectsFiltersModal";
 import ProjectCards from "@/components/projects/ProjectCards";
+import SimilarProjectsSwiper from "@/components/where-to-live/SimilarProjects";
 import { regionProjectsIndex } from "@/data/regionProjectsIndex";
 import AreaGuideHero from "@/components/where-to-live/AreaGuideHero";
 import AreaNarrative from "@/components/where-to-live/AreaNarrative";
@@ -122,7 +123,7 @@ export default function ProjectsPage() {
 
       return true;
     });
-  }, [filters, slug]); // Real-time updates when any filter changes
+  }, [filters, slug]);
 
   const handleResetFilters = () => {
     setFilters({
@@ -236,6 +237,13 @@ export default function ProjectsPage() {
           onResetFilters={handleResetFilters}
         />
       </div>
+
+      {/* Similar Projects Swiper Section */}
+      {/* <SimilarProjectsSwiper
+        currentRegion={slug}
+        maxProjects={12} // Show up to 12 similar projects
+      /> */}
+
       <MarketInsights regionData={regionData} />
       <LocationFAQ regionData={regionData} />
     </>
