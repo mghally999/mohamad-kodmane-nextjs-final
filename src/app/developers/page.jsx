@@ -6,6 +6,9 @@ import { getProjectsByDeveloper } from "@/data/regionProjectsIndex";
 import ProjectsFiltersBar from "@/components/filters/ProjectsFiltersBar";
 import ProjectsFiltersModal from "@/components/filters/ProjectsFiltersModal";
 import ProjectCards from "@/components/projects/ProjectCards";
+import DeveloperHero from "@/components/developer/DeveloperHero";
+import DeveloperAbout from "@/components/developer/DeveloperAbout";
+import DeveloperStats from "@/components/developer/DeveloperStats";
 import styles from "@/styles/developer/DevelopersDashboard.module.css";
 
 const INITIAL_FILTERS = {
@@ -32,6 +35,7 @@ export default function DevelopersDashboardPage() {
   const [sidebarSearch, setSidebarSearch] = useState("");
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const mainContentRef = useRef(null);
 
   const activeDeveloper = developersDetails[activeDeveloperSlug];
 
@@ -143,7 +147,12 @@ export default function DevelopersDashboardPage() {
   const handleDeveloperClick = (slug) => {
     setActiveDeveloperSlug(slug);
     setFilters(INITIAL_FILTERS);
-    setIsMobileSidebarOpen(false); // Close mobile sidebar on selection
+    setIsMobileSidebarOpen(false);
+
+    // Scroll to top when switching developers
+    if (mainContentRef.current) {
+      mainContentRef.current.scrollTop = 0;
+    }
   };
 
   const clearSidebarSearch = () => {
@@ -301,60 +310,79 @@ export default function DevelopersDashboardPage() {
         </div>
       </aside>
 
-      {/* MAIN CONTENT AREA */}
-      <main className={styles.main}>
-        {/* HEADER */}
+      {/* MAIN CONTENT AREA WITH FULL DEVELOPER PAGE */}
+      <main ref={mainContentRef} className={styles.main}>
+        {/* DEVELOPER HERO SECTION */}
+        <DeveloperHero developer={activeDeveloper} />
 
-        {/* FILTERS */}
-        <div className={styles.filtersWrapper}>
-          <ProjectsFiltersBar
-            filters={filters}
-            onChange={setFilters}
-            onOpenFullFilters={() => setIsModalOpen(true)}
-          />
+        {/* DEVELOPER ABOUT SECTION */}
+        <DeveloperAbout developer={activeDeveloper} />
 
-          <ProjectsFiltersModal
-            isOpen={isModalOpen}
-            filters={filters}
-            onChange={setFilters}
-            onClose={() => setIsModalOpen(false)}
-            onReset={handleResetFilters}
-            totalProjects={filteredProjects.length}
-          />
-        </div>
+        {/* DEVELOPER STATS SECTION */}
+        <DeveloperStats developer={activeDeveloper} />
 
-        {/* RESULTS HEADER */}
-        <div className={styles.resultsHeader}>
-          <div className={styles.resultsInfo}>
-            <span className={styles.resultsCount}>
-              <strong>{filteredProjects.length}</strong> projects by{" "}
-              <strong>{activeDeveloper.name}</strong>
-            </span>
-            {activeFilterCount > 0 && (
-              <span className={styles.filterCount}>
-                ({activeFilterCount} filter{activeFilterCount !== 1 ? "s" : ""}{" "}
-                applied)
+        {/* PROJECTS SECTION */}
+        <section className={styles.projectsSection}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.headerOrnament}></div>
+            <h2 className={styles.sectionTitle}>Portfolio Collection</h2>
+            <p className={styles.sectionSubtitle}>
+              Curated selection of {activeDeveloper.name}'s exceptional
+              developments
+            </p>
+          </div>
+
+          {/* FILTERS */}
+          <div className={styles.filtersWrapper}>
+            <ProjectsFiltersBar
+              filters={filters}
+              onChange={setFilters}
+              onOpenFullFilters={() => setIsModalOpen(true)}
+            />
+
+            <ProjectsFiltersModal
+              isOpen={isModalOpen}
+              filters={filters}
+              onChange={setFilters}
+              onClose={() => setIsModalOpen(false)}
+              onReset={handleResetFilters}
+              totalProjects={filteredProjects.length}
+            />
+          </div>
+
+          {/* RESULTS HEADER */}
+          <div className={styles.resultsHeader}>
+            <div className={styles.resultsInfo}>
+              <span className={styles.resultsCount}>
+                <strong>{filteredProjects.length}</strong> projects by{" "}
+                <strong>{activeDeveloper.name}</strong>
               </span>
+              {activeFilterCount > 0 && (
+                <span className={styles.filterCount}>
+                  ({activeFilterCount} filter
+                  {activeFilterCount !== 1 ? "s" : ""} applied)
+                </span>
+              )}
+            </div>
+
+            {activeFilterCount > 0 && (
+              <button
+                type="button"
+                onClick={handleResetFilters}
+                className={styles.clearFiltersBtn}
+              >
+                <span>Clear all</span>
+                <div className={styles.clearIcon}>×</div>
+              </button>
             )}
           </div>
 
-          {activeFilterCount > 0 && (
-            <button
-              type="button"
-              onClick={handleResetFilters}
-              className={styles.clearFiltersBtn}
-            >
-              <span>Clear all</span>
-              <div className={styles.clearIcon}>×</div>
-            </button>
-          )}
-        </div>
-
-        {/* PROJECT CARDS */}
-        <ProjectCards
-          projects={filteredProjects}
-          onResetFilters={handleResetFilters}
-        />
+          {/* PROJECT CARDS */}
+          <ProjectCards
+            projects={filteredProjects}
+            onResetFilters={handleResetFilters}
+          />
+        </section>
       </main>
 
       {/* MOBILE OVERLAY */}

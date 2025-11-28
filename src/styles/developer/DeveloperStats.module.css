@@ -1,7 +1,16 @@
+/* DeveloperStats.module.css */
+
 .stats {
   padding: 80px 0;
-  background: #f8f8f8;
+  background: #f8f8f8 !important;
   position: relative;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.stats.ready {
+  opacity: 1 !important;
 }
 
 .statsContainer {
@@ -21,6 +30,8 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .statsCard::before {
@@ -45,6 +56,7 @@
 
 .logoSection {
   flex-shrink: 0;
+  opacity: 1 !important;
 }
 
 .logoContainer {
@@ -58,6 +70,7 @@
   justify-content: center;
   padding: 20px;
   transition: all 0.3s ease;
+  opacity: 1 !important;
 }
 
 .statsCard:hover .logoContainer {
@@ -71,6 +84,7 @@
   object-fit: contain;
   filter: grayscale(1) contrast(0.8);
   transition: filter 0.3s ease;
+  opacity: 1 !important;
 }
 
 .statsCard:hover .logo {
@@ -82,6 +96,7 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 30px;
   flex: 1;
+  opacity: 1 !important;
 }
 
 .statBox {
@@ -89,6 +104,8 @@
   padding: 20px 0;
   text-align: center;
   transition: all 0.3s ease;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .statBox:hover {
@@ -107,6 +124,7 @@
   color: #000;
   line-height: 1;
   margin-bottom: 8px;
+  opacity: 1 !important;
 }
 
 .statLabel {
@@ -116,6 +134,7 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-weight: 500;
+  opacity: 1 !important;
 }
 
 .statOrnament {
@@ -191,5 +210,18 @@
 
   .statValue {
     font-size: 1.75rem;
+  }
+}
+
+/* Ensure no animation interference */
+@media (prefers-reduced-motion: reduce) {
+  .statsCard::before,
+  .statBox,
+  .logoContainer {
+    transition: none;
+  }
+
+  .statBox:hover {
+    transform: none;
   }
 }

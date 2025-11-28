@@ -7,58 +7,12 @@
 .about {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background: radial-gradient(
-      circle at 15% 50%,
-      rgba(255, 255, 255, 0.8) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 85% 80%,
-      rgba(248, 248, 248, 0.6) 0%,
-      transparent 50%
-    ),
-    linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-  padding: 120px 0;
+  min-height: 60vh;
+  background: #ffffff !important;
+  padding: 80px 0;
   overflow: hidden;
   display: flex;
   align-items: center;
-}
-
-/* Luxury Canvas Background */
-.canvasBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.02;
-  pointer-events: none;
-}
-
-/* Holographic Effect */
-.hologramContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hologramScan {
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 0.015) 50%,
-    transparent 100%
-  );
 }
 
 .container {
@@ -72,7 +26,7 @@
 /* Premium Header */
 .premiumHeader {
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .titleContainer {
@@ -86,21 +40,9 @@
   color: #000000;
   line-height: 1.1;
   margin: 0 0 20px 0;
-  letter-spacing: 0.02em; /* Proper letter spacing */
-  word-spacing: 0.05em; /* Proper word spacing */
-}
-
-.titleChar {
-  display: inline-block;
-  transform-origin: center bottom;
-  white-space: normal;
-  margin: 0 0.5px; /* Fine-tuned spacing */
-}
-
-.space {
-  display: inline-block;
-  width: 0.3em; /* Proper space width */
-  white-space: normal;
+  letter-spacing: 0.02em;
+  word-spacing: 0.05em;
+  opacity: 1 !important;
 }
 
 .titleUnderline {
@@ -185,11 +127,6 @@
   background: #000000;
   border-radius: 50%;
   opacity: 0.3;
-  animation: separatorPulse 2s ease-in-out infinite;
-}
-
-.separatorUnit:nth-child(odd) .separatorDot {
-  animation-delay: 1s;
 }
 
 .separatorLine {
@@ -199,47 +136,30 @@
   opacity: 0.2;
 }
 
-@keyframes separatorPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.3);
-    opacity: 0.6;
-  }
-}
-
 /* Luxury Content Grid */
 .contentGrid {
   display: flex;
   flex-direction: column;
-  gap: 35px;
-  margin-bottom: 80px;
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
 .contentCard {
   position: relative;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
-  padding: 45px 40px 40px 80px;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  overflow: hidden;
+  padding: 40px 40px 40px 80px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  opacity: 1 !important;
 }
 
 .contentCard:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: #ffffff;
   border-color: rgba(0, 0, 0, 0.12);
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
-}
-
-.contentCard.activeGlow {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 /* Card Indicator */
@@ -251,14 +171,6 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
-}
-
-.floatingParticle {
-  width: 8px;
-  height: 8px;
-  background: #000000;
-  border-radius: 50%;
-  opacity: 0.4;
 }
 
 .cardNumber {
@@ -278,88 +190,12 @@
 .paragraph {
   font-family: "Neue Haas Grotesk Display Pro", sans-serif;
   font-size: 17px;
-  line-height: 1.7; /* Improved line height */
+  line-height: 1.7;
   color: #444444;
   margin: 0;
   font-weight: 400;
-  letter-spacing: 0.01em; /* Proper letter spacing */
-  word-spacing: 0.02em; /* Proper word spacing */
-}
-
-/* Luxury Border Effects */
-.cardBorder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.borderCorner {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.borderCorner:nth-child(1) {
-  top: 0;
-  left: 0;
-  border-top: 1px solid #000000;
-  border-left: 1px solid #000000;
-  border-radius: 16px 0 0 0;
-}
-
-.borderCorner:nth-child(2) {
-  top: 0;
-  right: 0;
-  border-top: 1px solid #000000;
-  border-right: 1px solid #000000;
-  border-radius: 0 16px 0 0;
-}
-
-.borderCorner:nth-child(3) {
-  bottom: 0;
-  right: 0;
-  border-bottom: 1px solid #000000;
-  border-right: 1px solid #000000;
-  border-radius: 0 0 16px 0;
-}
-
-.borderCorner:nth-child(4) {
-  bottom: 0;
-  left: 0;
-  border-bottom: 1px solid #000000;
-  border-left: 1px solid #000000;
-  border-radius: 0 0 0 16px;
-}
-
-.contentCard:hover .borderCorner {
-  opacity: 0.3;
-}
-
-/* Card Glow Effect */
-.cardGlow {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 0, 0, 0.02),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.contentCard:hover .cardGlow {
-  left: 100%;
+  letter-spacing: 0.01em;
+  word-spacing: 0.02em;
 }
 
 /* Signature Section */
@@ -390,7 +226,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .about {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .container {
@@ -398,16 +234,16 @@
   }
 
   .premiumHeader {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   .contentCard {
-    padding: 35px 30px 30px 70px;
+    padding: 30px 30px 30px 70px;
   }
 
   .cardIndicator {
     left: 30px;
-    top: 35px;
+    top: 30px;
   }
 
   .taglineSection {
@@ -430,7 +266,7 @@
 
 @media (max-width: 480px) {
   .about {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .container {
@@ -438,12 +274,12 @@
   }
 
   .contentCard {
-    padding: 30px 25px 25px 60px;
+    padding: 25px 25px 25px 60px;
   }
 
   .cardIndicator {
     left: 25px;
-    top: 30px;
+    top: 25px;
   }
 
   .mainTitle {
@@ -463,12 +299,8 @@
 
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .titleChar,
-  .floatingParticle,
-  .underlineGlow,
-  .separatorDot,
-  .cardGlow {
-    animation: none !important;
+  .underlineGlow {
+    animation: none;
   }
 
   .contentCard:hover {

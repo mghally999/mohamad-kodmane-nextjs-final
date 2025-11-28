@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "@/styles/developer/DeveloperStats.module.css";
@@ -9,68 +9,105 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function DeveloperStats({ developer }) {
   const sectionRef = useRef(null);
-  const statsRef = useRef(null);
+  const statsRef = useRef([]);
   const logoRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
+
+  // Add refs for each stat box
+  const addToStatsRef = (el) => {
+    if (el && !statsRef.current.includes(el)) {
+      statsRef.current.push(el);
+    }
+  };
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !developer || !developer.stats) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
-          end: "bottom 30%",
+          start: "top 80%",
+          end: "bottom 20%",
           toggleActions: "play none none reverse",
         },
       });
 
       // Logo animation
-      tl.fromTo(
-        logoRef.current,
-        {
-          scale: 0.8,
-          opacity: 0,
-          rotation: -5,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          rotation: 0,
-          duration: 1,
-          ease: "back.out(1.4)",
-        }
-      );
+      if (logoRef.current) {
+        tl.fromTo(
+          logoRef.current,
+          {
+            scale: 0.8,
+            opacity: 0,
+            rotation: -5,
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            rotation: 0,
+            duration: 1,
+            ease: "back.out(1.4)",
+          }
+        );
+      }
 
       // Stats animation
-      tl.fromTo(
-        statsRef.current.children,
-        {
-          y: 60,
-          opacity: 0,
-          scale: 0.8,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power2.out",
-        },
-        "-=0.5"
-      );
+      if (statsRef.current.length > 0) {
+        tl.fromTo(
+          statsRef.current,
+          {
+            y: 30,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.5"
+        );
+      }
+
+      setIsReady(true);
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      statsRef.current = []; // Clean up refs
+    };
   }, [developer]);
 
-  if (!developer || !developer.stats) return null;
+  // Early return if no developer or stats
+  if (!developer || !developer.stats) {
+    console.log("No developer or stats:", { developer });
+    return null;
+  }
 
   const { stats } = developer;
 
+  // Check if we have any stats to display
+  const hasStats =
+    stats &&
+    (stats.projects ||
+      stats.deliveredProjects ||
+      stats.underConstructionProjects ||
+      stats.communities ||
+      stats.sales2024);
+
+  if (!hasStats) {
+    console.log("No stats data available:", stats);
+    return null;
+  }
+
   return (
-    <section ref={sectionRef} className={styles.stats}>
+    <section
+      ref={sectionRef}
+      className={`${styles.stats} ${isReady ? styles.ready : ""}`}
+      style={{ background: "#f8f8f8" }}
+    >
       <div className={styles.statsContainer}>
         <div className={styles.statsCard}>
           {/* Developer Logo */}
@@ -87,15 +124,42 @@ export default function DeveloperStats({ developer }) {
           )}
 
           {/* Stats Grid */}
-          <div ref={statsRef} className={styles.statsGrid}>
-            <StatBox label="Total Projects" value={stats.projects} />
-            <StatBox label="Delivered" value={stats.deliveredProjects} />
-            <StatBox
-              label="Under Construction"
-              value={stats.underConstructionProjects}
-            />
-            <StatBox label="Communities" value={stats.communities} />
-            <StatBox label="2024 Sales" value={stats.sales2024} />
+          <div className={styles.statsGrid}>
+            {stats.projects && (
+              <StatBox
+                ref={addToStatsRef}
+                label="Total Projects"
+                value={stats.projects}
+              />
+            )}
+            {stats.deliveredProjects && (
+              <StatBox
+                ref={addToStatsRef}
+                label="Delivered"
+                value={stats.deliveredProjects}
+              />
+            )}
+            {stats.underConstructionProjects && (
+              <StatBox
+                ref={addToStatsRef}
+                label="Under Construction"
+                value={stats.underConstructionProjects}
+              />
+            )}
+            {stats.communities && (
+              <StatBox
+                ref={addToStatsRef}
+                label="Communities"
+                value={stats.communities}
+              />
+            )}
+            {stats.sales2024 && (
+              <StatBox
+                ref={addToStatsRef}
+                label="2024 Sales"
+                value={stats.sales2024}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -103,11 +167,12 @@ export default function DeveloperStats({ developer }) {
   );
 }
 
-function StatBox({ label, value }) {
+// Forward ref to StatBox component
+const StatBox = React.forwardRef(({ label, value }, ref) => {
   if (!value) return null;
 
   return (
-    <div className={styles.statBox}>
+    <div ref={ref} className={styles.statBox}>
       <div className={styles.statContent}>
         <div className={styles.statValue}>{value}</div>
         <div className={styles.statLabel}>{label}</div>
@@ -115,4 +180,6 @@ function StatBox({ label, value }) {
       <div className={styles.statOrnament}></div>
     </div>
   );
-}
+});
+
+StatBox.displayName = "StatBox";
