@@ -8,47 +8,106 @@ import styles from "@/styles/about/SobhaLegacyHero.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const CDN = "https://luxury-real-estate-media.b-cdn.net";
+const DESKTOP_IMAGE = `${CDN}/aquamont/intro-main.png`;
+const MOBILE_IMAGE = `${CDN}/massar-3/hero-bg.jpg`;
+
 export default function SobhaLegacyHero() {
   const sectionRef = useRef(null);
+  const triggerRef = useRef(null);
   const bannerRef = useRef(null);
   const leftTextRef = useRef(null);
-  const rightTextRef = useRef(null);
+  const rightRef = useRef(null);
+  const overlayRef = useRef(null);
+  const imageOverlayRef = useRef(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
-    if (typeof window === "undefined") return;
-    if (window.innerWidth < 1000) return;
 
     const ctx = gsap.context(() => {
+      /* MOBILE */
+      if (window.innerWidth < 1000) {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: 1.1,
+          },
+        });
+
+        tl.fromTo(
+          leftTextRef.current,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1 }
+        )
+          .fromTo(
+            bannerRef.current,
+            { scale: 0.96, opacity: 0 },
+            { scale: 1, opacity: 1 },
+            "-=0.3"
+          )
+          .fromTo(
+            rightRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1 },
+            "-=0.4"
+          );
+
+        return;
+      }
+
+      /* DESKTOP */
+      gsap.set(bannerRef.current, {
+        clipPath: "inset(0% 25% round 12px)",
+        scale: 1.05,
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
+          trigger: triggerRef.current,
           start: "top top",
-          end: "+=130%",
-          scrub: true,
-          // ❌ removed pin + anticipatePin to avoid DOM reparenting
+          end: "bottom top",
+          scrub: 1.4,
         },
       });
 
-      tl.fromTo(
-        bannerRef.current,
-        { clipPath: "inset(5% 35% round 10px)", scale: 0.96 },
-        { clipPath: "inset(0% 0% round 0px)", scale: 1.08, ease: "none" }
-      );
+      tl.to(bannerRef.current, {
+        clipPath: "inset(0% 0% round 12px)",
+        scale: 1,
+        duration: 2,
+        ease: "power2.out",
+      });
 
-      tl.fromTo(
+      tl.to(
         leftTextRef.current,
-        { y: 0, opacity: 1 },
-        { y: -80, opacity: 0.25, ease: "none" },
+        {
+          y: -60,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power2.inOut",
+        },
         0
       );
 
       tl.fromTo(
-        rightTextRef.current,
-        { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, ease: "none" },
-        0.05
+        rightRef.current,
+        { x: 80, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1.4, ease: "power3.out" },
+        0.01
       );
+
+      tl.to(
+        imageOverlayRef.current,
+        {
+          background:
+            "linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.18) 50%, rgba(0,0,0,0.25) 100%)",
+          duration: 2,
+        },
+        0
+      );
+
+      tl.to(overlayRef.current, { opacity: 0, duration: 1 }, 0);
     }, sectionRef);
 
     return () => ctx.revert();
@@ -56,58 +115,74 @@ export default function SobhaLegacyHero() {
 
   return (
     <section ref={sectionRef} className={styles.heroSection}>
-      <div className={styles.heroInner}>
-        {/* LEFT – SVG 50 + text, same structure as Sobha */}
-        <div ref={leftTextRef} className={styles.aboutText}>
-          {/* If you have their SVG, put it here */}
-          <Image
-            src="/images/s-banner-50.svg" // <--- put your 50-years SVG path
-            alt="50 years of incredible legacy"
-            width={150}
-            height={220}
-            className={styles.yearsSvg}
-          />
-          <h5>
-            20 years of <br />
-            <span>
-              Incredible
-              <br />
-              Legacy
-            </span>
-          </h5>
-        </div>
+      <div ref={overlayRef} className={styles.overlay}></div>
 
-        {/* CENTER – main banner image (desktop) */}
-        <div className={styles.bannerWrapper}>
-          <div ref={bannerRef} className={styles.aboutBanner}>
-            <Image
-              src="/images/about-hero-desktop.jpg" // <--- desktop banner
-              alt="About Kodmane Properties"
-              fill
-              priority
-              className={`${styles.bannerImage} ${styles.onlyDesk}`}
-              sizes="(max-width: 1400px) 100vw, 1360px"
-            />
+      <div ref={triggerRef} className={styles.stickyWrapper}>
+        <div className={styles.heroInner}>
+          {/* LEFT HERO BLOCK */}
+          <div ref={leftTextRef} className={styles.aboutText}>
+            {/* GOLD BADGE */}
+            <div className={styles.badgeWrap}>
+              <div className={styles.badgeCircle}>
+                <span className={styles.badgeNumber}>20</span>
+                <span className={styles.badgePlus}>+</span>
+              </div>
 
-            {/* mobile image – stays static, no GSAP */}
-            <Image
-              src="/images/about-hero-mobile.jpg" // <--- mobile banner
-              alt="About Kodmane Properties"
-              fill
-              className={`${styles.bannerImage} ${styles.onlyMob}`}
-              sizes="100vw"
-            />
+              <span className={styles.badgeSince}>Since 2006</span>
+            </div>
+
+            {/* TEXT */}
+            <h5 className={styles.yearsHeading}>
+              <span className={styles.yearsLabel}>years of</span>
+              <span className={styles.yearsMain}>
+                Incredible
+                <br />
+                Legacy
+              </span>
+            </h5>
           </div>
-        </div>
 
-        {/* RIGHT – description paragraph, same placement as .s-banner-disc */}
-        <div ref={rightTextRef} className={styles.bannerDisc}>
-          <p>
-            Mohamad Kodmani Real Estate Brokers was founded in 2006 by a
-            first-generation entrepreneur Mr. Mohamad Kodmani, the founder of
-            the Group. The entity is a multiproduct group with significant
-            investments in the UAE.
-          </p>
+          {/* CENTER IMAGE */}
+          <div className={styles.bannerWrapper}>
+            <div ref={bannerRef} className={styles.aboutBanner}>
+              <div ref={imageOverlayRef} className={styles.imageOverlay}></div>
+
+              <div className={styles.imageContainer}>
+                <Image
+                  src={DESKTOP_IMAGE}
+                  alt="Luxury Real Estate"
+                  fill
+                  priority
+                  className={`${styles.bannerImage} ${styles.onlyDesk}`}
+                />
+              </div>
+
+              <div className={styles.mobileImageContainer}>
+                <Image
+                  src={MOBILE_IMAGE}
+                  alt="Mobile Hero"
+                  fill
+                  priority
+                  className={`${styles.bannerImage} ${styles.onlyMob}`}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT TEXT */}
+          <div ref={rightRef} className={styles.bannerDisc}>
+            <div className={styles.textContainer}>
+              <p className={styles.description}>
+                <strong>Mohamad Kodmani</strong> is a leading Dubai-based real
+                estate expert known for precision, trust, and consistent
+                results.
+              </p>
+              <p className={styles.description}>
+                Through <strong>Mohamad Kodmani Real Estate Brokerage</strong>,
+                he empowers investors using data-driven, low-risk methods.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

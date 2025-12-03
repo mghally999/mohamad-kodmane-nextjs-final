@@ -5,6 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "@/styles/ArtOfDetail.module.css";
+import Link from "next/link";
 
 export default function ArtOfDetail() {
   const sectionRef = useRef(null);
@@ -189,11 +190,10 @@ export default function ArtOfDetail() {
                 we believe in crafting not just homes but immersive experiences
                 where every nuance is thoughtfully considered.
               </p>
-
               <div className={styles.buttonMain}>
-                <button type="button" className={styles.button1}>
+                <Link href="/about" className={styles.button1}>
                   DISCOVER MORE <i />
-                </button>
+                </Link>
               </div>
             </div>
 

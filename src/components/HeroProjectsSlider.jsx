@@ -67,14 +67,17 @@ export default function HeroProjectsSlider() {
         {/* Keyed wrapper to restart animations when slide changes */}
         <div key={activeProject.id} className={styles.mediaWrapper}>
           {/* Desktop image */}
-          <Image
-            src={activeProject.image}
-            alt={activeProject.title}
-            fill
-            priority
-            quality={100}
-            className={`${styles.heroImage} ${styles.onlyDesk} ${styles.heroImageAnimated}`}
-          />
+          <div className={styles.imageFix}>
+            <Image
+              src={activeProject.image}
+              alt={activeProject.title}
+              width={3840}
+              height={1600}
+              priority
+              quality={100}
+              className={`${styles.heroImage} ${styles.onlyDesk} ${styles.heroImageAnimated}`}
+            />
+          </div>
 
           {/* Mobile image (same src for now, but can be customized later) */}
           <Image

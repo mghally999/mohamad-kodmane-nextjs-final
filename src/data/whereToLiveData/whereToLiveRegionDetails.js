@@ -1,4 +1,5 @@
 export const whereToLiveRegionDetails = {
+  /* ========== BUSINESS BAY (FROM YOUR ORIGINAL DATA) ========== */
   "business-bay": {
     slug: "business-bay",
     name: "Business Bay",
@@ -93,347 +94,148 @@ export const whereToLiveRegionDetails = {
         beds: 2,
         baths: 3,
         area: "802 sqft",
-        location:
-          "Mama Shelter (Luxury Family Residences II), Business Bay, Dubai, UAE",
-        handover: "Q2 2024",
-        paymentPlan: "30/70",
-        features: ["One Month Rent Free", "Furnished", "Smart Home"],
-        status: "available",
+        location: "Lumena Alta, Business Bay, Dubai, UAE",
+        handover: "Q2 2026",
+        paymentPlan: "60/40",
+        features: ["Canal Views", "Smart Home", "Infinity Pool"],
+        status: "off-plan",
       },
       {
         id: "bb-project-2",
-        title: "Burj Khalifa View | Furnished | High Floor",
+        title: "Burj Khalifa View 1BR | High Floor",
         price: "AED 125,000 Yearly",
         beds: 1,
         baths: 2,
         area: "626 sqft",
-        location:
-          "Mama Shelter (Luxury Family Residences II), Business Bay, Dubai, UAE",
-        handover: "Q2 2024",
-        paymentPlan: "30/70",
-        features: ["Burj Khalifa View", "Furnished", "High Floor", "Vacant"],
+        location: "Prime tower in Business Bay, Dubai, UAE",
+        handover: "Ready",
+        paymentPlan: "4 Cheques",
+        features: ["Burj Khalifa View", "Furnished", "High Floor"],
         status: "available",
       },
       {
         id: "bb-project-3",
-        title: "ELEGANT STUDIO | DESIGN ON YOUR OWN",
+        title: "Elegant Studio Near Canal",
         price: "AED 69,999 Yearly",
         beds: "Studio",
         baths: 1,
         area: "490 sqft",
-        location: "SOL Avenue, Business Bay, Dubai, UAE",
+        location: "Business Bay, Dubai, UAE",
         handover: "Q1 2021",
         paymentPlan: "4 Cheques",
-        features: ["Custom Design", "Modern Finishes"],
+        features: ["Canal Proximity", "Modern Finishes"],
         status: "available",
       },
     ],
   },
 
-  "downtown-dubai": {
-    slug: "downtown-dubai",
-    name: "Downtown Dubai",
+  /* ========== SHEIKH ZAYED ROAD (SKY PARKS + SOBHA CENTRAL) ========== */
+  "sheikh-zayed-road": {
+    slug: "sheikh-zayed-road",
+    name: "Sheikh Zayed Road",
     heroImage:
       "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-night-01.jpg",
     summary: {
-      location: "Heart of Dubai around Burj Khalifa and Dubai Mall.",
-      avgBuy: "1BR from ~AED 1.5M",
-      avgRent: "1BR from ~AED 110K / year",
-      roi: "Around 6–7% gross rental yield.",
+      location:
+        "Dubai’s main highway corridor, running parallel to the coastline and connecting Downtown, Business Bay, Marina and Jebel Ali.",
+      avgBuy: "1BR from ~AED 1.2M",
+      avgRent: "1BR from ~AED 100K / year",
+      roi: "Typically 6–7% gross yield on apartments.",
     },
     hero: {
-      title: "Downtown Dubai",
+      title: "Sheikh Zayed Road Corridor",
       subtitle:
-        "Iconic mixed-use district home to Burj Khalifa, Dubai Mall and the Dubai Fountain, with luxury apartments, hotels and retail.",
+        "Iconic high-rise strip linking key business and lifestyle hubs with excellent metro and road connectivity.",
     },
     highlights: {
       about:
-        "Downtown Dubai is one of the city's most prestigious addresses. It combines landmark attractions, luxury residences and a dense mix of retail and hospitality.",
+        "Sheikh Zayed Road is Dubai’s original ‘city skyline’, lined with glass towers, hotels, offices and residential buildings. Projects like Sky Parks and Sobha Central sit here, giving residents fast access to Downtown, Business Bay, DIFC and the coastline.",
       inANutshell: [
-        "Prime tourist and lifestyle destination of Dubai.",
-        "High-end apartments with Burj Khalifa, fountain or boulevard views.",
-        "World-class dining, shopping and entertainment on your doorstep.",
-        "Ideal for professionals and couples who prioritise location and lifestyle.",
+        "Unbeatable central connectivity along Dubai’s main arterial road.",
+        "Mix of residential, hotel and office towers with strong rental demand.",
+        "Easy access to metro stations, Downtown, DIFC and Business Bay.",
+        "Appeals to professionals wanting a true city-centre lifestyle.",
       ],
     },
     neighbourhood: {
       communityOverview:
-        "The community is highly walkable around Mohammed Bin Rashid Boulevard, with landscaped sidewalks, cafés and public art. Residents enjoy quick access to the Dubai Mall, metro, offices in Downtown and nearby DIFC.",
+        "The feel is urban and vertical – dense, lively and highly connected. Many residents walk to nearby metro stations and offices, with cafés and convenience retail at podium level in many buildings.",
       propertiesOverview:
-        "Residential options are mainly apartments in high-rise towers and low-rise Old Town-style buildings, plus a limited number of podium villas and townhouses. Units typically feature premium finishes and concierge services.",
-    },
-    market: {
-      rentalTrends: [
-        { type: "Studio", averageRentAED: 95000 },
-        { type: "1-Bed", averageRentAED: 125000 },
-        { type: "2-Bed", averageRentAED: 180000 },
-        { type: "3-Bed", averageRentAED: 260000 },
-      ],
-      salesTrends: [
-        { type: "Studio", averagePriceAED: 1500000 },
-        { type: "1-Bed", averagePriceAED: 2200000 },
-        { type: "2-Bed", averagePriceAED: 3200000 },
-        { type: "3-Bed", averagePriceAED: 4800000 },
-      ],
-      roiByType: [
-        { type: "Studio", roiPercent: 7.6 },
-        { type: "1-Bed", roiPercent: 6.8 },
-        { type: "2-Bed", roiPercent: 6.7 },
-        { type: "3-Bed", roiPercent: 6.5 },
-      ],
-      popularBuildings: [
-        { name: "Burj Khalifa" },
-        { name: "The Address Downtown" },
-        { name: "The Residences" },
-        { name: "Opera District towers" },
-      ],
-    },
-    locationCards: {
-      burjKhalifaMinutes: 0,
-      dubaiMallMinutes: 3,
-      airportMinutes: 15,
-    },
-    faqs: [
-      {
-        question: "Who typically lives in Downtown Dubai?",
-        answer:
-          "Mainly professionals, couples and high-net-worth individuals who want to be close to business districts and iconic attractions, with limited villa options for larger families.",
-      },
-      {
-        question: "Is Downtown Dubai good for investment?",
-        answer:
-          "It remains one of the city's flagship districts with resilient demand, but yields are usually slightly lower than more mid-market communities because of higher entry prices.",
-      },
-    ],
-    projects: [
-      {
-        id: "dt-project-1",
-        title: "Luxury Burj Khalifa View Apartment",
-        price: "AED 200,000 Yearly",
-        beds: 2,
-        baths: 2,
-        area: "950 sqft",
-        location: "The Address Downtown, Downtown Dubai, UAE",
-        handover: "Ready",
-        paymentPlan: "1 Cheque",
-        features: ["Burj Khalifa View", "Luxury Finishes", "Concierge Service"],
-        status: "available",
-      },
-      {
-        id: "dt-project-2",
-        title: "Fountain View Studio | Premium Location",
-        price: "AED 95,000 Yearly",
-        beds: "Studio",
-        baths: 1,
-        area: "550 sqft",
-        location: "Old Town, Downtown Dubai, UAE",
-        handover: "Ready",
-        paymentPlan: "4 Cheques",
-        features: ["Fountain View", "Walking Distance to Dubai Mall"],
-        status: "available",
-      },
-    ],
-  },
-
-  "dubai-marina": {
-    slug: "dubai-marina",
-    name: "Dubai Marina",
-    heroImage:
-      "https://luxury-real-estate-media.b-cdn.net/aquamont/intro-main.png",
-    summary: {
-      location: "Waterfront district along Sheikh Zayed Road in New Dubai.",
-      avgBuy: "1BR from ~AED 1.3M",
-      avgRent: "1BR from ~AED 105K / year",
-      roi: "Around 6–7% gross yield.",
-    },
-    hero: {
-      title: "Dubai Marina",
-      subtitle:
-        "Vibrant waterfront district with high-rise towers surrounding an artificial marina, close to the beach and major business hubs.",
-    },
-    highlights: {
-      about:
-        "Dubai Marina is one of the most recognisable residential districts in Dubai, known for its skyline of towers, yacht marina, restaurants and easy beach access.",
-      inANutshell: [
-        "Waterfront living with marina and sea views.",
-        "High demand from both tenants and buyers.",
-        "Walkable promenade with cafés, retail and hotels.",
-        "Short drive or tram ride to JBR, Media City and JLT.",
-      ],
-    },
-    neighbourhood: {
-      communityOverview:
-        "The Marina walk, tram, and cluster of retail outlets make the area lively day and night. It suits professionals, couples and small families who want an active lifestyle.",
-      propertiesOverview:
-        "Almost entirely apartments, from studios to large 4- and 5-bed units, plus a limited number of penthouses and podium villas with direct marina access.",
+        "Primarily apartments, from compact studios to larger 3-bed units and a limited number of penthouses. Stock ranges from older towers with bigger layouts to newly launched branded or premium residences.",
     },
     market: {
       rentalTrends: [
         { type: "Studio", averageRentAED: 80000 },
-        { type: "1-Bed", averageRentAED: 110000 },
-        { type: "2-Bed", averageRentAED: 155000 },
-        { type: "3-Bed", averageRentAED: 210000 },
+        { type: "1-Bed", averageRentAED: 105000 },
+        { type: "2-Bed", averageRentAED: 145000 },
+        { type: "3-Bed", averageRentAED: 190000 },
       ],
       salesTrends: [
-        { type: "Studio", averagePriceAED: 1300000 },
-        { type: "1-Bed", averagePriceAED: 1800000 },
-        { type: "2-Bed", averagePriceAED: 2500000 },
-        { type: "3-Bed", averagePriceAED: 3500000 },
+        { type: "Studio", averagePriceAED: 950000 },
+        { type: "1-Bed", averagePriceAED: 1200000 },
+        { type: "2-Bed", averagePriceAED: 1700000 },
+        { type: "3-Bed", averagePriceAED: 2400000 },
       ],
       roiByType: [
-        { type: "Studio", roiPercent: 7.4 },
-        { type: "1-Bed", roiPercent: 7.3 },
-        { type: "2-Bed", roiPercent: 7.4 },
-        { type: "3-Bed", roiPercent: 7.2 },
+        { type: "Studio", roiPercent: 7.5 },
+        { type: "1-Bed", roiPercent: 7.0 },
+        { type: "2-Bed", roiPercent: 6.8 },
+        { type: "3-Bed", roiPercent: 6.4 },
       ],
       popularBuildings: [
-        { name: "Marina Gate" },
-        { name: "Emaar 6 Towers" },
-        { name: "Cayan Tower" },
-        { name: "Princess Tower" },
+        { name: "Sobha Sky Parks" },
+        { name: "Sobha Central" },
+        { name: "Emirates Towers vicinity" },
       ],
     },
     locationCards: {
-      burjKhalifaMinutes: 20,
-      dubaiMallMinutes: 20,
-      airportMinutes: 30,
+      burjKhalifaMinutes: 5,
+      dubaiMallMinutes: 7,
+      airportMinutes: 18,
     },
     faqs: [
       {
-        question: "Is Dubai Marina suitable for families?",
+        question: "Who is Sheikh Zayed Road best suited for?",
         answer:
-          "Yes, many families live here thanks to the marina lifestyle and nearby schools, but those wanting larger gardens may prefer villa communities like Meadows or Arabian Ranches.",
+          "Primarily professionals and couples who want maximum connectivity to offices in Downtown, DIFC, Business Bay and Media City, and don’t mind a more urban, high-rise lifestyle.",
+      },
+      {
+        question: "Is Sheikh Zayed Road noisy to live on?",
+        answer:
+          "Traffic noise can be a factor on lower floors or buildings directly on the highway, but high floors and buildings set slightly back from the road feel noticeably quieter.",
       },
     ],
     projects: [
       {
-        id: "dm-project-1",
-        title: "Marina View Luxury Apartment",
-        price: "AED 140,000 Yearly",
+        id: "szr-project-1",
+        title: "Sky Parks – Branded High-Rise Residences",
+        price: "AED 1,600,000",
         beds: 1,
         baths: 2,
-        area: "780 sqft",
-        location: "Marina Gate, Dubai Marina, UAE",
-        handover: "Ready",
-        paymentPlan: "4 Cheques",
-        features: ["Marina View", "Luxury Building", "Pool & Gym"],
-        status: "available",
+        area: "750 sqft",
+        location: "Sheikh Zayed Road, Dubai, UAE",
+        handover: "Off-plan",
+        paymentPlan: "Easy post-handover plan",
+        features: ["Sky gardens", "Branded lobby", "Prime SZR location"],
+        status: "off-plan",
       },
       {
-        id: "dm-project-2",
-        title: "Sea View Studio | Walking Distance to Beach",
-        price: "AED 85,000 Yearly",
-        beds: "Studio",
-        baths: 1,
-        area: "520 sqft",
-        location: "Emaar 6 Towers, Dubai Marina, UAE",
-        handover: "Ready",
-        paymentPlan: "6 Cheques",
-        features: ["Sea View", "Beach Access", "Modern Finishes"],
-        status: "available",
-      },
-    ],
-  },
-
-  "jumeirah-village-circle": {
-    slug: "jumeirah-village-circle",
-    name: "Jumeirah Village Circle (JVC)",
-    heroImage:
-      "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-bg.jpg",
-    summary: {
-      location: "New Dubai, between Al Khail Road and Hessa Street.",
-      avgBuy: "1BR from ~AED 800K",
-      avgRent: "1BR from ~AED 70K / year",
-      roi: "Often around 7–9% gross yield.",
-    },
-    hero: {
-      title: "Jumeirah Village Circle (JVC)",
-      subtitle:
-        "Family-friendly master community with mid-rise apartments, townhouses and villas at more affordable price points.",
-    },
-    highlights: {
-      about:
-        "JVC is a large, evolving community in New Dubai, offering a wide mix of apartments and townhouses with parks, schools, shops and easy access to main highways.",
-      inANutshell: [
-        "Popular with families and young professionals looking for value.",
-        "Good mix of studios to 3-bed apartments plus townhouses and villas.",
-        "Steadily improving retail, schools and community facilities.",
-        "Strong rental yields thanks to relatively low buy-in prices.",
-      ],
-    },
-    neighbourhood: {
-      communityOverview:
-        "The area is divided into multiple districts with landscaped streets, local parks and community retail. Construction is still ongoing in some pockets, but liveable parts have a neighbourhood feel with schools, nurseries and supermarkets.",
-      propertiesOverview:
-        "Apartments sit in low- to mid-rise buildings, while inner streets feature townhouses and villas. Many investors focus on 1- and 2-bed apartments because of strong rental demand.",
-    },
-    market: {
-      rentalTrends: [
-        { type: "Studio", averageRentAED: 55000 },
-        { type: "1-Bed", averageRentAED: 70000 },
-        { type: "2-Bed", averageRentAED: 90000 },
-        { type: "3-Bed", averageRentAED: 120000 },
-      ],
-      salesTrends: [
-        { type: "Studio", averagePriceAED: 800000 },
-        { type: "1-Bed", averagePriceAED: 1000000 },
-        { type: "2-Bed", averagePriceAED: 1400000 },
-        { type: "3-Bed", averagePriceAED: 1800000 },
-      ],
-      roiByType: [
-        { type: "Studio", roiPercent: 8.2 },
-        { type: "1-Bed", roiPercent: 8.4 },
-        { type: "2-Bed", roiPercent: 7.7 },
-        { type: "3-Bed", roiPercent: 8.0 },
-      ],
-      popularBuildings: [
-        { name: "Belgravia series" },
-        { name: "Bloom Towers" },
-        { name: "Signature Livings" },
-      ],
-    },
-    locationCards: {
-      burjKhalifaMinutes: 25,
-      dubaiMallMinutes: 25,
-      airportMinutes: 30,
-    },
-    faqs: [
-      {
-        question: "Is JVC good for investment?",
-        answer:
-          "Because entry prices are lower than more central locations yet rental demand is strong, JVC is often seen as a good value-for-money investment community.",
-      },
-    ],
-    projects: [
-      {
-        id: "jvc-project-1",
-        title: "Family Townhouse with Garden",
-        price: "AED 120,000 Yearly",
-        beds: 3,
+        id: "szr-project-2",
+        title: "Sobha Central – SZR Lifestyle Apartments",
+        price: "AED 1,950,000",
+        beds: 2,
         baths: 3,
-        area: "1850 sqft",
-        location: "Belgravia, JVC, Dubai, UAE",
-        handover: "Ready",
-        paymentPlan: "4 Cheques",
-        features: ["Private Garden", "Community Pool", "Family Friendly"],
-        status: "available",
-      },
-      {
-        id: "jvc-project-2",
-        title: "Affordable Studio | Great Value",
-        price: "AED 45,000 Yearly",
-        beds: "Studio",
-        baths: 1,
-        area: "420 sqft",
-        location: "Bloom Towers, JVC, Dubai, UAE",
-        handover: "Ready",
-        paymentPlan: "6 Cheques",
-        features: ["Modern Building", "Park View", "Affordable"],
-        status: "available",
+        area: "1050 sqft",
+        location: "Sobha Central, Sheikh Zayed Road, Dubai, UAE",
+        handover: "Off-plan",
+        paymentPlan: "60/40",
+        features: ["Central location", "Modern finishes", "Great connectivity"],
+        status: "off-plan",
       },
     ],
   },
 
+  /* ========== MOHAMMED BIN RASHID CITY (HARTLAND / MEYDAN ONE) ========== */
   "mohammed-bin-rashid-city": {
     slug: "mohammed-bin-rashid-city",
     name: "Mohammed Bin Rashid City (MBR City)",
@@ -452,7 +254,7 @@ export const whereToLiveRegionDetails = {
     },
     highlights: {
       about:
-        "MBR City is a vast master development planned with luxury villas, townhouses, apartments, schools and retail destinations, including communities like District One and Sobha Hartland.",
+        "MBR City is a vast master development planned with luxury villas, townhouses, apartments, schools and retail destinations, including communities like District One, Sobha Hartland and Meydan One.",
       inANutshell: [
         "Premium villas and townhouses close to Downtown.",
         "Lagoon and park-centric lifestyle in certain sub-communities.",
@@ -461,9 +263,9 @@ export const whereToLiveRegionDetails = {
     },
     neighbourhood: {
       communityOverview:
-        "The area is still evolving but already popular with families seeking larger homes close to the city centre.",
+        "The area is still evolving but already popular with families seeking larger homes close to the city centre. Green spaces, lagoons and low-rise streets make it feel more residential than inner-city districts.",
       propertiesOverview:
-        "Mix of standalone villas, townhouses and branded apartments with contemporary designs and master-planned streets.",
+        "Mix of standalone villas, townhouses and branded apartments with contemporary designs and master-planned streets. Projects like Sobha Hartland II Villas and Riviera in Meydan One anchor the area.",
     },
     market: {
       rentalTrends: [
@@ -482,8 +284,9 @@ export const whereToLiveRegionDetails = {
       ],
       popularBuildings: [
         { name: "Sobha Hartland" },
-        { name: "District One" },
-        { name: "Hartland Greens" },
+        { name: "Sobha Hartland II Villas" },
+        { name: "Riviera, Meydan One" },
+        { name: "District One Villas" },
       ],
     },
     locationCards: {
@@ -502,32 +305,294 @@ export const whereToLiveRegionDetails = {
       {
         id: "mbr-project-1",
         title: "Sobha Hartland II Villas",
-        price: "AED 6,500,000",
-        beds: 4,
-        baths: 5,
-        area: "3800 sqft",
+        price: "AED 60,639,950",
+        beds: 6,
+        baths: 7,
+        area: "17,325 sqft (GFA)",
         location: "Mohammed Bin Rashid City, Dubai, UAE",
-        handover: "Q4 2024",
-        paymentPlan: "80/20",
-        features: ["Lagoon View", "Private Pool", "Premium Finishes"],
+        handover: "Q3 2026",
+        paymentPlan: "Flexible developer plan",
+        features: ["Private garden", "Lagoon access", "Ultra-luxury finish"],
         status: "off-plan",
       },
       {
         id: "mbr-project-2",
-        title: "Luxury Villa with Garden",
-        price: "AED 380,000 Yearly",
-        beds: 5,
-        baths: 6,
-        area: "4500 sqft",
-        location: "District One, MBR City, Dubai, UAE",
-        handover: "Ready",
-        paymentPlan: "4 Cheques",
-        features: ["Private Garden", "Maid's Room", "Premium Community"],
-        status: "available",
+        title: "Riviera Meydan One Apartment",
+        price: "AED 1,300,000",
+        beds: 1,
+        baths: 2,
+        area: "700 sqft",
+        location: "Meydan One, MBR City, Dubai, UAE",
+        handover: "Off-plan",
+        paymentPlan: "Easy instalments",
+        features: ["Lagoon community", "New urban hub"],
+        status: "off-plan",
+      },
+    ],
+  },
+
+  /* ========== DUBAILAND (LUXERA / DAMAC ISLANDS) ========== */
+  dubailand: {
+    slug: "dubailand",
+    name: "Dubailand",
+    heroImage:
+      "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50.jpeg",
+    summary: {
+      location:
+        "Massive residential and entertainment corridor stretching inland off E611 and Al Ain Road.",
+      avgBuy: "1BR from ~AED 750K",
+      avgRent: "1BR from ~AED 60K / year",
+      roi: "Research suggests 6–8% gross yields in selected communities.",
+    },
+    hero: {
+      title: "Dubailand",
+      subtitle:
+        "An evolving mega-corridor of communities, villas and apartments with strong value-for-money and family appeal.",
+    },
+    highlights: {
+      about:
+        "Dubailand covers a wide belt of residential communities, from townhouses to villa clusters and mid-rise apartments. Projects like Luxera Estates and master plans such as DAMAC Islands and similar communities offer a mix of waterfront, parkfront and suburban-style living.",
+      inANutshell: [
+        "Broad choice of mid-market and upper-mid homes.",
+        "Generally lower entry prices than inner-city areas.",
+        "Good scope for capital growth as communities mature.",
+        "Appeals to families and long-term residents seeking space and value.",
+      ],
+    },
+    neighbourhood: {
+      communityOverview:
+        "Different pockets of Dubailand have different characters – from tranquil, villa-style streets to larger apartment clusters and future waterfront-inspired projects. Everyday retail and schools are increasingly integrated into each sub-community.",
+      propertiesOverview:
+        "Mix of apartments, townhouses and villas. Many investors target 1- and 2-bed apartments and townhouses for yield, while end-users favour larger villas and semi-detached options.",
+    },
+    market: {
+      rentalTrends: [
+        { type: "1-Bed", averageRentAED: 60000 },
+        { type: "2-Bed", averageRentAED: 80000 },
+        { type: "3-Bed Townhouse", averageRentAED: 120000 },
+      ],
+      salesTrends: [
+        { type: "1-Bed", averagePriceAED: 750000 },
+        { type: "2-Bed", averagePriceAED: 1000000 },
+        { type: "3-Bed Townhouse", averagePriceAED: 1700000 },
+      ],
+      roiByType: [
+        { type: "1-Bed", roiPercent: 7.2 },
+        { type: "2-Bed", roiPercent: 7.0 },
+        { type: "Townhouse", roiPercent: 6.5 },
+      ],
+      popularBuildings: [
+        { name: "Luxera Estates" },
+        { name: "Upcoming DAMAC waterfront clusters" },
+      ],
+    },
+    locationCards: {
+      burjKhalifaMinutes: 25,
+      dubaiMallMinutes: 25,
+      airportMinutes: 30,
+    },
+    faqs: [
+      {
+        question: "Is Dubailand considered good for long-term holding?",
+        answer:
+          "Many buyers choose Dubailand for long-term occupancy and rental holds because of lower entry prices and improving infrastructure.",
+      },
+    ],
+    projects: [
+      {
+        id: "dubailand-project-1",
+        title: "Luxera Estates Townhouse",
+        price: "AED 1,800,000",
+        beds: 3,
+        baths: 4,
+        area: "2,000 sqft",
+        location: "Dubailand, Dubai, UAE",
+        handover: "Off-plan",
+        paymentPlan: "Flexible instalments",
+        features: ["Gated community", "Family layout"],
+        status: "off-plan",
+      },
+      {
+        id: "dubailand-project-2",
+        title: "Waterfront Inspired Cluster Home",
+        price: "AED 2,400,000",
+        beds: 4,
+        baths: 5,
+        area: "2,400 sqft",
+        location: "Dubailand waterfront-inspired community, Dubai, UAE",
+        handover: "Off-plan",
+        paymentPlan: "60/40",
+        features: ["Near waterfront", "Modern design"],
+        status: "off-plan",
+      },
+    ],
+  },
+
+  /* ========== UMM AL QUWAIN (AL SINNIYAH + DOWNTOWN UAQ) ========== */
+  "umm-al-quwain": {
+    slug: "umm-al-quwain",
+    name: "Umm Al Quwain Waterfront",
+    heroImage:
+      "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/hero-bg.jpg",
+    summary: {
+      location:
+        "Northern emirate with tranquil beachfront and island communities along the Arabian Gulf.",
+      avgBuy: "Villas from ~AED 2.2M",
+      avgRent: "Villas from ~AED 120K / year",
+      roi: "Typically 5–6% on select villa communities.",
+    },
+    hero: {
+      title: "Umm Al Quwain Waterfront Living",
+      subtitle:
+        "Calm, seaside lifestyle in villa and apartment communities like Al Sinniyah Island and Downtown UAQ.",
+    },
+    highlights: {
+      about:
+        "Umm Al Quwain offers quieter, more relaxed coastal living compared to Dubai, with island projects and waterfront communities that emphasise open space, beaches and family time. Your projects on Al Sinniyah Island and in Downtown Umm Al Quwain tap into exactly that lifestyle.",
+      inANutshell: [
+        "Beachfront and island settings away from big-city crowds.",
+        "Primarily villa and low-to-mid-rise apartment stock.",
+        "Suitable for end-users seeking a holiday-home or quieter primary residence.",
+      ],
+    },
+    neighbourhood: {
+      communityOverview:
+        "The atmosphere is low-rise, coastal and community-focused. Residents enjoy easy access to beaches, promenades and local retail, with a slower pace of life than major UAE cities.",
+      propertiesOverview:
+        "Mixture of standalone villas, semi-detached homes and apartments. Island projects often feature sea views and direct beach access.",
+    },
+    market: {
+      rentalTrends: [
+        { type: "3-Bed Villa", averageRentAED: 120000 },
+        { type: "4-Bed Villa", averageRentAED: 150000 },
+      ],
+      salesTrends: [
+        { type: "3-Bed Villa", averagePriceAED: 2200000 },
+        { type: "4-Bed Villa", averagePriceAED: 2800000 },
+      ],
+      roiByType: [{ type: "Villa", roiPercent: 5.5 }],
+      popularBuildings: [
+        { name: "Al Sinniyah Island Villas" },
+        { name: "AquaMont Downtown UAQ" },
+      ],
+    },
+    locationCards: {
+      burjKhalifaMinutes: 50,
+      dubaiMallMinutes: 50,
+      airportMinutes: 45, // DXB
+    },
+    faqs: [
+      {
+        question: "Why consider Umm Al Quwain instead of Dubai?",
+        answer:
+          "You get a quieter beachfront lifestyle, larger built-up areas for the price and less congestion, at the cost of a longer commute to Dubai.",
+      },
+    ],
+    projects: [
+      {
+        id: "uaq-project-1",
+        title: "Al Sinniyah Island Beach Villa",
+        price: "AED 2,400,000",
+        beds: 4,
+        baths: 5,
+        area: "3,000 sqft",
+        location: "Al Sinniyah Island, Umm Al Quwain, UAE",
+        handover: "Off-plan",
+        paymentPlan: "Easy plan",
+        features: ["Sea-facing", "Private garden"],
+        status: "off-plan",
+      },
+      {
+        id: "uaq-project-2",
+        title: "AquaMont Downtown UAQ Apartment",
+        price: "AED 780,000",
+        beds: 1,
+        baths: 2,
+        area: "700 sqft",
+        location: "Downtown Umm Al Quwain, UAE",
+        handover: "Off-plan",
+        paymentPlan: "Flexible",
+        features: ["Near mall", "New city centre"],
+        status: "off-plan",
+      },
+    ],
+  },
+
+  /* ========== SHARJAH COMMUNITIES (MASSAR STYLE) ========== */
+  sharjah: {
+    slug: "sharjah",
+    name: "Sharjah",
+    heroImage:
+      "https://luxury-real-estate-media.b-cdn.net/massar-3/hero-bg.jpg",
+    summary: {
+      location:
+        "Master communities on the Sharjah–Dubai corridor with parks and family-focused layouts.",
+      avgBuy: "Townhouses from ~AED 1.6M",
+      avgRent: "Townhouses from ~AED 110K / year",
+      roi: "Approximately 5–7% gross yields.",
+    },
+    hero: {
+      title: "Sharjah New Communities",
+      subtitle:
+        "Green, master-planned communities with townhouses and villas offering strong value and family amenities.",
+    },
+    highlights: {
+      about:
+        "Sharjah’s new master communities combine greenery, walking trails and community centres with contemporary townhouses and villas. They appeal to families who want more space and value while staying within commuting distance to Dubai.",
+      inANutshell: [
+        "More space and greenery at lower prices than many Dubai areas.",
+        "Modern townhouse and villa stock aimed at end-users.",
+        "Good potential for long-term capital appreciation as areas mature.",
+      ],
+    },
+    neighbourhood: {
+      communityOverview:
+        "The feel is suburban and family-oriented, with tree-lined streets, parks, children’s play areas and community retail. Many developments also offer schools or nurseries within or close to the community.",
+      propertiesOverview:
+        "Primarily townhouses and villas in gated clusters, with some low-rise apartment buildings. Layouts are generally 3–5 bedrooms aimed at families.",
+    },
+    market: {
+      rentalTrends: [
+        { type: "3-Bed Townhouse", averageRentAED: 110000 },
+        { type: "4-Bed Townhouse", averageRentAED: 130000 },
+      ],
+      salesTrends: [
+        { type: "3-Bed Townhouse", averagePriceAED: 1600000 },
+        { type: "4-Bed Townhouse", averagePriceAED: 1900000 },
+      ],
+      roiByType: [{ type: "Townhouse", roiPercent: 6.0 }],
+      popularBuildings: [{ name: "Your featured Sharjah master community" }],
+    },
+    locationCards: {
+      burjKhalifaMinutes: 35,
+      dubaiMallMinutes: 35,
+      airportMinutes: 25, // DXB/SHJ corridor
+    },
+    faqs: [
+      {
+        question: "Is Sharjah good for commuters to Dubai?",
+        answer:
+          "Yes, many residents work in Dubai and live in Sharjah’s communities, but commute times can vary with traffic, so proximity to main highways is important.",
+      },
+    ],
+    projects: [
+      {
+        id: "shj-project-1",
+        title: "Green Community Townhouse",
+        price: "AED 1,650,000",
+        beds: 3,
+        baths: 4,
+        area: "2,100 sqft",
+        location: "Sharjah, UAE",
+        handover: "Off-plan",
+        paymentPlan: "Easy instalments",
+        features: ["Park-facing", "Family community"],
+        status: "off-plan",
       },
     ],
   },
 };
 
+/* Helper */
 export const getWhereToLiveRegionBySlug = (slug) =>
   whereToLiveRegionDetails[slug] || null;

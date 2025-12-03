@@ -22,7 +22,7 @@ export default function BuildingExcellenceSection() {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // 1) LEFT TITLE – slide in once, stay; disappear only when scrolling back up
+      // Left title
       gsap.fromTo(
         leftRef.current,
         { x: -80, opacity: 0 },
@@ -34,15 +34,12 @@ export default function BuildingExcellenceSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-            // onEnter, onLeave, onEnterBack, onLeaveBack
             toggleActions: "play none none reverse",
-            //  👆 play when entering from bottom, do nothing when leaving
-            //  while going down, reverse only when leaving back (scrolling up)
           },
         }
       );
 
-      // 2) RIGHT PARAGRAPH – same logic, from the right
+      // Right paragraph
       gsap.fromTo(
         rightRef.current,
         { x: 80, opacity: 0 },
@@ -59,7 +56,7 @@ export default function BuildingExcellenceSection() {
         }
       );
 
-      // 3) STATS – come 1 by 1 from left/bottom and then stay
+      // Stats cards
       gsap.fromTo(
         statRefs.current,
         { x: -60, y: 30, opacity: 0 },
@@ -78,7 +75,7 @@ export default function BuildingExcellenceSection() {
         }
       );
 
-      // 4) COUNTERS – restart each time you enter, reset when you go back above
+      // Counters
       statRefs.current.forEach((box) => {
         if (!box) return;
         const span = box.querySelector("[data-count-span]");
@@ -95,8 +92,6 @@ export default function BuildingExcellenceSection() {
             trigger: box,
             start: "top 85%",
             toggleActions: "restart none none reset",
-            // enter from bottom = restart animation
-            // leave back above = reset to 0
           },
           onUpdate: () => {
             span.textContent = Math.floor(counter.value).toString();
@@ -118,15 +113,13 @@ export default function BuildingExcellenceSection() {
         background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
       }}
     >
-      {/* Background Pattern */}
+      {/* Background pattern */}
       <div
         style={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0)`,
+          inset: 0,
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0)",
           backgroundSize: "40px 40px",
           opacity: 0.6,
         }}
@@ -163,11 +156,11 @@ export default function BuildingExcellenceSection() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Building
+              Real Estate Decisions
               <br />
-              Excellence for
+              That Build Wealth,
               <br />
-              Generations
+              Not Just Properties
             </h2>
           </div>
 
@@ -181,12 +174,15 @@ export default function BuildingExcellenceSection() {
                 fontWeight: 400,
               }}
             >
-              At Mohamad Kodmani Real Real Estate Brokers , we pride ourselves
-              on uncompromising standards. Our focus on craftsmanship, detail
-              and long-term thinking is at the heart of everything we do. While
-              others may consider minor details to be unimportant, we understand
-              how these small decisions come together to create an extraordinary
-              living and investing experience.
+              At <strong>Mohamad Kodmani Real Estate Brokerage</strong>, we do
+              not simply sell units; we design complete investment strategies.
+              Every recommendation is based on transparent information,
+              realistic market analysis and a clear plan that balances capital
+              appreciation, rental income and risk. In just two years, our team
+              has helped investors close more than{" "}
+              <strong>AED 170 million</strong> in transactions with{" "}
+              <strong>returns above 8% annually</strong>, by entering the right
+              projects at the right time.
             </p>
           </div>
         </div>
@@ -201,12 +197,9 @@ export default function BuildingExcellenceSection() {
             flexWrap: "wrap",
           }}
         >
-          {/* 1 – LAND AREA */}
+          {/* 1 – YEARS OF EXPERIENCE */}
           <div
-            style={{
-              flex: "1 1 300px",
-              minWidth: "280px",
-            }}
+            style={{ flex: "1 1 300px", minWidth: "280px" }}
             ref={(el) => setStatRef(el, 0)}
           >
             <div
@@ -235,8 +228,8 @@ export default function BuildingExcellenceSection() {
                 }}
               >
                 <Image
-                  src="/icons/land-area.svg"
-                  alt="Land area icon"
+                  src="/icons/experience.svg"
+                  alt="Experience icon"
                   width={40}
                   height={40}
                   style={{ filter: "brightness(0) invert(1)" }}
@@ -263,15 +256,17 @@ export default function BuildingExcellenceSection() {
                     lineHeight: 1.1,
                   }}
                 >
-                  ~
                   <span
                     data-count-span
-                    data-count-value="8"
+                    data-count-value="19"
                     style={{ display: "inline-block", minWidth: "40px" }}
                   >
-                    8
+                    19
                   </span>
-                  Mn
+                  +
+                  <span style={{ fontSize: "1.4rem", marginLeft: "4px" }}>
+                    years
+                  </span>
                 </h3>
                 <span
                   style={{
@@ -281,18 +276,16 @@ export default function BuildingExcellenceSection() {
                     fontWeight: 500,
                   }}
                 >
-                  Square Feet of Land Area Developed
+                  Of entrepreneurial and real estate experience across multiple
+                  sectors.
                 </span>
               </div>
             </div>
           </div>
 
-          {/* 2 – EMPLOYEES */}
+          {/* 2 – SALES VOLUME */}
           <div
-            style={{
-              flex: "1 1 300px",
-              minWidth: "280px",
-            }}
+            style={{ flex: "1 1 300px", minWidth: "280px" }}
             ref={(el) => setStatRef(el, 1)}
           >
             <div
@@ -321,8 +314,8 @@ export default function BuildingExcellenceSection() {
                 }}
               >
                 <Image
-                  src="/icons/employees.svg"
-                  alt="Employees icon"
+                  src="/icons/sales.svg"
+                  alt="Sales volume icon"
                   width={40}
                   height={40}
                   style={{ filter: "brightness(0) invert(1)" }}
@@ -349,14 +342,15 @@ export default function BuildingExcellenceSection() {
                     lineHeight: 1.1,
                   }}
                 >
-                  ~
+                  AED{" "}
                   <span
                     data-count-span
-                    data-count-value="3000"
+                    data-count-value="170"
                     style={{ display: "inline-block", minWidth: "60px" }}
                   >
-                    3000
+                    170
                   </span>
+                  M+
                 </h3>
                 <span
                   style={{
@@ -366,18 +360,15 @@ export default function BuildingExcellenceSection() {
                     fontWeight: 500,
                   }}
                 >
-                  Employees as of 2024
+                  Transaction volume closed for investors in just two years.
                 </span>
               </div>
             </div>
           </div>
 
-          {/* 3 – MARKET SHARE */}
+          {/* 3 – RETURNS */}
           <div
-            style={{
-              flex: "1 1 300px",
-              minWidth: "280px",
-            }}
+            style={{ flex: "1 1 300px", minWidth: "280px" }}
             ref={(el) => setStatRef(el, 2)}
           >
             <div
@@ -406,8 +397,8 @@ export default function BuildingExcellenceSection() {
                 }}
               >
                 <Image
-                  src="/icons/pie-chart.svg"
-                  alt="Market share icon"
+                  src="/icons/returns.svg"
+                  alt="Investment returns icon"
                   width={40}
                   height={40}
                   style={{ filter: "brightness(0) invert(1)" }}
@@ -434,15 +425,14 @@ export default function BuildingExcellenceSection() {
                     lineHeight: 1.1,
                   }}
                 >
-                  ~
                   <span
                     data-count-span
-                    data-count-value="10"
+                    data-count-value="8"
                     style={{ display: "inline-block", minWidth: "30px" }}
                   >
-                    10
+                    8
                   </span>
-                  %
+                  %+
                 </h3>
                 <span
                   style={{
@@ -452,14 +442,15 @@ export default function BuildingExcellenceSection() {
                     fontWeight: 500,
                   }}
                 >
-                  Market Share in Dubai
+                  Targeted annual returns on structured investment strategies
+                  with controlled risk.
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom decorative line */}
+        {/* Decorative line */}
         <div
           style={{
             width: "100px",

@@ -6,52 +6,44 @@ import styles from "@/styles/about/JourneyTimeline.module.css";
 
 const JOURNEY_STEPS = [
   {
-    year: "1976",
-    title: "Great Things Start Small",
+    year: "2006",
+    title: "From Family Legacy to Construction",
     description:
-      "Mr. PNC Menon begins his journey in interior design, laying the foundations of what will later become a global real-estate brand.",
+      "Coming from a family with a strong background in contracting and real estate, Mohamad establishes Al Bairaq Contracting in Dubai and begins building his own track record in projects and execution.",
     image:
-      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2070&q=80",
   },
   {
-    year: "1995",
-    title: "Royal Approval",
+    year: "2013",
+    title: "Expanding into the Beauty Sector",
     description:
-      "The company's work for royal families across the Gulf region establishes a reputation for meticulous craftsmanship and discretion.",
+      "He moves into business development in the beauty industry in Syria, gaining hands-on experience in brand building, operations, and customer-focused growth.",
     image:
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  },
-  {
-    year: "1995",
-    title: "Establishing Mohamad Kodmani Real Estate Brokers LLC.",
-    description:
-      "Mohamad Kodmani Real Estate Brokers enters the UAE market, founding a development company in Dubai and scaling its vision from interiors to full communities.",
-    image:
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  },
-  {
-    year: "2003",
-    title: "The City of Gold – Dubai",
-    description:
-      "The brand expands to Dubai, bringing its design-first philosophy to one of the world's most dynamic real-estate landscapes.",
-    image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  },
-  {
-    year: "2014",
-    title: "Homes that Inspire Sobha Hartland",
-    description:
-      "A new waterfront master community showcases the blend of architecture, quality and attention to detail that defines the brand.",
-    image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=2070&q=80",
   },
   {
     year: "2016",
-    title: "Humanitarian Efforts",
+    title: "Entrepreneurship in F&B",
     description:
-      "Philanthropic initiatives support education and uplift communities, extending the brand's impact far beyond its developments.",
+      "Mohamad establishes and manages restaurants in Syria, strengthening his understanding of cashflow, daily operations, and risk management in competitive markets.",
     image:
-      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
+      "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=2070&q=80",
+  },
+  {
+    year: "2023",
+    title: "Founding Mohamad Kodmani Real Estate Brokerage",
+    description:
+      "Drawing on years of experience in construction and entrepreneurship, he launches Mohamad Kodmani Real Estate Brokerage in Dubai, specialising in investment-focused real estate services.",
+    image:
+      "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?auto=format&fit=crop&w=2070&q=80",
+  },
+  {
+    year: "2023–2025",
+    title: "Building Investor Portfolios in Dubai",
+    description:
+      "In just two years, the company helps investors close more than AED 170 million in transactions with investment returns above 8%, focusing on smart off-plan opportunities, portfolio building and full post-purchase services.",
+    image:
+      "https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=2070&q=80",
   },
 ];
 
@@ -63,7 +55,9 @@ export default function JourneyTimeline() {
       {/* Heading */}
       <div className={styles.headingBlock}>
         <p className={styles.kicker}>OUR JOURNEY</p>
-        <h2 className={styles.heading}>A Journey Through the Times,</h2>
+        <h2 className={styles.heading}>
+          From Construction to Investment Leadership
+        </h2>
       </div>
 
       {/* Timeline Row */}
@@ -81,7 +75,7 @@ export default function JourneyTimeline() {
               onMouseEnter={() => setActiveIndex(index)}
               onFocus={() => setActiveIndex(index)}
             >
-              {/* Background image + cinematic overlay */}
+              {/* Background image + overlay */}
               <div className={styles.imageWrapper}>
                 <Image
                   src={step.image}
@@ -94,7 +88,7 @@ export default function JourneyTimeline() {
                 <div className={styles.scrim} />
               </div>
 
-              {/* Year when strip is collapsed */}
+              {/* Year when collapsed */}
               <div className={styles.yearOnly}>
                 <span className={styles.year}>{step.year}</span>
               </div>

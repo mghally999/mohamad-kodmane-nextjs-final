@@ -1,211 +1,375 @@
-/* src/styles/projects/ProjectCards.module.css */
+/* ===============================================================
+   LUXURY REAL ESTATE PROJECT CARDS
+   =============================================================== */
 
+/* Grid Layout */
 .cardsGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  padding: 24px 0;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  padding: 32px 0;
 }
 
+/* Card Container */
 .projectCard {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
-  border: 1px solid #e5e7eb;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 480px;
 }
 
 .projectCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
-  border-color: #d1d5db;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  border-color: #e0c36a;
 }
 
+/* Image Section */
 .cardImage {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  background: #f3f4f6;
+  background: linear-gradient(135deg, #f8f6f0 0%, #f0ede6 100%);
+  transition: transform 0.5s ease;
+}
+
+.projectCard:hover .cardImage {
+  transform: scale(1.05);
 }
 
 .imagePlaceholder {
   width: 100%;
   height: 200px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f8f6f0 0%, #f0ede6 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 14px;
-  font-weight: 500;
+  color: #c9a35b;
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
 }
 
+.imagePlaceholder::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(201, 163, 91, 0.1) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(201, 163, 91, 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+  animation: movePattern 20s linear infinite;
+}
+
+@keyframes movePattern {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-40px, -40px);
+  }
+}
+
+/* Status Badge */
+.statusBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.statusCompleted {
+  background: rgba(16, 185, 129, 0.85);
+}
+
+.statusPresale {
+  background: rgba(245, 158, 11, 0.85);
+}
+
+.statusUnderConstruction {
+  background: rgba(59, 130, 246, 0.85);
+}
+
+.statusAnnounced {
+  background: rgba(99, 102, 241, 0.85);
+}
+
+.statusOnSale {
+  background: rgba(201, 163, 91, 0.85);
+}
+
+/* Card Content */
 .cardContent {
   padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Header Section */
 .cardHeader {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .developer {
-  font-size: 12px;
-  color: #6b7280;
-  font-weight: 500;
-  margin-bottom: 4px;
+  font-size: 11px;
+  color: #c9a35b;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(201, 163, 91, 0.1);
+  border-radius: 4px;
 }
 
 .projectName {
   font-size: 18px;
-  font-weight: 600;
-  color: #111827;
-  margin: 0 0 8px 0;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 8px 0 10px 0;
   line-height: 1.3;
+  letter-spacing: -0.2px;
 }
 
 .location {
   font-size: 13px;
-  color: #6b7280;
+  color: #666666;
   display: flex;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 12px;
+  gap: 6px;
+  margin-top: 4px;
 }
 
+/* Details Grid */
 .cardDetails {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-grow: 1;
 }
 
 .detailItem {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
 .detailLabel {
-  font-size: 11px;
-  color: #6b7280;
+  font-size: 10px;
+  color: #888888;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.7px;
   font-weight: 500;
 }
 
 .detailValue {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: #1a1a1a;
+  line-height: 1.2;
 }
 
+/* Price - BIG & Prominent */
 .price {
-  font-size: 16px;
-  color: #059669;
-  font-weight: 700;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  letter-spacing: -0.3px;
+  display: block;
 }
 
-.statusBadge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.price::before {
+  content: "AED ";
+  font-size: 14px;
+  font-weight: 500;
+  color: #888888;
 }
 
-.statusCompleted {
-  background: #10b981;
-  color: white;
-}
-
-.statusPresale {
-  background: #f59e0b;
-  color: white;
-}
-
-.statusUnderConstruction {
-  background: #3b82f6;
-  color: white;
-}
-
+/* Bedrooms Section */
 .bedrooms {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: #6b7280;
-  margin-top: 8px;
+  color: #666666;
+  margin-bottom: 12px;
 }
 
+.bedroomRange {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-left: auto;
+  padding: 2px 8px;
+  background: rgba(201, 163, 91, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(201, 163, 91, 0.2);
+}
+
+/* Post-Handover */
+.postHandover {
+  padding: 10px 12px;
+  background: rgba(201, 163, 91, 0.08);
+  border-left: 3px solid #c9a35b;
+  color: #b88a44;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* View Project Button */
+.viewButton {
+  width: 100%;
+  background: #c9a35b;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.viewButton:hover {
+  background: #b88a44;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(201, 163, 91, 0.3);
+}
+
+.buttonIcon {
+  font-size: 16px;
+}
+
+/* Empty State */
 .emptyState {
   text-align: center;
   padding: 60px 20px;
-  color: #6b7280;
+  color: #666666;
 }
 
 .emptyState h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #374151;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a1a1a;
 }
 
 .emptyState p {
   font-size: 14px;
   margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 .resetFilters {
-  background: #4f46e5;
+  background: #c9a35b;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .resetFilters:hover {
-  background: #4338ca;
+  background: #b88a44;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 163, 91, 0.3);
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 1200px) {
   .cardsGrid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    padding: 16px 0;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 24px 0;
   }
 
-  .cardContent {
-    padding: 16px;
+  .projectCard {
+    height: 460px;
+  }
+
+  .cardImage,
+  .imagePlaceholder {
+    height: 180px;
   }
 
   .projectName {
-    font-size: 16px;
+    font-size: 17px;
   }
 
-  .cardDetails {
-    grid-template-columns: 1fr;
-    gap: 8px;
+  .price {
+    font-size: 20px !important;
   }
 }
 
 @media (max-width: 480px) {
   .cardsGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cardContent {
+    padding: 16px;
+  }
+
+  .projectCard {
+    height: 440px;
+  }
+
+  .cardImage,
+  .imagePlaceholder {
+    height: 160px;
   }
 }

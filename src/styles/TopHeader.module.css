@@ -15,14 +15,10 @@
       rgba(0, 0, 0, 0) 100%
     )
     0% 0% no-repeat padding-box transparent;
-  transition: background 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease,
-    transform 0.25s ease;
+  transition: background 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease;
 }
 
 .scrolled {
-  /* padding: 0.6rem 0; */
-  /* background: rgba(10, 10, 10, 0.96);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); */
   backdrop-filter: blur(20px);
 }
 
@@ -30,24 +26,17 @@
   background: rgba(10, 10, 10, 0.98);
 }
 
-.backgroundOverlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
 .rtl {
   direction: rtl;
 }
 
-/* when we add this class to body via JS */
 .mobileMenuOpen {
   overflow: hidden;
 }
 
 /* =========================================
-       LAYOUT CONTAINER
-       ========================================= */
+     LAYOUT CONTAINER
+     ========================================= */
 
 .container {
   max-width: 1385px;
@@ -123,8 +112,8 @@
 }
 
 /* =========================================
-       LOGO
-       ========================================= */
+     LOGO
+     ========================================= */
 
 .logoLink {
   display: inline-flex;
@@ -134,14 +123,12 @@
 
 .logoImage {
   display: block;
-  /* max-width: 125px; */
-  /* height: auto; */
   object-fit: contain;
 }
 
 /* =========================================
-       DESKTOP NAV
-       ========================================= */
+     DESKTOP NAV
+     ========================================= */
 
 .navLinks {
   list-style: none;
@@ -224,8 +211,8 @@
 }
 
 /* =========================================
-       LANGUAGE TOGGLE
-       ========================================= */
+     LANGUAGE TOGGLE
+     ========================================= */
 
 .languageToggle {
   margin-left: 0.75rem;
@@ -305,8 +292,8 @@
 }
 
 /* =========================================
-       DESKTOP MEGA MENU – GENERAL WRAPPER
-       ========================================= */
+     DESKTOP MEGA MENU – GENERAL WRAPPER
+     ========================================= */
 
 @keyframes curtainOpen {
   0% {
@@ -341,8 +328,8 @@
 }
 
 /* =========================================
-       MEGA MENU – PROPERTIES (3 columns)
-       ========================================= */
+     MEGA MENU – PROPERTIES (3 columns)
+     ========================================= */
 
 .megaMenuInner {
   display: grid;
@@ -477,8 +464,8 @@
 }
 
 /* =========================================
-       MEGA MENU – COMMUNITIES
-       ========================================= */
+     MEGA MENU – COMMUNITIES & ABOUT
+     ========================================= */
 
 .megaMenuInnerCommunities {
   display: grid;
@@ -637,157 +624,8 @@
 }
 
 /* =========================================
-       MEGA MENU – DEVELOPERS
-       ========================================= */
-
-.megaMenuInnerDevelopers {
-  display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
-  min-height: 320px;
-}
-
-/* left list */
-.megaDevelopersLeft {
-  background: #f9fafb;
-  padding: 22px 22px 22px 22px;
-  border-right: 1px solid rgba(209, 213, 219, 0.9);
-}
-
-.developersListDesktop {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0;
-  max-height: 270px;
-  overflow-x: hidden;
-}
-
-.developersListDesktop::-webkit-scrollbar {
-  width: 4px;
-}
-.developersListDesktop::-webkit-scrollbar-thumb {
-  background: #c9a26a;
-  border-radius: 999px;
-}
-
-.developerItemDesktop {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 11px;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  color: #111827;
-  font-size: 13px;
-  background: #ffffff;
-  margin-bottom: 8px;
-  transition: border-color 0.16s ease, box-shadow 0.16s ease,
-    transform 0.16s ease;
-}
-
-.developerItemDesktop:hover,
-.activeDeveloper {
-  border-color: rgba(201, 162, 106, 0.7);
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.18);
-  transform: translateX(3px);
-}
-
-.developerLogoDesktop {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: #f3f4f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.developerLogoDesktop img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 4px;
-}
-
-.developerInfoDesktop {
-  flex: 1;
-}
-
-.developerNameDesktop {
-  display: block;
-  font-weight: 600;
-}
-
-.developerTaglineDesktop {
-  display: block;
-  font-size: 11px;
-  color: #6b7280;
-}
-
-.developerArrowDesktop {
-  font-size: 14px;
-  color: #9ca3af;
-}
-
-/* right preview */
-.megaDevelopersRight {
-  padding: 18px 20px 20px 20px;
-  display: flex;
-  align-items: stretch;
-}
-
-.developerPreviewWrapper {
-  display: grid;
-  grid-template-rows: minmax(220px, 1.5fr) auto;
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #020617;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
-}
-
-.developerPreviewImage {
-  background-size: cover;
-  background-position: center;
-}
-
-.developerPreviewInfo {
-  padding: 18px 20px 18px 20px;
-  background: #ffffff;
-}
-
-.developerPreviewTitle {
-  margin: 0 0 4px 0;
-  font-size: 18px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.developerPreviewTagline {
-  margin: 0 0 12px 0;
-  font-size: 13px;
-  color: #4b5563;
-}
-
-.developerPreviewButton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 20px;
-  border-radius: 999px;
-  border: none;
-  background: #111827;
-  color: #f9fafb;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-/* =========================================
-       DESKTOP SEARCH ICON
-       ========================================= */
+     DESKTOP SEARCH ICON
+     ========================================= */
 
 .searchItem {
   margin-left: 0.75rem;
@@ -806,8 +644,8 @@
 }
 
 /* =========================================
-       CINEMATIC SEARCH OVERLAY (top curtain)
-       ========================================= */
+     CINEMATIC SEARCH OVERLAY (top curtain)
+     ========================================= */
 
 .searchOverlay {
   position: fixed;
@@ -883,8 +721,8 @@
 }
 
 /* =========================================
-       MOBILE MENU BUTTON
-       ========================================= */
+     MOBILE MENU BUTTON
+     ========================================= */
 
 .mobileMenuButton {
   position: absolute;
@@ -930,8 +768,8 @@
 }
 
 /* =========================================
-       MOBILE NAV OVERLAY
-       ========================================= */
+     MOBILE NAV OVERLAY
+     ========================================= */
 
 .mobileNav {
   position: fixed;
@@ -1036,8 +874,14 @@
   transform: translateX(20px);
 }
 
-/* MOBILE LINKS */
+/* MOBILE NAV ITEMS CONTAINER */
+.mobileNavItems {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
 
+/* MOBILE LINKS */
 .mobileNavLink {
   display: flex;
   align-items: center;
@@ -1054,6 +898,8 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
 }
 
 .mobileNavLink:hover,
@@ -1068,22 +914,16 @@
   flex: 1;
 }
 
-.mobileCta {
-  border-color: rgba(201, 162, 106, 0.9);
-  background: rgba(24, 24, 27, 0.9);
-}
-
 .mobileDropdownArrow {
   font-size: 0.75rem;
   transition: transform 0.2s ease;
 }
 
-.expanded {
+.mobileMegaMenuTrigger.expanded .mobileDropdownArrow {
   transform: rotate(180deg);
 }
 
 /* MOBILE MEGA MENU */
-
 .mobileMegaMenuItem {
   border-radius: 12px;
   border: 1px solid rgba(201, 162, 106, 0.4);
@@ -1098,6 +938,8 @@
 .mobileMegaMenuContent {
   padding: 1rem;
   background: #020617;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .mobileMenuLevel {
@@ -1114,8 +956,25 @@
   color: #facc15;
 }
 
-/* categories (mobile) */
+/* Mobile Sub Links */
+.mobileSubLink {
+  display: block;
+  padding: 0.75rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 0.85rem;
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  transition: all 0.2s ease;
+}
 
+.mobileSubLink:hover {
+  background: rgba(30, 64, 175, 0.9);
+  transform: translateX(4px);
+}
+
+/* categories (mobile) */
 .mobileCategoryItem {
   border-radius: 10px;
   overflow: hidden;
@@ -1149,7 +1008,6 @@
 }
 
 /* developers (mobile) */
-
 .mobileDevelopersList {
   padding: 0.6rem;
   background: rgba(15, 23, 42, 0.95);
@@ -1214,10 +1072,12 @@
 }
 
 /* projects (mobile) */
-
 .mobileProjectsList {
   padding: 0.55rem;
   background: rgba(15, 23, 42, 0.98);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .mobileProjectLink {
@@ -1229,6 +1089,7 @@
   text-decoration: none;
   color: #e5e7eb;
   transition: all 0.2s ease;
+  background: rgba(15, 23, 42, 0.9);
 }
 
 .mobileProjectLink:hover {
@@ -1259,8 +1120,73 @@
   font-size: 0.9rem;
 }
 
-/* contact (mobile) */
+/* Mobile WHERE TO LIVE */
+.mobileSearchContainer {
+  margin-bottom: 1rem;
+}
 
+.mobileSearchInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(55, 65, 81, 0.8);
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 0.85rem;
+}
+
+.mobileWhereToLiveList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.mobileWhereToLiveLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.9);
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.mobileWhereToLiveLink:hover {
+  background: rgba(30, 64, 175, 0.9);
+  transform: translateX(4px);
+}
+
+.mobileWhereToLiveImage {
+  width: 80px;
+  height: 60px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.mobileWhereToLiveInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobileWhereToLiveName {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.mobileWhereToLiveArrow {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* contact (mobile) */
 .mobileContact {
   margin-top: auto;
   padding-top: 1.5rem;
@@ -1303,8 +1229,8 @@
 }
 
 /* =========================================
-       RESPONSIVE TWEAKS
-       ========================================= */
+     RESPONSIVE TWEAKS
+     ========================================= */
 
 @media (max-width: 1023px) {
   .container {
@@ -1316,7 +1242,7 @@
   }
 
   .logoSec {
-    display: block;
+    display: none;
   }
 
   .languageToggle {
@@ -1328,72 +1254,26 @@
   .container {
     padding: 0 1rem;
   }
+
+  .mobileMegaMenuContent {
+    max-height: 350px;
+  }
+
+  .mobileWhereToLiveList {
+    max-height: 250px;
+  }
 }
 
-/* ABOUT MEGA MENU (2 columns) */
-
-.megaMenuInnerAbout {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  min-height: 260px;
+/* Scrollbar styling for mobile */
+.mobileMegaMenuContent::-webkit-scrollbar,
+.mobileWhereToLiveList::-webkit-scrollbar,
+.mobileProjectsList::-webkit-scrollbar {
+  width: 4px;
 }
 
-.aboutLeft {
-  background: #f9fafb;
-  padding: 22px 18px 22px 20px;
-  border-right: 1px solid rgba(209, 213, 219, 0.9);
-}
-
-.aboutList {
-  list-style: none;
-  padding: 0;
-  margin: 12px 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.aboutLink {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 9px 12px;
-  border-radius: 8px;
-  background: transparent;
-  text-decoration: none;
-  color: #111111;
-  font-size: 13px;
-  transition: background 0.15s ease, transform 0.15s ease;
-}
-
-.aboutLink:hover,
-.activeAbout {
-  background: #efefef;
-  transform: translateX(4px);
-}
-
-.aboutArrow {
-  font-size: 12px;
-  opacity: 0.5;
-}
-
-/* RIGHT COLUMN */
-.aboutRight {
-  padding: 18px;
-}
-
-.aboutPreviewWrapper {
-  width: 100%;
-  height: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
-  background: black;
-}
-
-.aboutPreviewImage {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background-size: cover;
-  background-position: center;
+.mobileMegaMenuContent::-webkit-scrollbar-thumb,
+.mobileWhereToLiveList::-webkit-scrollbar-thumb,
+.mobileProjectsList::-webkit-scrollbar-thumb {
+  background: #c9a26a;
+  border-radius: 999px;
 }
