@@ -216,28 +216,6 @@ export default function BuildingExcellenceSection() {
             >
               <div
                 style={{
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "12px",
-                  background:
-                    "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "24px",
-                }}
-              >
-                <Image
-                  src="/icons/experience.svg"
-                  alt="Experience icon"
-                  width={40}
-                  height={40}
-                  style={{ filter: "brightness(0) invert(1)" }}
-                />
-              </div>
-
-              <div
-                style={{
                   width: "100%",
                   height: "2px",
                   background: "linear-gradient(90deg, #667eea, #764ba2)",
@@ -279,6 +257,15 @@ export default function BuildingExcellenceSection() {
                   Of entrepreneurial and real estate experience across multiple
                   sectors.
                 </span>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "2px",
+                    background: "linear-gradient(90deg, #667eea, #764ba2)",
+                    margin: "24px 0",
+                    opacity: 0.3,
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -300,28 +287,6 @@ export default function BuildingExcellenceSection() {
                 flexDirection: "column",
               }}
             >
-              <div
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "12px",
-                  background:
-                    "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "24px",
-                }}
-              >
-                <Image
-                  src="/icons/sales.svg"
-                  alt="Sales volume icon"
-                  width={40}
-                  height={40}
-                  style={{ filter: "brightness(0) invert(1)" }}
-                />
-              </div>
-
               <div
                 style={{
                   width: "100%",
@@ -362,6 +327,15 @@ export default function BuildingExcellenceSection() {
                 >
                   Transaction volume closed for investors in just two years.
                 </span>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "2px",
+                    background: "linear-gradient(90deg, #f093fb, #f5576c)",
+                    margin: "24px 0",
+                    opacity: 0.3,
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -383,28 +357,6 @@ export default function BuildingExcellenceSection() {
                 flexDirection: "column",
               }}
             >
-              <div
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "12px",
-                  background:
-                    "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: "24px",
-                }}
-              >
-                <Image
-                  src="/icons/returns.svg"
-                  alt="Investment returns icon"
-                  width={40}
-                  height={40}
-                  style={{ filter: "brightness(0) invert(1)" }}
-                />
-              </div>
-
               <div
                 style={{
                   width: "100%",
@@ -445,6 +397,15 @@ export default function BuildingExcellenceSection() {
                   Targeted annual returns on structured investment strategies
                   with controlled risk.
                 </span>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "2px",
+                    background: "linear-gradient(90deg, #4facfe, #00f2fe)",
+                    margin: "24px 0",
+                    opacity: 0.3,
+                  }}
+                />
               </div>
             </div>
           </div>

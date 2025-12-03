@@ -135,7 +135,6 @@ export default function RootLayout({ children }) {
           )}
 
           {/* Hide FloatingWhatsApp too if you want */}
-          {!pathname?.startsWith("/developers") && <FloatingWhatsApp />}
         </LanguageProvider>
       </body>
     </html>

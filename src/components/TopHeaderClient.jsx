@@ -31,14 +31,12 @@ export default function TopHeader() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedWhereToLive, setSelectedWhereToLive] = useState(null);
-  const [selectedAboutItem, setSelectedAboutItem] = useState(null);
 
   const [mobileExpandedItems, setMobileExpandedItems] = useState({
     categories: null,
     categoryId: null,
     developerId: null,
     whereToLive: false,
-    about: false,
   });
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -53,8 +51,6 @@ export default function TopHeader() {
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
   // ================= DATA FETCHING ==================
-  const aboutMenuItems = useMemo(() => aboutData(CDN), [CDN]);
-
   const propertiesMenuData = useMemo(
     () => propertiesData(CDN, t, locale),
     [CDN, t, locale]
@@ -65,13 +61,6 @@ export default function TopHeader() {
   const developersDataArray = useMemo(() => developersData(CDN), [CDN]);
 
   const navItems = useMemo(() => navData, []);
-
-  // ================= INITIALIZE SELECTED ITEMS ==================
-  useEffect(() => {
-    if (!selectedAboutItem && aboutMenuItems.length > 0) {
-      setSelectedAboutItem(aboutMenuItems[0]);
-    }
-  }, [selectedAboutItem, aboutMenuItems]);
 
   // ================= SCROLL HANDLER ==================
   useEffect(() => {
@@ -126,9 +115,6 @@ export default function TopHeader() {
 
     setActiveMegaMenu(item.label);
 
-    if (item.label === "ABOUT") {
-      setSelectedAboutItem(aboutMenuItems[0] || null);
-    }
     if (item.label === "PROPERTIES") {
       const firstCategory = propertiesMenuData.categories[0];
       const projects = getCategoryProjects(firstCategory);
@@ -165,10 +151,6 @@ export default function TopHeader() {
     setSelectedWhereToLive(whereToLive);
   };
 
-  const handleAboutHover = (aboutItem) => {
-    setSelectedAboutItem(aboutItem);
-  };
-
   // ================= HELPER FUNCTIONS ==================
   const firstCategory = propertiesMenuData.categories[0];
 
@@ -198,7 +180,6 @@ export default function TopHeader() {
       categoryId: prev.categoryId === categoryId ? null : categoryId,
       developerId: prev.categoryId === categoryId ? prev.developerId : null,
       whereToLive: false,
-      about: false,
     }));
   };
 
@@ -216,18 +197,6 @@ export default function TopHeader() {
       categoryId: null,
       developerId: null,
       whereToLive: !prev.whereToLive,
-      about: false,
-    }));
-  };
-
-  const toggleMobileAbout = () => {
-    setMobileExpandedItems((prev) => ({
-      ...prev,
-      categories: "about",
-      categoryId: null,
-      developerId: null,
-      whereToLive: false,
-      about: !prev.about,
     }));
   };
 
@@ -239,7 +208,6 @@ export default function TopHeader() {
       categoryId: null,
       developerId: null,
       whereToLive: false,
-      about: false,
     });
     setIsMobileMenuOpen(false);
   };
@@ -288,32 +256,12 @@ export default function TopHeader() {
             className={`${styles.menuLeft} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
             <ul className={styles.navLinks}>
-              {/* ABOUT MEGA MENU */}
-              <li
-                className={styles.menuItemHasChildren}
-                onMouseEnter={() => {
-                  if (!isMobileMenuOpen) {
-                    handleMegaMenuEnter({
-                      label: "ABOUT",
-                      hasMegaMenu: true,
-                    });
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (!isMobileMenuOpen) {
-                    handleMegaMenuLeave();
-                  }
-                }}
-              >
+              {/* ABOUT - SIMPLE LINK (NO MEGA MENU) */}
+              <li className={styles.menuItem}>
                 <Link
                   href="/about"
-                  className={`${styles.level1Menu} ${styles.megaMenuTrigger} ${
-                    activeMegaMenu === "ABOUT" ? styles.active : ""
-                  }`}
-                  onClick={(e) => {
-                    handleMegaMenuLeave();
-                    setIsMobileMenuOpen(false);
-                  }}
+                  className={styles.level1Menu}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   ABOUT
                 </Link>
@@ -380,7 +328,7 @@ export default function TopHeader() {
               </li>
 
               {/* DEVELOPERS - NO MEGA MENU */}
-              <li className={styles.menuItemHasChildren}>
+              <li className={styles.menuItem}>
                 <Link
                   href="/developers"
                   className={styles.level1Menu}
@@ -412,13 +360,13 @@ export default function TopHeader() {
             className={`${styles.menuRight} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
             <ul className={styles.navLinks}>
-              <li className={styles.menuItemHasChildren}>
+              <li className={styles.menuItem}>
                 <a className={styles.level1Menu} href="/articles/">
                   MEDIA CENTER
                 </a>
               </li>
 
-              <li className={styles.menuItemHasChildren}>
+              <li className={styles.menuItem}>
                 <a className={styles.level1Menu} href="/contact-us/">
                   CONTACT US
                 </a>
@@ -479,73 +427,6 @@ export default function TopHeader() {
             <span></span>
           </button>
         </div>
-
-        {/* ========== DESKTOP MEGA MENU – ABOUT ========== */}
-        {isMounted && activeMegaMenu === "ABOUT" && selectedAboutItem && (
-          <div
-            className={styles.megaMenu}
-            onMouseEnter={() => setActiveMegaMenu("ABOUT")}
-            onMouseLeave={handleMegaMenuLeave}
-          >
-            <div className={styles.megaMenuInnerCommunities}>
-              {/* LEFT – list only */}
-              <div className={styles.megaCommunitiesLeft}>
-                <div className={styles.megaColumnHeader}>
-                  <span className={styles.megaColumnLabel}>
-                    ABOUT THE BRAND
-                  </span>
-                </div>
-
-                <ul className={styles.communityList}>
-                  {aboutMenuItems.map((aboutItem) => (
-                    <li key={aboutItem.id}>
-                      <Link
-                        href={`/about/${aboutItem.slug}`}
-                        className={`${styles.communityLink} ${
-                          selectedAboutItem.id === aboutItem.id
-                            ? styles.activeCommunity
-                            : ""
-                        }`}
-                        onMouseEnter={() => handleAboutHover(aboutItem)}
-                      >
-                        <span className={styles.communityName}>
-                          {aboutItem.title}
-                        </span>
-                        <span className={styles.communityArrow}>→</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* RIGHT – preview */}
-              <div className={styles.megaCommunitiesRight}>
-                <div className={styles.communityPreviewWrapper}>
-                  <div
-                    className={styles.communityPreviewImage}
-                    style={{
-                      backgroundImage: `url(${selectedAboutItem.image})`,
-                    }}
-                  />
-                  <div className={styles.communityPreviewInfo}>
-                    <h3 className={styles.communityPreviewTitle}>
-                      {selectedAboutItem.title}
-                    </h3>
-                    <p className={styles.communityPreviewLocation}>
-                      {selectedAboutItem.description}
-                    </p>
-                    <Link
-                      href={`/about/${selectedAboutItem.slug}`}
-                      className={styles.communityPreviewButton}
-                    >
-                      LEARN MORE
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* ========== DESKTOP MEGA MENU – PROPERTIES ========== */}
         {activeMegaMenu === "PROPERTIES" && (
@@ -842,41 +723,14 @@ export default function TopHeader() {
 
               {/* Mobile Navigation Items */}
               <div className={styles.mobileNavItems}>
-                {/* ABOUT - Mobile */}
-                <div className={styles.mobileMegaMenuItem}>
-                  <button
-                    type="button"
-                    className={`${styles.mobileNavLink} ${
-                      styles.mobileMegaMenuTrigger
-                    } ${mobileExpandedItems.about ? styles.expanded : ""}`}
-                    onClick={toggleMobileAbout}
-                  >
-                    <span className={styles.mobileNavText}>ABOUT</span>
-                    <span className={styles.mobileDropdownArrow}>
-                      {mobileExpandedItems.about ? "↑" : "↓"}
-                    </span>
-                  </button>
-
-                  {mobileExpandedItems.about && (
-                    <div className={styles.mobileMegaMenuContent}>
-                      <div className={styles.mobileMenuLevel}>
-                        <h4 className={styles.mobileMenuLevelTitle}>
-                          ABOUT THE BRAND
-                        </h4>
-                        {aboutMenuItems.map((aboutItem) => (
-                          <a
-                            key={aboutItem.id}
-                            href={`/about/${aboutItem.slug}`}
-                            className={styles.mobileSubLink}
-                            onClick={closeAllMobileMenus}
-                          >
-                            {aboutItem.title}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                {/* ABOUT - Simple Link (No Mega Menu) */}
+                <a
+                  href="/about"
+                  className={styles.mobileNavLink}
+                  onClick={closeAllMobileMenus}
+                >
+                  <span className={styles.mobileNavText}>ABOUT</span>
+                </a>
 
                 {/* PROPERTIES - Mobile */}
                 <div className={styles.mobileMegaMenuItem}>
