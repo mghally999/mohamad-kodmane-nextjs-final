@@ -107,8 +107,13 @@
   }
 }
 
-.rtl .container {
-  flex-direction: row-reverse;
+/* Arabic keeps same alignment as English for header links */
+.rtl .menuLeft {
+  justify-content: flex-start;
+}
+
+.rtl .menuRight {
+  justify-content: flex-end;
 }
 
 /* =========================================
@@ -180,6 +185,12 @@
   transition: width 0.18s ease;
 }
 
+/* underline from right in AR */
+.rtl .level1Menu::after {
+  left: auto;
+  right: 0;
+}
+
 .level1Menu:hover::after,
 .level1Menu.active::after {
   width: 100%;
@@ -210,12 +221,23 @@
   }
 }
 
+/* Arabic font size tweak */
+.rtl .level1Menu {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+}
+
 /* =========================================
      LANGUAGE TOGGLE
      ========================================= */
 
 .languageToggle {
   margin-left: 0.75rem;
+}
+
+.rtl .languageToggle {
+  margin-left: 0;
+  margin-right: 0.75rem;
 }
 
 .langButton {
@@ -266,6 +288,7 @@
   transition: transform 0.18s ease;
 }
 
+/* dot moves to the far side in AR */
 .langSlider[data-lang="ar"] {
   transform: translateX(16px);
 }
@@ -331,17 +354,32 @@
      MEGA MENU – PROPERTIES (3 columns)
      ========================================= */
 
+/* ENGLISH: [categories][projects][image] */
 .megaMenuInner {
   display: grid;
   grid-template-columns: 190px 320px minmax(420px, 1fr);
+  grid-template-areas: "categories projects image";
   min-height: 360px;
+}
+
+/* ARABIC: [image][projects][categories] */
+.megaMenuInnerRtl {
+  grid-template-columns: minmax(420px, 1fr) 320px 190px;
+  grid-template-areas: "image projects categories";
 }
 
 /* left column – categories */
 .megaColumnLeft {
+  grid-area: categories;
   background: #f9fafb;
   padding: 22px 18px 22px 20px;
   border-right: 1px solid rgba(209, 213, 219, 0.9);
+}
+
+/* in Arabic we want the divider on the other side */
+.megaColumnLeftRtl {
+  border-right: none;
+  border-left: 1px solid rgba(209, 213, 219, 0.9);
 }
 
 .megaColumnHeader {
@@ -381,6 +419,11 @@
   transition: all 0.16s ease;
 }
 
+/* Arabic alignment */
+.rtl .categoryLink {
+  text-align: right;
+}
+
 .categoryLink:hover,
 .activeCategory {
   background: #ffffff;
@@ -391,9 +434,16 @@
 
 /* middle column – projects */
 .megaColumnMiddle {
+  grid-area: projects;
   padding: 22px 22px 22px 22px;
   border-right: 1px solid rgba(209, 213, 219, 0.9);
   overflow-x: hidden;
+}
+
+/* divider flip in Arabic */
+.megaColumnMiddleRtl {
+  border-right: none;
+  border-left: 1px solid rgba(209, 213, 219, 0.9);
 }
 
 .projectList {
@@ -429,6 +479,12 @@
   transform: translateX(3px);
 }
 
+/* hover movement reversed in AR */
+.rtl .projectLink:hover,
+.rtl .activeProject {
+  transform: translateX(-3px);
+}
+
 .projectTitleInline {
   font-weight: 600;
 }
@@ -443,6 +499,7 @@
 
 /* right column – image */
 .megaColumnRight {
+  grid-area: image;
   padding: 16px 16px 16px 18px;
   display: flex;
   align-items: stretch;
@@ -464,20 +521,44 @@
 }
 
 /* =========================================
-     MEGA MENU – COMMUNITIES & ABOUT
+     MEGA MENU – COMMUNITIES
      ========================================= */
 
+/* ENGLISH: [list][preview]  (list = left, preview = right) */
 .megaMenuInnerCommunities {
-  display: grid;
-  grid-template-columns: 340px minmax(0, 1fr);
+  display: flex;
+  flex-direction: row;
   min-height: 320px;
 }
 
-/* LEFT */
+/* ARABIC: [preview][list]  (preview = left, list = right) */
+.megaMenuInnerCommunitiesRtl {
+  flex-direction: row-reverse;
+}
+
+/* LEFT column – list/search */
 .megaCommunitiesLeft {
+  flex: 0 0 340px;
+  max-width: 340px;
   background: #f9fafb;
   padding: 22px 22px 22px 22px;
   border-right: 1px solid rgba(209, 213, 219, 0.9);
+}
+
+/* when list sits on the right in AR, divider should be on its left side */
+.megaCommunitiesLeftRtl {
+  border-right: none;
+  border-left: 1px solid rgba(209, 213, 219, 0.9);
+  text-align: right;
+}
+
+/* RIGHT column – preview card */
+.megaCommunitiesRight {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 18px 20px 20px 20px;
+  display: flex;
+  align-items: stretch;
 }
 
 .communitySearchForm {
@@ -532,6 +613,12 @@
   transform: translateX(3px);
 }
 
+/* hover reversed in AR */
+.rtl .communityLink:hover,
+.rtl .activeCommunity {
+  transform: translateX(-3px);
+}
+
 .communityName {
   font-weight: 500;
 }
@@ -541,13 +628,12 @@
   color: #9ca3af;
 }
 
-/* RIGHT PREVIEW */
+/* mirror link row in AR so arrow stays near preview side */
+/* .rtl .communityLink {
+  flex-direction: row-reverse;
+} */
 
-.megaCommunitiesRight {
-  padding: 18px 20px 20px 20px;
-  display: flex;
-  align-items: stretch;
-}
+/* RIGHT PREVIEW CARD */
 
 .communityPreviewWrapper {
   display: grid;
@@ -623,12 +709,28 @@
   text-decoration: none;
 }
 
+/* flip arrows visually in AR so → looks like it points inward */
+.rtl .communityArrow,
+.rtl .mobileDropdownArrow,
+.rtl .mobileCategoryArrow,
+.rtl .mobileDeveloperArrow,
+.rtl .mobileProjectArrow,
+.rtl .mobileWhereToLiveArrow {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
 /* =========================================
      DESKTOP SEARCH ICON
      ========================================= */
 
 .searchItem {
   margin-left: 0.75rem;
+}
+
+.rtl .searchItem {
+  margin-left: 0;
+  margin-right: 0.75rem;
 }
 
 .searchTrigger {
@@ -644,7 +746,7 @@
 }
 
 /* =========================================
-     CINEMATIC SEARCH OVERLAY (top curtain)
+     CINEMATIC SEARCH OVERLAY
      ========================================= */
 
 .searchOverlay {
@@ -760,7 +862,13 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* hide burger on desktop, show nav */
+/* RTL flip for burger */
+.rtl .mobileMenuButton {
+  right: auto;
+  left: 1rem;
+}
+
+/* hide burger on desktop */
 @media (min-width: 1024px) {
   .mobileMenuButton {
     display: none;
@@ -828,52 +936,6 @@
   gap: 0.4rem;
 }
 
-/* language toggle - mobile */
-.mobileLanguageToggle {
-  margin-bottom: 1rem;
-}
-
-.mobileLangButton {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(201, 162, 106, 0.7);
-  background: rgba(0, 0, 0, 0.4);
-  color: #fefce8;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.mobileLangText {
-  font-size: 0.86rem;
-}
-
-.mobileLangIndicator {
-  width: 40px;
-  height: 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(201, 162, 106, 0.45);
-  display: flex;
-  align-items: center;
-  padding: 1px;
-}
-
-.mobileLangSlider {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #c9a26a, #a27b43);
-  transform: translateX(0);
-  transition: transform 0.18s ease;
-}
-
-.mobileLangSlider[data-lang="ar"] {
-  transform: translateX(20px);
-}
-
 /* MOBILE NAV ITEMS CONTAINER */
 .mobileNavItems {
   flex: 1;
@@ -908,6 +970,11 @@
   background: rgba(15, 23, 42, 0.95);
   color: #fefce8;
   transform: translateX(4px);
+}
+
+.rtl .mobileNavLink:hover,
+.rtl .mobileNavLink.active {
+  transform: translateX(-4px);
 }
 
 .mobileNavText {
@@ -954,24 +1021,6 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #facc15;
-}
-
-/* Mobile Sub Links */
-.mobileSubLink {
-  display: block;
-  padding: 0.75rem 0.85rem;
-  border-radius: 8px;
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-  font-size: 0.85rem;
-  text-decoration: none;
-  margin-bottom: 0.4rem;
-  transition: all 0.2s ease;
-}
-
-.mobileSubLink:hover {
-  background: rgba(30, 64, 175, 0.9);
-  transform: translateX(4px);
 }
 
 /* categories (mobile) */
@@ -1160,6 +1209,10 @@
   transform: translateX(4px);
 }
 
+.rtl .mobileWhereToLiveLink:hover {
+  transform: translateX(-4px);
+}
+
 .mobileWhereToLiveImage {
   width: 80px;
   height: 60px;
@@ -1233,6 +1286,10 @@
      ========================================= */
 
 @media (max-width: 1023px) {
+  .header {
+    padding: 0.85rem 0;
+  }
+
   .container {
     padding: 0 1.25rem;
   }
@@ -1245,8 +1302,37 @@
     display: none;
   }
 
+  /* language toggle opposite side of burger on mobile */
   .languageToggle {
-    display: none;
+    display: flex;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+  }
+
+  .rtl .languageToggle {
+    left: auto;
+    right: 1rem;
+  }
+
+  /* mega menus stack vertically on smaller screens if ever shown */
+  .megaMenuInner,
+  .megaMenuInnerRtl,
+  .megaMenuInnerCommunities,
+  .megaMenuInnerCommunitiesRtl {
+    display: block;
+  }
+
+  .megaColumnLeft,
+  .megaColumnMiddle,
+  .megaColumnRight,
+  .megaCommunitiesLeft,
+  .megaCommunitiesRight {
+    border-left: none;
+    border-right: none;
+    max-width: 100%;
   }
 }
 
@@ -1264,7 +1350,7 @@
   }
 }
 
-/* Scrollbar styling for mobile */
+/* Scrollbar styling for mobile menus */
 .mobileMegaMenuContent::-webkit-scrollbar,
 .mobileWhereToLiveList::-webkit-scrollbar,
 .mobileProjectsList::-webkit-scrollbar {

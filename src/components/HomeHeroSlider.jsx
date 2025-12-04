@@ -7,10 +7,7 @@ import styles from "@/styles/HomeHeroSlider.module.css";
 
 const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-/* ░░ PROJECT LOGOS FROM /public/project-slider ░░
-   Projects that don't have a logo will just show text,
-   but spacing stays identical because of the CSS shell.
-*/
+/* ░░ PROJECT LOGOS FROM /public/project-slider ░░ */
 const PROJECT_LOGOS = {
   skyparks: "/project-slider/skyparks.svg",
   "aqua-crest": "/project-slider/aqua-crest.svg",
@@ -18,13 +15,9 @@ const PROJECT_LOGOS = {
   central: "/project-slider/sobha-central.svg",
   hartland: "/project-slider/sobha-hartland-2.svg",
   "al-sinniyyah-island": "/project-slider/Siniya-island.svg",
-  // massar: "/project-slider/Masaar-3.svg",
-  // "damac-islands-2": "/project-slider/damac-island.webp",
-  // "seahaven-penthouse": "/project-slider/seahaven.svg",
-  // riviera-retails & lumenaalta stay text-only for now
 };
 
-/* ░░ AMENITY ICONS – INLINE SVGs (100% free, inline) ░░ */
+/* ░░ AMENITY ICONS – INLINE SVGs ░░ */
 const AmenityIcons = {
   "Infinity Pool": (
     <svg
@@ -358,124 +351,172 @@ const AmenityIcons = {
   ),
 };
 
-const BASE_SLIDES = [
+const BASE_SLIDES = (t, locale) => [
   {
     id: "skyparks",
-    category: "Apartments",
-    developer: "Sobha Realty",
-    name: "Sobha SkyParks",
-    location: "Dubai, UAE",
+    category: t?.("homeSlider.projects.skyparks.category") || "Apartments",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name: t?.("projectNames.sobhaSkyParks") || "Sobha SkyParks",
+    location: t?.("homeSlider.projects.skyparks.location") || "Dubai, UAE",
     href: "/projects/apartments/sobha/skyparks",
     imageDesktop: `${CDN}/sky-parks/exterior-night-01.jpg`,
-    amenities: ["Infinity Pool", "Sky Gardens", "Burj Khalifa View"],
+    amenities: [
+      t?.("homeSlider.amenities.infinityPool") || "Infinity Pool",
+      t?.("homeSlider.amenities.skyGardens") || "Sky Gardens",
+      t?.("homeSlider.amenities.burjKhalifaView") || "Burj Khalifa View",
+    ],
   },
   {
     id: "aqua-crest",
-    category: "Apartments",
-    developer: "Sobha Realty",
-    name: "Sobha AquaCrest",
-    location: "Dubai, UAE",
+    category: t?.("homeSlider.projects.aquaCrest.category") || "Apartments",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name: t?.("projectNames.sobhaAquaCrest") || "Sobha AquaCrest",
+    location: t?.("homeSlider.projects.aquaCrest.location") || "Dubai, UAE",
     href: "/projects/apartments/sobha/aqua-crest",
     imageDesktop: `${CDN}/aqua-crest/amenity-infinity-pool-01.jpg`,
-    amenities: ["Infinity Pool", "Marina & Yacht", "Waterfront Living"],
+    amenities: [
+      t?.("homeSlider.amenities.infinityPool") || "Infinity Pool",
+      t?.("homeSlider.amenities.marinaYacht") || "Marina & Yacht",
+      t?.("homeSlider.amenities.waterfrontLiving") || "Waterfront Living",
+    ],
   },
   {
     id: "central",
-    category: "Apartments",
-    developer: "Sobha Realty",
-    name: "Sobha Central",
-    location: "Sheikh Zayed Road, Dubai",
+    category: t?.("homeSlider.projects.central.category") || "Apartments",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name: t?.("projectNames.sobhaCentral") || "Sobha Central",
+    location:
+      t?.("homeSlider.projects.central.location") || "Sheikh Zayed Road, Dubai",
     href: "/projects/apartments/sobha/central",
     imageDesktop: `${CDN}/sobha-central/exterior-towers-angled-01.jpg`,
-    amenities: ["City Skyline View", "Luxury Interiors", "Premium Amenities"],
+    amenities: [
+      t?.("homeSlider.amenities.citySkylineView") || "City Skyline View",
+      t?.("homeSlider.amenities.luxuryInteriors") || "Luxury Interiors",
+      t?.("homeSlider.amenities.premiumAmenities") || "Premium Amenities",
+    ],
   },
   {
     id: "aquamont",
-    category: "Apartments",
-    developer: "Sobha Realty",
-    name: "Sobha Aquamont",
-    location: "Dubai, UAE",
+    category: t?.("homeSlider.projects.aquamont.category") || "Apartments",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name: t?.("projectNames.sobhaAquamont") || "Sobha Aquamont",
+    location: t?.("homeSlider.projects.aquamont.location") || "Dubai, UAE",
     href: "/projects/apartments/sobha/aquamont",
     imageDesktop: `${CDN}/aquamont/intro-main.png`,
-    amenities: ["Infinity Pool", "Waterfront Promenade", "Sky Deck"],
+    amenities: [
+      t?.("homeSlider.amenities.infinityPool") || "Infinity Pool",
+      t?.("homeSlider.amenities.waterfrontPromenade") || "Waterfront Promenade",
+      t?.("homeSlider.amenities.skyDeck") || "Sky Deck",
+    ],
   },
   {
     id: "hartland",
-    category: "Villas",
-    developer: "Sobha Realty",
-    name: "Sobha Hartland Villas",
-    location: "MBR City, Dubai",
+    category: t?.("homeSlider.projects.hartland.category") || "Villas",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name: t?.("projectNames.sobhaHartland2Villas") || "Sobha Hartland Villas",
+    location: t?.("homeSlider.projects.hartland.location") || "MBR City, Dubai",
     href: "/projects/villas/sobha/hartland",
     imageDesktop: `${CDN}/hartland/hero-bg.jpg`,
     amenities: [
-      "Waterfront Community",
-      "International Schools",
-      "Green Spaces",
+      t?.("homeSlider.amenities.waterfrontCommunity") || "Waterfront Community",
+      t?.("homeSlider.amenities.internationalSchools") ||
+        "International Schools",
+      t?.("homeSlider.amenities.greenSpaces") || "Green Spaces",
     ],
   },
   {
     id: "al-sinniyyah-island",
-    category: "Villas",
-    developer: "Sobha Realty",
-    name: "Al Sinniyyah Island",
-    location: "Umm Al Quwain, UAE",
+    category: t?.("homeSlider.projects.alSinniyyahIsland.category") || "Villas",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name: t?.("projectNames.sobhaAlSinniyyahIsland") || "Al Sinniyyah Island",
+    location:
+      t?.("homeSlider.projects.alSinniyyahIsland.location") ||
+      "Umm Al Quwain, UAE",
     href: "/projects/villas/sobha/al-sinniyyah-island",
     imageDesktop: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
-    amenities: ["Private Beach", "Island Living", "Resort Lifestyle"],
+    amenities: [
+      t?.("homeSlider.amenities.privateBeach") || "Private Beach",
+      t?.("homeSlider.amenities.islandLiving") || "Island Living",
+      t?.("homeSlider.amenities.resortLifestyle") || "Resort Lifestyle",
+    ],
   },
   {
     id: "massar",
-    category: "Villas",
-    developer: "Arada",
-    name: "Masaar",
-    location: "Sharjah, UAE",
+    category: t?.("homeSlider.projects.massar.category") || "Villas",
+    developer: t?.("developers.arada") || "Arada",
+    name: t?.("projectNames.aradaMassar3") || "Masaar",
+    location: t?.("homeSlider.projects.massar.location") || "Sharjah, UAE",
     href: "/projects/villas/arada/massar",
     imageDesktop: `${CDN}/massar-3/hero-bg.jpg`,
-    amenities: ["Forest Community", "Cycling Track", "Family Parks"],
+    amenities: [
+      t?.("homeSlider.amenities.forestCommunity") || "Forest Community",
+      t?.("homeSlider.amenities.cyclingTrack") || "Cycling Track",
+      t?.("homeSlider.amenities.familyParks") || "Family Parks",
+    ],
   },
   {
     id: "damac-islands-2",
-    category: "Villas",
-    developer: "Damac Properties",
-    name: "Damac Islands 2",
-    location: "Dubai, UAE",
+    category: t?.("homeSlider.projects.damacIslands2.category") || "Villas",
+    developer: t?.("developers.damacProperties") || "DAMAC Properties",
+    name: t?.("projectNames.damacIslands2") || "Damac Islands 2",
+    location: t?.("homeSlider.projects.damacIslands2.location") || "Dubai, UAE",
     href: "/projects/villas/damac/damac-islands-2",
     imageDesktop: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
-    amenities: ["Island Living", "Waterfront Villas", "Private Marina"],
+    amenities: [
+      t?.("homeSlider.amenities.islandLiving") || "Island Living",
+      t?.("homeSlider.amenities.waterfrontVillas") || "Waterfront Villas",
+      t?.("homeSlider.amenities.privateMarina") || "Private Marina",
+    ],
   },
   {
     id: "riviera-retails",
-    category: "Commercial Retail",
-    developer: "Azizi Developments",
-    name: "Riviera Retails",
-    location: "Dubai, UAE",
+    category:
+      t?.("homeSlider.projects.rivieraRetails.category") || "Commercial Retail",
+    developer: t?.("developers.aziziDevelopments") || "Azizi Developments",
+    name: t?.("projectNames.aziziRivieraRetails") || "Riviera Retails",
+    location:
+      t?.("homeSlider.projects.rivieraRetails.location") || "Dubai, UAE",
     href: "/projects/commercial-retail/azizi/riviera-retails",
     imageDesktop: `${CDN}/riviera/hero-bg.jpg`,
     amenities: [
-      "Retail Boulevard",
-      "Waterfront Promenade",
-      "Dining Destination",
+      t?.("homeSlider.amenities.retailBoulevard") || "Retail Boulevard",
+      t?.("homeSlider.amenities.waterfrontPromenade") || "Waterfront Promenade",
+      t?.("homeSlider.amenities.diningDestination") || "Dining Destination",
     ],
   },
   {
     id: "lumenaalta",
-    category: "Commercial Retail",
-    developer: "Omniyat",
-    name: "Lumena Alta",
-    location: "Dubai, UAE",
+    category:
+      t?.("homeSlider.projects.lumenaAlta.category") || "Commercial Retail",
+    developer: t?.("developers.omniyat") || "Omniyat",
+    name: t?.("projectNames.luminaAlta") || "Lumena Alta",
+    location: t?.("homeSlider.projects.lumenaAlta.location") || "Dubai, UAE",
     href: "/projects/commercial-retail/omniyat/lumenaalta",
     imageDesktop: `${CDN}/lumena-alta/hero-bg.jpg`,
-    amenities: ["Signature Retail", "Prime Location", "Architectural Landmark"],
+    amenities: [
+      t?.("homeSlider.amenities.signatureRetail") || "Signature Retail",
+      t?.("homeSlider.amenities.primeLocation") || "Prime Location",
+      t?.("homeSlider.amenities.architecturalLandmark") ||
+        "Architectural Landmark",
+    ],
   },
   {
     id: "seahaven-penthouse",
-    category: "Penthouses",
-    developer: "Sobha Realty",
-    name: "Sobha SeaHaven Penthouse",
-    location: "Dubai Harbour, Dubai",
+    category:
+      t?.("homeSlider.projects.seaHavenPenthouse.category") || "Penthouses",
+    developer: t?.("developers.sobhaRealty") || "Sobha Realty",
+    name:
+      t?.("projectNames.sobhaSeaHavenPenthouse") || "Sobha SeaHaven Penthouse",
+    location:
+      t?.("homeSlider.projects.seaHavenPenthouse.location") ||
+      "Dubai Harbour, Dubai",
     href: "/projects/penthouses/sobha/seahaven-penthouse",
     imageDesktop: `${CDN}/sky-parks/exterior-night-01.jpg`,
-    amenities: ["Padel Court", "Infinity Pool", "Yoga Deck"],
+    amenities: [
+      t?.("homeSlider.amenities.padelCourt") || "Padel Court",
+      t?.("homeSlider.amenities.infinityPool") || "Infinity Pool",
+      t?.("homeSlider.amenities.yogaDeck") || "Yoga Deck",
+    ],
   },
 ];
 
@@ -488,16 +529,17 @@ function shuffleArray(arr) {
   return copy;
 }
 
-export default function HomeHeroSlider() {
-  const [slides, setSlides] = useState(BASE_SLIDES);
+export default function HomeHeroSlider({ t, locale = "en" }) {
+  const [slides, setSlides] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
-    const shuffled = shuffleArray(BASE_SLIDES);
+    const slidesData = BASE_SLIDES(t, locale);
+    const shuffled = shuffleArray(slidesData);
     setSlides(shuffled);
     setActiveIndex(0);
-  }, []);
+  }, [t, locale]);
 
   useEffect(() => {
     if (!slides.length || isAnimating) return;
@@ -533,7 +575,8 @@ export default function HomeHeroSlider() {
       {/* HEADER */}
       <div className={styles.titleSection}>
         <h2 className={`${styles.heading2} ${styles.linesOnSides}`}>
-          EXPLORE OUR LUXURY PROPERTIES IN THE UAE
+          {t?.("homeSlider.mainTitle") ||
+            "EXPLORE OUR LUXURY PROPERTIES IN THE UAE"}
         </h2>
       </div>
 
@@ -560,7 +603,9 @@ export default function HomeHeroSlider() {
         <button
           className={`${styles.arrow} ${styles.arrowPrev}`}
           onClick={goPrev}
-          aria-label="Previous slide"
+          aria-label={
+            t?.("homeSlider.ariaLabels.previousSlide") || "Previous slide"
+          }
           disabled={isAnimating}
         >
           <span className={styles.arrowIcon} />
@@ -568,7 +613,7 @@ export default function HomeHeroSlider() {
         <button
           className={`${styles.arrow} ${styles.arrowNext}`}
           onClick={goNext}
-          aria-label="Next slide"
+          aria-label={t?.("homeSlider.ariaLabels.nextSlide") || "Next slide"}
           disabled={isAnimating}
         >
           <span className={styles.arrowIcon} />
@@ -579,7 +624,7 @@ export default function HomeHeroSlider() {
       <div className={styles.bottomStrip}>
         <div className={styles.bottomInner}>
           <div className={styles.topRow}>
-            {/* LEFT – project logo OR name, but same shell height for consistency */}
+            {/* LEFT – project logo OR name */}
             <div className={styles.projectTitleBlock}>
               <div className={styles.projectTitleMainShell}>
                 {projectLogoSrc ? (
@@ -630,7 +675,7 @@ export default function HomeHeroSlider() {
 
           <div className={styles.buttonRow}>
             <Link href={activeSlide.href} className={styles.exploreButton}>
-              EXPLORE ALL
+              {t?.("homeSlider.exploreButton") || "EXPLORE ALL"}
             </Link>
           </div>
         </div>

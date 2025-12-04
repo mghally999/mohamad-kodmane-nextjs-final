@@ -6,21 +6,16 @@ import Link from "next/link";
 import styles from "@/styles/TopHeader.module.css";
 import { useLanguage } from "./LanguageProvider";
 
-// Import data files
-import { aboutData } from "@/data/about/aboutData";
 import { propertiesData } from "@/data/propertiesData/propertiesData";
 import { whereToLiveData } from "@/data/whereToLiveData/whereToLiveData";
 import { developersData } from "@/data/developersData/developersData";
-import { navData } from "@/data/nav/navData";
 
-// Safe DOM manipulation hook
+// Safe DOM hook
 function useSafeDOM() {
   const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => {
     setIsMounted(true);
   }, []);
-
   return isMounted;
 }
 
@@ -33,10 +28,9 @@ export default function TopHeader() {
   const [selectedWhereToLive, setSelectedWhereToLive] = useState(null);
 
   const [mobileExpandedItems, setMobileExpandedItems] = useState({
-    categories: null,
+    section: null, // "properties" | "whereToLive" | null
     categoryId: null,
     developerId: null,
-    whereToLive: false,
   });
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -50,40 +44,41 @@ export default function TopHeader() {
 
   const CDN = "https://luxury-real-estate-media.b-cdn.net";
 
-  // ================= DATA FETCHING ==================
+  // DATA
   const propertiesMenuData = useMemo(
     () => propertiesData(CDN, t, locale),
     [CDN, t, locale]
   );
 
-  const whereToLiveDataArray = useMemo(() => whereToLiveData(CDN), [CDN]);
+  const whereToLiveDataArray = useMemo(
+    () => whereToLiveData(CDN, t, locale),
+    [CDN, t, locale]
+  );
 
-  const developersDataArray = useMemo(() => developersData(CDN), [CDN]);
+  const developersDataArray = useMemo(
+    () => (developersData ? developersData(CDN) : []),
+    [CDN]
+  );
 
-  const navItems = useMemo(() => navData, []);
-
-  // ================= SCROLL HANDLER ==================
+  // SCROLL STYLE
   useEffect(() => {
     if (!isMounted) return;
-
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [isMounted]);
 
-  // ================= SAFE MEGA MENU OUTSIDE CLICK ==================
+  // OUTSIDE CLICK FOR MEGA MENU
   useEffect(() => {
     if (!isMounted || !activeMegaMenu) return;
 
     const handleClickOutside = (event) => {
       try {
+        const target = event.target;
         if (
           activeMegaMenu &&
-          !event.target?.closest?.(`.${styles.megaMenu}`) &&
-          !event.target?.closest?.(`.${styles.megaMenuTrigger}`)
+          !target?.closest?.(`.${styles.megaMenu}`) &&
+          !target?.closest?.(`.${styles.megaMenuTrigger}`)
         ) {
           handleMegaMenuLeave();
         }
@@ -96,19 +91,37 @@ export default function TopHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [activeMegaMenu, isMounted]);
 
-  // ================= SAFE ROUTE CHANGE RESET ==================
+  // RESET ON ROUTE CHANGE
   useEffect(() => {
     if (!isMounted) return;
-
     setActiveMegaMenu(null);
     setSelectedCategory(null);
     setSelectedProject(null);
     setSelectedWhereToLive(null);
     setIsMobileMenuOpen(false);
     setIsSearchOpen(false);
+    setMobileExpandedItems({
+      section: null,
+      categoryId: null,
+      developerId: null,
+    });
   }, [pathname, isMounted]);
 
-  // ================= MEGA MENU HANDLERS ==================
+  // LOCK BODY SCROLL WHEN MOBILE MENU OPEN
+  useEffect(() => {
+    if (!isMounted) return;
+    const body = document.body;
+    if (isMobileMenuOpen) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "";
+    }
+    return () => {
+      body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen, isMounted]);
+
+  // MEGA MENU HANDLERS (DESKTOP)
   const handleMegaMenuEnter = (item) => {
     if (!isMounted || !item || typeof item !== "object") return;
     if (!item.hasMegaMenu) return;
@@ -121,6 +134,7 @@ export default function TopHeader() {
       setSelectedCategory(firstCategory);
       setSelectedProject(projects[0] || null);
     }
+
     if (item.label === "WHERE TO LIVE") {
       setSelectedWhereToLive(whereToLiveDataArray[0] || null);
     }
@@ -128,7 +142,6 @@ export default function TopHeader() {
 
   const handleMegaMenuLeave = () => {
     if (!isMounted) return;
-
     setTimeout(() => {
       setActiveMegaMenu(null);
       setSelectedCategory(null);
@@ -151,7 +164,7 @@ export default function TopHeader() {
     setSelectedWhereToLive(whereToLive);
   };
 
-  // ================= HELPER FUNCTIONS ==================
+  // HELPERS
   const firstCategory = propertiesMenuData.categories[0];
 
   const getCategoryProjects = (category) => {
@@ -172,76 +185,84 @@ export default function TopHeader() {
     );
   }, [whereToLiveDataArray, whereToLiveSearch]);
 
-  // ================= MOBILE MENU HANDLERS ==================
-  const toggleMobileCategory = (categoryId) => {
-    setMobileExpandedItems((prev) => ({
-      ...prev,
-      categories: "luxury-properties",
-      categoryId: prev.categoryId === categoryId ? null : categoryId,
-      developerId: prev.categoryId === categoryId ? prev.developerId : null,
-      whereToLive: false,
-    }));
-  };
-
-  const toggleMobileDeveloper = (developerId) => {
-    setMobileExpandedItems((prev) => ({
-      ...prev,
-      developerId: prev.developerId === developerId ? null : developerId,
-    }));
-  };
-
-  const toggleMobileWhereToLive = () => {
-    setMobileExpandedItems((prev) => ({
-      ...prev,
-      categories: "where-to-live",
-      categoryId: null,
-      developerId: null,
-      whereToLive: !prev.whereToLive,
-    }));
+  // MOBILE NAV HANDLERS
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
   };
 
   const closeAllMobileMenus = () => {
     if (!isMounted) return;
-
+    setIsMobileMenuOpen(false);
     setMobileExpandedItems({
-      categories: null,
+      section: null,
       categoryId: null,
       developerId: null,
-      whereToLive: false,
     });
-    setIsMobileMenuOpen(false);
   };
 
-  // ================= LANGUAGE TOGGLE ==================
+  const toggleMobilePropertiesRoot = () => {
+    setMobileExpandedItems((prev) => {
+      if (prev.section === "properties") {
+        return { section: null, categoryId: null, developerId: null };
+      }
+      return { section: "properties", categoryId: null, developerId: null };
+    });
+  };
+
+  const toggleMobileWhereToLiveRoot = () => {
+    setMobileExpandedItems((prev) => {
+      if (prev.section === "whereToLive") {
+        return { section: null, categoryId: null, developerId: null };
+      }
+      return { section: "whereToLive", categoryId: null, developerId: null };
+    });
+  };
+
+  const toggleMobileCategory = (categoryId) => {
+    setMobileExpandedItems((prev) => {
+      const isSame = prev.categoryId === categoryId;
+      return {
+        section: "properties",
+        categoryId: isSame ? null : categoryId,
+        developerId: isSame ? null : prev.developerId,
+      };
+    });
+  };
+
+  const toggleMobileDeveloper = (developerId) => {
+    setMobileExpandedItems((prev) => {
+      const isSame = prev.developerId === developerId;
+      return {
+        ...prev,
+        developerId: isSame ? null : developerId,
+      };
+    });
+  };
+
+  // LANGUAGE TOGGLE
   const toggleLanguage = () => {
     if (!isMounted) return;
-
     const newLang = locale === "en" ? "ar" : "en";
     switchLanguage(newLang);
   };
 
-  // ================= SEARCH HANDLERS ==================
+  // SEARCH
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     const term = searchTerm.trim();
     if (!term) return;
-
     router.push(`/search?q=${encodeURIComponent(term)}`);
     setIsSearchOpen(false);
   };
 
-  // ================= CURRENT SELECTIONS ==================
+  // CURRENT SELECTIONS (DESKTOP)
   const currentCategory = selectedCategory || firstCategory;
   const currentProjects = getCategoryProjects(currentCategory);
   const currentProject =
     selectedProject || (currentProjects.length ? currentProjects[0] : null);
 
-  // ================= SIMPLIFIED SSR VERSION ==================
-  if (!isMounted) {
-    return null;
-  }
+  if (!isMounted) return null;
 
-  // ================= FULL CLIENT-SIDE VERSION ==================
   return (
     <>
       <header
@@ -251,23 +272,23 @@ export default function TopHeader() {
         dir={locale === "ar" ? "rtl" : "ltr"}
       >
         <div className={styles.container}>
-          {/* LEFT MENU - REMOVED LOGO FROM HERE */}
+          {/* For RTL: This becomes the RIGHT side (نبذة عنا | العقارات | أين تسكن | المطورون) */}
+          {/* For LTR: This is the LEFT side (ABOUT | PROPERTIES | WHERE TO LIVE | DEVELOPERS) */}
           <div
             className={`${styles.menuLeft} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
             <ul className={styles.navLinks}>
-              {/* ABOUT - SIMPLE LINK (NO MEGA MENU) */}
               <li className={styles.menuItem}>
                 <Link
                   href="/about"
                   className={styles.level1Menu}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  ABOUT
+                  {t?.("nav.about") || "ABOUT"}
                 </Link>
               </li>
 
-              {/* PROPERTIES MEGA MENU */}
+              {/* PROPERTIES */}
               <li
                 className={styles.menuItemHasChildren}
                 onMouseEnter={() =>
@@ -293,11 +314,12 @@ export default function TopHeader() {
                     }
                   }}
                 >
-                  PROPERTIES
+                  {t?.("nav.properties") || "PROPERTIES"}
+                  {/* <span className={styles.dropdownArrow}>▼</span> */}
                 </button>
               </li>
 
-              {/* WHERE TO LIVE MEGA MENU */}
+              {/* WHERE TO LIVE */}
               <li
                 className={styles.menuItemHasChildren}
                 onMouseEnter={() =>
@@ -323,24 +345,25 @@ export default function TopHeader() {
                     }
                   }}
                 >
-                  WHERE TO LIVE
+                  {t?.("nav.whereToLive") || "WHERE TO LIVE"}
+                  {/* <span className={styles.dropdownArrow}>▼</span> */}
                 </button>
               </li>
 
-              {/* DEVELOPERS - NO MEGA MENU */}
+              {/* DEVELOPERS */}
               <li className={styles.menuItem}>
                 <Link
                   href="/developers"
                   className={styles.level1Menu}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  DEVELOPERS
+                  {t?.("nav.developers") || "DEVELOPERS"}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* CENTER LOGO - ONLY ONE LOGO HERE */}
+          {/* CENTER LOGO – DESKTOP */}
           <div
             className={`${styles.logoSec} ${styles.col12} ${styles.colLg2} ${styles.onlyDesk}`}
           >
@@ -355,24 +378,24 @@ export default function TopHeader() {
             </Link>
           </div>
 
-          {/* RIGHT MENU */}
+          {/* For RTL: This becomes the LEFT side (المركز الإعلامي | تواصل معنا | 🔍 | language switcher) */}
+          {/* For LTR: This is the RIGHT side (MEDIA CENTER | CONTACT US | 🔍 | language switcher) */}
           <div
             className={`${styles.menuRight} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
             <ul className={styles.navLinks}>
               <li className={styles.menuItem}>
                 <a className={styles.level1Menu} href="/articles/">
-                  MEDIA CENTER
+                  {t?.("nav.mediaCenter") || "MEDIA CENTER"}
                 </a>
               </li>
 
               <li className={styles.menuItem}>
                 <a className={styles.level1Menu} href="/contact-us/">
-                  CONTACT US
+                  {t?.("nav.contactUs") || "CONTACT US"}
                 </a>
               </li>
 
-              {/* SEARCH ICON */}
               <li className={styles.searchItem}>
                 <button
                   type="button"
@@ -384,7 +407,6 @@ export default function TopHeader() {
                 </button>
               </li>
 
-              {/* Language Toggle */}
               <li className={styles.languageToggle}>
                 <button
                   type="button"
@@ -413,13 +435,13 @@ export default function TopHeader() {
             </ul>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE BURGER */}
           <button
             type="button"
             className={`${styles.mobileMenuButton} ${
               isMobileMenuOpen ? styles.active : ""
             }`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
             <span></span>
@@ -428,18 +450,23 @@ export default function TopHeader() {
           </button>
         </div>
 
-        {/* ========== DESKTOP MEGA MENU – PROPERTIES ========== */}
+        {/* DESKTOP MEGA – PROPERTIES */}
         {activeMegaMenu === "PROPERTIES" && (
           <div
-            className={styles.megaMenu}
+            className={`${styles.megaMenu} ${
+              locale === "ar" ? styles.rtl : ""
+            }`}
+            dir={locale === "ar" ? "rtl" : "ltr"}
             onMouseEnter={() => setActiveMegaMenu("PROPERTIES")}
             onMouseLeave={handleMegaMenuLeave}
           >
             <div className={styles.megaMenuInner}>
-              {/* LEFT COLUMN – categories */}
+              {/* Left column - Categories (becomes right column in RTL) */}
               <div className={styles.megaColumnLeft}>
                 <div className={styles.megaColumnHeader}>
-                  <span className={styles.megaColumnLabel}>PROPERTY TYPES</span>
+                  <span className={styles.megaColumnLabel}>
+                    {t?.("ui.propertyTypesLabel") || "PROPERTY TYPES"}
+                  </span>
                 </div>
                 <ul className={styles.categoryList}>
                   {propertiesMenuData.categories.map((category) => (
@@ -460,11 +487,13 @@ export default function TopHeader() {
                 </ul>
               </div>
 
-              {/* MIDDLE COLUMN – projects for current category */}
+              {/* Middle column - Projects */}
               <div className={styles.megaColumnMiddle}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>
-                    {currentCategory?.name || "PROJECTS"}
+                    {currentCategory?.name ||
+                      t?.("ui.projectsLabel") ||
+                      "PROJECTS"}
                   </span>
                 </div>
                 <ul className={styles.projectList}>
@@ -491,7 +520,7 @@ export default function TopHeader() {
                 </ul>
               </div>
 
-              {/* RIGHT COLUMN – big preview image */}
+              {/* Right column - Image (becomes left column in RTL) */}
               <div className={styles.megaColumnRight}>
                 <div className={styles.megaImageWrapper}>
                   <div
@@ -510,19 +539,22 @@ export default function TopHeader() {
           </div>
         )}
 
-        {/* ========== DESKTOP MEGA MENU – WHERE TO LIVE ========== */}
+        {/* DESKTOP MEGA – WHERE TO LIVE */}
         {activeMegaMenu === "WHERE TO LIVE" && (
           <div
-            className={styles.megaMenu}
+            className={`${styles.megaMenu} ${
+              locale === "ar" ? styles.rtl : ""
+            }`}
+            dir={locale === "ar" ? "rtl" : "ltr"}
             onMouseEnter={() => setActiveMegaMenu("WHERE TO LIVE")}
             onMouseLeave={handleMegaMenuLeave}
           >
             <div className={styles.megaMenuInnerCommunities}>
-              {/* LEFT – list + search */}
+              {/* Left column - Search/List (becomes right column in RTL) */}
               <div className={styles.megaCommunitiesLeft}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>
-                    DUBAI NEIGHBORHOODS
+                    {t?.("ui.dubaiNeighborhoodsLabel") || "DUBAI NEIGHBORHOODS"}
                   </span>
                 </div>
 
@@ -532,7 +564,10 @@ export default function TopHeader() {
                 >
                   <input
                     type="text"
-                    placeholder="Search neighborhood (e.g. JVC, Marina)..."
+                    placeholder={
+                      t?.("ui.searchNeighborhoodPlaceholderDesktop") ||
+                      "Search neighborhood (e.g. JVC, Marina)..."
+                    }
                     className={styles.communitySearchInput}
                     value={whereToLiveSearch}
                     onChange={(e) => setWhereToLiveSearch(e.target.value)}
@@ -561,7 +596,7 @@ export default function TopHeader() {
                 </ul>
               </div>
 
-              {/* RIGHT – preview */}
+              {/* Right column - Preview (becomes left column in RTL) */}
               <div className={styles.megaCommunitiesRight}>
                 <div className={styles.communityPreviewWrapper}>
                   <div
@@ -577,6 +612,7 @@ export default function TopHeader() {
                     <h3 className={styles.communityPreviewTitle}>
                       {selectedWhereToLive?.name ||
                         filteredWhereToLive[0]?.name ||
+                        t?.("ui.defaultNeighborhoodTitle") ||
                         "Dubai Neighborhood"}
                     </h3>
                     <p className={styles.communityPreviewLocation}>
@@ -586,7 +622,7 @@ export default function TopHeader() {
                     <div className={styles.communityPreviewStats}>
                       <div className={styles.communityStat}>
                         <span className={styles.communityStatLabel}>
-                          Avg. Purchase
+                          {t?.("ui.avgPurchaseLabel") || "Avg. Purchase"}
                         </span>
                         <span className={styles.communityStatValue}>
                           {selectedWhereToLive?.avgBuy ||
@@ -595,7 +631,7 @@ export default function TopHeader() {
                       </div>
                       <div className={styles.communityStat}>
                         <span className={styles.communityStatLabel}>
-                          Avg. Rent
+                          {t?.("ui.avgRentLabel") || "Avg. Rent"}
                         </span>
                         <span className={styles.communityStatValue}>
                           {selectedWhereToLive?.avgRent ||
@@ -603,7 +639,9 @@ export default function TopHeader() {
                         </span>
                       </div>
                       <div className={styles.communityStat}>
-                        <span className={styles.communityStatLabel}>ROI</span>
+                        <span className={styles.communityStatLabel}>
+                          {t?.("ui.roiLabel") || "ROI"}
+                        </span>
                         <span className={styles.communityStatValue}>
                           {selectedWhereToLive?.roi ||
                             filteredWhereToLive[0]?.roi}
@@ -618,7 +656,8 @@ export default function TopHeader() {
                       }`}
                       className={styles.communityPreviewButton}
                     >
-                      VIEW NEIGHBORHOOD DETAILS
+                      {t?.("ui.viewNeighborhoodDetails") ||
+                        "VIEW NEIGHBORHOOD DETAILS"}
                     </Link>
                   </div>
                 </div>
@@ -628,8 +667,8 @@ export default function TopHeader() {
         )}
       </header>
 
-      {/* ========== CINEMATIC SEARCH OVERLAY ========== */}
-      {isMounted && isSearchOpen && (
+      {/* SEARCH OVERLAY */}
+      {isSearchOpen && (
         <div className={styles.searchOverlay}>
           <div className={styles.searchPanel}>
             <div className={styles.searchPanelInner}>
@@ -637,13 +676,16 @@ export default function TopHeader() {
                 <input
                   type="text"
                   className={styles.searchInput}
-                  placeholder="Search projects, neighborhoods, developers, articles..."
+                  placeholder={
+                    t?.("ui.searchOverlayPlaceholder") ||
+                    "Search projects, neighborhoods, developers, articles..."
+                  }
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   autoFocus
                 />
                 <button type="submit" className={styles.searchButton}>
-                  SEARCH
+                  {t?.("ui.searchOverlayButton") || "SEARCH"}
                 </button>
                 <button
                   type="button"
@@ -659,344 +701,332 @@ export default function TopHeader() {
         </div>
       )}
 
-      {/* ========== MOBILE NAV ========== */}
-      {isMounted && (
-        <div
-          className={`${styles.mobileNav} ${
-            isMobileMenuOpen ? styles.active : ""
-          } ${locale === "ar" ? styles.rtl : ""}`}
-          dir={locale === "ar" ? "rtl" : "ltr"}
-        >
-          <div className={styles.mobileNavBackground} />
-          <div className={styles.mobileNavContainer}>
-            <div className={styles.mobileNavHeader}>
-              {/* Mobile Logo - Only in mobile nav */}
-              <div className={styles.mobileLogo}>
-                <Link
-                  href="/"
-                  className={styles.logoLink}
-                  onClick={closeAllMobileMenus}
-                >
-                  <img
-                    src="/logo-transparent.png"
-                    alt="Mohamad Kodmani Real Estate"
-                    className={styles.logoImage}
-                    width={125}
-                    height={45}
-                  />
-                </Link>
-              </div>
-              <button
-                type="button"
-                className={styles.mobileCloseButton}
+      {/* MOBILE NAV OVERLAY */}
+      <div
+        className={`${styles.mobileNav} ${
+          isMobileMenuOpen ? styles.active : ""
+        } ${locale === "ar" ? styles.rtl : ""}`}
+        dir={locale === "ar" ? "rtl" : "ltr"}
+      >
+        <div className={styles.mobileNavBackground} />
+        <div className={styles.mobileNavContainer}>
+          <div className={styles.mobileNavHeader}>
+            <div className={styles.mobileLogo}>
+              <Link
+                href="/"
+                className={styles.logoLink}
                 onClick={closeAllMobileMenus}
-                aria-label="Close menu"
               >
-                ×
-              </button>
+                <img
+                  src="/logo-transparent.png"
+                  alt="Mohamad Kodmani Real Estate"
+                  className={styles.logoImage}
+                  width={125}
+                  height={45}
+                />
+              </Link>
             </div>
+            <button
+              type="button"
+              className={styles.mobileCloseButton}
+              onClick={closeAllMobileMenus}
+              aria-label="Close menu"
+            >
+              ×
+            </button>
+          </div>
 
-            <nav className={styles.mobileNavContent}>
-              {/* Mobile Language Toggle */}
-              <div className={styles.mobileLanguageToggle}>
+          <nav className={styles.mobileNavContent}>
+            <div className={styles.mobileNavItems}>
+              <a
+                href="/about"
+                className={styles.mobileNavLink}
+                onClick={closeAllMobileMenus}
+              >
+                <span className={styles.mobileNavText}>
+                  {t?.("nav.about") || "ABOUT"}
+                </span>
+              </a>
+
+              {/* PROPERTIES – MOBILE */}
+              <div className={styles.mobileMegaMenuItem}>
                 <button
                   type="button"
-                  onClick={toggleLanguage}
-                  className={`${styles.mobileLangButton} ${
-                    locale === "ar" ? styles.arabicActive : ""
+                  className={`${styles.mobileNavLink} ${
+                    styles.mobileMegaMenuTrigger
+                  } ${
+                    mobileExpandedItems.section === "properties"
+                      ? styles.expanded
+                      : ""
                   }`}
-                  aria-label={`Switch to ${
-                    locale === "en" ? "Arabic" : "English"
-                  }`}
+                  onClick={toggleMobilePropertiesRoot}
                 >
-                  <span className={styles.mobileLangText}>
-                    {locale === "en" ? "العربية" : "English"}
+                  <span className={styles.mobileNavText}>
+                    {t?.("nav.properties") || "PROPERTIES"}
                   </span>
-                  <div className={styles.mobileLangIndicator}>
-                    <div
-                      className={styles.mobileLangSlider}
-                      data-lang={locale}
-                    ></div>
-                  </div>
+                  <span className={styles.mobileDropdownArrow}>
+                    {mobileExpandedItems.section === "properties" ? "↑" : "↓"}
+                  </span>
                 </button>
-              </div>
 
-              {/* Mobile Navigation Items */}
-              <div className={styles.mobileNavItems}>
-                {/* ABOUT - Simple Link (No Mega Menu) */}
-                <a
-                  href="/about"
-                  className={styles.mobileNavLink}
-                  onClick={closeAllMobileMenus}
-                >
-                  <span className={styles.mobileNavText}>ABOUT</span>
-                </a>
+                {mobileExpandedItems.section === "properties" && (
+                  <div className={styles.mobileMegaMenuContent}>
+                    <div className={styles.mobileMenuLevel}>
+                      <h4 className={styles.mobileMenuLevelTitle}>
+                        {t?.("ui.mobilePropertyTypesTitle") || "Property Types"}
+                      </h4>
 
-                {/* PROPERTIES - Mobile */}
-                <div className={styles.mobileMegaMenuItem}>
-                  <button
-                    type="button"
-                    className={`${styles.mobileNavLink} ${
-                      styles.mobileMegaMenuTrigger
-                    } ${
-                      mobileExpandedItems.categories === "luxury-properties"
-                        ? styles.expanded
-                        : ""
-                    }`}
-                    onClick={() => toggleMobileCategory("luxury-properties")}
-                  >
-                    <span className={styles.mobileNavText}>PROPERTIES</span>
-                    <span className={styles.mobileDropdownArrow}>
-                      {mobileExpandedItems.categories === "luxury-properties"
-                        ? "↑"
-                        : "↓"}
-                    </span>
-                  </button>
-
-                  {mobileExpandedItems.categories === "luxury-properties" && (
-                    <div className={styles.mobileMegaMenuContent}>
-                      <div className={styles.mobileMenuLevel}>
-                        <h4 className={styles.mobileMenuLevelTitle}>
-                          Property Types
-                        </h4>
-
-                        {propertiesMenuData.categories.map((category) => (
-                          <div
-                            key={category.id}
-                            className={styles.mobileCategoryItem}
+                      {propertiesMenuData.categories.map((category) => (
+                        <div
+                          key={category.id}
+                          className={styles.mobileCategoryItem}
+                        >
+                          <button
+                            type="button"
+                            className={`${styles.mobileCategoryButton} ${
+                              mobileExpandedItems.categoryId === category.id
+                                ? styles.expanded
+                                : ""
+                            }`}
+                            onClick={() => toggleMobileCategory(category.id)}
                           >
-                            <button
-                              type="button"
-                              className={`${styles.mobileCategoryButton} ${
-                                mobileExpandedItems.categoryId === category.id
-                                  ? styles.expanded
-                                  : ""
-                              }`}
-                              onClick={() => toggleMobileCategory(category.id)}
-                            >
-                              <span className={styles.mobileCategoryName}>
-                                {category.name}
-                              </span>
-                              <span className={styles.mobileCategoryArrow}>
-                                {mobileExpandedItems.categoryId === category.id
-                                  ? "↑"
-                                  : "↓"}
-                              </span>
-                            </button>
+                            <span className={styles.mobileCategoryName}>
+                              {category.name}
+                            </span>
+                            <span className={styles.mobileCategoryArrow}>
+                              {mobileExpandedItems.categoryId === category.id
+                                ? "↑"
+                                : "↓"}
+                            </span>
+                          </button>
 
-                            {mobileExpandedItems.categoryId === category.id && (
-                              <div className={styles.mobileDevelopersList}>
-                                <h5 className={styles.mobileDevelopersTitle}>
-                                  Developers in {category.name}
-                                </h5>
+                          {mobileExpandedItems.categoryId === category.id && (
+                            <div className={styles.mobileDevelopersList}>
+                              <h5 className={styles.mobileDevelopersTitle}>
+                                {(t?.("ui.mobileDevelopersTitlePrefix") ||
+                                  "Developers in") +
+                                  " " +
+                                  category.name}
+                              </h5>
 
-                                {category.developers.map((developer) => (
-                                  <div
-                                    key={developer.id}
-                                    className={styles.mobileDeveloperItem}
+                              {category.developers.map((developer) => (
+                                <div
+                                  key={developer.id}
+                                  className={styles.mobileDeveloperItem}
+                                >
+                                  <button
+                                    type="button"
+                                    className={`${
+                                      styles.mobileDeveloperButton
+                                    } ${
+                                      mobileExpandedItems.developerId ===
+                                      developer.id
+                                        ? styles.expanded
+                                        : ""
+                                    }`}
+                                    onClick={() =>
+                                      toggleMobileDeveloper(developer.id)
+                                    }
                                   >
-                                    <button
-                                      type="button"
-                                      className={`${
-                                        styles.mobileDeveloperButton
-                                      } ${
-                                        mobileExpandedItems.developerId ===
-                                        developer.id
-                                          ? styles.expanded
-                                          : ""
-                                      }`}
-                                      onClick={() =>
-                                        toggleMobileDeveloper(developer.id)
-                                      }
-                                    >
-                                      {developer.logo && (
-                                        <div
-                                          className={styles.mobileDeveloperLogo}
-                                        >
-                                          <img
-                                            src={developer.logo}
-                                            alt={`${developer.name} logo`}
-                                            className={
-                                              styles.mobileDeveloperLogoImage
-                                            }
-                                          />
-                                        </div>
-                                      )}
-                                      <span
-                                        className={styles.mobileDeveloperName}
-                                      >
-                                        {developer.name}
-                                      </span>
-                                      <span
-                                        className={styles.mobileDeveloperArrow}
-                                      >
-                                        {mobileExpandedItems.developerId ===
-                                        developer.id
-                                          ? "↑"
-                                          : "↓"}
-                                      </span>
-                                    </button>
-
-                                    {mobileExpandedItems.developerId ===
-                                      developer.id && (
+                                    {developer.logo && (
                                       <div
-                                        className={styles.mobileProjectsList}
+                                        className={styles.mobileDeveloperLogo}
                                       >
-                                        {developer.projects.map((project) => (
-                                          <a
-                                            key={project.id}
-                                            href={`/projects/${category.slug}/${developer.slug}/${project.slug}`}
-                                            className={styles.mobileProjectLink}
-                                            onClick={closeAllMobileMenus}
-                                          >
-                                            <div
-                                              className={
-                                                styles.mobileProjectImage
-                                              }
-                                              style={{
-                                                backgroundImage: `url(${project.image})`,
-                                              }}
-                                            />
-                                            <div
-                                              className={
-                                                styles.mobileProjectInfo
-                                              }
-                                            >
-                                              <span
-                                                className={
-                                                  styles.mobileProjectName
-                                                }
-                                              >
-                                                {project.title}
-                                              </span>
-                                              <span
-                                                className={
-                                                  styles.mobileProjectArrow
-                                                }
-                                              >
-                                                →
-                                              </span>
-                                            </div>
-                                          </a>
-                                        ))}
+                                        <img
+                                          src={developer.logo}
+                                          alt={`${developer.name} logo`}
+                                          className={
+                                            styles.mobileDeveloperLogoImage
+                                          }
+                                        />
                                       </div>
                                     )}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
+                                    <span
+                                      className={styles.mobileDeveloperName}
+                                    >
+                                      {developer.name}
+                                    </span>
+                                    <span
+                                      className={styles.mobileDeveloperArrow}
+                                    >
+                                      {mobileExpandedItems.developerId ===
+                                      developer.id
+                                        ? "↑"
+                                        : "↓"}
+                                    </span>
+                                  </button>
+
+                                  {mobileExpandedItems.developerId ===
+                                    developer.id && (
+                                    <div className={styles.mobileProjectsList}>
+                                      {developer.projects.map((project) => (
+                                        <a
+                                          key={project.id}
+                                          href={`/projects/${category.slug}/${developer.slug}/${project.slug}`}
+                                          className={styles.mobileProjectLink}
+                                          onClick={closeAllMobileMenus}
+                                        >
+                                          <div
+                                            className={
+                                              styles.mobileProjectImage
+                                            }
+                                            style={{
+                                              backgroundImage: `url(${project.image})`,
+                                            }}
+                                          />
+                                          <div
+                                            className={styles.mobileProjectInfo}
+                                          >
+                                            <span
+                                              className={
+                                                styles.mobileProjectName
+                                              }
+                                            >
+                                              {project.title}
+                                            </span>
+                                            <span
+                                              className={
+                                                styles.mobileProjectArrow
+                                              }
+                                            >
+                                              →
+                                            </span>
+                                          </div>
+                                        </a>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* WHERE TO LIVE – MOBILE */}
+              <div className={styles.mobileMegaMenuItem}>
+                <button
+                  type="button"
+                  className={`${styles.mobileNavLink} ${
+                    styles.mobileMegaMenuTrigger
+                  } ${
+                    mobileExpandedItems.section === "whereToLive"
+                      ? styles.expanded
+                      : ""
+                  }`}
+                  onClick={toggleMobileWhereToLiveRoot}
+                >
+                  <span className={styles.mobileNavText}>
+                    {t?.("nav.whereToLive") || "WHERE TO LIVE"}
+                  </span>
+                  <span className={styles.mobileDropdownArrow}>
+                    {mobileExpandedItems.section === "whereToLive" ? "↑" : "↓"}
+                  </span>
+                </button>
+
+                {mobileExpandedItems.section === "whereToLive" && (
+                  <div className={styles.mobileMegaMenuContent}>
+                    <div className={styles.mobileMenuLevel}>
+                      <h4 className={styles.mobileMenuLevelTitle}>
+                        {t?.("ui.dubaiNeighborhoodsLabel") ||
+                          "DUBAI NEIGHBORHOODS"}
+                      </h4>
+                      <div className={styles.mobileSearchContainer}>
+                        <input
+                          type="text"
+                          placeholder={
+                            t?.("ui.searchNeighborhoodPlaceholderMobile") ||
+                            "Search neighborhoods..."
+                          }
+                          className={styles.mobileSearchInput}
+                          value={whereToLiveSearch}
+                          onChange={(e) => setWhereToLiveSearch(e.target.value)}
+                        />
+                      </div>
+                      <div className={styles.mobileWhereToLiveList}>
+                        {filteredWhereToLive.map((whereToLive) => (
+                          <a
+                            key={whereToLive.id}
+                            href={`/where-to-live/${whereToLive.slug}`}
+                            className={styles.mobileWhereToLiveLink}
+                            onClick={closeAllMobileMenus}
+                          >
+                            <div
+                              className={styles.mobileWhereToLiveImage}
+                              style={{
+                                backgroundImage: `url(${whereToLive.image})`,
+                              }}
+                            />
+                            <div className={styles.mobileWhereToLiveInfo}>
+                              <span className={styles.mobileWhereToLiveName}>
+                                {whereToLive.name}
+                              </span>
+                              <span className={styles.mobileWhereToLiveArrow}>
+                                →
+                              </span>
+                            </div>
+                          </a>
                         ))}
                       </div>
                     </div>
-                  )}
-                </div>
-
-                {/* WHERE TO LIVE - Mobile */}
-                <div className={styles.mobileMegaMenuItem}>
-                  <button
-                    type="button"
-                    className={`${styles.mobileNavLink} ${
-                      styles.mobileMegaMenuTrigger
-                    } ${
-                      mobileExpandedItems.whereToLive ? styles.expanded : ""
-                    }`}
-                    onClick={toggleMobileWhereToLive}
-                  >
-                    <span className={styles.mobileNavText}>WHERE TO LIVE</span>
-                    <span className={styles.mobileDropdownArrow}>
-                      {mobileExpandedItems.whereToLive ? "↑" : "↓"}
-                    </span>
-                  </button>
-
-                  {mobileExpandedItems.whereToLive && (
-                    <div className={styles.mobileMegaMenuContent}>
-                      <div className={styles.mobileMenuLevel}>
-                        <h4 className={styles.mobileMenuLevelTitle}>
-                          DUBAI NEIGHBORHOODS
-                        </h4>
-                        <div className={styles.mobileSearchContainer}>
-                          <input
-                            type="text"
-                            placeholder="Search neighborhoods..."
-                            className={styles.mobileSearchInput}
-                            value={whereToLiveSearch}
-                            onChange={(e) =>
-                              setWhereToLiveSearch(e.target.value)
-                            }
-                          />
-                        </div>
-                        <div className={styles.mobileWhereToLiveList}>
-                          {filteredWhereToLive.map((whereToLive) => (
-                            <a
-                              key={whereToLive.id}
-                              href={`/where-to-live/${whereToLive.slug}`}
-                              className={styles.mobileWhereToLiveLink}
-                              onClick={closeAllMobileMenus}
-                            >
-                              <div
-                                className={styles.mobileWhereToLiveImage}
-                                style={{
-                                  backgroundImage: `url(${whereToLive.image})`,
-                                }}
-                              />
-                              <div className={styles.mobileWhereToLiveInfo}>
-                                <span className={styles.mobileWhereToLiveName}>
-                                  {whereToLive.name}
-                                </span>
-                                <span className={styles.mobileWhereToLiveArrow}>
-                                  →
-                                </span>
-                              </div>
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* DEVELOPERS - Simple Link (No Mega Menu) */}
-                <a
-                  href="/developers"
-                  className={styles.mobileNavLink}
-                  onClick={closeAllMobileMenus}
-                >
-                  <span className={styles.mobileNavText}>DEVELOPERS</span>
-                </a>
-
-                {/* MEDIA CENTER */}
-                <a
-                  href="/articles"
-                  className={styles.mobileNavLink}
-                  onClick={closeAllMobileMenus}
-                >
-                  <span className={styles.mobileNavText}>MEDIA CENTER</span>
-                </a>
-
-                {/* CONTACT US */}
-                <a
-                  href="/contact-us"
-                  className={styles.mobileNavLink}
-                  onClick={closeAllMobileMenus}
-                >
-                  <span className={styles.mobileNavText}>CONTACT US</span>
-                </a>
-              </div>
-
-              <div className={styles.mobileContact}>
-                <div className={styles.mobileContactTitle}>Contact Us</div>
-                <div className={styles.contactItem}>
-                  <div className={styles.contactDetails}>
-                    <div className={styles.contactType}>Direct Line</div>
-                    <div className={styles.contactValue}>+971 56 666 5560</div>
                   </div>
+                )}
+              </div>
+
+              {/* DEVELOPERS */}
+              <a
+                href="/developers"
+                className={styles.mobileNavLink}
+                onClick={closeAllMobileMenus}
+              >
+                <span className={styles.mobileNavText}>
+                  {t?.("nav.developers") || "DEVELOPERS"}
+                </span>
+              </a>
+
+              {/* MEDIA CENTER */}
+              <a
+                href="/articles"
+                className={styles.mobileNavLink}
+                onClick={closeAllMobileMenus}
+              >
+                <span className={styles.mobileNavText}>
+                  {t?.("nav.mediaCenter") || "MEDIA CENTER"}
+                </span>
+              </a>
+
+              {/* CONTACT US */}
+              <a
+                href="/contact-us"
+                className={styles.mobileNavLink}
+                onClick={closeAllMobileMenus}
+              >
+                <span className={styles.mobileNavText}>
+                  {t?.("nav.contactUs") || "CONTACT US"}
+                </span>
+              </a>
+            </div>
+
+            <div className={styles.mobileContact}>
+              <div className={styles.mobileContactTitle}>
+                {t?.("ui.mobileContactTitle") || "Contact Us"}
+              </div>
+              <div className={styles.contactItem}>
+                <div className={styles.contactDetails}>
+                  <div className={styles.contactType}>
+                    {t?.("ui.mobileDirectLine") || "Direct Line"}
+                  </div>
+                  <div className={styles.contactValue}>+971 56 666 5560</div>
                 </div>
               </div>
-            </nav>
-          </div>
+            </div>
+          </nav>
         </div>
-      )}
+      </div>
     </>
   );
 }
