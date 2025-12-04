@@ -28,7 +28,7 @@ export default function TopHeader() {
   const [selectedWhereToLive, setSelectedWhereToLive] = useState(null);
 
   const [mobileExpandedItems, setMobileExpandedItems] = useState({
-    section: null, // "properties" | "whereToLive" | null
+    section: null,
     categoryId: null,
     developerId: null,
   });
@@ -272,8 +272,7 @@ export default function TopHeader() {
         dir={locale === "ar" ? "rtl" : "ltr"}
       >
         <div className={styles.container}>
-          {/* For RTL: This becomes the RIGHT side (نبذة عنا | العقارات | أين تسكن | المطورون) */}
-          {/* For LTR: This is the LEFT side (ABOUT | PROPERTIES | WHERE TO LIVE | DEVELOPERS) */}
+          {/* LEFT MENU (ENGLISH) / RIGHT MENU (ARABIC) */}
           <div
             className={`${styles.menuLeft} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
@@ -288,7 +287,6 @@ export default function TopHeader() {
                 </Link>
               </li>
 
-              {/* PROPERTIES */}
               <li
                 className={styles.menuItemHasChildren}
                 onMouseEnter={() =>
@@ -315,11 +313,10 @@ export default function TopHeader() {
                   }}
                 >
                   {t?.("nav.properties") || "PROPERTIES"}
-                  {/* <span className={styles.dropdownArrow}>▼</span> */}
+                  <span className={styles.dropdownArrow}>▼</span>
                 </button>
               </li>
 
-              {/* WHERE TO LIVE */}
               <li
                 className={styles.menuItemHasChildren}
                 onMouseEnter={() =>
@@ -346,11 +343,10 @@ export default function TopHeader() {
                   }}
                 >
                   {t?.("nav.whereToLive") || "WHERE TO LIVE"}
-                  {/* <span className={styles.dropdownArrow}>▼</span> */}
+                  <span className={styles.dropdownArrow}>▼</span>
                 </button>
               </li>
 
-              {/* DEVELOPERS */}
               <li className={styles.menuItem}>
                 <Link
                   href="/developers"
@@ -363,7 +359,7 @@ export default function TopHeader() {
             </ul>
           </div>
 
-          {/* CENTER LOGO – DESKTOP */}
+          {/* CENTER LOGO – DESKTOP ONLY */}
           <div
             className={`${styles.logoSec} ${styles.col12} ${styles.colLg2} ${styles.onlyDesk}`}
           >
@@ -378,8 +374,7 @@ export default function TopHeader() {
             </Link>
           </div>
 
-          {/* For RTL: This becomes the LEFT side (المركز الإعلامي | تواصل معنا | 🔍 | language switcher) */}
-          {/* For LTR: This is the RIGHT side (MEDIA CENTER | CONTACT US | 🔍 | language switcher) */}
+          {/* RIGHT MENU (ENGLISH) / LEFT MENU (ARABIC) */}
           <div
             className={`${styles.menuRight} ${styles.menuLinks} ${styles.col12} ${styles.colLg5}`}
           >
@@ -435,22 +430,22 @@ export default function TopHeader() {
             </ul>
           </div>
 
-          {/* MOBILE BURGER */}
-          <button
-            type="button"
-            className={`${styles.mobileMenuButton} ${
-              isMobileMenuOpen ? styles.active : ""
-            }`}
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+          {/* MOBILE BURGER MENU */}
+          {!isMobileMenuOpen && (
+            <button
+              type="button"
+              className={styles.mobileMenuButton}
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+          )}
         </div>
 
-        {/* DESKTOP MEGA – PROPERTIES */}
+        {/* DESKTOP MEGA MENU – PROPERTIES */}
         {activeMegaMenu === "PROPERTIES" && (
           <div
             className={`${styles.megaMenu} ${
@@ -461,7 +456,7 @@ export default function TopHeader() {
             onMouseLeave={handleMegaMenuLeave}
           >
             <div className={styles.megaMenuInner}>
-              {/* Left column - Categories (becomes right column in RTL) */}
+              {/* Categories column - Left in EN, Right in AR */}
               <div className={styles.megaColumnLeft}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>
@@ -487,7 +482,7 @@ export default function TopHeader() {
                 </ul>
               </div>
 
-              {/* Middle column - Projects */}
+              {/* Projects column - Middle */}
               <div className={styles.megaColumnMiddle}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>
@@ -520,7 +515,7 @@ export default function TopHeader() {
                 </ul>
               </div>
 
-              {/* Right column - Image (becomes left column in RTL) */}
+              {/* Image column - Right in EN, Left in AR */}
               <div className={styles.megaColumnRight}>
                 <div className={styles.megaImageWrapper}>
                   <div
@@ -539,7 +534,7 @@ export default function TopHeader() {
           </div>
         )}
 
-        {/* DESKTOP MEGA – WHERE TO LIVE */}
+        {/* DESKTOP MEGA MENU – WHERE TO LIVE */}
         {activeMegaMenu === "WHERE TO LIVE" && (
           <div
             className={`${styles.megaMenu} ${
@@ -550,7 +545,7 @@ export default function TopHeader() {
             onMouseLeave={handleMegaMenuLeave}
           >
             <div className={styles.megaMenuInnerCommunities}>
-              {/* Left column - Search/List (becomes right column in RTL) */}
+              {/* List/Search column - Left in EN, Right in AR */}
               <div className={styles.megaCommunitiesLeft}>
                 <div className={styles.megaColumnHeader}>
                   <span className={styles.megaColumnLabel}>
@@ -596,7 +591,7 @@ export default function TopHeader() {
                 </ul>
               </div>
 
-              {/* Right column - Preview (becomes left column in RTL) */}
+              {/* Preview column - Right in EN, Left in AR */}
               <div className={styles.megaCommunitiesRight}>
                 <div className={styles.communityPreviewWrapper}>
                   <div
@@ -711,21 +706,6 @@ export default function TopHeader() {
         <div className={styles.mobileNavBackground} />
         <div className={styles.mobileNavContainer}>
           <div className={styles.mobileNavHeader}>
-            <div className={styles.mobileLogo}>
-              <Link
-                href="/"
-                className={styles.logoLink}
-                onClick={closeAllMobileMenus}
-              >
-                <img
-                  src="/logo-transparent.png"
-                  alt="Mohamad Kodmani Real Estate"
-                  className={styles.logoImage}
-                  width={125}
-                  height={45}
-                />
-              </Link>
-            </div>
             <button
               type="button"
               className={styles.mobileCloseButton}
@@ -737,6 +717,48 @@ export default function TopHeader() {
           </div>
 
           <nav className={styles.mobileNavContent}>
+            {/* Logo inside content area */}
+            <div className={styles.mobileLogoContent}>
+              <Link
+                href="/"
+                className={styles.logoLink}
+                onClick={closeAllMobileMenus}
+              >
+                <img
+                  src="/logo-transparent.png"
+                  alt="Mohamad Kodmani Real Estate"
+                  className={styles.logoImage}
+                  width={150}
+                  height={54}
+                />
+              </Link>
+            </div>
+
+            {/* Language Toggle in Mobile */}
+            <div className={styles.mobileLanguageToggle}>
+              <button
+                type="button"
+                onClick={toggleLanguage}
+                disabled={isTransitioning}
+                className={styles.mobileLangButton}
+                aria-label={`Switch to ${
+                  locale === "en" ? "Arabic" : "English"
+                }`}
+              >
+                <span>
+                  {isTransitioning ? "⟳" : locale === "en" ? "العربية" : "EN"}
+                </span>
+                <div className={styles.langIndicator}>
+                  <div
+                    className={`${styles.langSlider} ${
+                      isTransitioning ? styles.pulsing : ""
+                    }`}
+                    data-lang={locale}
+                  ></div>
+                </div>
+              </button>
+            </div>
+
             <div className={styles.mobileNavItems}>
               <a
                 href="/about"

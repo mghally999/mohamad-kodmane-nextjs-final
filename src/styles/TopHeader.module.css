@@ -8,22 +8,18 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 0.35rem 0;
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.6) 0%,
-      rgba(15, 15, 15, 0.45) 40%,
-      rgba(0, 0, 0, 0) 100%
-    )
-    0% 0% no-repeat padding-box transparent;
+  padding: 0.75rem 0; /* a little more padding to push content down */
+  background: #ffffff; /* pure white background */
   transition: background 0.25s ease, padding 0.25s ease, box-shadow 0.25s ease;
 }
 
 .scrolled {
-  backdrop-filter: blur(20px);
+  backdrop-filter: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); /* subtle shadow when scrolled */
 }
 
 .mobileMenuOpenHeader {
-  background: rgba(10, 10, 10, 0.98);
+  background: #ffffff; /* stay white even when mobile menu is open */
 }
 
 .rtl {
@@ -77,7 +73,7 @@
 }
 
 .logoSec {
-  display: none;
+  display: none; /* no logo on desktop */
   align-items: center;
   justify-content: center;
 }
@@ -98,8 +94,10 @@
     max-width: 16.666%;
   }
 
+  /* There is no logo column anymore,
+       but we keep these in case you reuse them later */
   .logoSec {
-    display: flex;
+    display: none;
   }
 
   .onlyDesk {
@@ -117,7 +115,7 @@
 }
 
 /* =========================================
-     LOGO
+     LOGO (currently unused – no logo in JSX)
      ========================================= */
 
 .logoLink {
@@ -170,7 +168,7 @@
   font-size: 12px;
   letter-spacing: 0.18em;
   font-weight: 600;
-  color: #ffffff;
+  color: #111827; /* dark text on white header */
   transition: color 0.18s ease;
 }
 
@@ -198,7 +196,7 @@
 
 .level1Menu:hover,
 .level1Menu.active {
-  color: #f9f5e9;
+  color: #000000;
 }
 
 .dropdownArrow {
@@ -247,7 +245,7 @@
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
   border: 1px solid rgba(201, 162, 106, 0.5);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(17, 24, 39, 0.85);
   cursor: pointer;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -362,7 +360,7 @@
   min-height: 360px;
 }
 
-/* ARABIC: [image][projects][categories] */
+/* ARABIC: [image][projects][categories] – if you want to use it later */
 .megaMenuInnerRtl {
   grid-template-columns: minmax(420px, 1fr) 320px 190px;
   grid-template-areas: "image projects categories";
@@ -628,11 +626,6 @@
   color: #9ca3af;
 }
 
-/* mirror link row in AR so arrow stays near preview side */
-/* .rtl .communityLink {
-  flex-direction: row-reverse;
-} */
-
 /* RIGHT PREVIEW CARD */
 
 .communityPreviewWrapper {
@@ -742,7 +735,7 @@
 
 .searchIcon {
   font-size: 18px;
-  color: #f9fafb;
+  color: #111827; /* dark icon on white header */
 }
 
 /* =========================================
@@ -808,7 +801,7 @@
   border-radius: 999px;
   border: 1px solid #111827;
   background: #111827;
-  color: #f9fafb;
+  color: #f9f5f9;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -911,13 +904,8 @@
   padding: 1rem 1.25rem 0.75rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-bottom: 1px solid rgba(201, 162, 106, 0.35);
-}
-
-.mobileLogo {
-  display: flex;
-  align-items: center;
 }
 
 .mobileCloseButton {
@@ -1287,7 +1275,7 @@
 
 @media (max-width: 1023px) {
   .header {
-    padding: 0.85rem 0;
+    padding: 1rem 0; /* a bit more padding on mobile */
   }
 
   .container {
@@ -1302,19 +1290,9 @@
     display: none;
   }
 
-  /* language toggle opposite side of burger on mobile */
+  /* language toggle opposite side of burger on mobile (if placed outside nav in JSX) */
   .languageToggle {
-    display: flex;
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    margin-left: 0;
-  }
-
-  .rtl .languageToggle {
-    left: auto;
-    right: 1rem;
+    /* currently only used in desktop nav; mobile lang lives inside the overlay */
   }
 
   /* mega menus stack vertically on smaller screens if ever shown */

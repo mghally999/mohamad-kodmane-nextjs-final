@@ -7,6 +7,10 @@
   margin-bottom: -1px;
 }
 
+/* Optional flag if you want to hook RTL-specific tweaks */
+.rtl {
+}
+
 /* long golden line behind the logo – Sobha style */
 .footer::before {
   content: "";
@@ -145,196 +149,6 @@
   text-align: left;
 }
 
-/* ========== BOTTOM ROW ========== */
-
-.footerBottom {
-  padding: 45px 0 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: #000000;
-  gap: 40px;
-}
-
-/* LEFT – copyright + address + licenses */
-
-.bottomLeft {
-  flex: 1.4;
-  text-align: left;
-}
-
-.bottomBrand {
-  margin-bottom: 8px;
-}
-
-.bottomAddress {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: none;
-  color: #4f5459;
-  line-height: 1.6;
-}
-
-.bottomLicense {
-  margin-top: 10px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #4f5459;
-}
-
-.bottomLicense span {
-  color: #000000;
-}
-
-/* CENTER – socials */
-
-.bottomCenter {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.socialBlock {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.socialLabel {
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #777777;
-}
-
-.socialIcons {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.socialLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.5s ease;
-}
-
-.socialLink:hover {
-  transform: scale(1.2);
-}
-
-.socialIconImage {
-  display: block;
-}
-
-/* RIGHT – phone + mobile + email */
-
-.bottomRight {
-  flex: 1.4;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
-  gap: 4px;
-}
-
-.bottomContact {
-  text-decoration: none;
-  color: #000000;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.bottomContact:hover {
-  color: #c9a485;
-}
-
-/* ========== RESPONSIVE ========== */
-
-@media (max-width: 1200px) {
-  .footerMain {
-    padding: 0 40px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .footerMain {
-    padding: 0 32px;
-  }
-
-  .propertiesRow,
-  .footerMiddleInner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 32px;
-  }
-}
-
-@media (max-width: 767px) {
-  .footer {
-    padding: 80px 0 40px 0;
-  }
-
-  .logoWrap {
-    max-width: 182px;
-    margin-bottom: 60px;
-    padding-inline: 24px;
-  }
-
-  .footerMain {
-    padding: 0 20px;
-  }
-
-  .propertiesRow,
-  .footerMiddleInner {
-    grid-template-columns: 1fr;
-    column-gap: 0;
-  }
-
-  .footerBottom {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 35px;
-  }
-
-  .bottomLeft,
-  .bottomCenter,
-  .bottomRight {
-    text-align: center;
-    align-items: center;
-  }
-
-  .bottomLeft {
-    margin-bottom: 20px;
-  }
-
-  .bottomRight {
-    margin-top: 12px;
-  }
-}
-
-@media (max-width: 640px) {
-  .footerBottom {
-    font-size: 11px;
-  }
-
-  .bottomContact {
-    font-size: 11px;
-  }
-
-  .link {
-    font-size: 13px;
-  }
-}
 /* ========== BOTTOM FOOTER - LUXURY CORPORATE ========== */
 
 .footerBottom {
@@ -343,10 +157,14 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 60px;
   border-top: 1px solid #e8e6e1;
-  /* margin-top: 40px; */
 }
 
-/* Corporate Identity Block */
+/* LEFT BLOCK */
+
+.bottomLeft {
+  /* grid item – no special layout needed */
+}
+
 .corporateBlock {
   text-align: left;
 }
@@ -388,7 +206,14 @@
   margin-bottom: 4px;
 }
 
-/* Prestige Address Block */
+/* CENTER – ADDRESS */
+
+.bottomCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .prestigeAddress {
   text-align: justify;
 }
@@ -423,7 +248,13 @@
   font-size: 11px;
 }
 
-/* Exclusive Contacts Block */
+/* RIGHT – CONTACT */
+
+.bottomRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .contactBlock {
   text-align: justify;
 }
@@ -480,16 +311,81 @@
   color: #8c8c8c;
 }
 
+/* ========== RTL OVERRIDES ========== */
+
+[dir="rtl"] .colTitle,
+[dir="rtl"] .middleTitle {
+  text-align: right;
+}
+
+[dir="rtl"] .link {
+  text-align: right;
+}
+
+[dir="rtl"] .corporateBlock,
+[dir="rtl"] .prestigeAddress,
+[dir="rtl"] .contactBlock {
+  text-align: right;
+}
+
+[dir="rtl"] .bottomRight {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .contactLine {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .contactType {
+  text-align: right;
+}
+
 /* ========== RESPONSIVE ========== */
 
+@media (max-width: 1200px) {
+  .footerMain {
+    padding: 0 40px;
+  }
+}
+
 @media (max-width: 1024px) {
+  .footerMain {
+    padding: 0 32px;
+  }
+
+  .propertiesRow,
+  .footerMiddleInner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+
   .footerBottom {
     gap: 40px;
     padding: 50px 0 30px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .footer {
+    padding: 80px 0 40px 0;
+  }
+
+  .logoWrap {
+    max-width: 182px;
+    margin-bottom: 60px;
+    padding-inline: 24px;
+  }
+
+  .footerMain {
+    padding: 0 20px;
+  }
+
+  .propertiesRow,
+  .footerMiddleInner {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
   .footerBottom {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -503,6 +399,14 @@
     text-align: center;
   }
 
+  .bottomCenter {
+    justify-content: center;
+  }
+
+  .bottomRight {
+    justify-content: center;
+  }
+
   .contactDivider {
     margin: 0 auto 20px;
   }
@@ -512,14 +416,15 @@
     text-align: center;
   }
 
-  .contactType {
-    min-width: auto;
-    margin-right: 10px;
-  }
-
   .contactNumber,
   .contactEmail {
     text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .link {
+    font-size: 13px;
   }
 }
 
@@ -533,8 +438,120 @@
     flex-direction: column;
     gap: 5px;
   }
+}
+/* ====== COPYRIGHT + SOCIALS STRIP (BOTTOM LINE) ====== */
 
-  .contactType {
-    margin-right: 0;
+.footerMeta {
+  border-top: 1px solid #e8e6e1; /* the thin line like Sobha */
+  margin-top: 32px;
+  padding-top: 18px;
+}
+
+.footerMetaInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 24px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.metaCopy {
+  white-space: nowrap;
+}
+
+/* Social icons row */
+.metaSocials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.metaSocialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: #000000;
+}
+
+.metaSocialLink:hover {
+  transform: scale(1.1) translateY(-1px);
+  opacity: 0.8;
+}
+
+.metaSocialIcon {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+}
+
+.metaSocialIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* RTL tweaks */
+[dir="rtl"] .footerMetaInner {
+  padding: 0 80px;
+}
+
+@media (max-width: 1200px) {
+  .footerMetaInner {
+    padding: 0 40px;
   }
+}
+
+@media (max-width: 768px) {
+  .footerMetaInner {
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    row-gap: 14px;
+  }
+
+  .metaCopy {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .metaSocials {
+    gap: 14px;
+  }
+}
+/* grid layout always LTR so columns stay:
+   [corporate]  [address]  [contact] */
+.footerBottom {
+  padding: 70px 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  border-top: 1px solid #e8e6e1;
+  direction: ltr;
+}
+
+/* In RTL: keep grid LTR, but text should be right-aligned */
+[dir="rtl"] .corporateBlock,
+[dir="rtl"] .prestigeAddress,
+[dir="rtl"] .contactBlock {
+  text-align: right;
+}
+
+/* Also make the contact line flow correctly in RTL */
+[dir="rtl"] .contactLine {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .contactType {
+  text-align: right;
 }

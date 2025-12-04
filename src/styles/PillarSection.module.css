@@ -125,7 +125,7 @@
   transform: scale(1.1);
 }
 
-/* Content block */
+/* Content block (LTR default) */
 .latestBoxContent {
   margin-left: 72px;
   padding: 50px 0 0 22px;
@@ -168,7 +168,7 @@
   font-weight: 400;
 }
 
-/* Custom bullet points */
+/* Custom bullet points (LTR default) */
 .pillarList li::before {
   content: "•";
   position: absolute;
@@ -177,6 +177,33 @@
   color: #000;
   font-size: 18px;
   opacity: 0.6;
+}
+
+/* ───────────────── RTL OVERRIDES ───────────────── */
+
+/* Flip border/padding/margin for Arabic */
+.newLaunchSection[dir="rtl"] .latestBoxContent {
+  margin-left: 0;
+  margin-right: 72px;
+  padding: 50px 22px 0 0;
+  border-left: none;
+  border-right: 1px solid #dbdbdb;
+}
+
+/* Flip bullets to the right side */
+.newLaunchSection[dir="rtl"] .pillarList li {
+  padding-left: 0;
+  padding-right: 24px;
+}
+
+.newLaunchSection[dir="rtl"] .pillarList li::before {
+  left: auto;
+  right: 8px;
+}
+
+/* You can also slightly tighten letterspacing for Arabic heading if you want */
+.newLaunchSection[dir="rtl"] .heading2 {
+  letter-spacing: 0.18em;
 }
 
 /* ───────────────── RESPONSIVE ───────────────── */
@@ -188,6 +215,14 @@
     border-left: none;
     border-top: 1px solid #dbdbdb;
     padding-top: 40px;
+  }
+
+  /* RTL mobile: keep it clean but consistent */
+  .newLaunchSection[dir="rtl"] .latestBoxContent {
+    margin-right: 0;
+    padding: 40px 0 0 0;
+    border-right: none;
+    border-top: 1px solid #dbdbdb;
   }
 
   .latestBoxThumb {

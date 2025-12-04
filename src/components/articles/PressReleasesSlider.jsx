@@ -16,7 +16,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 
 export default function PressReleasesSlider() {
   const router = useRouter();
-  const { locale } = useLanguage();
+  const { locale, t } = useLanguage();
   const isRTL = locale === "ar";
 
   const articles = articlesData.getAllArticles(locale);
@@ -35,33 +35,42 @@ export default function PressReleasesSlider() {
       <div className={styles.container}>
         {/* Heading */}
         <h2 id="press-releases-heading" className={styles.heading}>
-          {isRTL ? "البيانات الصحفية" : "PRESS RELEASES"}
+          {t?.("pressReleases.heading") ||
+            (isRTL ? "البيانات الصحفية" : "PRESS RELEASES")}
         </h2>
 
         <div className={styles.sliderShell}>
           {/* arrows */}
           <button
             className={`${styles.navArrow} ${styles.navPrev} stories-prev`}
-            aria-label={isRTL ? "السابق" : "Previous press release"}
+            aria-label={
+              t?.("pressReleases.aria.prev") ||
+              (isRTL ? "البيان السابق" : "Previous press release")
+            }
           >
             <span className={styles.arrowIcon} />
           </button>
 
           <button
             className={`${styles.navArrow} ${styles.navNext} stories-next`}
-            aria-label={isRTL ? "التالي" : "Next press release"}
+            aria-label={
+              t?.("pressReleases.aria.next") ||
+              (isRTL ? "البيان التالي" : "Next press release")
+            }
           >
             <span className={styles.arrowIcon} />
           </button>
 
           <Swiper
+            key={locale} // re-init Swiper when switching languages
             modules={[Navigation, Autoplay]}
             navigation={{
-              prevEl: ".stories-prev",
-              nextEl: ".stories-next",
+              // reverse logical prev/next when RTL so movement feels natural
+              prevEl: isRTL ? ".stories-next" : ".stories-prev",
+              nextEl: isRTL ? ".stories-prev" : ".stories-next",
             }}
             autoplay={{
-              delay: 8000, // slower, more “luxury”
+              delay: 8000,
               disableOnInteraction: false,
             }}
             loop
@@ -69,8 +78,10 @@ export default function PressReleasesSlider() {
             centeredSlidesBounds
             slidesPerView={"auto"}
             spaceBetween={32}
-            speed={900} // slow slide transition like Sobha
-            className={styles.storiesSlider}
+            speed={900}
+            className={`${styles.storiesSlider} ${
+              isRTL ? styles.rtlSlider : ""
+            }`}
           >
             {articles.map((article) => (
               <SwiperSlide
@@ -112,8 +123,10 @@ export default function PressReleasesSlider() {
 
                       <div className={styles.storyPublish}>
                         <div className={styles.datePlace}>
+                          {/* If you want label visible, uncomment below */}
                           {/* <span className={styles.publishedLabel}>
-                            {isRTL ? "تاريخ النشر" : "Published on"}
+                            {t?.("pressReleases.publishedLabel") ||
+                              (isRTL ? "تاريخ النشر" : "Published on")}
                           </span> */}
                           <span className={styles.publishedDate}>
                             {article.publishedOn || article.date || ""}
@@ -131,7 +144,7 @@ export default function PressReleasesSlider() {
         {/* VIEW ALL */}
         <div className={styles.viewAllRow}>
           <Link href="/articles" className={styles.viewAllBtn}>
-            {isRTL ? "عرض الكل" : "VIEW ALL"}
+            {t?.("pressReleases.viewAll") || (isRTL ? "عرض الكل" : "VIEW ALL")}
           </Link>
         </div>
       </div>

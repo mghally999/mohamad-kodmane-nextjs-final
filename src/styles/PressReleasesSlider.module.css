@@ -36,6 +36,10 @@
   padding-bottom: 30px;
 }
 
+/* Optional helper if you want different tweaks in RTL */
+.rtlSlider {
+}
+
 /* Each slide width – slightly smaller so both neighbours peek in */
 
 .slide {
@@ -48,7 +52,6 @@
 /* ====== CARD / BOX ====== */
 
 .card {
-  /* width: 100%; */
   cursor: pointer;
 }
 
@@ -143,20 +146,18 @@
   text-align: right;
 }
 
+/* RTL: align publish block left in Arabic if you prefer */
+[dir="rtl"] .storyPublish {
+  text-align: left;
+}
+
 /* Title */
 
 .cardTitle {
   font-family: "Times New Roman", "Georgia", serif;
   font-size: 18px;
-  /* line-height: 21px; */
   color: #000000;
   margin: 0;
-}
-
-@media (min-width: 1000px) {
-  .cardTitle {
-    /* min-height: 85px; */
-  }
 }
 
 /* "Published on" block */
@@ -166,6 +167,10 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 2px;
+}
+
+[dir="rtl"] .datePlace {
+  align-items: flex-start;
 }
 
 .publishedLabel {
@@ -211,6 +216,18 @@
   right: 24px;
 }
 
+/* RTL: flip arrow positions */
+
+[dir="rtl"] .navPrev {
+  left: auto;
+  right: 24px;
+}
+
+[dir="rtl"] .navNext {
+  right: auto;
+  left: 24px;
+}
+
 .navArrow:hover {
   background: #111111;
   border-color: #111111;
@@ -238,6 +255,8 @@
   transition: background-color 0.25s ease;
 }
 
+/* LTR chevrons */
+
 .navPrev .arrowIcon::before {
   top: 1px;
   transform: translateX(-50%) rotate(45deg);
@@ -254,6 +273,28 @@
 .navNext .arrowIcon::after {
   bottom: 1px;
   transform: translateX(-50%) rotate(45deg);
+}
+
+/* RTL: flip visual direction so “prev” looks right, “next” left */
+
+[dir="rtl"] .navPrev .arrowIcon::before {
+  top: 1px;
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+[dir="rtl"] .navPrev .arrowIcon::after {
+  bottom: 1px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+[dir="rtl"] .navNext .arrowIcon::before {
+  top: 1px;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+[dir="rtl"] .navNext .arrowIcon::after {
+  bottom: 1px;
+  transform: translateX(-50%) rotate(-45deg);
 }
 
 .navArrow:hover .arrowIcon::before,
@@ -311,6 +352,14 @@
   .navNext {
     right: 16px;
   }
+
+  [dir="rtl"] .navPrev {
+    right: 16px;
+  }
+
+  [dir="rtl"] .navNext {
+    left: 16px;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -326,6 +375,10 @@
   }
 
   .datePlace {
+    align-items: center;
+  }
+
+  [dir="rtl"] .datePlace {
     align-items: center;
   }
 }

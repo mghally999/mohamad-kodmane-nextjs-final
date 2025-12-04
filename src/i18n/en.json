@@ -103,6 +103,7 @@
   },
   "homeSlider": {
     "mainTitle": "EXPLORE OUR LUXURY PROPERTIES IN THE UAE",
+    "discoverButton": "DISCOVER",
     "exploreButton": "EXPLORE ALL",
     "ariaLabels": {
       "previousSlide": "Previous slide",
@@ -183,6 +184,133 @@
         "category": "Penthouses",
         "location": "Dubai Harbour, Dubai"
       }
+    }
+  },
+  "artOfDetail": {
+    "sloganPre": "Where",
+    "sloganMain": "The 1% Own",
+    "companyLine": "Mohamad Kodmani Real Estate Brokers",
+    "description": "At Mohamad Kodmani Real Estate Brokers, we understand that true excellence lies in the meticulous attention to detail and the artistry of craftsmanship. Guided by a commitment to perfection, we believe in crafting not just homes but immersive experiences where every nuance is thoughtfully considered.",
+    "discoverMore": "DISCOVER MORE",
+    "ownerAlt": "Portrait of Mohamad Kodmani"
+  },
+  "pillarsSection": {
+    "heading": "FROM CONCEPT TO COMPLETION: DEFINING OUR PILLARS",
+
+    "pillar1": {
+      "title": "Why Invest in Dubai?",
+      "intro": "Dubai is one of the strongest investment cities in the world and offers an ideal environment to grow your real estate wealth.",
+      "point1": "High investment returns.",
+      "point2": "Safe and advanced economic environment.",
+      "point3": "No taxes on income or real estate profits.",
+      "point4": "Option to obtain a Golden Visa with an investment of AED 2 million or more.",
+      "point5": "World-class infrastructure.",
+      "point6": "Growing global demand for Dubai property.",
+      "point7": "Easy property ownership for foreigners."
+    },
+
+    "pillar2": {
+      "title": "What Is a Real Estate Portfolio?",
+      "intro": "Owning more than one property – both ready and off-plan – with the goal of building a strong, balanced real estate fortune.",
+      "point1": "Diversifies your income across multiple properties.",
+      "point2": "Reduces risk by spreading investments.",
+      "point3": "Maximises returns through rental income and capital appreciation.",
+      "point4": "We manage the entire portfolio for you, so your real estate wealth grows safely and smoothly."
+    },
+
+    "pillar3": {
+      "title": "What Is Off-Plan Investment in Dubai?",
+      "intro": "Buying a property in its early stages, before or during construction, with flexible instalments paid directly to the developer.",
+      "point1": "Lower purchase price compared to ready properties.",
+      "point2": "Potential to realise profit at handover as the property value rises over time.",
+      "point3": "High payment flexibility with comfortable instalments and no need for bank financing."
+    }
+  },
+  "pressReleases": {
+    "heading": "PRESS RELEASES",
+    "viewAll": "VIEW ALL",
+    "publishedLabel": "Published on",
+    "aria": {
+      "prev": "Previous press release",
+      "next": "Next press release"
+    }
+  },
+  "footer": {
+    "brand": {
+      "logoBar": "Mohamad Kodmane Real Estate Brokers",
+      "corporateName": "MOHAMAD KODMANE",
+      "corporateTitle": "REAL ESTATE BROKERS",
+      "legal": {
+        "tradeLicense": "TRADE LICENSE: 1192580",
+        "advertisingPermit": "ADVERTISING PERMIT: 139532",
+        "reraCertified": "RERA CERTIFIED"
+      }
+    },
+    "headers": {
+      "apartments": "APARTMENTS",
+      "villas": "VILLAS",
+      "penthouses": "PENTHOUSES",
+      "communities": "COMMUNITIES",
+      "mediaCenter": "MEDIA CENTER",
+      "aboutUs": "ABOUT US",
+      "contact": "CONTACT"
+    },
+    "projects": {
+      "apartments": {
+        "sobhaSkyParks": "Sobha SkyParks",
+        "sobhaAquaCrest": "Sobha AquaCrest",
+        "sobhaCentral": "Sobha Central",
+        "sobhaAquamont": "Sobha Aquamont"
+      },
+      "villas": {
+        "sobhaHartlandVillas": "Sobha Hartland Villas",
+        "sobhaAlSinniyyahIsland": "Sobha Al Sinniyyah Island",
+        "masaarByArada": "Masaar by Arada",
+        "damacIslands2": "Damac Islands 2"
+      },
+      "penthouses": {
+        "sobhaSeaHavenPenthouse": "Sobha SeaHaven Penthouse"
+      }
+    },
+    "communities": {
+      "sobhaSkyParks": "Sobha SkyParks",
+      "sobhaCentral": "Sobha Central",
+      "sobhaHartland": "Sobha Hartland",
+      "alSinniyyahIsland": "Al Sinniyyah Island",
+      "masaarByArada": "Masaar by Arada",
+      "damacIslands2": "Damac Islands 2"
+    },
+    "mediaCenter": {
+      "mediaCenter": "Media Center",
+      "blogs": "Blogs",
+      "reports": "Reports"
+    },
+    "aboutUs": {
+      "aboutMohamadKodmane": "About Mohamad Kodmane",
+      "legacyExperience": "Legacy & Experience",
+      "thoughtfulAdvice": "Thoughtful Advice"
+    },
+    "contact": {
+      "contactUs": "Contact Us",
+      "channelPartner": "Channel Partner",
+      "ourPresence": "Our Presence",
+      "faq": "FAQ"
+    },
+    "address": {
+      "title": "HEADQUARTERS",
+      "line1": "22ND FLOOR, 22ND COURT TOWER",
+      "line2": "OFFICE B08, BUSINESS BAY",
+      "line3": "DUBAI, UNITED ARAB EMIRATES",
+      "poBox": "P.O. BOX 446097"
+    },
+    "contactBlock": {
+      "title": "PRIVATE CONSULTATION",
+      "directLabel": "DIRECT:",
+      "officeLabel": "OFFICE:",
+      "emailLabel": "EMAIL:"
+    },
+    "meta": {
+      "allRightsReserved": "All rights reserved."
     }
   }
 }

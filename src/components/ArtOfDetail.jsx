@@ -4,11 +4,14 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import styles from "@/styles/ArtOfDetail.module.css";
 import Link from "next/link";
+
+import styles from "@/styles/ArtOfDetail.module.css";
+import { useLanguage } from "./LanguageProvider";
 
 export default function ArtOfDetail() {
   const sectionRef = useRef(null);
+  const { t, locale } = useLanguage(); // from your working setup
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -158,41 +161,44 @@ export default function ArtOfDetail() {
   }, []);
 
   return (
-    <section ref={sectionRef} className={styles.artOfDetailSec}>
+    <section
+      ref={sectionRef}
+      className={styles.artOfDetailSec}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+    >
       <div className={styles.artAnimSec}>
         <div className={styles.container}>
           <div className={`${styles.row} ${styles.h100vh}`}>
             {/* LEFT – content */}
             <div className={styles.artContentSec}>
-              {/* ★ CHOOSE YOUR SLOGAN VARIATION - Replace className and structure as needed */}
-
-              {/* Variation 1: Architectural Statement */}
+              {/* Slogan */}
               <div className={styles.sloganV1}>
                 <div className={styles.sloganArchitectural}>
-                  <span className={styles.sloganPre}>Where</span>
+                  <span className={styles.sloganPre}>
+                    {t("artOfDetail.sloganPre")}
+                  </span>
                   <div className={styles.sloganMainContainer}>
-                    <span className={styles.sloganMain}>The 1% Own</span>
+                    <span className={styles.sloganMain}>
+                      {t("artOfDetail.sloganMain")}
+                    </span>
                     <div className={styles.sloganDivider}></div>
                   </div>
                 </div>
               </div>
 
-              {/* ★ Company subtitle */}
+              {/* Company subtitle */}
               <p className={styles.companyLine}>
-                Mohamad Kodmani Real Estate Brokers
+                {t("artOfDetail.companyLine")}
               </p>
 
-              {/* ★ Paragraph */}
+              {/* Paragraph */}
               <p className={styles.description}>
-                At Mohamad Kodmani Real Estate Brokers, we understand that true
-                excellence lies in the meticulous attention to detail and the
-                artistry of craftsmanship. Guided by a commitment to perfection,
-                we believe in crafting not just homes but immersive experiences
-                where every nuance is thoughtfully considered.
+                {t("artOfDetail.description")}
               </p>
+
               <div className={styles.buttonMain}>
                 <Link href="/about" className={styles.button1}>
-                  DISCOVER MORE <i />
+                  {t("artOfDetail.discoverMore")} <i />
                 </Link>
               </div>
             </div>
@@ -201,7 +207,7 @@ export default function ArtOfDetail() {
             <div className={`${styles.ownerImgWrapper} ${styles.onlyDesk}`}>
               <Image
                 src="/boss-nobg.png"
-                alt="Mohamad Kodmani"
+                alt={t("artOfDetail.ownerAlt")}
                 fill
                 className={styles.ownerImg}
                 priority
@@ -212,7 +218,7 @@ export default function ArtOfDetail() {
             <div className={`${styles.ownerImgMobile} ${styles.onlyMob}`}>
               <Image
                 src="/boss-nobg.png"
-                alt="Mohamad Kodmani"
+                alt={t("artOfDetail.ownerAlt")}
                 width={280}
                 height={340}
                 className={styles.ownerImgMobileImg}
