@@ -108,7 +108,7 @@ export default function ProjectPage({ params }) {
         data={projectData.amenities}
         projectData={projectData}
       />
-      <MapDirections data={locationMap} />
+      {/* <MapDirections data={locationMap} /> */}
       {/* <MapDirections data={projectData.location} projectData={projectData} /> */}
       <ContactFormFinal />
     </main>

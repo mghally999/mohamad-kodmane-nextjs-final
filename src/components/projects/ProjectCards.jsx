@@ -42,19 +42,6 @@ const ProjectCards = ({ projects, onResetFilters }) => {
     return project.devStatus || project.status || "Available";
   };
 
-  const getBedroomText = (project) => {
-    if (
-      project.minBedrooms !== undefined &&
-      project.maxBedrooms !== undefined
-    ) {
-      if (project.minBedrooms === project.maxBedrooms) {
-        return `${project.minBedrooms} BR`;
-      }
-      return `${project.minBedrooms}-${project.maxBedrooms} BR`;
-    }
-    return project.bedrooms || "Studio";
-  };
-
   const getProjectUrl = (project) => {
     // Generate proper URL for the project
     if (project.slug && project.category && project.developerSlug) {
@@ -153,17 +140,8 @@ const ProjectCards = ({ projects, onResetFilters }) => {
                 </div>
               </div>
 
-              {/* Bedrooms */}
-              <div className={styles.bedrooms}>
-                <span>🛏️</span>
-                <span>Bedrooms:</span>
-                <span className={styles.bedroomRange}>
-                  {getBedroomText(project)}
-                </span>
-              </div>
-
               {/* Post-Handover */}
-              {(project.hasPostHandover || project.postHandoverMonths) && (
+              {/* {(project.hasPostHandover || project.postHandoverMonths) && (
                 <div className={styles.postHandover}>
                   <span>✅</span>
                   <span>Post-handover plan available</span>
@@ -171,13 +149,13 @@ const ProjectCards = ({ projects, onResetFilters }) => {
                     <span> ({project.postHandoverMonths} months)</span>
                   )}
                 </div>
-              )}
+              )} */}
 
               {/* View Project Button */}
-              <Link href={projectUrl} className={styles.viewButton}>
+              {/* <Link href={projectUrl} className={styles.viewButton}>
                 <span className={styles.buttonIcon}>→</span>
                 <span>View Project Details</span>
-              </Link>
+              </Link> */}
             </div>
           </div>
         );

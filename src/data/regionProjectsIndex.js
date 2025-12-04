@@ -65,7 +65,7 @@ export const regionProjectsIndex = [
       href: "/projects/commercial-retail/omniyat/lumenaalta",
       regionSlug: "business-bay",
       data: lumenaAltaData,
-      bedrooms: "Commercial Spaces",
+      bedrooms: "Office Spaces",
     }),
     // From project.startingPrice: 25_300_000
     priceAED: 25300000,
@@ -73,8 +73,8 @@ export const regionProjectsIndex = [
     sizeSqft: 1100,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
-    unitType: "Retail",
-    completionYear: 2027,
+    unitType: "Office Spaces",
+    completionYear: 2030, // "Q3 2030"
     hasPostHandover: true,
     postHandoverMonths: 24,
     minBedrooms: 0,
@@ -90,12 +90,13 @@ export const regionProjectsIndex = [
       data: rivieraRetailsData,
       bedrooms: "Retail Units",
     }),
-    // From project.startingPrice: 1_000_000
-    priceAED: 1000000,
-    startingPriceAED: 1000000,
+    // From project.startingPrice: 2_795_000
+    priceAED: 2795000,
+    startingPriceAED: 2795000,
     sizeSqft: 1200,
     devStatus: "Ready & Off-Plan",
     saleStatus: "On Sale",
+    unitType: "Retail Spaces",
     completionYear: 2026, // "Ready & Q1 2026"
     hasPostHandover: false,
     postHandoverMonths: 0,
@@ -114,14 +115,14 @@ export const regionProjectsIndex = [
       data: centralData,
       bedrooms: "1, 2 & 3 Bedrooms",
     }),
-    // From project.startingPrice: 1_784_354
+    // From project.startingPrice: "AED 1,784,354"
     priceAED: 1784354,
     startingPriceAED: 1784354,
     sizeSqft: 850,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
     unitType: "Apartments",
-    completionYear: 2032, // "Q3 2032"
+    completionYear: 2029, // "Q4 2029"
     hasPostHandover: true,
     postHandoverMonths: 36,
     minBedrooms: 1,
@@ -160,14 +161,14 @@ export const regionProjectsIndex = [
       data: aquaCrestData,
       bedrooms: "1 & 2 Bedrooms",
     }),
-    // From project.startingPrice: "AED 550,000"
-    priceAED: 550000,
-    startingPriceAED: 550000,
+    // From project.startingPrice: "AED 1,166,850"
+    priceAED: 1166850,
+    startingPriceAED: 1166850,
     sizeSqft: 700,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
     unitType: "Apartments",
-    completionYear: 2027, // "Q4 2027"
+    completionYear: 2029, // "Q3 2029"
     hasPostHandover: true,
     postHandoverMonths: 36,
     minBedrooms: 1,
@@ -181,20 +182,20 @@ export const regionProjectsIndex = [
       href: "/projects/apartments/sobha/aquamont",
       regionSlug: "umm-al-quwain",
       data: aquamontData,
-      bedrooms: "2, 3 & 4 Bedrooms",
+      bedrooms: "1, 2 & 3 Bedrooms",
     }),
-    // From project.startingPrice: "AED 850,000"
-    priceAED: 850000,
-    startingPriceAED: 850000,
+    // From project.startingPrice: "AED 1,112,127"
+    priceAED: 1112127,
+    startingPriceAED: 1112127,
     sizeSqft: 900,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
     unitType: "Apartments",
-    completionYear: 2028, // "Q2 2028"
+    completionYear: 2028, // "Q3 2028"
     hasPostHandover: true,
     postHandoverMonths: 30,
-    minBedrooms: 2,
-    maxBedrooms: 4,
+    minBedrooms: 1,
+    maxBedrooms: 3,
   },
 
   // =================== PENTHOUSES ===============================
@@ -206,20 +207,20 @@ export const regionProjectsIndex = [
       href: "/projects/penthouses/sobha/seahaven-penthouse",
       regionSlug: "dubai-harbour",
       data: seahavenPenthouseData,
-      bedrooms: "3 & 4 Bedrooms",
+      bedrooms: "5 & 6 Bedrooms",
     }),
-    // From project.startingPrice: 19_236_000
-    priceAED: 19236000,
-    startingPriceAED: 19236000,
+    // From project.startingPrice: 51_188_437
+    priceAED: 51188437,
+    startingPriceAED: 51188437,
     sizeSqft: 3500,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
     unitType: "Penthouse",
-    completionYear: 2028, // "Q4 2028"
+    completionYear: 2026, // "Q4 2026"
     hasPostHandover: false,
     postHandoverMonths: 0,
-    minBedrooms: 3,
-    maxBedrooms: 4,
+    minBedrooms: 5,
+    maxBedrooms: 6,
   },
 
   // =================== VILLAS / TOWNHOUSES ======================
@@ -231,7 +232,7 @@ export const regionProjectsIndex = [
       href: "/projects/villas/sobha/hartland",
       regionSlug: "mohammed-bin-rashid-city",
       data: hartland2VillasData,
-      bedrooms: "4, 5 & 6 Bedrooms",
+      bedrooms: "6 Bedrooms",
     }),
     // From project.startingPrice: "AED 60,639,950"
     priceAED: 60639950,
@@ -239,11 +240,11 @@ export const regionProjectsIndex = [
     sizeSqft: 4000,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
-    unitType: "Villa",
+    unitType: "Luxury Villas",
     completionYear: 2026, // "Q3 2026"
     hasPostHandover: true,
     postHandoverMonths: 60,
-    minBedrooms: 4,
+    minBedrooms: 6,
     maxBedrooms: 6,
   },
 
@@ -254,16 +255,16 @@ export const regionProjectsIndex = [
       href: "/projects/villas/arada/massar",
       regionSlug: "sharjah",
       data: massar3Data,
-      bedrooms: "3, 4 & 5 Bedrooms",
+      bedrooms: "3 & 5 Bedrooms",
     }),
-    // From project.startingPrice: 1_600_000
-    priceAED: 1600000,
-    startingPriceAED: 1600000,
+    // From project.startingPrice: 4_395_000
+    priceAED: 4395000,
+    startingPriceAED: 4395000,
     sizeSqft: 2600,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
-    unitType: "Villa",
-    completionYear: 2031, // "Q2 2031"
+    unitType: "Luxury Villas",
+    completionYear: 2028, // "Q4 2028"
     hasPostHandover: true,
     postHandoverMonths: 36,
     minBedrooms: 3,
@@ -277,20 +278,20 @@ export const regionProjectsIndex = [
       href: "/projects/villas/sobha/al-sinniyyah-island",
       regionSlug: "umm-al-quwain",
       data: alSinniyyahIslandData,
-      bedrooms: "3, 4 & 5 Bedrooms",
+      bedrooms: "4–6 Bedrooms",
     }),
-    // From project.startingPrice: "AED 7,500,000"
-    priceAED: 7500000,
-    startingPriceAED: 7500000,
+    // From project.startingPrice: "AED 10.7M"
+    priceAED: 10700000,
+    startingPriceAED: 10700000,
     sizeSqft: 3200,
     devStatus: "Off-Plan",
     saleStatus: "On Sale",
-    unitType: "Villa",
+    unitType: "Luxury Villas",
     completionYear: 2030, // "2029–2030"
     hasPostHandover: true,
     postHandoverMonths: 48,
-    minBedrooms: 3,
-    maxBedrooms: 5,
+    minBedrooms: 4,
+    maxBedrooms: 6,
   },
 
   {
@@ -300,20 +301,20 @@ export const regionProjectsIndex = [
       href: "/projects/villas/damac/damac-islands-2",
       regionSlug: "dubailand",
       data: damacIslands2Data,
-      bedrooms: "3, 4 & 5 Bedrooms",
+      bedrooms: "4–6 Bedrooms",
     }),
-    // From project.startingPrice: "AED 1.9M"
-    priceAED: 1900000,
-    startingPriceAED: 1900000,
+    // From project.startingPrice: "AED 2,750,000"
+    priceAED: 2750000,
+    startingPriceAED: 2750000,
     sizeSqft: 2800,
     devStatus: "Off-Plan",
     saleStatus: "Announced",
-    unitType: "Villa",
-    completionYear: 2030, // "Q4 2030"
+    unitType: "Waterfront Townhouses & Villas",
+    completionYear: 2030, // "30 June 2030"
     hasPostHandover: false,
     postHandoverMonths: 0,
-    minBedrooms: 3,
-    maxBedrooms: 5,
+    minBedrooms: 4,
+    maxBedrooms: 6,
   },
 ];
 

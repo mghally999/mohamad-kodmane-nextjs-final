@@ -4,7 +4,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     slug: "business-bay",
     name: t?.("whereToLive.businessBay.name") || "Business Bay",
     image:
-      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&h=800&fit=crop&auto=format",
+      "https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?q=80&w=2224&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location:
       t?.("whereToLive.businessBay.location") ||
       "Along Dubai Water Canal, next to Downtown Dubai",
@@ -18,7 +18,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     slug: "sheikh-zayed-road",
     name: t?.("whereToLive.sheikhZayedRoad.name") || "Sheikh Zayed Road",
     image:
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&h=800&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1556284664-800b14d70a82?q=80&w=2452&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location:
       t?.("whereToLive.sheikhZayedRoad.location") ||
       "Prime high-rise corridor linking Downtown, Business Bay & Marina",
@@ -33,7 +33,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     name:
       t?.("whereToLive.mbrCity.name") || "Mohammed Bin Rashid City (MBR City)",
     image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1686906686985-85c4d880511c?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location:
       t?.("whereToLive.mbrCity.location") ||
       "Master community near Downtown & Meydan with villas & apartments",
@@ -47,7 +47,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     slug: "dubailand",
     name: t?.("whereToLive.dubailand.name") || "Dubailand",
     image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1587261751115-9902c57e3c1b?ixlib=rb-4.0.3&w=1200&h=800&fit=crop&auto=format",
     location:
       t?.("whereToLive.dubailand.location") ||
       "Large residential and entertainment corridor off E611 & Al Ain Rd",
@@ -60,7 +60,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     slug: "umm-al-quwain",
     name: t?.("whereToLive.ummAlQuwain.name") || "Umm Al Quwain Waterfront",
     image:
-      "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1200&h=800&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&w=1200&h=800&fit=crop&auto=format",
     location:
       t?.("whereToLive.ummAlQuwain.location") ||
       "Beachfront and island communities along UAQ coastline",
@@ -74,7 +74,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     slug: "sharjah",
     name: t?.("whereToLive.sharjah.name") || "Sharjah",
     image:
-      "https://images.unsplash.com/photo-1494522358652-c549345d2c9e?w=1200&h=800&fit=crop&auto=format",
+      "https://images.unsplash.com/photo-1590959651373-a3db0f38a961?ixlib=rb-4.0.3&w=1200&h=800&fit=crop&auto=format",
     location:
       t?.("whereToLive.sharjah.location") ||
       "Green, family-focused communities on Sharjah's outskirts",
