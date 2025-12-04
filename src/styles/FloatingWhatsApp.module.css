@@ -1,241 +1,95 @@
-/* FloatingWhatsApp.module.css – Sobha enq-bttns clone */
-
-/* ====== CONTAINER (fixed like Sobha bottom CTAs) ====== */
-
-.whatsappContainer {
+.whatsappWrapper {
   position: fixed;
-  right: max(32px, env(safe-area-inset-right));
-  bottom: calc(32px + env(safe-area-inset-bottom));
-  z-index: 9999;
-  font-family: "Ringside", -apple-system, BlinkMacSystemFont, sans-serif;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  right: 40px;
+  bottom: 28px;
+  z-index: 1100;
 }
 
-.whatsappContainer.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RTL mirroring */
-.whatsappContainer.rtl {
-  right: auto;
-  left: max(32px, env(safe-area-inset-left));
-}
-
-/* ====== MAIN BUTTON – Sobha .enq-bttns style ====== */
-
-.whatsappFab {
+/* Sobha-style pill button */
+.whatsappButton {
+  height: 55px;
+  padding: 13px 26px;
+  border-radius: 28px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  height: 46px; /* same height as Sobha */
-  padding: 0 32px; /* pill padding */
-  border-radius: 46px; /* full pill */
-  background-color: #ffffff;
-  color: #000000;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.16);
-  text-decoration: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
+  gap: 10px;
+
+  background: #4a4a4a; /* dark grey like Sobha footer buttons */
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0.18em;
-  font-size: 11px;
-  line-height: 46px;
-  -webkit-font-smoothing: antialiased;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease,
-    box-shadow 0.25s ease, transform 0.25s ease;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  box-shadow: 5px 9px 22px rgba(0, 0, 0, 0.16);
+  cursor: pointer;
+  border: none;
+
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+  box-shadow: none !important;
+  background: rgba(20, 20, 20, 0.7) !important;
+  color: #fff !important;
 }
 
-/* Clean, no extra gradients/pulses */
-.whatsappFab::before,
-.whatsappFab::after {
-  display: none;
-}
-
-/* Hover – invert like Sobha */
-.whatsappFab:hover {
-  background-color: #000000;
-  color: #ffffff;
-  border-color: #000000;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+.whatsappButton:hover {
+  background: #111111;
   transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
-/* ====== ICON (left circle + WA logo) ====== */
-
-.iconContainer {
-  position: relative;
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
+/* text */
+.label {
+  display: inline-block;
 }
 
-.iconBackground {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background-color: #000000;
-  opacity: 0.06;
+/* icon */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.waIcon {
-  position: relative;
-  z-index: 1;
-  width: 18px;
-  height: 18px;
-  color: #000000;
-}
-
-/* On hover make icon white, like Sobha text */
-.whatsappFab:hover .waIcon {
-  color: #ffffff;
-}
-
-/* ====== TEXT BLOCK (two lines, but styled to fit pill) ====== */
-
-.textContent {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  text-align: left;
-  line-height: 1.2;
-}
-
-.whatsappContainer.rtl .whatsappFab {
+/* RTL: flip content order and spacing */
+.rtl .whatsappButton {
   flex-direction: row-reverse;
 }
 
-.whatsappContainer.rtl .textContent {
-  text-align: right;
-}
-
-.waTitle {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  line-height: 1.4;
-}
-
-.waNumber {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  direction: ltr;
-  unicode-bidi: embed;
-}
-
-/* ====== SMALL STATUS TAG (optional like “Available”) ====== */
-
-.statusIndicator {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-left: 12px;
-  padding: 4px 8px;
-  border-radius: 999px;
-  background-color: rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.whatsappContainer.rtl .statusIndicator {
+.rtl .icon {
+  /* space now on the left of the icon */
+  margin-right: 10px;
   margin-left: 0;
-  margin-right: 12px;
 }
 
-.statusDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #58c472;
+/* default LTR spacing */
+.whatsappButton:not(.rtl) .icon {
+  margin-left: 10px;
 }
 
-.statusText {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* ====== EXTRA DECORATIONS – HIDDEN (to match Sobha clean CTA) ====== */
-
-.luxuryBadge,
-.hoverGlow,
-.floatingParticles,
-.particle {
-  display: none !important;
-}
-
-/* ====== RESPONSIVE (similar to Sobha behaviour) ====== */
-
+/* Responsive tweaks */
 @media (max-width: 768px) {
-  .whatsappContainer {
-    right: max(16px, env(safe-area-inset-right));
-    bottom: calc(16px + env(safe-area-inset-bottom));
+  .whatsappWrapper {
+    right: 16px;
+    bottom: 20px;
   }
 
-  .whatsappContainer.rtl {
-    right: auto;
-    left: max(16px, env(safe-area-inset-left));
-  }
-
-  .whatsappFab {
-    height: 42px;
-    padding: 0 24px;
-    gap: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
-  }
-
-  .waTitle {
-    font-size: 10px;
+  .whatsappButton {
+    height: 46px;
+    padding: 10px 18px;
+    font-size: 12px;
     letter-spacing: 0.14em;
-  }
-
-  .waNumber {
-    font-size: 11px;
-  }
-
-  .statusIndicator {
-    display: none; /* Clean like mobile layouts */
   }
 }
 
 @media (max-width: 480px) {
-  .whatsappFab {
-    padding: 0 18px;
+  .whatsappWrapper {
+    right: 12px;
+    bottom: 16px;
   }
 
-  .textContent {
-    max-width: 160px;
-  }
-}
-
-@media (max-width: 360px) {
-  .textContent {
-    display: none; /* super small: icon only */
-  }
-
-  .whatsappFab {
-    padding: 0 14px;
-  }
-}
-
-/* Reduced motion: no transforms */
-@media (prefers-reduced-motion: reduce) {
-  .whatsappContainer {
-    transition: opacity 0.3s ease;
-  }
-
-  .whatsappFab {
-    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-  }
-
-  .whatsappFab:hover {
-    transform: none;
+  .whatsappButton {
+    padding: 9px 16px;
   }
 }

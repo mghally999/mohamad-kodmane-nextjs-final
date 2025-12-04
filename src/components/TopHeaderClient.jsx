@@ -313,7 +313,7 @@ export default function TopHeader() {
                   }}
                 >
                   {t?.("nav.properties") || "PROPERTIES"}
-                  <span className={styles.dropdownArrow}>▼</span>
+                  {/* <span className={styles.dropdownArrow}>▼</span> */}
                 </button>
               </li>
 
@@ -343,7 +343,7 @@ export default function TopHeader() {
                   }}
                 >
                   {t?.("nav.whereToLive") || "WHERE TO LIVE"}
-                  <span className={styles.dropdownArrow}>▼</span>
+                  {/* <span className={styles.dropdownArrow}>▼</span> */}
                 </button>
               </li>
 

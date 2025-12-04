@@ -570,10 +570,6 @@ export default function HomeHeroSlider(props) {
           {t?.("homeSlider.mainTitle") ||
             "EXPLORE OUR LUXURY PROPERTIES IN THE UAE"}
         </h2>
-
-        <Link href="/properties" className={styles.discoverButton}>
-          {t?.("homeSlider.discoverButton") || "DISCOVER"}
-        </Link>
       </div>
 
       {/* IMAGE STRIP */}

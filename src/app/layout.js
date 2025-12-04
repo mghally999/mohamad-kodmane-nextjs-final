@@ -10,6 +10,7 @@ import { menuData } from "@/data/menuData";
 import LanguageProvider from "@/components/LanguageProvider";
 import Script from "next/script";
 import { usePathname } from "next/navigation"; // ADD THIS
+import WhatsappFloatingButton from "@/components/FloatingWhatsApp";
 
 // Move metadata to a separate file or use generateMetadata
 // Since we're now a client component, metadata needs to be handled differently
@@ -128,6 +129,7 @@ export default function RootLayout({ children }) {
         <LanguageProvider>
           <TopHeader />
           {children}
+          <WhatsappFloatingButton />
 
           {/* Hide footer on ALL developer pages (including slugs) */}
           {!pathname?.startsWith("/developers") && (
