@@ -1037,14 +1037,14 @@ export default function TopHeader() {
               <div className={styles.mobileContactTitle}>
                 {t?.("ui.mobileContactTitle") || "Contact Us"}
               </div>
-              <div className={styles.contactItem}>
+              {/* <div className={styles.contactItem}>
                 <div className={styles.contactDetails}>
                   <div className={styles.contactType}>
                     {t?.("ui.mobileDirectLine") || "Direct Line"}
                   </div>
                   <div className={styles.contactValue}>+971 56 666 5560</div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </nav>
         </div>

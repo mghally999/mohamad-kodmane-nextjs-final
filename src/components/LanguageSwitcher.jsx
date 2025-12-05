@@ -1,25 +1,28 @@
-// src/components/LanguageSwitcher.jsx
 "use client";
 
-import React from "react";
 import { useLanguage } from "./LanguageProvider";
+import styles from "@/styles/SmoothLanguageToggle.module.css";
 
 export default function LanguageSwitcher() {
-  const { locale, switchLanguage } = useLanguage();
+  const { locale, switchLanguage, isTransitioning } = useLanguage();
 
   return (
-    <div className="language-switcher">
+    <div className={styles.luxuryToggle}>
       <button
-        onClick={() => switchLanguage("en")}
-        className={locale === "en" ? "active" : ""}
+        className={`${styles.toggleButton} ${
+          isTransitioning ? styles.transitioning : ""
+        }`}
+        onClick={() => switchLanguage(locale === "en" ? "ar" : "en")}
       >
-        EN
-      </button>
-      <button
-        onClick={() => switchLanguage("ar")}
-        className={locale === "ar" ? "active" : ""}
-      >
-        AR
+        <span className={styles.toggleTrack}>
+          <span className={styles.toggleSlider} data-locale={locale}>
+            <span className={styles.langText}>
+              {locale === "en" ? "EN" : "AR"}
+            </span>
+          </span>
+        </span>
+
+        <span className={styles.toggleGlow}></span>
       </button>
     </div>
   );
