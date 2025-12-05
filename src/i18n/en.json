@@ -196,7 +196,6 @@
   },
   "pillarsSection": {
     "heading": "FROM CONCEPT TO COMPLETION: DEFINING OUR PILLARS",
-
     "pillar1": {
       "title": "Why Invest in Dubai?",
       "intro": "Dubai is one of the strongest investment cities in the world and offers an ideal environment to grow your real estate wealth.",
@@ -208,7 +207,6 @@
       "point6": "Growing global demand for Dubai property.",
       "point7": "Easy property ownership for foreigners."
     },
-
     "pillar2": {
       "title": "What Is a Real Estate Portfolio?",
       "intro": "Owning more than one property – both ready and off-plan – with the goal of building a strong, balanced real estate fortune.",
@@ -217,7 +215,6 @@
       "point3": "Maximises returns through rental income and capital appreciation.",
       "point4": "We manage the entire portfolio for you, so your real estate wealth grows safely and smoothly."
     },
-
     "pillar3": {
       "title": "What Is Off-Plan Investment in Dubai?",
       "intro": "Buying a property in its early stages, before or during construction, with flexible instalments paid directly to the developer.",
@@ -315,5 +312,264 @@
   },
   "cta": {
     "whatsapp": "WHATSAPP"
+  },
+
+  "aboutHero": {
+    "description1": "Mohamad Kodmani is a real estate investment specialist in Dubai with a clear vision and a professional approach that combines innovation, experience, and precise analysis of market opportunities.",
+    "description2": "His career spanning contracting, business development, and real estate investment has enabled him to help hundreds of investors make successful purchase decisions and build profitable real estate portfolios.",
+
+    "yearsNumber": "18",
+    "yearsPlus": "+",
+    "labelTop": "Years of",
+    "yearsLabel": "Years of",
+    "line1": "Innovation",
+    "line2": "& Expertise",
+    "since": "Since 2006",
+
+    "imageAltDesk": "Luxury real estate development",
+    "imageAltMob": "Real estate mobile banner"
+  },
+
+  "buildingExcellence": {
+    "heading": {
+      "line1": "Real Estate Decisions",
+      "line2": "That Build Wealth,",
+      "line3": "Not Just Properties"
+    },
+
+    "paragraph": "At <strong>Mohamad Kodmani Real Estate Brokerage</strong>, we do not simply sell units; we design complete investment strategies. Every recommendation is based on transparent information, realistic market analysis and a clear plan that balances capital appreciation, rental income and risk. In just two years, our team has helped investors close more than AED 170 million in transactions with returns above 8% annually, by entering the right projects at the right time.",
+
+    "stats": [
+      {
+        "count": "19",
+        "suffix": "+",
+        "label": "Years of entrepreneurial and real estate experience."
+      },
+      {
+        "count": "170",
+        "suffix": "M+",
+        "label": "Transaction volume closed for investors."
+      },
+      {
+        "count": "8",
+        "suffix": "%+",
+        "label": "Annual targeted returns for structured strategies."
+      }
+    ],
+
+    "dividerAlt": "Decorative section divider"
+  },
+
+  "aboutBuildingExcellence": {
+    "heading": "Real Estate Decisions That Build Wealth, Not Just Properties",
+    "lead": "At Mohamad Kodmani Real Estate Brokerage, we do not simply sell units; we design complete investment strategies. Every recommendation is based on transparent information, realistic market analysis and a clear plan that balances capital appreciation, rental income and risk. In just two years, our team has helped investors close more than AED 170 million in transactions with returns above 8% annually, by entering the right projects at the right time.",
+    "stats": {
+      "experience": {
+        "label": "years",
+        "description": "Of entrepreneurial and real estate experience across multiple sectors."
+      },
+      "volume": {
+        "label": "AED 170 M+",
+        "description": "Transaction volume closed for investors in just two years."
+      },
+      "returns": {
+        "label": "8%+",
+        "description": "Targeted annual returns on structured investment strategies with controlled risk."
+      }
+    }
+  },
+
+  "services": {
+    "title": "What We Do for Our Investors",
+
+    "intro": "At <span class='brandHighlight'>Mohamad Kodmani Real Estate Brokerage</span>, we do much more than sell properties. We analyse your goals, design a clear strategy, and execute every step with you — from selecting the right project to handover, leasing, resale, and furnishing.",
+
+    "cards": [
+      {
+        "title": "Investment Advisory & Off-Plan Strategy",
+        "items": [
+          "In-depth consultation to understand your capital, goals, and risk profile.",
+          "Selecting projects with the strongest growth potential in Dubai's key locations.",
+          "Short- and long-term investment planning backed by realistic market analysis.",
+          "Off-plan advisory: capital appreciation studies, payment plan design, and securing the best units before public launch."
+        ]
+      },
+      {
+        "title": "Portfolio Building & Property Management",
+        "items": [
+          "Designing balanced portfolios that mix <strong>cash-flow properties</strong> with <strong>capital growth assets</strong>.",
+          "Combining ready units with off-plan projects to spread risk.",
+          "Property management and leasing: tenant sourcing, follow-up, and rent optimisation.",
+          "Full handling of maintenance, expenses, and regular performance reports for investors."
+        ]
+      },
+      {
+        "title": "Handover, Resale & Furnishing",
+        "items": [
+          "Detailed snagging and handover service: inspecting the unit, detecting defects, and supervising corrections.",
+          "Preparing the property for leasing or resale with the right finishing and positioning.",
+          "Premium resale service: luxury marketing, serious buyer filtering, and selling at the right moment to maximise profit.",
+          "Furnishing & interior design for high-end units to support faster leasing and premium rental rates."
+        ]
+      }
+    ],
+
+    "footer": "With us, you gain a long-term investment partner who understands the Dubai market, reads its trends, and guides you toward the <strong class='highlight'>best possible results with the least possible risk</strong>."
+  },
+
+  "aboutServices": {
+    "sectionTitle": "What We Do for Our Investors",
+    "intro": "At Mohamad Kodmani Real Estate Brokerage, we do much more than sell properties. We analyse your goals, design a clear strategy, and execute every step with you — from selecting the right project to handover, leasing, resale, and furnishing.",
+    "cards": {
+      "investmentAdvisory": {
+        "title": "Investment Advisory & Off-Plan Strategy",
+        "points": {
+          "p1": "In-depth consultation to understand your capital, goals, and risk profile.",
+          "p2": "Selecting projects with the strongest growth potential in Dubai's key locations.",
+          "p3": "Short- and long-term investment planning backed by realistic market analysis.",
+          "p4": "Off-plan advisory: capital appreciation studies, payment plan design, and securing the best units before public launch."
+        }
+      },
+      "portfolioBuilding": {
+        "title": "Portfolio Building & Property Management",
+        "points": {
+          "p1": "Designing balanced portfolios that mix cash-flow properties with capital growth assets.",
+          "p2": "Combining ready units with off-plan projects to spread risk.",
+          "p3": "Property management and leasing: tenant sourcing, follow-up, and rent optimisation.",
+          "p4": "Full handling of maintenance, expenses, and regular performance reports for investors."
+        }
+      },
+      "handoverResale": {
+        "title": "Handover, Resale & Furnishing",
+        "points": {
+          "p1": "Detailed snagging and handover service: inspecting the unit, detecting defects, and supervising corrections.",
+          "p2": "Preparing the property for leasing or resale with the right finishing and positioning.",
+          "p3": "Premium resale service: luxury marketing, serious buyer filtering, and selling at the right moment to maximise profit.",
+          "p4": "Furnishing & interior design for high-end units to support faster leasing and premium rental rates."
+        }
+      }
+    },
+    "footer": {
+      "text": "With us, you gain a long-term investment partner who understands the Dubai market, reads its trends, and guides you toward the best possible results with the least possible risk.",
+      "highlight": "best possible results with the least possible risk"
+    }
+  },
+
+  "pillars": {
+    "vision": {
+      "title": "Our Vision",
+      "text": "To build a strong, diversified real estate investment portfolio that delivers high, stable, and safe returns for our investors, and to become the first destination for anyone looking for reliable real estate opportunities in Dubai."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To build a sustainable working system that creates job opportunities for thousands of people, and to develop a new generation of entrepreneurs who contribute positively to society through responsible, well-planned real estate investments."
+    },
+    "core": {
+      "title": "Our Core Pillars",
+      "subtitleTop": "BUILT ON",
+      "subtitleBottom": "Clear Values",
+      "p1": {
+        "title": "Transparency",
+        "text": "Every number and every detail is clear, honest, and explained — so investors can make decisions with full confidence."
+      },
+      "p2": {
+        "title": "Expertise & Commitment",
+        "text": "Decisions are built on continuous market monitoring, real data, and a genuine commitment to achieving the best outcomes for each investor."
+      },
+      "p3": {
+        "title": "Results & Professionalism",
+        "text": "Our first goal is always to achieve the highest possible returns with the least possible risk, through professionally structured, numbers-driven portfolios."
+      }
+    }
+  },
+
+  "journey": {
+    "kicker": "OUR JOURNEY",
+    "heading": "From Construction to Investment Leadership",
+
+    "2006": {
+      "title": "From Family Legacy to Construction",
+      "description": "Coming from a family with a strong background in contracting and real estate, Mohamad establishes Al Bairaq Contracting in Dubai and begins building his own track record in projects and execution."
+    },
+
+    "2013": {
+      "title": "Expanding into the Beauty Sector",
+      "description": "He moves into business development in the beauty industry in Syria, gaining hands-on experience in brand building, operations, and customer-focused growth."
+    },
+
+    "2016": {
+      "title": "Entrepreneurship in F&B",
+      "description": "Mohamad establishes and manages restaurants in Syria, strengthening his understanding of cashflow, daily operations, and risk management in competitive markets."
+    },
+
+    "2023": {
+      "title": "Founding Mohamad Kodmani Real Estate Brokerage",
+      "description": "Drawing on years of experience in construction and entrepreneurship, he launches Mohamad Kodmani Real Estate Brokerage in Dubai, specialising in investment-focused real estate services."
+    },
+
+    "2023_2025": {
+      "title": "Building Investor Portfolios in Dubai",
+      "description": "In just two years, the company helps investors close more than AED 170 million in transactions with investment returns above 8%, focusing on smart off-plan opportunities, portfolio building, and full post-purchase services."
+    }
+  },
+
+  "aboutBrandPillars": {
+    "vision": {
+      "title": "Our Vision",
+      "body": "To build a strong, diversified real estate investment portfolio that delivers high, stable, and safe returns for our investors, and to become the first destination for anyone looking for reliable real estate opportunities in Dubai."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "body": "To build a sustainable working system that creates job opportunities for thousands of people, and to develop a new generation of entrepreneurs who contribute positively to society through responsible, well-planned real estate investments."
+    },
+    "pillars": {
+      "sectionTitle": "Our Core Pillars",
+      "headingKicker": "BUILT ON",
+      "headingMain": "Clear Values",
+      "transparency": {
+        "title": "Transparency",
+        "body": "Every number and every detail is clear, honest, and explained — so investors can take decisions with full confidence."
+      },
+      "expertise": {
+        "title": "Expertise & Commitment",
+        "body": "Decisions are built on continuous market monitoring, real data, and a genuine commitment to achieving the best outcomes for each investor."
+      },
+      "results": {
+        "title": "Results & Professionalism",
+        "body": "Our first goal is always to achieve the highest possible returns with the least possible risk, through professionally-structured, numbers-driven portfolios."
+      }
+    }
+  },
+
+  "aboutJourney": {
+    "kicker": "OUR JOURNEY",
+    "heading": "From Construction to Investment Leadership",
+    "steps": {
+      "2006": {
+        "year": "2006",
+        "title": "From Family Legacy to Construction",
+        "description": "Coming from a family with a strong background in contracting and real estate, Mohamad establishes Al Bairaq Contracting in Dubai and begins building his own track record in projects and execution."
+      },
+      "2013": {
+        "year": "2013",
+        "title": "Expanding into the Beauty Sector",
+        "description": "He moves into business development in the beauty industry in Syria, gaining hands-on experience in brand building, operations, and customer-focused growth."
+      },
+      "2016": {
+        "year": "2016",
+        "title": "Entrepreneurship in F&B",
+        "description": "Mohamad establishes and manages restaurants in Syria, strengthening his understanding of cashflow, daily operations, and risk management in competitive markets."
+      },
+      "2023": {
+        "year": "2023",
+        "title": "Founding Mohamad Kodmani Real Estate Brokerage",
+        "description": "Drawing on years of experience in construction and entrepreneurship, he launches Mohamad Kodmani Real Estate Brokerage in Dubai, specialising in investment-focused real estate services."
+      },
+      "2023_2025": {
+        "year": "2023–2025",
+        "title": "Building Investor Portfolios in Dubai",
+        "description": "In just two years, the company helps investors close more than AED 170 million in transactions with investment returns above 8%, focusing on smart off-plan opportunities, portfolio building and full post-purchase services."
+      }
+    }
   }
 }

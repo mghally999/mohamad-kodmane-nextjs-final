@@ -284,3 +284,59 @@
     font-size: 12px;
   }
 }
+/* YEAR — stronger, luxury-bold, with glow for readability */
+.year {
+  font-family: "Times New Roman", "Georgia", serif;
+  color: #ffffff;
+  font-size: 53px;
+  line-height: 64px;
+  font-weight: 800; /* Added strong luxury bold */
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.55), 0 0 8px rgba(0, 0, 0, 0.6); /* Glow for visibility */
+}
+
+/* Active YEAR inside row */
+.isActive .year {
+  font-weight: 900;
+  color: #ffffff;
+}
+
+/* TITLE — stronger, cleaner, premium real-estate typography */
+.title {
+  font-style: italic;
+  font-size: 22px;
+  line-height: 28px;
+  font-family: "Chronicle Display", "Times New Roman", serif;
+  font-weight: 700; /* Strong bold for luxury readability */
+  margin-left: 20px;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.55), 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Description — make readable without overpowering */
+.description {
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.6;
+  font-weight: 600; /* Slight bold for clarity */
+  max-width: 640px;
+
+  /* Strong visibility enhancement */
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.7), 0 0 4px rgba(0, 0, 0, 0.55);
+}
+
+/* Heading boldness (optional but recommended) */
+.heading {
+  font-family: "Times New Roman", "Georgia", serif;
+  font-size: 40px;
+  font-weight: 700; /* Stronger, luxury bold */
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  color: #141414;
+}
+
+/* Kicker contrast improvement */
+.kicker {
+  color: #444444;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+}

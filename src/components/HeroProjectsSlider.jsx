@@ -113,7 +113,7 @@ export default function HeroProjectsSlider() {
               href={`/projects/${activeProject.slug}`}
               className={`${styles.cta} ${styles.fadeInUp}`}
             >
-              DISCOVER
+              {t("homeSlider.discoverButton")}
             </Link>
           </div>
         </div>

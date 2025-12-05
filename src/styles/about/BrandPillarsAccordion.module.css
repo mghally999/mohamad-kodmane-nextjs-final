@@ -58,7 +58,7 @@
   .icons {
     opacity: 0;
     visibility: hidden;
-    margin-left: -60px; /* hides it to the left like Sobha */
+    margin-left: -20px; /* hides it to the left like Sobha */
   }
 }
 
@@ -94,7 +94,7 @@
   font-weight: 300;
   font-size: 111px;
   line-height: 134px;
-  color: #d9d9d9;
+  color: #000000;
   letter-spacing: 0;
 }
 
@@ -367,4 +367,201 @@
     padding-top: 12px;
     padding-bottom: 40px;
   }
+} /* GOLD HOVER FOR TITLES */
+.brandPillarContent h5:hover,
+.accTitle:hover {
+  color: #c7a386 !important;
+  transition: 0.3s ease;
+}
+
+/* RTL fixes */
+[dir="rtl"] .accTitle {
+  text-align: right;
+}
+
+[dir="rtl"] .twoColContent {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .brandPillarContent {
+  border-left: none;
+  border-right: 1px solid #dbdbdb;
+}
+/* Better spacing between image and text */
+.twoColContent {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* NEW spacing */
+}
+
+@media (max-width: 1000px) {
+  .twoColContent {
+    gap: 35px;
+  }
+}
+
+/* Default text = black */
+.twoColParagraph,
+.brandPillarContent p,
+.brandPillarContent h5 {
+  color: #000 !important;
+}
+
+/* Hover effect: gold + bold */
+.twoColParagraph:hover,
+.brandPillarContent p:hover,
+.brandPillarContent h5:hover {
+  color: #c7a386 !important;
+  /* font-weight: 600 !important; */
+}
+
+/* More spacing in pillar cards */
+.brandPillarContent {
+  margin-left: 35px;
+  padding-top: 40px;
+}
+
+.brandAccBox {
+  margin-bottom: 50px; /* space between boxes */
+}
+/* SECTION WRAPPER */
+.brandAccSec {
+  background-color: #000; /* FULL BLACK BACKGROUND */
+  padding: 80px 0 120px;
+  color: #fff;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ACCORDION */
+.accordion {
+  width: 100%;
+}
+
+.accItem {
+  border-top: 1px solid #333;
+}
+
+.accItem:last-child {
+  border-bottom: 1px solid #333;
+}
+
+/* HEADER */
+.accHeader {
+  width: 100%;
+  padding: 15px 24px;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.accTitle {
+  font-family: serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: #fff;
+  transition: 0.3s ease;
+}
+
+/* HOVER → GOLD + BOLD */
+.accHeader:hover .accTitle,
+.accItemActive .accTitle {
+  color: #c7a386;
+  /* font-weight: 600; */
+}
+
+/* ACCORDION BODY */
+.accBodyWrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.accBodyOpen {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.accBody {
+  padding: 50px 0;
+  color: #fff;
+}
+
+/* TWO COLUMN CONTENT */
+.twoColContent {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+@media (max-width: 900px) {
+  .twoColContent {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.iconImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* TEXT */
+.twoColParagraph,
+.disc,
+.brandPillarContent p,
+.brandPillarContent h5 {
+  color: #fff !important;
+  transition: 0.3s ease;
+}
+
+/* HOVER → GOLD + BOLD */
+.twoColParagraph:hover,
+.brandPillarContent p:hover,
+.brandPillarContent h5:hover {
+  color: #c7a386 !important;
+  /* font-weight: 600; */
+}
+
+/* CORE PILLARS BOXES */
+.brandAccBoxMain {
+  display: flex;
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .brandAccBoxMain {
+    flex-direction: column;
+  }
+}
+
+.brandAccBox {
+  flex: 1;
+}
+
+.brandAccImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  opacity: 0.9;
+  transition: 0.4s ease;
+}
+
+.brandAccBox:hover .brandAccImage {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.brandPillarContent {
+  margin-top: 20px;
+  border-left: 2px solid #444;
+  padding-left: 20px;
 }

@@ -1,31 +1,36 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { useLanguage } from "@/components/LanguageProvider";
+import styles from "@/styles/about/BuildingExcellence.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BuildingExcellenceSection() {
+  const { t, locale } = useLanguage();
+  const isRTL = locale === "ar";
+
   const sectionRef = useRef(null);
   const leftRef = useRef(null);
   const rightRef = useRef(null);
   const statRefs = useRef([]);
 
   const setStatRef = (el, index) => {
-    if (!el) return;
-    statRefs.current[index] = el;
+    if (el) statRefs.current[index] = el;
   };
 
+  /* ========== ANIMATIONS ========== */
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Left title
+      // Left Title Animation
       gsap.fromTo(
         leftRef.current,
-        { x: -80, opacity: 0 },
+        { x: isRTL ? 80 : -80, opacity: 0 },
         {
           x: 0,
           opacity: 1,
@@ -34,15 +39,14 @@ export default function BuildingExcellenceSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // Right paragraph
+      // Right Paragraph Animation
       gsap.fromTo(
         rightRef.current,
-        { x: 80, opacity: 0 },
+        { x: isRTL ? -80 : 80, opacity: 0 },
         {
           x: 0,
           opacity: 1,
@@ -51,17 +55,15 @@ export default function BuildingExcellenceSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // Stats cards
+      // Stats Cards
       gsap.fromTo(
         statRefs.current,
-        { x: -60, y: 30, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
-          x: 0,
           y: 0,
           opacity: 1,
           duration: 0.9,
@@ -70,18 +72,16 @@ export default function BuildingExcellenceSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 75%",
-            toggleActions: "play none none reverse",
           },
         }
       );
 
-      // Counters
-      statRefs.current.forEach((box) => {
-        if (!box) return;
-        const span = box.querySelector("[data-count-span]");
-        const target = Number(span?.dataset.countValue || 0);
-        if (!span || !target) return;
+      // Counter Numbers
+      statRefs.current.forEach((el, index) => {
+        const span = el.querySelector("[data-count-span]");
+        if (!span) return;
 
+        const target = Number(t(`buildingExcellence.stats.${index}.count`));
         const counter = { value: 0 };
 
         gsap.to(counter, {
@@ -89,338 +89,103 @@ export default function BuildingExcellenceSection() {
           duration: 1.6,
           ease: "power1.out",
           scrollTrigger: {
-            trigger: box,
+            trigger: el,
             start: "top 85%",
-            toggleActions: "restart none none reset",
           },
           onUpdate: () => {
-            span.textContent = Math.floor(counter.value).toString();
+            span.textContent = Math.floor(counter.value);
           },
         });
       });
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [locale]);
 
+  /* ========== JSX ========== */
   return (
     <section
       ref={sectionRef}
-      style={{
-        position: "relative",
-        width: "100%",
-        padding: "100px 0",
-        background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
-      }}
+      className={styles.section}
+      dir={isRTL ? "rtl" : "ltr"}
     >
-      {/* Background pattern */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.05) 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-          opacity: 0.6,
-        }}
-      />
+      <div className={styles.bgPattern} />
 
-      <div
-        style={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: "0 40px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        {/* TOP ROW – HEADING + TEXT */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            marginBottom: "120px",
-            gap: "60px",
-          }}
-        >
-          <div ref={leftRef} style={{ flex: 1 }}>
-            <h2
-              style={{
-                fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                fontWeight: 700,
-                lineHeight: 1.1,
-                color: "#1a1a1a",
-                margin: 0,
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Real Estate Decisions
-              <br />
-              That Build Wealth,
-              <br />
-              Not Just Properties
+      <div className={styles.container}>
+        {/* TOP ROW -------------------------------------- */}
+        <div className={styles.topRow}>
+          {/* LEFT COLUMN (HEADING) */}
+          <div ref={leftRef} className={styles.leftCol}>
+            <h2 className={styles.heading}>
+              {t("buildingExcellence.heading.line1")} <br />
+              {t("buildingExcellence.heading.line2")} <br />
+              {t("buildingExcellence.heading.line3")}
             </h2>
           </div>
 
-          <div ref={rightRef} style={{ flex: 1 }}>
+          {/* RIGHT COLUMN (PARAGRAPH) */}
+          <div ref={rightRef} className={styles.rightCol}>
             <p
-              style={{
-                fontSize: "1.125rem",
-                lineHeight: 1.7,
-                color: "#4a4a4a",
-                margin: 0,
-                fontWeight: 400,
+              className={styles.paragraph}
+              dangerouslySetInnerHTML={{
+                __html: t("buildingExcellence.paragraph"),
               }}
-            >
-              At <strong>Mohamad Kodmani Real Estate Brokerage</strong>, we do
-              not simply sell units; we design complete investment strategies.
-              Every recommendation is based on transparent information,
-              realistic market analysis and a clear plan that balances capital
-              appreciation, rental income and risk. In just two years, our team
-              has helped investors close more than{" "}
-              <strong>AED 170 million</strong> in transactions with{" "}
-              <strong>returns above 8% annually</strong>, by entering the right
-              projects at the right time.
-            </p>
+            />
           </div>
         </div>
 
-        {/* BOTTOM ROW – STATS */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            gap: "40px",
-            flexWrap: "wrap",
-          }}
-        >
-          {/* 1 – YEARS OF EXPERIENCE */}
-          <div
-            style={{ flex: "1 1 300px", minWidth: "280px" }}
-            ref={(el) => setStatRef(el, 0)}
-          >
+        {/* STATS GRID ----------------------------------- */}
+        <div className={styles.statsGrid}>
+          {[0, 1, 2].map((i) => (
             <div
-              style={{
-                background: "white",
-                borderRadius: "16px",
-                padding: "32px",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                border: "1px solid rgba(0,0,0,0.05)",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-              }}
+              key={i}
+              ref={(el) => setStatRef(el, i)}
+              className={styles.statBoxWrapper}
             >
-              <div
-                style={{
-                  width: "100%",
-                  height: "2px",
-                  background: "linear-gradient(90deg, #667eea, #764ba2)",
-                  margin: "24px 0",
-                  opacity: 0.3,
-                }}
-              />
+              <div className={styles.statBox}>
+                {/* Top Gradient Line */}
+                <div
+                  className={`${styles.line} ${
+                    i === 0
+                      ? styles.linePurple
+                      : i === 1
+                      ? styles.linePink
+                      : styles.lineBlue
+                  }`}
+                />
 
-              <div style={{ flex: 1 }}>
-                <h3
-                  style={{
-                    fontSize: "2.5rem",
-                    fontWeight: 700,
-                    color: "#1a1a1a",
-                    margin: "0 0 12px 0",
-                    lineHeight: 1.1,
-                  }}
-                >
+                {/* Number & Suffix */}
+                <h3 className={styles.statTitle}>
                   <span
                     data-count-span
-                    data-count-value="19"
-                    style={{ display: "inline-block", minWidth: "40px" }}
+                    data-count-value={t(`buildingExcellence.stats.${i}.count`)}
                   >
-                    19
+                    {t(`buildingExcellence.stats.${i}.count`)}
                   </span>
-                  +
-                  <span style={{ fontSize: "1.4rem", marginLeft: "4px" }}>
-                    years
-                  </span>
+                  {t(`buildingExcellence.stats.${i}.suffix`)}
                 </h3>
-                <span
-                  style={{
-                    fontSize: "1rem",
-                    color: "#666",
-                    lineHeight: 1.5,
-                    fontWeight: 500,
-                  }}
-                >
-                  Of entrepreneurial and real estate experience across multiple
-                  sectors.
-                </span>
+
+                {/* Label */}
+                <div className={styles.statLabel}>
+                  {t(`buildingExcellence.stats.${i}.label`)}
+                </div>
+
+                {/* Bottom Line */}
                 <div
-                  style={{
-                    width: "100%",
-                    height: "2px",
-                    background: "linear-gradient(90deg, #667eea, #764ba2)",
-                    margin: "24px 0",
-                    opacity: 0.3,
-                  }}
+                  className={`${styles.line} ${
+                    i === 0
+                      ? styles.linePurple
+                      : i === 1
+                      ? styles.linePink
+                      : styles.lineBlue
+                  }`}
                 />
               </div>
             </div>
-          </div>
-
-          {/* 2 – SALES VOLUME */}
-          <div
-            style={{ flex: "1 1 300px", minWidth: "280px" }}
-            ref={(el) => setStatRef(el, 1)}
-          >
-            <div
-              style={{
-                background: "white",
-                borderRadius: "16px",
-                padding: "32px",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                border: "1px solid rgba(0,0,0,0.05)",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  height: "2px",
-                  background: "linear-gradient(90deg, #f093fb, #f5576c)",
-                  margin: "24px 0",
-                  opacity: 0.3,
-                }}
-              />
-
-              <div style={{ flex: 1 }}>
-                <h3
-                  style={{
-                    fontSize: "2.5rem",
-                    fontWeight: 700,
-                    color: "#1a1a1a",
-                    margin: "0 0 12px 0",
-                    lineHeight: 1.1,
-                  }}
-                >
-                  AED{" "}
-                  <span
-                    data-count-span
-                    data-count-value="170"
-                    style={{ display: "inline-block", minWidth: "60px" }}
-                  >
-                    170
-                  </span>
-                  M+
-                </h3>
-                <span
-                  style={{
-                    fontSize: "1rem",
-                    color: "#666",
-                    lineHeight: 1.5,
-                    fontWeight: 500,
-                  }}
-                >
-                  Transaction volume closed for investors in just two years.
-                </span>
-                <div
-                  style={{
-                    width: "100%",
-                    height: "2px",
-                    background: "linear-gradient(90deg, #f093fb, #f5576c)",
-                    margin: "24px 0",
-                    opacity: 0.3,
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* 3 – RETURNS */}
-          <div
-            style={{ flex: "1 1 300px", minWidth: "280px" }}
-            ref={(el) => setStatRef(el, 2)}
-          >
-            <div
-              style={{
-                background: "white",
-                borderRadius: "16px",
-                padding: "32px",
-                boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                border: "1px solid rgba(0,0,0,0.05)",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  height: "2px",
-                  background: "linear-gradient(90deg, #4facfe, #00f2fe)",
-                  margin: "24px 0",
-                  opacity: 0.3,
-                }}
-              />
-
-              <div style={{ flex: 1 }}>
-                <h3
-                  style={{
-                    fontSize: "2.5rem",
-                    fontWeight: 700,
-                    color: "#1a1a1a",
-                    margin: "0 0 12px 0",
-                    lineHeight: 1.1,
-                  }}
-                >
-                  <span
-                    data-count-span
-                    data-count-value="8"
-                    style={{ display: "inline-block", minWidth: "30px" }}
-                  >
-                    8
-                  </span>
-                  %+
-                </h3>
-                <span
-                  style={{
-                    fontSize: "1rem",
-                    color: "#666",
-                    lineHeight: 1.5,
-                    fontWeight: 500,
-                  }}
-                >
-                  Targeted annual returns on structured investment strategies
-                  with controlled risk.
-                </span>
-                <div
-                  style={{
-                    width: "100%",
-                    height: "2px",
-                    background: "linear-gradient(90deg, #4facfe, #00f2fe)",
-                    margin: "24px 0",
-                    opacity: 0.3,
-                  }}
-                />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Decorative line */}
-        <div
-          style={{
-            width: "100px",
-            height: "4px",
-            background: "linear-gradient(90deg, #667eea, #764ba2)",
-            margin: "80px auto 0 auto",
-            borderRadius: "2px",
-          }}
-        />
+        <div className={styles.bottomDivider} />
       </div>
     </section>
   );

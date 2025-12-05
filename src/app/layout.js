@@ -23,38 +23,38 @@ export default function RootLayout({ children }) {
       <head>
         {/* ✅ Title and meta tags as JSX elements */}
         <title>
-          Mohamad Kodmane - Dubai Real Estate Expert | Luxury Properties &
+          Mohamad Kodmani - Dubai Real Estate Expert | Luxury Properties &
           Investment Advisor
         </title>
         <meta
           name="description"
-          content="Mohamad Kodmane - Premier real estate advisor and investment expert in Dubai. Specializing in luxury apartments, villas, penthouses, and commercial properties. Get expert market insights and personalized investment strategies."
+          content="Mohamad Kodmani - Premier real estate advisor and investment expert in Dubai. Specializing in luxury apartments, villas, penthouses, and commercial properties. Get expert market insights and personalized investment strategies."
         />
         <meta
           name="keywords"
-          content="Dubai real estate, luxury properties, investment advisor, Mohamad Kodmane, apartments Dubai, villas Dubai, penthouses, commercial real estate, property investment"
+          content="Dubai real estate, luxury properties, investment advisor, Mohamad Kodmani, apartments Dubai, villas Dubai, penthouses, commercial real estate, property investment"
         />
-        <meta name="author" content="Mohamad Kodmane" />
-        <meta name="creator" content="Mohamad Kodmane" />
-        <meta name="publisher" content="Mohamad Kodmane Real Estate" />
+        <meta name="author" content="Mohamad Kodmani" />
+        <meta name="creator" content="Mohamad Kodmani" />
+        <meta name="publisher" content="Mohamad Kodmani Real Estate" />
 
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="Mohamad Kodmane - Dubai Real Estate Expert"
+          content="Mohamad Kodmani - Dubai Real Estate Expert"
         />
         <meta
           property="og:description"
           content="Premier real estate advisor and investment expert in Dubai. Luxury properties and investment opportunities."
         />
-        <meta property="og:url" content="https://mohamadkodmane.com" />
-        <meta property="og:site_name" content="Mohamad Kodmane Real Estate" />
+        <meta property="og:url" content="https://mohamadKodmani.com" />
+        <meta property="og:site_name" content="Mohamad Kodmani Real Estate" />
         <meta property="og:image" content="/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
           property="og:image:alt"
-          content="Mohamad Kodmane - Dubai Real Estate Expert"
+          content="Mohamad Kodmani - Dubai Real Estate Expert"
         />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
@@ -63,7 +63,7 @@ export default function RootLayout({ children }) {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Mohamad Kodmane - Dubai Real Estate Expert"
+          content="Mohamad Kodmani - Dubai Real Estate Expert"
         />
         <meta
           name="twitter:description"
@@ -76,7 +76,7 @@ export default function RootLayout({ children }) {
         <meta name="googlebot" content="index, follow" />
 
         {/* Canonical */}
-        <link rel="canonical" href="https://mohamadkodmane.com" />
+        <link rel="canonical" href="https://mohamadKodmani.com" />
 
         {/* ✅ Meta Pixel */}
         <Script

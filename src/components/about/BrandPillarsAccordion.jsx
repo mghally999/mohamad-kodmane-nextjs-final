@@ -2,31 +2,36 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageProvider";
 import styles from "@/styles/about/BrandPillarsAccordion.module.css";
 
-const VISION_ICON = "/about/vision.svg";
-const MISSION_ICON = "/about/mission.svg";
-
-const PILLAR_IMAGES = {
-  transparency: "/about/pillars/transparency.jpg",
-  expertise: "/about/pillars/expertise.jpg",
-  results: "/about/pillars/results.jpg",
+// --- REAL ESTATE RELEVANT UNSPLASH IMAGES ---
+const UNSPLASH = {
+  // FUTURISTIC REAL ESTATE → Vision
+  vision:
+    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80", // Modern home exterior
+  mission:
+    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80", // Real estate agent with clients
+  transparency:
+    "https://images.unsplash.com/photo-1523217582562-09d0def993a6?auto=format&fit=crop&w=1200&q=80", // Open floor plan
+  expertise: "/no.jpg",
+  results:
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80", // Beautiful completed home
 };
 
 export default function BrandPillarsAccordion() {
   const [active, setActive] = useState(null);
+  const { t, locale } = useLanguage();
+  const isRTL = locale === "ar";
 
-  const toggle = (id) => {
-    setActive((prev) => (prev === id ? null : id));
-  };
-
+  const toggle = (id) => setActive((prev) => (prev === id ? null : id));
   const isOpen = (id) => active === id;
 
   return (
-    <section className={styles.brandAccSec}>
+    <section className={styles.brandAccSec} dir={isRTL ? "rtl" : "ltr"}>
       <div className={styles.container}>
         <div className={styles.accordion}>
-          {/* OUR VISION */}
+          {/* ================== VISION ================== */}
           <div
             className={`${styles.accItem} ${
               isOpen("vision") ? styles.accItemActive : ""
@@ -38,7 +43,7 @@ export default function BrandPillarsAccordion() {
               onClick={() => toggle("vision")}
             >
               <span className={styles.icons} />
-              <h2 className={styles.accTitle}>Our Vision</h2>
+              <h2 className={styles.accTitle}>{t("pillars.vision.title")}</h2>
             </button>
 
             <div
@@ -48,30 +53,23 @@ export default function BrandPillarsAccordion() {
             >
               <div className={styles.accBody}>
                 <div className={styles.twoColContent}>
-                  <div className={styles.twoColLeft}>
-                    <Image
-                      src={VISION_ICON}
-                      alt="Our Vision"
-                      width={220}
-                      height={220}
-                      className={styles.iconImage}
-                    />
-                  </div>
-                  <div className={styles.twoColRight}>
-                    <p className={`${styles.disc} ${styles.twoColParagraph}`}>
-                      To build a strong, diversified real estate investment
-                      portfolio that delivers high, stable, and safe returns for
-                      our investors, and to become the first destination for
-                      anyone looking for reliable real estate opportunities in
-                      Dubai.
-                    </p>
-                  </div>
+                  <Image
+                    src={UNSPLASH.vision}
+                    alt={t("pillars.vision.title")}
+                    width={500}
+                    height={400}
+                    className={styles.iconImage}
+                  />
+
+                  <p className={`${styles.disc} ${styles.twoColParagraph}`}>
+                    {t("pillars.vision.text")}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* OUR MISSION */}
+          {/* ================== MISSION ================== */}
           <div
             className={`${styles.accItem} ${
               isOpen("mission") ? styles.accItemActive : ""
@@ -83,7 +81,7 @@ export default function BrandPillarsAccordion() {
               onClick={() => toggle("mission")}
             >
               <span className={styles.icons} />
-              <h2 className={styles.accTitle}>Our Mission</h2>
+              <h2 className={styles.accTitle}>{t("pillars.mission.title")}</h2>
             </button>
 
             <div
@@ -93,30 +91,23 @@ export default function BrandPillarsAccordion() {
             >
               <div className={styles.accBody}>
                 <div className={styles.twoColContent}>
-                  <div className={styles.twoColLeft}>
-                    <Image
-                      src={MISSION_ICON}
-                      alt="Our Mission"
-                      width={220}
-                      height={220}
-                      className={styles.iconImage}
-                    />
-                  </div>
-                  <div className={styles.twoColRight}>
-                    <p className={`${styles.disc} ${styles.twoColParagraph}`}>
-                      To build a sustainable working system that creates job
-                      opportunities for thousands of people, and to develop a
-                      new generation of entrepreneurs who contribute positively
-                      to society through responsible, well-planned real estate
-                      investments.
-                    </p>
-                  </div>
+                  <Image
+                    src={UNSPLASH.mission}
+                    alt={t("pillars.mission.title")}
+                    width={500}
+                    height={400}
+                    className={styles.iconImage}
+                  />
+
+                  <p className={`${styles.disc} ${styles.twoColParagraph}`}>
+                    {t("pillars.mission.text")}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* THE BRAND PILLARS / VALUES */}
+          {/* ================== CORE PILLARS ================== */}
           <div
             className={`${styles.accItem} ${
               isOpen("pillars") ? styles.accItemActive : ""
@@ -128,7 +119,7 @@ export default function BrandPillarsAccordion() {
               onClick={() => toggle("pillars")}
             >
               <span className={styles.icons} />
-              <h2 className={styles.accTitle}>Our Core Pillars</h2>
+              <h2 className={styles.accTitle}>{t("pillars.core.title")}</h2>
             </button>
 
             <div
@@ -140,76 +131,60 @@ export default function BrandPillarsAccordion() {
                 <h2
                   className={`${styles.style2} ${styles.accBodyHeadingStyle2}`}
                 >
-                  <span>BUILT ON</span> Clear Values
+                  <span>{t("pillars.core.subtitleTop")}</span>
+                  {t("pillars.core.subtitleBottom")}
                 </h2>
 
                 <div className={styles.brandAccBoxMain}>
                   {/* Transparency */}
                   <div className={styles.brandAccBox}>
-                    <div className={styles.brandAccThumb}>
-                      <Image
-                        src={PILLAR_IMAGES.transparency}
-                        alt="Transparency"
-                        width={320}
-                        height={460}
-                        className={styles.brandAccImage}
-                      />
-                    </div>
+                    <Image
+                      src={UNSPLASH.transparency}
+                      width={420}
+                      height={550}
+                      alt={t("pillars.core.p1.title")}
+                      className={styles.brandAccImage}
+                    />
                     <div className={styles.brandPillarContent}>
-                      <h5>Transparency</h5>
-                      <p className={styles.disc}>
-                        Every number and every detail is clear, honest, and
-                        explained — so investors can take decisions with full
-                        confidence.
-                      </p>
+                      <h5>{t("pillars.core.p1.title")}</h5>
+                      <p className={styles.disc}>{t("pillars.core.p1.text")}</p>
                     </div>
                   </div>
 
                   {/* Expertise */}
                   <div className={styles.brandAccBox}>
-                    <div className={styles.brandAccThumb}>
-                      <Image
-                        src={PILLAR_IMAGES.expertise}
-                        alt="Expertise"
-                        width={320}
-                        height={460}
-                        className={styles.brandAccImage}
-                      />
-                    </div>
+                    <Image
+                      src={UNSPLASH.expertise}
+                      width={420}
+                      height={550}
+                      alt={t("pillars.core.p2.title")}
+                      className={styles.brandAccImage}
+                    />
                     <div className={styles.brandPillarContent}>
-                      <h5>Expertise & Commitment</h5>
-                      <p className={styles.disc}>
-                        Decisions are built on continuous market monitoring,
-                        real data, and a genuine commitment to achieving the
-                        best outcomes for each investor.
-                      </p>
+                      <h5>{t("pillars.core.p2.title")}</h5>
+                      <p className={styles.disc}>{t("pillars.core.p2.text")}</p>
                     </div>
                   </div>
 
                   {/* Results */}
                   <div className={styles.brandAccBox}>
-                    <div className={styles.brandAccThumb}>
-                      <Image
-                        src={PILLAR_IMAGES.results}
-                        alt="Results"
-                        width={320}
-                        height={460}
-                        className={styles.brandAccImage}
-                      />
-                    </div>
+                    <Image
+                      src={UNSPLASH.results}
+                      width={420}
+                      height={550}
+                      alt={t("pillars.core.p3.title")}
+                      className={styles.brandAccImage}
+                    />
                     <div className={styles.brandPillarContent}>
-                      <h5>Results & Professionalism</h5>
-                      <p className={styles.disc}>
-                        Our first goal is always to achieve the highest possible
-                        returns with the least possible risk, through
-                        professionally-structured, numbers-driven portfolios.
-                      </p>
+                      <h5>{t("pillars.core.p3.title")}</h5>
+                      <p className={styles.disc}>{t("pillars.core.p3.text")}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
           {/* end accordion */}
         </div>
       </div>
