@@ -383,3 +383,28 @@
     justify-content: center;
   }
 }
+/* ================================
+   FORCE ORDER CHANGE ON MOBILE/TABLET
+   ================================ */
+
+@media (max-width: 1024px) {
+  /* Convert grid into a vertical stack */
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Image FIRST */
+  .colRight {
+    order: 1;
+    width: 100%;
+  }
+
+  /* Text SECOND */
+  .colLeft {
+    order: 2;
+    width: 100%;
+  }
+
+  /* Download brochure naturally stays inside colLeft */
+}

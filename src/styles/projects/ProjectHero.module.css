@@ -71,7 +71,8 @@
 .logoCard {
   width: 100%;
   margin: 0;
-  padding: 50px 30px;
+  /* padding: 50px 30px; */
+  /* 227.711px height, width: 240px; */
   border: 1px solid #dddddd;
   background: #ffffff;
   border-radius: 7px;
@@ -83,8 +84,8 @@
 
 .logoImg {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 227px;
+  /* object-fit: contain; */
 }
 
 /* ===== RIGHT: GOOGLE REVIEWS BLOCK ===== */

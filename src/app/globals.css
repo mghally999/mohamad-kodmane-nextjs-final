@@ -1,4 +1,12 @@
 /* globals.css */
+/* Arabic font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+/* Apply Open Sans ONLY for Arabic (RTL) */
+body[dir="rtl"],
+body[dir="rtl"] * {
+  font-family: "Open Sans", sans-serif !important;
+}
 
 html,
 body {
