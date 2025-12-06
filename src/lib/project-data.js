@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-assign-module-variable */
-
 // Import all project data directly
 // import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
