@@ -55,7 +55,7 @@
 
 .slider {
   margin: 0;
-  direction: ltr; /* visual behaviour like Sobha even on RTL pages */
+  direction: ltr;
   position: relative;
 }
 
@@ -65,56 +65,47 @@
 
 /* ========= SWIPER CORE HOOKS ========= */
 
-/* Swiper root – allow side slides to peek out */
 .slider :global(.visual-symphony-swiper.swiper) {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   max-width: 1440px;
-  overflow: visible; /* show prev/next peeking */
+  overflow: visible;
 }
 
-/* Make wrapper stretch slides vertically */
 .slider :global(.visual-symphony-swiper .swiper-wrapper) {
   align-items: center;
 }
 
-/* Base slide styles (Sobha numbers) */
 .slider :global(.visual-symphony-swiper .swiper-slide) {
-  width: 1173px !important; /* override inline width */
+  width: 1173px !important;
   display: flex;
   align-items: center;
   justify-content: center;
-
   transform: scale(1);
   transition: transform 0.4s linear;
-  z-index: 1; /* default layer under the active slide */
+  z-index: 1;
 }
 
-/* Desktop peek – show a bit of prev/next slides */
 @media (min-width: 1000px) {
   .slider :global(.visual-symphony-swiper .swiper-slide) {
-    margin: 0 -80px; /* smaller overlap so they just peek */
+    margin: 0 -80px;
   }
 }
 
-/* Tablet & Mobile (under 1000px) - GRID-LIKE SINGLE SLIDE */
 @media (max-width: 999px) {
   .slider :global(.visual-symphony-swiper .swiper-slide) {
     width: 100% !important;
     margin: 0;
-    /* Grid-like behavior - takes full available width */
     flex: 0 0 100%;
   }
 
-  /* Make swiper show only one slide at a time */
   .slider :global(.visual-symphony-swiper .swiper-wrapper) {
     display: flex;
     width: 100%;
   }
 }
 
-/* Extra hooks from JSX */
 .slideItem {
   height: 100%;
 }
@@ -132,7 +123,6 @@
   height: 708.93px;
 }
 
-/* Tablet & Mobile adjustments for image wrapper */
 @media (max-width: 999px) {
   .imageWrapper {
     height: auto;
@@ -142,7 +132,6 @@
   }
 }
 
-/* The <Image> itself – Sobha style */
 .image {
   width: 100% !important;
   height: 100% !important;
@@ -151,20 +140,18 @@
   display: block;
   box-sizing: border-box;
   transition: all 0.5s ease;
-  cursor: url("/s-icon-pointer.svg"), auto; /* change path if needed */
+  cursor: url("/s-icon-pointer.svg"), auto;
 }
 
-/* Mobile image adjustments */
 @media (max-width: 999px) {
   .image {
-    object-fit: contain; /* Or keep 'cover' - your choice */
+    object-fit: contain;
     border-radius: 5px;
   }
 }
 
-/* ========= SCALE / TRANSFORM (Prev / Active / Next) ========= */
+/* SCALE BEHAVIOR */
 
-/* previous & next – scaled down like Sobha (DESKTOP ONLY) */
 @media (min-width: 1000px) {
   .slider :global(.visual-symphony-swiper .swiper-slide-prev),
   .slider :global(.visual-symphony-swiper .swiper-slide-next) {
@@ -173,14 +160,12 @@
   }
 }
 
-/* active slide – full scale + on top */
 .slider :global(.visual-symphony-swiper .swiper-slide-active) {
   transform: scale(1) !important;
   transition: all 0.4s linear !important;
-  z-index: 3 !important; /* 🔑 keep main image above side slides */
+  z-index: 3 !important;
 }
 
-/* Tablet & Mobile – disable scaling effects */
 @media (max-width: 999px) {
   .slider :global(.visual-symphony-swiper .swiper-slide),
   .slider :global(.visual-symphony-swiper .swiper-slide-prev),
@@ -190,7 +175,7 @@
   }
 }
 
-/* ========= PADDING LIKE SOBHA ========= */
+/* PADDING */
 
 .slider
   :global(
@@ -199,7 +184,6 @@
   padding: 0;
 }
 
-/* Tablet & Mobile padding */
 @media (max-width: 999px) {
   .slider
     :global(
@@ -209,22 +193,20 @@
   }
 }
 
-/* ========= ARROWS ========= */
+/* ARROWS */
 
 .slider :global(.swiper-button-next),
 .slider :global(.swiper-button-prev) {
   color: #ffffff;
 }
 
-/* Sobha arrow weight + shadow – BIG & BOLD */
 .slider :global(.swiper-button-next::after),
 .slider :global(.swiper-button-prev::after) {
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  font-size: 26px; /* bigger */
-  font-weight: 700; /* bolder */
+  font-size: 26px;
+  font-weight: 700;
 }
 
-/* Desktop arrow positioning - UNCHANGED */
 @media (min-width: 1000px) {
   .slider :global(.swiper-button-next),
   .slider :global(.swiper-button-prev) {
@@ -244,7 +226,6 @@
   }
 }
 
-/* Tablet & Mobile arrow positioning */
 @media (max-width: 999px) {
   .slider :global(.swiper-button-next),
   .slider :global(.swiper-button-prev) {
@@ -268,243 +249,8 @@
     right: 10px;
   }
 
-  /* Smaller arrows on mobile */
   .slider :global(.swiper-button-next::after),
   .slider :global(.swiper-button-prev::after) {
     font-size: 20px;
-  }
-}
-
-/* Small phone adjustments */
-@media (max-width: 480px) {
-  .slider :global(.visual-symphony-swiper img) {
-    border-radius: 5px;
-  }
-
-  .slider :global(.swiper-button-next),
-  .slider :global(.swiper-button-prev) {
-    width: 35px;
-    height: 35px;
-  }
-
-  .slider :global(.swiper-button-next::after),
-  .slider :global(.swiper-button-prev::after) {
-    font-size: 18px;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 360px) {
-  .slider :global(.swiper-button-prev) {
-    left: 5px;
-  }
-
-  .slider :global(.swiper-button-next) {
-    right: 5px;
-  }
-}
-
-/* ===========================
-   SECTION WRAPPER
-=========================== */
-.section {
-  padding: 80px 0 100px;
-  background: #ffffff;
-}
-
-.wrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 30px;
-  text-align: center;
-}
-
-@media (max-width: 1000px) {
-  .wrapper {
-    padding: 0 0; /* no padding so slider becomes truly full-width */
-  }
-}
-
-.heading {
-  margin: 0 0 42px 0;
-  text-transform: uppercase;
-  font-family: "Chronicle Display XLight", serif;
-  font-weight: 300;
-  font-size: 34px;
-  line-height: 41px;
-  letter-spacing: 0.08em;
-}
-
-@media (max-width: 1000px) {
-  .heading {
-    font-size: 30px;
-    line-height: 36px;
-    padding: 0 20px;
-  }
-}
-
-/* ===========================
-   SLIDER OUTER
-=========================== */
-
-.slider {
-  margin: 0;
-  position: relative;
-  width: 100%; /* important for full width */
-}
-
-/* Force full width slider on tablets + phones */
-@media (max-width: 999px) {
-  .slider {
-    padding: 0;
-  }
-}
-
-/* Make Swiper root full width */
-.slider :global(.visual-symphony-swiper.swiper) {
-  width: 100%;
-  max-width: 1440px;
-  overflow: visible;
-}
-
-/* ===========================
-   SWIPER SLIDES
-=========================== */
-
-.slider :global(.swiper-wrapper) {
-  align-items: center;
-}
-
-/* Desktop slide width */
-.slider :global(.swiper-slide) {
-  width: 1173px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.4s linear;
-}
-
-/* Desktop peek */
-@media (min-width: 1000px) {
-  .slider :global(.swiper-slide) {
-    margin: 0 -80px;
-  }
-}
-
-/* Mobile & Tablet — FULL WIDTH SLIDE */
-@media (max-width: 999px) {
-  .slider :global(.swiper-slide) {
-    width: 100% !important;
-    margin: 0 !important;
-    flex: 0 0 100%;
-  }
-
-  .slider :global(.swiper-wrapper) {
-    display: flex;
-    width: 100%;
-  }
-}
-
-/* ===========================
-   IMAGE WRAPPER
-=========================== */
-
-.imageWrapper {
-  width: 100%;
-  max-width: 1173px;
-  height: 708.93px;
-}
-
-/* MOBILE: true full-width image */
-@media (max-width: 999px) {
-  .imageWrapper {
-    width: 100%;
-    max-width: 100%;
-    height: auto !important;
-    aspect-ratio: 16 / 9;
-  }
-}
-
-/* ===========================
-   NEXT IMAGE
-=========================== */
-
-.image {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;
-  border-radius: 7px;
-  display: block;
-  transition: all 0.5s ease;
-}
-
-@media (max-width: 999px) {
-  .image {
-    height: auto !important;
-    object-fit: cover;
-    border-radius: 0; /* FULL WIDTH FEEL */
-  }
-}
-
-/* ===========================
-   DESKTOP SCALE EFFECTS
-=========================== */
-@media (min-width: 1000px) {
-  .slider :global(.swiper-slide-prev),
-  .slider :global(.swiper-slide-next) {
-    transform: scale(0.7) !important;
-  }
-}
-
-.slider :global(.swiper-slide-active) {
-  transform: scale(1) !important;
-  z-index: 3 !important;
-}
-
-/* Disable scaling on mobile */
-@media (max-width: 999px) {
-  .slider :global(.swiper-slide),
-  .slider :global(.swiper-slide-prev),
-  .slider :global(.swiper-slide-next) {
-    transform: scale(1) !important;
-  }
-}
-
-/* ===========================
-   ARROWS
-=========================== */
-
-.slider :global(.swiper-button-next),
-.slider :global(.swiper-button-prev) {
-  color: #fff;
-}
-
-.slider :global(.swiper-button-next::after),
-.slider :global(.swiper-button-prev::after) {
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  font-size: 26px;
-  font-weight: 700;
-}
-
-@media (max-width: 999px) {
-  .slider :global(.swiper-button-next),
-  .slider :global(.swiper-button-prev) {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.35);
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .slider :global(.swiper-button-prev) {
-    left: 10px;
-  }
-  .slider :global(.swiper-button-next) {
-    right: 10px;
   }
 }

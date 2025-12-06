@@ -2,6 +2,7 @@ import { i18n } from "./i18n.js";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  i18n,
   images: {
     formats: ["image/avif", "image/webp"],
     domains: ["luxury-real-estate-media.b-cdn.net", "images.unsplash.com"],

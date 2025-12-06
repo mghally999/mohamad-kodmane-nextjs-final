@@ -1,4 +1,7 @@
+/* eslint-disable @next/next/no-assign-module-variable */
+
 // Import all project data directly
+// import { palmCentralData } from "@/data/projects/apartments/nakheel/palm-central/palm-central";
 import { aquaCrestData } from "@/data/projects/apartments/sobha/aqua-crest/aqua-crest";
 import { aquamontData } from "@/data/projects/apartments/sobha/aquamont/aquamont";
 import { centralData } from "@/data/projects/apartments/sobha/central/central";
@@ -84,7 +87,7 @@ export function getAllProjectSlugs() {
       project.includes("hartland") ||
       project.includes("massar") ||
       project.includes("al-sinniyyah") ||
-      project.includes("damac")
+      project.includes("damac") // ADD THIS LINE
     ) {
       category = "villas";
     } else if (project.includes("riviera") || project.includes("lumena")) {
@@ -97,7 +100,7 @@ export function getAllProjectSlugs() {
     if (project.includes("arada")) developer = "arada";
     if (project.includes("azizi")) developer = "azizi";
     if (project.includes("omniyat")) developer = "omniyat";
-    if (project.includes("damac")) developer = "damac";
+    if (project.includes("damac")) developer = "damac"; // ADD THIS LINE
 
     return { category, developer, project };
   });
