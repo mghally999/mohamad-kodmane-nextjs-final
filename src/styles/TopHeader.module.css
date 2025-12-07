@@ -1682,3 +1682,91 @@
   text-align: left;
   padding-left: 1rem;
 }
+/* =========================================
+       LOGO CENTERING FIX
+       ========================================= */
+
+/* Update the container to use flex with specific columns */
+.container {
+  max-width: 1385px;
+  margin: 0 auto;
+  padding: 0 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Make menu columns take equal space on desktop */
+@media (min-width: 1024px) {
+  .menuLeft {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .menuRight {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Keep logo section centered */
+  .logoSec {
+    flex: 0 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  /* Adjust column widths for balance */
+  .colLg5 {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+
+  .colLg2 {
+    display: none; /* Hide the column since logo is absolutely positioned */
+  }
+}
+
+/* Logo link adjustments */
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.logoImage {
+  height: 45px;
+  width: auto;
+  max-width: 125px;
+  object-fit: contain;
+}
+
+/* Mobile logo should be visible */
+@media (max-width: 1023px) {
+  .logoSec {
+    position: static;
+    transform: none;
+    justify-content: center;
+  }
+
+  /* Show logo in mobile menu */
+  .mobileLogoContent {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+  }
+
+  .mobileLogoContent .logoImage {
+    height: 54px;
+    max-width: 150px;
+  }
+}

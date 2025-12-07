@@ -33,7 +33,7 @@
 
 .storiesSlider {
   position: relative;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 }
 
 /* Optional helper if you want different tweaks in RTL */
@@ -85,7 +85,7 @@
 .storiesSlider :global(.swiper-slide.swiper-slide-active) .cardBox {
   -webkit-transform: scale(1);
   transform: scale(1);
-  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+  /* box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22); */
 }
 
 /* side slides lose radius like Sobha */
@@ -240,7 +240,7 @@
 .arrowIcon {
   position: relative;
   width: 9px;
-  height: 16px;
+  height: 19px;
 }
 
 .arrowIcon::before,

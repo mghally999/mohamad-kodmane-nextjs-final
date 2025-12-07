@@ -392,3 +392,53 @@
     height: 90px;
   }
 }
+.virtualTourWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+}
+@media (max-width: 767px) {
+  .virtualTourWrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto; /* allow image to size naturally */
+    aspect-ratio: 1 / 1; /* maintain a square shape */
+    margin-bottom: 40px;
+  }
+
+  .planImage {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+  }
+
+  .tabContent {
+    padding-top: 0; /* Remove huge top spacing */
+  }
+
+  .row {
+    gap: 20px; /* reduce spacing */
+  }
+
+  .tabsWrapper {
+    padding-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+.virtualTourWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+@media (max-width: 767px) {
+  .virtualTourWrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 40px;
+  }
+}

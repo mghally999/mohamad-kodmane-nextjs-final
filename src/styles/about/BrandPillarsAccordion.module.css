@@ -565,3 +565,170 @@
   border-left: 2px solid #444;
   padding-left: 20px;
 }
+/* ================================
+   RESPONSIVE FIXES (Mobile + iPad)
+   WITHOUT changing desktop layout
+================================ */
+
+/* TABLETS (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .accTitle {
+    font-size: 70px !important;
+    line-height: 80px !important;
+  }
+
+  .twoColContent {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 35px !important;
+    padding-left: 0 !important;
+  }
+
+  .brandAccBoxMain {
+    gap: 30px !important;
+  }
+}
+
+/* IPADS & BIG MOBILES (max-width: 900px) */
+@media (max-width: 900px) {
+  .accTitle {
+    font-size: 55px !important;
+    line-height: 62px !important;
+  }
+
+  .icons {
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-left: 0 !important;
+  }
+
+  .brandAccBoxMain {
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  .brandAccBox {
+    width: 100% !important;
+    padding: 0 !important;
+    margin-bottom: 40px !important;
+  }
+
+  .brandPillarContent {
+    border-left: none !important;
+    border-top: 1px solid #444 !important;
+    margin-left: 0 !important;
+    padding: 20px 0 !important;
+    text-align: center !important;
+  }
+}
+
+/* MOBILE (max-width: 600px) */
+@media (max-width: 600px) {
+  .accTitle {
+    font-size: 40px !important;
+    line-height: 48px !important;
+  }
+
+  .twoColParagraph {
+    font-size: 20px !important;
+    line-height: 32px !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  .iconImage {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 12px !important;
+  }
+
+  .brandAccBox {
+    width: 100% !important;
+  }
+}
+
+/* SMALL MOBILE (max-width: 430px) */
+@media (max-width: 430px) {
+  .accTitle {
+    font-size: 32px !important;
+    line-height: 40px !important;
+  }
+
+  .style2 {
+    font-size: 22px !important;
+  }
+
+  .style2 span {
+    font-size: 12px !important;
+  }
+
+  .brandAccImage {
+    height: auto !important;
+  }
+}
+
+/* RTL fixes for mobile */
+@media (max-width: 900px) {
+  [dir="rtl"] .twoColContent {
+    flex-direction: column !important;
+  }
+
+  [dir="rtl"] .brandPillarContent {
+    border-right: none !important;
+    border-top: 1px solid #444 !important;
+    padding-right: 0 !important;
+  }
+}
+/* ================================
+   H5 VISIBILITY FIX FOR MOBILE + TABLETS
+================================ */
+
+/* iPads + tablets */
+@media (max-width: 1024px) {
+  .brandPillarContent {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    border-left: none !important;
+    text-align: center !important;
+  }
+
+  .brandPillarContent h5 {
+    max-width: 100% !important;
+    margin: 0 auto 12px auto !important;
+    text-align: center !important;
+  }
+}
+
+/* Phones (600px and below) */
+@media (max-width: 600px) {
+  .brandPillarContent {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-left: none !important;
+    border-top: 1px solid #444 !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+  }
+
+  .brandPillarContent h5 {
+    font-size: 20px !important;
+    line-height: 26px !important;
+    max-width: 90% !important;
+    margin: 0 auto 14px auto !important;
+  }
+
+  .disc {
+    max-width: 90% !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+  }
+}
+
+/* Small screens 430px → tighter spacing */
+@media (max-width: 430px) {
+  .brandPillarContent h5 {
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+}

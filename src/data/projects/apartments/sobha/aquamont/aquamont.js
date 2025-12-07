@@ -101,9 +101,9 @@ export const aquamontData = {
             "Starting Price": "AED 1,112,127",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bathroom-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bathroom-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/1%20Bedroom%20Type%20D.webp",
           ],
           features: [
@@ -125,9 +125,9 @@ export const aquamontData = {
             "Starting Price": "AED 1,440,426",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-view.png",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-view.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/2%20Bedroom%20Type%20B.webp",
           ],
           features: [
@@ -149,9 +149,9 @@ export const aquamontData = {
             "Starting Price": "AED 4,299,966",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-3bhk-duplex-type-b.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-daytime-02.png",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-01.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-3bhk-duplex-type-b.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-daytime-02.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-01.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/3%20Bedroom%20Type%20A.webp",
           ],
           features: [
@@ -413,9 +413,9 @@ export const aquamontData = {
             "السعر الابتدائي": "ابتداءً من 4,299,966 درهم إماراتي",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-3bhk-duplex-type-b.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-daytime-02.png",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-01.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-living-3bhk-duplex-type-b.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-daytime-02.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-01.png",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/3%20Bedroom%20Type%20A.webp",
           ],
           features: [

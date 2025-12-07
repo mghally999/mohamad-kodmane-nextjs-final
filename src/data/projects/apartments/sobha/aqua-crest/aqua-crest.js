@@ -101,8 +101,8 @@ export const aquaCrestData = {
             "Starting Price": "AED 1,166,850",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-bedroom-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-bathroom-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-bedroom-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-bathroom-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aqua-crest/1A.png",
           ],
           features: [
@@ -124,8 +124,8 @@ export const aquaCrestData = {
             "Starting Price": "AED 1,683,636",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-02.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aqua-crest/interior-living-dining-02.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aqua-crest/2C.png",
           ],
           features: [

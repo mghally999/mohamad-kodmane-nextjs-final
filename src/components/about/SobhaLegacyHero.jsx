@@ -10,7 +10,8 @@ import styles from "@/styles/about/SobhaLegacyHero.module.css";
 gsap.registerPlugin(ScrollTrigger);
 
 const CDN = "https://luxury-real-estate-media.b-cdn.net";
-const DESKTOP_IMAGE = `${CDN}/aquamont/intro-main.png`;
+// const DESKTOP_IMAGE = `${CDN}/aquamont/intro-main.png`;
+const DESKTOP_IMAGE = `/mohamad-kodmane.png`;
 const MOBILE_IMAGE = `${CDN}/massar-3/hero-bg.jpg`;
 
 export default function SobhaLegacyHero() {

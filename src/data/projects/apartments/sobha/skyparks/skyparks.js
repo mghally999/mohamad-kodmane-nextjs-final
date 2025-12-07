@@ -97,8 +97,8 @@ export const skyParksData = {
             Price: "AED 2,880,250",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bedroom-master-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bedroom-master-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/1A_0.png",
           ],
           features: ["Walk-in Closet", "Premium Finishes", "Smart Home Ready"],
@@ -115,8 +115,8 @@ export const skyParksData = {
             Price: "AED 4,752,080",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-02.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bathroom-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-02.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bathroom-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/2C_0.png",
           ],
           features: ["Maid's Room", "Double Balcony", "Premium Kitchen"],
@@ -133,8 +133,8 @@ export const skyParksData = {
             Price: "AED 9,352,241",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/3A.png",
           ],
           features: ["Double Master", "Panoramic Views", "Private Elevator"],
@@ -214,7 +214,7 @@ export const skyParksData = {
       backgroundUrl:
         "https://luxury-real-estate-media.b-cdn.net/sky-parks/hero-day.jpg",
       squareImageUrl:
-        "https://luxury-real-estate-media.b-cdn.net/sky-parks/hero-inset.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/projects-profile-pictures/skyparks.svg",
       companyName: "شوبا العقارية",
       rating: 4.7,
     },
@@ -289,8 +289,8 @@ export const skyParksData = {
             "السعر الابتدائي": "2,880,250 درهم إماراتي",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bedroom-master-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bedroom-master-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/1A_0.png",
           ],
           features: [
