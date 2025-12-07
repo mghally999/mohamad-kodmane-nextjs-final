@@ -220,7 +220,7 @@
 
 .corporateDivider {
   width: 40px;
-  height: 1px;
+  /* height: 1px; */
   background: #c4b5a3;
   margin: 20px 0;
 }

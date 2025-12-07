@@ -139,9 +139,10 @@ export const damacIslands2Data = {
           },
           // lagoon + townhouse style views
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.52.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.55.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg",
+            // "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.52.jpeg",
+            // "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.55.jpeg",
+            // "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/1.png",
           ],
           features: [
             "Open-plan living and dining",
@@ -163,9 +164,10 @@ export const damacIslands2Data = {
             Handover: "30 June 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.54.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%281%29.jpeg",
+            // "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51.jpeg",
+            // "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.54.jpeg",
+            // "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%281%29.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/2.png",
           ],
           features: [
             "Spacious family layout",
@@ -187,9 +189,7 @@ export const damacIslands2Data = {
             Handover: "30 June 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50%20%281%29.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%282%29.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.57%20%281%29.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/3.png",
           ],
           features: [
             "Semi-detached villa",
@@ -211,9 +211,7 @@ export const damacIslands2Data = {
             Handover: "30 June 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.57.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/4.png",
           ],
           features: [
             "Grand entrance lobby",
@@ -527,9 +525,7 @@ export const damacIslands2Data = {
             التسليم: "30 يونيو 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.52.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.55.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/1.png",
           ],
           features: [
             "تصميم مفتوح لغرفة المعيشة والطعام",
@@ -551,9 +547,7 @@ export const damacIslands2Data = {
             التسليم: "30 يونيو 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.54.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%281%29.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/2.png",
           ],
           features: [
             "مساحات رحبة تناسب العائلات",
@@ -575,9 +569,7 @@ export const damacIslands2Data = {
             التسليم: "30 يونيو 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50%20%281%29.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56%20%282%29.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.57%20%281%29.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/3.png",
           ],
           features: [
             "فيلا شبه منفصلة مع حديقة واسعة",
@@ -599,9 +591,7 @@ export const damacIslands2Data = {
             التسليم: "30 يونيو 2030",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.50.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.56.jpeg",
-            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.57.jpeg",
+            "https://luxury-real-estate-media.b-cdn.net/damac-island-2/4.png",
           ],
           features: [
             "مدخل رئيسي فخم",

@@ -391,7 +391,7 @@ export default function TopHeader() {
                 </a>
               </li>
 
-              <li className={styles.searchItem}>
+              {/* <li className={styles.searchItem}>
                 <button
                   type="button"
                   className={styles.searchTrigger}
@@ -400,7 +400,7 @@ export default function TopHeader() {
                 >
                   <span className={styles.searchIcon}>🔍</span>
                 </button>
-              </li>
+              </li> */}
 
               <li className={styles.languageToggle}>
                 <button

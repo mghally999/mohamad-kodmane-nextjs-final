@@ -220,7 +220,7 @@
 }
 
 /* Sobha’s white “plate” + shadow behind the plan (approximation) */
-.virtualTourWrapper::after {
+/* .virtualTourWrapper::after {
   content: "";
   position: absolute;
   left: -8%;
@@ -236,7 +236,7 @@
     rgba(0, 0, 0, 0) 70%
   );
   opacity: 0.85;
-}
+} */
 
 /* ===== ARROWS (only if multiple images) ===== */
 

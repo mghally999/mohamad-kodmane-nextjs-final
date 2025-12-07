@@ -294,7 +294,7 @@ export default function FooterFinal() {
 
             <div className={styles.middleCol}>
               <div className={styles.middleTitle}>
-                {t?.("footer.headers.aboutUs") || "ABOUT US"}
+                {t?.("footer.headers.aboutUs") || "ABOUT"}
               </div>
               <ul className={styles.linkList}>
                 {aboutUs.map((item) => (
