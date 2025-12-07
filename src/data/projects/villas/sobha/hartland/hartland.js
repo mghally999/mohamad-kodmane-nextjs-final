@@ -110,7 +110,7 @@ export const hartland2VillasData = {
             // "https://luxury-real-estate-media.b-cdn.net/hartland/interior-family-01.jpg",
             // "https://luxury-real-estate-media.b-cdn.net/hartland/interior-majlis-01.jpg",
             // "https://luxury-real-estate-media.b-cdn.net/hartland/interior-lounge-01.jpg",
-            "/with.png",
+            "https://luxury-real-estate-media.b-cdn.net/hartland/with-1.png",
           ],
           features: [
             "Spacious Family Living",

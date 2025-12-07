@@ -107,10 +107,10 @@ export const alSinniyyahIslandData = {
             Handover: "Q4 2027",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-front-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-pool-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-front-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-pool-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/4-br.png",
           ],
           features: [
             "Private Garden",
@@ -133,10 +133,10 @@ export const alSinniyyahIslandData = {
             Handover: "Q4 2027",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-front-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-pool-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-front-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5b-pool-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/5-br.png",
           ],
           features: [
             "Private Pool",
@@ -159,10 +159,10 @@ export const alSinniyyahIslandData = {
             Handover: "Q4 2027",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-facade-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-lagoon-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-facade-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-7b-typeb-lagoon-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/6-br.png",
           ],
           features: [
             "Grand Arrival",
