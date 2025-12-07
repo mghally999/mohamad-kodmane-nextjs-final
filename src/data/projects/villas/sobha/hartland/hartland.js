@@ -106,10 +106,11 @@ export const hartland2VillasData = {
             Handover: "Q3 2026",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/hartland/hero-inset.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/hartland/interior-family-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/hartland/interior-majlis-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/hartland/interior-lounge-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/hartland/hero-inset.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/hartland/interior-family-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/hartland/interior-majlis-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/hartland/interior-lounge-01.jpg",
+            "/with.png",
           ],
           features: [
             "Spacious Family Living",
