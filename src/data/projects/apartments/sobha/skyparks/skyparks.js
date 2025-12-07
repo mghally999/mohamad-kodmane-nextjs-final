@@ -311,8 +311,8 @@ export const skyParksData = {
             "السعر الابتدائي": "4,752,080 درهم إماراتي",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-02.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bathroom-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-living-dining-02.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/251013%20ID%20new/interior-bathroom-01.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/2C_0.png",
           ],
           features: ["غرفة خادمة", "شرفة واسعة", "مطبخ بتجهيزات حديثة"],
@@ -329,8 +329,8 @@ export const skyParksData = {
             "السعر الابتدائي": "9,352,241 درهم إماراتي",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/sky-parks/exterior-cityview-02.jpg",
             "https://luxury-real-estate-media.b-cdn.net/sky-parks/3A.png",
           ],
           features: [

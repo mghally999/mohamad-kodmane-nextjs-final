@@ -5,6 +5,8 @@
   position: relative;
   padding: 108px 0 50px 0;
   margin-bottom: -1px;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Optional flag if you want to hook RTL-specific tweaks */
@@ -27,12 +29,15 @@
 
 .logoBar {
   background-color: #f9f9f9;
+  width: 100%;
 }
 
 .logoBarInner {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .logoWrap {
@@ -43,6 +48,8 @@
   position: relative;
   z-index: 1;
   padding: 18px 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* we use footer::before for the lines, so hide local ones */
@@ -63,11 +70,14 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 80px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footerMainInner {
   border-bottom: 1px solid #eceae6;
   padding-bottom: 40px;
+  width: 100%;
 }
 
 /* First row – APARTMENTS / VILLAS / PENTHOUSES */
@@ -77,10 +87,12 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: 64px;
   row-gap: 20px;
+  width: 100%;
 }
 
 .colBlock {
   min-width: 0;
+  width: 100%;
 }
 
 .colTitle {
@@ -90,16 +102,19 @@
   color: #000000;
   margin-bottom: 16px;
   text-align: left;
+  word-break: break-word;
 }
 
 .linkList {
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .linkItem {
   margin: 10px 0;
+  width: 100%;
 }
 
 .linkItem:last-child {
@@ -116,6 +131,9 @@
   color: #4f5459;
   text-decoration: none;
   line-height: 1.6;
+  display: inline-block;
+  width: 100%;
+  word-break: break-word;
 }
 
 .link:hover {
@@ -127,6 +145,7 @@
 .footerMiddle {
   padding: 45px 0 45px;
   border-bottom: 1px solid #eceae6;
+  width: 100%;
 }
 
 .footerMiddleInner {
@@ -134,10 +153,12 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: 64px;
   row-gap: 24px;
+  width: 100%;
 }
 
 .middleCol {
   min-width: 0;
+  width: 100%;
 }
 
 .middleTitle {
@@ -147,6 +168,7 @@
   color: #000000;
   margin-bottom: 16px;
   text-align: left;
+  word-break: break-word;
 }
 
 /* ========== BOTTOM FOOTER - LUXURY CORPORATE ========== */
@@ -157,16 +179,20 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 60px;
   border-top: 1px solid #e8e6e1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* LEFT BLOCK */
 
 .bottomLeft {
   /* grid item – no special layout needed */
+  width: 100%;
 }
 
 .corporateBlock {
   text-align: left;
+  width: 100%;
 }
 
 .corporateName {
@@ -176,6 +202,7 @@
   color: #000;
   margin-bottom: 4px;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .corporateTitle {
@@ -185,6 +212,7 @@
   color: #8c8c8c;
   margin-bottom: 20px;
   font-weight: 400;
+  word-break: break-word;
 }
 
 .corporateDivider {
@@ -200,10 +228,12 @@
   text-transform: uppercase;
   color: #666;
   line-height: 1.8;
+  width: 100%;
 }
 
 .legalInfo div {
   margin-bottom: 4px;
+  word-break: break-word;
 }
 
 /* CENTER – ADDRESS */
@@ -212,10 +242,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .prestigeAddress {
   text-align: justify;
+  width: 100%;
 }
 
 .addressTitle {
@@ -225,6 +257,7 @@
   color: #8c8c8c;
   margin-bottom: 16px;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .addressDivider {
@@ -240,12 +273,18 @@
   text-transform: uppercase;
   color: #000;
   line-height: 1.8;
+  width: 100%;
+}
+
+.addressLines div {
+  word-break: break-word;
 }
 
 .poBox {
   margin-top: 12px;
   color: #666;
   font-size: 11px;
+  word-break: break-word;
 }
 
 /* RIGHT – CONTACT */
@@ -253,10 +292,12 @@
 .bottomRight {
   display: flex;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .contactBlock {
   text-align: justify;
+  width: 100%;
 }
 
 .contactTitle {
@@ -266,6 +307,7 @@
   color: #8c8c8c;
   margin-bottom: 16px;
   font-weight: 500;
+  word-break: break-word;
 }
 
 .contactDivider {
@@ -279,6 +321,7 @@
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  width: 100%;
 }
 
 .contactLine {
@@ -287,6 +330,8 @@
   align-items: center;
   margin-bottom: 12px;
   gap: 15px;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 .contactType {
@@ -294,6 +339,7 @@
   font-size: 10px;
   letter-spacing: 0.15em;
   min-width: 60px;
+  word-break: break-word;
 }
 
 .contactNumber,
@@ -304,11 +350,82 @@
   transition: color 0.2s ease;
   text-align: left;
   flex: 1;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .contactNumber:hover,
 .contactEmail:hover {
   color: #8c8c8c;
+}
+
+/* ====== COPYRIGHT + SOCIALS STRIP (BOTTOM LINE) ====== */
+
+.footerMeta {
+  border-top: 1px solid #e8e6e1;
+  margin-top: 32px;
+  padding-top: 18px;
+  width: 100%;
+}
+
+.footerMetaInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 24px;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #777777;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.metaCopy {
+  white-space: normal;
+  word-break: break-word;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Social icons row */
+.metaSocials {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.metaSocialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.metaSocialLink:hover {
+  transform: scale(1.1) translateY(-1px);
+  opacity: 0.8;
+}
+
+.metaSocialIcon {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+}
+
+.metaSocialIcon svg {
+  width: 100%;
+  height: 100%;
 }
 
 /* ========== RTL OVERRIDES ========== */
@@ -340,16 +457,45 @@
   text-align: right;
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== RESPONSIVE BREAKPOINTS ========== */
 
+/* Extra large desktops (1440px and up) */
+@media (min-width: 1440px) {
+  .footerMain,
+  .footerMetaInner,
+  .logoBarInner {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}
+
+/* Large desktops (1200px to 1439px) */
 @media (max-width: 1200px) {
   .footerMain {
     padding: 0 40px;
   }
+
+  .footerMetaInner {
+    padding: 0 40px;
+  }
+
+  .propertiesRow,
+  .footerMiddleInner {
+    column-gap: 40px;
+  }
+
+  .footerBottom {
+    gap: 40px;
+  }
 }
 
+/* Medium devices (tablets, 768px to 1024px) */
 @media (max-width: 1024px) {
   .footerMain {
+    padding: 0 32px;
+  }
+
+  .footerMetaInner {
     padding: 0 32px;
   }
 
@@ -357,33 +503,59 @@
   .footerMiddleInner {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 32px;
+    row-gap: 32px;
   }
 
   .footerBottom {
+    grid-template-columns: 1fr;
     gap: 40px;
     padding: 50px 0 30px;
   }
+
+  .footer::before {
+    top: 120px;
+  }
 }
 
+/* Small tablets and large phones (600px to 767px) */
 @media (max-width: 767px) {
   .footer {
     padding: 80px 0 40px 0;
   }
 
+  .footer::before {
+    top: 100px;
+  }
+
   .logoWrap {
-    max-width: 182px;
+    max-width: 280px;
     margin-bottom: 60px;
-    padding-inline: 24px;
+    padding: 18px 30px;
   }
 
   .footerMain {
-    padding: 0 20px;
+    padding: 0 24px;
+  }
+
+  .footerMetaInner {
+    padding: 0 24px;
   }
 
   .propertiesRow,
   .footerMiddleInner {
     grid-template-columns: 1fr;
     column-gap: 0;
+    row-gap: 32px;
+  }
+
+  .colTitle,
+  .middleTitle {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .link {
+    font-size: 13px;
   }
 
   .footerBottom {
@@ -391,6 +563,7 @@
     gap: 40px;
     text-align: center;
     margin-top: 30px;
+    padding: 40px 0 30px;
   }
 
   .corporateBlock,
@@ -414,121 +587,250 @@
   .contactLine {
     justify-content: center;
     text-align: center;
+    gap: 10px;
   }
 
   .contactNumber,
   .contactEmail {
     text-align: center;
   }
-}
 
-@media (max-width: 640px) {
-  .link {
-    font-size: 13px;
+  .corporateDivider,
+  .contactDivider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footerMetaInner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    row-gap: 20px;
+  }
+
+  .metaCopy {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .metaSocials {
+    justify-content: center;
+    width: 100%;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile phones (480px to 599px) */
+@media (max-width: 599px) {
+  .footer {
+    padding: 70px 0 30px 0;
+  }
+
+  .footer::before {
+    top: 90px;
+  }
+
+  .logoWrap {
+    max-width: 240px;
+    padding: 15px 20px;
+    margin-bottom: 50px;
+  }
+
+  .footerMain {
+    padding: 0 20px;
+  }
+
+  .footerMetaInner {
+    padding: 0 20px;
+  }
+
+  .footerMainInner {
+    padding-bottom: 30px;
+  }
+
+  .footerMiddle {
+    padding: 35px 0;
+  }
+
+  .colTitle,
+  .middleTitle {
+    font-size: 14px;
+    letter-spacing: 1.2px;
+  }
+
+  .link {
+    font-size: 12px;
+  }
+
+  .corporateName {
+    font-size: 14px;
+  }
+
+  .addressLines,
+  .contactDetails {
+    font-size: 11px;
+  }
+}
+
+/* Small phones (320px to 479px) */
+@media (max-width: 479px) {
+  .footer {
+    padding: 60px 0 25px 0;
+  }
+
+  .footer::before {
+    top: 80px;
+  }
+
+  .logoWrap {
+    max-width: 200px;
+    padding: 12px 15px;
+    margin-bottom: 40px;
+  }
+
+  .footerMain {
+    padding: 0 16px;
+  }
+
+  .footerMetaInner {
+    padding: 0 16px;
+    font-size: 10px;
+  }
+
+  .propertiesRow,
+  .footerMiddleInner {
+    row-gap: 24px;
+  }
+
+  .colBlock,
+  .middleCol {
+    padding: 0 5px;
+  }
+
   .footerBottom {
     gap: 30px;
-    padding: 40px 0 20px;
+    padding: 30px 0 20px;
   }
 
   .contactLine {
     flex-direction: column;
-    gap: 5px;
-  }
-}
-/* ====== COPYRIGHT + SOCIALS STRIP (BOTTOM LINE) ====== */
-
-.footerMeta {
-  border-top: 1px solid #e8e6e1; /* the thin line like Sobha */
-  margin-top: 32px;
-  padding-top: 18px;
-}
-
-.footerMetaInner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  column-gap: 24px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #777777;
-}
-
-.metaCopy {
-  white-space: nowrap;
-}
-
-/* Social icons row */
-.metaSocials {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.metaSocialLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  color: #000000;
-}
-
-.metaSocialLink:hover {
-  transform: scale(1.1) translateY(-1px);
-  opacity: 0.8;
-}
-
-.metaSocialIcon {
-  display: inline-flex;
-  width: 100%;
-  height: 100%;
-}
-
-.metaSocialIcon svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* RTL tweaks */
-[dir="rtl"] .footerMetaInner {
-  padding: 0 80px;
-}
-
-@media (max-width: 1200px) {
-  .footerMetaInner {
-    padding: 0 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footerMetaInner {
-    padding: 0 20px;
-    flex-direction: column;
     align-items: center;
+    gap: 5px;
     text-align: center;
-    row-gap: 14px;
   }
 
-  .metaCopy {
-    white-space: normal;
+  .contactType {
+    min-width: auto;
+    margin-bottom: 2px;
   }
-}
 
-@media (max-width: 480px) {
+  .contactNumber,
+  .contactEmail {
+    text-align: center;
+    width: 100%;
+  }
+
   .metaSocials {
     gap: 14px;
   }
+
+  .metaSocialLink {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Adjust RTL for mobile */
+  [dir="rtl"] .contactLine {
+    flex-direction: column;
+  }
 }
+
+/* Extra small devices (below 320px) */
+@media (max-width: 319px) {
+  .footer {
+    padding: 50px 0 20px 0;
+  }
+
+  .footer::before {
+    top: 70px;
+  }
+
+  .logoWrap {
+    max-width: 180px;
+    padding: 10px 12px;
+    margin-bottom: 30px;
+  }
+
+  .footerMain {
+    padding: 0 12px;
+  }
+
+  .footerMetaInner {
+    padding: 0 12px;
+    font-size: 9px;
+  }
+
+  .colTitle,
+  .middleTitle {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .link {
+    font-size: 11px;
+  }
+
+  .metaSocials {
+    gap: 10px;
+  }
+
+  .metaSocialLink {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .link,
+  .contactNumber,
+  .contactEmail,
+  .metaSocialLink {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .metaSocialLink {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .footer {
+    background-color: white !important;
+    color: black !important;
+    padding: 50px 0 20px 0 !important;
+  }
+
+  .footer::before {
+    display: none;
+  }
+
+  .link:hover,
+  .contactNumber:hover,
+  .contactEmail:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .metaSocials {
+    display: none !important;
+  }
+}
+
 /* grid layout always LTR so columns stay:
    [corporate]  [address]  [contact] */
 .footerBottom {

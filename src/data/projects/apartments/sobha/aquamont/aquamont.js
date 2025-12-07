@@ -366,9 +366,10 @@ export const aquamontData = {
             "السعر الابتدائي": "ابتداءً من 1,112,127 درهم إماراتي",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bathroom-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bathroom-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
+            "https://luxury-real-estate-media.b-cdn.net/aquamont/1%20Bedroom%20Type%20D.webp",
           ],
           features: [
             "تشطيبات عالية الجودة",
@@ -389,9 +390,9 @@ export const aquamontData = {
             "السعر الابتدائي": "ابتداءً من 1,440,426 درهم إماراتي",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-view.png",
-            "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-balcony-day-view.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/exterior-beach-view.png",
+            // "https://luxury-real-estate-media.b-cdn.net/aquamont/interior-bedroom-1bhk.jpg",
             "https://luxury-real-estate-media.b-cdn.net/aquamont/2%20Bedroom%20Type%20B.webp",
           ],
           features: [

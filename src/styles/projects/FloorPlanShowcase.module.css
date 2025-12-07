@@ -184,7 +184,7 @@
   background: #ffffff;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  /* transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease; */
 }
 
 .buttonText {
@@ -198,7 +198,7 @@
 
 .buttonMain:hover {
   background: #f8f8f8;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); */
   transform: translateY(-1px);
 }
 

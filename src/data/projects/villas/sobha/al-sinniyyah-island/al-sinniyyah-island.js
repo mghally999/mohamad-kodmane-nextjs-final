@@ -96,7 +96,7 @@ export const alSinniyyahIslandData = {
       plans: [
         {
           id: "4br-villa-type-a",
-          title: "4 BR Luxury Villa - Type A",
+          title: "4 BR Luxury Villa",
           bedrooms: 4,
           specs: {
             "Unit Type":
@@ -363,10 +363,10 @@ export const alSinniyyahIslandData = {
             "موعد التسليم": "الربع الرابع 2027",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-front-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-pool-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/Interior-5b-master-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-front-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/exterior-5a-pool-01.jpg",
+            // "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/interior-5b-living-01.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/al-sinniyyah-island/6-br.png",
           ],
           features: [
             "حديقة خاصة",

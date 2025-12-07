@@ -101,18 +101,18 @@ export const massar3Data = {
       type: "villas",
       plans: [
         {
-          id: "3-bedroom",
-          title: "3 Bedroom Villa",
-          bedrooms: 3,
+          id: "4-bedroom",
+          title: "4 Bedroom Villa",
+          bedrooms: 4,
           specs: {
-            "Unit Type": "3 Bedroom Villa",
+            "Unit Type": "4 Bedroom Villa",
             "Total Area": "3,563 SQ.FT.",
             "Plot Area": "3,765 SQ.FT.",
             "Starting Price": "AED 4,395,000",
             Handover: "Q4 2028",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/massar-3/floor-3br.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/massar-3/4-br.png",
           ],
           features: [
             "Spacious Living Areas",
@@ -138,7 +138,7 @@ export const massar3Data = {
             Handover: "Q4 2028",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/massar-3/floor-5br.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/massar-3/5-br.png",
           ],
           features: [
             "Expansive Layout",
@@ -389,18 +389,18 @@ export const massar3Data = {
       type: "villas",
       plans: [
         {
-          id: "3-bedroom",
-          title: "فيلا 3 غرف نوم",
-          bedrooms: 3,
+          id: "4-bedroom",
+          title: "فيلا 4 غرف نوم",
+          bedrooms: 4,
           specs: {
-            "Unit Type": "فيلا 3 غرف نوم",
+            "Unit Type": "فيلا 4 غرف نوم",
             "Total Area": "3,563 قدم²",
             "Plot Area": "3,765 قدم²",
             "Starting Price": "AED 4,395,000",
             Handover: "الربع الرابع 2028",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/massar-3/floor-3br.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/massar-3/4-br.png",
           ],
           features: [
             "مساحات معيشة رحبة",
@@ -426,7 +426,7 @@ export const massar3Data = {
             Handover: "الربع الرابع 2028",
           },
           images: [
-            "https://luxury-real-estate-media.b-cdn.net/massar-3/floor-5br.jpg",
+            "https://luxury-real-estate-media.b-cdn.net/massar-3/5-br.png",
           ],
           features: [
             "مساحة واسعة للعائلة الكبيرة",
