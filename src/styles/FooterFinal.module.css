@@ -103,6 +103,7 @@
   margin-bottom: 16px;
   text-align: left;
   word-break: break-word;
+  font-weight: 700; /* Bold for titles */
 }
 
 .linkList {
@@ -134,6 +135,7 @@
   display: inline-block;
   width: 100%;
   word-break: break-word;
+  font-weight: 300; /* Light font for links */
 }
 
 .link:hover {
@@ -169,6 +171,7 @@
   margin-bottom: 16px;
   text-align: left;
   word-break: break-word;
+  font-weight: 700; /* Bold for titles */
 }
 
 /* ========== BOTTOM FOOTER - LUXURY CORPORATE ========== */
@@ -201,7 +204,7 @@
   text-transform: uppercase;
   color: #000;
   margin-bottom: 4px;
-  font-weight: 500;
+  font-weight: 700; /* Bold for corporate name */
   word-break: break-word;
 }
 
@@ -211,7 +214,7 @@
   text-transform: uppercase;
   color: #8c8c8c;
   margin-bottom: 20px;
-  font-weight: 400;
+  font-weight: 300; /* Light for subtitle */
   word-break: break-word;
 }
 
@@ -229,6 +232,7 @@
   color: #666;
   line-height: 1.8;
   width: 100%;
+  font-weight: 300; /* Light for legal info */
 }
 
 .legalInfo div {
@@ -256,7 +260,7 @@
   text-transform: uppercase;
   color: #8c8c8c;
   margin-bottom: 16px;
-  font-weight: 500;
+  font-weight: 300; /* Light for address title */
   word-break: break-word;
 }
 
@@ -274,6 +278,7 @@
   color: #000;
   line-height: 1.8;
   width: 100%;
+  font-weight: 300; /* Light for address lines */
 }
 
 .addressLines div {
@@ -285,6 +290,7 @@
   color: #666;
   font-size: 11px;
   word-break: break-word;
+  font-weight: 300; /* Light for PO box */
 }
 
 /* RIGHT – CONTACT */
@@ -306,7 +312,7 @@
   text-transform: uppercase;
   color: #8c8c8c;
   margin-bottom: 16px;
-  font-weight: 500;
+  font-weight: 300; /* Light for contact title */
   word-break: break-word;
 }
 
@@ -340,13 +346,14 @@
   letter-spacing: 0.15em;
   min-width: 60px;
   word-break: break-word;
+  font-weight: 300; /* Light for contact type */
 }
 
 .contactNumber,
 .contactEmail {
   color: #000;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 500; /* Medium for contact numbers */
   transition: color 0.2s ease;
   text-align: left;
   flex: 1;
@@ -390,6 +397,7 @@
   word-break: break-word;
   flex: 1;
   min-width: 200px;
+  font-weight: 300; /* Light for copyright */
 }
 
 /* Social icons row */
@@ -489,7 +497,7 @@
   }
 }
 
-/* Medium devices (tablets, 768px to 1024px) */
+/* iPads and Tablets (768px to 1024px) */
 @media (max-width: 1024px) {
   .footerMain {
     padding: 0 32px;
@@ -506,18 +514,72 @@
     row-gap: 32px;
   }
 
+  .colTitle,
+  .middleTitle {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .linkList {
+    text-align: center;
+  }
+
+  .link {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+  }
+
   .footerBottom {
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 50px 0 30px;
+    text-align: center;
   }
 
   .footer::before {
     top: 120px;
   }
+
+  /* Center everything on tablets */
+  .corporateBlock,
+  .prestigeAddress,
+  .contactBlock {
+    text-align: center;
+  }
+
+  .corporateDivider,
+  .contactDivider,
+  .addressDivider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .bottomCenter,
+  .bottomRight {
+    justify-content: center;
+  }
+
+  .contactLine {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contactNumber,
+  .contactEmail {
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .legalInfo,
+  .addressLines,
+  .contactDetails {
+    font-weight: 300;
+  }
 }
 
-/* Small tablets and large phones (600px to 767px) */
+/* Mobile phones (600px to 767px) */
 @media (max-width: 767px) {
   .footer {
     padding: 80px 0 40px 0;
@@ -531,6 +593,7 @@
     max-width: 280px;
     margin-bottom: 60px;
     padding: 18px 30px;
+    text-align: center;
   }
 
   .footerMain {
@@ -550,12 +613,21 @@
 
   .colTitle,
   .middleTitle {
-    font-size: 15px;
-    margin-bottom: 12px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 700;
   }
 
   .link {
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .linkList {
+    text-align: center;
   }
 
   .footerBottom {
@@ -588,11 +660,21 @@
     justify-content: center;
     text-align: center;
     gap: 10px;
+    flex-direction: column;
   }
 
   .contactNumber,
   .contactEmail {
     text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .contactType {
+    font-size: 12px;
+    font-weight: 300;
+    min-width: auto;
+    margin-bottom: 4px;
   }
 
   .corporateDivider,
@@ -612,15 +694,47 @@
     min-width: auto;
     width: 100%;
     margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 300;
   }
 
   .metaSocials {
     justify-content: center;
     width: 100%;
+    gap: 24px;
+  }
+
+  .metaSocialLink {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* Adjust font weights for mobile */
+  .corporateName {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .corporateTitle,
+  .addressTitle,
+  .contactTitle {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  .addressLines,
+  .contactDetails {
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  .legalInfo {
+    font-size: 11px;
+    font-weight: 300;
   }
 }
 
-/* Mobile phones (480px to 599px) */
+/* Small phones (480px to 599px) */
 @media (max-width: 599px) {
   .footer {
     padding: 70px 0 30px 0;
@@ -654,25 +768,31 @@
 
   .colTitle,
   .middleTitle {
-    font-size: 14px;
+    font-size: 15px;
     letter-spacing: 1.2px;
+    font-weight: 700;
+    text-align: center;
   }
 
   .link {
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 300;
+    text-align: center;
   }
 
   .corporateName {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 700;
   }
 
   .addressLines,
   .contactDetails {
-    font-size: 11px;
+    font-size: 12px;
+    font-weight: 300;
   }
 }
 
-/* Small phones (320px to 479px) */
+/* Extra small phones (320px to 479px) */
 @media (max-width: 479px) {
   .footer {
     padding: 60px 0 25px 0;
@@ -707,6 +827,19 @@
     padding: 0 5px;
   }
 
+  .colTitle,
+  .middleTitle {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .link {
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+  }
+
   .footerBottom {
     gap: 30px;
     padding: 30px 0 20px;
@@ -722,26 +855,56 @@
   .contactType {
     min-width: auto;
     margin-bottom: 2px;
+    font-size: 11px;
+    font-weight: 300;
   }
 
   .contactNumber,
   .contactEmail {
     text-align: center;
     width: 100%;
+    font-size: 13px;
+    font-weight: 500;
   }
 
   .metaSocials {
-    gap: 14px;
+    gap: 18px;
   }
 
   .metaSocialLink {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Adjust font sizes for very small screens */
+  .corporateName {
+    font-size: 15px;
+  }
+
+  .corporateTitle,
+  .addressTitle,
+  .contactTitle {
+    font-size: 11px;
+  }
+
+  .addressLines,
+  .contactDetails {
+    font-size: 11px;
+  }
+
+  .legalInfo {
+    font-size: 10px;
   }
 
   /* Adjust RTL for mobile */
   [dir="rtl"] .contactLine {
     flex-direction: column;
+  }
+
+  [dir="rtl"] .colTitle,
+  [dir="rtl"] .middleTitle,
+  [dir="rtl"] .link {
+    text-align: center;
   }
 }
 
@@ -774,19 +937,23 @@
   .middleTitle {
     font-size: 13px;
     letter-spacing: 1px;
+    font-weight: 700;
+    text-align: center;
   }
 
   .link {
     font-size: 11px;
+    font-weight: 300;
+    text-align: center;
   }
 
   .metaSocials {
-    gap: 10px;
+    gap: 14px;
   }
 
   .metaSocialLink {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -799,11 +966,36 @@
     min-height: 44px;
     display: flex;
     align-items: center;
+    justify-content: center;
+  }
+
+  .link {
+    padding: 12px 0;
   }
 
   .metaSocialLink {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  /* Make touch targets bigger on mobile */
+  @media (max-width: 767px) {
+    .linkItem {
+      margin: 12px 0;
+    }
+
+    .link {
+      min-height: 48px;
+      padding: 14px 0;
+    }
+
+    .contactNumber,
+    .contactEmail {
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
@@ -828,6 +1020,23 @@
 
   .metaSocials {
     display: none !important;
+  }
+
+  .colTitle,
+  .middleTitle,
+  .corporateName {
+    font-weight: 700 !important;
+  }
+
+  .link,
+  .corporateTitle,
+  .addressTitle,
+  .contactTitle,
+  .addressLines,
+  .contactDetails,
+  .legalInfo,
+  .metaCopy {
+    font-weight: 300 !important;
   }
 }
 
@@ -856,4 +1065,24 @@
 
 [dir="rtl"] .contactType {
   text-align: right;
+}
+
+/* RTL text centering for mobile */
+@media (max-width: 767px) {
+  [dir="rtl"] .colTitle,
+  [dir="rtl"] .middleTitle,
+  [dir="rtl"] .link,
+  [dir="rtl"] .corporateBlock,
+  [dir="rtl"] .prestigeAddress,
+  [dir="rtl"] .contactBlock {
+    text-align: center;
+  }
+
+  [dir="rtl"] .contactLine {
+    flex-direction: column;
+  }
+
+  [dir="rtl"] .contactType {
+    text-align: center;
+  }
 }

@@ -7,7 +7,7 @@ export const rivieraRetailsData = {
         "Premium retail spaces in Azizi Riviera, Dubai. Prime commercial investment opportunities with high foot traffic and strategic location in Meydan One.",
       keywords:
         "azizi riviera retails, azizi developments, retail spaces dubai, commercial investment, riviera dubai, retail shops, azizi commercial",
-      canonical: "/projects/retails/azizi/riviera",
+      canonical: "/projects/commercial-retail/azizi/riviera-retails",
     },
 
     project: {
@@ -311,7 +311,7 @@ export const rivieraRetailsData = {
         "مساحات تجارية مميّزة ضمن مشروع عزيزي ريفيرا في ميدان، دبي. فرص استثمارية في محلات التجزئة بموقع حيوي وكثافة سكانية متنامية.",
       keywords:
         "عزيزي ريفيرا تجاري، Azizi Riviera Retails، مساحات تجارية دبي، استثمار تجاري دبي، محلات تجارية ميدان، عزيزي للتطوير العقاري",
-      canonical: "/projects/retails/azizi/riviera",
+      canonical: "/projects/commercial-retail/azizi/riviera-retails",
     },
 
     project: {
