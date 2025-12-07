@@ -132,11 +132,7 @@ export const seahavenPenthouseData = {
             "Starting Price": "AED 51,188,437",
             Handover: "Q4 2026",
           },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-dining-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-master-bedroom-01.jpg",
-          ],
+          images: ["https://luxury-real-estate-media.b-cdn.net/seahaven/1.png"],
           features: [
             "Expansive Living Areas",
             "Private Terrace",
@@ -160,11 +156,7 @@ export const seahavenPenthouseData = {
             "Starting Price": "AED 105,330,810",
             Handover: "Q4 2026",
           },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-foyer-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-pool-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-walk-in-wardrobe-01.jpg",
-          ],
+          images: ["https://luxury-real-estate-media.b-cdn.net/seahaven/2.png"],
           features: [
             "Grand Entrance Foyer",
             "Multiple Living Areas",
@@ -463,11 +455,7 @@ export const seahavenPenthouseData = {
             "Starting Price": "AED 51,188,437",
             Handover: "الربع الرابع 2026",
           },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-living-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-dining-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-master-bedroom-01.jpg",
-          ],
+          images: ["https://luxury-real-estate-media.b-cdn.net/seahaven/1.png"],
           features: [
             "مساحات معيشة واسعة",
             "تراس خاص",
@@ -491,11 +479,7 @@ export const seahavenPenthouseData = {
             "Starting Price": "AED 105,330,810",
             Handover: "الربع الرابع 2026",
           },
-          images: [
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-foyer-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-pool-01.jpg",
-            "https://luxury-real-estate-media.b-cdn.net/seahaven/showcase-walk-in-wardrobe-01.jpg",
-          ],
+          images: ["https://luxury-real-estate-media.b-cdn.net/seahaven/2.png"],
           features: [
             "مدخل فخم مع ردهة واسعة",
             "عدة مناطق للمعيشة والاستقبال",
