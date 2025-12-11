@@ -108,6 +108,13 @@ export const propertiesData = (CDN, t, locale) => ({
               image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
               description: t?.("descriptions.villas") || "Premium villas",
             },
+            {
+              id: 204,
+              title: t?.("projectNames.sobhaElwood") || "Sobha Elwood",
+              slug: "sobha-elwood",
+              image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
+              description: t?.("descriptions.villas") || "Premium villas",
+            },
           ],
         },
         {
@@ -118,7 +125,7 @@ export const propertiesData = (CDN, t, locale) => ({
           logo: `/arada-developer.avif`,
           projects: [
             {
-              id: 204,
+              id: 205,
               title: t?.("projectNames.aradaMassar3") || "Arada Massar 3",
               slug: "massar",
               image: `${CDN}/massar-3/hero-bg.jpg`,
