@@ -99,7 +99,7 @@
   font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 300;
   color: #000000;
-  line-height: 1.05; /* Improved line height */
+  /* line-height: 1.05; */
   margin: 0;
   word-spacing: 0.05em; /* Added word spacing */
 }

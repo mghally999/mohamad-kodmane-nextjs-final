@@ -907,3 +907,233 @@
 .main > *:first-child {
   margin-top: 0; /* Remove any default margins */
 }
+/* =========================================================
+   LTR / RTL SUPPORT (PASTE THIS AT THE BOTTOM OF THE FILE)
+   ========================================================= */
+
+/* Root direction helpers */
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+/* ===== SIDEBAR + MAIN LAYOUT ===== */
+
+/* Default (LTR) */
+.ltr .sidebar {
+  left: 0;
+  right: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: none;
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.5),
+    0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.ltr .main {
+  margin-left: 320px;
+  margin-right: 0;
+}
+
+/* RTL: sidebar on the right, main shifted left */
+.rtl .sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.5),
+    0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+.rtl .main {
+  margin-left: 0;
+  margin-right: 320px;
+}
+
+/* ===== SIDEBAR HEADER ORNAMENT ===== */
+
+.ltr .sidebarOrnament {
+  left: 24px;
+  right: auto;
+  background: linear-gradient(90deg, #000000, transparent);
+}
+
+.rtl .sidebarOrnament {
+  left: auto;
+  right: 24px;
+  background: linear-gradient(270deg, #000000, transparent);
+}
+
+/* ===== SEARCH INPUT (ICON + CLEAR BUTTON) ===== */
+
+.ltr .searchIcon {
+  left: 12px;
+  right: auto;
+}
+
+.ltr .sidebarSearchInput {
+  padding-left: 36px;
+  padding-right: 12px;
+}
+
+.ltr .clearSearchButton {
+  right: 10px;
+  left: auto;
+}
+
+.rtl .searchIcon {
+  right: 12px;
+  left: auto;
+}
+
+.rtl .sidebarSearchInput {
+  padding-right: 36px;
+  padding-left: 12px;
+}
+
+.rtl .clearSearchButton {
+  left: 10px;
+  right: auto;
+}
+
+/* ===== DEVELOPER LIST (LOGO + TEXT) ===== */
+
+.rtl .developerItem {
+  flex-direction: row-reverse;
+}
+
+.ltr .developerLogoWrapper {
+  margin-right: 12px;
+  margin-left: 0;
+}
+
+.rtl .developerLogoWrapper {
+  margin-left: 12px;
+  margin-right: 0;
+}
+
+.ltr .developerText {
+  text-align: left;
+}
+
+.rtl .developerText {
+  text-align: right;
+}
+
+/* Indicator stays at far edge automatically because of flex order */
+
+/* ===== HERO / ABOUT / SECTIONS ALIGNMENT ===== */
+
+.ltr .heroContent {
+  flex-direction: row;
+}
+
+.rtl .heroContent {
+  flex-direction: row-reverse;
+}
+
+.ltr .heroText {
+  text-align: left;
+}
+
+.rtl .heroText {
+  text-align: right;
+}
+
+.ltr .aboutContent {
+  text-align: left;
+}
+
+.rtl .aboutContent {
+  text-align: right;
+}
+
+/* Section headers / subtitles */
+.ltr .sectionHeader {
+  text-align: center;
+}
+
+.rtl .sectionHeader {
+  text-align: right;
+}
+
+.ltr .sectionSubtitle {
+  text-align: center;
+}
+
+.rtl .sectionSubtitle {
+  text-align: right;
+}
+
+/* Results header row (filters summary) */
+.rtl .resultsHeader {
+  flex-direction: row-reverse;
+}
+
+.rtl .resultsInfo {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* ===== MOBILE BEHAVIOR (SIDEBAR SLIDE + TOGGLE POSITION) ===== */
+
+/* At tablet & below: override transforms per direction */
+@media (max-width: 1024px) {
+  /* LTR: slide in from left (default) */
+  .ltr .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .ltr .sidebarMobileOpen {
+    transform: translateX(0);
+  }
+
+  /* RTL: slide in from right */
+  .rtl .sidebar {
+    transform: translateX(100%);
+  }
+
+  .rtl .sidebarMobileOpen {
+    transform: translateX(0);
+  }
+
+  /* Toggle button side */
+  .ltr .mobileSidebarToggle {
+    left: 20px;
+    right: auto;
+  }
+
+  .rtl .mobileSidebarToggle {
+    right: 20px;
+    left: auto;
+  }
+}
+
+/* Smaller screens: keep toggle aligned properly */
+@media (max-width: 768px) {
+  .ltr .mobileSidebarToggle {
+    left: 20px;
+    right: auto;
+  }
+
+  .rtl .mobileSidebarToggle {
+    right: 20px;
+    left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .ltr .mobileSidebarToggle {
+    left: 16px;
+    right: auto;
+  }
+
+  .rtl .mobileSidebarToggle {
+    right: 16px;
+    left: auto;
+  }
+
+  /* Sidebar full-width remains fine in both directions */
+}

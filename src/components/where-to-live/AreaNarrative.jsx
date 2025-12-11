@@ -19,7 +19,7 @@ export default function AreaNarrative({ regionData }) {
   const [activeFeature, setActiveFeature] = useState(0);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !canvasRef.current) return;
 
     // Canvas animation for subtle floating elements
     const canvas = canvasRef.current;
@@ -27,6 +27,7 @@ export default function AreaNarrative({ regionData }) {
     let animationFrame;
 
     const resizeCanvas = () => {
+      if (!sectionRef.current) return;
       canvas.width = sectionRef.current.offsetWidth;
       canvas.height = sectionRef.current.offsetHeight;
     };
@@ -80,7 +81,6 @@ export default function AreaNarrative({ regionData }) {
 
     // GSAP Animations
     const ctxGSAP = gsap.context(() => {
-      // Master timeline with cinematic timing
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -90,17 +90,20 @@ export default function AreaNarrative({ regionData }) {
         },
       });
 
-      // FIXED: Split by words and characters while preserving spaces
-      const titleText = titleRef.current.textContent;
+      // Guard against missing titleRef
+      if (!titleRef.current) return;
+
+      // Split title by words and characters while preserving spaces
+      const titleText = titleRef.current.textContent || "";
       titleRef.current.innerHTML = titleText
-        .split(" ") // Split by words first
+        .split(" ")
         .map((word) =>
           word
-            .split("") // Split each word into characters
+            .split("")
             .map((char) => `<span class="${styles.char}">${char}</span>`)
             .join("")
         )
-        .join(`<span class="${styles.space}">&nbsp;</span>`); // Add proper space elements
+        .join(`<span class="${styles.space}">&nbsp;</span>`);
 
       const chars = titleRef.current.querySelectorAll(`.${styles.char}`);
       const spaces = titleRef.current.querySelectorAll(`.${styles.space}`);
@@ -137,74 +140,82 @@ export default function AreaNarrative({ regionData }) {
           stagger: 0.01,
           ease: "power2.out",
         },
-        "-=1.0" // Start slightly after characters begin
+        "-=1.0"
       );
 
-      // Subtitle with elegant fade in
-      tl.fromTo(
-        subtitleRef.current,
-        {
-          x: -40,
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.out",
-        },
-        "-=0.6"
-      );
+      // Subtitle
+      if (subtitleRef.current) {
+        tl.fromTo(
+          subtitleRef.current,
+          {
+            x: -40,
+            opacity: 0,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.6"
+        );
+      }
 
-      // Features with graceful entrance
-      tl.fromTo(
-        featuresRef.current.children,
-        {
-          y: 60,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power2.out",
-        },
-        "-=0.4"
-      );
+      // Features
+      if (featuresRef.current) {
+        tl.fromTo(
+          featuresRef.current.children,
+          {
+            y: 60,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        );
+      }
 
-      // Nutshell section with unfolding effect
-      tl.fromTo(
-        nutshellRef.current,
-        {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-          opacity: 0,
-        },
-        {
-          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-          opacity: 1,
-          duration: 1.2,
-          ease: "power2.inOut",
-        },
-        "-=0.2"
-      );
+      // Nutshell section
+      if (nutshellRef.current) {
+        tl.fromTo(
+          nutshellRef.current,
+          {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+            opacity: 0,
+          },
+          {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+            opacity: 1,
+            duration: 1.2,
+            ease: "power2.inOut",
+          },
+          "-=0.2"
+        );
+      }
 
-      // Neighborhood cards with floating effect
-      tl.fromTo(
-        neighborhoodRef.current.children,
-        {
-          y: 80,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.15,
-          ease: "power2.out",
-        },
-        "-=0.3"
-      );
+      // Neighborhood cards
+      if (neighborhoodRef.current) {
+        tl.fromTo(
+          neighborhoodRef.current.children,
+          {
+            y: 80,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.3"
+        );
+      }
     }, sectionRef);
 
     return () => {
@@ -217,6 +228,14 @@ export default function AreaNarrative({ regionData }) {
   const handleFeatureHover = (index) => {
     setActiveFeature(index);
   };
+
+  const nutshellTitle = regionData.highlights?.nutshellTitle || "In a Nutshell";
+
+  const neighbourhoodOverviewTitle =
+    regionData.neighbourhoodTitles?.overview || "Neighborhood Overview";
+
+  const neighbourhoodPropertiesTitle =
+    regionData.neighbourhoodTitles?.properties || "Property Landscape";
 
   return (
     <section ref={sectionRef} className={styles.narrativeSection}>
@@ -266,7 +285,7 @@ export default function AreaNarrative({ regionData }) {
         {/* Premium Nutshell Section */}
         <div ref={nutshellRef} className={styles.nutshellSection}>
           <div className={styles.nutshellHeader}>
-            <h2 className={styles.nutshellTitle}>In a Nutshell</h2>
+            <h2 className={styles.nutshellTitle}>{nutshellTitle}</h2>
             <div className={styles.titleEmbellishment}></div>
           </div>
           <div className={styles.nutshellContent}>
@@ -284,7 +303,9 @@ export default function AreaNarrative({ regionData }) {
             <div className={styles.neighborhoodCard}>
               <div className={styles.cardEmbellishment}></div>
               <div className={styles.cardHeader}>
-                <h3 className={styles.cardTitle}>Neighborhood Overview</h3>
+                <h3 className={styles.cardTitle}>
+                  {neighbourhoodOverviewTitle}
+                </h3>
                 <div className={styles.cardIndicator}>→</div>
               </div>
               <div className={styles.cardContent}>
@@ -298,7 +319,9 @@ export default function AreaNarrative({ regionData }) {
             <div className={styles.neighborhoodCard}>
               <div className={styles.cardEmbellishment}></div>
               <div className={styles.cardHeader}>
-                <h3 className={styles.cardTitle}>Property Landscape</h3>
+                <h3 className={styles.cardTitle}>
+                  {neighbourhoodPropertiesTitle}
+                </h3>
                 <div className={styles.cardIndicator}>→</div>
               </div>
               <div className={styles.cardContent}>

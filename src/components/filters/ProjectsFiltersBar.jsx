@@ -2,31 +2,85 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
 import styles from "@/styles/filter/ProjectsFiltersBar.module.css";
 
-const devStatusOptions = ["Completed", "Presale", "Under Construction"];
-
-const unitTypeOptions = [
-  "Apartments",
-  "Villa",
-  "Townhouse",
-  "Duplex",
-  "Penthouse",
-  "Retail",
+// Status options stored as stable keys (what you save in filters),
+// labels come from translations
+const devStatusOptions = [
+  {
+    value: "completed",
+    labelKey: "whereToLive.filters.devStatusOptions.completed",
+  },
+  {
+    value: "presale",
+    labelKey: "whereToLive.filters.devStatusOptions.presale",
+  },
+  {
+    value: "underConstruction",
+    labelKey: "whereToLive.filters.devStatusOptions.underConstruction",
+  },
 ];
 
+// Unit types – values are stable keys, labels from translations
+const unitTypeOptions = [
+  {
+    value: "apartments",
+    labelKey: "whereToLive.filters.unitTypeOptions.apartments",
+  },
+  {
+    value: "villa",
+    labelKey: "whereToLive.filters.unitTypeOptions.villa",
+  },
+  {
+    value: "townhouse",
+    labelKey: "whereToLive.filters.unitTypeOptions.townhouse",
+  },
+  {
+    value: "duplex",
+    labelKey: "whereToLive.filters.unitTypeOptions.duplex",
+  },
+  {
+    value: "penthouse",
+    labelKey: "whereToLive.filters.unitTypeOptions.penthouse",
+  },
+  {
+    value: "retail",
+    labelKey: "whereToLive.filters.unitTypeOptions.retail",
+  },
+];
+
+// Bedrooms – numeric values kept as-is, labels translated
 const bedroomOptions = [
-  { label: "Studio", value: 0 },
-  { label: "1 BR", value: 1 },
-  { label: "2 BR", value: 2 },
-  { label: "3 BR", value: 3 },
-  { label: "4 BR", value: 4 },
-  { label: "5+ BR", value: 5 },
+  {
+    value: 0,
+    labelKey: "whereToLive.filters.bedroomOptions.studio",
+  },
+  {
+    value: 1,
+    labelKey: "whereToLive.filters.bedroomOptions.one",
+  },
+  {
+    value: 2,
+    labelKey: "whereToLive.filters.bedroomOptions.two",
+  },
+  {
+    value: 3,
+    labelKey: "whereToLive.filters.bedroomOptions.three",
+  },
+  {
+    value: 4,
+    labelKey: "whereToLive.filters.bedroomOptions.four",
+  },
+  {
+    value: 5,
+    labelKey: "whereToLive.filters.bedroomOptions.fivePlus",
+  },
 ];
 
 // Luxury Dubai property ranges
-const PRICE_RANGE = { min: 0, max: 100000000 }; // 50 million AED for luxury properties
-const SIZE_RANGE = { min: 0, max: 100000 }; // 50,000 sqft for luxury villas
+const PRICE_RANGE = { min: 0, max: 100000000 };
+const SIZE_RANGE = { min: 0, max: 100000 };
 
 // Utility functions for number formatting
 const formatNumber = (num) => {
@@ -36,15 +90,15 @@ const formatNumber = (num) => {
 
 const parseFormattedNumber = (str) => {
   const cleaned = str.replace(/,/g, "").replace(/\s/g, "");
-  return cleaned ? parseInt(cleaned) : "";
+  return cleaned ? parseInt(cleaned, 10) : "";
 };
 
 const RangeSlider = ({ min, max, values, onChange, formatLabel }) => {
   const handleChange = (index, value) => {
     const newValues = [...values];
-    newValues[index] = parseInt(value);
+    newValues[index] = parseInt(value, 10);
 
-    // Ensure min doesn't exceed max and vice versa
+    // Keep ranges valid
     if (index === 0 && newValues[0] > newValues[1]) {
       newValues[1] = newValues[0];
     } else if (index === 1 && newValues[1] < newValues[0]) {
@@ -91,6 +145,8 @@ export default function ProjectsFiltersBar({
   onChange,
   onOpenFullFilters,
 }) {
+  const { t } = useLanguage();
+
   const [openDropdown, setOpenDropdown] = useState(null);
   const [priceRange, setPriceRange] = useState([
     PRICE_RANGE.min,
@@ -194,14 +250,14 @@ export default function ProjectsFiltersBar({
   return (
     <div className={styles.stickyWrapper}>
       <div className={styles.filtersBar}>
-        {/* Left side: Map + Search & Filters */}
+        {/* Left side: Search & Filters button */}
         <div className={styles.leftGroup}>
           <button
             className={styles.searchFiltersButton}
             onClick={onOpenFullFilters}
           >
             <span className={styles.iconCircle}>🔍</span>
-            <span>Search &amp; filters</span>
+            <span>{t("whereToLive.filters.searchAndFilters")}</span>
             {hasActiveFilters && (
               <span className={styles.activeDot} aria-hidden="true" />
             )}
@@ -220,7 +276,7 @@ export default function ProjectsFiltersBar({
               }`}
               onClick={() => toggleDropdown("price")}
             >
-              <span>Price</span>
+              <span>{t("whereToLive.filters.price")}</span>
               {(filters.minPrice || filters.maxPrice) && (
                 <span className={styles.filterBadge}>•</span>
               )}
@@ -229,12 +285,12 @@ export default function ProjectsFiltersBar({
             {openDropdown === "price" && (
               <div className={styles.dropdownMenu}>
                 <div className={styles.dropdownHeader}>
-                  <h4>Price Range (AED)</h4>
+                  <h4>{t("whereToLive.filters.priceRangeLabel")}</h4>
                   <button
                     className={styles.clearButton}
                     onClick={() => clearFilter(["minPrice", "maxPrice"])}
                   >
-                    Clear
+                    {t("common.clear")}
                   </button>
                 </div>
 
@@ -243,15 +299,19 @@ export default function ProjectsFiltersBar({
                   max={PRICE_RANGE.max}
                   values={priceRange}
                   onChange={handlePriceRangeChange}
-                  formatLabel={(value) => `AED ${formatNumber(value)}`}
+                  formatLabel={(value) =>
+                    t("whereToLive.filters.priceRangeValue", {
+                      value: formatNumber(value),
+                    })
+                  }
                 />
 
                 <div className={styles.rangeRow}>
                   <div className={styles.rangeField}>
-                    <label>Minimum price</label>
+                    <label>{t("whereToLive.filters.minPriceLabel")}</label>
                     <input
                       type="text"
-                      placeholder="From"
+                      placeholder={t("common.from")}
                       value={formatNumber(filters.minPrice) || ""}
                       onChange={(e) =>
                         handleFormattedInputChange("minPrice", e.target.value)
@@ -259,10 +319,10 @@ export default function ProjectsFiltersBar({
                     />
                   </div>
                   <div className={styles.rangeField}>
-                    <label>Maximum price</label>
+                    <label>{t("whereToLive.filters.maxPriceLabel")}</label>
                     <input
                       type="text"
-                      placeholder="To"
+                      placeholder={t("common.to")}
                       value={formatNumber(filters.maxPrice) || ""}
                       onChange={(e) =>
                         handleFormattedInputChange("maxPrice", e.target.value)
@@ -284,7 +344,7 @@ export default function ProjectsFiltersBar({
               }`}
               onClick={() => toggleDropdown("size")}
             >
-              <span>Size</span>
+              <span>{t("whereToLive.filters.size")}</span>
               {(filters.minSize || filters.maxSize) && (
                 <span className={styles.filterBadge}>•</span>
               )}
@@ -293,12 +353,12 @@ export default function ProjectsFiltersBar({
             {openDropdown === "size" && (
               <div className={styles.dropdownMenu}>
                 <div className={styles.dropdownHeader}>
-                  <h4>Size Range (sqft)</h4>
+                  <h4>{t("whereToLive.filters.sizeRangeLabel")}</h4>
                   <button
                     className={styles.clearButton}
                     onClick={() => clearFilter(["minSize", "maxSize"])}
                   >
-                    Clear
+                    {t("common.clear")}
                   </button>
                 </div>
 
@@ -307,15 +367,19 @@ export default function ProjectsFiltersBar({
                   max={SIZE_RANGE.max}
                   values={sizeRange}
                   onChange={handleSizeRangeChange}
-                  formatLabel={(value) => `${formatNumber(value)} sqft`}
+                  formatLabel={(value) =>
+                    t("whereToLive.filters.sizeRangeValue", {
+                      value: formatNumber(value),
+                    })
+                  }
                 />
 
                 <div className={styles.rangeRow}>
                   <div className={styles.rangeField}>
-                    <label>Minimum size</label>
+                    <label>{t("whereToLive.filters.minSizeLabel")}</label>
                     <input
                       type="text"
-                      placeholder="From"
+                      placeholder={t("common.from")}
                       value={formatNumber(filters.minSize) || ""}
                       onChange={(e) =>
                         handleFormattedInputChange("minSize", e.target.value)
@@ -323,10 +387,10 @@ export default function ProjectsFiltersBar({
                     />
                   </div>
                   <div className={styles.rangeField}>
-                    <label>Maximum size</label>
+                    <label>{t("whereToLive.filters.maxSizeLabel")}</label>
                     <input
                       type="text"
-                      placeholder="To"
+                      placeholder={t("common.to")}
                       value={formatNumber(filters.maxSize) || ""}
                       onChange={(e) =>
                         handleFormattedInputChange("maxSize", e.target.value)
@@ -346,7 +410,7 @@ export default function ProjectsFiltersBar({
               }`}
               onClick={() => toggleDropdown("unitType")}
             >
-              <span>Unit Type</span>
+              <span>{t("whereToLive.filters.unitType")}</span>
               {filters.unitTypes?.length > 0 && (
                 <span className={styles.filterBadge}>
                   {filters.unitTypes.length}
@@ -357,26 +421,26 @@ export default function ProjectsFiltersBar({
             {openDropdown === "unitType" && (
               <div className={styles.dropdownMenu}>
                 <div className={styles.dropdownHeader}>
-                  <h4>Property Type</h4>
+                  <h4>{t("whereToLive.filters.unitTypeLabel")}</h4>
                   <button
                     className={styles.clearButton}
                     onClick={() => clearFilter(["unitTypes"])}
                   >
-                    Clear
+                    {t("common.clear")}
                   </button>
                 </div>
                 <div className={styles.chipGrid}>
                   {unitTypeOptions.map((type) => (
                     <button
-                      key={type}
+                      key={type.value}
                       className={`${styles.chip} ${
-                        filters.unitTypes?.includes(type)
+                        filters.unitTypes?.includes(type.value)
                           ? styles.chipActive
                           : ""
                       }`}
-                      onClick={() => toggleArrayFilter("unitTypes", type)}
+                      onClick={() => toggleArrayFilter("unitTypes", type.value)}
                     >
-                      {type}
+                      {t(type.labelKey)}
                     </button>
                   ))}
                 </div>
@@ -392,7 +456,7 @@ export default function ProjectsFiltersBar({
               }`}
               onClick={() => toggleDropdown("devStatus")}
             >
-              <span>Status</span>
+              <span>{t("whereToLive.filters.status")}</span>
               {filters.devStatus?.length > 0 && (
                 <span className={styles.filterBadge}>
                   {filters.devStatus.length}
@@ -403,26 +467,28 @@ export default function ProjectsFiltersBar({
             {openDropdown === "devStatus" && (
               <div className={styles.dropdownMenu}>
                 <div className={styles.dropdownHeader}>
-                  <h4>Development Status</h4>
+                  <h4>{t("whereToLive.filters.statusLabel")}</h4>
                   <button
                     className={styles.clearButton}
                     onClick={() => clearFilter(["devStatus"])}
                   >
-                    Clear
+                    {t("common.clear")}
                   </button>
                 </div>
                 <div className={styles.chipRow}>
                   {devStatusOptions.map((status) => (
                     <button
-                      key={status}
+                      key={status.value}
                       className={`${styles.chip} ${
-                        filters.devStatus?.includes(status)
+                        filters.devStatus?.includes(status.value)
                           ? styles.chipActive
                           : ""
                       }`}
-                      onClick={() => toggleArrayFilter("devStatus", status)}
+                      onClick={() =>
+                        toggleArrayFilter("devStatus", status.value)
+                      }
                     >
-                      {status}
+                      {t(status.labelKey)}
                     </button>
                   ))}
                 </div>
@@ -438,7 +504,7 @@ export default function ProjectsFiltersBar({
               }`}
               onClick={() => toggleDropdown("bedrooms")}
             >
-              <span>Bedrooms</span>
+              <span>{t("whereToLive.filters.bedrooms")}</span>
               {filters.bedrooms?.length > 0 && (
                 <span className={styles.filterBadge}>
                   {filters.bedrooms.length}
@@ -449,12 +515,12 @@ export default function ProjectsFiltersBar({
             {openDropdown === "bedrooms" && (
               <div className={styles.dropdownMenu}>
                 <div className={styles.dropdownHeader}>
-                  <h4>Bedrooms</h4>
+                  <h4>{t("whereToLive.filters.bedroomsLabel")}</h4>
                   <button
                     className={styles.clearButton}
                     onClick={() => clearFilter(["bedrooms"])}
                   >
-                    Clear
+                    {t("common.clear")}
                   </button>
                 </div>
                 <div className={styles.chipRow}>
@@ -468,7 +534,7 @@ export default function ProjectsFiltersBar({
                       }`}
                       onClick={() => toggleBedroom(b.value)}
                     >
-                      {b.label}
+                      {t(b.labelKey)}
                     </button>
                   ))}
                 </div>

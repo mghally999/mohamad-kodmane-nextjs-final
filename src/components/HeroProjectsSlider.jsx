@@ -62,7 +62,6 @@ export default function HeroProjectsSlider() {
 
   return (
     <>
-      {/* Full viewport hero */}
       <section className={styles.hero}>
         {/* Keyed wrapper to restart animations when slide changes */}
         <div key={activeProject.id} className={styles.mediaWrapper}>
@@ -118,9 +117,6 @@ export default function HeroProjectsSlider() {
           </div>
         </div>
       </section>
-
-      {/* Optional: to push main content below hero if needed */}
-      {/* <div className={styles.dummyHeight} /> */}
     </>
   );
 }

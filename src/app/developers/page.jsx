@@ -1,14 +1,18 @@
+// src/app/developers/page.jsx
 "use client";
 
 import React, { useMemo, useState, useEffect, useRef } from "react";
+import { useLanguage } from "@/components/LanguageProvider";
 import { developersDetails } from "@/data/developersData/developerDetails";
 import { getProjectsByDeveloper } from "@/data/regionProjectsIndex";
+
 import ProjectsFiltersBar from "@/components/filters/ProjectsFiltersBar";
 import ProjectsFiltersModal from "@/components/filters/ProjectsFiltersModal";
 import ProjectCards from "@/components/projects/ProjectCards";
 import DeveloperHero from "@/components/developer/DeveloperHero";
 import DeveloperAbout from "@/components/developer/DeveloperAbout";
 import DeveloperStats from "@/components/developer/DeveloperStats";
+
 import styles from "@/styles/developer/DevelopersDashboard.module.css";
 
 const INITIAL_FILTERS = {
@@ -26,6 +30,11 @@ const INITIAL_FILTERS = {
 };
 
 export default function DevelopersDashboardPage() {
+  const { t, locale } = useLanguage();
+
+  // 🔥 RTL / LTR detection
+  const isRTL = locale === "ar" || locale?.startsWith("ar");
+
   const developersArray = Object.values(developersDetails || {});
   const [activeDeveloperSlug, setActiveDeveloperSlug] = useState(
     developersArray[0]?.slug || ""
@@ -149,7 +158,6 @@ export default function DevelopersDashboardPage() {
     setFilters(INITIAL_FILTERS);
     setIsMobileSidebarOpen(false);
 
-    // Scroll to top when switching developers
     if (mainContentRef.current) {
       mainContentRef.current.scrollTop = 0;
     }
@@ -162,7 +170,11 @@ export default function DevelopersDashboardPage() {
   // Close mobile sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileSidebarOpen && !sidebarRef.current?.contains(event.target)) {
+      if (
+        isMobileSidebarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target)
+      ) {
         setIsMobileSidebarOpen(false);
       }
     };
@@ -174,21 +186,71 @@ export default function DevelopersDashboardPage() {
   if (!activeDeveloper) {
     return (
       <div className={styles.emptyState}>
-        <h2>No developers configured</h2>
-        <p>Add entries in developersDetails to use this page.</p>
+        <h2>
+          {t("developersDashboard.empty.title") || "No developers configured"}
+        </h2>
+        <p>
+          {t("developersDashboard.empty.description") ||
+            "Add entries in developersDetails to use this page."}
+        </p>
       </div>
     );
   }
 
+  const developersLabel =
+    t("developersDashboard.sidebar.title") || "Developers";
+
+  const searchPlaceholder =
+    t("developersDashboard.sidebar.searchPlaceholder") ||
+    "Search developers...";
+
+  const searchResultsInfo = (count) =>
+    t("developersDashboard.sidebar.searchResultsInfo", { count }) ||
+    `${count} developer${count !== 1 ? "s" : ""} found`;
+
+  const sidebarFooterCount = (visible, total) =>
+    t("developersDashboard.sidebar.footerCount", {
+      visible,
+      total,
+    }) || `${visible} of ${total} developers`;
+
+  const portfolioTitle =
+    t("developersDashboard.projects.title") || "Portfolio Collection";
+
+  const portfolioSubtitle =
+    t("developersDashboard.projects.subtitle", {
+      developer: activeDeveloper.name,
+    }) ||
+    `Curated selection of ${activeDeveloper.name}'s exceptional developments`;
+
+  const clearAllLabel =
+    t("developersDashboard.filters.clearAll") || "Clear all";
+
+  const resultsInfoText = (projectCount, name, filterCount) =>
+    t("developersDashboard.projects.resultsInfo", {
+      count: projectCount,
+      developer: name,
+      filters: filterCount,
+    }) ||
+    `${projectCount} projects by ${name} ${
+      filterCount > 0
+        ? `(${filterCount} filter${filterCount !== 1 ? "s" : ""} applied)`
+        : ""
+    }`;
+
   return (
-    <div className={styles.pageWrapper}>
+    <div
+      className={`${styles.pageWrapper} ${isRTL ? styles.rtl : styles.ltr}`}
+      dir={isRTL ? "rtl" : "ltr"}
+      lang={locale || "en"}
+    >
       {/* MOBILE SIDEBAR TOGGLE */}
       <button
         className={styles.mobileSidebarToggle}
         onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
       >
         <span className={styles.toggleIcon}>☰</span>
-        <span>Developers</span>
+        <span>{developersLabel}</span>
       </button>
 
       {/* LUXURY GLASS SIDEBAR WITH INTERNAL SCROLL */}
@@ -199,7 +261,7 @@ export default function DevelopersDashboardPage() {
         }`}
       >
         <div className={styles.sidebarHeader}>
-          <span className={styles.sidebarLabel}>Developers</span>
+          <span className={styles.sidebarLabel}>{developersLabel}</span>
           <div className={styles.sidebarOrnament}></div>
 
           {/* MOBILE CLOSE BUTTON */}
@@ -230,7 +292,7 @@ export default function DevelopersDashboardPage() {
             </svg>
             <input
               type="text"
-              placeholder="Search developers..."
+              placeholder={searchPlaceholder}
               value={sidebarSearch}
               onChange={(e) => setSidebarSearch(e.target.value)}
               className={styles.sidebarSearchInput}
@@ -246,8 +308,7 @@ export default function DevelopersDashboardPage() {
           </div>
           {sidebarSearch && (
             <div className={styles.searchResultsInfo}>
-              {filteredDevelopers.length} developer
-              {filteredDevelopers.length !== 1 ? "s" : ""} found
+              {searchResultsInfo(filteredDevelopers.length)}
             </div>
           )}
         </div>
@@ -289,12 +350,16 @@ export default function DevelopersDashboardPage() {
               ))
             ) : (
               <div className={styles.noResults}>
-                <span>No developers found</span>
+                <span>
+                  {t("developersDashboard.sidebar.noResults") ||
+                    "No developers found"}
+                </span>
                 <button
                   onClick={clearSidebarSearch}
                   className={styles.clearSearchText}
                 >
-                  Clear search
+                  {t("developersDashboard.sidebar.clearSearch") ||
+                    "Clear search"}
                 </button>
               </div>
             )}
@@ -304,7 +369,10 @@ export default function DevelopersDashboardPage() {
         {/* SIDEBAR FOOTER */}
         <div className={styles.sidebarFooter}>
           <div className={styles.developerCount}>
-            {filteredDevelopers.length} of {developersArray.length} developers
+            {sidebarFooterCount(
+              filteredDevelopers.length,
+              developersArray.length
+            )}
           </div>
           <div className={styles.glowOrb}></div>
         </div>
@@ -325,11 +393,8 @@ export default function DevelopersDashboardPage() {
         <section className={styles.projectsSection}>
           <div className={styles.sectionHeader}>
             <div className={styles.headerOrnament}></div>
-            <h2 className={styles.sectionTitle}>Portfolio Collection</h2>
-            <p className={styles.sectionSubtitle}>
-              Curated selection of {activeDeveloper.name}'s exceptional
-              developments
-            </p>
+            <h2 className={styles.sectionTitle}>{portfolioTitle}</h2>
+            <p className={styles.sectionSubtitle}>{portfolioSubtitle}</p>
           </div>
 
           {/* FILTERS */}
@@ -354,15 +419,12 @@ export default function DevelopersDashboardPage() {
           <div className={styles.resultsHeader}>
             <div className={styles.resultsInfo}>
               <span className={styles.resultsCount}>
-                <strong>{filteredProjects.length}</strong> projects by{" "}
-                <strong>{activeDeveloper.name}</strong>
+                {resultsInfoText(
+                  filteredProjects.length,
+                  activeDeveloper.name,
+                  activeFilterCount
+                )}
               </span>
-              {activeFilterCount > 0 && (
-                <span className={styles.filterCount}>
-                  ({activeFilterCount} filter
-                  {activeFilterCount !== 1 ? "s" : ""} applied)
-                </span>
-              )}
             </div>
 
             {activeFilterCount > 0 && (
@@ -371,7 +433,7 @@ export default function DevelopersDashboardPage() {
                 onClick={handleResetFilters}
                 className={styles.clearFiltersBtn}
               >
-                <span>Clear all</span>
+                <span>{clearAllLabel}</span>
                 <div className={styles.clearIcon}>×</div>
               </button>
             )}

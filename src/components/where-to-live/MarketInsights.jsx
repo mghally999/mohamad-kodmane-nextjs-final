@@ -1,26 +1,33 @@
-// components/where-to-live/MarketInsights.jsx
 "use client";
 
 import React from "react";
 import styles from "@/styles/where-to-live/MarketInsights.module.css";
 
-export default function MarketInsights({ regionData }) {
+export default function MarketInsights({ regionData, lang = "en" }) {
   return (
     <section className={styles.marketSection}>
       <div className={styles.marketPill}>
         <div className={styles.container}>
+          {/* HEADER */}
           <div className={styles.marketHeader}>
-            <h2 className={styles.marketTitle}>Market Insights</h2>
-            <p className={styles.marketSubtitle}>Financial Intelligence</p>
+            <h2 className={styles.marketTitle}>
+              {regionData.translations?.market?.title}
+            </h2>
+            <p className={styles.marketSubtitle}>
+              {regionData.translations?.market?.subtitle}
+            </p>
           </div>
 
           <div className={styles.marketGrid}>
-            {/* Rental Trends */}
+            {/* RENTAL TRENDS */}
             <div className={styles.marketCard}>
               <div className={styles.cardHeader}>
-                <h3 className={styles.cardTitle}>Rental Trends</h3>
+                <h3 className={styles.cardTitle}>
+                  {regionData.translations?.market?.rentalTrends}
+                </h3>
                 <div className={styles.cardDivider}></div>
               </div>
+
               <div className={styles.dataList}>
                 {regionData.market.rentalTrends.map((trend, index) => (
                   <div key={index} className={styles.dataItem}>
@@ -33,12 +40,15 @@ export default function MarketInsights({ regionData }) {
               </div>
             </div>
 
-            {/* Sales Trends */}
+            {/* SALES TRENDS */}
             <div className={styles.marketCard}>
               <div className={styles.cardHeader}>
-                <h3 className={styles.cardTitle}>Sales Trends</h3>
+                <h3 className={styles.cardTitle}>
+                  {regionData.translations?.market?.salesTrends}
+                </h3>
                 <div className={styles.cardDivider}></div>
               </div>
+
               <div className={styles.dataList}>
                 {regionData.market.salesTrends.map((trend, index) => (
                   <div key={index} className={styles.dataItem}>
@@ -54,9 +64,12 @@ export default function MarketInsights({ regionData }) {
             {/* ROI */}
             <div className={styles.marketCard}>
               <div className={styles.cardHeader}>
-                <h3 className={styles.cardTitle}>Return on Investment</h3>
+                <h3 className={styles.cardTitle}>
+                  {regionData.translations?.market?.roi}
+                </h3>
                 <div className={styles.cardDivider}></div>
               </div>
+
               <div className={styles.dataList}>
                 {regionData.market.roiByType.map((roi, index) => (
                   <div key={index} className={styles.dataItem}>
@@ -70,12 +83,15 @@ export default function MarketInsights({ regionData }) {
             </div>
           </div>
 
-          {/* Popular Buildings */}
+          {/* POPULAR BUILDINGS */}
           <div className={styles.buildingsSection}>
             <div className={styles.buildingsHeader}>
-              <h3 className={styles.buildingsTitle}>Popular Buildings</h3>
+              <h3 className={styles.buildingsTitle}>
+                {regionData.translations?.market?.popularBuildings}
+              </h3>
               <div className={styles.titleDivider}></div>
             </div>
+
             <div className={styles.buildingsGrid}>
               {regionData.market.popularBuildings.map((building, index) => (
                 <div key={index} className={styles.buildingCard}>

@@ -48,6 +48,22 @@ export const propertiesData = (CDN, t, locale) => ({
               description:
                 t?.("descriptions.apartments") || "Luxury apartments",
             },
+            {
+              id: 105,
+              title: t?.("projectNames.sobhaOrbis") || "Sobha Orbis",
+              slug: "orbis",
+              image: `${CDN}/sobha-orbis/A%20(5)-.jpg`,
+              description:
+                t?.("descriptions.apartments") || "Luxury apartments",
+            },
+            {
+              id: 106,
+              title: t?.("projectNames.sobhaVerde") || "Sobha Verde",
+              slug: "verde",
+              image: `${CDN}/sobha-orbis/A%20(5)-.jpg`,
+              description:
+                t?.("descriptions.apartments") || "Luxury apartments",
+            },
           ],
         },
       ],

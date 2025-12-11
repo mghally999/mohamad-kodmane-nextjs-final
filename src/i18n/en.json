@@ -23,6 +23,8 @@
     "sobhaAquaCrest": "Sobha AquaCrest",
     "sobhaCentral": "Sobha Central",
     "sobhaAquamont": "Sobha Aquamont",
+    "sobhaOrbis": "Sobha Orbis",
+    "sobhaVerde": "Sobha Verde",
     "sobhaHartland2Villas": "Sobha Hartland Villas",
     "sobhaAlSinniyyahIsland": "Al Sinniyyah Island",
     "aradaMassar3": "Masaar",
@@ -99,6 +101,46 @@
       "avgBuy": "Townhouses from AED 1.6M",
       "avgRent": "Townhouses from AED 110K / year",
       "roi": "5–7% estimated ROI"
+    },
+    "filters": {
+      "searchAndFilters": "Search & filters",
+      "price": "Price",
+      "priceRangeLabel": "Price Range (AED)",
+      "priceRangeValue": "AED {{value}}",
+      "minPriceLabel": "Minimum price",
+      "maxPriceLabel": "Maximum price",
+      "size": "Size",
+      "sizeRangeLabel": "Size Range (sqft)",
+      "sizeRangeValue": "{{value}} sqft",
+      "minSizeLabel": "Minimum size",
+      "maxSizeLabel": "Maximum size",
+      "unitType": "Unit type",
+      "unitTypeLabel": "Property Type",
+      "status": "Status",
+      "statusLabel": "Development Status",
+      "bedrooms": "Bedrooms",
+      "bedroomsLabel": "Bedrooms",
+      "unitTypeOptions": {
+        "apartments": "Apartments",
+        "villa": "Villa",
+        "townhouse": "Townhouse",
+        "duplex": "Duplex",
+        "penthouse": "Penthouse",
+        "retail": "Retail"
+      },
+      "devStatusOptions": {
+        "completed": "Completed",
+        "presale": "Presale",
+        "underConstruction": "Under Construction"
+      },
+      "bedroomOptions": {
+        "studio": "Studio",
+        "one": "1 BR",
+        "two": "2 BR",
+        "three": "3 BR",
+        "four": "4 BR",
+        "fivePlus": "5+ BR"
+      }
     }
   },
   "homeSlider": {
@@ -153,6 +195,14 @@
         "location": "Sheikh Zayed Road, Dubai"
       },
       "aquamont": {
+        "category": "Apartments",
+        "location": "Dubai, UAE"
+      },
+      "orbis": {
+        "category": "Apartments",
+        "location": "Dubai, UAE"
+      },
+      "verde": {
         "category": "Apartments",
         "location": "Dubai, UAE"
       },
@@ -313,11 +363,9 @@
   "cta": {
     "whatsapp": "WHATSAPP"
   },
-
   "aboutHero": {
     "description1": "Mohamad Kodmani is a real estate investment specialist in Dubai with a clear vision and a professional approach that combines innovation, experience, and precise analysis of market opportunities.",
     "description2": "His career spanning contracting, business development, and real estate investment has enabled him to help hundreds of investors make successful purchase decisions and build profitable real estate portfolios.",
-
     "yearsNumber": "18",
     "yearsPlus": "+",
     "labelTop": "Years of",
@@ -325,20 +373,16 @@
     "line1": "Innovation",
     "line2": "& Expertise",
     "since": "Since 2006",
-
     "imageAltDesk": "Luxury real estate development",
     "imageAltMob": "Real estate mobile banner"
   },
-
   "buildingExcellence": {
     "heading": {
       "line1": "Real Estate Decisions",
       "line2": "That Build Wealth,",
       "line3": "Not Just Properties"
     },
-
     "paragraph": "At <strong>Mohamad Kodmani Real Estate Brokerage</strong>, we do not simply sell units; we design complete investment strategies. Every recommendation is based on transparent information, realistic market analysis and a clear plan that balances capital appreciation, rental income and risk. In just two years, our team has helped investors close more than AED 170 million in transactions with returns above 8% annually, by entering the right projects at the right time.",
-
     "stats": [
       {
         "count": "19",
@@ -356,10 +400,8 @@
         "label": "Annual targeted returns for structured strategies."
       }
     ],
-
     "dividerAlt": "Decorative section divider"
   },
-
   "aboutBuildingExcellence": {
     "heading": "Real Estate Decisions That Build Wealth, Not Just Properties",
     "lead": "At Mohamad Kodmani Real Estate Brokerage, we do not simply sell units; we design complete investment strategies. Every recommendation is based on transparent information, realistic market analysis and a clear plan that balances capital appreciation, rental income and risk. In just two years, our team has helped investors close more than AED 170 million in transactions with returns above 8% annually, by entering the right projects at the right time.",
@@ -378,12 +420,9 @@
       }
     }
   },
-
   "services": {
     "title": "What We Do for Our Investors",
-
-    "intro": "At <span class='brandHighlight'>Mohamad Kodmani Real Estate Brokerage</span>, we do much more than sell properties. We analyse your goals, design a clear strategy, and execute every step with you — from selecting the right project to handover, leasing, resale, and furnishing.",
-
+    "intro": "At <span class=\"brandHighlight\">Mohamad Kodmani Real Estate Brokerage</span>, we do much more than sell properties. We analyse your goals, design a clear strategy, and execute every step with you — from selecting the right project to handover, leasing, resale, and furnishing.",
     "cards": [
       {
         "title": "Investment Advisory & Off-Plan Strategy",
@@ -413,10 +452,8 @@
         ]
       }
     ],
-
-    "footer": "With us, you gain a long-term investment partner who understands the Dubai market, reads its trends, and guides you toward the <strong class='highlight'>best possible results with the least possible risk</strong>."
+    "footer": "With us, you gain a long-term investment partner who understands the Dubai market, reads its trends, and guides you toward the <strong class=\"highlight\">best possible results with the least possible risk</strong>."
   },
-
   "aboutServices": {
     "sectionTitle": "What We Do for Our Investors",
     "intro": "At Mohamad Kodmani Real Estate Brokerage, we do much more than sell properties. We analyse your goals, design a clear strategy, and execute every step with you — from selecting the right project to handover, leasing, resale, and furnishing.",
@@ -454,7 +491,6 @@
       "highlight": "best possible results with the least possible risk"
     }
   },
-
   "pillars": {
     "vision": {
       "title": "Our Vision",
@@ -482,37 +518,30 @@
       }
     }
   },
-
   "journey": {
     "kicker": "OUR JOURNEY",
     "heading": "From Construction to Investment Leadership",
-
     "2006": {
       "title": "From Family Legacy to Construction",
       "description": "Coming from a family with a strong background in contracting and real estate, Mohamad establishes Al Bairaq Contracting in Dubai and begins building his own track record in projects and execution."
     },
-
     "2013": {
       "title": "Expanding into the Beauty Sector",
       "description": "He moves into business development in the beauty industry in Syria, gaining hands-on experience in brand building, operations, and customer-focused growth."
     },
-
     "2016": {
       "title": "Entrepreneurship in F&B",
       "description": "Mohamad establishes and manages restaurants in Syria, strengthening his understanding of cashflow, daily operations, and risk management in competitive markets."
     },
-
     "2023": {
       "title": "Founding Mohamad Kodmani Real Estate Brokerage",
       "description": "Drawing on years of experience in construction and entrepreneurship, he launches Mohamad Kodmani Real Estate Brokerage in Dubai, specialising in investment-focused real estate services."
     },
-
     "2023_2025": {
       "title": "Building Investor Portfolios in Dubai",
       "description": "In just two years, the company helps investors close more than AED 170 million in transactions with investment returns above 8%, focusing on smart off-plan opportunities, portfolio building, and full post-purchase services."
     }
   },
-
   "aboutBrandPillars": {
     "vision": {
       "title": "Our Vision",
@@ -540,7 +569,6 @@
       }
     }
   },
-
   "aboutJourney": {
     "kicker": "OUR JOURNEY",
     "heading": "From Construction to Investment Leadership",
@@ -570,6 +598,65 @@
         "title": "Building Investor Portfolios in Dubai",
         "description": "In just two years, the company helps investors close more than AED 170 million in transactions with investment returns above 8%, focusing on smart off-plan opportunities, portfolio building and full post-purchase services."
       }
+    }
+  },
+  "common": {
+    "clear": "Clear",
+    "from": "From",
+    "to": "To"
+  },
+  "developersDashboard": {
+    "empty": {
+      "title": "No developers configured",
+      "description": "Add entries in developersDetails to use this page."
+    },
+    "sidebar": {
+      "title": "Developers",
+      "searchPlaceholder": "Search developers...",
+      "searchResultsInfo": "Found {{count}} developers",
+      "noResults": "No developers found",
+      "clearSearch": "Clear search",
+      "footerCount": "{{visible}} of {{total}} developers"
+    },
+    "projects": {
+      "title": "Portfolio Collection",
+      "subtitle": "Curated selection of {{developer}}'s signature developments",
+      "resultsInfo": "{{count}} projects by {{developer}}"
+    },
+    "filters": {
+      "clearAll": "Clear all"
+    }
+  },
+  "projects": {
+    "empty": {
+      "title": "No Projects Found",
+      "subtitle": "Try adjusting your filters to see more results",
+      "resetButton": "Reset All Filters"
+    },
+    "status": {
+      "completed": "Completed",
+      "presale": "Presale",
+      "underConstruction": "Under Construction",
+      "announced": "Announced",
+      "onSale": "On Sale",
+      "offPlan": "Off-plan",
+      "ready": "Ready",
+      "readyAndOffPlan": "Ready & Off-plan",
+      "available": "Available"
+    },
+    "cards": {
+      "imageFallback": "Project",
+      "priceOnRequest": "Price on request",
+      "priceFrom": "Price From",
+      "typeLabel": "Type",
+      "typeDefault": "Apartment",
+      "sizeLabel": "Size",
+      "sizeNA": "N/A",
+      "sqft": "sqft",
+      "completionLabel": "Completion",
+      "completionTBA": "TBA",
+      "viewDetails": "View Project Details",
+      "defaultLocation": "Dubai"
     }
   }
 }

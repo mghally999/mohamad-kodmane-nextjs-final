@@ -1,10 +1,10 @@
+// ===== YOUR EXISTING CARD DATA (UNCHANGED, STILL USING t + JSON) =====
 export const whereToLiveData = (CDN, t, locale) => [
   {
     id: "business-bay",
     slug: "business-bay",
     name: t?.("whereToLive.businessBay.name") || "Business Bay",
-    image:
-      "https://plus.unsplash.com/premium_photo-1697729914552-368899dc4757?q=80&w=2224&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/areas/business-bay.jpeg",
     location:
       t?.("whereToLive.businessBay.location") ||
       "Along Dubai Water Canal, next to Downtown Dubai",
@@ -17,8 +17,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     id: "sheikh-zayed-road",
     slug: "sheikh-zayed-road",
     name: t?.("whereToLive.sheikhZayedRoad.name") || "Sheikh Zayed Road",
-    image:
-      "https://images.unsplash.com/photo-1556284664-800b14d70a82?q=80&w=2452&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/areas/sheikh-zayed-road.png",
     location:
       t?.("whereToLive.sheikhZayedRoad.location") ||
       "Prime high-rise corridor linking Downtown, Business Bay & Marina",
@@ -32,8 +31,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     slug: "mohammed-bin-rashid-city",
     name:
       t?.("whereToLive.mbrCity.name") || "Mohammed Bin Rashid City (MBR City)",
-    image:
-      "https://images.unsplash.com/photo-1686906686985-85c4d880511c?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/areas/mbr-city.png",
     location:
       t?.("whereToLive.mbrCity.location") ||
       "Master community near Downtown & Meydan with villas & apartments",
@@ -59,8 +57,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     id: "umm-al-quwain",
     slug: "umm-al-quwain",
     name: t?.("whereToLive.ummAlQuwain.name") || "Umm Al Quwain Waterfront",
-    image:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&w=1200&h=800&fit=crop&auto=format",
+    image: "/areas/umm-al-quwain-waterfront.jpeg",
     location:
       t?.("whereToLive.ummAlQuwain.location") ||
       "Beachfront and island communities along UAQ coastline",
@@ -73,8 +70,7 @@ export const whereToLiveData = (CDN, t, locale) => [
     id: "sharjah",
     slug: "sharjah",
     name: t?.("whereToLive.sharjah.name") || "Sharjah",
-    image:
-      "https://images.unsplash.com/photo-1590959651373-a3db0f38a961?ixlib=rb-4.0.3&w=1200&h=800&fit=crop&auto=format",
+    image: "/areas/sharjah.jpeg",
     location:
       t?.("whereToLive.sharjah.location") ||
       "Green, family-focused communities on Sharjah's outskirts",

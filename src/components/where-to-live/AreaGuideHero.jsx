@@ -154,7 +154,7 @@ export default function AreaGuideHero({ regionData }) {
             <div className={styles.imageOverlay} />
 
             {/* Floating Text Elements */}
-            <div className={styles.floatingText} ref={addToFloatingRefs}>
+            {/* <div className={styles.floatingText} ref={addToFloatingRefs}>
               <span>LUXURY</span>
             </div>
             <div className={styles.floatingText} ref={addToFloatingRefs}>
@@ -162,7 +162,7 @@ export default function AreaGuideHero({ regionData }) {
             </div>
             <div className={styles.floatingText} ref={addToFloatingRefs}>
               <span>EXCLUSIVE</span>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -215,16 +215,6 @@ export default function AreaGuideHero({ regionData }) {
             </div>
           </div>
         </div>
-
-        {/* Interactive Scroll Indicator */}
-        {/* <div className={styles.scrollCue}>
-          <div className={styles.scrollProgress}>
-            <div className={styles.progressBar}></div>
-          </div>
-          <div className={styles.scrollHint}>
-            SCROLL TO EXPLORE {regionData.name.toUpperCase()}
-          </div>
-        </div> */}
       </div>
     </section>
   );
