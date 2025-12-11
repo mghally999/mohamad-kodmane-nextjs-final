@@ -310,10 +310,10 @@ export const orbisData = {
 
     hero: {
       backgroundUrl:
-        "https://luxury-real-estate-media.b-cdn.net/sobha-orbis/A%20(3)-.jpg",
+        "https://luxury-real-estate-media.b-cdn.net/sobha-orbis/L%20(3)-.jpg",
       squareImageUrl:
         "https://luxury-real-estate-media.b-cdn.net/projects-profile-pictures/sobha-orbis.svg",
-      companyName: "شوبا العقارية",
+      companyName: "Sobha Realty",
       rating: 4.7,
     },
 

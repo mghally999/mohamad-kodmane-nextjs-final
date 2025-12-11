@@ -14,6 +14,8 @@ import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah
 import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
 import { damacIslands2Data } from "@/data/projects/villas/damac/damac-islands-2";
 import { orbisData } from "@/data/projects/apartments/orbis/orbis";
+import { verdeData } from "@/data/projects/villas/sobha/verde/verde";
+import { reserveData } from "@/data/projects/villas/sobha/reserve/reserve";
 
 /**
  * ✅ PROJECT DATA MAP - Direct access to your data
@@ -25,6 +27,7 @@ const PROJECT_DATA_MAP = {
   "aqua-crest": aquaCrestData,
   central: centralData,
   orbis: orbisData, // 👈 NEW PROJECT
+  verde: verdeData,
 
   // Apartments - Nakheel
   // "palm-central": palmCentralData,
@@ -36,6 +39,7 @@ const PROJECT_DATA_MAP = {
   // Villas - Arada
   massar: massar3Data,
   "damac-islands-2": damacIslands2Data,
+  "sobha-reserve": reserveData,
 
   // Commercial - Azizi
   "riviera-retails": rivieraRetailsData,

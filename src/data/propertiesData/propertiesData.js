@@ -52,7 +52,7 @@ export const propertiesData = (CDN, t, locale) => ({
               id: 105,
               title: t?.("projectNames.sobhaOrbis") || "Sobha Orbis",
               slug: "orbis",
-              image: `${CDN}/sobha-orbis/A%20(5)-.jpg`,
+              image: `${CDN}/sobha-orbis/A%20%285%29-.jpg`,
               description:
                 t?.("descriptions.apartments") || "Luxury apartments",
             },
@@ -101,6 +101,13 @@ export const propertiesData = (CDN, t, locale) => ({
               image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
               description: t?.("descriptions.villas") || "Premium villas",
             },
+            {
+              id: 203,
+              title: t?.("projectNames.sobhaReserve") || "Sobha Reserve",
+              slug: "sobha-reserve",
+              image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
+              description: t?.("descriptions.villas") || "Premium villas",
+            },
           ],
         },
         {
@@ -111,7 +118,7 @@ export const propertiesData = (CDN, t, locale) => ({
           logo: `/arada-developer.avif`,
           projects: [
             {
-              id: 203,
+              id: 204,
               title: t?.("projectNames.aradaMassar3") || "Arada Massar 3",
               slug: "massar",
               image: `${CDN}/massar-3/hero-bg.jpg`,
@@ -127,7 +134,7 @@ export const propertiesData = (CDN, t, locale) => ({
           logo: `/damac-logo.png`,
           projects: [
             {
-              id: 204,
+              id: 205,
               title: t?.("projectNames.damacIslands2") || "DAMAC Islands 2",
               slug: "damac-islands-2",
               image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
