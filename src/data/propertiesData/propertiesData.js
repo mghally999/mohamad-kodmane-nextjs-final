@@ -82,8 +82,30 @@ export const propertiesData = (CDN, t, locale) => ({
             },
           ],
         },
+
+        /* ===================== DAMAC (NEW – APARTMENTS) ===================== */
+        {
+          id: 2,
+          name: t?.("developers.damacProperties") || "DAMAC Properties",
+          slug: "damac",
+          image: `${CDN}/damac-avanti/02_Avanti%20MasterPic.png`,
+          logo: `/damac-logo.png`,
+          projects: [
+            {
+              id: 109,
+              title: t?.("projectNames.damacAvanti") || "DAMAC Avanti",
+              slug: "damac-avanti",
+              image: `${CDN}/damac-avanti/02_Avanti%20MasterPic.png`,
+              description:
+                t?.("descriptions.apartments") ||
+                "Serviced hotel apartments in Business Bay",
+            },
+          ],
+        },
       ],
     },
+
+    /* ===================== VILLAS (UNCHANGED) ===================== */
     {
       id: 2,
       name: t?.("categories.villas") || "Villas",
@@ -174,6 +196,8 @@ export const propertiesData = (CDN, t, locale) => ({
         },
       ],
     },
+
+    /* ===================== COMMERCIAL (UNCHANGED) ===================== */
     {
       id: 3,
       name: t?.("categories.commercial") || "Commercial",
@@ -220,6 +244,8 @@ export const propertiesData = (CDN, t, locale) => ({
         },
       ],
     },
+
+    /* ===================== PENTHOUSES (UNCHANGED) ===================== */
     {
       id: 4,
       name: t?.("categories.penthouses") || "Penthouses",

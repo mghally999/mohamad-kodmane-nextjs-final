@@ -43,7 +43,7 @@ export const sobhaSolisData = {
       brochures: [
         {
           title: "Download Brochure",
-          url: "https://luxury-real-estate-media.b-cdn.net/sobha-orbis/Sobha%20Orbis%20%26%20Sobha%20Solis%20Motor%20City_Brochure%20-%20English.pdf",
+          url: "https://luxury-real-estate-media.b-cdn.net/sobha-solis/Combined%20Sobha%20Solis%20%26%20Orbis%20Brochure%203%20Mar%202025.pdf",
           type: "main",
           icon: "🏙️",
           color: "#1A5F7A",

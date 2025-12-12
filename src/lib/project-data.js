@@ -13,14 +13,15 @@ import { massar3Data } from "@/data/projects/villas/arada/massar/massar";
 import { alSinniyyahIslandData } from "@/data/projects/villas/sobha/al-sinniyyah-island/al-sinniyyah-island";
 import { hartland2VillasData } from "@/data/projects/villas/sobha/hartland/hartland";
 import { damacIslands2Data } from "@/data/projects/villas/damac/damac-islands-2";
-import { orbisData } from "@/data/projects/apartments/orbis/orbis";
+import { orbisData } from "@/data/projects/apartments/sobha/orbis/orbis";
 import { verdeData } from "@/data/projects/villas/sobha/verde/verde";
 import { reserveData } from "@/data/projects/villas/sobha/reserve/reserve";
 import { elwoodData } from "@/data/projects/villas/sobha/elwood/elwood";
 import { sobhaSolisData } from "@/data/projects/apartments/sobha/solis/solis";
-import { sobhaOneData } from "@/data/projects/apartments/one/one";
+import { sobhaOneData } from "@/data/projects/apartments/sobha/one/one";
 import { theElementData } from "@/data/projects/villas/sobha/the-element/the-element";
 import { sobhaTheSData } from "@/data/projects/penthouses/sobha/the-s/the-s";
+import { damacAvantiData } from "@/data/projects/apartments/damac/avanti";
 
 /**
  * ✅ PROJECT DATA MAP - Direct access to your data
@@ -35,6 +36,8 @@ const PROJECT_DATA_MAP = {
   verde: verdeData,
   "sobha-solis": sobhaSolisData,
   "sobha-one": sobhaOneData,
+
+  "damac-avanti": damacAvantiData,
 
   // Apartments - Nakheel
   // "palm-central": palmCentralData,
