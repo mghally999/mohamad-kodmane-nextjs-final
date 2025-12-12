@@ -17,6 +17,10 @@ import { orbisData } from "@/data/projects/apartments/orbis/orbis";
 import { verdeData } from "@/data/projects/villas/sobha/verde/verde";
 import { reserveData } from "@/data/projects/villas/sobha/reserve/reserve";
 import { elwoodData } from "@/data/projects/villas/sobha/elwood/elwood";
+import { sobhaSolisData } from "@/data/projects/apartments/sobha/solis/solis";
+import { sobhaOneData } from "@/data/projects/apartments/one/one";
+import { theElementData } from "@/data/projects/villas/sobha/the-element/the-element";
+import { sobhaTheSData } from "@/data/projects/penthouses/sobha/the-s/the-s";
 
 /**
  * ✅ PROJECT DATA MAP - Direct access to your data
@@ -29,6 +33,8 @@ const PROJECT_DATA_MAP = {
   central: centralData,
   orbis: orbisData, // 👈 NEW PROJECT
   verde: verdeData,
+  "sobha-solis": sobhaSolisData,
+  "sobha-one": sobhaOneData,
 
   // Apartments - Nakheel
   // "palm-central": palmCentralData,
@@ -42,6 +48,7 @@ const PROJECT_DATA_MAP = {
   "damac-islands-2": damacIslands2Data,
   "sobha-reserve": reserveData,
   "sobha-elwood": elwoodData,
+  "the-element": theElementData,
 
   // Commercial - Azizi
   "riviera-retails": rivieraRetailsData,
@@ -51,6 +58,7 @@ const PROJECT_DATA_MAP = {
 
   // Penthouses - Sobha
   "seahaven-penthouse": seahavenPenthouseData,
+  "the-s": sobhaTheSData,
 };
 
 /**

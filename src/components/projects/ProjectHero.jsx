@@ -6,6 +6,10 @@ import styles from "@/styles/projects/ProjectHero.module.css";
 import { getLocalizedText } from "@/lib/text-utils";
 import { useLanguage } from "@/components/LanguageProvider";
 
+function isVideo(url = "") {
+  return /\.(mp4|webm|ogg)$/i.test(url);
+}
+
 export default function ProjectHero({ data, projectData, isRTL, locale }) {
   const { locale: ctxLocale } = useLanguage();
   const activeLocale = locale || ctxLocale || "en";
@@ -20,33 +24,48 @@ export default function ProjectHero({ data, projectData, isRTL, locale }) {
   const projectName = getLocalizedText(projectInfo.name, activeLocale);
   const companyName = getLocalizedText(heroData.companyName, activeLocale);
 
+  const bgUrl = heroData.backgroundUrl;
+  const isBgVideo = isVideo(bgUrl);
+
   return (
     <div className={styles.root}>
-      {/* HERO (top image) */}
+      {/* HERO */}
       <section className={styles.hero} aria-label="Project hero">
         <div className={styles.heroBgWrap} aria-hidden="true">
-          <Image
-            src={heroData.backgroundUrl}
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            placeholder="blur"
-            blurDataURL={`${heroData.backgroundUrl}?width=16&quality=20`}
-            sizes="100vw"
-            className={styles.heroImage}
-          />
+          {isBgVideo ? (
+            <video
+              className={styles.heroVideo}
+              src={bgUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          ) : (
+            <Image
+              src={bgUrl}
+              alt=""
+              fill
+              priority
+              fetchPriority="high"
+              placeholder="blur"
+              blurDataURL={`${bgUrl}?width=16&quality=20`}
+              sizes="100vw"
+              className={styles.heroImage}
+            />
+          )}
+
           <div className={styles.vignette} />
         </div>
       </section>
 
-      {/* SECOND WRAPPER (white area with logo card + Google reviews) */}
+      {/* LOGO + INFO */}
       <section
         className={styles.secondWrapper}
-        aria-label="Project logo and Google reviews"
+        aria-label="Project logo and reviews"
       >
         <div className={styles.innerRow}>
-          {/* LEFT: Logo card (overlapping the hero) */}
           <div className={styles.detLogoContent}>
             <div className={styles.logoCard}>
               <Image
@@ -58,65 +77,6 @@ export default function ProjectHero({ data, projectData, isRTL, locale }) {
               />
             </div>
           </div>
-
-          {/* RIGHT: Google Reviews */}
-          {/* <div className={styles.googleReview}>
-            <div className={styles.googleLeft}>
-              <span className={styles.gLogoBox} aria-hidden="true">
-                <svg
-                  width="26"
-                  height="26"
-                  viewBox="0 0 24 24"
-                  className={styles.gSvg}
-                >
-                  <path
-                    fill="#4285F4"
-                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                  />
-                  <path
-                    fill="#34A853"
-                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                  />
-                  <path
-                    fill="#FBBC05"
-                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                  />
-                  <path
-                    fill="#EA4335"
-                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                  />
-                </svg>
-              </span>
-
-              <div className={styles.gMeta}>
-                <div className={styles.gTitleRow}>
-                  <span className={styles.gWord}>
-                    {activeIsRTL ? "جوجل" : "Google"}
-                  </span>
-                  <span className={styles.gReviews}>
-                    {activeIsRTL ? "التقييمات" : "Reviews"}
-                  </span>
-                </div>
-                <span className={styles.sobhaTitle}>{companyName}</span>
-              </div>
-            </div>
-
-            <div className={styles.ratingRow}>
-              <span className={styles.ratingValue}>
-                {heroData?.rating !== undefined
-                  ? heroData.rating.toFixed(1)
-                  : "N/A"}{" "}
-                / 5
-              </span>
-              <span
-                className={styles.ratingStars}
-                role="img"
-                aria-label={activeIsRTL ? "التقييم من 5" : "Rating out of 5"}
-              >
-                ★★★★★
-              </span>
-            </div>
-          </div> */}
         </div>
       </section>
     </div>

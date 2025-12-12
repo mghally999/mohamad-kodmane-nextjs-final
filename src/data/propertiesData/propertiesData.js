@@ -60,7 +60,23 @@ export const propertiesData = (CDN, t, locale) => ({
               id: 106,
               title: t?.("projectNames.sobhaVerde") || "Sobha Verde",
               slug: "verde",
-              image: `${CDN}/sobha-orbis/A%20(5)-.jpg`,
+              image: `${CDN}/sobha-verde/A%20(10).jpg`,
+              description:
+                t?.("descriptions.apartments") || "Luxury apartments",
+            },
+            {
+              id: 107,
+              title: t?.("projectNames.sobhaSolis") || "Sobha Solis",
+              slug: "sobha-solis",
+              image: `${CDN}/sobha-solis/Sobha%20Solis.jpg`,
+              description:
+                t?.("descriptions.apartments") || "Luxury apartments",
+            },
+            {
+              id: 108,
+              title: t?.("projectNames.sobhaOne") || "Sobha One",
+              slug: "sobha-one",
+              image: `${CDN}/sobha-one/overview01.jpg`,
               description:
                 t?.("descriptions.apartments") || "Luxury apartments",
             },
@@ -115,6 +131,13 @@ export const propertiesData = (CDN, t, locale) => ({
               image: `${CDN}/al-sinniyyah-island/hero-bg.jpg`,
               description: t?.("descriptions.villas") || "Premium villas",
             },
+            {
+              id: 205,
+              title: t?.("projectNames.sobhaTheElement") || "Sobha The Element",
+              slug: "the-element",
+              image: `${CDN}/sobha-the-element/Aerial%20Shot%20(Night).jpg`,
+              description: t?.("descriptions.villas") || "Premium villas",
+            },
           ],
         },
         {
@@ -125,7 +148,7 @@ export const propertiesData = (CDN, t, locale) => ({
           logo: `/arada-developer.avif`,
           projects: [
             {
-              id: 205,
+              id: 206,
               title: t?.("projectNames.aradaMassar3") || "Arada Massar 3",
               slug: "massar",
               image: `${CDN}/massar-3/hero-bg.jpg`,
@@ -141,7 +164,7 @@ export const propertiesData = (CDN, t, locale) => ({
           logo: `/damac-logo.png`,
           projects: [
             {
-              id: 205,
+              id: 207,
               title: t?.("projectNames.damacIslands2") || "DAMAC Islands 2",
               slug: "damac-islands-2",
               image: `${CDN}/damac-island-2/WhatsApp%20Image%202025-11-19%20at%2013.26.51%20%281%29.jpeg`,
@@ -220,6 +243,14 @@ export const propertiesData = (CDN, t, locale) => ({
                 "Sobha Sea Haven Penthouse",
               slug: "seahaven-penthouse",
               image: `${CDN}/sky-parks/exterior-night-01.jpg`,
+              description:
+                t?.("descriptions.penthouses") || "Luxury penthouses",
+            },
+            {
+              id: 402,
+              title: t?.("projectNames.sobhaTheS") || "Sobha The S",
+              slug: "the-s",
+              image: `${CDN}/sobha-the-s/2Golf_Views_Option_2A.jpg`,
               description:
                 t?.("descriptions.penthouses") || "Luxury penthouses",
             },
