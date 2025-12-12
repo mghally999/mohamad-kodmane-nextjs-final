@@ -21,7 +21,7 @@ import { sobhaSolisData } from "@/data/projects/apartments/sobha/solis/solis";
 import { sobhaOneData } from "@/data/projects/apartments/sobha/one/one";
 import { theElementData } from "@/data/projects/villas/sobha/the-element/the-element";
 import { sobhaTheSData } from "@/data/projects/penthouses/sobha/the-s/the-s";
-import { damacAvantiData } from "@/data/projects/apartments/damac/avanti";
+import { damacAvantiData } from "@/data/projects/apartments/damac/damac-avanti";
 
 /**
  * ✅ PROJECT DATA MAP - Direct access to your data
@@ -37,10 +37,8 @@ const PROJECT_DATA_MAP = {
   "sobha-solis": sobhaSolisData,
   "sobha-one": sobhaOneData,
 
+  // Apartments - Damac
   "damac-avanti": damacAvantiData,
-
-  // Apartments - Nakheel
-  // "palm-central": palmCentralData,
 
   // Villas - Sobha
   hartland: hartland2VillasData,
